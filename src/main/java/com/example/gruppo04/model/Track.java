@@ -2,6 +2,12 @@ package com.example.gruppo04.model;
 import java.util.UUID;
 import java.time.Year;
 
+/**
+ * @brief Implementazione concreta dell'interfaccia ITrack.
+ * * Questa classe rappresenta fisicamente una traccia musicale nel sistema.
+ * Gestisce lo stato interno dei dati e applica le regole di validazione
+ * al momento dell'inserimento o della modifica.
+ */
 public class Track implements ITrack  {
 
         private final UUID id; //Questo UUID è stato inserito in modo da dare un id univoco alla traccia in modo tale che quando verranno modificati i campi dall'utente non ci saranno ambiguità nelle playlist e non verranno perse le tracce
@@ -11,6 +17,14 @@ public class Track implements ITrack  {
         private int year;
         private int duration;
 
+    /**
+     * @brief Costruisce una nuova traccia assegnandole un UUID generato automaticamente.
+     * * @param title    Il titolo della traccia.
+     * @param author   L'autore o l'artista.
+     * @param genre    Il genere musicale.
+     * @param year     L'anno di pubblicazione.
+     * @param duration La durata totale in secondi.
+     */
         public Track(String title, String author, String genre, int year, int duration) {
             this.id = UUID.randomUUID();
             this.title = title;
