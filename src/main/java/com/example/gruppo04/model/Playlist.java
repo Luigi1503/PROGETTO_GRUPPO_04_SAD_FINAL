@@ -31,7 +31,7 @@ public interface Playlist {
      * @return {@code true} se la traccia è stata aggiunta, {@code false} se era
      *         già presente (in tal caso la playlist resta invariata)
      */
-    boolean addTrack(TrackImpl track);
+    boolean addTrack(Track track);
 
     /**
      * Rimuove una traccia dalla playlist, se presente.
@@ -40,7 +40,7 @@ public interface Playlist {
      * @return {@code true} se la traccia è stata rimossa, {@code false} se non
      *         era presente
      */
-    boolean removeTrack(TrackImpl track);
+    boolean removeTrack(Track track);
 
     /**
      * Restituisce le tracce nell'ordine di inserimento.
@@ -48,5 +48,5 @@ public interface Playlist {
      * @return una vista in <b>sola lettura</b> delle tracce; ogni tentativo di
      *         modificarla solleva {@link UnsupportedOperationException}
      */
-    List<TrackImpl> getTracks();
+    List<Track> getTracks();
 }

@@ -3,6 +3,7 @@ package com.example.gruppo04.controller;
 import com.example.gruppo04.model.MusicCatalog;
 import com.example.gruppo04.model.Playlist;
 import com.example.gruppo04.model.PlaylistImpl;
+import com.example.gruppo04.model.Track;
 
 import java.util.ArrayList;
 import java.util.Collections;
