@@ -3,6 +3,8 @@ package com.example.gruppo04.view;
 import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.model.MusicCatalog;
 import com.example.gruppo04.model.Playlist;
+import com.example.gruppo04.observer.CatalogObserver;
+import com.example.gruppo04.observer.CatalogEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -15,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import java.util.function.Consumer;
 
 /**
  * Controller di vista (layer View) del pannello di gestione delle playlist.
@@ -29,7 +32,7 @@ import javafx.scene.layout.VBox;
  * L'aggiornamento della griglia avverrà tramite Observer, quando il catalogo
  * notifica un cambiamento.
  */
-public class PlaylistViewController{
+public class PlaylistViewController implements CatalogObserver {
 
     /** Contenitore delle card, iniettato dall'FXML. */
     @FXML
@@ -41,7 +44,7 @@ public class PlaylistViewController{
 
     private final PlaylistController playlistController;
     private final MusicCatalog catalog;
-
+    private Consumer<Playlist> onPlaylistSelected = p -> {};
     /**
      * @param playlistController orchestratore a cui delegare le azioni sulle playlist
      * @param catalog            sorgente dati di sola lettura usata per disegnare la griglia
@@ -58,8 +61,20 @@ public class PlaylistViewController{
      */
     @FXML
     public void initialize() {
-        // catalog.addObserver(this);   // quando hai l'interfaccia di Francesco
+        catalog.registerObserver(this);   // quando hai l'interfaccia di Francesco
         renderPlaylists();
+    }
+
+    /**
+     * Callback dell'Observer: ridisegna la griglia quando cambiano le playlist
+     * (aggiunta, rinomina, eliminazione). Ignora gli eventi sulle tracce.
+     */
+    @Override
+    public void onCatalogChanged(CatalogEvent event) {
+        switch (event.getType()) {
+            case PLAYLIST_ADDED, PLAYLIST_REMOVED, PLAYLIST_RENAMED -> renderPlaylists();
+            default -> { }
+        }
     }
 
     /**
@@ -142,18 +157,17 @@ public class PlaylistViewController{
         });
 
         Button delete = new Button("Elimina");
-        delete.setOnAction(e -> {
-            playlistController.deletePlaylist(playlist);
-           //collegamento Observer Francesco
-        });
+        delete.setOnAction(e -> playlistController.deletePlaylist(playlist));
 
         HBox actions = new HBox(5, rename, delete);
 
         VBox card = new VBox(5, icon, name, actions);
-        card.setOnMouseClicked(e -> {
-            // selezione → piloterà il dettaglio di Annamaria
-        });
+        card.setOnMouseClicked(e -> onPlaylistSelected.accept(playlist));
 
         return card;
+    }
+    /** Imposta cosa fare quando l'utente seleziona una playlist (lo collega MainWindow). */
+    public void setOnPlaylistSelected(Consumer<Playlist> handler) {
+        this.onPlaylistSelected = handler;
     }
 }

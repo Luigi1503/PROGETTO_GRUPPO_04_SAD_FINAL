@@ -171,7 +171,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      * Chiamato automaticamente dall'Observer quando il catalogo cambia.
      */
     public void updateView() {
-        labelNamePlaylist.setText(currentPlaylist.getNome());
+        labelNamePlaylist.setText(currentPlaylist.getName());
         ObservableList<Track> tracks = FXCollections.observableArrayList(
                 currentPlaylist.getTracks());
         tableTracks.setItems(tracks);
