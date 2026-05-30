@@ -36,23 +36,23 @@ public class ConcreteMusicCatalog implements MusicCatalog {
      * prima della creazione dell'istanza {@link PlaylistImpl}.</p>
      */
     @Override
-    public boolean createPlaylist(String nome) {
-        if (nome == null || nome.trim().isEmpty()) {
+    public boolean createPlaylist(String name) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Il nome della playlist non può essere nullo o vuoto.");
         }
 
-        String nomePulito = nome.trim();
+        String correctName = name.trim();
 
         // Controllo univocità rispetto alle playlist esistenti
         for (Playlist p : playlists) {
-            if (p.getNome().equalsIgnoreCase(nomePulito)) {
+            if (p.getNome().equalsIgnoreCase(correctName)) {
                 return false; // Esiste già una playlist con questo nome
             }
         }
 
-        Playlist nuovaPlaylist = new PlaylistImpl(nomePulito);
-        playlists.add(nuovaPlaylist);
-        notifyObservers(CatalogEventType.PLAYLIST_ADDED, nuovaPlaylist);
+        Playlist newPlaylist = new PlaylistImpl(correctName);
+        playlists.add(newPlaylist);
+        notifyObservers(CatalogEventType.PLAYLIST_ADDED, newPlaylist);
 
         return true;
     }
@@ -63,8 +63,8 @@ public class ConcreteMusicCatalog implements MusicCatalog {
      * se il nuovo nome coincide con il nome attuale della playlist stessa.</p>
      */
     @Override
-    public boolean renamePlaylist(Playlist playlist, String nuovoNome) {
-        if (nuovoNome == null || nuovoNome.trim().isEmpty()) {
+    public boolean renamePlaylist(Playlist playlist, String newName) {
+        if (newName == null || newName.trim().isEmpty()) {
             throw new IllegalArgumentException("Il nuovo nome non può essere nullo o vuoto.");
         }
 
@@ -72,16 +72,16 @@ public class ConcreteMusicCatalog implements MusicCatalog {
             return false; // La playlist non appartiene a questo catalogo
         }
 
-        String nomePulito = nuovoNome.trim();
+        String correctName = newName.trim();
 
         // Controllo univocità: il nuovo nome non deve appartenere a un'ALTRA playlist
         for (Playlist p : playlists) {
-            if (p != playlist && p.getNome().equalsIgnoreCase(nomePulito)) {
+            if (p != playlist && p.getNome().equalsIgnoreCase(correctName)) {
                 return false;
             }
         }
 
-        playlist.setNome(nomePulito); // Assume che Playlist abbia un setter per il nome
+        playlist.setNome(correctName); // Assume che Playlist abbia un setter per il nome
         notifyObservers(CatalogEventType.PLAYLIST_RENAMED, playlist);
 
         return true;
