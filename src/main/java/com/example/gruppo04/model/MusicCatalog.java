@@ -1,0 +1,50 @@
+package com.example.gruppo04.model;
+
+import java.util.List;
+
+public interface MusicCatalog {
+
+    /**
+     * Crea una nuova playlist con il nome indicato e la aggiunge al catalogo.
+     * In caso di successo notifica gli observer con l'evento {@code PLAYLIST_ADDED}.
+     *
+     * @param nome il nome della nuova playlist; non {@code null}, non vuoto e
+     *             univoco rispetto alle playlist già presenti
+     * @return {@code true} se la playlist è stata creata, {@code false} se
+     *         esiste già una playlist con lo stesso nome
+     * @throws IllegalArgumentException se {@code nome} è {@code null} o vuoto
+     */
+    boolean createPlaylist(String nome);
+
+    /**
+     * Rinomina una playlist già presente nel catalogo.
+     * In caso di successo notifica gli observer con l'evento {@code PLAYLIST_RENAMED}.
+     *
+     * @param playlist  la playlist da rinominare; deve appartenere al catalogo
+     * @param nuovoNome il nuovo nome; non {@code null}, non vuoto e univoco
+     *                  rispetto alle altre playlist
+     * @return {@code true} se rinominata, {@code false} se la playlist non è nel
+     *         catalogo o se il nuovo nome è già usato da un'altra playlist
+     * @throws IllegalArgumentException se {@code nuovoNome} è {@code null} o vuoto
+     */
+    boolean renamePlaylist(Playlist playlist, String nuovoNome);
+
+    /**
+     * Rimuove una playlist dal catalogo. Elimina solo la playlist, non tocca le
+     * tracce del catalogo. In caso di successo notifica gli observer con
+     * l'evento {@code PLAYLIST_REMOVED}.
+     *
+     * @param playlist la playlist da rimuovere
+     * @return {@code true} se rimossa, {@code false} se non era presente nel catalogo
+     */
+    boolean deletePlaylist(Playlist playlist);
+
+    /**
+     * Restituisce tutte le playlist del catalogo, nell'ordine di inserimento.
+     *
+     * @return una vista in sola lettura delle playlist (mai {@code null}; vuota
+     *         se non ce ne sono); ogni tentativo di modifica solleva
+     *         {@link UnsupportedOperationException}
+     */
+    List<Playlist> getPlaylists();
+}
