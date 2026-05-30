@@ -1,5 +1,8 @@
 package com.example.gruppo04.model;
 
+import com.example.gruppo04.observer.CatalogObserver;
+
+import java.util.Collection;
 import java.util.List;
 
 public interface MusicCatalog {
@@ -69,4 +72,26 @@ public interface MusicCatalog {
      *         presente nella playlist
      */
     boolean removeTrackFromPlaylist(Playlist playlist, Track track);
+
+    /**
+     * Restituisce tutte le tracce presenti nel catalogo, mantenendo l'ordine di inserimento.
+     * @return Collezione di tutte le tracce presenti in catalogo
+     */
+    public Collection<Track> getAllTracks();
+
+    /**
+     * Registra un nuovo observer per ascoltare le modifiche del catalogo.
+     *
+     * @param observer l'ascoltatore da registrare; non {@code null}
+     */
+    void registerObserver(CatalogObserver observer);
+
+    /**
+     * Rimuove un observer precedentemente registrato.
+     *
+     * @param observer l'ascoltatore da rimuovere
+     */
+    void unregisterObserver(CatalogObserver observer);
+
+
 }

@@ -190,8 +190,6 @@ public class ConcreteMusicCatalog implements MusicCatalog {
         return false;
     }
 
-
-
     /**
      * Aggiorna i dati di una traccia esistente nel catalogo.
      * In caso di successo notifica gli observer con l'evento {@code TRACK_UPDATED}.
