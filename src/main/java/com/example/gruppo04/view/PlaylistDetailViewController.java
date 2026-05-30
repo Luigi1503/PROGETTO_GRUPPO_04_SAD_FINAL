@@ -7,6 +7,7 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.model.Playlist;
 import com.example.gruppo04.model.Track;
 import com.example.gruppo04.controller.TrackController;
+import com.example.gruppo04.util.TrackFormatter;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -191,12 +192,13 @@ public class PlaylistDetailViewController implements CatalogObserver {
             VBox root = loader.load();
             TrackSelectionViewController controller = loader.getController();
 
-            // Filtra le tracce già presenti nella playlist
             List<Track> availableTracks = trackController.getAllTracks().stream()
                     .filter(t -> !currentPlaylist.getTracks().contains(t))
                     .collect(Collectors.toList());
 
-            controller.init(availableTracks, currentPlaylist, playlistController);
+            // Lambda che implementa TrackSelectionListener
+            controller.init(availableTracks, track ->
+                    playlistController.addTrackToPlaylist(currentPlaylist, track));
 
             Stage dialog = new Stage();
             dialog.setTitle("Aggiungi traccia");

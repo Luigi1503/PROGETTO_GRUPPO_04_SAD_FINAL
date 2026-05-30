@@ -1,8 +1,6 @@
 package com.example.gruppo04.view;
 
 import com.example.gruppo04.model.Track;
-import com.example.gruppo04.model.Playlist;
-import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.util.TrackFormatter;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,14 +15,15 @@ import javafx.stage.Stage;
 import java.util.List;
 
 /**
- * Controller JavaFX del dialog di selezione di una traccia da aggiungere alla playlist.
- * Mostra le tracce disponibili nel catalogo (escluse quelle già
- * presenti nella playlist corrente) e permette all'utente di
- * selezionarne una da aggiungere.
+ * Controller JavaFX del dialog di selezione di una traccia.
+ * Mostra le tracce disponibili e permette all'utente di selezionarne
+ * una. Notifica il chiamante tramite {@link TrackSelectionListener}
+ * senza conoscere il contesto in cui viene usato — questo lo rende
+ * riusabile in scenari diversi (aggiunta a playlist, riproduzione, ecc.).
  */
 public class TrackSelectionViewController {
 
-    /** Tabella che mostra le tracce disponibili per l'aggiunta. */
+    /** Tabella che mostra le tracce disponibili per la selezione. */
     @FXML private TableView<Track> tableTracks;
 
     /** Colonna che mostra il titolo di ogni traccia. */
@@ -42,17 +41,17 @@ public class TrackSelectionViewController {
     /** Colonna che mostra la durata di ogni traccia nel formato mm:ss. */
     @FXML private TableColumn<Track, String> colDuration;
 
-    /** Pulsante per confermare l'aggiunta della traccia selezionata. Disabilitato se nessuna traccia è selezionata. */
+    /** Pulsante per confermare la selezione della traccia. Disabilitato se nessuna traccia è selezionata. */
     @FXML private Button btnAdd;
 
-    /** Pulsante per annullare e chiudere il dialog senza aggiungere tracce. */
+    /** Pulsante per annullare e chiudere il dialog senza selezionare nessuna traccia. */
     @FXML private Button btnCancel;
 
-    /** Playlist a cui aggiungere la traccia selezionata. */
-    private Playlist playlist;
-
-    /** Controller MVC delle playlist, usato per aggiungere la traccia selezionata. */
-    private PlaylistController playlistController;
+    /**
+     * Listener notificato quando l'utente conferma la selezione di una traccia.
+     * Chi apre il dialog decide cosa fare con la traccia selezionata.
+     */
+    private TrackSelectionListener listener;
 
     /**
      * Costruttore senza parametri richiesto da FXMLLoader.
@@ -61,17 +60,15 @@ public class TrackSelectionViewController {
     }
 
     /**
-     * Inizializza il dialog con la lista delle tracce disponibili,
-     * la playlist corrente e il controller MVC.
+     * Inizializza il dialog con la lista delle tracce disponibili
+     * e il listener da notificare alla conferma della selezione.
      * Da chiamare dopo il caricamento dell'FXML.
      *
-     * @param availableTracks    le tracce del catalogo non ancora presenti nella playlist
-     * @param playlist           la playlist a cui aggiungere la traccia selezionata
-     * @param playlistController il controller MVC delle playlist
+     * @param availableTracks le tracce disponibili per la selezione
+     * @param listener        il listener da notificare quando l'utente conferma
      */
-    public void init(List<Track> availableTracks, Playlist playlist, PlaylistController playlistController) {
-        this.playlist = playlist;
-        this.playlistController = playlistController;
+    public void init(List<Track> availableTracks, TrackSelectionListener listener) {
+        this.listener = listener;
         tableTracks.setItems(FXCollections.observableArrayList(availableTracks));
     }
 
@@ -108,13 +105,15 @@ public class TrackSelectionViewController {
     /**
      * Gestisce il click su "Aggiungi".
      * Notifica il listener con la traccia selezionata e chiude il dialog.
-     * selectedTrack è sempre non null qui: il bottone è abilitato
+     * selected è sempre non null qui: il bottone è abilitato
      * solo quando una traccia è selezionata nella tabella (vedi initialize).
      */
     @FXML
     void handleAdd(ActionEvent event) {
         Track selected = tableTracks.getSelectionModel().getSelectedItem();
-        playlistController.addTrackToPlaylist(playlist, selected);
+        if (listener != null) {
+            listener.onTrackSelected(selected);
+        }
         closeDialog();
     }
 
