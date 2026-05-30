@@ -105,6 +105,34 @@ public class Track implements ITrack  {
             }
             this.duration = duration;
         }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Track track = (Track) o;
+        return this.id.equals(track.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", genre='" + genre + '\'' +
+                ", year=" + year +
+                ", duration=" + duration +
+                '}';
+    }
+
     }
 
 

@@ -82,4 +82,29 @@ public interface ITrack {
      */
     void setDuration(int duration);
 
+
+    /**
+     * @brief Confronta questa traccia con un altro oggetto per verificarne l'uguaglianza.
+     * * L'uguaglianza tra due tracce deve essere basata esclusivamente sul confronto
+     * dei loro identificatori univoci (UUID), ignorando del tutto campi come titolo o autore.
+     * * @param o L'oggetto da confrontare con la traccia corrente.
+     * @return true se gli oggetti hanno lo stesso UUID, false altrimenti.
+     */
+    boolean equals(Object o);
+
+    /**
+     * @brief Restituisce il codice hash della traccia.
+     * * Per rispettare il contratto di uguaglianza, il codice hash deve essere
+     * generato partendo esclusivamente dall'UUID della traccia.
+     * * @return Il valore hash intero.
+     */
+    int hashCode();
+
+    /**
+     * @brief Restituisce una rappresentazione testuale della traccia.
+     * * Utile principalmente per scopi di logging e debugging.
+     * * @return Una stringa contenente lo stato interno della traccia.
+     */
+    String toString();
+
 }
