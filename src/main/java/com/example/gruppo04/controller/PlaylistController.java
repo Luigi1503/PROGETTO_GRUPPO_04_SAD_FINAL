@@ -62,4 +62,30 @@ public class PlaylistController {
     public boolean deletePlaylist(Playlist playlist) {
         return catalog.deletePlaylist(playlist);
     }
+
+    /**
+     * Aggiunge una traccia a una playlist esistente, delegando a
+     * {@link MusicCatalog#addTrackToPlaylist(Playlist, Track)}.
+     *
+     * @param playlist la playlist selezionata nella View
+     * @param track    la traccia da aggiungere
+     * @return {@code true} se aggiunta, {@code false} se la traccia è già
+     *         presente nella playlist
+     */
+    public boolean addTrackToPlaylist(Playlist playlist, Track track) {
+        return catalog.addTrackToPlaylist(playlist, track);
+    }
+
+    /**
+     * Rimuove una traccia da una playlist esistente, delegando a
+     * {@link MusicCatalog#removeTrackFromPlaylist(Playlist, Track)}.
+     *
+     * @param playlist la playlist selezionata nella View
+     * @param track    la traccia da rimuovere
+     * @return {@code true} se rimossa, {@code false} se la traccia non è
+     *         presente nella playlist
+     */
+    public boolean removeTrackFromPlaylist(Playlist playlist, Track track) {
+        return catalog.removeTrackFromPlaylist(playlist, track);
+    }
 }

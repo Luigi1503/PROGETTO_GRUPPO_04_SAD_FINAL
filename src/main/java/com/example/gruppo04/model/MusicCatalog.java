@@ -47,4 +47,26 @@ public interface MusicCatalog {
      *         {@link UnsupportedOperationException}
      */
     List<Playlist> getPlaylists();
+
+    /**
+     * Aggiunge una traccia ad una playlist del catalogo.
+     * In caso di successo notifica gli observer con l'evento {@code PLAYLIST_TRACK_ADDED}.
+     *
+     * @param playlist la playlist a cui aggiungere la traccia
+     * @param track    la traccia da aggiungere
+     * @return {@code true} se aggiunta, {@code false} se la traccia è già
+     *         presente nella playlist
+     */
+    boolean addTrackToPlaylist(Playlist playlist, Track track);
+
+    /**
+     * Rimuove una traccia da una playlist del catalogo.
+     * In caso di successo notifica gli observer con l'evento {@code PLAYLIST_TRACK_REMOVED}.
+     *
+     * @param playlist la playlist da cui rimuovere la traccia
+     * @param track    la traccia da rimuovere
+     * @return {@code true} se rimossa, {@code false} se la traccia non è
+     *         presente nella playlist
+     */
+    boolean removeTrackFromPlaylist(Playlist playlist, Track track);
 }
