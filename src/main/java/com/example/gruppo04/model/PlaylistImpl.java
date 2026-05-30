@@ -5,8 +5,8 @@ import java.util.*;
 public class PlaylistImpl implements Playlist {
     private String nome;
     private final String id;
-    private List<Track> tracks = new ArrayList<>();
-    
+    private List<TrackImpl> tracks = new ArrayList<>();
+
     /**
      * Implementazione di {@link Playlist} basata su lista ad accesso ordinato.
      * L'uguaglianza è definita sul solo id immutabile.
@@ -57,7 +57,7 @@ public class PlaylistImpl implements Playlist {
    }
 
     @Override
-    public boolean addTrack(Track track){
+    public boolean addTrack(TrackImpl track){
         boolean result = false;
         if(!tracks.contains(track)) {
             tracks.add(track);
@@ -67,7 +67,7 @@ public class PlaylistImpl implements Playlist {
     }
 
     @Override
-    public boolean removeTrack(Track track){
+    public boolean removeTrack(TrackImpl track){
         boolean result = false;
         if(tracks.contains(track)) {
             tracks.remove(track);
@@ -77,7 +77,7 @@ public class PlaylistImpl implements Playlist {
     }
 
     @Override
-    public List<Track> getTracks(){
+    public List<TrackImpl> getTracks(){
         return Collections.unmodifiableList(this.tracks);
     }
 

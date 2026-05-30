@@ -1,138 +1,87 @@
 package com.example.gruppo04.model;
+
 import java.util.UUID;
-import java.time.Year;
 
 /**
- * @brief Implementazione concreta dell'interfaccia ITrack.
- * * Questa classe rappresenta fisicamente una traccia musicale nel sistema.
- * Gestisce lo stato interno dei dati e applica le regole di validazione
- * al momento dell'inserimento o della modifica.
+ * @brief Rappresenta il contratto per una traccia musicale all'interno del sistema.
+ * * Questa interfaccia definisce i metodi necessari per leggere e manipolare
+ * le informazioni di un brano. L'identità di ogni traccia è garantita
+ * da un identificatore UUID immutabile.
  */
-public class Track implements ITrack  {
-
-        private final UUID id; //Questo UUID è stato inserito in modo da dare un id univoco alla traccia in modo tale che quando verranno modificati i campi dall'utente non ci saranno ambiguità nelle playlist e non verranno perse le tracce
-        private String title;
-        private String author;
-        private String genre;
-        private int year;
-        private int duration;
+public interface Track {
 
     /**
-     * @brief Costruisce una nuova traccia assegnandole un UUID generato automaticamente.
-     * * @param title    Il titolo della traccia.
-     * @param author   L'autore o l'artista.
-     * @param genre    Il genere musicale.
-     * @param year     L'anno di pubblicazione.
-     * @param duration La durata totale in secondi.
+     * @brief Restituisce l'identificativo univoco della traccia.
+     * * L'ID nasce insieme alla traccia e non può mai essere modificato.
+     * È il parametro fondamentale su cui basare l'uguaglianza (equals/hashCode) degli oggetti.
+     * * @return L'UUID immutabile associato alla traccia.
      */
-        public Track(String title, String author, String genre, int year, int duration) {
-            this.id = UUID.randomUUID();
-            this.title = title;
-            this.author = author;
-            this.genre = genre;
-            this.year = year;
-            this.duration = duration;
-        }
+    UUID getId();
+
+    /**
+     * @brief Restituisce il titolo della traccia.
+     * * @return Una stringa contenente il titolo.
+     */
+    String getTitle();
+
+    /**
+     * @brief Imposta un nuovo titolo per la traccia.
+     * * @param title Il nuovo titolo da assegnare.
+     * @throws IllegalArgumentException se il parametro in ingresso è nullo o vuoto.
+     */
+    void setTitle(String title);
+
+    /**
+     * @brief Restituisce l'autore o l'artista della traccia.
+     * * @return Una stringa contenente il nome dell'autore.
+     */
+    String getAuthor();
+
+    /**
+     * @brief Imposta un nuovo autore per la traccia.
+     * * @param author Il nuovo autore da assegnare.
+     * @throws IllegalArgumentException se il parametro in ingresso è nullo o vuoto.
+     */
+    void setAuthor(String author);
+
+    /**
+     * @brief Restituisce il genere musicale della traccia.
+     * * @return Una stringa contenente il genere.
+     */
+    String getGenre();
+
+    /**
+     * @brief Imposta un nuovo genere musicale per la traccia.
+     * * @param genre Il nuovo genere da assegnare.
+     */
+    void setGenre(String genre);
+
+    /**
+     * @brief Restituisce l'anno di pubblicazione della traccia.
+     * * @return L'anno di pubblicazione (es. 1990).
+     */
+    int getYear();
+
+    /**
+     * @brief Imposta un nuovo anno di pubblicazione per la traccia.
+     * * @param year L'anno da assegnare.
+     * @throws IllegalArgumentException se l'anno è precedente al 1900 o se è nel futuro.
+     */
+    void setYear(int year);
+
+    /**
+     * @brief Restituisce la durata della traccia espressa in secondi totali.
+     * * @return La durata totale in secondi.
+     */
+    int getDuration();
+
+    /**
+     * @brief Imposta una nuova durata per la traccia.
+     * * @param duration La durata espressa in secondi totali.
+     * @throws IllegalArgumentException se la durata passata è minore o uguale a zero.
+     */
+    void setDuration(int duration);
 
 
-        @Override
-        public UUID getId() {
-            return this.id;
-        }
 
-        @Override
-        public String getTitle() {
-            return this.title;
-        }
-
-        @Override
-        public void setTitle(String title) {
-            if (title == null || title.trim().isEmpty()) {
-                throw new IllegalArgumentException("Il titolo non può essere vuoto");
-            }
-            this.title = title;
-        }
-
-        @Override
-        public String getAuthor() {
-            return this.author;
-        }
-
-        @Override
-        public void setAuthor(String author) {
-            if (author == null || author.trim().isEmpty()) {
-                throw new IllegalArgumentException("L'autore non può essere vuoto");
-            }
-            this.author = author;
-        }
-
-        @Override
-        public String getGenre() {
-            return this.genre;
-        }
-
-        @Override
-        public void setGenre(String genre) {
-            this.genre = genre;
-        }
-
-        @Override
-        public int getYear() {
-            return this.year;
-        }
-
-        @Override
-        public void setYear(int year) {
-            int annoAttuale = Year.now().getValue();
-
-            if (year < 1900 || year > annoAttuale) {
-                throw new IllegalArgumentException("Anno non valido. Deve essere compreso tra 1900 e " + annoAttuale);
-            }
-
-            this.year = year;
-        }
-
-
-        @Override
-        public int getDuration() {
-            return this.duration;
-        }
-
-        @Override
-        public void setDuration(int duration) {
-            if (duration <= 0) {
-                throw new IllegalArgumentException("La durata deve essere maggiore di zero");
-            }
-            this.duration = duration;
-        }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Track track = (Track) o;
-        return this.id.equals(track.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.id.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "Track{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", genre='" + genre + '\'' +
-                ", year=" + year +
-                ", duration=" + duration +
-                '}';
-    }
-
-    }
-
-
+}
