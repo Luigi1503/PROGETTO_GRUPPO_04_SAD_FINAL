@@ -1,6 +1,5 @@
 package com.example.gruppo04.view;
 
-import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.model.MusicCatalog;
 import com.example.gruppo04.model.Track;
 import com.example.gruppo04.observer.CatalogEvent;

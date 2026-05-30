@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane styleClass="playlist-detail-panel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaylistDetailViewController">
+
+    <!-- ══════════════════════════════════════
+         INTESTAZIONE — nome playlist + info
+         ══════════════════════════════════════ -->
+    <top>
+        <VBox spacing="6" styleClass="header">
+            <padding><Insets bottom="12" left="20" right="20" top="16" /></padding>
+            <children>
+
+                <Label fx:id="labelNamePlaylist" styleClass="playlist-title" text="Nome Playlist">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <children>
+                        <Label fx:id="labelNumTracks" styleClass="playlist-meta" text="0 tracce" />
+                        <Label styleClass="playlist-meta" text="·" />
+                        <Label fx:id="labelTotalDuration" styleClass="playlist-meta" text="0 min" />
+                    </children>
+                </HBox>
+
+                <!-- Bottoni azione playlist -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <padding>
+                        <Insets top="6" />
+                    </padding>
+                    <children>
+                        <Button fx:id="btnAddTrack" onAction="#handleAddTrack" styleClass="btn-primary" text="+ Add Track" />
+                        <Button fx:id="btnRemoveTrack" disable="true" onAction="#handleRemoveTrack" styleClass="btn-secondary" text="Remove Track" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- ══════════════════════════════════════
+         TABELLA TRACCE
+         ══════════════════════════════════════ -->
+    <center>
+        <VBox>
+            <padding><Insets bottom="20" left="20" right="20" top="8" /></padding>
+            <children>
+
+                <TableView fx:id="tableTracks" onMouseClicked="#handleTableClick" placeholder="$nessunaBranoLabel" styleClass="track-table" VBox.vgrow="ALWAYS">
+
+                    <columns>
+                        <TableColumn fx:id="colTitle" prefWidth="220" text="TITOLO" />
+                        <TableColumn fx:id="colAuthor" prefWidth="160" text="AUTORE" />
+                        <TableColumn fx:id="colYear" prefWidth="70" text="ANNO" />
+                        <TableColumn fx:id="colGenre" prefWidth="120" text="GENERE" />
+                        <TableColumn fx:id="colDuration" prefWidth="80" text="DURATA" />
+                    </columns>
+
+                    <placeholder>
+                        <Label fx:id="labelEmptyPlaylist" text="Nessuna traccia nella playlist" />
+                    </placeholder>
+
+                </TableView>
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>

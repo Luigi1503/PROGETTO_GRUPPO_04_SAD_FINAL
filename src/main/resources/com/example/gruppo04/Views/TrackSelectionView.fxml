@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="434.0" prefWidth="644.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.Views.TrackSelectionViewController">
+
+    <padding><Insets bottom="16" left="20" right="20" top="16" /></padding>
+   <children>
+   
+       <Label text="Select a track to add" />
+   
+       <TableView fx:id="tableTracks" prefHeight="306.0" prefWidth="570.0" VBox.vgrow="ALWAYS">
+           <columns>
+               <TableColumn fx:id="colTitle" prefWidth="200" text="TITOLO" />
+               <TableColumn fx:id="colAuthor" prefWidth="150" text="AUTORE" />
+               <TableColumn fx:id="colYear" prefWidth="70" text="ANNO" />
+               <TableColumn fx:id="colGenre" prefWidth="110" text="GENERE" />
+               <TableColumn fx:id="colDuration" text="DURATA" />
+           </columns>
+           <placeholder>
+               <Label text="Nessuna traccia disponibile" />
+           </placeholder>
+       </TableView>
+   
+       <HBox alignment="CENTER_RIGHT" spacing="10">
+      <children>
+              <Button fx:id="btnCancel" onAction="#handleCancel" text="Annulla" />
+              <Button fx:id="btnAdd" disable="true" onAction="#handleAdd" text="Aggiungi" />
+      </children>
+       </HBox>
+   </children>
+
+</VBox>
