@@ -29,13 +29,13 @@ import javafx.scene.layout.VBox;
  * L'aggiornamento della griglia avverrà tramite Observer, quando il catalogo
  * notifica un cambiamento.
  */
-public class PlaylistViewController {
+public class PlaylistViewController{
 
     /** Contenitore delle card, iniettato dall'FXML. */
     @FXML
     private FlowPane playlistGrid;
 
-    /** Icona condivisa da tutte le card: l'{@link Image} si può condividere, l'ImageView no. */
+    /** Icona condivisa da tutte le card. */
     private final Image noteIcon =
             new Image(getClass().getResourceAsStream("/img/note.png"));
 
@@ -87,9 +87,9 @@ public class PlaylistViewController {
         addButton.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setHeaderText("Inserisci il nome della playlist");
-            dialog.showAndWait().ifPresent(nome -> {
+            dialog.showAndWait().ifPresent(name -> {
                 try {
-                    if (!playlistController.createPlaylist(nome)) {
+                    if (!playlistController.createPlaylist(name)) {
                         showError("Esiste già una playlist con questo nome.");
                     }
                 } catch (IllegalArgumentException ex) {
@@ -119,20 +119,20 @@ public class PlaylistViewController {
      * @return il nodo della card
      */
     private Node buildPlaylistCard(Playlist playlist) {
-        ImageView icona = new ImageView(noteIcon);
-        icona.setFitWidth(48);
-        icona.setFitHeight(48);
-        icona.setPreserveRatio(true);
+        ImageView icon = new ImageView(noteIcon);
+        icon.setFitWidth(48);
+        icon.setFitHeight(48);
+        icon.setPreserveRatio(true);
 
-        Label nome = new Label(playlist.getNome());
+        Label name = new Label(playlist.getName());
 
-        Button rinomina = new Button("Rinomina");
-        rinomina.setOnAction(e -> {
-            TextInputDialog dialog = new TextInputDialog(playlist.getNome());
+        Button rename = new Button("Rinomina");
+        rename.setOnAction(e -> {
+            TextInputDialog dialog = new TextInputDialog(playlist.getName());
             dialog.setHeaderText("Nuovo nome della playlist");
-            dialog.showAndWait().ifPresent(nuovoNome -> {
+            dialog.showAndWait().ifPresent(newName -> {
                 try {
-                    if (!playlistController.renamePlaylist(playlist, nuovoNome)) {
+                    if (!playlistController.renamePlaylist(playlist, newName)) {
                         showError("Esiste già una playlist con questo nome.");
                     }
                 } catch (IllegalArgumentException ex) {
@@ -141,15 +141,15 @@ public class PlaylistViewController {
             });
         });
 
-        Button elimina = new Button("Elimina");
-        elimina.setOnAction(e -> {
+        Button delete = new Button("Elimina");
+        delete.setOnAction(e -> {
             playlistController.deletePlaylist(playlist);
            //collegamento Observer Francesco
         });
 
-        HBox azioni = new HBox(5, rinomina, elimina);
+        HBox actions = new HBox(5, rename, delete);
 
-        VBox card = new VBox(5, icona, nome, azioni);
+        VBox card = new VBox(5, icon, name, actions);
         card.setOnMouseClicked(e -> {
             // selezione → piloterà il dettaglio di Annamaria
         });

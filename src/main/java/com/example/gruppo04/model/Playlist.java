@@ -14,15 +14,15 @@ public interface Playlist {
      *
      * @return il nome corrente (mai {@code null} né vuoto)
      */
-    String getNome();
+    String getName();
 
     /**
      * Rinomina la playlist.
      *
-     * @param nome il nuovo nome
+     * @param name il nuovo nome
      * @throws IllegalArgumentException se {@code nome} è {@code null} o vuoto
      */
-    void setNome(String nome);
+    void setName(String name);
 
     /**
      * Aggiunge una traccia in coda alla playlist, se non già presente.

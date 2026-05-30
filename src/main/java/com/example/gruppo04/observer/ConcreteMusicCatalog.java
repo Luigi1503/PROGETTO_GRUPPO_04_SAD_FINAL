@@ -45,7 +45,7 @@ public class ConcreteMusicCatalog implements MusicCatalog {
 
         // Controllo univocità rispetto alle playlist esistenti
         for (Playlist p : playlists) {
-            if (p.getNome().equalsIgnoreCase(correctName)) {
+            if (p.getName().equalsIgnoreCase(correctName)) {
                 return false; // Esiste già una playlist con questo nome
             }
         }
@@ -76,12 +76,12 @@ public class ConcreteMusicCatalog implements MusicCatalog {
 
         // Controllo univocità: il nuovo nome non deve appartenere a un'ALTRA playlist
         for (Playlist p : playlists) {
-            if (p != playlist && p.getNome().equalsIgnoreCase(correctName)) {
+            if (p != playlist && p.getName().equalsIgnoreCase(correctName)) {
                 return false;
             }
         }
 
-        playlist.setNome(correctName); // Assume che Playlist abbia un setter per il nome
+        playlist.setName(correctName); // Assume che Playlist abbia un setter per il nome
         notifyObservers(CatalogEventType.PLAYLIST_RENAMED, playlist);
 
         return true;

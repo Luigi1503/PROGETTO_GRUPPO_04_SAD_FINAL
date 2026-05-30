@@ -32,12 +32,12 @@ public class PlaylistController {
      * Richiede la creazione di una nuova playlist, delegando a
      * {@link MusicCatalog#createPlaylist(String)} (che esegue controlli e notifica).
      *
-     * @param nome il nome della playlist, così come inserito nella View
+     * @param name il nome della playlist, così come inserito nella View
      * @return {@code true} se creata, {@code false} se il nome è già in uso;
      *         valore con cui la View mostra il riscontro
      */
-    public boolean createPlaylist(String nome) {
-        return catalog.createPlaylist(nome);
+    public boolean createPlaylist(String name) {
+        return catalog.createPlaylist(name);
     }
 
     /**
@@ -45,12 +45,12 @@ public class PlaylistController {
      * {@link MusicCatalog#renamePlaylist(Playlist, String)}.
      *
      * @param playlist  la playlist selezionata nella View
-     * @param nuovoNome il nuovo nome inserito dall'utente
+     * @param newName il nuovo nome inserito dall'utente
      * @return {@code true} se rinominata, {@code false} se il nome è già in uso
      *         o la playlist non è nel catalogo
      */
-    public boolean renamePlaylist(Playlist playlist, String nuovoNome) {
-        return catalog.renamePlaylist(playlist, nuovoNome);
+    public boolean renamePlaylist(Playlist playlist, String newName) {
+        return catalog.renamePlaylist(playlist, newName);
     }
 
     /**

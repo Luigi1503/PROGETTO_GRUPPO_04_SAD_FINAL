@@ -3,7 +3,7 @@ package com.example.gruppo04.model;
 import java.util.*;
 
 public class PlaylistImpl implements Playlist {
-    private String nome;
+    private String name;
     private final String id;
     private List<Track> tracks = new ArrayList<>();
 
@@ -11,20 +11,20 @@ public class PlaylistImpl implements Playlist {
      * Implementazione di {@link Playlist} basata su lista ad accesso ordinato.
      * L'uguaglianza è definita sul solo id immutabile.
      *
-     * @param nome il nome della playlist
+     * @param name il nome della playlist
      * @throws IllegalArgumentException se {@code nome} è {@code null} o vuoto
      */
-    public PlaylistImpl(String nome) {
-        if(nome == null || nome.isEmpty()) {
+    public PlaylistImpl(String name) {
+        if(name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Campo Nome Vuoto");
         }
-        this.nome = nome;
+        this.name = name;
         this.id = UUID.randomUUID().toString();
     }
 
     @Override
-    public String getNome(){
-        return this.nome;
+    public String getName(){
+        return this.name;
     }
 
     /**
@@ -37,11 +37,11 @@ public class PlaylistImpl implements Playlist {
     }
 
     @Override
-    public void setNome(String nome){
-        if(nome == null || nome.isEmpty()) {
+    public void setName(String name){
+        if(name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Campo Nome Vuoto");
         }
-        this.nome = nome;
+        this.name = name;
     }
    @Override
     public boolean equals(Object o) {
@@ -84,6 +84,6 @@ public class PlaylistImpl implements Playlist {
 
     @Override
     public String toString() {
-        return this.nome;
+        return this.name;
     }
 }
