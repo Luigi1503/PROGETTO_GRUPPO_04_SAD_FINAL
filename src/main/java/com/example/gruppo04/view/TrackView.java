@@ -4,6 +4,7 @@ import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
+import com.example.gruppo04.controller.TrackController;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -98,7 +99,7 @@ public class TrackView implements CatalogObserver {
         Track selected = trackTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
             // Delega formale al controller passandogli l'ID della risorsa
-            controller.deleteTrack(selected.getId());
+            controller.removeTrack(selected.getId());
         } else {
             showError("Seleziona prima una traccia da eliminare.");
         }
