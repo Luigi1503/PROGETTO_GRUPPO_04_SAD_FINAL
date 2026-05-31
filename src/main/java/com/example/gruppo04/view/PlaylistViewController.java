@@ -166,7 +166,7 @@ public class PlaylistViewController implements CatalogObserver {
 
         return card;
     }
-    /** Imposta cosa fare quando l'utente seleziona una playlist (lo collega MainWindow). */
+    /** Imposta cosa fare quando l'utente seleziona una playlist (lo collega MainView). */
     public void setOnPlaylistSelected(Consumer<Playlist> handler) {
         this.onPlaylistSelected = handler;
     }
