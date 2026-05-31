@@ -4,8 +4,31 @@ import com.example.gruppo04.observer.CatalogObserver;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public interface MusicCatalog {
+
+    /**
+     * Aggiunge una nuova traccia al catalogo.
+     * In caso di successo notifica gli observer con l'evento {@code TRACK_ADDED}.
+     *
+     * @param track la traccia da aggiungere; non deve essere {@code null}
+     * @throws IllegalArgumentException se {@code track} è {@code null} o se esiste
+     * già una traccia con lo stesso titolo nel catalogo
+     */
+    void addTrack(Track track);
+
+    /**
+     * Rimuove una traccia dal catalogo dato il suo identificatore univoco (UUID).
+     * <p>
+     * <b>Effetto a cascata:</b> La rimozione di una traccia dal catalogo la elimina
+     * automaticamente da tutte le playlist in cui è inclusa.
+     * </p>
+     * Se la traccia è trovata e rimossa, notifica gli observer con l'evento {@code TRACK_REMOVED}.
+     *
+     * @param trackId l'identificatore univoco della traccia da rimuovere
+     */
+    void removeTrack(UUID trackId);
 
     /**
      * Crea una nuova playlist con il name indicato e la aggiunge al catalogo.
