@@ -10,9 +10,11 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -71,12 +73,27 @@ public class TrackView implements CatalogObserver {
         // La View si iscrive al Model (Subject) per osservare i cambiamenti
         this.catalog.registerObserver(this);
 
+        // Se l'utente fa click col tasto destro su una riga, selezionala prima
+        trackTable.setOnMousePressed(event -> {
+            if (event.isSecondaryButtonDown()) {
+                Node node = event.getPickResult().getIntersectedNode();
+                // risali la gerarchia dei nodi fino a trovare la TableRow
+                while (node != null && !(node instanceof TableRow)) {
+                    node = node.getParent();
+                }
+                if (node instanceof TableRow) {
+                    TableRow<?> row = (TableRow<?>) node;
+                    trackTable.getSelectionModel().select(row.getIndex());
+                }
+            }
+        });
+
         reloadTableData();
     }
 
     private void configureColumns() {
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-        artistCol.setCellValueFactory(new PropertyValueFactory<>("artist"));
+        artistCol.setCellValueFactory(new PropertyValueFactory<>("author"));
         durationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
         yearCol.setCellValueFactory(new PropertyValueFactory<>("year"));
         genreCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
@@ -87,7 +104,6 @@ public class TrackView implements CatalogObserver {
         tableModel.addAll(catalog.getAllTracks());
 
         int count = tableModel.size();
-        statusLabel.setText(count == 1 ? "1 traccia nel catalogo" : count + " tracce totali nel catalogo");
     }
 
     /**

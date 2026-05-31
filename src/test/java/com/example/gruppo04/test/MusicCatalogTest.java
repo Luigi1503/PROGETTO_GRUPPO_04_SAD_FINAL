@@ -1,5 +1,8 @@
 package com.example.gruppo04.test;
 
+import com.example.gruppo04.interfaces.MusicCatalog;
+import com.example.gruppo04.interfaces.Playlist;
+import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.model.*;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import com.example.gruppo04.observer.CatalogEvent;
@@ -74,19 +77,25 @@ public class MusicCatalogTest {
      */
     @Test
     public void testCascadeRemovalFromPlaylists() {
-        Playlist playlist = new PlaylistImpl("My Favorites");
-        catalog.createPlaylist("My Favorites"); // Crea e registra la playlist internamente
+        // Crea e registra la playlist internamente
+        catalog.createPlaylist("My Favorites");
 
+        // Recupera la playlist dal catalogo per lavorare sulla stessa istanza
+        Playlist playlist = catalog.getPlaylists().stream()
+                .filter(p -> p.getName().equals("My Favorites"))
+                .findFirst()
+                .orElseThrow();
+
+        // Aggiunge le tracce al catalogo e poi alla playlist tramite API pubbliche
         catalog.addTrack(track1);
         catalog.addTrack(track2);
 
-        // Simulazione associazione tracce a playlist
-        playlist.getTracks().add(track1);
-        playlist.getTracks().add(track2);
+        catalog.addTrackToPlaylist(playlist, track1);
+        catalog.addTrackToPlaylist(playlist, track2);
 
         assertEquals(2, playlist.getTracks().size());
 
-        // Esecuzione della rimozione
+        // Esecuzione della rimozione dal catalogo (effetto a cascata atteso)
         catalog.removeTrack(track1.getId());
 
         // Asserzioni di consistenza dello stato

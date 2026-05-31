@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.gruppo04.view.TrackView"
             style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;">
 
     <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
@@ -119,7 +120,8 @@
                         <MenuItem fx:id="menuFav"  text="☆   Aggiungi ai preferiti"/>
                         <MenuItem fx:id="menuMove" text="↕   Sposta su / giù"/>
                         <SeparatorMenuItem/>
-                        <MenuItem fx:id="menuRemove" text="✕   Rimuovi dalla playlist"
+                        <MenuItem fx:id="menuRemove" text="✕   Rimuovi traccia"
+                                  onAction="#onDeleteButtonClicked"
                                   style="-fx-text-fill: #E05555;"/>
                         <MenuItem fx:id="menuEdit" text="✏   Modifica traccia"/>
                     </items>
