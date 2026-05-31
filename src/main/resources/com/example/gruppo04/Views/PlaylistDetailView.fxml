@@ -7,68 +7,65 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane styleClass="playlist-detail-panel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaylistDetailViewController">
+<BorderPane style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaylistDetailViewController">
 
-    <!-- ══════════════════════════════════════
-         INTESTAZIONE — nome playlist + info
-         ══════════════════════════════════════ -->
+    <!-- INTESTAZIONE — nome playlist + info -->
     <top>
-        <VBox spacing="6" styleClass="header">
-            <padding><Insets bottom="12" left="20" right="20" top="16" /></padding>
-            <children>
-
-                <Label fx:id="labelNamePlaylist" styleClass="playlist-title" text="Nome Playlist">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-
-                <HBox alignment="CENTER_LEFT" spacing="12">
-                    <children>
-                        <Label fx:id="labelNumTracks" styleClass="playlist-meta" text="0 tracce" />
-                        <Label styleClass="playlist-meta" text="·" />
-                        <Label fx:id="labelTotalDuration" styleClass="playlist-meta" text="0 min" />
-                    </children>
-                </HBox>
-
-                <!-- Bottoni azione playlist -->
-                <HBox alignment="CENTER_LEFT" spacing="10">
-                    <padding>
-                        <Insets top="6" />
-                    </padding>
-                    <children>
-                        <Button fx:id="btnAddTrack" onAction="#handleAddTrack" styleClass="btn-primary" text="+ Add Track" />
-                        <Button fx:id="btnRemoveTrack" disable="true" onAction="#handleRemoveTrack" styleClass="btn-secondary" text="Remove Track" />
-                    </children>
-                </HBox>
-            </children>
+        <VBox spacing="6">
+            <padding><Insets bottom="12" left="20" right="20" top="20" /></padding>
+           <children>
+   
+               <Label fx:id="labelNamePlaylist" style="-fx-text-fill: #E8EDF0; -fx-font-size: 22px; -fx-font-weight: bold;" text="Nome Playlist" />
+   
+               <HBox alignment="CENTER_LEFT" spacing="12">
+      <children>
+                      <Label fx:id="labelNumTracks" style="-fx-text-fill: #5C7A7D; -fx-font-size: 12px;" text="0 tracce" />
+                      <Label style="-fx-text-fill: #5C7A7D; -fx-font-size: 12px;" text="·" />
+                      <Label fx:id="labelTotalDuration" style="-fx-text-fill: #5C7A7D; -fx-font-size: 12px;" text="0 min" />
+      </children>
+               </HBox>
+   
+               <!-- Bottoni azione playlist -->
+               <HBox alignment="CENTER_LEFT" spacing="10">
+                   <padding>
+                  <Insets top="6" />
+               </padding>
+      <children>
+                      <Button fx:id="btnAddTrack" onAction="#handleAddTrack" style="-fx-background-color: #1D6A72;                                -fx-text-fill: #FFFFFF;                                -fx-font-weight: bold;                                -fx-font-size: 13px;                                -fx-background-radius: 7;                                -fx-padding: 8 18 8 18;                                -fx-cursor: hand;" text="+ Add Track" />
+                      <Button fx:id="btnRemoveTrack" disable="true" onAction="#handleRemoveTrack" style="-fx-background-color: #1B2A2F;                                -fx-text-fill: #E8EDF0;                                -fx-font-size: 13px;                                -fx-background-radius: 7;                                -fx-border-color: #2C3E40;                                -fx-border-radius: 7;                                -fx-border-width: 1;                                -fx-padding: 8 18 8 18;                                -fx-cursor: hand;" text="Remove Track" />
+      </children>
+               </HBox>
+           </children>
         </VBox>
     </top>
 
-    <!-- ══════════════════════════════════════
-         TABELLA TRACCE
-         ══════════════════════════════════════ -->
+    <!-- TABELLA TRACCE -->
     <center>
         <VBox>
             <padding><Insets bottom="20" left="20" right="20" top="8" /></padding>
-            <children>
-
-                <TableView fx:id="tableTracks" onMouseClicked="#handleTableClick" placeholder="$nessunaBranoLabel" styleClass="track-table" VBox.vgrow="ALWAYS">
-
-                    <columns>
-                        <TableColumn fx:id="colTitle" prefWidth="220" text="TITOLO" />
-                        <TableColumn fx:id="colAuthor" prefWidth="160" text="AUTORE" />
-                        <TableColumn fx:id="colYear" prefWidth="70" text="ANNO" />
-                        <TableColumn fx:id="colGenre" prefWidth="120" text="GENERE" />
-                        <TableColumn fx:id="colDuration" prefWidth="80" text="DURATA" />
-                    </columns>
-
-                    <placeholder>
-                        <Label fx:id="labelEmptyPlaylist" text="Nessuna traccia nella playlist" />
-                    </placeholder>
-
-                </TableView>
-            </children>
+           <children>
+   
+               <TableView fx:id="tableTracks" style="-fx-background-color: transparent;                               -fx-table-cell-border-color: transparent;                               -fx-border-color: transparent;                               -fx-padding: 0;" VBox.vgrow="ALWAYS">
+   
+                   <columns>
+                       <TableColumn fx:id="colTitle" prefWidth="220" text="TITOLO" />
+                       <TableColumn fx:id="colAuthor" prefWidth="160" text="AUTORE" />
+                       <TableColumn fx:id="colYear" prefWidth="70" style="-fx-alignment: CENTER_RIGHT;" text="ANNO" />
+                       <TableColumn fx:id="colGenre" prefWidth="120" text="GENERE" />
+                       <TableColumn fx:id="colDuration" prefWidth="80" style="-fx-alignment: CENTER_RIGHT;" text="DURATA" />
+                   </columns>
+   
+                   <placeholder>
+                       <VBox alignment="CENTER" spacing="8">
+                          <children>
+                              <Label fx:id="labelEmptyPlaylist" style="-fx-text-fill: #3A5258; -fx-font-size: 15px; -fx-font-weight: bold;" text="Nessuna traccia nella playlist" />
+                              <Label style="-fx-text-fill: #2C3E40; -fx-font-size: 12px;" text="Aggiungi tracce con il pulsante in alto" />
+                          </children>
+                       </VBox>
+                   </placeholder>
+   
+               </TableView>
+           </children>
         </VBox>
     </center>
 
