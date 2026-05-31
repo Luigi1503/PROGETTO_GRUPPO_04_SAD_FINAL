@@ -167,7 +167,7 @@ public class ConcreteMusicCatalog implements MusicCatalog {
         Track trackToRemove = tracks.remove(trackId);
         if (trackToRemove != null) {
             for (Playlist playlist : playlists) {
-                playlist.getTracks().remove(trackToRemove);
+                playlist.removeTrack(trackToRemove);
             }
             notifyObservers(CatalogEventType.TRACK_REMOVED, trackToRemove);
         }
