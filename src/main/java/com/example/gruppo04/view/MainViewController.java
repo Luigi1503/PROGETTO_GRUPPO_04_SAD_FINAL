@@ -116,7 +116,7 @@ public class MainViewController implements CatalogObserver {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/example/gruppo04/Views/track_list_view.fxml"));
             loader.setControllerFactory(c ->
-                    new TrackView(trackController, catalog));
+                    new TrackListPanel(trackController, catalog));
             Node view = loader.load();
             setContent(view);
             setActiveButton(btnAllTracks);

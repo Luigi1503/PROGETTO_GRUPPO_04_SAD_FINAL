@@ -40,6 +40,18 @@ public interface MusicCatalog {
      *         esiste già una playlist con lo stesso name
      * @throws IllegalArgumentException se {@code name} è {@code null} o vuoto
      */
+
+    /**
+     * Aggiorna i dati di una traccia esistente nel catalogo.
+     * In caso di successo notifica gli observer con l'evento {@code TRACK_UPDATED}.
+     *
+     * @param updatedTrack la traccia con i dati aggiornati; il suo ID deve corrispondere
+     * a una traccia già presente nel catalogo
+     * @throws IllegalArgumentException se {@code updatedTrack} è {@code null} o non
+     * corrisponde a nessuna traccia nota nel catalogo
+     */
+    public void updateTrack(Track updatedTrack);
+
     boolean createPlaylist(String name);
 
     /**

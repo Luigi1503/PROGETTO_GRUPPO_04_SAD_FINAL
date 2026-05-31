@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.gruppo04.view.TrackView"
+            fx:controller="com.example.gruppo04.view.TrackListPanel"
             style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;">
 
     <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
@@ -69,7 +69,9 @@
         <TableView fx:id="trackTable"
                    style="-fx-background-color: transparent;
                    -fx-table-cell-border-color: transparent;
+                   -fx-table-header-border-color: transparent;
                    -fx-border-color: transparent;
+                   -fx-control-inner-background: transparent;
                    -fx-padding: 0;">
 
             <columns>
@@ -116,14 +118,18 @@
                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);
                                     -fx-padding: 4 0 4 0;">
                     <items>
-                        <MenuItem fx:id="menuPlay" text="▶   Riproduci ora"/>
-                        <MenuItem fx:id="menuFav"  text="☆   Aggiungi ai preferiti"/>
-                        <MenuItem fx:id="menuMove" text="↕   Sposta su / giù"/>
+                        <MenuItem fx:id="menuPlay" text="▶   Riproduci ora"
+                                  style="-fx-text-fill: #E8EDF0;"/>
+                        <MenuItem fx:id="menuFav"  text="☆   Aggiungi ai preferiti"
+                                  style="-fx-text-fill: #E8EDF0;"/>
+                        <MenuItem fx:id="menuMove" text="↕   Sposta su / giù"
+                                  style="-fx-text-fill: #E8EDF0;"/>
                         <SeparatorMenuItem/>
                         <MenuItem fx:id="menuRemove" text="✕   Rimuovi traccia"
                                   onAction="#onDeleteButtonClicked"
                                   style="-fx-text-fill: #E05555;"/>
-                        <MenuItem fx:id="menuEdit" text="✏   Modifica traccia"/>
+                        <MenuItem fx:id="menuEdit" text="✏   Modifica traccia"
+                                  style="-fx-text-fill: #E8EDF0;"/>
                     </items>
                 </ContextMenu>
             </contextMenu>

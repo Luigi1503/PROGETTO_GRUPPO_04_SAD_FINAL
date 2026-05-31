@@ -26,7 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * per reagire alle variazioni del Model.
  * </p>
  */
-public class TrackView implements CatalogObserver {
+public class TrackListPanel implements CatalogObserver {
 
     @FXML
     private TableView<Track> trackTable;
@@ -55,7 +55,7 @@ public class TrackView implements CatalogObserver {
      * @param controller il componente Controller a cui delegare le azioni di input
      * @param catalog    il componente Model da cui leggere lo stato in sola lettura
      */
-    public TrackView(TrackController controller, MusicCatalog catalog) {
+    public TrackListPanel(TrackController controller, MusicCatalog catalog) {
         this.controller = controller;
         this.catalog = catalog;
     }
