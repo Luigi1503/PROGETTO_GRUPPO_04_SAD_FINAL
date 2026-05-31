@@ -1,14 +1,10 @@
 package com.example.gruppo04.controller;
 
-import com.example.gruppo04.model.MusicCatalog;
-import com.example.gruppo04.model.Playlist;
+import com.example.gruppo04.interfaces.MusicCatalog;
+import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.model.PlaylistImpl;
-import com.example.gruppo04.model.Track;
+import com.example.gruppo04.interfaces.Track;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
 /**
  * Controller (MVC) per la gestione delle playlist.
  * Fa da tramite tra la View e il {@link MusicCatalog}: riceve le richieste

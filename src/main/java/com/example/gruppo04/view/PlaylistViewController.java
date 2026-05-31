@@ -1,8 +1,8 @@
 package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.PlaylistController;
-import com.example.gruppo04.model.MusicCatalog;
-import com.example.gruppo04.model.Playlist;
+import com.example.gruppo04.interfaces.MusicCatalog;
+import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.observer.CatalogEvent;
 import javafx.fxml.FXML;

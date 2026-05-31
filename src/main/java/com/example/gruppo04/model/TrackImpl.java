@@ -1,4 +1,6 @@
 package com.example.gruppo04.model;
+import com.example.gruppo04.interfaces.Track;
+
 import java.util.UUID;
 import java.time.Year;
 

@@ -2,10 +2,10 @@ package com.example.gruppo04.view;
 
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
-import com.example.gruppo04.model.MusicCatalog;
+import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.controller.PlaylistController;
-import com.example.gruppo04.model.Playlist;
-import com.example.gruppo04.model.Track;
+import com.example.gruppo04.interfaces.Playlist;
+import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.util.TrackFormatter;
 import javafx.beans.property.SimpleObjectProperty;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * Controller JavaFX del pannello di dettaglio di una playlist.
  * Mostra le tracce contenute nella playlist corrente e permette
  * di aggiungerne o rimuoverne tramite PlaylistController.
- * Implementa CatalogObserver per aggiornarsi automaticamente
+ * Implementa CatalogObserver (è un ConcreteObserver) per aggiornarsi automaticamente
  * quando il catalogo cambia.
  */
 public class PlaylistDetailViewController implements CatalogObserver {
@@ -91,9 +91,18 @@ public class PlaylistDetailViewController implements CatalogObserver {
     private Track selectedTrack;
 
     /**
-     * Costruttore senza parametri richiesto da FXMLLoader.
+     * Chiamato automaticamente da FXMLLoader dopo il caricamento dell'FXML.
+     * Configura le colonne e il listener sulla selezione della tabella.
      */
-    public PlaylistDetailViewController()  {
+    @FXML
+    void initialize() {
+        setupColumns();
+        // Abilita btnRemoveTrack solo se una traccia è selezionata
+        tableTracks.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldVal, newVal) -> {
+                    selectedTrack = newVal;
+                    btnRemoveTrack.setDisable(newVal == null);
+                });
     }
 
     /**
@@ -134,20 +143,6 @@ public class PlaylistDetailViewController implements CatalogObserver {
         }
     }
 
-    /**
-     * Chiamato automaticamente da FXMLLoader dopo il caricamento dell'FXML.
-     * Configura le colonne e il listener sulla selezione della tabella.
-     */
-    @FXML
-    void initialize() {
-        setupColumns();
-        // Abilita btnRemoveTrack solo se una traccia è selezionata
-        tableTracks.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldVal, newVal) -> {
-                    selectedTrack = newVal;
-                    btnRemoveTrack.setDisable(newVal == null);
-                });
-    }
 
     /**
      * Configura le cellValueFactory di ogni colonna.

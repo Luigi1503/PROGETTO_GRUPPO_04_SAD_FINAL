@@ -1,12 +1,12 @@
 package com.example.gruppo04.view;
 
-import com.example.gruppo04.model.Track;
+import com.example.gruppo04.interfaces.Track;
 
 /**
- * Interfaccia funzionale callback invocata quando l'utente seleziona
+ * Interfaccia funzionale invocata quando l'utente seleziona
  * una traccia nel {@link TrackSelectionViewController}.
- * Chi apre il dialog decide cosa fare con la traccia selezionata,
- * rendendo il dialog riusabile in contesti diversi.
+ * Chi apre il pannello decide cosa fare con la traccia selezionata,
+ * rendendo il pannello riusabile in contesti diversi.
  */
 @FunctionalInterface
 public interface TrackSelectionListener {

@@ -1,37 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="434.0" prefWidth="644.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.Views.TrackSelectionViewController">
+<VBox prefHeight="434.0" prefWidth="644.0" spacing="10" style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackSelectionViewController">
 
-    <padding><Insets bottom="16" left="20" right="20" top="16" /></padding>
-   <children>
-   
-       <Label text="Select a track to add" />
-   
-       <TableView fx:id="tableTracks" prefHeight="306.0" prefWidth="570.0" VBox.vgrow="ALWAYS">
-           <columns>
-               <TableColumn fx:id="colTitle" prefWidth="200" text="TITOLO" />
-               <TableColumn fx:id="colAuthor" prefWidth="150" text="AUTORE" />
-               <TableColumn fx:id="colYear" prefWidth="70" text="ANNO" />
-               <TableColumn fx:id="colGenre" prefWidth="110" text="GENERE" />
-               <TableColumn fx:id="colDuration" text="DURATA" />
-           </columns>
-           <placeholder>
-               <Label text="Nessuna traccia disponibile" />
-           </placeholder>
-       </TableView>
-   
-       <HBox alignment="CENTER_RIGHT" spacing="10">
-      <children>
-              <Button fx:id="btnCancel" onAction="#handleCancel" text="Annulla" />
-              <Button fx:id="btnAdd" disable="true" onAction="#handleAdd" text="Aggiungi" />
-      </children>
-       </HBox>
-   </children>
+    <padding><Insets bottom="16" left="20" right="20" top="20" /></padding>
+    <children>
+
+        <!-- INTESTAZIONE -->
+        <VBox spacing="3">
+            <children>
+                <Label style="-fx-text-fill: #E8EDF0; -fx-font-size: 22px; -fx-font-weight: bold;" text="Seleziona una traccia" />
+            </children>
+        </VBox>
+
+        <!-- TABELLA TRACCE -->
+        <TableView fx:id="tableTracks" prefHeight="306.0" prefWidth="570.0" style="-fx-background-color: transparent;                       -fx-table-cell-border-color: transparent;                       -fx-border-color: transparent;                       -fx-padding: 0;" VBox.vgrow="ALWAYS">
+
+            <columns>
+                <TableColumn fx:id="colTitle" prefWidth="200" text="TITOLO" />
+                <TableColumn fx:id="colAuthor" prefWidth="150" text="AUTORE" />
+                <TableColumn fx:id="colYear" prefWidth="70" style="-fx-alignment: CENTER_RIGHT;" text="ANNO" />
+                <TableColumn fx:id="colGenre" prefWidth="100" text="GENERE" />
+                <TableColumn fx:id="colDuration" prefWidth="90" style="-fx-alignment: CENTER_RIGHT;" text="DURATA" />
+            </columns>
+
+            <placeholder>
+                <VBox alignment="CENTER" spacing="8">
+                    <children>
+                        <Label style="-fx-text-fill: #3A5258; -fx-font-size: 15px; -fx-font-weight: bold;" text="Nessuna traccia disponibile" />
+                        <Label style="-fx-text-fill: #2C3E40; -fx-font-size: 12px;" text="Aggiungi tracce al catalogo prima di procedere" />
+                    </children>
+                </VBox>
+            </placeholder>
+
+        </TableView>
+
+        <!-- BOTTONI -->
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <children>
+                <Button fx:id="btnCancel" onAction="#handleCancel" style="-fx-background-color: #1B2A2F;                        -fx-text-fill: #E8EDF0;                        -fx-font-size: 13px;                        -fx-background-radius: 7;                        -fx-border-color: #2C3E40;                        -fx-border-radius: 7;                        -fx-border-width: 1;                        -fx-padding: 8 18 8 18;                        -fx-cursor: hand;" text="Annulla" />
+                <Button fx:id="btnSelection" disable="true" onAction="#handleSelection" style="-fx-background-color: #1D6A72;                        -fx-text-fill: #FFFFFF;                        -fx-font-weight: bold;                        -fx-font-size: 13px;                        -fx-background-radius: 7;                        -fx-padding: 8 18 8 18;                        -fx-cursor: hand;" text="Seleziona" />
+            </children>
+        </HBox>
+    </children>
 
 </VBox>

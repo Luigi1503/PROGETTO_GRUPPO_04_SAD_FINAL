@@ -1,4 +1,4 @@
-package com.example.gruppo04.model;
+package com.example.gruppo04.interfaces;
 
 import com.example.gruppo04.observer.CatalogObserver;
 

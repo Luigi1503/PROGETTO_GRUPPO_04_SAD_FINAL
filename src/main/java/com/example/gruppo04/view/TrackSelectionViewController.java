@@ -1,6 +1,6 @@
 package com.example.gruppo04.view;
 
-import com.example.gruppo04.model.Track;
+import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.util.TrackFormatter;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 import java.util.List;
 
 /**
- * Controller JavaFX del dialog di selezione di una traccia.
- * Mostra le tracce disponibili e permette all'utente di selezionarne
+ * Controller JavaFX del pannello di selezione di una traccia.
+ * Mostra un certo insieme di tracce e permette all'utente di selezionarne
  * una. Notifica il chiamante tramite {@link TrackSelectionListener}
  * senza conoscere il contesto in cui viene usato — questo lo rende
  * riusabile in scenari diversi (aggiunta a playlist, riproduzione, ecc.).
@@ -42,25 +42,33 @@ public class TrackSelectionViewController {
     @FXML private TableColumn<Track, String> colDuration;
 
     /** Pulsante per confermare la selezione della traccia. Disabilitato se nessuna traccia è selezionata. */
-    @FXML private Button btnAdd;
+    @FXML private Button btnSelection;
 
-    /** Pulsante per annullare e chiudere il dialog senza selezionare nessuna traccia. */
+    /** Pulsante per annullare e chiudere il pannello senza selezionare alcuna traccia. */
     @FXML private Button btnCancel;
 
     /**
      * Listener notificato quando l'utente conferma la selezione di una traccia.
-     * Chi apre il dialog decide cosa fare con la traccia selezionata.
+     * Chi apre il pannello decide cosa fare con la traccia selezionata.
      */
     private TrackSelectionListener listener;
 
+
     /**
-     * Costruttore senza parametri richiesto da FXMLLoader.
+     * Chiamato automaticamente da FXMLLoader dopo il caricamento dell'FXML.
+     * Configura le colonne e il listener sulla selezione della tabella.
      */
-    public TrackSelectionViewController() {
+    @FXML
+    void initialize() {
+        setupColumns();
+        // Abilita btnSelection solo se una traccia è selezionata
+        tableTracks.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldVal, newVal) ->
+                        btnSelection.setDisable(newVal == null));
     }
 
     /**
-     * Inizializza il dialog con la lista delle tracce disponibili
+     * Inizializza il pannello con la lista delle tracce disponibili
      * e il listener da notificare alla conferma della selezione.
      * Da chiamare dopo il caricamento dell'FXML.
      *
@@ -72,18 +80,6 @@ public class TrackSelectionViewController {
         tableTracks.setItems(FXCollections.observableArrayList(availableTracks));
     }
 
-    /**
-     * Chiamato automaticamente da FXMLLoader dopo il caricamento dell'FXML.
-     * Configura le colonne e il listener sulla selezione della tabella.
-     */
-    @FXML
-    void initialize() {
-        setupColumns();
-        // Abilita btnAdd solo se una traccia è selezionata
-        tableTracks.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldVal, newVal) ->
-                        btnAdd.setDisable(newVal == null));
-    }
 
     /**
      * Configura le cellValueFactory di ogni colonna.
@@ -103,33 +99,33 @@ public class TrackSelectionViewController {
     }
 
     /**
-     * Gestisce il click su "Aggiungi".
-     * Notifica il listener con la traccia selezionata e chiude il dialog.
+     * Gestisce il click su "Selection".
+     * Notifica il listener con la traccia selezionata e chiude il pannello.
      * selected è sempre non null qui: il bottone è abilitato
      * solo quando una traccia è selezionata nella tabella (vedi initialize).
      */
     @FXML
-    void handleAdd(ActionEvent event) {
+    void handleSelection(ActionEvent event) {
         Track selected = tableTracks.getSelectionModel().getSelectedItem();
         if (listener != null) {
             listener.onTrackSelected(selected);
         }
-        closeDialog();
+        closePanel();
     }
 
     /**
-     * Gestisce il click su "Annulla".
-     * Chiude il dialog senza notificare nessuna selezione.
+     * Gestisce il click su "Cancel".
+     * Chiude il pannello senza notificare nessuna selezione.
      */
     @FXML
     void handleCancel(ActionEvent event) {
-        closeDialog();
+        closePanel();
     }
 
     /**
      * Chiude il dialog corrente.
      */
-    private void closeDialog() {
+    private void closePanel() {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
