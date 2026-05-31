@@ -131,14 +131,14 @@ public class MainViewController implements CatalogObserver {
      */
     private void showPlaylists() {
         try {
+            PlaylistViewController playlistViewController =
+                    new PlaylistViewController(playlistController, catalog);
+
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/example/gruppo04/Views/PlaylistView.fxml"));
-            loader.setControllerFactory(c ->
-                    new PlaylistViewController(playlistController, catalog));
+            loader.setController(playlistViewController);
             Node view = loader.load();
-            PlaylistViewController controller = loader.getController();
-            // Quando l'utente clicca una playlist, mostra il dettaglio
-            controller.setOnPlaylistSelected(this::showPlaylistDetail);
+            playlistViewController.setOnPlaylistSelected(this::showPlaylistDetail);
             setContent(view);
             setActiveButton(btnPlaylists);
         } catch (IOException e) {

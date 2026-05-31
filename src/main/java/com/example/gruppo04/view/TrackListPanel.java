@@ -115,11 +115,12 @@ public class TrackListPanel implements CatalogObserver {
         Track selected = trackTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
             // Delega formale al controller passandogli l'ID della risorsa
-            controller.removeTrack(selected.getId());
+            controller.removeTrack(selected);
         } else {
             showError("Seleziona prima una traccia da eliminare.");
         }
     }
+
 
     public void showError(String messaggio) {
         new Alert(Alert.AlertType.ERROR, messaggio).showAndWait();

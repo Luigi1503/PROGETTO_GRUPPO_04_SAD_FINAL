@@ -1,6 +1,8 @@
 package com.example.gruppo04.model;
 
 import java.util.*;
+import com.example.gruppo04.interfaces.Playlist;
+import com.example.gruppo04.interfaces.Track;
 
 public class PlaylistImpl implements Playlist {
     private String name;

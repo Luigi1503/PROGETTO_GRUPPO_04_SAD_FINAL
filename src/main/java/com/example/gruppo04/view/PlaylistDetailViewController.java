@@ -183,7 +183,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
     void handleAddTrack(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/fxml/TrackSelectionView.fxml"));
+                    getClass().getResource("/com/example/gruppo04/Views/TrackSelectionView.fxml"));
             VBox root = loader.load();
             TrackSelectionViewController controller = loader.getController();
 

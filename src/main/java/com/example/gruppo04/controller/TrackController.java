@@ -4,6 +4,7 @@ import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.model.TrackImpl;
 
+import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -108,4 +109,11 @@ public class TrackController {
             catalog.removeTrack(trackToRemove.getId());
         }
     }
+
+    public Collection<Track> getAllTracks(){
+        return catalog.getAllTracks();
+    }
+
+
+
 }
