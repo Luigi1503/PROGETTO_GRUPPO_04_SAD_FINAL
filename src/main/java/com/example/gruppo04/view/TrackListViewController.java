@@ -45,12 +45,23 @@ public class TrackListViewController implements CatalogObserver {
     private TextField searchField;
     @FXML
     private Button addTrackBtn;
+    @FXML
+    private MenuItem menuEdit;
 
     private final ObservableList<Track> tableModel = FXCollections.observableArrayList();
 
     // Riferimenti architetturali a Controller e Model
     private TrackController controller;
     private MusicCatalog catalog;
+    private boolean observerRegistered;
+
+    public TrackListViewController() {
+    }
+
+    public TrackListViewController(TrackController controller, MusicCatalog catalog) {
+        this.controller = controller;
+        this.catalog = catalog;
+    }
 
     /**
      * Inizializza la View assegnando le dipendenze necessarie.
@@ -64,6 +75,7 @@ public class TrackListViewController implements CatalogObserver {
         this.catalog = catalog;
         // La View si iscrive al Model (Subject) per osservare i cambiamenti
         this.catalog.registerObserver(this);
+        registerCatalogObserver();
         reloadTableData();
     }
 
@@ -76,9 +88,13 @@ public class TrackListViewController implements CatalogObserver {
         if (addTrackBtn != null) {
             addTrackBtn.setOnAction(event -> onAddTrackButtonClicked());
         }
+        if (menuEdit != null) {
+            menuEdit.setOnAction(event -> onEditTrackButtonClicked());
+        }
         configureColumns();
 
-
+        // La View si iscrive al Model (Subject) per osservare i cambiamenti
+        registerCatalogObserver();
 
         FilteredList<Track> filtered = new FilteredList<>(tableModel, t -> true);
         if (searchField != null) {
@@ -127,10 +143,21 @@ public class TrackListViewController implements CatalogObserver {
     }
 
     private void reloadTableData() {
+        if (catalog == null) {
+            return;
+        }
+
         tableModel.clear();
         tableModel.addAll(catalog.getAllTracks());
 
         int count = tableModel.size();
+    }
+
+    private void registerCatalogObserver() {
+        if (catalog != null && !observerRegistered) {
+            catalog.registerObserver(this);
+            observerRegistered = true;
+        }
     }
 
     /**
@@ -174,6 +201,8 @@ public class TrackListViewController implements CatalogObserver {
             // 1. Carica il file FXML del form
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gruppo04/Views/TrackForm.fxml"));
             javafx.scene.Parent root = loader.load();
+            TrackFormViewController formController = loader.getController();
+            formController.setTrackController(controller);
 
             // 2. Crea un nuovo "Stage" (una nuova finestra)
             javafx.stage.Stage stage = new javafx.stage.Stage();
@@ -192,6 +221,36 @@ public class TrackListViewController implements CatalogObserver {
         }
     }
 
+    @FXML
+    private void onEditTrackButtonClicked() {
+        Track selected = trackTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showError("Seleziona prima una traccia da modificare.");
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gruppo04/Views/TrackForm.fxml"));
+            javafx.scene.Parent root = loader.load();
+
+            TrackFormViewController formController = loader.getController();
+            formController.setTrackController(controller);
+            formController.populateFormForEdit(selected);
+
+            javafx.stage.Stage stage = new javafx.stage.Stage();
+            stage.setTitle("Modifica Brano");
+            stage.setScene(new javafx.scene.Scene(root));
+            stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError("Impossibile aprire la finestra di modifica: " + e.getMessage());
+        }
+    }
+
+
+    
 
 
 }
