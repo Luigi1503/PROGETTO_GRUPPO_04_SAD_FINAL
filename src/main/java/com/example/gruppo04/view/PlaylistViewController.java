@@ -19,6 +19,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.util.function.Consumer;
 
+import javafx.scene.layout.StackPane;
+import javafx.geometry.Pos;
+import javafx.scene.input.MouseEvent;
+import javafx.event.Event;
+
+import javafx.scene.layout.Region;
+
 /**
  * Controller di vista (layer View) del pannello di gestione delle playlist.
  *
@@ -61,7 +68,8 @@ public class PlaylistViewController implements CatalogObserver {
      */
     @FXML
     public void initialize() {
-        catalog.registerObserver(this);   // quando hai l'interfaccia di Francesco
+        catalog.registerObserver(this);
+        playlistGrid.getStyleClass().add("playlist-grid");
         renderPlaylists();
     }
 
@@ -98,7 +106,7 @@ public class PlaylistViewController implements CatalogObserver {
      */
     private Node buildAddCard() {
         Button addButton = new Button("+");
-
+        addButton.getStyleClass().add("add-button");
         addButton.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setHeaderText("Inserisci il nome della playlist");
@@ -112,8 +120,13 @@ public class PlaylistViewController implements CatalogObserver {
                 }
             });
         });
+        StackPane art = new StackPane(addButton);
+        art.getStyleClass().add("card-art");
 
-        return addButton;
+        VBox card = new VBox(art);
+        card.getStyleClass().addAll("playlist-card", "add-card");
+        return card;
+
     }
 
     /**
@@ -135,13 +148,12 @@ public class PlaylistViewController implements CatalogObserver {
      */
     private Node buildPlaylistCard(Playlist playlist) {
         ImageView icon = new ImageView(noteIcon);
-        icon.setFitWidth(48);
-        icon.setFitHeight(48);
+        icon.setFitWidth(64);
+        icon.setFitHeight(64);
         icon.setPreserveRatio(true);
 
-        Label name = new Label(playlist.getName());
-
-        Button rename = new Button("Rinomina");
+        Button rename = new Button("\u270E"); //matita
+        rename.getStyleClass().add("card-action");
         rename.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog(playlist.getName());
             dialog.setHeaderText("Nuovo nome della playlist");
@@ -156,18 +168,41 @@ public class PlaylistViewController implements CatalogObserver {
             });
         });
 
-        Button delete = new Button("Elimina");
+        Button delete = new Button("\uD83D\uDDD1");     // cestino
+        delete.getStyleClass().add("card-action");
         delete.setOnAction(e -> playlistController.deletePlaylist(playlist));
 
-        HBox actions = new HBox(5, rename, delete);
+        HBox actions = new HBox(8, rename, delete);
+        actions.getStyleClass().add("card-actions");
+        actions.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);  // non riempire StackPane
+        StackPane.setAlignment(actions, Pos.BOTTOM_RIGHT);
+        actions.setVisible(false);
+        actions.addEventHandler(MouseEvent.MOUSE_PRESSED, Event::consume); // i bottoni non fanno scattare la selezione
 
-        VBox card = new VBox(5, icon, name, actions);
-        card.setOnMouseClicked(e -> onPlaylistSelected.accept(playlist));
+        StackPane art = new StackPane(icon, actions);
+        art.getStyleClass().add("card-art");
 
+        Label name = new Label(playlist.getName());
+        name.getStyleClass().add("card-title");
+
+        VBox card = new VBox(art, name);
+        card.setPickOnBounds(true);            // <-- tutta la card riceve i click
+        card.getStyleClass().add("playlist-card");
+        card.setOnMouseEntered(e -> actions.setVisible(true));
+        card.setOnMouseExited(e -> actions.setVisible(false));
+        // 1. la selezione su MOUSE_PRESSED invece che CLICKED
+        card.setOnMousePressed(e -> {
+            System.out.println(">> click card: " + playlist.getName());
+            onPlaylistSelected.accept(playlist);
+        });
+        // 2. i bottoni consumano MOUSE_PRESSED, così non fanno scattare la selezione
+        actions.addEventHandler(MouseEvent.MOUSE_PRESSED, Event::consume);
         return card;
+
     }
     /** Imposta cosa fare quando l'utente seleziona una playlist (lo collega MainView). */
     public void setOnPlaylistSelected(Consumer<Playlist> handler) {
+        System.out.println(">> setOnPlaylistSelected chiamato");
         this.onPlaylistSelected = handler;
     }
 }

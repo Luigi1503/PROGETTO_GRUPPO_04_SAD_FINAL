@@ -1,0 +1,79 @@
+.playlist-grid {
+    -fx-hgap: 18;
+    -fx-vgap: 18;
+    -fx-padding: 24;
+}
+
+.playlist-card {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-alignment: top-center;
+    -fx-cursor: hand;
+    -fx-background-radius: 16;
+}
+.playlist-card:hover {
+    -fx-background-color: rgba(255,255,255,0.05);
+}
+
+.card-art {
+    -fx-min-width: 150; -fx-min-height: 150;
+    -fx-max-width: 150; -fx-max-height: 150;
+    -fx-background-color: rgba(255,255,255,0.06);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(255,255,255,0.08);
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-alignment: center;
+}
+.playlist-card:hover .card-art {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 18, 0, 0, 8);
+}
+
+.card-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-wrap-text: true;
+    -fx-max-width: 150;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.card-action {
+    -fx-min-width: 30; -fx-min-height: 30;
+    -fx-max-width: 30; -fx-max-height: 30;
+    -fx-padding: 0;
+    -fx-background-radius: 50;
+    -fx-background-color: rgba(0,0,0,0.45);
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+.card-action:hover {
+    -fx-background-color: #1D9E75;   /* accent: allinealo al teal del tema */
+}
+.card-actions { -fx-padding: 8; }
+
+.add-card .card-art {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255,255,255,0.18);
+    -fx-border-style: dashed;
+    -fx-border-width: 1.5;
+}
+.add-button {
+    -fx-background-color: transparent;
+    -fx-font-size: 44px;
+    -fx-text-fill: rgba(255,255,255,0.5);
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+.add-card:hover .add-button { -fx-text-fill: #1D9E75; }
+.add-card:hover .card-art   { -fx-border-color: #1D9E75; }
+/* sfondo scuro coerente + niente bianco dallo ScrollPane */
+.playlist-panel {
+    -fx-background-color: #14181B;   /* allinea al colore delle altre schermate */
+}
+.playlist-panel .scroll-pane,
+.playlist-panel .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
