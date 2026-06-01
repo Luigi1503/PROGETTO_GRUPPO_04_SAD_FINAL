@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackListPanel">
+<BorderPane style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackListViewController">
 
     <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
 

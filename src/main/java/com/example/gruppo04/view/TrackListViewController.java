@@ -25,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * per reagire alle variazioni del Model.
  * </p>
  */
-public class TrackListPanel implements CatalogObserver {
+public class TrackListViewController implements CatalogObserver {
 
     @FXML
     private TableView<Track> trackTable;
@@ -49,16 +49,17 @@ public class TrackListPanel implements CatalogObserver {
     private final ObservableList<Track> tableModel = FXCollections.observableArrayList();
 
     // Riferimenti architetturali a Controller e Model
-    private final TrackController controller;
-    private final MusicCatalog catalog;
+    private TrackController controller;
+    private MusicCatalog catalog;
 
     /**
-     * Costruttore della View. Riceve le dipendenze in modo imperativo.
+     * Inizializza la View assegnando le dipendenze necessarie.
      *
-     * @param controller il componente Controller a cui delegare le azioni di input
-     * @param catalog    il componente Model da cui leggere lo stato in sola lettura
+     * @param controller il controller a cui la View delega la gestione delle azioni dell'utente
+     * @param catalog il catalogo musicale da cui la View legge lo stato dell'applicazione in sola lettura
      */
-    public TrackListPanel(TrackController controller, MusicCatalog catalog) {
+    @FXML
+    public void init(TrackController controller, MusicCatalog catalog) {
         this.controller = controller;
         this.catalog = catalog;
     }
@@ -77,7 +78,6 @@ public class TrackListPanel implements CatalogObserver {
         // La View si iscrive al Model (Subject) per osservare i cambiamenti
         this.catalog.registerObserver(this);
 
-        // Imposto il filtro/search: uso FilteredList + SortedList per aggiornare la tabella
         FilteredList<Track> filtered = new FilteredList<>(tableModel, t -> true);
         if (searchField != null) {
             searchField.textProperty().addListener((obs, oldVal, newVal) -> {
@@ -171,7 +171,6 @@ public class TrackListPanel implements CatalogObserver {
     private void onAddTrackButtonClicked() {
         try {
             // 1. Carica il file FXML del form
-            // ATTENZIONE al percorso: verifica che corrisponda alla tua cartella resources
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gruppo04/Views/TrackForm.fxml"));
             javafx.scene.Parent root = loader.load();
 
