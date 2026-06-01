@@ -24,6 +24,10 @@ import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.event.Event;
 
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.input.MouseButton;
+
 import javafx.scene.layout.Region;
 
 /**
@@ -152,8 +156,18 @@ public class PlaylistViewController implements CatalogObserver {
         icon.setFitHeight(64);
         icon.setPreserveRatio(true);
 
-        Button rename = new Button("\u270E"); //matita
-        rename.getStyleClass().add("card-action");
+        StackPane art = new StackPane(icon);
+        art.getStyleClass().add("card-art");
+
+        Label name = new Label(playlist.getName());
+        name.getStyleClass().add("card-title");
+
+        VBox card = new VBox(art, name);
+        card.getStyleClass().add("playlist-card");
+        card.setPickOnBounds(true);
+
+        // menu contestuale (tasto destro)
+        MenuItem rename = new MenuItem("Rinomina");
         rename.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog(playlist.getName());
             dialog.setHeaderText("Nuovo nome della playlist");
@@ -168,41 +182,24 @@ public class PlaylistViewController implements CatalogObserver {
             });
         });
 
-        Button delete = new Button("\uD83D\uDDD1");     // cestino
-        delete.getStyleClass().add("card-action");
+        MenuItem delete = new MenuItem("Elimina");
         delete.setOnAction(e -> playlistController.deletePlaylist(playlist));
 
-        HBox actions = new HBox(8, rename, delete);
-        actions.getStyleClass().add("card-actions");
-        actions.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);  // non riempire StackPane
-        StackPane.setAlignment(actions, Pos.BOTTOM_RIGHT);
-        actions.setVisible(false);
-        actions.addEventHandler(MouseEvent.MOUSE_PRESSED, Event::consume); // i bottoni non fanno scattare la selezione
+        ContextMenu menu = new ContextMenu(rename, delete);
+        card.setOnContextMenuRequested(e -> menu.show(card, e.getScreenX(), e.getScreenY()));   // si apre da solo col tasto destro
 
-        StackPane art = new StackPane(icon, actions);
-        art.getStyleClass().add("card-art");
-
-        Label name = new Label(playlist.getName());
-        name.getStyleClass().add("card-title");
-
-        VBox card = new VBox(art, name);
-        card.setPickOnBounds(true);            // <-- tutta la card riceve i click
-        card.getStyleClass().add("playlist-card");
-        card.setOnMouseEntered(e -> actions.setVisible(true));
-        card.setOnMouseExited(e -> actions.setVisible(false));
-        // 1. la selezione su MOUSE_PRESSED invece che CLICKED
+        // click sinistro → apre il dettaglio
         card.setOnMousePressed(e -> {
-            System.out.println(">> click card: " + playlist.getName());
-            onPlaylistSelected.accept(playlist);
+            if (e.getButton() == MouseButton.PRIMARY) {
+                onPlaylistSelected.accept(playlist);
+            }
         });
-        // 2. i bottoni consumano MOUSE_PRESSED, così non fanno scattare la selezione
-        actions.addEventHandler(MouseEvent.MOUSE_PRESSED, Event::consume);
-        return card;
 
+        return card;
     }
     /** Imposta cosa fare quando l'utente seleziona una playlist (lo collega MainView). */
     public void setOnPlaylistSelected(Consumer<Playlist> handler) {
-        System.out.println(">> setOnPlaylistSelected chiamato");
+        //System.out.println(">> setOnPlaylistSelected chiamato");
         this.onPlaylistSelected = handler;
     }
 }

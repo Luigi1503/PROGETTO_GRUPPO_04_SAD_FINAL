@@ -19,14 +19,13 @@
         </VBox>
 
         <!-- TABELLA TRACCE -->
-        <TableView fx:id="tableTracks" prefHeight="306.0" prefWidth="570.0" style="-fx-background-color: transparent;                       -fx-table-cell-border-color: transparent;                       -fx-border-color: transparent;                       -fx-padding: 0;" VBox.vgrow="ALWAYS">
-
+        <TableView fx:id="tableTracks" prefHeight="306.0" prefWidth="570.0" style="-fx-background-color: transparent;                   -fx-table-cell-border-color: transparent;                   -fx-table-header-border-color: transparent;                   -fx-border-color: transparent;                   -fx-control-inner-background: transparent;                   -fx-padding: 0;" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="colTitle" prefWidth="200" text="TITOLO" />
                 <TableColumn fx:id="colAuthor" prefWidth="150" text="AUTORE" />
                 <TableColumn fx:id="colYear" prefWidth="70" style="-fx-alignment: CENTER_RIGHT;" text="ANNO" />
-                <TableColumn fx:id="colGenre" prefWidth="100" text="GENERE" />
-                <TableColumn fx:id="colDuration" prefWidth="90" style="-fx-alignment: CENTER_RIGHT;" text="DURATA" />
+                <TableColumn fx:id="colGenre" prefWidth="87.0" text="GENERE" />
+                <TableColumn fx:id="colDuration" prefWidth="103.0" style="-fx-alignment: CENTER_RIGHT;" text="DURATA" />
             </columns>
 
             <placeholder>
