@@ -12,13 +12,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -47,6 +43,8 @@ public class TrackListPanel implements CatalogObserver {
     private Label statusLabel;
     @FXML
     private TextField searchField;
+    @FXML
+    private Button addTrackBtn;
 
     private final ObservableList<Track> tableModel = FXCollections.observableArrayList();
 
@@ -71,7 +69,9 @@ public class TrackListPanel implements CatalogObserver {
     @FXML
     public void initialize() {
         trackTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-
+        if (addTrackBtn != null) {
+            addTrackBtn.setOnAction(event -> onAddTrackButtonClicked());
+        }
         configureColumns();
 
         // La View si iscrive al Model (Subject) per osservare i cambiamenti
@@ -166,4 +166,32 @@ public class TrackListPanel implements CatalogObserver {
             }
         });
     }
+
+    @FXML
+    private void onAddTrackButtonClicked() {
+        try {
+            // 1. Carica il file FXML del form
+            // ATTENZIONE al percorso: verifica che corrisponda alla tua cartella resources
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gruppo04/Views/TrackForm.fxml"));
+            javafx.scene.Parent root = loader.load();
+
+            // 2. Crea un nuovo "Stage" (una nuova finestra)
+            javafx.stage.Stage stage = new javafx.stage.Stage();
+            stage.setTitle("Aggiungi Nuovo Brano");
+            stage.setScene(new javafx.scene.Scene(root));
+
+            // 3. (Opzionale ma consigliato) Blocca la finestra principale finché questa non viene chiusa
+            stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+
+            // 4. Mostra la finestra
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError("Impossibile aprire la finestra di aggiunta: " + e.getMessage());
+        }
+    }
+
+
+
 }
