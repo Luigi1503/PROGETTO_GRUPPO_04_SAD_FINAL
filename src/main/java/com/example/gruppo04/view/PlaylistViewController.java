@@ -48,16 +48,18 @@ public class PlaylistViewController implements CatalogObserver {
     private final Image noteIcon =
             new Image(getClass().getResourceAsStream("/img/note.png"));
 
-    private final PlaylistController playlistController;
-    private final MusicCatalog catalog;
+    private  PlaylistController playlistController;
+    private  MusicCatalog catalog;
     private Consumer<Playlist> onPlaylistSelected = p -> {};
     /**
      * @param playlistController orchestratore a cui delegare le azioni sulle playlist
      * @param catalog            sorgente dati di sola lettura usata per disegnare la griglia
      */
-    public PlaylistViewController(PlaylistController playlistController, MusicCatalog catalog) {
+    public void init(PlaylistController playlistController, MusicCatalog catalog) {
         this.playlistController = playlistController;
         this.catalog = catalog;
+        catalog.registerObserver(this);
+        renderPlaylists();
     }
 
     /**
@@ -67,7 +69,6 @@ public class PlaylistViewController implements CatalogObserver {
      */
     @FXML
     public void initialize() {
-        catalog.registerObserver(this);
         playlistGrid.getStyleClass().add("playlist-grid");
 
         playlistGrid.sceneProperty().addListener((obs, oldS, scene) -> {
@@ -80,8 +81,6 @@ public class PlaylistViewController implements CatalogObserver {
                 }
             }
         });
-
-        renderPlaylists();
     }
     /**
      * Callback dell'Observer: ridisegna la griglia quando cambiano le playlist

@@ -92,7 +92,8 @@
             <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
                         style="-fx-background-color: #0D1519;
                    -fx-background: #0D1519;
-                   -fx-border-color: transparent;">
+                   -fx-border-color: transparent;
+                   -fx-padding: 0;">
                 <VBox fx:id="sidebarPlaylistList" spacing="2">
                     <padding><Insets right="0" left="0"/></padding>
                 </VBox>
