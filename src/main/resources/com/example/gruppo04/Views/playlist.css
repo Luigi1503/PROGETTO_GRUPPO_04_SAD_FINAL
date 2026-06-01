@@ -77,3 +77,48 @@
 .playlist-panel .scroll-pane > .viewport {
     -fx-background-color: transparent;
 }
+
+/* ── context menu della playlist 01/06 ── */
+.playlist-context-menu {
+    -fx-background-color: #1B2A2F;
+    -fx-background-radius: 8;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);
+    -fx-padding: 4 0 4 0;
+}
+.playlist-context-menu .menu-item                 { -fx-padding: 6 16 6 16; }
+.playlist-context-menu .menu-item .label          { -fx-text-fill: #E8EDF0; }
+.playlist-context-menu .menu-item:focused         { -fx-background-color: #2C3E40; }
+.playlist-context-menu .menu-item:focused .label  { -fx-text-fill: #FFFFFF; }
+.playlist-context-menu .menu-item.danger .label   { -fx-text-fill: #E05555; }
+.playlist-context-menu .separator-menu-item .line { -fx-border-color: #2C3E40; }
+
+/* ── dialoghi (crea / rinomina playlist) ── */
+.playlist-dialog                          { -fx-background-color: #1B2A2F; }
+.playlist-dialog > .header-panel          { -fx-background-color: #16242A; }
+.playlist-dialog > .header-panel .label   { -fx-text-fill: #E8EDF0; -fx-font-size: 14px; -fx-font-weight: bold; }
+.playlist-dialog .label                   { -fx-text-fill: #E8EDF0; }
+
+.playlist-dialog .text-field {
+    -fx-background-color: #0F1A1E;
+    -fx-text-fill: #E8EDF0;
+    -fx-prompt-text-fill: #6B7B80;
+    -fx-background-radius: 6;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 6;
+    -fx-padding: 8 10;
+}
+.playlist-dialog .text-field:focused      { -fx-border-color: #1D9E75; }
+
+.playlist-dialog .button {
+    -fx-background-color: #2C3E40;
+    -fx-text-fill: #E8EDF0;
+    -fx-background-radius: 6;
+    -fx-padding: 6 18;
+    -fx-cursor: hand;
+}
+.playlist-dialog .button:hover            { -fx-background-color: #374D50; }
+.playlist-dialog .button:default          { -fx-background-color: #1D9E75; -fx-text-fill: #FFFFFF; }
+.playlist-dialog .button:default:hover    { -fx-background-color: #23B383; }
