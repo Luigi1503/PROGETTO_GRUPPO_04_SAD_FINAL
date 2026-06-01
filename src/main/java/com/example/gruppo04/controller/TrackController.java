@@ -110,6 +110,15 @@ public class TrackController {
         }
     }
 
+    /**
+     * @brief Restituisce tutte le tracce presenti nel catalogo musicale.
+     *
+     * Delega la richiesta direttamente al catalogo centrale, restituendo
+     * una vista in sola lettura della collezione di tracce disponibili.
+     * Utilizzato dalla View per popolare le liste e il pannello di selezione.
+     *
+     * @return Una collezione non modificabile di tutte le tracce del catalogo.
+     */
     public Collection<Track> getAllTracks(){
         return catalog.getAllTracks();
     }

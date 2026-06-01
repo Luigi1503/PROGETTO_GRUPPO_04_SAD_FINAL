@@ -10,27 +10,46 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Suite di test per {@link PlaylistController}.
+ * Verifica che i metodi del controller deleghino correttamente le operazioni
+ * a {@link ConcreteMusicCatalog} e restituiscano i valori attesi.
+ */
 class PlaylistControllerTest {
 
+    /** Controller sotto test. */
     private PlaylistController controller;
+
+    /** Catalogo musicale reale. */
     private MusicCatalog catalog;
+
+    /** Prima traccia di esempio usata nei test. */
     private Track track1;
+
+    /** Seconda traccia di esempio usata nei test. */
     private Track track2;
 
+    /**
+     * Inizializza il catalogo, il controller e le tracce di esempio
+     * prima di ogni test, garantendo uno stato pulito e indipendente.
+     */
     @BeforeEach
     void setUp() {
         catalog = new ConcreteMusicCatalog();
         controller = new PlaylistController(catalog);
 
-        // Tracce di esempio
-        track1 = new TrackImpl("Bohemian Rhapsody", "Queen", "Rock", 1975, 354);
-        track2 = new TrackImpl("Hotel California", "Eagles", "Rock", 1977, 391);
+        track1 = new TrackImpl("Hold back the river", "James Bay", "Rock", 2014, 354);
+        track2 = new TrackImpl("Someday", "OneRepublic", "Pop", 2021, 391);
         catalog.addTrack(track1);
         catalog.addTrack(track2);
     }
 
     // ── createPlaylist ────────────────────────
 
+    /**
+     * Verifica che una playlist con nome valido venga creata correttamente
+     * e risulti presente nel catalogo con il nome specificato.
+     */
     @Test
     void createPlaylist_success() {
         boolean result = controller.createPlaylist("Rock Classics");
@@ -39,6 +58,10 @@ class PlaylistControllerTest {
         assertEquals("Rock Classics", catalog.getPlaylists().get(0).getName());
     }
 
+    /**
+     * Verifica che la creazione di una playlist con nome già esistente
+     * restituisca false e non aggiunga duplicati al catalogo.
+     */
     @Test
     void createPlaylist_duplicateName_returnsFalse() {
         controller.createPlaylist("Rock Classics");
@@ -47,12 +70,20 @@ class PlaylistControllerTest {
         assertEquals(1, catalog.getPlaylists().size());
     }
 
+    /**
+     * Verifica che la creazione di una playlist con nome vuoto
+     * sollevi un'eccezione di tipo {@link IllegalArgumentException}.
+     */
     @Test
     void createPlaylist_emptyName_throwsException() {
         assertThrows(IllegalArgumentException.class,
                 () -> controller.createPlaylist(""));
     }
 
+    /**
+     * Verifica che la creazione di una playlist con nome null
+     * sollevi un'eccezione di tipo {@link IllegalArgumentException}.
+     */
     @Test
     void createPlaylist_nullName_throwsException() {
         assertThrows(IllegalArgumentException.class,
@@ -61,15 +92,23 @@ class PlaylistControllerTest {
 
     // ── renamePlaylist ────────────────────────
 
+    /**
+     * Verifica che una playlist esistente venga rinominata correttamente
+     * e che il nuovo nome sia riflesso nell'oggetto playlist.
+     */
     @Test
     void renamePlaylist_success() {
         controller.createPlaylist("Rock Classics");
         Playlist playlist = catalog.getPlaylists().get(0);
-        boolean result = controller.renamePlaylist(playlist, "Best Of Rock");
+        boolean result = controller.renamePlaylist(playlist, "Best of Rock");
         assertTrue(result);
-        assertEquals("Best Of Rock", playlist.getName());
+        assertEquals("Best of Rock", playlist.getName());
     }
 
+    /**
+     * Verifica che la rinomina di una playlist con un nome già usato
+     * da un'altra playlist restituisca false e non modifichi il nome originale.
+     */
     @Test
     void renamePlaylist_duplicateName_returnsFalse() {
         controller.createPlaylist("Rock Classics");
@@ -80,6 +119,10 @@ class PlaylistControllerTest {
         assertEquals("Rock Classics", playlist.getName());
     }
 
+    /**
+     * Verifica che la rinomina di una playlist con nome vuoto
+     * sollevi un'eccezione di tipo {@link IllegalArgumentException}.
+     */
     @Test
     void renamePlaylist_emptyName_throwsException() {
         controller.createPlaylist("Rock Classics");
@@ -90,6 +133,10 @@ class PlaylistControllerTest {
 
     // ── deletePlaylist ────────────────────────
 
+    /**
+     * Verifica che una playlist esistente venga rimossa correttamente
+     * dal catalogo.
+     */
     @Test
     void deletePlaylist_success() {
         controller.createPlaylist("Rock Classics");
@@ -99,9 +146,12 @@ class PlaylistControllerTest {
         assertEquals(0, catalog.getPlaylists().size());
     }
 
+    /**
+     * Verifica che la rimozione di una playlist non appartenente
+     * al catalogo restituisca false senza modificare lo stato del catalogo.
+     */
     @Test
     void deletePlaylist_notInCatalog_returnsFalse() {
-        // Playlist non aggiunta al catalogo
         ConcreteMusicCatalog otherCatalog = new ConcreteMusicCatalog();
         otherCatalog.createPlaylist("Other Playlist");
         Playlist otherPlaylist = otherCatalog.getPlaylists().get(0);
@@ -111,6 +161,10 @@ class PlaylistControllerTest {
 
     // ── addTrackToPlaylist ────────────────────
 
+    /**
+     * Verifica che una traccia valida venga aggiunta correttamente
+     * alla playlist e risulti presente nella lista delle tracce.
+     */
     @Test
     void addTrackToPlaylist_success() {
         controller.createPlaylist("Rock Classics");
@@ -121,6 +175,10 @@ class PlaylistControllerTest {
         assertTrue(playlist.getTracks().contains(track1));
     }
 
+    /**
+     * Verifica che l'aggiunta di una traccia già presente nella playlist
+     * restituisca false e non crei duplicati.
+     */
     @Test
     void addTrackToPlaylist_duplicateTrack_returnsFalse() {
         controller.createPlaylist("Rock Classics");
@@ -131,6 +189,10 @@ class PlaylistControllerTest {
         assertEquals(1, playlist.getTracks().size());
     }
 
+    /**
+     * Verifica che più tracce aggiunte in sequenza mantengano
+     * l'ordine di inserimento nella playlist.
+     */
     @Test
     void addTrackToPlaylist_multipleTracksCorrectOrder() {
         controller.createPlaylist("Rock Classics");
@@ -144,6 +206,10 @@ class PlaylistControllerTest {
 
     // ── removeTrackFromPlaylist ───────────────
 
+    /**
+     * Verifica che una traccia presente nella playlist venga rimossa
+     * correttamente e che la playlist risulti vuota dopo la rimozione.
+     */
     @Test
     void removeTrackFromPlaylist_success() {
         controller.createPlaylist("Rock Classics");
@@ -154,6 +220,10 @@ class PlaylistControllerTest {
         assertEquals(0, playlist.getTracks().size());
     }
 
+    /**
+     * Verifica che la rimozione di una traccia non presente nella playlist
+     * restituisca false senza modificare lo stato della playlist.
+     */
     @Test
     void removeTrackFromPlaylist_trackNotInPlaylist_returnsFalse() {
         controller.createPlaylist("Rock Classics");
@@ -162,6 +232,10 @@ class PlaylistControllerTest {
         assertFalse(result);
     }
 
+    /**
+     * Verifica che la rimozione di una traccia dalla playlist non la elimini
+     * dal catalogo generale — la traccia deve rimanere disponibile nel catalogo.
+     */
     @Test
     void removeTrackFromPlaylist_trackRemainsInCatalog() {
         controller.createPlaylist("Rock Classics");
