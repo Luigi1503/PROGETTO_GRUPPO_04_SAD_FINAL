@@ -208,7 +208,10 @@ public class TrackListViewController implements CatalogObserver {
             stage.setTitle("Aggiungi Nuovo Brano");
             stage.setScene(new javafx.scene.Scene(root));
 
-            // 3. (Opzionale ma consigliato) Blocca la finestra principale finché questa non viene chiusa
+            stage.setWidth(550);
+            stage.setHeight(580);
+            stage.setMinWidth(550);
+            stage.setMinHeight(580);
             stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
 
             // 4. Mostra la finestra

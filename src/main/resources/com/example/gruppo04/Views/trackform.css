@@ -1,0 +1,128 @@
+/* Sfondo principale della finestra del Form */
+.form-container {
+    -fx-background-color: #14181B; /* Sfondo scuro coerente con il pannello */
+    -fx-padding: 20;
+}
+
+/* Stile per i testi esplicativi (Titolo:, Autore:, ecc.) */
+.form-container .label {
+    -fx-text-fill: #E8EDF0;
+    -fx-font-size: 13px;
+}
+
+/* Titolo principale della schermata "Gestione Traccia" */
+.form-header {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* Campi di testo (Titolo e Autore) */
+.form-container .text-field {
+    -fx-background-color: #0F1A1E;
+    -fx-text-fill: #E8EDF0;
+    -fx-prompt-text-fill: #6B7B80;
+    -fx-background-radius: 6;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 6;
+    -fx-padding: 8 10;
+}
+.form-container .text-field:focused {
+    -fx-border-color: #1D9E75; /* Accento Teal al focus */
+}
+
+/* ComboBox per la selezione del Genere */
+.form-container .combo-box {
+    -fx-background-color: #0F1A1E;
+    -fx-background-radius: 6;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 6;
+    -fx-padding: 5 5;
+}
+.form-container .combo-box:focused {
+    -fx-border-color: #1D9E75;
+}
+.form-container .combo-box .label {
+    -fx-text-fill: #E8EDF0;
+}
+.form-container .combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+.form-container .combo-box .arrow {
+    -fx-background-color: #6B7B80;
+}
+
+/* Liste a discesa della ComboBox */
+.combo-box-popup .list-view {
+    -fx-background-color: #1B2A2F;
+    -fx-background-radius: 6;
+    -fx-border-color: #2C3E40;
+    -fx-border-width: 1;
+}
+.combo-box-popup .list-cell {
+    -fx-text-fill: #E8EDF0;
+    -fx-padding: 6 10;
+    -fx-background-color: transparent;
+}
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: #2C3E40;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Stile per gli Spinner (Anno e Durata) */
+.form-container .spinner {
+    -fx-background-color: transparent;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 6;
+}
+.form-container .spinner .text-field {
+    -fx-background-radius: 6 0 0 6;
+    -fx-border-width: 0;
+}
+.form-container .spinner .increment-arrow-button,
+.form-container .spinner .decrement-arrow-button {
+    -fx-background-color: #1B2A2F;
+    -fx-background-radius: 0 6 6 0;
+    -fx-cursor: hand;
+}
+.form-container .spinner .increment-arrow-button:hover,
+.form-container .spinner .decrement-arrow-button:hover {
+    -fx-background-color: #2C3E40;
+}
+.form-container .spinner .arrow {
+    -fx-background-color: #E8EDF0;
+}
+
+/* ==========================================
+   BOTTONI (Gestiti tramite i loro ID)
+   ========================================== */
+
+#addButton {
+    -fx-background-color: #1D9E75; /* Sfondo Teal */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 22;
+    -fx-cursor: hand;
+}
+#addButton:hover {
+    -fx-background-color: #23B383; /* Teal più luminoso al passaggio del mouse */
+}
+
+#updateButton {
+    -fx-background-color: #2C3E40; /* Grigio-Blu di base */
+    -fx-text-fill: #E8EDF0;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 22;
+    -fx-cursor: hand;
+}
+#updateButton:hover {
+    -fx-background-color: #374D50;
+}
+
+/* Stato disabilitato (quando non puoi cliccarli) */
+.form-container .button:disabled {
+    -fx-opacity: 0.4;
+    -fx-cursor: default;
+}
