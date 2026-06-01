@@ -25,8 +25,6 @@ public class TrackFormViewController {
     @FXML
     private TextField authorField;
 
-    @FXML
-    private Button deleteButton;
 
     @FXML
     private Spinner<Integer> durationSpinner;
@@ -86,7 +84,6 @@ public class TrackFormViewController {
         // Bottoni allo stato base
         addButton.setDisable(false);
         updateButton.setDisable(true);
-        deleteButton.setDisable(true);
 
     }
 
@@ -141,8 +138,9 @@ public class TrackFormViewController {
 
             System.out.println("Successo: Traccia aggiunta correttamente al catalogo.");
 
-            // Pulizia dei campi di input testuali dopo l'inserimento andato a buon fine
-            clearFormFields();
+            javafx.stage.Stage stage = (javafx.stage.Stage) addButton.getScene().getWindow();
+            // Chiudiamo la finestra
+            stage.close();
 
         } catch (IllegalArgumentException e) {
             // Intercettiamo gli errori sollevati dalle regole di validazione di TrackImpl
@@ -200,36 +198,6 @@ public class TrackFormViewController {
 
 
 
-    /**
-     * @brief Gestisce l'azione di clic sul bottone "Elimina".
-     *
-     * @param event L'evento di click generato dal bottone.
-     */
-    @FXML
-    void handleDeleteAction(ActionEvent event) {
-        if (trackController == null || currentSelectedTrack == null) {
-            return;
-        }
-
-        // 1. Diciamo al controller logico di eliminare la traccia che avevamo in memoria
-        trackController.removeTrack(currentSelectedTrack);
-
-        System.out.println("Traccia eliminata con successo!");
-
-        // 2. Svuotiamo il form per tornare allo stato base
-        clearFormFields();
-    }
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @brief Svuota i campi di testo dell'interfaccia grafica e resetta lo stato.
@@ -249,7 +217,6 @@ public class TrackFormViewController {
         // Ripristiniamo i bottoni allo stato base
         addButton.setDisable(false);
         updateButton.setDisable(true);
-        deleteButton.setDisable(true);
     }
 
 
@@ -274,7 +241,6 @@ public class TrackFormViewController {
         // Disabilitiamo "Aggiungi" e abilitiamo "Salva Modifiche" ed "Elimina"
         addButton.setDisable(true);
         updateButton.setDisable(false);
-        deleteButton.setDisable(false);
     }
 
 
