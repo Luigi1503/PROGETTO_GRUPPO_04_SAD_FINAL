@@ -7,14 +7,11 @@ import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.observer.CatalogEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.util.function.Consumer;
@@ -24,8 +21,6 @@ import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.event.Event;
 
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.input.MouseButton;
 
 import javafx.scene.layout.Region;
@@ -74,9 +69,20 @@ public class PlaylistViewController implements CatalogObserver {
     public void initialize() {
         catalog.registerObserver(this);
         playlistGrid.getStyleClass().add("playlist-grid");
+
+        playlistGrid.sceneProperty().addListener((obs, oldS, scene) -> {
+            if (scene != null) {
+                String css = getClass()
+                        .getResource("/com/example/gruppo04/Views/playlist.css")
+                        .toExternalForm();
+                if (!scene.getStylesheets().contains(css)) {
+                    scene.getStylesheets().add(css);
+                }
+            }
+        });
+
         renderPlaylists();
     }
-
     /**
      * Callback dell'Observer: ridisegna la griglia quando cambiano le playlist
      * (aggiunta, rinomina, eliminazione). Ignora gli eventi sulle tracce.
@@ -114,6 +120,7 @@ public class PlaylistViewController implements CatalogObserver {
         addButton.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setHeaderText("Inserisci il nome della playlist");
+            styleDialog(dialog);
             dialog.showAndWait().ifPresent(name -> {
                 try {
                     if (!playlistController.createPlaylist(name)) {
@@ -171,6 +178,7 @@ public class PlaylistViewController implements CatalogObserver {
         rename.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog(playlist.getName());
             dialog.setHeaderText("Nuovo nome della playlist");
+            styleDialog(dialog);
             dialog.showAndWait().ifPresent(newName -> {
                 try {
                     if (!playlistController.renamePlaylist(playlist, newName)) {
@@ -184,8 +192,10 @@ public class PlaylistViewController implements CatalogObserver {
 
         MenuItem delete = new MenuItem("Elimina");
         delete.setOnAction(e -> playlistController.deletePlaylist(playlist));
+        delete.getStyleClass().add("danger");                 // ← per il rosso
 
         ContextMenu menu = new ContextMenu(rename, delete);
+        menu.getStyleClass().add("playlist-context-menu");
         card.setOnContextMenuRequested(e -> menu.show(card, e.getScreenX(), e.getScreenY()));   // si apre da solo col tasto destro
 
         // click sinistro → apre il dettaglio
@@ -201,5 +211,12 @@ public class PlaylistViewController implements CatalogObserver {
     public void setOnPlaylistSelected(Consumer<Playlist> handler) {
         //System.out.println(">> setOnPlaylistSelected chiamato");
         this.onPlaylistSelected = handler;
+    }
+
+    private void styleDialog(Dialog<?> dialog) {
+        dialog.getDialogPane().getStyleClass().add("playlist-dialog");
+        dialog.getDialogPane().getStylesheets().add(
+                getClass().getResource("/com/example/gruppo04/Views/playlist.css").toExternalForm());
+        dialog.setGraphic(null);   // toglie il "?" blu nell'header
     }
 }
