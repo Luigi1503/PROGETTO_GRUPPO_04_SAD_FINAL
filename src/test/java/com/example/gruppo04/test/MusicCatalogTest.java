@@ -121,4 +121,228 @@ public class MusicCatalogTest {
         assertEquals(CatalogEventType.TRACK_ADDED, receivedEvents.get(0).getType());
         assertEquals(track1, receivedEvents.get(0).getTarget());
     }
+
+    /**
+     * Verifica la creazione e la rimozione di una playlist nel catalogo.
+     * Controlla il valore di ritorno di `createPlaylist` e `deletePlaylist`
+     * e la consistenza della lista restituita da `getPlaylists()`.
+     */
+    @Test
+    public void testCreateAndDeletePlaylist() {
+        assertTrue(catalog.getPlaylists().isEmpty(), "Catalogo inizialmente vuoto di playlist");
+
+        boolean created = catalog.createPlaylist("Chill Vibes");
+        assertTrue(created, "createPlaylist dovrebbe restituire true alla prima creazione");
+        assertEquals(1, catalog.getPlaylists().size());
+
+        Playlist p = catalog.getPlaylists().get(0);
+        assertEquals("Chill Vibes", p.getName());
+
+        boolean deleted = catalog.deletePlaylist(p);
+        assertTrue(deleted, "deletePlaylist dovrebbe restituire true se la playlist era presente");
+        assertTrue(catalog.getPlaylists().isEmpty(), "La lista delle playlist deve tornare vuota dopo la cancellazione");
+    }
+
+    /**
+     * Verifica il caso limite di creazione di due playlist con lo stesso nome.
+     * Il secondo tentativo dovrebbe restituire {@code false} senza lanciare eccezioni.
+     */
+    @Test
+    public void testCreatePlaylistDuplicateName() {
+        boolean first = catalog.createPlaylist("Road Trip");
+        assertTrue(first);
+
+        boolean second = catalog.createPlaylist("Road Trip");
+        assertFalse(second, "createPlaylist deve restituire false se il nome esiste già");
+
+        assertEquals(1, catalog.getPlaylists().size(), "Deve rimanere una sola playlist con quel nome");
+    }
+
+    /**
+     * Verifica la funzionalità di rinomina di una playlist e i vincoli associati.
+     * Controlla che la rinomina verso un nome libero abbia successo e che la
+     * rinomina verso un nome già esistente fallisca restituendo {@code false}.
+     */
+    @Test
+    public void testRenamePlaylist() {
+        catalog.createPlaylist("Morning");
+        catalog.createPlaylist("Evening");
+
+        Playlist morning = catalog.getPlaylists().stream()
+                .filter(pl -> pl.getName().equals("Morning"))
+                .findFirst()
+                .orElseThrow();
+
+        // Rinomina verso un nome nuovo
+        boolean renamed = catalog.renamePlaylist(morning, "Wake Up");
+        assertTrue(renamed, "renamePlaylist dovrebbe restituire true per un nuovo nome disponibile");
+        assertTrue(catalog.getPlaylists().stream().anyMatch(pl -> pl.getName().equals("Wake Up")));
+
+        // Rinomina verso un nome già presente (Evening) deve fallire
+        boolean renamedToExisting = catalog.renamePlaylist(morning, "Evening");
+        assertFalse(renamedToExisting, "renamePlaylist deve restituire false se il nuovo nome è già usato");
+    }
+
+    /**
+     * Verifica le condizioni di validazione per la creazione di playlist.
+     * Il name nullo o vuoto deve sollevare IllegalArgumentException.
+     */
+    @Test
+    public void testCreatePlaylistInvalidName() {
+        assertThrows(IllegalArgumentException.class, () -> catalog.createPlaylist(null));
+        assertThrows(IllegalArgumentException.class, () -> catalog.createPlaylist(""));
+        assertThrows(IllegalArgumentException.class, () -> catalog.createPlaylist("   "));
+    }
+
+    /**
+     * Verifica che la rinomina fallisca se la playlist non appartiene al catalogo
+     * e che newName nullo o vuoto generi IllegalArgumentException.
+     */
+    @Test
+    public void testRenamePlaylistInvalidInput() {
+        Playlist external = new PlaylistImpl("External");
+        boolean renamed = catalog.renamePlaylist(external, "New Name");
+        assertFalse(renamed, "renamePlaylist deve restituire false per playlist non presente nel catalogo");
+
+        catalog.createPlaylist("Local");
+        Playlist local = catalog.getPlaylists().get(0);
+        assertThrows(IllegalArgumentException.class, () -> catalog.renamePlaylist(local, null));
+        assertThrows(IllegalArgumentException.class, () -> catalog.renamePlaylist(local, ""));
+        assertThrows(IllegalArgumentException.class, () -> catalog.renamePlaylist(local, "   "));
+    }
+
+    /**
+     * Verifica che la cancellazione di una playlist non presente restituisca false.
+     */
+    @Test
+    public void testDeletePlaylistNotPresent() {
+        Playlist external = new PlaylistImpl("External");
+        boolean deleted = catalog.deletePlaylist(external);
+        assertFalse(deleted, "deletePlaylist deve restituire false se la playlist non appartiene al catalogo");
+    }
+
+    /**
+     * Verifica le condizioni di validazione per l'aggiunta delle tracce.
+     * Track null deve sollevare IllegalArgumentException.
+     */
+    @Test
+    public void testAddTrackInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> catalog.addTrack(null));
+    }
+
+    /**
+     * Verifica che l'aggiunta di una traccia ad una playlist rispetti le precondizioni
+     * e che l'inserimento duplicato nella playlist restituisca false.
+     */
+    @Test
+    public void testAddTrackToPlaylistValidationAndDuplicates() {
+        catalog.createPlaylist("Mix");
+        Playlist mix = catalog.getPlaylists().get(0);
+
+        assertThrows(IllegalArgumentException.class, () -> catalog.addTrackToPlaylist(mix, track1));
+
+        catalog.addTrack(track1);
+        Playlist external = new PlaylistImpl("External");
+        assertThrows(IllegalArgumentException.class, () -> catalog.addTrackToPlaylist(external, track1));
+
+        boolean addedFirst = catalog.addTrackToPlaylist(mix, track1);
+        assertTrue(addedFirst, "Prima aggiunta alla playlist deve avere successo");
+
+        boolean addedSecond = catalog.addTrackToPlaylist(mix, track1);
+        assertFalse(addedSecond, "Seconda aggiunta della stessa traccia deve fallire");
+    }
+
+    /**
+     * Verifica che la rimozione da playlist ritorni false se la traccia non è presente.
+     */
+    @Test
+    public void testRemoveTrackFromPlaylistNotPresent() {
+        catalog.createPlaylist("Mix");
+        Playlist mix = catalog.getPlaylists().get(0);
+
+        catalog.addTrack(track1);
+        boolean removed = catalog.removeTrackFromPlaylist(mix, track1);
+        assertFalse(removed, "removeTrackFromPlaylist deve restituire false se la traccia non è presente");
+    }
+
+    /**
+     * Verifica la notifica degli observer per eventi di playlist (creazione, rinomina e cancellazione).
+     */
+    @Test
+    public void testObserverNotificationsOnPlaylistLifecycle() {
+        List<CatalogEvent> receivedEvents = new ArrayList<>();
+        catalog.registerObserver(receivedEvents::add);
+
+        catalog.createPlaylist("Daily");
+        Playlist daily = catalog.getPlaylists().get(0);
+
+        boolean renamed = catalog.renamePlaylist(daily, "Daily Updated");
+        assertTrue(renamed);
+
+        boolean deleted = catalog.deletePlaylist(daily);
+        assertTrue(deleted);
+
+        assertEquals(3, receivedEvents.size(), "Devono essere stati emessi tre eventi di playlist");
+        assertEquals(CatalogEventType.PLAYLIST_ADDED, receivedEvents.get(0).getType());
+        assertEquals(CatalogEventType.PLAYLIST_RENAMED, receivedEvents.get(1).getType());
+        assertEquals(CatalogEventType.PLAYLIST_REMOVED, receivedEvents.get(2).getType());
+    }
+
+    /**
+     * Verifica la notifica degli observer per eventi legati alle tracce.
+     */
+    @Test
+    public void testObserverNotificationsOnTrackLifecycle() {
+        List<CatalogEvent> receivedEvents = new ArrayList<>();
+        catalog.registerObserver(receivedEvents::add);
+
+        catalog.addTrack(track1);
+
+        track1.setTitle("Bohemian Rhapsody (Remastered)");
+        catalog.updateTrack(track1);
+
+        catalog.removeTrack(track1.getId());
+
+        assertEquals(3, receivedEvents.size(), "Devono essere stati emessi tre eventi di traccia");
+        assertEquals(CatalogEventType.TRACK_ADDED, receivedEvents.get(0).getType());
+        assertEquals(CatalogEventType.TRACK_UPDATED, receivedEvents.get(1).getType());
+        assertEquals(CatalogEventType.TRACK_REMOVED, receivedEvents.get(2).getType());
+        assertEquals(track1, receivedEvents.get(1).getTarget());
+    }
+
+    /**
+     * Verifica la notifica degli observer quando si aggiungono o rimuovono tracce in playlist.
+     */
+    @Test
+    public void testObserverNotificationsOnPlaylistTrackChanges() {
+        List<CatalogEvent> receivedEvents = new ArrayList<>();
+        catalog.registerObserver(receivedEvents::add);
+
+        catalog.createPlaylist("Mix");
+        Playlist mix = catalog.getPlaylists().get(0);
+
+        catalog.addTrack(track1);
+        catalog.addTrackToPlaylist(mix, track1);
+        catalog.removeTrackFromPlaylist(mix, track1);
+
+        List<CatalogEvent> playlistTrackEvents = receivedEvents.stream()
+            .filter(event -> event.getType() == CatalogEventType.PLAYLIST_TRACK_ADDED
+                || event.getType() == CatalogEventType.PLAYLIST_TRACK_REMOVED)
+            .toList();
+
+        assertEquals(2, playlistTrackEvents.size(), "Devono essere stati emessi due eventi di playlist track");
+        assertEquals(CatalogEventType.PLAYLIST_TRACK_ADDED, playlistTrackEvents.get(0).getType());
+        assertEquals(CatalogEventType.PLAYLIST_TRACK_REMOVED, playlistTrackEvents.get(1).getType());
+    }
+
+    /**
+     * Verifica le condizioni di errore di updateTrack per input null o traccia assente.
+     */
+    @Test
+    public void testUpdateTrackInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(null));
+
+        Track missing = new TrackImpl("Missing", "Unknown", "Rock", 1999, 200);
+        assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(missing));
+    }
 }

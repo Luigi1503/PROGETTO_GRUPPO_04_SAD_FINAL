@@ -9,6 +9,8 @@ import com.example.gruppo04.controller.TrackController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -16,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -42,6 +45,8 @@ public class TrackListPanel implements CatalogObserver {
     private TableColumn<Track, String> genreCol;
     @FXML
     private Label statusLabel;
+    @FXML
+    private TextField searchField;
 
     private final ObservableList<Track> tableModel = FXCollections.observableArrayList();
 
@@ -65,13 +70,34 @@ public class TrackListPanel implements CatalogObserver {
      */
     @FXML
     public void initialize() {
-        trackTable.setItems(tableModel);
         trackTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         configureColumns();
 
         // La View si iscrive al Model (Subject) per osservare i cambiamenti
         this.catalog.registerObserver(this);
+
+        // Imposto il filtro/search: uso FilteredList + SortedList per aggiornare la tabella
+        FilteredList<Track> filtered = new FilteredList<>(tableModel, t -> true);
+        if (searchField != null) {
+            searchField.textProperty().addListener((obs, oldVal, newVal) -> {
+                String text = newVal == null ? "" : newVal.trim().toLowerCase();
+                if (text.isEmpty()) {
+                    filtered.setPredicate(t -> true);
+                } else {
+                    filtered.setPredicate(t -> {
+                        if (t.getTitle() != null && t.getTitle().toLowerCase().contains(text)) return true;
+                        if (t.getAuthor() != null && t.getAuthor().toLowerCase().contains(text)) return true;
+                        if (t.getGenre() != null && t.getGenre().toLowerCase().contains(text)) return true;
+                        return false;
+                    });
+                }
+            });
+        }
+
+        SortedList<Track> sorted = new SortedList<>(filtered);
+        sorted.comparatorProperty().bind(trackTable.comparatorProperty());
+        trackTable.setItems(sorted);
 
         // Se l'utente fa click col tasto destro su una riga, selezionala prima
         trackTable.setOnMousePressed(event -> {
