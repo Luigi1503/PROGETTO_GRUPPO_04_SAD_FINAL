@@ -1,7 +1,7 @@
 package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.TrackController;
-import com.example.gruppo04.model.TrackImpl;
+import com.example.gruppo04.interfaces.Track;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -53,7 +53,7 @@ public class TrackFormViewController {
      * @brief Traccia attualmente selezionata per la modifica o l'eliminazione.
      * Se è null, significa che stiamo inserendo una nuova traccia.
      */
-    private TrackImpl currentSelectedTrack;
+    private Track currentSelectedTrack;
 
 
 
@@ -261,7 +261,7 @@ public class TrackFormViewController {
      * l'abilitazione dei bottoni.
      * * @param track La traccia selezionata da modificare o eliminare.
      */
-    public void populateFormForEdit(TrackImpl track) {
+    public void populateFormForEdit(Track track) {
         this.currentSelectedTrack = track;
 
         // Riempiamo i campi grafici con i dati dell'oggetto
