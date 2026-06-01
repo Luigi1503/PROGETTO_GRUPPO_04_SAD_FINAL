@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -15,16 +14,22 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" styleClass="form-container" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackFormViewController">
-
-    <stylesheets>
-        <URL value="@trackform.css" />
-    </stylesheets>
-
+<AnchorPane prefHeight="450.0" prefWidth="400.0" styleClass="form-container" stylesheets="@trackform.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackFormViewController">
     <children>
         <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
             <children>
                 <Label styleClass="form-header" text="Gestione Traccia" />
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Button fx:id="importMp3Button" onAction="#handleImportMp3Action" text="Sfoglia file MP3..." />
+                        <Label fx:id="filePathLabel" text="Nessun file selezionato" textFill="#888888">
+                            <font>
+                                <javafx.scene.text.Font size="11.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
 
                 <GridPane hgap="10.0" vgap="15.0">
                     <columnConstraints>

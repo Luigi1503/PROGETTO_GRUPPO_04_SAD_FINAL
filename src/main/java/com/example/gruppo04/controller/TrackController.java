@@ -57,10 +57,11 @@ public class TrackController {
      * @param genre    Il genere musicale di riferimento per il brano.
      * @param year     L'anno cronologico di pubblicazione dell'opera.
      * @param duration La durata complessiva del brano espressa in secondi totali.
+     * @param filePath Percorso file dove si trova il file della canzone
      * @throws IllegalArgumentException Se le stringhe o i valori numerici violano i vincoli del dominio.
      */
-    public void addTrack(String title, String author, String genre, int year, int duration) {
-        Track newTrack = new TrackImpl(title, author, genre, year, duration);
+    public void addTrack(String title, String author, String genre, int year, int duration, String filePath) {
+        Track newTrack = new TrackImpl(title, author, genre, year, duration, filePath);
         catalog.addTrack(newTrack);
     }
 

@@ -82,6 +82,16 @@ public interface Track {
      */
     void setDuration(int duration);
 
+    /**
+     * @brief Restituisce il percorso fisico del file audio associato alla traccia.
+     * @return Una stringa contenente il percorso assoluto, o null se non presente.
+     */
+    String getFilePath();
 
+    /**
+     * @brief Imposta il percorso fisico del file audio.
+     * @param filePath Il percorso assoluto del file.
+     */
+    void setFilePath(String filePath);
 
 }

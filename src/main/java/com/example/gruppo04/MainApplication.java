@@ -22,11 +22,11 @@ public class MainApplication extends Application {
         ConcreteMusicCatalog catalog = new ConcreteMusicCatalog();
 
         // ── Libreria iniziale di esempio ──────────
-        catalog.addTrack(new TrackImpl("Bohemian Rhapsody", "Queen",     "Rock",      1975, 354));
-        catalog.addTrack(new TrackImpl("Hotel California",  "Eagles",    "Rock",      1977, 391));
-        catalog.addTrack(new TrackImpl("Clair de Lune",     "Debussy",   "Classical", 1905, 300));
-        catalog.addTrack(new TrackImpl("Midnight City",     "M83",       "Electronic",2011, 243));
-        catalog.addTrack(new TrackImpl("Teardrop",          "Massive Attack", "Trip-Hop", 1998, 330));
+        catalog.addTrack(new TrackImpl("Bohemian Rhapsody", "Queen",     "Rock",      1975, 354, null));
+        catalog.addTrack(new TrackImpl("Hotel California",  "Eagles",    "Rock",      1977, 391, null));
+        catalog.addTrack(new TrackImpl("Clair de Lune",     "Debussy",   "Classical", 1905, 300, null));
+        catalog.addTrack(new TrackImpl("Midnight City",     "M83",       "Electronic",2011, 243, null));
+        catalog.addTrack(new TrackImpl("Teardrop",          "Massive Attack", "Trip-Hop", 1998, 330, null));
 
         // ── Crea playlist di esempio ──────────────
         catalog.createPlaylist("Rock Classics");

@@ -2,166 +2,175 @@ package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.Track;
+import com.mpatric.mp3agic.ID3v2;
+import com.mpatric.mp3agic.Mp3File;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
-/**
- * @brief Controller della View deputato alla gestione dell'interfaccia grafica del form tracce.
- *
- * Questa classe gestisce i componenti visuali definiti nel file FXML. Recupera gli input
- * immessi dall'utente, configura i vincoli grafici dei controlli all'avvio e delega
- * le azioni di business al TrackController logico.
- */
+import java.io.File;
+
 public class TrackFormViewController {
 
     @FXML
     private Button addButton;
-
     @FXML
     private TextField authorField;
-
-
     @FXML
     private Spinner<Integer> durationSpinner;
-
     @FXML
     private ComboBox<String> genreComboBox;
-
     @FXML
     private TextField titleField;
-
     @FXML
     private Button updateButton;
-
     @FXML
     private Spinner<Integer> yearSpinner;
 
+    @FXML
+    private Button importMp3Button;
+    @FXML
+    private Label filePathLabel;
 
-    /**
-     * @brief Riferimento al controller logico.
-     */
     private TrackController trackController;
-
-    /**
-     * @brief Traccia attualmente selezionata per la modifica o l'eliminazione.
-     * Se è null, significa che stiamo inserendo una nuova traccia.
-     */
     private Track currentSelectedTrack;
 
+    private String tempFilePath = null;
 
-
-
-
-
-
-
-
-
-    /**
-     * @brief Metodo di inizializzazione eseguito automaticamente da JavaFX al caricamento della View.
-     *
-     * Viene utilizzato per configurare lo stato iniziale dei componenti grafici,
-     * popolando la lista dei generi disponibili e definendo i range numerici ammissibili
-     * per gli spinner di anno e durata.
-     */
     @FXML
     public void initialize() {
-        // Popoliamo la ComboBox con una lista chiusa di generi musicali standard
         genreComboBox.getItems().addAll("Pop", "Rock", "Jazz", "Classica", "Hip Hop", "Elettronica", "Reggae");
 
-        // Configura lo Spinner dell'anno: range 1900-2026, valore iniziale 2024, incremento di 1
         SpinnerValueFactory<Integer> yearFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1900, 2026, 2024);
         yearSpinner.setValueFactory(yearFactory);
 
-        // Configura lo Spinner della durata: range 1-7200 secondi (fino a 2 ore), valore iniziale 180, incremento di 1
         SpinnerValueFactory<Integer> durationFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 7200, 180);
         durationSpinner.setValueFactory(durationFactory);
-        // Bottoni allo stato base
-        addButton.setDisable(false);
-        updateButton.setDisable(true);
 
+        setCampiBloccati(true);
+        addButton.setDisable(true);
+        updateButton.setDisable(true);
+        yearSpinner.getEditor().clear();
+        durationSpinner.getEditor().clear();
     }
 
-
-
-
-
-
-    /**
-     * @brief Inietta il controller logico all'interno del controller visivo.
-     *
-     * @param trackController L'istanza del TrackController logico da associare alla View.
-     */
     public void setTrackController(TrackController trackController) {
         this.trackController = trackController;
     }
 
-
-
-
-
-
-
     /**
-     * @brief Gestisce l'azione di clic sul bottone "Aggiungi".
-     *
-     * Raccoglie i dati inseriti nei campi della View e invoca il metodo addTrack
-     * del controller logico. Se i dati violano le regole del dominio, cattura l'eccezione
-     * stampando l'errore per evitare il crash dell'applicazione.
-     *
-     * @param event L'evento di click generato dal bottone.
+     * @brief Metodo di supporto per bloccare/sbloccare i campi di input in blocco.
+     * @param bloccato true per disabilitare i campi, false per renderli scrivibili.
      */
+    private void setCampiBloccati(boolean bloccato) {
+        titleField.setDisable(bloccato);
+        authorField.setDisable(bloccato);
+        genreComboBox.setDisable(bloccato);
+        yearSpinner.setDisable(bloccato);
+        durationSpinner.setDisable(bloccato);
+    }
+
+    @FXML
+    void handleImportMp3Action(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleziona un brano MP3");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("File Audio MP3", "*.mp3")
+        );
+
+        javafx.stage.Stage stage = (javafx.stage.Stage) titleField.getScene().getWindow();
+        File fileSelezionato = fileChooser.showOpenDialog(stage);
+
+        if (fileSelezionato != null) {
+            this.tempFilePath = fileSelezionato.getAbsolutePath();
+
+            String nomeFile = fileSelezionato.getName();
+            if(nomeFile.length() > 30) nomeFile = nomeFile.substring(0, 27) + "...";
+            filePathLabel.setText(nomeFile);
+
+            titleField.clear();
+            authorField.clear();
+            genreComboBox.getSelectionModel().clearSelection();
+
+            estraiDatiDaMp3(fileSelezionato);
+
+
+            setCampiBloccati(false);
+
+            if (currentSelectedTrack == null) {
+                addButton.setDisable(false);
+            }
+        }
+    }
+
+    private void estraiDatiDaMp3(File file) {
+        try {
+            Mp3File mp3file = new Mp3File(file.getAbsolutePath());
+
+            if (mp3file.getLengthInSeconds() > 0) {
+                durationSpinner.getValueFactory().setValue((int) mp3file.getLengthInSeconds());
+            }
+
+            if (mp3file.hasId3v2Tag()) {
+                ID3v2 tag = mp3file.getId3v2Tag();
+
+                if (tag.getTitle() != null && !tag.getTitle().trim().isEmpty()) {
+                    titleField.setText(tag.getTitle());
+                } else {
+                    titleField.setText(file.getName().replace(".mp3", ""));
+                }
+
+                if (tag.getArtist() != null && !tag.getArtist().trim().isEmpty()) {
+                    authorField.setText(tag.getArtist());
+                }
+
+                if (tag.getGenreDescription() != null) {
+                    genreComboBox.setValue(tag.getGenreDescription());
+                }
+
+                if (tag.getYear() != null && tag.getYear().length() >= 4) {
+                    try {
+                        int anno = Integer.parseInt(tag.getYear().substring(0, 4));
+                        yearSpinner.getValueFactory().setValue(anno);
+                    } catch (NumberFormatException ignored) {}
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Errore o file MP3 non valido: " + e.getMessage());
+        }
+    }
+
     @FXML
     void handleAddAction(ActionEvent event) {
         if (trackController == null) {
-            System.err.println("Errore: TrackController non iniettato nella View.");
             return;
         }
 
         try {
-            // Estrazione dei dati dai componenti grafici
             String title = titleField.getText();
             String author = authorField.getText();
             String genre = genreComboBox.getValue();
-
-            // Usiamo getValue() sapendo che ora gli spinner restituiscono Integer puliti
             int year = yearSpinner.getValue();
             int duration = durationSpinner.getValue();
 
-            // Chiamata al controller logico
-            trackController.addTrack(title, author, genre, year, duration);
+            trackController.addTrack(title, author, genre, year, duration, tempFilePath);
 
             System.out.println("Successo: Traccia aggiunta correttamente al catalogo.");
 
             javafx.stage.Stage stage = (javafx.stage.Stage) addButton.getScene().getWindow();
-            // Chiudiamo la finestra
             stage.close();
 
         } catch (IllegalArgumentException e) {
-            // Intercettiamo gli errori sollevati dalle regole di validazione di TrackImpl
             System.err.println("Errore di validazione nell'interfaccia: " + e.getMessage());
         }
     }
 
-
-
-
-
-
-
-
-
-
-    /**
-     * @brief Gestisce l'azione di clic sul bottone "Salva Modifiche".
-     *
-     * @param event L'evento di click generato dal bottone.
-     */
     @FXML
     void handleUpdateAction(ActionEvent event) {
         if (trackController == null || currentSelectedTrack == null) {
@@ -169,19 +178,15 @@ public class TrackFormViewController {
         }
 
         try {
-            // 1. Leggiamo i nuovi dati appena modificati dall'utente
             String newTitle = titleField.getText();
             String newAuthor = authorField.getText();
             String newGenre = genreComboBox.getValue();
             int newYear = yearSpinner.getValue();
             int newDuration = durationSpinner.getValue();
 
-            // 2. Passiamo al TrackController logico la vecchia traccia e i nuovi dati
             trackController.updateTrack(currentSelectedTrack, newTitle, newAuthor, newGenre, newYear, newDuration);
 
             System.out.println("Modifica completata con successo!");
-
-            // 3. Svuotiamo il form per tornare allo stato di inserimento
             clearFormFields();
 
         } catch (IllegalArgumentException e) {
@@ -189,60 +194,41 @@ public class TrackFormViewController {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-    /**
-     * @brief Svuota i campi di testo dell'interfaccia grafica e resetta lo stato.
-     */
     private void clearFormFields() {
         titleField.clear();
         authorField.clear();
         genreComboBox.getSelectionModel().clearSelection();
-
-        // Resettiamo gli spinner ai valori di default
         yearSpinner.getValueFactory().setValue(2024);
         durationSpinner.getValueFactory().setValue(180);
-
-        // Svuotiamo la memoria della traccia selezionata
         currentSelectedTrack = null;
+        tempFilePath = null;
+        filePathLabel.setText("Nessun file selezionato");
 
-        // Ripristiniamo i bottoni allo stato base
-        addButton.setDisable(false);
+        setCampiBloccati(true);
+        addButton.setDisable(true);
         updateButton.setDisable(true);
+        yearSpinner.getEditor().clear();
+        durationSpinner.getEditor().clear();
     }
 
-
-    /**
-     * @brief Popola il form con i dati di una traccia esistente.
-     *
-     * Viene chiamato dall'esterno (es. listener della lista tracce) quando l'utente
-     * seleziona un brano. Riempie i campi, salva la traccia in memoria e scambia
-     * l'abilitazione dei bottoni.
-     * * @param track La traccia selezionata da modificare o eliminare.
-     */
     public void populateFormForEdit(Track track) {
         this.currentSelectedTrack = track;
-
-        // Riempiamo i campi grafici con i dati dell'oggetto
         titleField.setText(track.getTitle());
         authorField.setText(track.getAuthor());
         genreComboBox.setValue(track.getGenre());
         yearSpinner.getValueFactory().setValue(track.getYear());
         durationSpinner.getValueFactory().setValue(track.getDuration());
 
-        // Disabilitiamo "Aggiungi" e abilitiamo "Salva Modifiche" ed "Elimina"
+        if(track.getFilePath() != null) {
+            File f = new File(track.getFilePath());
+            filePathLabel.setText(f.getName());
+        } else {
+            filePathLabel.setText("Nessun file associato");
+        }
+
+
+        setCampiBloccati(false);
         addButton.setDisable(true);
         updateButton.setDisable(false);
     }
-
-
-
 }

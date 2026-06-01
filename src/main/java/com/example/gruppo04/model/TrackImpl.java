@@ -18,6 +18,8 @@ public class TrackImpl implements Track {
         private String genre;
         private int year;
         private int duration;
+        private String filePath;
+
 
     /**
      * @brief Costruisce una nuova traccia assegnandole un UUID generato automaticamente.
@@ -28,14 +30,15 @@ public class TrackImpl implements Track {
      * @param duration La durata totale in secondi.
      *
      */
-        public TrackImpl(String title, String author, String genre, int year, int duration) {
-            this.id = UUID.randomUUID();
-            setTitle(title);
-            setAuthor(author);
-            setGenre(genre);
-            setYear(year);
-            setDuration(duration);
-        }
+    public TrackImpl(String title, String author, String genre, int year, int duration, String filePath) {
+        this.id = UUID.randomUUID();
+        setTitle(title);
+        setAuthor(author);
+        setGenre(genre);
+        setYear(year);
+        setDuration(duration);
+        this.filePath = filePath;
+    }
 
 
         @Override
@@ -151,6 +154,32 @@ public class TrackImpl implements Track {
                 ", year=" + year +
                 ", duration=" + duration +
                 '}';
+    }
+
+    /**
+     * @brief Recupera il percorso fisico del file audio associato alla traccia.
+     * * Questo metodo restituisce lo stato interno della variabile filePath,
+     * che rappresenta l'esatta locazione del file nel sistema operativo.
+     * È essenziale per il passaggio del file al motore del MediaPlayer.
+     * * @return Il percorso assoluto come stringa, oppure null se la traccia
+     * è stata creata solo testualmente senza file associato.
+     */
+    @Override
+    public String getFilePath() {
+        return this.filePath;
+    }
+
+
+    /**
+     * @brief Modifica o inizializza il percorso fisico del file audio.
+     * * Sovrascrive l'attuale locazione del file. Non applica validazioni
+     * sull'effettiva esistenza del file sul disco in questa fase, la
+     * responsabilità del controllo ricade su chi tenta di riprodurlo.
+     * * @param filePath La stringa contenente il nuovo percorso assoluto.
+     */
+    @Override
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     }

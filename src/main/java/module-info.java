@@ -4,7 +4,7 @@ module com.example.gruppo04 {
 
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
-
+    requires mp3agic;
     opens com.example.gruppo04 to javafx.fxml;
     // Allow JavaFX modules to reflectively access model classes (PropertyValueFactory)
     opens com.example.gruppo04.model to javafx.base, javafx.fxml;
