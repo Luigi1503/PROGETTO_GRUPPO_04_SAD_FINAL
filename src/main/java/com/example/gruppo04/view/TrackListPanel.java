@@ -44,7 +44,7 @@ public class TrackListPanel implements CatalogObserver {
     @FXML
     private TextField searchField;
     @FXML
-    private Button addTrackButton;
+    private Button addTrackBtn;
 
     private final ObservableList<Track> tableModel = FXCollections.observableArrayList();
 
@@ -69,8 +69,8 @@ public class TrackListPanel implements CatalogObserver {
     @FXML
     public void initialize() {
         trackTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-        if (addTrackButton != null) {
-            addTrackButton.setOnAction(event -> onAddTrackButtonClicked());
+        if (addTrackBtn != null) {
+            addTrackBtn.setOnAction(event -> onAddTrackButtonClicked());
         }
         configureColumns();
 
