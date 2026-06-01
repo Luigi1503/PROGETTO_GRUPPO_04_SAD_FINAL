@@ -73,6 +73,8 @@ public class TrackListViewController implements CatalogObserver {
     public void init(TrackController controller, MusicCatalog catalog) {
         this.controller = controller;
         this.catalog = catalog;
+        // La View si iscrive al Model (Subject) per osservare i cambiamenti
+        this.catalog.registerObserver(this);
         registerCatalogObserver();
         reloadTableData();
     }
@@ -130,7 +132,6 @@ public class TrackListViewController implements CatalogObserver {
             }
         });
 
-        reloadTableData();
     }
 
     private void configureColumns() {

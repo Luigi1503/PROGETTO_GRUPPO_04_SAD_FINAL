@@ -115,9 +115,9 @@ public class MainViewController implements CatalogObserver {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/example/gruppo04/Views/track_list_view.fxml"));
-            loader.setControllerFactory(c ->
-                    new TrackListViewController(trackController, catalog));
             Node view = loader.load();
+            TrackListViewController controller = loader.getController();
+            controller.init(trackController, catalog);
             setContent(view);
             setActiveButton(btnAllTracks);
         } catch (IOException e) {
@@ -131,14 +131,12 @@ public class MainViewController implements CatalogObserver {
      */
     private void showPlaylists() {
         try {
-            PlaylistViewController playlistViewController =
-                    new PlaylistViewController(playlistController, catalog);
-
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/example/gruppo04/Views/PlaylistView.fxml"));
-            loader.setController(playlistViewController);
             Node view = loader.load();
-            playlistViewController.setOnPlaylistSelected(this::showPlaylistDetail);
+            PlaylistViewController controller = loader.getController();
+            controller.init(playlistController, catalog);
+            controller.setOnPlaylistSelected(this::showPlaylistDetail);
             setContent(view);
             setActiveButton(btnPlaylists);
         } catch (IOException e) {
