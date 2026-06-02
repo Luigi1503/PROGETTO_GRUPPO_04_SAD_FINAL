@@ -36,7 +36,7 @@
             <!-- barra ricerca -->
             <HBox alignment="CENTER_LEFT" spacing="8">
                 <padding><Insets top="10" /></padding>
-                <TextField fx:id="searchField" maxWidth="400" promptText="Cerca per titolo, artista, genere..." style="-fx-background-color: #1B2A2F;                            -fx-text-fill: #E8EDF0;                            -fx-prompt-text-fill: #4A6468;                            -fx-background-radius: 7;                            -fx-border-color: #2C3E40;                            -fx-border-radius: 7;                            -fx-border-width: 1;                            -fx-padding: 7 12 7 12;                            -fx-font-size: 13px;" HBox.hgrow="ALWAYS" />
+                <TextField fx:id="searchField" maxWidth="400" promptText="Cerca per titolo, artista, genere..." style="-fx-background-color: #1B2A2F;                            -fx-text-fill: #E8EDF0;                            -fx-prompt-text-fill: #4A6468;                            -fx-background-radius: 7;                            -fx-border-color: #2C3E40;                            -fx-border-radius: 7;                            -fx-border-width: 1;                            -fx-padding: 7 12 7 12;                            -fx-font-size: 13px;" visible="false" HBox.hgrow="ALWAYS" />
             </HBox>
         </VBox>
     </top>
@@ -46,7 +46,6 @@
         <TableView fx:id="trackTable" style="-fx-background-color: transparent;                    -fx-table-cell-border-color: transparent;                    -fx-table-header-border-color: transparent;                    -fx-border-color: transparent;                    -fx-control-inner-background: transparent;                    -fx-padding: 0;">
 
             <columns>
-                <TableColumn fx:id="indexCol" maxWidth="40" minWidth="40" prefWidth="40" sortable="false" style="-fx-alignment: CENTER;" text="#" />
 
                 <TableColumn fx:id="titleCol" prefWidth="260" text="TITOLO" />
 
@@ -57,20 +56,16 @@
                 <TableColumn fx:id="genreCol" prefWidth="130" text="GENERE" />
 
                 <TableColumn fx:id="durationCol" prefWidth="70" style="-fx-alignment: CENTER_RIGHT;" text="DURATA" />
-
-                <TableColumn fx:id="tagsCol" maxWidth="60" minWidth="60" prefWidth="60" sortable="false" style="-fx-alignment: CENTER;" text="" />
-
-                <TableColumn fx:id="actionsCol" maxWidth="40" minWidth="40" prefWidth="40" sortable="false" style="-fx-alignment: CENTER;" text="" />
             </columns>
 
             <!-- context menu -->
             <contextMenu>
                 <ContextMenu style="-fx-background-color: #1B2A2F;                                     -fx-background-radius: 8;                                     -fx-border-color: #2C3E40;                                     -fx-border-radius: 8;                                     -fx-border-width: 1;                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);                                     -fx-padding: 4 0 4 0;">
                     <items>
-                        <MenuItem fx:id="menuPlay" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora" />
-                        <MenuItem fx:id="menuFav" style="-fx-text-fill: #E8EDF0;" text="☆   Aggiungi ai preferiti" />
-                        <MenuItem fx:id="menuMove" style="-fx-text-fill: #E8EDF0;" text="↕   Sposta su / giù" />
-                        <SeparatorMenuItem />
+                        <MenuItem fx:id="menuPlay" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora" visible="false" />
+                        <MenuItem fx:id="menuFav" style="-fx-text-fill: #E8EDF0;" text="☆   Aggiungi ai preferiti" visible="false" />
+                        <MenuItem fx:id="menuMove" style="-fx-text-fill: #E8EDF0;" text="↕   Sposta su / giù" visible="false" />
+                        <SeparatorMenuItem visible="false" />
                         <MenuItem fx:id="menuRemove" onAction="#onDeleteButtonClicked" style="-fx-text-fill: #E05555;" text="✕   Rimuovi traccia" />
                         <MenuItem fx:id="menuEdit" style="-fx-text-fill: #E8EDF0;" text="✏   Modifica traccia" />
                     </items>

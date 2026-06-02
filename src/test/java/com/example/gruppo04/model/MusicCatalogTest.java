@@ -1,9 +1,8 @@
-package com.example.gruppo04.test;
+package com.example.gruppo04.model;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
-import com.example.gruppo04.model.*;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogEventType;

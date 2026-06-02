@@ -6,10 +6,10 @@ import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.controller.TrackController;
 
+import com.example.gruppo04.util.TrackFormatter;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,8 +41,6 @@ public class TrackListViewController implements CatalogObserver {
     private TableColumn<Track, String> genreCol;
     @FXML
     private Label statusLabel;
-    @FXML
-    private TextField searchField;
     @FXML
     private Button addTrackBtn;
     @FXML
@@ -96,24 +94,8 @@ public class TrackListViewController implements CatalogObserver {
         // La View si iscrive al Model (Subject) per osservare i cambiamenti
         registerCatalogObserver();
 
-        FilteredList<Track> filtered = new FilteredList<>(tableModel, t -> true);
-        if (searchField != null) {
-            searchField.textProperty().addListener((obs, oldVal, newVal) -> {
-                String text = newVal == null ? "" : newVal.trim().toLowerCase();
-                if (text.isEmpty()) {
-                    filtered.setPredicate(t -> true);
-                } else {
-                    filtered.setPredicate(t -> {
-                        if (t.getTitle() != null && t.getTitle().toLowerCase().contains(text)) return true;
-                        if (t.getAuthor() != null && t.getAuthor().toLowerCase().contains(text)) return true;
-                        if (t.getGenre() != null && t.getGenre().toLowerCase().contains(text)) return true;
-                        return false;
-                    });
-                }
-            });
-        }
-
-        SortedList<Track> sorted = new SortedList<>(filtered);
+        // Collega direttamente la SortedList alla tableModel (senza passare dal filtro)
+        SortedList<Track> sorted = new SortedList<>(tableModel);
         sorted.comparatorProperty().bind(trackTable.comparatorProperty());
         trackTable.setItems(sorted);
 
@@ -131,13 +113,25 @@ public class TrackListViewController implements CatalogObserver {
                 }
             }
         });
-
     }
 
     private void configureColumns() {
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         artistCol.setCellValueFactory(new PropertyValueFactory<>("author"));
+
         durationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        durationCol.setCellFactory(column -> new TableCell<Track, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(TrackFormatter.formatDuration(item));
+                }
+            }
+        });
+
         yearCol.setCellValueFactory(new PropertyValueFactory<>("year"));
         genreCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
     }
@@ -149,8 +143,6 @@ public class TrackListViewController implements CatalogObserver {
 
         tableModel.clear();
         tableModel.addAll(catalog.getAllTracks());
-
-        int count = tableModel.size();
     }
 
     private void registerCatalogObserver() {
@@ -168,13 +160,11 @@ public class TrackListViewController implements CatalogObserver {
     private void onDeleteButtonClicked() {
         Track selected = trackTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            // Delega formale al controller passandogli l'ID della risorsa
             controller.removeTrack(selected);
         } else {
             showError("Seleziona prima una traccia da eliminare.");
         }
     }
-
 
     public void showError(String messaggio) {
         new Alert(Alert.AlertType.ERROR, messaggio).showAndWait();
@@ -251,9 +241,4 @@ public class TrackListViewController implements CatalogObserver {
             showError("Impossibile aprire la finestra di modifica: " + e.getMessage());
         }
     }
-
-
-    
-
-
 }
