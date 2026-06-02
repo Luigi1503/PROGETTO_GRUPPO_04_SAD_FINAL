@@ -1,0 +1,5 @@
+<map id="Grafico della gerarchia delle classi" name="Grafico della gerarchia delle classi">
+<area shape="rect" id="Node000000" href="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist.html" title="Rappresenta una playlist: una collezione ordinata di tracce, priva di duplicati, identificata in modo..." alt="" coords="5,5,227,46"/>
+<area shape="rect" id="Node000001" href="$classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl.html" title=" " alt="" coords="275,5,474,46"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="242,23,274,23,274,28,242,28"/>
+</map>

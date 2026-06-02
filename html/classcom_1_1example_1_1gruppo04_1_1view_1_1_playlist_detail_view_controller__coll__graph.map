@@ -1,0 +1,16 @@
+<map id="com.example.gruppo04.view.PlaylistDetailViewController" name="com.example.gruppo04.view.PlaylistDetailViewController">
+<area shape="rect" id="Node000001" title="Controller JavaFX del pannello di dettaglio di una playlist." alt="" coords="475,778,653,1205"/>
+<area shape="rect" id="Node000002" href="$interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer.html" title="Interfaccia che deve essere implementata da qualsiasi componente (View o Controller) che necessiti di..." alt="" coords="5,503,208,585"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,595,177,650,222,705,284,767,351,826,477,925,473,929,348,830,281,771,218,708,173,653,136,598"/>
+<area shape="rect" id="Node000003" href="$classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html" title="Controller (MVC) per la gestione delle playlist." alt="" coords="232,452,438,636"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="383,634,469,800,464,803,379,637"/>
+<area shape="rect" id="Node000004" href="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html" title=" " alt="" coords="344,5,555,310"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="407,311,369,437,364,436,402,309"/>
+<area shape="rect" id="Node000005" href="$classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller.html" title="Controller deputato alla gestione del ciclo di vita delle tracce musicali." alt="" coords="461,463,667,625"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="497,309,538,446,533,447,492,311"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="567,625,567,761,561,761,561,625"/>
+<area shape="rect" id="Node000006" href="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist.html" title="Rappresenta una playlist: una collezione ordinata di tracce, priva di duplicati, identificata in modo..." alt="" coords="691,463,901,625"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="757,627,664,805,659,802,752,624"/>
+<area shape="rect" id="Node000007" href="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html" title="Rappresenta il contratto per una traccia musicale all&#39;interno del sistema." alt="" coords="925,381,1136,707"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="927,695,915,709,855,768,791,824,668,920,665,916,787,820,851,764,911,705,923,692"/>
+</map>

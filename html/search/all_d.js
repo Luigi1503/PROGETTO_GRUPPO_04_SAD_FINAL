@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['playlist_0',['Playlist',['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist.html',1,'com::example::gruppo04::interfaces']]],
+  ['playlist_2ejava_1',['Playlist.java',['../_playlist_8java.html',1,'']]],
+  ['playlist_5fadded_2',['PLAYLIST_ADDED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#ae2dcd7639e2b1c45aaa5642736410332',1,'com::example::gruppo04::observer::CatalogEventType']]],
+  ['playlist_5fcontent_5fchanged_3',['PLAYLIST_CONTENT_CHANGED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#a621fe5a75bb5f0d30498565b30ac85e0',1,'com::example::gruppo04::observer::CatalogEventType']]],
+  ['playlist_5fremoved_4',['PLAYLIST_REMOVED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#a6191310152f17218c77ace6c36abc2f9',1,'com::example::gruppo04::observer::CatalogEventType']]],
+  ['playlist_5frenamed_5',['PLAYLIST_RENAMED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#a66353758b21cf5046d956741af5b717a',1,'com::example::gruppo04::observer::CatalogEventType']]],
+  ['playlist_5freordered_6',['PLAYLIST_REORDERED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#ab91bd7ac1297796d87cb9261d1747ee7',1,'com::example::gruppo04::observer::CatalogEventType']]],
+  ['playlist_5ftrack_5fadded_7',['PLAYLIST_TRACK_ADDED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#af529493e357e6f951248d7be1ff0fe73',1,'com::example::gruppo04::observer::CatalogEventType']]],
+  ['playlist_5ftrack_5fremoved_8',['PLAYLIST_TRACK_REMOVED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#afa2ae1ece338fade17639896e1c33fa0',1,'com::example::gruppo04::observer::CatalogEventType']]],
+  ['playlistcontroller_9',['PlaylistController',['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html',1,'com.example.gruppo04.controller.PlaylistController'],['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html#a13078ac07a5fe5f7ca270a1c52998f4b',1,'com.example.gruppo04.controller.PlaylistController.PlaylistController()']]],
+  ['playlistcontroller_10',['playlistController',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#a01328c42866fdadd8a36b9118eeb0052',1,'com.example.gruppo04.view.MainViewController.playlistController'],['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#a4e73d3b98a0ff9c7af4175f4284a1278',1,'com.example.gruppo04.view.PlaylistDetailViewController.playlistController'],['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html#a223cc042158a7f91a19fcc12666ceb89',1,'com.example.gruppo04.view.PlaylistViewController.playlistController']]],
+  ['playlistcontroller_2ejava_11',['PlaylistController.java',['../_playlist_controller_8java.html',1,'']]],
+  ['playlistcontrollertest_2ejava_12',['PlaylistControllerTest.java',['../_playlist_controller_test_8java.html',1,'']]],
+  ['playlistdetailviewcontroller_13',['PlaylistDetailViewController',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html',1,'com::example::gruppo04::view']]],
+  ['playlistdetailviewcontroller_2ejava_14',['PlaylistDetailViewController.java',['../_playlist_detail_view_controller_8java.html',1,'']]],
+  ['playlistgrid_15',['playlistGrid',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html#ad06d6cb5395192486207c382765d0413',1,'com::example::gruppo04::view::PlaylistViewController']]],
+  ['playlistimpl_16',['PlaylistImpl',['../classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl.html',1,'com.example.gruppo04.model.PlaylistImpl'],['../classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl.html#a496787183bb265179055cdcc23154d95',1,'com.example.gruppo04.model.PlaylistImpl.PlaylistImpl()']]],
+  ['playlistimpl_2ejava_17',['PlaylistImpl.java',['../_playlist_impl_8java.html',1,'']]],
+  ['playlistimpltest_2ejava_18',['PlaylistImplTest.java',['../_playlist_impl_test_8java.html',1,'']]],
+  ['playlists_19',['playlists',['../classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog.html#a78adc13be669b705e25a027bd8b1d4bf',1,'com::example::gruppo04::observer::ConcreteMusicCatalog']]],
+  ['playlistviewcontroller_20',['PlaylistViewController',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html',1,'com::example::gruppo04::view']]],
+  ['playlistviewcontroller_2ejava_21',['PlaylistViewController.java',['../_playlist_view_controller_8java.html',1,'']]],
+  ['populateformforedit_22',['populateFormForEdit',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller.html#ab36d4b8cc411e851d22aa27007230c03',1,'com::example::gruppo04::view::TrackFormViewController']]]
+];

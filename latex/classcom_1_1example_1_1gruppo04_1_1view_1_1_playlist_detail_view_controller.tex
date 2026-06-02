@@ -1,0 +1,337 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+
+
+Controller Java\+FX del pannello di dettaglio di una playlist.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a1f8936b728918db198625a0d2695ce32}{init}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a4e73d3b98a0ff9c7af4175f4284a1278}{playlist\+Controller}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a248299eddf833e268958be0dfafa1acf}{track\+Controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog)
+\begin{DoxyCompactList}\small\item\em Inizializza il pannello con la playlist selezionata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a99c0a05ac295c85ecf61e8cb0554b682}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Chiamato dal catalogo quando si verifica un cambiamento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ae73d0684c4c2c5092b83e67e71bf95b1}{update\+View}} ()
+\begin{DoxyCompactList}\small\item\em Aggiorna la vista con i dati aggiornati della playlist corrente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a2428fc1c8a6eb67f2546b8ef7db82793}{setup\+Columns}} ()
+\begin{DoxyCompactList}\small\item\em Configura le cell\+Value\+Factory di ogni colonna. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_af0564d35bbee7929dde3e8c8b8c8a85c}{calculate\+Total\+Duration}} (Observable\+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ tracks)
+\begin{DoxyCompactList}\small\item\em Calcola la durata totale della playlist in minuti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+Table\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a542ea0b1f9599f3c3ea6ec991375249a}{table\+Tracks}}
+\begin{DoxyCompactList}\small\item\em Tabella che mostra le tracce contenute nella playlist corrente. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a87f38fd1bed43b8134066e55984e4289}{col\+Title}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra il titolo di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a3851cc9e7b9e721a74d5a018a088c4ca}{col\+Author}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra l\textquotesingle{}autore di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a002a2ca4a8067e63e92808575267f84f}{col\+Year}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra l\textquotesingle{}anno di pubblicazione di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_abf32668d22e36734e5ced2c78e605565}{col\+Genre}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra il genere musicale di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ad90a190cb81c026dfc12b703d5a45127}{col\+Duration}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra la durata di ogni traccia nel formato mm\+:ss. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a5f591554ee2be4d8baf9e65784776b49}{btn\+Remove\+Track}}
+\begin{DoxyCompactList}\small\item\em Pulsante per rimuovere la traccia selezionata dalla playlist. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_aa3f3ffddc9f4cdb93e4e9b64d0c16806}{label\+Name\+Playlist}}
+\begin{DoxyCompactList}\small\item\em Label che mostra il nome della playlist corrente. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a8d9e2e109cef1a2a44af8881887d30a9}{label\+Num\+Tracks}}
+\begin{DoxyCompactList}\small\item\em Label che mostra il numero di tracce presenti nella playlist. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ab9a11b8c9f53d9c84252e43ea996924c}{label\+Total\+Duration}}
+\begin{DoxyCompactList}\small\item\em Label che mostra la durata totale di tutte le tracce della playlist in minuti. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a4e73d3b98a0ff9c7af4175f4284a1278}{playlist\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller MVC delle playlist, usato per aggiungere e rimuovere tracce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a248299eddf833e268958be0dfafa1acf}{track\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller MVC delle tracce, usato per recuperare le tracce disponibili. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a68b122e7c6a9bdc6d8f252d390bf01fe}{current\+Playlist}}
+\begin{DoxyCompactList}\small\item\em \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist} attualmente visualizzata nel pannello. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a98a436a0e919fb68916d8bb1fdc69478}{selected\+Track}}
+\begin{DoxyCompactList}\small\item\em Traccia attualmente selezionata nella tabella. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final Logger \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a5705dbdc6b186344fe5b0bb56354c4b3}{logger}}
+\begin{DoxyCompactList}\small\item\em Logger per la gestione degli errori di caricamento delle view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Controller Java\+FX del pannello di dettaglio di una playlist. 
+
+Mostra le tracce contenute nella playlist corrente e permette di aggiungerne o rimuoverne tramite \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}. Implementa \doxylink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer} (è un Concrete\+Observer) per aggiornarsi automaticamente quando il catalogo cambia. 
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_af0564d35bbee7929dde3e8c8b8c8a85c}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!calculateTotalDuration@{calculateTotalDuration}}
+\index{calculateTotalDuration@{calculateTotalDuration}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{calculateTotalDuration()}{calculateTotalDuration()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_af0564d35bbee7929dde3e8c8b8c8a85c} 
+int com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+calculate\+Total\+Duration (\begin{DoxyParamCaption}\item[{Observable\+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{tracks}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calcola la durata totale della playlist in minuti. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em tracks} & la lista delle tracce \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+durata totale in minuti 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a1f8936b728918db198625a0d2695ce32}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!init@{init}}
+\index{init@{init}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a1f8936b728918db198625a0d2695ce32} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{track\+Controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza il pannello con la playlist selezionata. 
+
+Registra questo controller come Observer del catalogo. Da chiamare dopo il caricamento dell\textquotesingle{}FXML.
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist da visualizzare \\
+\hline
+{\em playlist\+Controller} & il controller MVC delle playlist \\
+\hline
+{\em track\+Controller} & il controller MVC delle tracce \\
+\hline
+{\em catalog} & il catalogo musicale, usato per la registrazione dell\textquotesingle{}Observer \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a99c0a05ac295c85ecf61e8cb0554b682}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!onCatalogChanged@{onCatalogChanged}}
+\index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a99c0a05ac295c85ecf61e8cb0554b682} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+on\+Catalog\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Chiamato dal catalogo quando si verifica un cambiamento. 
+
+Aggiorna la vista se l\textquotesingle{}evento riguarda le tracce della playlist corrente.
+
+
+\begin{DoxyParams}{Parametri}
+{\em event} & l\textquotesingle{}evento contenente i dettagli del cambiamento \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer_a36eb26536a7687957f477934bdafbfb0}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a2428fc1c8a6eb67f2546b8ef7db82793}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!setupColumns@{setupColumns}}
+\index{setupColumns@{setupColumns}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{setupColumns()}{setupColumns()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a2428fc1c8a6eb67f2546b8ef7db82793} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+setup\+Columns (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Configura le cell\+Value\+Factory di ogni colonna. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ae73d0684c4c2c5092b83e67e71bf95b1}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!updateView@{updateView}}
+\index{updateView@{updateView}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{updateView()}{updateView()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ae73d0684c4c2c5092b83e67e71bf95b1} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+update\+View (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Aggiorna la vista con i dati aggiornati della playlist corrente. 
+
+Chiamato automaticamente dall\textquotesingle{}Observer quando il catalogo cambia. 
+
+\label{doc-variable-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a5f591554ee2be4d8baf9e65784776b49}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!btnRemoveTrack@{btnRemoveTrack}}
+\index{btnRemoveTrack@{btnRemoveTrack}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{btnRemoveTrack}{btnRemoveTrack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a5f591554ee2be4d8baf9e65784776b49} 
+Button com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+btn\+Remove\+Track\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante per rimuovere la traccia selezionata dalla playlist. 
+
+Disabilitato se nessuna traccia è selezionata. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a3851cc9e7b9e721a74d5a018a088c4ca}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!colAuthor@{colAuthor}}
+\index{colAuthor@{colAuthor}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{colAuthor}{colAuthor}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a3851cc9e7b9e721a74d5a018a088c4ca} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+col\+Author\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra l\textquotesingle{}autore di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ad90a190cb81c026dfc12b703d5a45127}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!colDuration@{colDuration}}
+\index{colDuration@{colDuration}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{colDuration}{colDuration}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ad90a190cb81c026dfc12b703d5a45127} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+col\+Duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra la durata di ogni traccia nel formato mm\+:ss. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_abf32668d22e36734e5ced2c78e605565}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!colGenre@{colGenre}}
+\index{colGenre@{colGenre}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{colGenre}{colGenre}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_abf32668d22e36734e5ced2c78e605565} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+col\+Genre\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra il genere musicale di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a87f38fd1bed43b8134066e55984e4289}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!colTitle@{colTitle}}
+\index{colTitle@{colTitle}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{colTitle}{colTitle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a87f38fd1bed43b8134066e55984e4289} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+col\+Title\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra il titolo di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a002a2ca4a8067e63e92808575267f84f}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!colYear@{colYear}}
+\index{colYear@{colYear}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{colYear}{colYear}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a002a2ca4a8067e63e92808575267f84f} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+col\+Year\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra l\textquotesingle{}anno di pubblicazione di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a68b122e7c6a9bdc6d8f252d390bf01fe}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!currentPlaylist@{currentPlaylist}}
+\index{currentPlaylist@{currentPlaylist}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{currentPlaylist}{currentPlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a68b122e7c6a9bdc6d8f252d390bf01fe} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+current\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist} attualmente visualizzata nel pannello. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_aa3f3ffddc9f4cdb93e4e9b64d0c16806}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!labelNamePlaylist@{labelNamePlaylist}}
+\index{labelNamePlaylist@{labelNamePlaylist}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{labelNamePlaylist}{labelNamePlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_aa3f3ffddc9f4cdb93e4e9b64d0c16806} 
+Label com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+label\+Name\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra il nome della playlist corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a8d9e2e109cef1a2a44af8881887d30a9}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!labelNumTracks@{labelNumTracks}}
+\index{labelNumTracks@{labelNumTracks}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{labelNumTracks}{labelNumTracks}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a8d9e2e109cef1a2a44af8881887d30a9} 
+Label com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+label\+Num\+Tracks\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra il numero di tracce presenti nella playlist. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ab9a11b8c9f53d9c84252e43ea996924c}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!labelTotalDuration@{labelTotalDuration}}
+\index{labelTotalDuration@{labelTotalDuration}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{labelTotalDuration}{labelTotalDuration}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_ab9a11b8c9f53d9c84252e43ea996924c} 
+Label com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+label\+Total\+Duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra la durata totale di tutte le tracce della playlist in minuti. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a5705dbdc6b186344fe5b0bb56354c4b3}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!logger@{logger}}
+\index{logger@{logger}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a5705dbdc6b186344fe5b0bb56354c4b3} 
+final Logger com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+logger\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Logger.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller}{PlaylistDetailViewController}}.class.getName())}
+
+\end{DoxyCode}
+
+
+Logger per la gestione degli errori di caricamento delle view. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a4e73d3b98a0ff9c7af4175f4284a1278}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!playlistController@{playlistController}}
+\index{playlistController@{playlistController}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{playlistController}{playlistController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a4e73d3b98a0ff9c7af4175f4284a1278} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+playlist\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller MVC delle playlist, usato per aggiungere e rimuovere tracce. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a98a436a0e919fb68916d8bb1fdc69478}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!selectedTrack@{selectedTrack}}
+\index{selectedTrack@{selectedTrack}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{selectedTrack}{selectedTrack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a98a436a0e919fb68916d8bb1fdc69478} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+selected\+Track\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Traccia attualmente selezionata nella tabella. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a542ea0b1f9599f3c3ea6ec991375249a}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!tableTracks@{tableTracks}}
+\index{tableTracks@{tableTracks}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{tableTracks}{tableTracks}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a542ea0b1f9599f3c3ea6ec991375249a} 
+Table\+View$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+table\+Tracks\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tabella che mostra le tracce contenute nella playlist corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a248299eddf833e268958be0dfafa1acf}\index{com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}!trackController@{trackController}}
+\index{trackController@{trackController}!com.example.gruppo04.view.PlaylistDetailViewController@{com.example.gruppo04.view.PlaylistDetailViewController}}
+\doxysubsubsection{\texorpdfstring{trackController}{trackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller_a248299eddf833e268958be0dfafa1acf} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} com.\+example.\+gruppo04.\+view.\+Playlist\+Detail\+View\+Controller.\+track\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller MVC delle tracce, usato per recuperare le tracce disponibili. 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_playlist_detail_view_controller_8java}{Playlist\+Detail\+View\+Controller.\+java}}\end{DoxyCompactItemize}

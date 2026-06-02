@@ -1,0 +1,285 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+
+
+Rappresenta la componente View secondo il pattern MVC.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_abb3274163e0c539da948afc99280cfbe}{Track\+List\+View\+Controller}} ()
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a128847b6cc0634491ccbf800c931c5a6}{Track\+List\+View\+Controller}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ac6f0de22987214586c61ff078aa5d595}{controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ad1fba5e46b510f76d10fbf70e1ee6889}{catalog}})
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a021c686dbc16d16d76591f0652289b0c}{init}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ac6f0de22987214586c61ff078aa5d595}{controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ad1fba5e46b510f76d10fbf70e1ee6889}{catalog}})
+\begin{DoxyCompactList}\small\item\em Inizializza la View assegnando le dipendenze necessarie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_adf9f0e2755842dfe86d0034e158bc986}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Inizializzazione della View post-\/caricamento FXML. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a367a6a732eba16b64401a36d46786f18}{show\+Error}} (String messaggio)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a3edc3be1e0a7b93701a63c6705295280}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Metodo di callback invocato dal Subject quando si verifica una mutazione del modello. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a850c4cbf6fac267a6151b3552cf5d283}{configure\+Columns}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a209cbafc658eb36a59d3c9a43c2d3fb7}{reload\+Table\+Data}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a385e37645fc2a8bd575c14abac51f17c}{register\+Catalog\+Observer}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ab79ec187937405b2432043548f5ac243}{on\+Delete\+Button\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Intercetta l\textquotesingle{}evento grafico di eliminazione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a6cdcea5110700ed6be33ad04b5dfe1c5}{on\+Add\+Track\+Button\+Clicked}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4c582a774fec03e11b5f9e87e42a937a}{on\+Edit\+Track\+Button\+Clicked}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+Table\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ae57b5e42399b49708799f0e652c7989b}{track\+Table}}
+\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4d8e2de0e9a901a822bfa0a8283c42d5}{title\+Col}}
+\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4de575d7adee01133a8ee47cbe9fe92c}{artist\+Col}}
+\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ab309cfc5d76eabac1e2be4dc4b89c9cc}{duration\+Col}}
+\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a15dc63b526f68cfb7a7a5d7daa723a27}{year\+Col}}
+\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ae96461df9f40bcff62a92335d0b5a1b5}{genre\+Col}}
+\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a7743a8bddd4fd4e475ce30e066149d36}{add\+Track\+Btn}}
+\item 
+Menu\+Item \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_afeed724fe29b3e744f680d51f0a2c7bd}{menu\+Edit}}
+\item 
+final Observable\+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_affe7133635d0daccab8a4db8b47e3630}{table\+Model}} = FXCollections.\+observable\+Array\+List()
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ac6f0de22987214586c61ff078aa5d595}{controller}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ad1fba5e46b510f76d10fbf70e1ee6889}{catalog}}
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4f87d74add88ae98290a7da3292827df}{observer\+Registered}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Rappresenta la componente View secondo il pattern MVC. 
+
+Si occupa esclusivamente della presentazione visiva e dell\textquotesingle{}aggiornamento dei nodi grafici iniettati dall\textquotesingle{}FXML. Implementa {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}} per reagire alle variazioni del Model. 
+
+\label{doc-constructors}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_doc-constructors}
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_abb3274163e0c539da948afc99280cfbe}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!TrackListViewController@{TrackListViewController}}
+\index{TrackListViewController@{TrackListViewController}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{TrackListViewController()}{TrackListViewController()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_abb3274163e0c539da948afc99280cfbe} 
+com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+Track\+List\+View\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a128847b6cc0634491ccbf800c931c5a6}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!TrackListViewController@{TrackListViewController}}
+\index{TrackListViewController@{TrackListViewController}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{TrackListViewController()}{TrackListViewController()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a128847b6cc0634491ccbf800c931c5a6} 
+com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+Track\+List\+View\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a850c4cbf6fac267a6151b3552cf5d283}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!configureColumns@{configureColumns}}
+\index{configureColumns@{configureColumns}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{configureColumns()}{configureColumns()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a850c4cbf6fac267a6151b3552cf5d283} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+configure\+Columns (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a021c686dbc16d16d76591f0652289b0c}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!init@{init}}
+\index{init@{init}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a021c686dbc16d16d76591f0652289b0c} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza la View assegnando le dipendenze necessarie. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em controller} & il controller a cui la View delega la gestione delle azioni dell\textquotesingle{}utente \\
+\hline
+{\em catalog} & il catalogo musicale da cui la View legge lo stato dell\textquotesingle{}applicazione in sola lettura \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_adf9f0e2755842dfe86d0034e158bc986}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!initialize@{initialize}}
+\index{initialize@{initialize}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_adf9f0e2755842dfe86d0034e158bc986} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inizializzazione della View post-\/caricamento FXML. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a6cdcea5110700ed6be33ad04b5dfe1c5}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!onAddTrackButtonClicked@{onAddTrackButtonClicked}}
+\index{onAddTrackButtonClicked@{onAddTrackButtonClicked}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{onAddTrackButtonClicked()}{onAddTrackButtonClicked()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a6cdcea5110700ed6be33ad04b5dfe1c5} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+on\+Add\+Track\+Button\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a3edc3be1e0a7b93701a63c6705295280}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!onCatalogChanged@{onCatalogChanged}}
+\index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a3edc3be1e0a7b93701a63c6705295280} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+on\+Catalog\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Metodo di callback invocato dal Subject quando si verifica una mutazione del modello. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em event} & l\textquotesingle{}evento contenente tutti i dettagli del cambiamento strutturale \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer_a36eb26536a7687957f477934bdafbfb0}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ab79ec187937405b2432043548f5ac243}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!onDeleteButtonClicked@{onDeleteButtonClicked}}
+\index{onDeleteButtonClicked@{onDeleteButtonClicked}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{onDeleteButtonClicked()}{onDeleteButtonClicked()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ab79ec187937405b2432043548f5ac243} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+on\+Delete\+Button\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Intercetta l\textquotesingle{}evento grafico di eliminazione. 
+
+In MVC puro, la View NON modifica il modello, ma delega l\textquotesingle{}azione al Controller. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4c582a774fec03e11b5f9e87e42a937a}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!onEditTrackButtonClicked@{onEditTrackButtonClicked}}
+\index{onEditTrackButtonClicked@{onEditTrackButtonClicked}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{onEditTrackButtonClicked()}{onEditTrackButtonClicked()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4c582a774fec03e11b5f9e87e42a937a} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+on\+Edit\+Track\+Button\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a385e37645fc2a8bd575c14abac51f17c}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!registerCatalogObserver@{registerCatalogObserver}}
+\index{registerCatalogObserver@{registerCatalogObserver}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{registerCatalogObserver()}{registerCatalogObserver()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a385e37645fc2a8bd575c14abac51f17c} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+register\+Catalog\+Observer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a209cbafc658eb36a59d3c9a43c2d3fb7}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!reloadTableData@{reloadTableData}}
+\index{reloadTableData@{reloadTableData}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{reloadTableData()}{reloadTableData()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a209cbafc658eb36a59d3c9a43c2d3fb7} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+reload\+Table\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a367a6a732eba16b64401a36d46786f18}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!showError@{showError}}
+\index{showError@{showError}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{showError()}{showError()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a367a6a732eba16b64401a36d46786f18} 
+void com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+show\+Error (\begin{DoxyParamCaption}\item[{String}]{messaggio}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a7743a8bddd4fd4e475ce30e066149d36}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!addTrackBtn@{addTrackBtn}}
+\index{addTrackBtn@{addTrackBtn}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{addTrackBtn}{addTrackBtn}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a7743a8bddd4fd4e475ce30e066149d36} 
+Button com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+add\+Track\+Btn\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4de575d7adee01133a8ee47cbe9fe92c}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!artistCol@{artistCol}}
+\index{artistCol@{artistCol}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{artistCol}{artistCol}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4de575d7adee01133a8ee47cbe9fe92c} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+artist\+Col\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ad1fba5e46b510f76d10fbf70e1ee6889}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ad1fba5e46b510f76d10fbf70e1ee6889} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ac6f0de22987214586c61ff078aa5d595}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!controller@{controller}}
+\index{controller@{controller}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ac6f0de22987214586c61ff078aa5d595} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ab309cfc5d76eabac1e2be4dc4b89c9cc}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!durationCol@{durationCol}}
+\index{durationCol@{durationCol}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{durationCol}{durationCol}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ab309cfc5d76eabac1e2be4dc4b89c9cc} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+duration\+Col\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ae96461df9f40bcff62a92335d0b5a1b5}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!genreCol@{genreCol}}
+\index{genreCol@{genreCol}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{genreCol}{genreCol}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ae96461df9f40bcff62a92335d0b5a1b5} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+genre\+Col\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_afeed724fe29b3e744f680d51f0a2c7bd}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!menuEdit@{menuEdit}}
+\index{menuEdit@{menuEdit}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{menuEdit}{menuEdit}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_afeed724fe29b3e744f680d51f0a2c7bd} 
+Menu\+Item com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+menu\+Edit\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4f87d74add88ae98290a7da3292827df}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!observerRegistered@{observerRegistered}}
+\index{observerRegistered@{observerRegistered}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{observerRegistered}{observerRegistered}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4f87d74add88ae98290a7da3292827df} 
+boolean com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+observer\+Registered\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_affe7133635d0daccab8a4db8b47e3630}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!tableModel@{tableModel}}
+\index{tableModel@{tableModel}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{tableModel}{tableModel}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_affe7133635d0daccab8a4db8b47e3630} 
+final Observable\+List$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}$>$ com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+table\+Model = FXCollections.\+observable\+Array\+List()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4d8e2de0e9a901a822bfa0a8283c42d5}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!titleCol@{titleCol}}
+\index{titleCol@{titleCol}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{titleCol}{titleCol}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a4d8e2de0e9a901a822bfa0a8283c42d5} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+title\+Col\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ae57b5e42399b49708799f0e652c7989b}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!trackTable@{trackTable}}
+\index{trackTable@{trackTable}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{trackTable}{trackTable}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_ae57b5e42399b49708799f0e652c7989b} 
+Table\+View$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}$>$ com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+track\+Table\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a15dc63b526f68cfb7a7a5d7daa723a27}\index{com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}!yearCol@{yearCol}}
+\index{yearCol@{yearCol}!com.example.gruppo04.view.TrackListViewController@{com.example.gruppo04.view.TrackListViewController}}
+\doxysubsubsection{\texorpdfstring{yearCol}{yearCol}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller_a15dc63b526f68cfb7a7a5d7daa723a27} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer$>$ com.\+example.\+gruppo04.\+view.\+Track\+List\+View\+Controller.\+year\+Col\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_track_list_view_controller_8java}{Track\+List\+View\+Controller.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,24 @@
+var classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test =
+[
+    [ "setUp", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#af35eb2078202eb0642f605ab27674fda", null ],
+    [ "testAddAndRemoveTrack", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a4755aac7399bdaf0fc495385b95b61a7", null ],
+    [ "testAddDuplicateTrackTitleThrowsException", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a45044bbad02b37dd77bf9015990633de", null ],
+    [ "testAddTrackInvalidInput", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a77f878bb048f0a194a2430978088fc3d", null ],
+    [ "testAddTrackToPlaylistValidationAndDuplicates", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#aef5833c7b2e172153289c043dae69629", null ],
+    [ "testCascadeRemovalFromPlaylists", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#ac90bff6cc57f8f63683f9b7c62495d8b", null ],
+    [ "testCreateAndDeletePlaylist", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a1acc4a490ef4710d6c72831d2c53f672", null ],
+    [ "testCreatePlaylistDuplicateName", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a8f26e9c516f68170bb4f55bd9e2463a6", null ],
+    [ "testCreatePlaylistInvalidName", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#aa4695983883625f4409f8466237f2c25", null ],
+    [ "testDeletePlaylistNotPresent", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a1687b7672f8fc68a829a94086fc4634a", null ],
+    [ "testObserverNotificationOnAdd", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a92af06e533f2c6766646f7c2623b5696", null ],
+    [ "testObserverNotificationsOnPlaylistLifecycle", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a5f3cf4553b1ed7c88daa3120ebc75e7a", null ],
+    [ "testObserverNotificationsOnPlaylistTrackChanges", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#aee7cfed90ab5ac73a16c0c099a34834d", null ],
+    [ "testObserverNotificationsOnTrackLifecycle", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#aa43903ef0118537545114921308b0168", null ],
+    [ "testRemoveTrackFromPlaylistNotPresent", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#ad546c0287f417786c9558bcb8f47e7f4", null ],
+    [ "testRenamePlaylist", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a34f193074da988ad621782e7954eaab2", null ],
+    [ "testRenamePlaylistInvalidInput", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a5056011726eb556ee5b7713a6c8a29a0", null ],
+    [ "testUpdateTrackInvalidInput", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a284196884cb123876f040144d6655d1b", null ],
+    [ "catalog", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#adb50f17d9196a5ca0d088a1d6c4d9156", null ],
+    [ "track1", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#ab11920f43a9ebabe1441896bec8b1d4a", null ],
+    [ "track2", "classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html#a04da1bc6536cd1f73b75d272087b1bf5", null ]
+];

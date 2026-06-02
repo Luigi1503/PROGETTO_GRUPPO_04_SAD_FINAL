@@ -1,0 +1,283 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+
+
+Suite di test unitari automatizzati focalizzati sulla classe {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}}.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_af35eb2078202eb0642f605ab27674fda}{set\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Configura l\textquotesingle{}ambiente di test prima di ogni singola esecuzione, istanziando un nuovo catalogo pulito e tracce di test stub. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a4755aac7399bdaf0fc495385b95b61a7}{test\+Add\+And\+Remove\+Track}} ()
+\begin{DoxyCompactList}\small\item\em Verifica il corretto inserimento e la successiva rimozione isolata di una traccia dal catalogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a45044bbad02b37dd77bf9015990633de}{test\+Add\+Duplicate\+Track\+Title\+Throws\+Exception}} ()
+\begin{DoxyCompactList}\small\item\em Verifica il caso limite in cui si tenti di inserire una traccia con un titolo identico (case-\/insensitive) a una già presente, accertandosi che venga sollevata l\textquotesingle{}eccezione corretta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ac90bff6cc57f8f63683f9b7c62495d8b}{test\+Cascade\+Removal\+From\+Playlists}} ()
+\begin{DoxyCompactList}\small\item\em Verifica il vincolo architetturale critico del Task T02\+: la rimozione a cascata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a92af06e533f2c6766646f7c2623b5696}{test\+Observer\+Notification\+On\+Add}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che il meccanismo di notifica del pattern Observer si attivi correttamente e con i parametri attesi a seguito di un evento di inserimento traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1acc4a490ef4710d6c72831d2c53f672}{test\+Create\+And\+Delete\+Playlist}} ()
+\begin{DoxyCompactList}\small\item\em Verifica la creazione e la rimozione di una playlist nel catalogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a8f26e9c516f68170bb4f55bd9e2463a6}{test\+Create\+Playlist\+Duplicate\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Verifica il caso limite di creazione di due playlist con lo stesso nome. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a34f193074da988ad621782e7954eaab2}{test\+Rename\+Playlist}} ()
+\begin{DoxyCompactList}\small\item\em Verifica la funzionalità di rinomina di una playlist e i vincoli associati. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa4695983883625f4409f8466237f2c25}{test\+Create\+Playlist\+Invalid\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Verifica le condizioni di validazione per la creazione di playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5056011726eb556ee5b7713a6c8a29a0}{test\+Rename\+Playlist\+Invalid\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che la rinomina fallisca se la playlist non appartiene al catalogo e che new\+Name nullo o vuoto generi Illegal\+Argument\+Exception. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1687b7672f8fc68a829a94086fc4634a}{test\+Delete\+Playlist\+Not\+Present}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che la cancellazione di una playlist non presente restituisca false. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a77f878bb048f0a194a2430978088fc3d}{test\+Add\+Track\+Invalid\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Verifica le condizioni di validazione per l\textquotesingle{}aggiunta delle tracce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aef5833c7b2e172153289c043dae69629}{test\+Add\+Track\+To\+Playlist\+Validation\+And\+Duplicates}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che l\textquotesingle{}aggiunta di una traccia ad una playlist rispetti le precondizioni e che l\textquotesingle{}inserimento duplicato nella playlist restituisca false. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ad546c0287f417786c9558bcb8f47e7f4}{test\+Remove\+Track\+From\+Playlist\+Not\+Present}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che la rimozione da playlist ritorni false se la traccia non è presente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5f3cf4553b1ed7c88daa3120ebc75e7a}{test\+Observer\+Notifications\+On\+Playlist\+Lifecycle}} ()
+\begin{DoxyCompactList}\small\item\em Verifica la notifica degli observer per eventi di playlist (creazione, rinomina e cancellazione). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa43903ef0118537545114921308b0168}{test\+Observer\+Notifications\+On\+Track\+Lifecycle}} ()
+\begin{DoxyCompactList}\small\item\em Verifica la notifica degli observer per eventi legati alle tracce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aee7cfed90ab5ac73a16c0c099a34834d}{test\+Observer\+Notifications\+On\+Playlist\+Track\+Changes}} ()
+\begin{DoxyCompactList}\small\item\em Verifica la notifica degli observer quando si aggiungono o rimuovono tracce in playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b}{test\+Update\+Track\+Invalid\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Verifica le condizioni di errore di update\+Track per input null o traccia assente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_adb50f17d9196a5ca0d088a1d6c4d9156}{catalog}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ab11920f43a9ebabe1441896bec8b1d4a}{track1}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a04da1bc6536cd1f73b75d272087b1bf5}{track2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Suite di test unitari automatizzati focalizzati sulla classe {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}}. 
+
+Verifica i contratti di business, la consistenza dello stato durante le operazioni a cascata, i vincoli di unicità (casi limite) e il corretto funzionamento dell\textquotesingle{}infrastruttura Observer. 
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_af35eb2078202eb0642f605ab27674fda}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!setUp@{setUp}}
+\index{setUp@{setUp}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_af35eb2078202eb0642f605ab27674fda} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+set\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Configura l\textquotesingle{}ambiente di test prima di ogni singola esecuzione, istanziando un nuovo catalogo pulito e tracce di test stub. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a4755aac7399bdaf0fc495385b95b61a7}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddAndRemoveTrack@{testAddAndRemoveTrack}}
+\index{testAddAndRemoveTrack@{testAddAndRemoveTrack}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testAddAndRemoveTrack()}{testAddAndRemoveTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a4755aac7399bdaf0fc495385b95b61a7} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+And\+Remove\+Track (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il corretto inserimento e la successiva rimozione isolata di una traccia dal catalogo. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a45044bbad02b37dd77bf9015990633de}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddDuplicateTrackTitleThrowsException@{testAddDuplicateTrackTitleThrowsException}}
+\index{testAddDuplicateTrackTitleThrowsException@{testAddDuplicateTrackTitleThrowsException}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testAddDuplicateTrackTitleThrowsException()}{testAddDuplicateTrackTitleThrowsException()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a45044bbad02b37dd77bf9015990633de} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Duplicate\+Track\+Title\+Throws\+Exception (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il caso limite in cui si tenti di inserire una traccia con un titolo identico (case-\/insensitive) a una già presente, accertandosi che venga sollevata l\textquotesingle{}eccezione corretta. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a77f878bb048f0a194a2430978088fc3d}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddTrackInvalidInput@{testAddTrackInvalidInput}}
+\index{testAddTrackInvalidInput@{testAddTrackInvalidInput}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testAddTrackInvalidInput()}{testAddTrackInvalidInput()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a77f878bb048f0a194a2430978088fc3d} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Track\+Invalid\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica le condizioni di validazione per l\textquotesingle{}aggiunta delle tracce. 
+
+\doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track} null deve sollevare Illegal\+Argument\+Exception. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aef5833c7b2e172153289c043dae69629}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddTrackToPlaylistValidationAndDuplicates@{testAddTrackToPlaylistValidationAndDuplicates}}
+\index{testAddTrackToPlaylistValidationAndDuplicates@{testAddTrackToPlaylistValidationAndDuplicates}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testAddTrackToPlaylistValidationAndDuplicates()}{testAddTrackToPlaylistValidationAndDuplicates()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aef5833c7b2e172153289c043dae69629} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Track\+To\+Playlist\+Validation\+And\+Duplicates (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che l\textquotesingle{}aggiunta di una traccia ad una playlist rispetti le precondizioni e che l\textquotesingle{}inserimento duplicato nella playlist restituisca false. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ac90bff6cc57f8f63683f9b7c62495d8b}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testCascadeRemovalFromPlaylists@{testCascadeRemovalFromPlaylists}}
+\index{testCascadeRemovalFromPlaylists@{testCascadeRemovalFromPlaylists}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testCascadeRemovalFromPlaylists()}{testCascadeRemovalFromPlaylists()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ac90bff6cc57f8f63683f9b7c62495d8b} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Cascade\+Removal\+From\+Playlists (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il vincolo architetturale critico del Task T02\+: la rimozione a cascata. 
+
+Controlla che se una traccia viene eliminata dal catalogo generale, essa svanisca automaticamente da tutte le playlist associate senza intaccare le restanti tracce. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1acc4a490ef4710d6c72831d2c53f672}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testCreateAndDeletePlaylist@{testCreateAndDeletePlaylist}}
+\index{testCreateAndDeletePlaylist@{testCreateAndDeletePlaylist}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testCreateAndDeletePlaylist()}{testCreateAndDeletePlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1acc4a490ef4710d6c72831d2c53f672} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Create\+And\+Delete\+Playlist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la creazione e la rimozione di una playlist nel catalogo. 
+
+Controlla il valore di ritorno di {\ttfamily create\+Playlist} e {\ttfamily delete\+Playlist} e la consistenza della lista restituita da {\ttfamily get\+Playlists()}. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a8f26e9c516f68170bb4f55bd9e2463a6}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testCreatePlaylistDuplicateName@{testCreatePlaylistDuplicateName}}
+\index{testCreatePlaylistDuplicateName@{testCreatePlaylistDuplicateName}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testCreatePlaylistDuplicateName()}{testCreatePlaylistDuplicateName()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a8f26e9c516f68170bb4f55bd9e2463a6} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Create\+Playlist\+Duplicate\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il caso limite di creazione di due playlist con lo stesso nome. 
+
+Il secondo tentativo dovrebbe restituire {\ttfamily false} senza lanciare eccezioni. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa4695983883625f4409f8466237f2c25}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testCreatePlaylistInvalidName@{testCreatePlaylistInvalidName}}
+\index{testCreatePlaylistInvalidName@{testCreatePlaylistInvalidName}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testCreatePlaylistInvalidName()}{testCreatePlaylistInvalidName()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa4695983883625f4409f8466237f2c25} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Create\+Playlist\+Invalid\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica le condizioni di validazione per la creazione di playlist. 
+
+Il name nullo o vuoto deve sollevare Illegal\+Argument\+Exception. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1687b7672f8fc68a829a94086fc4634a}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testDeletePlaylistNotPresent@{testDeletePlaylistNotPresent}}
+\index{testDeletePlaylistNotPresent@{testDeletePlaylistNotPresent}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testDeletePlaylistNotPresent()}{testDeletePlaylistNotPresent()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1687b7672f8fc68a829a94086fc4634a} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Delete\+Playlist\+Not\+Present (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che la cancellazione di una playlist non presente restituisca false. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a92af06e533f2c6766646f7c2623b5696}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testObserverNotificationOnAdd@{testObserverNotificationOnAdd}}
+\index{testObserverNotificationOnAdd@{testObserverNotificationOnAdd}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testObserverNotificationOnAdd()}{testObserverNotificationOnAdd()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a92af06e533f2c6766646f7c2623b5696} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Observer\+Notification\+On\+Add (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che il meccanismo di notifica del pattern Observer si attivi correttamente e con i parametri attesi a seguito di un evento di inserimento traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5f3cf4553b1ed7c88daa3120ebc75e7a}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testObserverNotificationsOnPlaylistLifecycle@{testObserverNotificationsOnPlaylistLifecycle}}
+\index{testObserverNotificationsOnPlaylistLifecycle@{testObserverNotificationsOnPlaylistLifecycle}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testObserverNotificationsOnPlaylistLifecycle()}{testObserverNotificationsOnPlaylistLifecycle()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5f3cf4553b1ed7c88daa3120ebc75e7a} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Observer\+Notifications\+On\+Playlist\+Lifecycle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la notifica degli observer per eventi di playlist (creazione, rinomina e cancellazione). 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aee7cfed90ab5ac73a16c0c099a34834d}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testObserverNotificationsOnPlaylistTrackChanges@{testObserverNotificationsOnPlaylistTrackChanges}}
+\index{testObserverNotificationsOnPlaylistTrackChanges@{testObserverNotificationsOnPlaylistTrackChanges}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testObserverNotificationsOnPlaylistTrackChanges()}{testObserverNotificationsOnPlaylistTrackChanges()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aee7cfed90ab5ac73a16c0c099a34834d} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Observer\+Notifications\+On\+Playlist\+Track\+Changes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la notifica degli observer quando si aggiungono o rimuovono tracce in playlist. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa43903ef0118537545114921308b0168}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testObserverNotificationsOnTrackLifecycle@{testObserverNotificationsOnTrackLifecycle}}
+\index{testObserverNotificationsOnTrackLifecycle@{testObserverNotificationsOnTrackLifecycle}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testObserverNotificationsOnTrackLifecycle()}{testObserverNotificationsOnTrackLifecycle()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa43903ef0118537545114921308b0168} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Observer\+Notifications\+On\+Track\+Lifecycle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la notifica degli observer per eventi legati alle tracce. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ad546c0287f417786c9558bcb8f47e7f4}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testRemoveTrackFromPlaylistNotPresent@{testRemoveTrackFromPlaylistNotPresent}}
+\index{testRemoveTrackFromPlaylistNotPresent@{testRemoveTrackFromPlaylistNotPresent}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testRemoveTrackFromPlaylistNotPresent()}{testRemoveTrackFromPlaylistNotPresent()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ad546c0287f417786c9558bcb8f47e7f4} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Remove\+Track\+From\+Playlist\+Not\+Present (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che la rimozione da playlist ritorni false se la traccia non è presente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a34f193074da988ad621782e7954eaab2}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testRenamePlaylist@{testRenamePlaylist}}
+\index{testRenamePlaylist@{testRenamePlaylist}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testRenamePlaylist()}{testRenamePlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a34f193074da988ad621782e7954eaab2} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Rename\+Playlist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la funzionalità di rinomina di una playlist e i vincoli associati. 
+
+Controlla che la rinomina verso un nome libero abbia successo e che la rinomina verso un nome già esistente fallisca restituendo {\ttfamily false}. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5056011726eb556ee5b7713a6c8a29a0}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testRenamePlaylistInvalidInput@{testRenamePlaylistInvalidInput}}
+\index{testRenamePlaylistInvalidInput@{testRenamePlaylistInvalidInput}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testRenamePlaylistInvalidInput()}{testRenamePlaylistInvalidInput()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5056011726eb556ee5b7713a6c8a29a0} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Rename\+Playlist\+Invalid\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che la rinomina fallisca se la playlist non appartiene al catalogo e che new\+Name nullo o vuoto generi Illegal\+Argument\+Exception. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testUpdateTrackInvalidInput@{testUpdateTrackInvalidInput}}
+\index{testUpdateTrackInvalidInput@{testUpdateTrackInvalidInput}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testUpdateTrackInvalidInput()}{testUpdateTrackInvalidInput()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Update\+Track\+Invalid\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica le condizioni di errore di update\+Track per input null o traccia assente. 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_adb50f17d9196a5ca0d088a1d6c4d9156}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_adb50f17d9196a5ca0d088a1d6c4d9156} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ab11920f43a9ebabe1441896bec8b1d4a}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!track1@{track1}}
+\index{track1@{track1}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{track1}{track1}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ab11920f43a9ebabe1441896bec8b1d4a} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+track1\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a04da1bc6536cd1f73b75d272087b1bf5}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!track2@{track2}}
+\index{track2@{track2}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{track2}{track2}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a04da1bc6536cd1f73b75d272087b1bf5} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+track2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/test/java/com/example/gruppo04/model/\mbox{\hyperlink{_music_catalog_test_8java}{Music\+Catalog\+Test.\+java}}\end{DoxyCompactItemize}

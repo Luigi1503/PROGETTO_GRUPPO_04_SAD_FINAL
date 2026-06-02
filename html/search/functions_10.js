@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['unregisterobserver_0',['unregisterObserver',['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html#a2790611e63859069933bf6c1a1a21e8f',1,'com.example.gruppo04.interfaces.MusicCatalog.unregisterObserver()'],['../classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog.html#a26041eb429ffdf023e72d5232c8f1cd6',1,'com.example.gruppo04.observer.ConcreteMusicCatalog.unregisterObserver()']]],
+  ['updatesidebarplaylists_1',['updateSidebarPlaylists',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#a4313a1021e9cbd5a0fbe64ff37884955',1,'com::example::gruppo04::view::MainViewController']]],
+  ['updatetrack_2',['updateTrack',['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller.html#a9f60aebd89040aa55a56dae67b250e5b',1,'com.example.gruppo04.controller.TrackController.updateTrack()'],['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html#aa3044af30bdcad7915fef9d7c5b18322',1,'com.example.gruppo04.interfaces.MusicCatalog.updateTrack()'],['../classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog.html#ae092451bcbefc6cf9c618b4fd47d5d63',1,'com.example.gruppo04.observer.ConcreteMusicCatalog.updateTrack()']]],
+  ['updateview_3',['updateView',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#ae73d0684c4c2c5092b83e67e71bf95b1',1,'com::example::gruppo04::view::PlaylistDetailViewController']]]
+];

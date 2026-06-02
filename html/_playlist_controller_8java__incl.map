@@ -1,0 +1,11 @@
+<map id="src/main/java/com/example/gruppo04/controller/PlaylistController.java" name="src/main/java/com/example/gruppo04/controller/PlaylistController.java">
+<area shape="rect" id="Node000001" title=" " alt="" coords="346,5,611,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,227,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="397,49,214,93,213,87,395,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="251,94,472,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="454,49,401,87,398,83,450,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="496,94,696,135"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="507,44,559,83,556,87,504,49"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="720,94,941,135"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="560,44,736,87,735,92,558,49"/>
+</map>

@@ -1,0 +1,80 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+util.\+Table\+Column\+Factory}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory}{}\label{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory}\index{com.example.gruppo04.util.TableColumnFactory@{com.example.gruppo04.util.TableColumnFactory}}
+
+
+Classe di utilità per la configurazione delle colonne delle Table\+View che mostrano tracce musicali.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+util.\+Table\+Column\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici statici}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_a13d66e7d31299b47ef023a94cb295bdb}{setup\+All\+Columns}} (Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ col\+Title, Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ col\+Author, Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer $>$ col\+Year, Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ col\+Genre, Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ col\+Duration)
+\begin{DoxyCompactList}\small\item\em Configura tutte le colonne standard di una Table\+View di tracce. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_a9a72dcef092ac35a62c7ca62b718195b}{Table\+Column\+Factory}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore privato — classe non istanziabile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Classe di utilità per la configurazione delle colonne delle Table\+View che mostrano tracce musicali. 
+
+Evita la duplicazione del codice di setup tra le view che visualizzano liste di tracce. A favore del principio DRY. Garantisce un Single Point of Change\+: qualora si aggiungesse o modificasse un campo della classe {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{com.\+example.\+gruppo04.\+interfaces.\+Track}}, è sufficiente intervenire sulla presente classe senza dover modificare tutte le view che mostrano tracce. 
+
+\label{doc-constructors}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_doc-constructors}
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_a9a72dcef092ac35a62c7ca62b718195b}\index{com.example.gruppo04.util.TableColumnFactory@{com.example.gruppo04.util.TableColumnFactory}!TableColumnFactory@{TableColumnFactory}}
+\index{TableColumnFactory@{TableColumnFactory}!com.example.gruppo04.util.TableColumnFactory@{com.example.gruppo04.util.TableColumnFactory}}
+\doxysubsubsection{\texorpdfstring{TableColumnFactory()}{TableColumnFactory()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_a9a72dcef092ac35a62c7ca62b718195b} 
+com.\+example.\+gruppo04.\+util.\+Table\+Column\+Factory.\+Table\+Column\+Factory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruttore privato — classe non istanziabile. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_a13d66e7d31299b47ef023a94cb295bdb}\index{com.example.gruppo04.util.TableColumnFactory@{com.example.gruppo04.util.TableColumnFactory}!setupAllColumns@{setupAllColumns}}
+\index{setupAllColumns@{setupAllColumns}!com.example.gruppo04.util.TableColumnFactory@{com.example.gruppo04.util.TableColumnFactory}}
+\doxysubsubsection{\texorpdfstring{setupAllColumns()}{setupAllColumns()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory_a13d66e7d31299b47ef023a94cb295bdb} 
+void com.\+example.\+gruppo04.\+util.\+Table\+Column\+Factory.\+setup\+All\+Columns (\begin{DoxyParamCaption}\item[{Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$}]{col\+Title}{, }\item[{Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$}]{col\+Author}{, }\item[{Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer $>$}]{col\+Year}{, }\item[{Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$}]{col\+Genre}{, }\item[{Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$}]{col\+Duration}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Configura tutte le colonne standard di una Table\+View di tracce. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em col\+Title} & colonna del titolo \\
+\hline
+{\em col\+Author} & colonna dell\textquotesingle{}autore \\
+\hline
+{\em col\+Year} & colonna dell\textquotesingle{}anno \\
+\hline
+{\em col\+Genre} & colonna del genere \\
+\hline
+{\em col\+Duration} & colonna della durata \\
+\hline
+\end{DoxyParams}
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/util/\mbox{\hyperlink{_table_column_factory_8java}{Table\+Column\+Factory.\+java}}\end{DoxyCompactItemize}
