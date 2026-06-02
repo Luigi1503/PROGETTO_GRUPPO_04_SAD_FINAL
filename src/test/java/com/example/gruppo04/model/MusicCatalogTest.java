@@ -34,8 +34,8 @@ public class MusicCatalogTest {
     @BeforeEach
     public void setUp() {
         catalog = new ConcreteMusicCatalog();
-        track1 = new TrackImpl("Bohemian Rhapsody", "Queen", "Rock", 1975, 354);
-        track2 = new TrackImpl("Stairway to Heaven", "Led Zeppelin", "Rock", 1971,  482);
+        track1 = new TrackImpl("Bohemian Rhapsody", "Queen", "Rock", 1975, 354, "bohemian.mp3");
+        track2 = new TrackImpl("Stairway to Heaven", "Led Zeppelin", "Rock", 1971,  482, "stairway.mp3");
     }
 
     /**
@@ -60,7 +60,7 @@ public class MusicCatalogTest {
     public void testAddDuplicateTrackTitleThrowsException() {
         catalog.addTrack(track1);
 
-        Track duplicateTrack = new TrackImpl("Bohemian Rhapsody", "Queen", "Rock", 1975, 354);
+        Track duplicateTrack = new TrackImpl("Bohemian Rhapsody", "Queen", "Rock", 1975, 354, "bohemian.mp3");
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             catalog.addTrack(duplicateTrack);
@@ -341,7 +341,7 @@ public class MusicCatalogTest {
     public void testUpdateTrackInvalidInput() {
         assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(null));
 
-        Track missing = new TrackImpl("Missing", "Unknown", "Rock", 1999, 200);
+        Track missing = new TrackImpl("Missing", "Unknown", "Rock", 1999, 200, "missing.mp3");
         assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(missing));
     }
 }

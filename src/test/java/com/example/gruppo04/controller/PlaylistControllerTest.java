@@ -31,15 +31,15 @@ class PlaylistControllerTest {
 
     /**
      * Inizializza il catalogo, il controller e le tracce di esempio
-     * prima di ogni test, garantendo uno stato pulito e indipendente.
+     * prima di ogni metodo di test, garantendo uno stato pulito e indipendente.
      */
     @BeforeEach
     void setUp() {
         catalog = new ConcreteMusicCatalog();
         controller = new PlaylistController(catalog);
 
-        track1 = new TrackImpl("Hold back the river", "James Bay", "Rock", 2014, 354);
-        track2 = new TrackImpl("Someday", "OneRepublic", "Pop", 2021, 391);
+        track1 = new TrackImpl("Hold back the river", "James Bay", "Rock", 2014, 354, "holdBack.mp3");
+        track2 = new TrackImpl("Someday", "OneRepublic", "Pop", 2021, 391, "someDay.mp3");
         catalog.addTrack(track1);
         catalog.addTrack(track2);
     }
@@ -76,7 +76,8 @@ class PlaylistControllerTest {
      */
     @Test
     void createPlaylist_emptyName_throwsException() {
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(
+                IllegalArgumentException.class,
                 () -> controller.createPlaylist(""));
     }
 
@@ -86,7 +87,8 @@ class PlaylistControllerTest {
      */
     @Test
     void createPlaylist_nullName_throwsException() {
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(
+                IllegalArgumentException.class,
                 () -> controller.createPlaylist(null));
     }
 
@@ -127,8 +129,22 @@ class PlaylistControllerTest {
     void renamePlaylist_emptyName_throwsException() {
         controller.createPlaylist("Rock Classics");
         Playlist playlist = catalog.getPlaylists().get(0);
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(
+                IllegalArgumentException.class,
                 () -> controller.renamePlaylist(playlist, ""));
+    }
+
+    /**
+     * Verifica che la rinomina di una playlist non appartenente al catalogo
+     * restituisce false.
+     */
+    @Test
+    void renamePlaylist_notInCatalog_returnFalse() {
+        ConcreteMusicCatalog otherCatalog = new ConcreteMusicCatalog();
+        otherCatalog.createPlaylist("Other Playlist");
+        Playlist otherPlaylist = otherCatalog.getPlaylists().get(0);
+        boolean result = controller.renamePlaylist(otherPlaylist, "Pop Hits");
+        assertFalse(result);
     }
 
     // ── deletePlaylist ────────────────────────
@@ -202,6 +218,20 @@ class PlaylistControllerTest {
         assertEquals(2, playlist.getTracks().size());
         assertEquals(track1, playlist.getTracks().get(0));
         assertEquals(track2, playlist.getTracks().get(1));
+    }
+
+
+    /**
+     * Verifica che l'aggiunta di una traccia ad una playlist non appartenente
+     * al catalogo sollevi un'eccezione.
+     */
+    @Test
+    void addTrackToPlaylist_playlistNotInCatalog_throwsException() {
+        ConcreteMusicCatalog otherCatalog = new ConcreteMusicCatalog();
+        otherCatalog.createPlaylist("Other Playlist");
+        Playlist otherPlaylist = otherCatalog.getPlaylists().get(0);
+        assertThrows(IllegalArgumentException.class,
+                () -> controller.addTrackToPlaylist(otherPlaylist, track1));
     }
 
     // ── removeTrackFromPlaylist ───────────────
