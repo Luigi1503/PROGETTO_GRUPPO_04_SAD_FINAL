@@ -2,7 +2,6 @@ package com.example.gruppo04.controller;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Track;
-import com.example.gruppo04.model.TrackImpl;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +37,6 @@ class TrackControllerTest {
         controller = new TrackController(catalog);
     }
 
-
     /**
      * @brief Verifica la sicurezza del costruttore.
      * @details Assicura che il passaggio di un catalogo nullo provochi
@@ -48,7 +46,6 @@ class TrackControllerTest {
     void constructor_nullCatalog_throwsException() {
         assertThrows(IllegalArgumentException.class, () -> new TrackController(null));
     }
-
 
     /**
      * @brief Verifica l'aggiunta di una traccia con dati validi.
@@ -82,7 +79,6 @@ class TrackControllerTest {
         assertEquals(0, catalog.getAllTracks().size());
     }
 
-
     /**
      * @brief Verifica la corretta modifica di una traccia esistente.
      * @details Aggiunge una traccia al catalogo, la recupera, ne modifica i parametri
@@ -91,11 +87,11 @@ class TrackControllerTest {
     @Test
     void updateTrack_validData_updatesTrackInCatalog() {
         // Aggiungiamo una traccia di base
-        controller.addTrack("Vecchio Titolo", "Vecchio Autore", "Jazz", 2000, 100, null);
+        controller.addTrack("Vecchio Titolo", "Vecchio Autore", "Jazz", 2000, 100, "vecchio_file.mp3");
         Track trackToUpdate = catalog.getAllTracks().iterator().next();
 
-        //  Usiamo il controller per aggiornarla
-        controller.updateTrack(trackToUpdate, "Titolo Aggiornato", "Autore Aggiornato", "Rock", 2024, 300);
+        // Usiamo il controller per aggiornarla (ORA CON IL SETTIMO PARAMETRO!)
+        controller.updateTrack(trackToUpdate, "Titolo Aggiornato", "Autore Aggiornato", "Rock", 2024, 300, "nuovo_file.mp3");
 
         // Controlliamo che l'oggetto sia mutato
         assertEquals("Titolo Aggiornato", trackToUpdate.getTitle());
@@ -103,6 +99,7 @@ class TrackControllerTest {
         assertEquals("Rock", trackToUpdate.getGenre());
         assertEquals(2024, trackToUpdate.getYear());
         assertEquals(300, trackToUpdate.getDuration());
+        assertEquals("nuovo_file.mp3", trackToUpdate.getFilePath()); // Verifica che anche il file si sia aggiornato
     }
 
     /**
@@ -113,10 +110,10 @@ class TrackControllerTest {
     @Test
     void updateTrack_nullTrack_throwsException() {
         assertThrows(IllegalArgumentException.class, () ->
-                controller.updateTrack(null, "Titolo", "Autore", "Pop", 2020, 200)
+                // Aggiunto il parametro null alla fine per il filePath
+                controller.updateTrack(null, "Titolo", "Autore", "Pop", 2020, 200, null)
         );
     }
-
 
     /**
      * @brief Verifica l'eliminazione di una traccia dal sistema.
@@ -147,7 +144,6 @@ class TrackControllerTest {
 
         assertEquals(1, catalog.getAllTracks().size());
     }
-
 
     /**
      * @brief Verifica il recupero di tutte le tracce.

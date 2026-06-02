@@ -204,21 +204,42 @@ public class ConcreteMusicCatalog implements MusicCatalog {
 
     /**
      * Aggiorna i dati di una traccia esistente nel catalogo.
+     * Applica controlli di integrità per impedire la generazione di duplicati (stesso titolo e autore)
+     * o collisioni sui file MP3, ad eccezione della traccia stessa in via di modifica.
      * In caso di successo notifica gli observer con l'evento {@code TRACK_UPDATED}.
      *
-     * @param updatedTrack la traccia con i dati aggiornati; il suo ID deve corrispondere
-     * a una traccia già presente nel catalogo
-     * @throws IllegalArgumentException se {@code updatedTrack} è {@code null} o non
-     * corrisponde a nessuna traccia nota nel catalogo
+     * @param updatedTrack la traccia con i dati aggiornati; il suo ID deve corrispondere a una traccia nota.
+     * @throws IllegalArgumentException se crea duplicati o non viene trovata.
      */
     public void updateTrack(Track updatedTrack) {
         if (updatedTrack == null || !tracks.containsKey(updatedTrack.getId())) {
             throw new IllegalArgumentException("Traccia non trovata.");
         }
+
+        // Controllo duplicati ignorando la traccia in fase di modifica
+        for (Track t : tracks.values()) {
+            if (t.getId().equals(updatedTrack.getId())) {
+                continue;
+            }
+
+            if (t.getTitle().equalsIgnoreCase(updatedTrack.getTitle()) &&
+                    t.getAuthor().equalsIgnoreCase(updatedTrack.getAuthor())) {
+                throw new IllegalArgumentException("Titolo già esistente: un brano di '" + updatedTrack.getAuthor() +
+                        "' intitolato '" + updatedTrack.getTitle() +
+                        "' è già presente nel catalogo.");
+            }
+
+            if (updatedTrack.getFilePath() != null && t.getFilePath() != null) {
+                if (t.getFilePath().equalsIgnoreCase(updatedTrack.getFilePath())) {
+                    throw new IllegalArgumentException("Questo file MP3 è già stato associato al brano '" +
+                            t.getTitle() + "'. Seleziona un file diverso.");
+                }
+            }
+        }
+
         tracks.put(updatedTrack.getId(), updatedTrack);
         notifyObservers(CatalogEventType.TRACK_UPDATED, updatedTrack);
     }
-
     /**
      * Restituisce tutte le tracce presenti nel catalogo, mantenendo l'ordine di inserimento.
      *

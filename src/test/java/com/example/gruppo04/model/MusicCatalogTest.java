@@ -394,4 +394,59 @@ public class MusicCatalogTest {
 
         assertTrue(exception.getMessage().contains("Questo file MP3 è già stato associato al brano"));
     }
+
+
+    /**
+     * @brief Verifica i controlli di integrità del catalogo in fase di aggiornamento.
+     * @details Assicura che la modifica di una traccia in modo che collida con i
+     * metadati di un'altra venga respinta.
+     */
+    @Test
+    public void testUpdateTrackDuplicateTitleAndAuthorThrowsException() {
+        catalog.addTrack(track1);
+        catalog.addTrack(track2);
+
+        track2.setTitle("Bohemian Rhapsody");
+        track2.setAuthor("Queen");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.updateTrack(track2);
+        });
+
+        assertTrue(exception.getMessage().toLowerCase().contains("già presente"));
+    }
+
+    /**
+     * @brief Verifica il vincolo di univocità del file in fase di aggiornamento.
+     * @details Assicura che non sia possibile riassegnare un MP3 già in uso ad un'altra traccia.
+     */
+    @Test
+    public void testUpdateTrackDuplicateFilePathThrowsException() {
+        catalog.addTrack(track1);
+        catalog.addTrack(track2);
+
+        track2.setFilePath("bohemian.mp3");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.updateTrack(track2);
+        });
+
+        assertTrue(exception.getMessage().contains("Questo file MP3 è già stato associato"));
+    }
+
+    /**
+     * @brief Verifica il corretto aggiornamento di un campo legittimo.
+     * @details Assicura che una modifica non conflittuale (es. l'anno) passi i controlli
+     * senza identificare la traccia come un duplicato di sé stessa.
+     */
+    @Test
+    public void testUpdateTrackLegitimateUpdateDoesNotThrow() {
+        catalog.addTrack(track1);
+        track1.setYear(2024);
+
+        assertDoesNotThrow(() -> catalog.updateTrack(track1));
+
+        Track updated = catalog.getAllTracks().iterator().next();
+        assertEquals(2024, updated.getYear());
+    }
 }

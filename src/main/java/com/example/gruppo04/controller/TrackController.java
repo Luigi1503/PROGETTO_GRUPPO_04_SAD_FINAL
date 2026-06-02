@@ -80,20 +80,41 @@ public class TrackController {
      * @param newGenre      Il nuovo genere musicale da assegnare alla traccia.
      * @param newYear       Il nuovo anno di pubblicazione da assegnare alla traccia.
      * @param newDuration   La nuova durata in secondi da assegnare alla traccia.
+     * @param newFilePath   Il nuovo filepath
      * @throws IllegalArgumentException Se l'oggetto trackToUpdate risulta nullo o se i parametri violano i vincoli.
      */
-    public void updateTrack(Track trackToUpdate, String newTitle, String newAuthor, String newGenre, int newYear, int newDuration) {
+    public void updateTrack(Track trackToUpdate, String newTitle, String newAuthor, String newGenre, int newYear, int newDuration, String newFilePath) {
         if (trackToUpdate == null) {
             throw new IllegalArgumentException("Nessuna traccia selezionata per la modifica.");
         }
 
-        trackToUpdate.setTitle(newTitle);
-        trackToUpdate.setAuthor(newAuthor);
-        trackToUpdate.setGenre(newGenre);
-        trackToUpdate.setYear(newYear);
-        trackToUpdate.setDuration(newDuration);
+        String oldTitle = trackToUpdate.getTitle();
+        String oldAuthor = trackToUpdate.getAuthor();
+        String oldGenre = trackToUpdate.getGenre();
+        int oldYear = trackToUpdate.getYear();
+        int oldDuration = trackToUpdate.getDuration();
+        String oldFilePath = trackToUpdate.getFilePath();
 
-        catalog.updateTrack(trackToUpdate);
+        try {
+            trackToUpdate.setTitle(newTitle);
+            trackToUpdate.setAuthor(newAuthor);
+            trackToUpdate.setGenre(newGenre);
+            trackToUpdate.setYear(newYear);
+            trackToUpdate.setDuration(newDuration);
+            trackToUpdate.setFilePath(newFilePath);
+
+            catalog.updateTrack(trackToUpdate);
+
+        } catch (IllegalArgumentException e) {
+            trackToUpdate.setTitle(oldTitle);
+            trackToUpdate.setAuthor(oldAuthor);
+            trackToUpdate.setGenre(oldGenre);
+            trackToUpdate.setYear(oldYear);
+            trackToUpdate.setDuration(oldDuration);
+            trackToUpdate.setFilePath(oldFilePath);
+
+            throw e;
+        }
     }
 
     /**

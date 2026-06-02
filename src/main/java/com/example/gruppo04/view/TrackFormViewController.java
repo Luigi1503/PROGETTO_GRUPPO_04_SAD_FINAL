@@ -300,10 +300,15 @@ public class TrackFormViewController {
             int newYear = yearSpinner.getValue();
             int newDuration = durationSpinner.getValue();
 
-            trackController.updateTrack(currentSelectedTrack, newTitle, newAuthor, newGenre, newYear, newDuration);
+
+            String newFilePath = (tempFilePath != null) ? tempFilePath : currentSelectedTrack.getFilePath();
+            trackController.updateTrack(currentSelectedTrack, newTitle, newAuthor, newGenre, newYear, newDuration, newFilePath);
 
             System.out.println("Modifica completata con successo!");
             clearFormFields();
+
+            javafx.stage.Stage stage = (javafx.stage.Stage) titleField.getScene().getWindow();
+            stage.close();
 
         } catch (IllegalArgumentException e) {
 
@@ -329,8 +334,6 @@ public class TrackFormViewController {
             alert.showAndWait();
         }
     }
-
-
 
     /**
      * @brief Ripulisce tutti i campi del form e ripristina lo stato iniziale.
