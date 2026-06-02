@@ -61,7 +61,7 @@ public class PlaylistController {
     }
 
     /**
-     * Aggiunge una traccia a una playlist esistente, delegando a
+     * Aggiunge una traccia ad una playlist esistente, delegando
      * {@link MusicCatalog#addTrackToPlaylist(Playlist, Track)}.
      *
      * @param playlist la playlist selezionata nella View
@@ -74,7 +74,7 @@ public class PlaylistController {
     }
 
     /**
-     * Rimuove una traccia da una playlist esistente, delegando a
+     * Rimuove una traccia da una playlist esistente, delegando
      * {@link MusicCatalog#removeTrackFromPlaylist(Playlist, Track)}.
      *
      * @param playlist la playlist selezionata nella View

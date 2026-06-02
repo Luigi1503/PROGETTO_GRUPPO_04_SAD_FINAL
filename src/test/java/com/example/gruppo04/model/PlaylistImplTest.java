@@ -17,6 +17,12 @@ class PlaylistImplTest {
     /** Istanza sotto test, ricreata pulita prima di ogni caso. */
     private Playlist playlist;
 
+    /** Prima traccia di esempio usata nei test. */
+    private Track t;
+
+    /** Seconda traccia di esempio usata nei test. */
+    private Track t2;
+
     /**
      * @brief Inizializza una playlist vuota prima di ogni test.
      *
@@ -25,6 +31,8 @@ class PlaylistImplTest {
     @BeforeEach
     void setUp() {
         playlist = new PlaylistImpl("Late Night Vibes");
+        t = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216, "canzTit.mp3");
+        t2 = new TrackImpl("Canzone Titolata2", "Giovanni", "Canzoni d'amore", 2017, 216, "canzTit2.mp3");
     }
 
     /**
@@ -48,12 +56,10 @@ class PlaylistImplTest {
      */
     @Test
     void addTrack() {
-        Track t = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216);
         playlist.addTrack(t);
-        assertEquals(playlist.getTracks().size(), 1);
-        Track t2 = new TrackImpl("Canzone Titolata2", "Giovanni", "Canzoni d'amore", 2017, 216);
+        assertEquals(1, playlist.getTracks().size());
         playlist.addTrack(t2);
-        assertEquals(playlist.getTracks().size(), 2);
+        assertEquals(2, playlist.getTracks().size());
     }
 
     /**
@@ -61,14 +67,12 @@ class PlaylistImplTest {
      */
     @Test
     void removeTrack() {
-        Track t = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216);
         playlist.addTrack(t);
-        Track t2 = new TrackImpl("Canzone Titolata2", "Giovanni", "Canzoni d'amore", 2017, 216);
         playlist.addTrack(t2);
         playlist.removeTrack(t2);
-        assertEquals(playlist.getTracks().size(), 1);
+        assertEquals(1, playlist.getTracks().size());
         playlist.removeTrack(t);
-        assertEquals(playlist.getTracks().size(), 0);
+        assertEquals(0, playlist.getTracks().size());
     }
 
     /**
@@ -90,7 +94,7 @@ class PlaylistImplTest {
      */
     @Test
     void removeTrackEmptyPlaylist() {
-        Track assente = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216);
+        Track assente = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216, "assente.mp3");
         assertFalse(playlist.removeTrack(assente));
         assertTrue(playlist.getTracks().isEmpty());
     }
@@ -100,7 +104,7 @@ class PlaylistImplTest {
      */
     @Test
     void removeTrackEmptyListException() {
-        Track assente = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216);
+        Track assente = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216, "assente.mp3");
         assertDoesNotThrow(() -> playlist.removeTrack(assente));
         assertTrue(playlist.getTracks().isEmpty());
     }
@@ -110,7 +114,6 @@ class PlaylistImplTest {
      */
     @Test
     void addDuplicateNotAdd() {
-        Track t = new TrackImpl("Canzone Titolata", "Giovanni", "Canzoni d'amore", 2017, 216);
         playlist.addTrack(t);
         playlist.addTrack(t);                       // stessa identica traccia
         assertEquals(1, playlist.getTracks().size());

@@ -5,7 +5,7 @@ import java.util.UUID;
 import java.time.Year;
 
 /**
- * @brief Implementazione concreta dell'interfaccia ITrack.
+ * @brief Implementazione concreta dell'interfaccia Track.
  * * Questa classe rappresenta fisicamente una traccia musicale nel sistema.
  * Gestisce lo stato interno dei dati e applica le regole di validazione
  * al momento dell'inserimento o della modifica.
