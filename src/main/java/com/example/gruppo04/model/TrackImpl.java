@@ -12,13 +12,29 @@ import java.time.Year;
  */
 public class TrackImpl implements Track {
 
-        private final UUID id; //Questo UUID è stato inserito in modo da dare un id univoco alla traccia così che quando verranno modificati i campi dall'utente non ci saranno ambiguità nelle playlist e non verranno perse le tracce
-        private String title;
-        private String author;
-        private String genre;
-        private int year;
-        private int duration;
-        private String filePath;
+    /** * @brief Identificatore univoco della traccia.
+     * @details Generato automaticamente alla creazione. Previene ambiguità nelle playlist
+     * anche nel caso in cui l'utente modifichi titolo o autore in un secondo momento.
+     */
+    private final UUID id;
+
+    /** @brief Il titolo del brano musicale. */
+    private String title;
+
+    /** @brief Il nome dell'artista o del gruppo autore del brano. */
+    private String author;
+
+    /** @brief Il genere musicale di appartenenza (es. Rock, Pop, Jazz). */
+    private String genre;
+
+    /** @brief L'anno di pubblicazione o rilascio della traccia. */
+    private int year;
+
+    /** @brief La durata totale della traccia espressa in secondi. */
+    private int duration;
+
+    /** @brief Il percorso assoluto del file audio nel file system locale. */
+    private String filePath;
 
 
     /**
@@ -41,16 +57,30 @@ public class TrackImpl implements Track {
     }
 
 
+    /**
+     * @brief Recupera l'identificatore univoco della traccia.
+     * @return L'oggetto UUID associato alla traccia.
+     */
         @Override
         public UUID getId() {
             return this.id;
         }
 
+    /**
+     * @brief Recupera il titolo della traccia.
+     * @return Una stringa contenente il titolo.
+     */
         @Override
         public String getTitle() {
             return this.title;
         }
 
+
+    /**
+     * @brief Modifica il titolo della traccia.
+     * @param title Il nuovo titolo da assegnare.
+     * @throws IllegalArgumentException Se la stringa passata è nulla, vuota o composta solo da spazi.
+     */
         @Override
         public void setTitle(String title) {
             if (title == null || title.trim().isEmpty()) {
@@ -59,11 +89,20 @@ public class TrackImpl implements Track {
             this.title = title;
         }
 
+    /**
+     * @brief Recupera il nome dell'autore o dell'artista.
+     * @return Una stringa contenente l'autore.
+     */
         @Override
         public String getAuthor() {
             return this.author;
         }
 
+    /**
+     * @brief Modifica il nome dell'autore o dell'artista.
+     * @param author Il nuovo autore da assegnare.
+     * @throws IllegalArgumentException Se la stringa passata è nulla, vuota o composta solo da spazi.
+     */
         @Override
         public void setAuthor(String author) {
             if (author == null || author.trim().isEmpty()) {
@@ -72,21 +111,38 @@ public class TrackImpl implements Track {
             this.author = author;
         }
 
+    /**
+     * @brief Recupera il genere musicale della traccia.
+     * @return Una stringa contenente il genere.
+     */
         @Override
         public String getGenre() {
             return this.genre;
         }
 
+    /**
+     * @brief Modifica il genere musicale della traccia.
+     * @param genre Il nuovo genere da assegnare.
+     */
         @Override
         public void setGenre(String genre) {
             this.genre = genre;
         }
 
+    /**
+     * @brief Recupera l'anno di pubblicazione della traccia.
+     * @return Un intero rappresentante l'anno di pubblicazione.
+     */
         @Override
         public int getYear() {
             return this.year;
         }
 
+    /**
+     * @brief Modifica l'anno di pubblicazione della traccia.
+     * @param year Il nuovo anno da assegnare.
+     * @throws IllegalArgumentException Se l'anno è precedente al 1900 o successivo all'anno solare corrente.
+     */
         @Override
         public void setYear(int year) {
             int annoAttuale = Year.now().getValue();
@@ -99,11 +155,21 @@ public class TrackImpl implements Track {
         }
 
 
+
+    /**
+     * @brief Recupera la durata della traccia in secondi.
+     * @return Un intero rappresentante la durata totale.
+     */
         @Override
         public int getDuration() {
             return this.duration;
         }
 
+    /**
+     * @brief Modifica la durata della traccia.
+     * @param duration La nuova durata da assegnare, espressa in secondi.
+     * @throws IllegalArgumentException Se la durata inserita è minore o uguale a zero.
+     */
         @Override
         public void setDuration(int duration) {
             if (duration <= 0) {
