@@ -1,0 +1,13 @@
+<map id="com.example.gruppo04.view.MainViewController" name="com.example.gruppo04.view.MainViewController">
+<area shape="rect" id="Node000001" title="Controller JavaFX della finestra principale dell&#39;applicazione." alt="" coords="223,635,401,1022"/>
+<area shape="rect" id="Node000002" href="$interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer.html" title="Interfaccia che deve essere implementata da qualsiasi componente (View o Controller) che necessiti di..." alt="" coords="5,432,208,514"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,525,225,673,221,675,135,528"/>
+<area shape="rect" id="Node000003" href="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html" title=" " alt="" coords="332,5,543,310"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="335,270,298,324,271,382,257,440,251,500,253,560,259,618,254,619,247,560,246,499,252,439,266,380,294,321,330,267"/>
+<area shape="rect" id="Node000004" href="$classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller.html" title="Controller deputato alla gestione del ciclo di vita delle tracce musicali." alt="" coords="334,392,540,554"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="440,310,440,375,435,375,435,310"/>
+<area shape="rect" id="Node000005" href="$classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html" title="Controller (MVC) per la gestione delle playlist." alt="" coords="564,381,770,564"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="545,301,593,367,589,370,540,304"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="412,555,388,620,383,618,407,553"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="578,566,415,728,411,725,574,562"/>
+</map>

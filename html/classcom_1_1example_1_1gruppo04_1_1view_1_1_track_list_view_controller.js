@@ -1,0 +1,27 @@
+var classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller =
+[
+    [ "TrackListViewController", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#abb3274163e0c539da948afc99280cfbe", null ],
+    [ "TrackListViewController", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a128847b6cc0634491ccbf800c931c5a6", null ],
+    [ "configureColumns", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a850c4cbf6fac267a6151b3552cf5d283", null ],
+    [ "init", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a021c686dbc16d16d76591f0652289b0c", null ],
+    [ "initialize", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#adf9f0e2755842dfe86d0034e158bc986", null ],
+    [ "onAddTrackButtonClicked", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a6cdcea5110700ed6be33ad04b5dfe1c5", null ],
+    [ "onCatalogChanged", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a3edc3be1e0a7b93701a63c6705295280", null ],
+    [ "onDeleteButtonClicked", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#ab79ec187937405b2432043548f5ac243", null ],
+    [ "onEditTrackButtonClicked", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a4c582a774fec03e11b5f9e87e42a937a", null ],
+    [ "registerCatalogObserver", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a385e37645fc2a8bd575c14abac51f17c", null ],
+    [ "reloadTableData", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a209cbafc658eb36a59d3c9a43c2d3fb7", null ],
+    [ "showError", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a367a6a732eba16b64401a36d46786f18", null ],
+    [ "addTrackBtn", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a7743a8bddd4fd4e475ce30e066149d36", null ],
+    [ "artistCol", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a4de575d7adee01133a8ee47cbe9fe92c", null ],
+    [ "catalog", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#ad1fba5e46b510f76d10fbf70e1ee6889", null ],
+    [ "controller", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#ac6f0de22987214586c61ff078aa5d595", null ],
+    [ "durationCol", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#ab309cfc5d76eabac1e2be4dc4b89c9cc", null ],
+    [ "genreCol", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#ae96461df9f40bcff62a92335d0b5a1b5", null ],
+    [ "menuEdit", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#afeed724fe29b3e744f680d51f0a2c7bd", null ],
+    [ "observerRegistered", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a4f87d74add88ae98290a7da3292827df", null ],
+    [ "tableModel", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#affe7133635d0daccab8a4db8b47e3630", null ],
+    [ "titleCol", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a4d8e2de0e9a901a822bfa0a8283c42d5", null ],
+    [ "trackTable", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#ae57b5e42399b49708799f0e652c7989b", null ],
+    [ "yearCol", "classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#a15dc63b526f68cfb7a7a5d7daa723a27", null ]
+];

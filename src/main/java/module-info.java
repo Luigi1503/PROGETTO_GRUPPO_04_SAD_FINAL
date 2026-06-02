@@ -7,11 +7,22 @@ module com.example.gruppo04 {
     requires mp3agic;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.materialdesign2;
-    opens com.example.gruppo04 to javafx.fxml;
-    // Allow JavaFX modules to reflectively access model classes (PropertyValueFactory)
-    opens com.example.gruppo04.model to javafx.base, javafx.fxml;
-    exports com.example.gruppo04;
+    requires java.logging;
 
-    exports com.example.gruppo04.view to javafx.graphics;   // per costruire l'Application
-    opens   com.example.gruppo04.view to javafx.fxml;       // per iniettare i @FXML + initialize()
+    opens com.example.gruppo04 to javafx.fxml;
+    opens com.example.gruppo04.model to javafx.base, javafx.fxml;
+    opens com.example.gruppo04.controller to javafx.fxml;
+    opens com.example.gruppo04.observer to javafx.fxml;
+    opens com.example.gruppo04.interfaces to javafx.fxml;
+    opens com.example.gruppo04.util to javafx.fxml;
+
+    exports com.example.gruppo04;
+    exports com.example.gruppo04.controller;
+    exports com.example.gruppo04.model;
+    exports com.example.gruppo04.interfaces;
+    exports com.example.gruppo04.observer;
+    exports com.example.gruppo04.util;
+
+    exports com.example.gruppo04.view to javafx.graphics;
+    opens com.example.gruppo04.view to javafx.fxml;
 }

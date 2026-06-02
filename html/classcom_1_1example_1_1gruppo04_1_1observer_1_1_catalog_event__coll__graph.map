@@ -1,0 +1,5 @@
+<map id="com.example.gruppo04.observer.CatalogEvent" name="com.example.gruppo04.observer.CatalogEvent">
+<area shape="rect" id="Node000001" title="Incapsula le informazioni relative a un cambiamento di stato nel catalogo musicale." alt="" coords="20,341,222,503"/>
+<area shape="rect" id="Node000002" href="$enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html" title="Rappresenta i tipi di eventi di dominio che possono verificarsi all&#39;interno del catalogo." alt="" coords="5,5,236,270"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,269,124,324,118,324,118,269"/>
+</map>

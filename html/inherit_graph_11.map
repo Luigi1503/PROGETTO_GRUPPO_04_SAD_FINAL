@@ -1,0 +1,11 @@
+<map id="Grafico della gerarchia delle classi" name="Grafico della gerarchia delle classi">
+<area shape="rect" id="Node000000" href="$interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer.html" title="Interfaccia che deve essere implementata da qualsiasi componente (View o Controller) che necessiti di..." alt="" coords="5,104,219,145"/>
+<area shape="rect" id="Node000001" href="$classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html" title="Controller JavaFX della finestra principale dell&#39;applicazione." alt="" coords="267,5,456,46"/>
+<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="173,95,266,57,299,44,300,49,268,61,175,100"/>
+<area shape="rect" id="Node000002" href="$classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html" title="Controller JavaFX del pannello di dettaglio di una playlist." alt="" coords="267,71,456,111"/>
+<area shape="poly" id="edge6_Node000000_Node000002" title=" " alt="" coords="234,105,266,101,267,106,235,111"/>
+<area shape="rect" id="Node000003" href="$classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html" title="Controller di vista (layer View) del pannello di gestione delle playlist." alt="" coords="267,136,456,177"/>
+<area shape="poly" id="edge7_Node000000_Node000003" title=" " alt="" coords="235,137,267,142,266,147,234,143"/>
+<area shape="rect" id="Node000004" href="$classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html" title="Rappresenta la componente View secondo il pattern MVC." alt="" coords="267,201,456,242"/>
+<area shape="poly" id="edge8_Node000000_Node000004" title=" " alt="" coords="177,149,268,186,301,198,299,203,266,191,175,154"/>
+</map>

@@ -120,12 +120,12 @@ public class ConcreteMusicCatalog implements MusicCatalog {
 
         for (Track t : tracks.values()) {
 
-            if (t.getTitle().equalsIgnoreCase(track.getTitle()) &&
+                if (t.getTitle().equalsIgnoreCase(track.getTitle()) &&
                     t.getAuthor().equalsIgnoreCase(track.getAuthor())) {
-                throw new IllegalArgumentException("Un brano di '" + track.getAuthor() +
-                        "' intitolato '" + track.getTitle() +
-                        "' è già presente nel catalogo.");
-            }
+                throw new IllegalArgumentException("titolo esiste già: un brano di '" + track.getAuthor() +
+                    "' intitolato '" + track.getTitle() +
+                    "' è già presente nel catalogo.");
+                }
 
 
             if (track.getFilePath() != null && t.getFilePath() != null) {

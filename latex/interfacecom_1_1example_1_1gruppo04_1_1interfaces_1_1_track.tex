@@ -1,0 +1,361 @@
+\doxysection{Riferimenti per l\textquotesingle{}interfaccia com.\+example.\+gruppo04.\+interfaces.\+Track}
+\hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{}\label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+
+
+Rappresenta il contratto per una traccia musicale all\textquotesingle{}interno del sistema.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+interfaces.\+Track
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+interfaces.\+Track\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+UUID \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a150961a8e72f4051540f53b413b56875}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco della traccia. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a73d3be0fe1cd851d80c43b1026fd76a0}{get\+Title}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il titolo della traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ae6a315178f1ff9dea57fc6fef2ab61e4}{set\+Title}} (String title)
+\begin{DoxyCompactList}\small\item\em Imposta un nuovo titolo per la traccia. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a7b101e998466af83344555023e6a7a04}{get\+Author}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}autore o l\textquotesingle{}artista della traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a0186f1e417bb50e703306241fd961d7e}{set\+Author}} (String author)
+\begin{DoxyCompactList}\small\item\em Imposta un nuovo autore per la traccia. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a0131e8419f4d53dd777b452cd2b7a317}{get\+Genre}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il genere musicale della traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a29b40a9a9a8b10e67da830bd1052529e}{set\+Genre}} (String genre)
+\begin{DoxyCompactList}\small\item\em Imposta un nuovo genere musicale per la traccia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_af82a601f717aefec9b11fea6a5e71515}{get\+Year}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}anno di pubblicazione della traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a3e314885bc9e424cdd3d5b40039aa7dd}{set\+Year}} (int year)
+\begin{DoxyCompactList}\small\item\em Imposta un nuovo anno di pubblicazione per la traccia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a56ba15e0b349da0ee021bc5a6a927d20}{get\+Duration}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la durata della traccia espressa in secondi totali. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a1d7c439bd241c446d152d98399e6c2fd}{set\+Duration}} (int duration)
+\begin{DoxyCompactList}\small\item\em Imposta una nuova durata per la traccia. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a4a04e12deb32e0e9813d37ead9c5c49c}{get\+File\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il percorso fisico del file audio associato alla traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_afe71a8af8030bcf92e6edd81f42d610d}{set\+File\+Path}} (String file\+Path)
+\begin{DoxyCompactList}\small\item\em Imposta il percorso fisico del file audio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Rappresenta il contratto per una traccia musicale all\textquotesingle{}interno del sistema. 
+
+
+\begin{DoxyItemize}
+\item Questa interfaccia definisce i metodi necessari per leggere e manipolare le informazioni di un brano. L\textquotesingle{}identità di ogni traccia è garantita da un identificatore UUID immutabile. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a7b101e998466af83344555023e6a7a04}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getAuthor@{getAuthor}}
+\index{getAuthor@{getAuthor}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getAuthor()}{getAuthor()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a7b101e998466af83344555023e6a7a04} 
+String com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Author (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}autore o l\textquotesingle{}artista della traccia. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+Una stringa contenente il nome dell\textquotesingle{}autore. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a3174ef0d87b5565429c7d6f17b39207d}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a56ba15e0b349da0ee021bc5a6a927d20}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getDuration@{getDuration}}
+\index{getDuration@{getDuration}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getDuration()}{getDuration()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a56ba15e0b349da0ee021bc5a6a927d20} 
+int com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Duration (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la durata della traccia espressa in secondi totali. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+La durata totale in secondi. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a6eac65e5a316313dad27c678af0740ef}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a4a04e12deb32e0e9813d37ead9c5c49c}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getFilePath@{getFilePath}}
+\index{getFilePath@{getFilePath}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getFilePath()}{getFilePath()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a4a04e12deb32e0e9813d37ead9c5c49c} 
+String com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+File\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il percorso fisico del file audio associato alla traccia. 
+
+\begin{DoxyReturn}{Restituisce}
+Una stringa contenente il percorso assoluto, o null se non presente. 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_afbd755c9a1dad7be010311e25509e8ec}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a0131e8419f4d53dd777b452cd2b7a317}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getGenre@{getGenre}}
+\index{getGenre@{getGenre}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getGenre()}{getGenre()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a0131e8419f4d53dd777b452cd2b7a317} 
+String com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Genre (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il genere musicale della traccia. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+Una stringa contenente il genere. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_acdcce2662f58985617854f7c985530c7}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a150961a8e72f4051540f53b413b56875}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getId@{getId}}
+\index{getId@{getId}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a150961a8e72f4051540f53b413b56875} 
+UUID com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}identificativo univoco della traccia. 
+
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}ID nasce insieme alla traccia e non può mai essere modificato. È il parametro fondamentale su cui basare l\textquotesingle{}uguaglianza (equals/hash\+Code) degli oggetti.
+\item \begin{DoxyReturn}{Restituisce}
+L\textquotesingle{}UUID immutabile associato alla traccia. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a55d80ec13615adc2c3229a8fab103e98}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a73d3be0fe1cd851d80c43b1026fd76a0}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getTitle@{getTitle}}
+\index{getTitle@{getTitle}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getTitle()}{getTitle()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a73d3be0fe1cd851d80c43b1026fd76a0} 
+String com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il titolo della traccia. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+Una stringa contenente il titolo. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_ae1f7a466f4863d315aca7aec4954b07b}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_af82a601f717aefec9b11fea6a5e71515}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getYear@{getYear}}
+\index{getYear@{getYear}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getYear()}{getYear()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_af82a601f717aefec9b11fea6a5e71515} 
+int com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Year (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}anno di pubblicazione della traccia. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+L\textquotesingle{}anno di pubblicazione (es. 1990). 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a025b78543e08efbf1581a80def806f82}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a0186f1e417bb50e703306241fd961d7e}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!setAuthor@{setAuthor}}
+\index{setAuthor@{setAuthor}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{setAuthor()}{setAuthor()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a0186f1e417bb50e703306241fd961d7e} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+set\+Author (\begin{DoxyParamCaption}\item[{String}]{author}{}\end{DoxyParamCaption})}
+
+
+
+Imposta un nuovo autore per la traccia. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em author} & Il nuovo autore da assegnare. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em Illegal\+Argument\+Exception} & se il parametro in ingresso è nullo o vuoto. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a9592d6451a1e2f53cca20b1bcf1e7b2d}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a1d7c439bd241c446d152d98399e6c2fd}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!setDuration@{setDuration}}
+\index{setDuration@{setDuration}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{setDuration()}{setDuration()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a1d7c439bd241c446d152d98399e6c2fd} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+set\+Duration (\begin{DoxyParamCaption}\item[{int}]{duration}{}\end{DoxyParamCaption})}
+
+
+
+Imposta una nuova durata per la traccia. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em duration} & La durata espressa in secondi totali. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em Illegal\+Argument\+Exception} & se la durata passata è minore o uguale a zero. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a08ed285da3661c78d8766ade825c3410}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_afe71a8af8030bcf92e6edd81f42d610d}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!setFilePath@{setFilePath}}
+\index{setFilePath@{setFilePath}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{setFilePath()}{setFilePath()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_afe71a8af8030bcf92e6edd81f42d610d} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+set\+File\+Path (\begin{DoxyParamCaption}\item[{String}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il percorso fisico del file audio. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em file\+Path} & Il percorso assoluto del file. \\
+\hline
+\end{DoxyParams}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a7d53d79a909eb84f7455508b39c42e6d}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a29b40a9a9a8b10e67da830bd1052529e}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!setGenre@{setGenre}}
+\index{setGenre@{setGenre}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{setGenre()}{setGenre()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a29b40a9a9a8b10e67da830bd1052529e} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+set\+Genre (\begin{DoxyParamCaption}\item[{String}]{genre}{}\end{DoxyParamCaption})}
+
+
+
+Imposta un nuovo genere musicale per la traccia. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em genre} & Il nuovo genere da assegnare. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_adbde73c4526d4f54435cbc80a3129bee}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ae6a315178f1ff9dea57fc6fef2ab61e4}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!setTitle@{setTitle}}
+\index{setTitle@{setTitle}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{setTitle()}{setTitle()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ae6a315178f1ff9dea57fc6fef2ab61e4} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+set\+Title (\begin{DoxyParamCaption}\item[{String}]{title}{}\end{DoxyParamCaption})}
+
+
+
+Imposta un nuovo titolo per la traccia. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em title} & Il nuovo titolo da assegnare. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em Illegal\+Argument\+Exception} & se il parametro in ingresso è nullo o vuoto. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_ae5dc8c5d9e17c5cd25b0494729af57b6}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a3e314885bc9e424cdd3d5b40039aa7dd}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!setYear@{setYear}}
+\index{setYear@{setYear}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{setYear()}{setYear()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a3e314885bc9e424cdd3d5b40039aa7dd} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+set\+Year (\begin{DoxyParamCaption}\item[{int}]{year}{}\end{DoxyParamCaption})}
+
+
+
+Imposta un nuovo anno di pubblicazione per la traccia. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em year} & L\textquotesingle{}anno da assegnare. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em Illegal\+Argument\+Exception} & se l\textquotesingle{}anno è precedente al 1900 o se è nel futuro. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_afbe2ece63cc72bc2f9e3e1e006892b9e}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+
+
+La documentazione per questa interfaccia è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/interfaces/\mbox{\hyperlink{_track_8java}{Track.\+java}}\end{DoxyCompactItemize}

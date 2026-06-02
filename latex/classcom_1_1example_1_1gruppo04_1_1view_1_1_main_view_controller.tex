@@ -1,0 +1,306 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+
+
+Controller Java\+FX della finestra principale dell\textquotesingle{}applicazione.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0adcb436a2253baaf26e9e7253236ed4}{init}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acb9972775744870242c2e74bcbcd9131}{catalog}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a579927ca1ad26a125083c2030e6caadf}{track\+Controller}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052}{playlist\+Controller}})
+\begin{DoxyCompactList}\small\item\em Inizializza la Main\+Window con le dipendenze necessarie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4e8e64136d5fc2d79ae4540e3d31f425}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Chiamato dal catalogo quando si verifica un cambiamento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4313a1021e9cbd5a0fbe64ff37884955}{update\+Sidebar\+Playlists}} ()
+\begin{DoxyCompactList}\small\item\em Aggiorna la lista delle playlist nella sidebar sinistra. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a20146d214650070f940dd6c11bb28a43}{show\+All\+Tracks}} ()
+\begin{DoxyCompactList}\small\item\em Mostra il pannello All Tracks nell\textquotesingle{}area centrale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4188145a3b01a5d653eab75e60927041}{show\+Playlists}} ()
+\begin{DoxyCompactList}\small\item\em Mostra il pannello Playlists nell\textquotesingle{}area centrale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad458a8b04475f8ea32ec2947438dc0db}{show\+Playlist\+Detail}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
+\begin{DoxyCompactList}\small\item\em Mostra il pannello di dettaglio di una playlist nell\textquotesingle{}area centrale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a842e2be1849acc9fd8a7761f1aa2fad6}{set\+Content}} (Node node)
+\begin{DoxyCompactList}\small\item\em Sostituisce il contenuto dell\textquotesingle{}area centrale con il nodo fornito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a862dae0b901498c11fdd97b221be302b}{set\+Active\+Button}} (Button active)
+\begin{DoxyCompactList}\small\item\em Imposta lo stile del bottone attivo nella sidebar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+Stack\+Pane \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a60a5f81db7c99ee8b50454afb648f26e}{content\+Area}}
+\begin{DoxyCompactList}\small\item\em Area centrale che contiene il pannello attualmente visualizzato. \end{DoxyCompactList}\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ae3681b52ded63bd5f13b910530722b84}{sidebar\+Playlist\+List}}
+\begin{DoxyCompactList}\small\item\em Lista delle playlist nella sidebar sinistra. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acbd4714a0ed88a037a048b4bbf6dad02}{btn\+Home}}
+\begin{DoxyCompactList}\small\item\em Pulsante di navigazione Home. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a65841d735fffc0baf6f2d2cbda88f4cc}{btn\+All\+Tracks}}
+\begin{DoxyCompactList}\small\item\em Pulsante di navigazione All Tracks. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_aadc7d046bd4c2058ffda231c96b1360a}{btn\+Playlists}}
+\begin{DoxyCompactList}\small\item\em Pulsante di navigazione Playlists. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acb9972775744870242c2e74bcbcd9131}{catalog}}
+\begin{DoxyCompactList}\small\item\em Catalogo musicale centrale. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a579927ca1ad26a125083c2030e6caadf}{track\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller MVC delle tracce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052}{playlist\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller MVC delle playlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final Logger \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ae6471ed27322d15bb32945a9ac11f7c7}{logger}}
+\begin{DoxyCompactList}\small\item\em Logger per la gestione degli errori di caricamento delle view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Controller Java\+FX della finestra principale dell\textquotesingle{}applicazione. 
+
+Assembla tutte le view e gestisce la navigazione tra i pannelli tramite la sidebar sinistra. Implementa \doxylink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer} per aggiornare la lista delle playlist nella sidebar. 
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0adcb436a2253baaf26e9e7253236ed4}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!init@{init}}
+\index{init@{init}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0adcb436a2253baaf26e9e7253236ed4} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{track\+Controller}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza la Main\+Window con le dipendenze necessarie. 
+
+Registra questo controller come Observer del catalogo e carica la vista iniziale (All Tracks). Da chiamare dopo il caricamento dell\textquotesingle{}FXML.
+
+
+\begin{DoxyParams}{Parametri}
+{\em catalog} & il catalogo musicale \\
+\hline
+{\em track\+Controller} & il controller MVC delle tracce \\
+\hline
+{\em playlist\+Controller} & il controller MVC delle playlist \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4e8e64136d5fc2d79ae4540e3d31f425}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!onCatalogChanged@{onCatalogChanged}}
+\index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4e8e64136d5fc2d79ae4540e3d31f425} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+on\+Catalog\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Chiamato dal catalogo quando si verifica un cambiamento. 
+
+Aggiorna la sidebar se cambiano le playlist.
+
+
+\begin{DoxyParams}{Parametri}
+{\em event} & l\textquotesingle{}evento contenente i dettagli del cambiamento \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer_a36eb26536a7687957f477934bdafbfb0}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a862dae0b901498c11fdd97b221be302b}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!setActiveButton@{setActiveButton}}
+\index{setActiveButton@{setActiveButton}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{setActiveButton()}{setActiveButton()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a862dae0b901498c11fdd97b221be302b} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+set\+Active\+Button (\begin{DoxyParamCaption}\item[{Button}]{active}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Imposta lo stile del bottone attivo nella sidebar. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em active} & il bottone da evidenziare \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a842e2be1849acc9fd8a7761f1aa2fad6}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!setContent@{setContent}}
+\index{setContent@{setContent}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{setContent()}{setContent()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a842e2be1849acc9fd8a7761f1aa2fad6} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+set\+Content (\begin{DoxyParamCaption}\item[{Node}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sostituisce il contenuto dell\textquotesingle{}area centrale con il nodo fornito. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em node} & il pannello da mostrare \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a20146d214650070f940dd6c11bb28a43}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!showAllTracks@{showAllTracks}}
+\index{showAllTracks@{showAllTracks}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{showAllTracks()}{showAllTracks()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a20146d214650070f940dd6c11bb28a43} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+show\+All\+Tracks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mostra il pannello All Tracks nell\textquotesingle{}area centrale. 
+
+Usa set\+Controller\+Factory in quanto Track\+View ha un costruttore con parametri. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad458a8b04475f8ea32ec2947438dc0db}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!showPlaylistDetail@{showPlaylistDetail}}
+\index{showPlaylistDetail@{showPlaylistDetail}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{showPlaylistDetail()}{showPlaylistDetail()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad458a8b04475f8ea32ec2947438dc0db} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+show\+Playlist\+Detail (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mostra il pannello di dettaglio di una playlist nell\textquotesingle{}area centrale. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist selezionata dall\textquotesingle{}utente \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4188145a3b01a5d653eab75e60927041}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!showPlaylists@{showPlaylists}}
+\index{showPlaylists@{showPlaylists}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{showPlaylists()}{showPlaylists()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4188145a3b01a5d653eab75e60927041} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+show\+Playlists (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mostra il pannello Playlists nell\textquotesingle{}area centrale. 
+
+Usa set\+Controller\+Factory perché \doxylink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller}{Playlist\+View\+Controller} ha un costruttore con parametri. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4313a1021e9cbd5a0fbe64ff37884955}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!updateSidebarPlaylists@{updateSidebarPlaylists}}
+\index{updateSidebarPlaylists@{updateSidebarPlaylists}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{updateSidebarPlaylists()}{updateSidebarPlaylists()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4313a1021e9cbd5a0fbe64ff37884955} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+update\+Sidebar\+Playlists (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aggiorna la lista delle playlist nella sidebar sinistra. 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a65841d735fffc0baf6f2d2cbda88f4cc}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!btnAllTracks@{btnAllTracks}}
+\index{btnAllTracks@{btnAllTracks}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{btnAllTracks}{btnAllTracks}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a65841d735fffc0baf6f2d2cbda88f4cc} 
+Button com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+btn\+All\+Tracks\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante di navigazione All Tracks. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acbd4714a0ed88a037a048b4bbf6dad02}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!btnHome@{btnHome}}
+\index{btnHome@{btnHome}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{btnHome}{btnHome}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acbd4714a0ed88a037a048b4bbf6dad02} 
+Button com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+btn\+Home\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante di navigazione Home. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_aadc7d046bd4c2058ffda231c96b1360a}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!btnPlaylists@{btnPlaylists}}
+\index{btnPlaylists@{btnPlaylists}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{btnPlaylists}{btnPlaylists}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_aadc7d046bd4c2058ffda231c96b1360a} 
+Button com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+btn\+Playlists\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante di navigazione Playlists. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acb9972775744870242c2e74bcbcd9131}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acb9972775744870242c2e74bcbcd9131} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Catalogo musicale centrale. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a60a5f81db7c99ee8b50454afb648f26e}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!contentArea@{contentArea}}
+\index{contentArea@{contentArea}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{contentArea}{contentArea}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a60a5f81db7c99ee8b50454afb648f26e} 
+Stack\+Pane com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+content\+Area\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Area centrale che contiene il pannello attualmente visualizzato. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ae6471ed27322d15bb32945a9ac11f7c7}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!logger@{logger}}
+\index{logger@{logger}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ae6471ed27322d15bb32945a9ac11f7c7} 
+final Logger com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+logger\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Logger.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}{MainViewController}}.class.getName())}
+
+\end{DoxyCode}
+
+
+Logger per la gestione degli errori di caricamento delle view. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!playlistController@{playlistController}}
+\index{playlistController@{playlistController}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{playlistController}{playlistController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+playlist\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller MVC delle playlist. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ae3681b52ded63bd5f13b910530722b84}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!sidebarPlaylistList@{sidebarPlaylistList}}
+\index{sidebarPlaylistList@{sidebarPlaylistList}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{sidebarPlaylistList}{sidebarPlaylistList}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ae3681b52ded63bd5f13b910530722b84} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+sidebar\+Playlist\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista delle playlist nella sidebar sinistra. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a579927ca1ad26a125083c2030e6caadf}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!trackController@{trackController}}
+\index{trackController@{trackController}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{trackController}{trackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a579927ca1ad26a125083c2030e6caadf} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+track\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller MVC delle tracce. 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_main_view_controller_8java}{Main\+View\+Controller.\+java}}\end{DoxyCompactItemize}

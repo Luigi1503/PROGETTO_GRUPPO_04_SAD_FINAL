@@ -1,0 +1,27 @@
+var classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl =
+[
+    [ "TrackImpl", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#abbd0ca9298d308744f3f8ff391c778f3", null ],
+    [ "equals", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a72d3b73b1f177ba7df7bdb13e9059d59", null ],
+    [ "getAuthor", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a3174ef0d87b5565429c7d6f17b39207d", null ],
+    [ "getDuration", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a6eac65e5a316313dad27c678af0740ef", null ],
+    [ "getFilePath", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#afbd755c9a1dad7be010311e25509e8ec", null ],
+    [ "getGenre", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#acdcce2662f58985617854f7c985530c7", null ],
+    [ "getId", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a55d80ec13615adc2c3229a8fab103e98", null ],
+    [ "getTitle", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#ae1f7a466f4863d315aca7aec4954b07b", null ],
+    [ "getYear", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a025b78543e08efbf1581a80def806f82", null ],
+    [ "hashCode", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#ac0246c93a153cac0327223b625200191", null ],
+    [ "setAuthor", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a9592d6451a1e2f53cca20b1bcf1e7b2d", null ],
+    [ "setDuration", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a08ed285da3661c78d8766ade825c3410", null ],
+    [ "setFilePath", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a7d53d79a909eb84f7455508b39c42e6d", null ],
+    [ "setGenre", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#adbde73c4526d4f54435cbc80a3129bee", null ],
+    [ "setTitle", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#ae5dc8c5d9e17c5cd25b0494729af57b6", null ],
+    [ "setYear", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#afbe2ece63cc72bc2f9e3e1e006892b9e", null ],
+    [ "toString", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a6aa58e69df21a0c5eea495e293726fc7", null ],
+    [ "author", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a7fb711ed48cb6f6552e3bcc7a3f91c9e", null ],
+    [ "duration", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#aab08596f9fb9332e99fc621bbd571022", null ],
+    [ "filePath", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a9a310ae29b754489d869930d33a46297", null ],
+    [ "genre", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#aafcf22f1675faa998f79b65239249be1", null ],
+    [ "id", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a83c3acea4c6650375b48a377424bb02b", null ],
+    [ "title", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a60326408d3f1078275a3926ccc9804bd", null ],
+    [ "year", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a3bd4b2fce329a0e89ff3af30f0a1eeba", null ]
+];

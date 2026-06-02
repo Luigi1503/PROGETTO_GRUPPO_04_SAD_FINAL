@@ -1,0 +1,138 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+observer.\+Catalog\+Event}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{}\label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+
+
+Incapsula le informazioni relative a un cambiamento di stato nel catalogo musicale.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a44a1a1a25240df68d5337bbebdfa79c4}{Catalog\+Event}} (\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a04705d23d0640f80e35cf7556bfb4ec0}{type}}, Object \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_ae63d8cc09dcdf12aa304f1fe1dece1c2}{source}}, Object \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a37b0aaa2f74257cd8c7bdb92022bda1f}{target}})
+\begin{DoxyCompactList}\small\item\em Costruisce un nuovo evento di catalogo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a4c652d57ace8de57bd6add19d0e0f627}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la tipologia specifica dell\textquotesingle{}evento di dominio. \end{DoxyCompactList}\item 
+Object \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_ae8d6b6972f243b0e1ec9948857ddd602}{get\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}oggetto sorgente che ha originato la notifica. \end{DoxyCompactList}\item 
+Object \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a8178d3652a819b8227ead9c40801cc59}{get\+Target}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}entità di dominio specifica colpita dal cambiamento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a04705d23d0640f80e35cf7556bfb4ec0}{type}}
+\item 
+final Object \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_ae63d8cc09dcdf12aa304f1fe1dece1c2}{source}}
+\item 
+final Object \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a37b0aaa2f74257cd8c7bdb92022bda1f}{target}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Incapsula le informazioni relative a un cambiamento di stato nel catalogo musicale. 
+
+Gli eventi sono fortemente tipizzati per evitare cast insicuri a runtime. 
+
+\label{doc-constructors}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_doc-constructors}
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a44a1a1a25240df68d5337bbebdfa79c4}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}!CatalogEvent@{CatalogEvent}}
+\index{CatalogEvent@{CatalogEvent}!com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+\doxysubsubsection{\texorpdfstring{CatalogEvent()}{CatalogEvent()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a44a1a1a25240df68d5337bbebdfa79c4} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event.\+Catalog\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}}}]{type}{, }\item[{Object}]{source}{, }\item[{Object}]{target}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce un nuovo evento di catalogo. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em type} & il tipo di evento di dominio che si è verificato \\
+\hline
+{\em source} & la sorgente che ha generato l\textquotesingle{}evento (tipicamente l\textquotesingle{}istanza di \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}) \\
+\hline
+{\em target} & l\textquotesingle{}oggetto specifico del dominio che è stato modificato (es. la traccia o la playlist) \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_ae8d6b6972f243b0e1ec9948857ddd602}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}!getSource@{getSource}}
+\index{getSource@{getSource}!com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+\doxysubsubsection{\texorpdfstring{getSource()}{getSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_ae8d6b6972f243b0e1ec9948857ddd602} 
+Object com.\+example.\+gruppo04.\+observer.\+Catalog\+Event.\+get\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}oggetto sorgente che ha originato la notifica. 
+
+\begin{DoxyReturn}{Restituisce}
+il soggetto (\doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}) che ha subito la mutazione 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a8178d3652a819b8227ead9c40801cc59}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a8178d3652a819b8227ead9c40801cc59} 
+Object com.\+example.\+gruppo04.\+observer.\+Catalog\+Event.\+get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}entità di dominio specifica colpita dal cambiamento. 
+
+\begin{DoxyReturn}{Restituisce}
+l\textquotesingle{}oggetto modificato, da sottoporre a cast sicuro in base al {\ttfamily \doxylink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}} 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a4c652d57ace8de57bd6add19d0e0f627}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}!getType@{getType}}
+\index{getType@{getType}!com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a4c652d57ace8de57bd6add19d0e0f627} 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}} com.\+example.\+gruppo04.\+observer.\+Catalog\+Event.\+get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la tipologia specifica dell\textquotesingle{}evento di dominio. 
+
+\begin{DoxyReturn}{Restituisce}
+il tipo di evento 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_ae63d8cc09dcdf12aa304f1fe1dece1c2}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}!source@{source}}
+\index{source@{source}!com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+\doxysubsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_ae63d8cc09dcdf12aa304f1fe1dece1c2} 
+final Object com.\+example.\+gruppo04.\+observer.\+Catalog\+Event.\+source\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a37b0aaa2f74257cd8c7bdb92022bda1f}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}!target@{target}}
+\index{target@{target}!com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a37b0aaa2f74257cd8c7bdb92022bda1f} 
+final Object com.\+example.\+gruppo04.\+observer.\+Catalog\+Event.\+target\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a04705d23d0640f80e35cf7556bfb4ec0}\index{com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}!type@{type}}
+\index{type@{type}!com.example.gruppo04.observer.CatalogEvent@{com.example.gruppo04.observer.CatalogEvent}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_a04705d23d0640f80e35cf7556bfb4ec0} 
+final \mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}} com.\+example.\+gruppo04.\+observer.\+Catalog\+Event.\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/observer/\mbox{\hyperlink{_catalog_event_8java}{Catalog\+Event.\+java}}\end{DoxyCompactItemize}

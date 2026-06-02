@@ -1,0 +1,262 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab84b2f355e6f79d1324180784dfdf153}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Inizializza i componenti grafici della View subito dopo il caricamento del file FXML. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a40ec5df54750239d1b8e834f90c7c326}{set\+Track\+Controller}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a741d68e309abb5c90360e73c53571646}{track\+Controller}})
+\begin{DoxyCompactList}\small\item\em Inietta il controller delle tracce all\textquotesingle{}interno della View. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab36d4b8cc411e851d22aa27007230c03}{populate\+Form\+For\+Edit}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Popola il form con i dati di una traccia esistente per consentirne la modifica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_adfb8cc5b9553a6cf4c84ec519bc05bfd}{set\+Campi\+Bloccati}} (boolean bloccato)
+\begin{DoxyCompactList}\small\item\em Metodo di supporto per bloccare o sbloccare i campi di input in blocco. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a2868ce1dde57b3ef5e6811c61d8f7939}{estrai\+Dati\+Da\+Mp3}} (File file)
+\begin{DoxyCompactList}\small\item\em Legge e inserisce automaticamente i metadati estratti da un file MP3 nei campi del form. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a9a03bb303087bd8515e17d51fcdd4382}{clear\+Form\+Fields}} ()
+\begin{DoxyCompactList}\small\item\em Ripulisce tutti i campi del form e ripristina lo stato iniziale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a895ff88f15ad05009e242fe0739e16ee}{add\+Button}}
+\item 
+Text\+Field \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a689bb3dd8882481fdd4e354c43d522e9}{author\+Field}}
+\item 
+Spinner$<$ Integer $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab83880cda3cabceb8f4f3c38e86a9f13}{duration\+Spinner}}
+\item 
+Combo\+Box$<$ String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a0a9da9783da342a70fae2ca8ff8a9c0d}{genre\+Combo\+Box}}
+\item 
+Text\+Field \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_aec6b2fd018858911cbdf21e05e611fa8}{title\+Field}}
+\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_acc37407b2f3bf59a2199bdf791f50d78}{update\+Button}}
+\item 
+Spinner$<$ Integer $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_aec5e94c8b1a2fa569638801308b16b89}{year\+Spinner}}
+\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a26a4dda5e72d327018b46947f33ee6e8}{import\+Mp3\+Button}}
+\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab74bfcf07b910d8a6bc1c6e215d41d98}{file\+Path\+Label}}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a741d68e309abb5c90360e73c53571646}{track\+Controller}}
+\begin{DoxyCompactList}\small\item\em Riferimento al controller principale per la gestione della logica di business. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a0551b85a451618a6fbef417638e85417}{current\+Selected\+Track}}
+\begin{DoxyCompactList}\small\item\em Traccia attualmente selezionata (utilizzata solo in fase di modifica). \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a49db34e4876b11a31c2048af079784f2}{temp\+File\+Path}} = null
+\begin{DoxyCompactList}\small\item\em Percorso temporaneo del file MP3 importato, pronto per essere salvato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a9a03bb303087bd8515e17d51fcdd4382}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!clearFormFields@{clearFormFields}}
+\index{clearFormFields@{clearFormFields}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{clearFormFields()}{clearFormFields()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a9a03bb303087bd8515e17d51fcdd4382} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+clear\+Form\+Fields (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ripulisce tutti i campi del form e ripristina lo stato iniziale. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Svuota i campi di testo, resetta la selezione della Combo\+Box, imposta valori di default per gli Spinner e blocca nuovamente l\textquotesingle{}interfaccia in attesa di un nuovo inserimento o selezione. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a2868ce1dde57b3ef5e6811c61d8f7939}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!estraiDatiDaMp3@{estraiDatiDaMp3}}
+\index{estraiDatiDaMp3@{estraiDatiDaMp3}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{estraiDatiDaMp3()}{estraiDatiDaMp3()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a2868ce1dde57b3ef5e6811c61d8f7939} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+estrai\+Dati\+Da\+Mp3 (\begin{DoxyParamCaption}\item[{File}]{file}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Legge e inserisce automaticamente i metadati estratti da un file MP3 nei campi del form. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Sfrutta la libreria mp3agic per analizzare i tag ID3v2 del file audio. Estrae informazioni come durata, titolo, artista, genere e anno di pubblicazione, popolando i relativi campi dell\textquotesingle{}interfaccia grafica.
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em file} & L\textquotesingle{}oggetto File corrispondente al brano MP3 selezionato dall\textquotesingle{}utente. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab84b2f355e6f79d1324180784dfdf153}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!initialize@{initialize}}
+\index{initialize@{initialize}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab84b2f355e6f79d1324180784dfdf153} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza i componenti grafici della View subito dopo il caricamento del file FXML. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Popola la Combo\+Box dei generi musicali, imposta i limiti per gli Spinner dell\textquotesingle{}anno (1900-\/corrente) e della durata (in secondi), applicando a quest\textquotesingle{}ultimo un converter personalizzato per mostrare il formato "{}\+MM\+:\+SS"{} invece dei secondi grezzi. Infine, disabilita i campi in attesa che l\textquotesingle{}utente importi un file o abiliti l\textquotesingle{}inserimento manuale. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab36d4b8cc411e851d22aa27007230c03}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!populateFormForEdit@{populateFormForEdit}}
+\index{populateFormForEdit@{populateFormForEdit}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{populateFormForEdit()}{populateFormForEdit()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab36d4b8cc411e851d22aa27007230c03} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+populate\+Form\+For\+Edit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Popola il form con i dati di una traccia esistente per consentirne la modifica. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Disabilita il bottone di "{}\+Aggiunta"{} e abilita quello di "{}\+Modifica"{}. Sblocca i campi di input permettendo all\textquotesingle{}utente di alterare i valori correnti.
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em track} & L\textquotesingle{}oggetto {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} selezionato dall\textquotesingle{}utente nella tabella principale. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_adfb8cc5b9553a6cf4c84ec519bc05bfd}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!setCampiBloccati@{setCampiBloccati}}
+\index{setCampiBloccati@{setCampiBloccati}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{setCampiBloccati()}{setCampiBloccati()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_adfb8cc5b9553a6cf4c84ec519bc05bfd} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+set\+Campi\+Bloccati (\begin{DoxyParamCaption}\item[{boolean}]{bloccato}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di supporto per bloccare o sbloccare i campi di input in blocco. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em bloccato} & Se {\ttfamily true} i campi vengono disabilitati, se {\ttfamily false} resi modificabili. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a40ec5df54750239d1b8e834f90c7c326}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!setTrackController@{setTrackController}}
+\index{setTrackController@{setTrackController}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{setTrackController()}{setTrackController()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a40ec5df54750239d1b8e834f90c7c326} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+set\+Track\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{track\+Controller}{}\end{DoxyParamCaption})}
+
+
+
+Inietta il controller delle tracce all\textquotesingle{}interno della View. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em track\+Controller} & L\textquotesingle{}istanza del controller per effettuare operazioni CRUD. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-variable-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a895ff88f15ad05009e242fe0739e16ee}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!addButton@{addButton}}
+\index{addButton@{addButton}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{addButton}{addButton}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a895ff88f15ad05009e242fe0739e16ee} 
+Button com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+add\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a689bb3dd8882481fdd4e354c43d522e9}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!authorField@{authorField}}
+\index{authorField@{authorField}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{authorField}{authorField}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a689bb3dd8882481fdd4e354c43d522e9} 
+Text\+Field com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+author\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a0551b85a451618a6fbef417638e85417}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!currentSelectedTrack@{currentSelectedTrack}}
+\index{currentSelectedTrack@{currentSelectedTrack}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{currentSelectedTrack}{currentSelectedTrack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a0551b85a451618a6fbef417638e85417} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+current\+Selected\+Track\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Traccia attualmente selezionata (utilizzata solo in fase di modifica). 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab83880cda3cabceb8f4f3c38e86a9f13}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!durationSpinner@{durationSpinner}}
+\index{durationSpinner@{durationSpinner}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{durationSpinner}{durationSpinner}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab83880cda3cabceb8f4f3c38e86a9f13} 
+Spinner$<$Integer$>$ com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+duration\+Spinner\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab74bfcf07b910d8a6bc1c6e215d41d98}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!filePathLabel@{filePathLabel}}
+\index{filePathLabel@{filePathLabel}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{filePathLabel}{filePathLabel}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_ab74bfcf07b910d8a6bc1c6e215d41d98} 
+Label com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+file\+Path\+Label\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a0a9da9783da342a70fae2ca8ff8a9c0d}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!genreComboBox@{genreComboBox}}
+\index{genreComboBox@{genreComboBox}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{genreComboBox}{genreComboBox}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a0a9da9783da342a70fae2ca8ff8a9c0d} 
+Combo\+Box$<$String$>$ com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+genre\+Combo\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a26a4dda5e72d327018b46947f33ee6e8}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!importMp3Button@{importMp3Button}}
+\index{importMp3Button@{importMp3Button}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{importMp3Button}{importMp3Button}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a26a4dda5e72d327018b46947f33ee6e8} 
+Button com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+import\+Mp3\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a49db34e4876b11a31c2048af079784f2}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!tempFilePath@{tempFilePath}}
+\index{tempFilePath@{tempFilePath}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{tempFilePath}{tempFilePath}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a49db34e4876b11a31c2048af079784f2} 
+String com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+temp\+File\+Path = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Percorso temporaneo del file MP3 importato, pronto per essere salvato. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_aec6b2fd018858911cbdf21e05e611fa8}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!titleField@{titleField}}
+\index{titleField@{titleField}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{titleField}{titleField}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_aec6b2fd018858911cbdf21e05e611fa8} 
+Text\+Field com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+title\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a741d68e309abb5c90360e73c53571646}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!trackController@{trackController}}
+\index{trackController@{trackController}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{trackController}{trackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_a741d68e309abb5c90360e73c53571646} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+track\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Riferimento al controller principale per la gestione della logica di business. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_acc37407b2f3bf59a2199bdf791f50d78}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!updateButton@{updateButton}}
+\index{updateButton@{updateButton}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{updateButton}{updateButton}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_acc37407b2f3bf59a2199bdf791f50d78} 
+Button com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+update\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_aec5e94c8b1a2fa569638801308b16b89}\index{com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}!yearSpinner@{yearSpinner}}
+\index{yearSpinner@{yearSpinner}!com.example.gruppo04.view.TrackFormViewController@{com.example.gruppo04.view.TrackFormViewController}}
+\doxysubsubsection{\texorpdfstring{yearSpinner}{yearSpinner}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller_aec5e94c8b1a2fa569638801308b16b89} 
+Spinner$<$Integer$>$ com.\+example.\+gruppo04.\+view.\+Track\+Form\+View\+Controller.\+year\+Spinner\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_track_form_view_controller_8java}{Track\+Form\+View\+Controller.\+java}}\end{DoxyCompactItemize}

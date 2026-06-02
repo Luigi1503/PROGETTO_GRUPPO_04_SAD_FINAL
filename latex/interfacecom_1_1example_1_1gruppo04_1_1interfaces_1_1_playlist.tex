@@ -1,0 +1,157 @@
+\doxysection{Riferimenti per l\textquotesingle{}interfaccia com.\+example.\+gruppo04.\+interfaces.\+Playlist}
+\hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{}\label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}\index{com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}}
+
+
+Rappresenta una playlist\+: una collezione {\bfseries{ordinata}} di tracce, priva di duplicati, identificata in modo stabile da un id immutabile.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+interfaces.\+Playlist
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+interfaces.\+Playlist\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a4d1b317b0dd826b3d0300954d122e4b5}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il nome della playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a3b08511e1344c6a3810e9f0c29d4c68a}{set\+Name}} (String name)
+\begin{DoxyCompactList}\small\item\em Rinomina la playlist. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_ad150decc2b3fa572983a35f8bd61f7be}{add\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Aggiunge una traccia in coda alla playlist, se non già presente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a65afa1431391d8b2026bd5d60e52a6f7}{remove\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Rimuove una traccia dalla playlist, se presente. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a5704b3a11039d3dccfd16e12e71bcd35}{get\+Tracks}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce le tracce nell\textquotesingle{}ordine di inserimento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Rappresenta una playlist\+: una collezione {\bfseries{ordinata}} di tracce, priva di duplicati, identificata in modo stabile da un id immutabile. 
+
+Le tracce sono mantenute nell\textquotesingle{}ordine di inserimento; l\textquotesingle{}unicità all\textquotesingle{}interno della playlist è garantita dall\textquotesingle{}implementazione. 
+
+\label{doc-func-members}
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_ad150decc2b3fa572983a35f8bd61f7be}\index{com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}!addTrack@{addTrack}}
+\index{addTrack@{addTrack}!com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}}
+\doxysubsubsection{\texorpdfstring{addTrack()}{addTrack()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_ad150decc2b3fa572983a35f8bd61f7be} 
+boolean com.\+example.\+gruppo04.\+interfaces.\+Playlist.\+add\+Track (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge una traccia in coda alla playlist, se non già presente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la traccia da aggiungere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se la traccia è stata aggiunta, {\ttfamily false} se era già presente (in tal caso la playlist resta invariata) 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl_ae02f7587b78f42dbc17c21fea1dec87a}{com.\+example.\+gruppo04.\+model.\+Playlist\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a4d1b317b0dd826b3d0300954d122e4b5}\index{com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}!getName@{getName}}
+\index{getName@{getName}!com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a4d1b317b0dd826b3d0300954d122e4b5} 
+String com.\+example.\+gruppo04.\+interfaces.\+Playlist.\+get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il nome della playlist. 
+
+\begin{DoxyReturn}{Restituisce}
+il nome corrente (mai {\ttfamily null} né vuoto) 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl_a9fab326531eea434be2c9529c5278976}{com.\+example.\+gruppo04.\+model.\+Playlist\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a5704b3a11039d3dccfd16e12e71bcd35}\index{com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}!getTracks@{getTracks}}
+\index{getTracks@{getTracks}!com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}}
+\doxysubsubsection{\texorpdfstring{getTracks()}{getTracks()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a5704b3a11039d3dccfd16e12e71bcd35} 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ com.\+example.\+gruppo04.\+interfaces.\+Playlist.\+get\+Tracks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce le tracce nell\textquotesingle{}ordine di inserimento. 
+
+\begin{DoxyReturn}{Restituisce}
+una vista in {\bfseries{sola lettura}} delle tracce; ogni tentativo di modificarla solleva {\ttfamily \doxylink{}{Unsupported\+Operation\+Exception}} 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl_a091268b84fd56d92c1f16a628d5883c7}{com.\+example.\+gruppo04.\+model.\+Playlist\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a65afa1431391d8b2026bd5d60e52a6f7}\index{com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}!removeTrack@{removeTrack}}
+\index{removeTrack@{removeTrack}!com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}}
+\doxysubsubsection{\texorpdfstring{removeTrack()}{removeTrack()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a65afa1431391d8b2026bd5d60e52a6f7} 
+boolean com.\+example.\+gruppo04.\+interfaces.\+Playlist.\+remove\+Track (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove una traccia dalla playlist, se presente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la traccia da rimuovere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se la traccia è stata rimossa, {\ttfamily false} se non era presente 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl_a88d7129baa76472e2d3bf4b776dd522d}{com.\+example.\+gruppo04.\+model.\+Playlist\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a3b08511e1344c6a3810e9f0c29d4c68a}\index{com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}!setName@{setName}}
+\index{setName@{setName}!com.example.gruppo04.interfaces.Playlist@{com.example.gruppo04.interfaces.Playlist}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a3b08511e1344c6a3810e9f0c29d4c68a} 
+void com.\+example.\+gruppo04.\+interfaces.\+Playlist.\+set\+Name (\begin{DoxyParamCaption}\item[{String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Rinomina la playlist. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em name} & il nuovo nome \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em Illegal\+Argument\+Exception} & se {\ttfamily nome} è {\ttfamily null} o vuoto \\
+\hline
+\end{DoxyExceptions}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl_a8d3754d096d4a9ba8fa3bfb3b760df12}{com.\+example.\+gruppo04.\+model.\+Playlist\+Impl}}.
+
+
+
+La documentazione per questa interfaccia è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/interfaces/\mbox{\hyperlink{_playlist_8java}{Playlist.\+java}}\end{DoxyCompactItemize}

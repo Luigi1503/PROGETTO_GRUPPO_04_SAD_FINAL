@@ -1,0 +1,155 @@
+\doxysection{Riferimenti per il tipo enumerato com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type}
+\hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{}\label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+
+
+Rappresenta i tipi di eventi di dominio che possono verificarsi all\textquotesingle{}interno del catalogo.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Attributi pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_aecbe9736840f632924a230ef4fb75e23}{TRACK\+\_\+\+ADDED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando una nuova traccia viene inserita con successo nel catalogo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac8ce8f164864e44533d7b73efad49c99}{TRACK\+\_\+\+REMOVED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando una traccia viene definitivamente rimossa dal catalogo (e dalle playlist). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a4cbf04ca7a82cd947bc0e54bd1185cf1}{TRACK\+\_\+\+UPDATED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando le proprietà di una traccia esistente vengono modificate. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ae2dcd7639e2b1c45aaa5642736410332}{PLAYLIST\+\_\+\+ADDED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando una nuova playlist viene creata all\textquotesingle{}interno del catalogo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a6191310152f17218c77ace6c36abc2f9}{PLAYLIST\+\_\+\+REMOVED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando una playlist viene eliminata dal catalogo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a66353758b21cf5046d956741af5b717a}{PLAYLIST\+\_\+\+RENAMED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando il nome di una playlist esistente viene modificato con successo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a621fe5a75bb5f0d30498565b30ac85e0}{PLAYLIST\+\_\+\+CONTENT\+\_\+\+CHANGED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando vengono aggiunte o rimosse tracce da una specifica playlist. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ab91bd7ac1297796d87cb9261d1747ee7}{PLAYLIST\+\_\+\+REORDERED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando l\textquotesingle{}ordine interno delle tracce all\textquotesingle{}interno di una playlist viene modificato. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_af529493e357e6f951248d7be1ff0fe73}{PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando una nuova traccia viene aggiunta alla playlist. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_afa2ae1ece338fade17639896e1c33fa0}{PLAYLIST\+\_\+\+TRACK\+\_\+\+REMOVED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando una traccia viene rimossa dalla playlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Rappresenta i tipi di eventi di dominio che possono verificarsi all\textquotesingle{}interno del catalogo. 
+
+Permette agli observer di filtrare le notifiche ricevute in base alla loro granularità. 
+
+\label{doc-variable-members}
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ae2dcd7639e2b1c45aaa5642736410332}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_ADDED@{PLAYLIST\_ADDED}}
+\index{PLAYLIST\_ADDED@{PLAYLIST\_ADDED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYLIST\_ADDED}{PLAYLIST\_ADDED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ae2dcd7639e2b1c45aaa5642736410332} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+ADDED}
+
+
+
+Rilasciato quando una nuova playlist viene creata all\textquotesingle{}interno del catalogo. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a621fe5a75bb5f0d30498565b30ac85e0}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_CONTENT\_CHANGED@{PLAYLIST\_CONTENT\_CHANGED}}
+\index{PLAYLIST\_CONTENT\_CHANGED@{PLAYLIST\_CONTENT\_CHANGED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYLIST\_CONTENT\_CHANGED}{PLAYLIST\_CONTENT\_CHANGED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a621fe5a75bb5f0d30498565b30ac85e0} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+CONTENT\+\_\+\+CHANGED}
+
+
+
+Rilasciato quando vengono aggiunte o rimosse tracce da una specifica playlist. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a6191310152f17218c77ace6c36abc2f9}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_REMOVED@{PLAYLIST\_REMOVED}}
+\index{PLAYLIST\_REMOVED@{PLAYLIST\_REMOVED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYLIST\_REMOVED}{PLAYLIST\_REMOVED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a6191310152f17218c77ace6c36abc2f9} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+REMOVED}
+
+
+
+Rilasciato quando una playlist viene eliminata dal catalogo. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a66353758b21cf5046d956741af5b717a}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_RENAMED@{PLAYLIST\_RENAMED}}
+\index{PLAYLIST\_RENAMED@{PLAYLIST\_RENAMED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYLIST\_RENAMED}{PLAYLIST\_RENAMED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a66353758b21cf5046d956741af5b717a} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+RENAMED}
+
+
+
+Rilasciato quando il nome di una playlist esistente viene modificato con successo. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ab91bd7ac1297796d87cb9261d1747ee7}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_REORDERED@{PLAYLIST\_REORDERED}}
+\index{PLAYLIST\_REORDERED@{PLAYLIST\_REORDERED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYLIST\_REORDERED}{PLAYLIST\_REORDERED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ab91bd7ac1297796d87cb9261d1747ee7} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+REORDERED}
+
+
+
+Rilasciato quando l\textquotesingle{}ordine interno delle tracce all\textquotesingle{}interno di una playlist viene modificato. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_af529493e357e6f951248d7be1ff0fe73}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_TRACK\_ADDED@{PLAYLIST\_TRACK\_ADDED}}
+\index{PLAYLIST\_TRACK\_ADDED@{PLAYLIST\_TRACK\_ADDED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYLIST\_TRACK\_ADDED}{PLAYLIST\_TRACK\_ADDED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_af529493e357e6f951248d7be1ff0fe73} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}
+
+
+
+Rilasciato quando una nuova traccia viene aggiunta alla playlist. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_afa2ae1ece338fade17639896e1c33fa0}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_TRACK\_REMOVED@{PLAYLIST\_TRACK\_REMOVED}}
+\index{PLAYLIST\_TRACK\_REMOVED@{PLAYLIST\_TRACK\_REMOVED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYLIST\_TRACK\_REMOVED}{PLAYLIST\_TRACK\_REMOVED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_afa2ae1ece338fade17639896e1c33fa0} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+TRACK\+\_\+\+REMOVED}
+
+
+
+Rilasciato quando una traccia viene rimossa dalla playlist. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_aecbe9736840f632924a230ef4fb75e23}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!TRACK\_ADDED@{TRACK\_ADDED}}
+\index{TRACK\_ADDED@{TRACK\_ADDED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{TRACK\_ADDED}{TRACK\_ADDED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_aecbe9736840f632924a230ef4fb75e23} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+TRACK\+\_\+\+ADDED}
+
+
+
+Rilasciato quando una nuova traccia viene inserita con successo nel catalogo. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac8ce8f164864e44533d7b73efad49c99}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!TRACK\_REMOVED@{TRACK\_REMOVED}}
+\index{TRACK\_REMOVED@{TRACK\_REMOVED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{TRACK\_REMOVED}{TRACK\_REMOVED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac8ce8f164864e44533d7b73efad49c99} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+TRACK\+\_\+\+REMOVED}
+
+
+
+Rilasciato quando una traccia viene definitivamente rimossa dal catalogo (e dalle playlist). 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a4cbf04ca7a82cd947bc0e54bd1185cf1}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!TRACK\_UPDATED@{TRACK\_UPDATED}}
+\index{TRACK\_UPDATED@{TRACK\_UPDATED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{TRACK\_UPDATED}{TRACK\_UPDATED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a4cbf04ca7a82cd947bc0e54bd1185cf1} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+TRACK\+\_\+\+UPDATED}
+
+
+
+Rilasciato quando le proprietà di una traccia esistente vengono modificate. 
+
+
+
+La documentazione per questo tipo enumerato è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/observer/\mbox{\hyperlink{_catalog_event_type_8java}{Catalog\+Event\+Type.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,199 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+
+
+Controller Java\+FX del pannello di selezione di una traccia.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a757e512ee59d302a8dae4021516f82a2}{init}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ available\+Tracks, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_listener}{Track\+Selection\+Listener}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a5b0d95a7f5a824c04e8d8d0d5e845b47}{listener}})
+\begin{DoxyCompactList}\small\item\em Inizializza il pannello con la lista delle tracce disponibili e il listener da notificare alla conferma della selezione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_aa6ef4bfd02ee1f46018da6afb0926d26}{setup\+Columns}} ()
+\begin{DoxyCompactList}\small\item\em Configura le cell\+Value\+Factory di ogni colonna. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_aa3e01f8946884ae992eb1723a35424df}{close\+Panel}} ()
+\begin{DoxyCompactList}\small\item\em Chiude il dialog corrente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+Table\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a7505d2b3bd721734fe79ee5c48268e2f}{table\+Tracks}}
+\begin{DoxyCompactList}\small\item\em Tabella che mostra le tracce disponibili per la selezione. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_addae6e02a7e6b00cb3cc2bf8b50b812e}{col\+Title}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra il titolo di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a8de3ee364a2d47c5ea4ab001fac49e9e}{col\+Author}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra l\textquotesingle{}autore di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_ab85122142a42be20719f4a46904d7e52}{col\+Year}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra l\textquotesingle{}anno di pubblicazione di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_ad8e49ae11202bda5ba3dd0a976c98476}{col\+Genre}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra il genere musicale di ogni traccia. \end{DoxyCompactList}\item 
+Table\+Column$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a3abe015f9ea7de32c9258ea4636bc4e1}{col\+Duration}}
+\begin{DoxyCompactList}\small\item\em Colonna che mostra la durata di ogni traccia nel formato mm\+:ss. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a33e287a11fc9ef809c33e7efd54f2df8}{btn\+Selection}}
+\begin{DoxyCompactList}\small\item\em Pulsante per confermare la selezione della traccia. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a696bb9d63906435dda18b348c23981e1}{btn\+Cancel}}
+\begin{DoxyCompactList}\small\item\em Pulsante per annullare e chiudere il pannello senza selezionare alcuna traccia. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_listener}{Track\+Selection\+Listener}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a5b0d95a7f5a824c04e8d8d0d5e845b47}{listener}}
+\begin{DoxyCompactList}\small\item\em Listener notificato quando l\textquotesingle{}utente conferma la selezione di una traccia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Controller Java\+FX del pannello di selezione di una traccia. 
+
+Mostra un certo insieme di tracce e permette all\textquotesingle{}utente di selezionarne una. Notifica il chiamante tramite {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_listener}{Track\+Selection\+Listener}} senza conoscere il contesto in cui viene usato — questo lo rende riusabile in scenari diversi (aggiunta a playlist, riproduzione, ecc.). 
+
+\label{doc-func-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_aa3e01f8946884ae992eb1723a35424df}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!closePanel@{closePanel}}
+\index{closePanel@{closePanel}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{closePanel()}{closePanel()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_aa3e01f8946884ae992eb1723a35424df} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+close\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Chiude il dialog corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a757e512ee59d302a8dae4021516f82a2}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!init@{init}}
+\index{init@{init}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a757e512ee59d302a8dae4021516f82a2} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{available\+Tracks}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_listener}{Track\+Selection\+Listener}}}]{listener}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza il pannello con la lista delle tracce disponibili e il listener da notificare alla conferma della selezione. 
+
+Da chiamare dopo il caricamento dell\textquotesingle{}FXML.
+
+
+\begin{DoxyParams}{Parametri}
+{\em available\+Tracks} & le tracce disponibili per la selezione \\
+\hline
+{\em listener} & il listener da notificare quando l\textquotesingle{}utente conferma \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_aa6ef4bfd02ee1f46018da6afb0926d26}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!setupColumns@{setupColumns}}
+\index{setupColumns@{setupColumns}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{setupColumns()}{setupColumns()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_aa6ef4bfd02ee1f46018da6afb0926d26} 
+void com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+setup\+Columns (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Configura le cell\+Value\+Factory di ogni colonna. 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_doc-variable-members}
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a696bb9d63906435dda18b348c23981e1}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!btnCancel@{btnCancel}}
+\index{btnCancel@{btnCancel}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{btnCancel}{btnCancel}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a696bb9d63906435dda18b348c23981e1} 
+Button com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+btn\+Cancel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante per annullare e chiudere il pannello senza selezionare alcuna traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a33e287a11fc9ef809c33e7efd54f2df8}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!btnSelection@{btnSelection}}
+\index{btnSelection@{btnSelection}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{btnSelection}{btnSelection}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a33e287a11fc9ef809c33e7efd54f2df8} 
+Button com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+btn\+Selection\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante per confermare la selezione della traccia. 
+
+Disabilitato se nessuna traccia è selezionata. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a8de3ee364a2d47c5ea4ab001fac49e9e}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!colAuthor@{colAuthor}}
+\index{colAuthor@{colAuthor}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{colAuthor}{colAuthor}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a8de3ee364a2d47c5ea4ab001fac49e9e} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+col\+Author\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra l\textquotesingle{}autore di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a3abe015f9ea7de32c9258ea4636bc4e1}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!colDuration@{colDuration}}
+\index{colDuration@{colDuration}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{colDuration}{colDuration}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a3abe015f9ea7de32c9258ea4636bc4e1} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+col\+Duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra la durata di ogni traccia nel formato mm\+:ss. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_ad8e49ae11202bda5ba3dd0a976c98476}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!colGenre@{colGenre}}
+\index{colGenre@{colGenre}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{colGenre}{colGenre}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_ad8e49ae11202bda5ba3dd0a976c98476} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+col\+Genre\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra il genere musicale di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_addae6e02a7e6b00cb3cc2bf8b50b812e}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!colTitle@{colTitle}}
+\index{colTitle@{colTitle}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{colTitle}{colTitle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_addae6e02a7e6b00cb3cc2bf8b50b812e} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, String$>$ com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+col\+Title\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra il titolo di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_ab85122142a42be20719f4a46904d7e52}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!colYear@{colYear}}
+\index{colYear@{colYear}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{colYear}{colYear}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_ab85122142a42be20719f4a46904d7e52} 
+Table\+Column$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, Integer$>$ com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+col\+Year\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Colonna che mostra l\textquotesingle{}anno di pubblicazione di ogni traccia. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a5b0d95a7f5a824c04e8d8d0d5e845b47}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!listener@{listener}}
+\index{listener@{listener}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{listener}{listener}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a5b0d95a7f5a824c04e8d8d0d5e845b47} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_listener}{Track\+Selection\+Listener}} com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Listener notificato quando l\textquotesingle{}utente conferma la selezione di una traccia. 
+
+Chi apre il pannello decide il comportamento da adottare in merito alla traccia selezionata. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a7505d2b3bd721734fe79ee5c48268e2f}\index{com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}!tableTracks@{tableTracks}}
+\index{tableTracks@{tableTracks}!com.example.gruppo04.view.TrackSelectionViewController@{com.example.gruppo04.view.TrackSelectionViewController}}
+\doxysubsubsection{\texorpdfstring{tableTracks}{tableTracks}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller_a7505d2b3bd721734fe79ee5c48268e2f} 
+Table\+View$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}$>$ com.\+example.\+gruppo04.\+view.\+Track\+Selection\+View\+Controller.\+table\+Tracks\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tabella che mostra le tracce disponibili per la selezione. 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_track_selection_view_controller_8java}{Track\+Selection\+View\+Controller.\+java}}\end{DoxyCompactItemize}

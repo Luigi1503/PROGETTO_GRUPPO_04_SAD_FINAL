@@ -1,0 +1,15 @@
+<map id="src/main/java/com/example/gruppo04/observer/ConcreteMusicCatalog.java" name="src/main/java/com/example/gruppo04/observer/ConcreteMusicCatalog.java">
+<area shape="rect" id="Node000001" title=" " alt="" coords="601,5,826,61"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,109,227,150"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="601,55,242,111,241,106,600,50"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="251,109,472,150"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="612,64,450,107,448,102,611,59"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="496,109,696,150"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="681,64,634,101,631,97,678,59"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="720,109,941,150"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="749,59,796,97,793,101,746,64"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="965,116,1040,142"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="806,59,954,106,960,108,958,113,952,112,805,64"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="1065,109,1231,150"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="826,56,1050,104,1049,109,825,61"/>
+</map>

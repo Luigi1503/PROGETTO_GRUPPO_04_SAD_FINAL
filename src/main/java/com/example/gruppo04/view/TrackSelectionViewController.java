@@ -84,12 +84,15 @@ public class TrackSelectionViewController {
      */
     private void setupColumns() {
         TableColumnFactory.setupAllColumns(colTitle, colAuthor, colYear, colGenre, colDuration);
+
+        //per adattare le larghezza delle colonne presenti nella TableView:
+        tableTracks.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
     }
 
     /**
      * Gestisce il click su "Selection".
      * Notifica il listener con la traccia selezionata e chiude il pannello.
-     * selected è sempre non null qui: il bottone è abilitato
+     * Qui selected è sempre non null: il bottone è abilitato
      * solo quando una traccia è selezionata nella tabella (vedi initialize).
      */
     @FXML
