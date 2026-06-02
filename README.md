@@ -27,7 +27,6 @@ Tutti i documenti consegnati nella cartella Artifacts/ e cosa contengono:
 | Cosa è stato pianificato in ogni sprint | `SprintBacklog1.pdf`, `SprintBacklog2.pdf` |
 | Cosa è stato realizzato e cosa migliorare | `Sprint1Review_Retrospective.pdf` |
 | L'architettura e i diagrammi delle classi | `Architecture.pdf` |
-| Gli strumenti utilizzati (Trello, Neatro, repo) | `Link_Utili___Gruppo_04.pdf` |
 
 ---
 
