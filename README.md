@@ -4,7 +4,7 @@ Link Board Trello: https://trello.com/b/XRxjpgOL
 
 ## Indice della documentazione
 
-Tutti i documenti consegnati e cosa contengono:
+Tutti i documenti consegnati nella cartella Artifacts/ e cosa contengono:
 
 | Documento | Contenuto |
 |---|---|
