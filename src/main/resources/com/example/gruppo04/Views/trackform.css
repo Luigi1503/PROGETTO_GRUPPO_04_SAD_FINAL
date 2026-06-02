@@ -17,7 +17,7 @@
     -fx-font-weight: bold;
 }
 
-/* Campi di testo (Titolo e Autore) */
+/* Campi di testo Titolo e Autore */
 .form-container .text-field {
     -fx-background-color: #0F1A1E;
     -fx-text-fill: #E8EDF0;
@@ -69,7 +69,7 @@
     -fx-text-fill: #FFFFFF;
 }
 
-/* Stile per gli Spinner (Anno e Durata) */
+/* Stile per gli Spinner*/
 .form-container .spinner {
     -fx-background-color: transparent;
     -fx-border-color: #2C3E40;
@@ -93,12 +93,10 @@
     -fx-background-color: #E8EDF0;
 }
 
-/* ==========================================
-   BOTTONI (Gestiti tramite i loro ID)
-   ========================================== */
+
 
 #addButton {
-    -fx-background-color: #1D9E75; /* Sfondo Teal */
+    -fx-background-color: #1D9E75;
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
     -fx-background-radius: 6;
@@ -106,11 +104,11 @@
     -fx-cursor: hand;
 }
 #addButton:hover {
-    -fx-background-color: #23B383; /* Teal più luminoso al passaggio del mouse */
+    -fx-background-color: #23B383;
 }
 
 #updateButton {
-    -fx-background-color: #2C3E40; /* Grigio-Blu di base */
+    -fx-background-color: #2C3E40;
     -fx-text-fill: #E8EDF0;
     -fx-font-weight: bold;
     -fx-background-radius: 6;
@@ -121,8 +119,27 @@
     -fx-background-color: #374D50;
 }
 
-/* Stato disabilitato (quando non puoi cliccarli) */
+
 .form-container .button:disabled {
     -fx-opacity: 0.4;
     -fx-cursor: default;
+}
+
+
+#importMp3Button {
+    -fx-background-color: #1B2A2F;
+    -fx-text-fill: #E8EDF0;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+    -fx-padding: 6 14;
+    -fx-cursor: hand;
+}
+
+#importMp3Button:hover {
+    -fx-background-color: #2C3E40;
+    -fx-border-color: #1D9E75;
+    -fx-text-fill: #FFFFFF;
 }
