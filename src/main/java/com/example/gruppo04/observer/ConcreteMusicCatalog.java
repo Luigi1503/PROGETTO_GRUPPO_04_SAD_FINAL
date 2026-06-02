@@ -151,6 +151,9 @@ public class ConcreteMusicCatalog implements MusicCatalog {
      */
 
     public boolean addTrackToPlaylist(Playlist playlist, Track track) {
+        if (track == null) {
+            throw new IllegalArgumentException("La traccia da aggiungere non può essere null.");
+        }
         if (!playlists.contains(playlist)) {
             throw new IllegalArgumentException("La playlist non appartiene a questo catalogo.");
         }

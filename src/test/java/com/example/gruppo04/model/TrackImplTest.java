@@ -130,4 +130,18 @@ class TrackImplTest {
         assertEquals(track, track, "Un oggetto deve essere uguale a se stesso");
         assertEquals(track.hashCode(), track.hashCode(), "L'hashcode deve essere costante");
     }
+
+    /**
+     * @brief Verifica la creazione di una traccia senza un file audio associato.
+     * @details Assicura che il sistema consenta la creazione di tracce puramente testuali
+     * passando un filePath nullo o vuoto, senza sollevare eccezioni.
+     */
+    @Test
+    void constructor_nullOrEmptyFilePath_createsTrackSuccessfully() {
+        assertDoesNotThrow(() -> new TrackImpl("Valid Title", "Valid Author", "Pop", 2000, 180, null),
+                "Dovrebbe essere possibile creare una traccia con filePath null");
+
+        assertDoesNotThrow(() -> new TrackImpl("Valid Title", "Valid Author", "Pop", 2000, 180, ""),
+                "Dovrebbe essere possibile creare una traccia con filePath vuoto");
+    }
 }

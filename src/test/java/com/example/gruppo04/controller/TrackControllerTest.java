@@ -156,4 +156,55 @@ class TrackControllerTest {
         assertNotNull(allTracks);
         assertEquals(2, allTracks.size(), "Dovrebbero esserci esattamente 2 tracce");
     }
+
+    /**
+     * @brief Verifica il meccanismo di rollback in caso di aggiornamento parzialmente invalido.
+     * @details TARGET: Integrità atomica dello stato del Modello.
+     * Inserisce una traccia valida e tenta di aggiornarla modificando il titolo (valido)
+     * ma inserendo un anno non valido (futuro). Il sistema deve sollevare un'eccezione,
+     * bloccare l'aggiornamento sul catalogo e ripristinare tutti i campi originali della traccia
+     * (incluso il titolo), simulando un comportamento transazionale atomico.
+     */
+    @Test
+    void updateTrack_partialInvalidData_rollsBackAllChanges() {
+        // Precondizione: inseriamo una traccia integra
+        controller.addTrack("Starlight", "Muse", "Rock", 2006, 240, "starlight.mp3");
+        Track trackToUpdate = catalog.getAllTracks().iterator().next();
+
+        // Azione: tentiamo un aggiornamento misto (titolo OK, ma anno illegale nel 2027)
+        int annoInvalido = java.time.Year.now().getValue() + 1;
+
+        assertThrows(IllegalArgumentException.class, () ->
+                controller.updateTrack(trackToUpdate, "Nuovo Titolo", "Muse", "Rock", annoInvalido, 240, "starlight.mp3")
+        );
+
+        // Verifica post-rollback: i campi dell'oggetto NON devono aver recepito modifiche parziali
+        assertEquals("Starlight", trackToUpdate.getTitle(),
+                "Il titolo deve essere stato ripristinato al valore originale a causa del rollback.");
+        assertEquals(2006, trackToUpdate.getYear(),
+                "L'anno deve essere rimasto quello originale.");
+    }
+
+    /**
+     * @brief Verifica che il metodo di aggiunta rifiuti stringhe vuote o nulle per i campi chiave.
+     * @details TARGET: Validazione dell'input e barriere di sicurezza del controller.
+     * Controlla che il passaggio di un titolo nullo o composto solo da spazi vuoti venga
+     * intercettato dal sistema, propaghi l'eccezione attesa e non sporchi il catalogo centrale.
+     */
+    @Test
+    void addTrack_nullOrEmptyTitle_throwsExceptionAndDoesNotSave() {
+        // Controllo con stringa vuota
+        assertThrows(IllegalArgumentException.class, () ->
+                controller.addTrack("   ", "Autore Valido", "Pop", 2020, 180, null)
+        );
+
+        // Controllo con null
+        assertThrows(IllegalArgumentException.class, () ->
+                controller.addTrack(null, "Autore Valido", "Pop", 2020, 180, null)
+        );
+
+        // Il catalogo deve essere rimasto pulito
+        assertEquals(0, catalog.getAllTracks().size(),
+                "Il catalogo non deve memorizzare tracce con input di testo non validi.");
+    }
 }
