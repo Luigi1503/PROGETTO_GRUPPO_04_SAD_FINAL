@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.gruppo04.view.MainViewController"
@@ -16,13 +17,17 @@
     <top>
         <HBox alignment="CENTER_LEFT"
               style="-fx-background-color: #0D1519;
-                     -fx-border-color: #1B2A2F;
-                     -fx-border-width: 0 0 1 0;">
+                 -fx-border-color: #1B2A2F;
+                 -fx-border-width: 0 0 1 0;">
             <padding><Insets top="14" right="24" bottom="14" left="24"/></padding>
-            <Label text="🎵 Music Playlist Manager"
+            <Label text="Music Playlist Manager" graphicTextGap="10"
                    style="-fx-text-fill: #E8EDF0;
-                          -fx-font-size: 16px;
-                          -fx-font-weight: bold;"/>
+                      -fx-font-size: 16px;
+                      -fx-font-weight: bold;">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2m-music-circle" iconSize="20" iconColor="#1D9E75"/>
+                </graphic>
+            </Label>
         </HBox>
     </top>
 
@@ -46,38 +51,39 @@
             <Separator style="-fx-background-color: #1B2A2F;"/>
 
             <!-- Navigazione principale -->
+            <!-- Navigazione principale -->
             <VBox spacing="2">
                 <padding><Insets top="12" bottom="12"/></padding>
 
-                <Button fx:id="btnHome" text="🏠  Home"
-                        maxWidth="Infinity"
-                        onAction="#handleHome"
-                        style="-fx-background-color: transparent;
-                               -fx-text-fill: #E8EDF0;
-                               -fx-font-size: 13px;
-                               -fx-alignment: CENTER_LEFT;
-                               -fx-padding: 10 20 10 20;
-                               -fx-cursor: hand;"/>
+                <Button fx:id="btnHome" text="Home" graphicTextGap="14"
+                        maxWidth="Infinity" onAction="#handleHome"
+                        style="-fx-background-color: transparent; -fx-text-fill: #E8EDF0;
+                   -fx-font-size: 13px; -fx-alignment: CENTER_LEFT;
+                   -fx-padding: 10 20 10 20; -fx-cursor: hand;">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2h-home" iconSize="18" iconColor="#E8EDF0"/>
+                    </graphic>
+                </Button>
 
-                <Button fx:id="btnAllTracks" text="🎵  All Tracks"
-                        maxWidth="Infinity"
-                        onAction="#handleAllTracks"
-                        style="-fx-background-color: transparent;
-                               -fx-text-fill: #E8EDF0;
-                               -fx-font-size: 13px;
-                               -fx-alignment: CENTER_LEFT;
-                               -fx-padding: 10 20 10 20;
-                               -fx-cursor: hand;"/>
+                <Button fx:id="btnAllTracks" text="All Tracks" graphicTextGap="14"
+                        maxWidth="Infinity" onAction="#handleAllTracks"
+                        style="-fx-background-color: transparent; -fx-text-fill: #E8EDF0;
+                   -fx-font-size: 13px; -fx-alignment: CENTER_LEFT;
+                   -fx-padding: 10 20 10 20; -fx-cursor: hand;">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2m-music" iconSize="18" iconColor="#E8EDF0"/>
+                    </graphic>
+                </Button>
 
-                <Button fx:id="btnPlaylists" text="📋  Playlists"
-                        maxWidth="Infinity"
-                        onAction="#handlePlaylists"
-                        style="-fx-background-color: transparent;
-                               -fx-text-fill: #E8EDF0;
-                               -fx-font-size: 13px;
-                               -fx-alignment: CENTER_LEFT;
-                               -fx-padding: 10 20 10 20;
-                               -fx-cursor: hand;"/>
+                <Button fx:id="btnPlaylists" text="Playlists" graphicTextGap="14"
+                        maxWidth="Infinity" onAction="#handlePlaylists"
+                        style="-fx-background-color: transparent; -fx-text-fill: #E8EDF0;
+                   -fx-font-size: 13px; -fx-alignment: CENTER_LEFT;
+                   -fx-padding: 10 20 10 20; -fx-cursor: hand;">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2p-playlist-music" iconSize="18" iconColor="#E8EDF0"/>
+                    </graphic>
+                </Button>
             </VBox>
 
             <Separator style="-fx-background-color: #1B2A2F;"/>

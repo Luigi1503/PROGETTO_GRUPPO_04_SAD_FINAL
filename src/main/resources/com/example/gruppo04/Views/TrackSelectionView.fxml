@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="434.0" prefWidth="644.0" spacing="10" style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackSelectionViewController">
+<VBox prefHeight="434.0" prefWidth="644.0" spacing="10" style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackSelectionViewController" stylesheets="@global.css">
 
     <padding><Insets bottom="16" left="20" right="20" top="20" /></padding>
     <children>

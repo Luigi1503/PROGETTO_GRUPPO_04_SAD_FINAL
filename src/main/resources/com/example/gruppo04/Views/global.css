@@ -1,0 +1,60 @@
+/* ── Tabelle: catalogo, tracce in playlist, dialog "Aggiungi traccia" ── */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;     /* via la griglia tipo Excel */
+}
+
+/* barra header */
+.table-view .column-header-background,
+.table-view .column-header-background .filler {    /* anche lo spazio vuoto a destra */
+    -fx-background-color: #16242A;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent #2C3E40 transparent transparent;  /* divisore sottile tra colonne */
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 10 12 10 12;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #9FB2B8;                        /* testo header tenue */
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+/* righe e celle */
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: rgba(255,255,255,0.02);  /* zebra leggerissima */
+}
+.table-view .table-cell {
+    -fx-text-fill: #E8EDF0;
+    -fx-padding: 8 12 8 12;
+    -fx-border-color: transparent;
+}
+
+/* selezione: teal del tema, non il celeste di sistema */
+.table-view .table-row-cell:selected {
+    -fx-background-color: #1D9E75;
+}
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* hover */
+.table-view .table-row-cell:hover {
+    -fx-background-color: rgba(29,158,117,0.18);
+}
+
+/* righe vuote sotto i dati: niente bande chiare */
+.table-view .table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+/* angolo in alto a destra */
+.table-view .corner {
+    -fx-background-color: #16242A;
+}
