@@ -344,4 +344,35 @@ public class MusicCatalogTest {
         Track missing = new TrackImpl("Missing", "Unknown", "Rock", 1999, 200, "missing.mp3");
         assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(missing));
     }
+
+    /**
+     * Verifica che il sistema sollevi un'eccezione se si tenta di inserire una traccia
+     * con la stessa combinazione di Titolo e Autore (case-insensitive) di una già esistente.
+     */
+    @Test
+    public void testAddDuplicateTitleAndAuthorThrowsException() {
+        catalog.addTrack(track1); // "Bohemian Rhapsody" di "Queen"
+
+        // Filepath diverso, ma stessa coppia Titolo-Autore
+        Track duplicateComboTrack = new TrackImpl("bohemian rhapsody", "QUEEN", "Rock", 1975, 354, "bohemian_remix.mp3");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.addTrack(duplicateComboTrack);
+        });
+
+        assertTrue(exception.getMessage().toLowerCase().contains("esiste già"));
+    }
+
+    /**
+     * Verifica di controparte: due autori diversi possono avere canzoni con lo stesso titolo.
+     */
+    @Test
+    public void testAddSameTitleDifferentAuthorIsAllowed() {
+        catalog.addTrack(track1); // "Bohemian Rhapsody" di "Queen"
+
+        Track sameTitleDifferentAuthor = new TrackImpl("Bohemian Rhapsody", "The Muppets", "Comedy", 2009, 295, "muppets_bohemian.mp3");
+
+        assertDoesNotThrow(() -> catalog.addTrack(sameTitleDifferentAuthor));
+        assertEquals(2, catalog.getAllTracks().size());
+    }
 }
