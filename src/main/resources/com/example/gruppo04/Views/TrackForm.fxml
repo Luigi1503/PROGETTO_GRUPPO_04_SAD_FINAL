@@ -56,7 +56,7 @@
                         <Label text="Anno:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
                         <Spinner fx:id="yearSpinner" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-                        <Label text="Durata (s):" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <Label text="Durata:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
                         <Spinner fx:id="durationSpinner" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>

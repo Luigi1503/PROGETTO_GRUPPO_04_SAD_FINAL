@@ -118,10 +118,21 @@ public class ConcreteMusicCatalog implements MusicCatalog {
     public void addTrack(Track track) {
         if (track == null) throw new IllegalArgumentException("La traccia non può essere nulla.");
 
-        // Controllo duplicati base
         for (Track t : tracks.values()) {
-            if (t.getTitle().equalsIgnoreCase(track.getTitle())) {
-                throw new IllegalArgumentException("Una traccia con questo titolo esiste già.");
+
+            if (t.getTitle().equalsIgnoreCase(track.getTitle()) &&
+                    t.getAuthor().equalsIgnoreCase(track.getAuthor())) {
+                throw new IllegalArgumentException("Un brano di '" + track.getAuthor() +
+                        "' intitolato '" + track.getTitle() +
+                        "' è già presente nel catalogo.");
+            }
+
+
+            if (track.getFilePath() != null && t.getFilePath() != null) {
+                if (t.getFilePath().equals(track.getFilePath())) {
+                    throw new IllegalArgumentException("Questo file MP3 è già stato associato al brano '" +
+                            t.getTitle() + "'. Seleziona un file diverso.");
+                }
             }
         }
 

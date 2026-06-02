@@ -143,3 +143,47 @@
     -fx-border-color: #1D9E75;
     -fx-text-fill: #FFFFFF;
 }
+
+
+
+/* Sfondo principale del popup */
+.dark-alert.dialog-pane {
+    -fx-background-color: #1a262a;
+}
+
+/* Colore del testo normale (es. il messaggio di errore) */
+.dark-alert.dialog-pane .content.label {
+    -fx-text-fill: #e8edf0;
+    -fx-font-size: 13px;
+}
+
+/* Stile della fascia superiore (Header) */
+.dark-alert.dialog-pane:header .header-panel {
+    -fx-background-color: #131d20;
+}
+
+/* Testo del titolo nell'Header */
+.dark-alert.dialog-pane:header .header-panel .label {
+    -fx-text-fill: #1d9e75;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+/* Stile del bottone "OK" del popup */
+.dark-alert .button {
+    -fx-background-color: #1B2A2F;
+    -fx-text-fill: #E8EDF0;
+    -fx-font-weight: bold;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 5 15;
+    -fx-cursor: hand;
+}
+
+/* Effetto Hover sul bottone "OK" */
+.dark-alert .button:hover {
+    -fx-background-color: #2C3E40;
+    -fx-border-color: #1D9E75;
+    -fx-text-fill: #FFFFFF;
+}
