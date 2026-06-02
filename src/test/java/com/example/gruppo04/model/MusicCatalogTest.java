@@ -375,4 +375,23 @@ public class MusicCatalogTest {
         assertDoesNotThrow(() -> catalog.addTrack(sameTitleDifferentAuthor));
         assertEquals(2, catalog.getAllTracks().size());
     }
+
+    /**
+     * Verifica che il sistema sollevi un'eccezione se si tenta di inserire una traccia
+     * con un filePath identico a una già presente nel catalogo, in modo da evitare
+     * che lo stesso file MP3 venga associato a più brani.
+     */
+    @Test
+    public void testAddTrackWithDuplicateFilePathThrowsException() {
+        // Inseriamo la prima traccia (track1 ha "bohemian.mp3" come filepath)
+        catalog.addTrack(track1);
+
+        // Creiamo una seconda traccia con titolo e autore diversi, ma stesso identico filepath
+        Track duplicateFileTrack = new TrackImpl("Bohemian Rhapsody (Cover)", "Fake Queen", "Rock", 2026, 354, "bohemian.mp3");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.addTrack(duplicateFileTrack);
+        });
+
+        assertTrue(exception.getMessage().contains("Questo file MP3 è già stato associato al brano"));
+    }
 }

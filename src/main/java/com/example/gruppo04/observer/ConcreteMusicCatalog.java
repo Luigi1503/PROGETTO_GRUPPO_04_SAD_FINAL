@@ -112,24 +112,25 @@ public class ConcreteMusicCatalog implements MusicCatalog {
      * In caso di successo notifica gli observer con l'evento {@code TRACK_ADDED}.
      *
      * @param track la traccia da aggiungere; non deve essere {@code null}
-     * @throws IllegalArgumentException se {@code track} è {@code null} o se esiste
-     * già una traccia con lo stesso titolo nel catalogo
+     * @throws IllegalArgumentException se {@code track} è {@code null}, se esiste
+     * già una traccia con lo stesso titolo e autore nel catalogo oppure se esiste già una
+     * traccia nel catalogo che fa riferimento allo stesso filepath
      */
     public void addTrack(Track track) {
         if (track == null) throw new IllegalArgumentException("La traccia non può essere nulla.");
 
         for (Track t : tracks.values()) {
 
-                if (t.getTitle().equalsIgnoreCase(track.getTitle()) &&
+            if (t.getTitle().equalsIgnoreCase(track.getTitle()) &&
                     t.getAuthor().equalsIgnoreCase(track.getAuthor())) {
-                throw new IllegalArgumentException("titolo esiste già: un brano di '" + track.getAuthor() +
-                    "' intitolato '" + track.getTitle() +
-                    "' è già presente nel catalogo.");
-                }
 
+                throw new IllegalArgumentException("titolo esiste già: un brano di '" + track.getAuthor() +
+                        "' intitolato '" + track.getTitle() +
+                        "' è già presente nel catalogo.");
+            }
 
             if (track.getFilePath() != null && t.getFilePath() != null) {
-                if (t.getFilePath().equals(track.getFilePath())) {
+                if (t.getFilePath().equalsIgnoreCase(track.getFilePath())) {
                     throw new IllegalArgumentException("Questo file MP3 è già stato associato al brano '" +
                             t.getTitle() + "'. Seleziona un file diverso.");
                 }
