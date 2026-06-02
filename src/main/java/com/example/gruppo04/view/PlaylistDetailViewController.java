@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import com.example.gruppo04.util.TableColumnFactory;
 
 /**
  * Controller JavaFX del pannello di dettaglio di una playlist.
@@ -35,12 +36,6 @@ import java.util.stream.Collectors;
  * quando il catalogo cambia.
  */
 public class PlaylistDetailViewController implements CatalogObserver {
-
-    /** ResourceBundle fornito da FXMLLoader per la localizzazione. */
-    @FXML private ResourceBundle resources;
-
-    /** URL del file FXML associato a questo controller. */
-    @FXML private URL location;
 
     /** Tabella che mostra le tracce contenute nella playlist corrente. */
     @FXML private TableView<Track> tableTracks;
@@ -63,14 +58,8 @@ public class PlaylistDetailViewController implements CatalogObserver {
     /** Pulsante per rimuovere la traccia selezionata dalla playlist. Disabilitato se nessuna traccia è selezionata. */
     @FXML private Button btnRemoveTrack;
 
-    /** Pulsante per aggiungere una traccia alla playlist corrente. */
-    @FXML private Button btnAddTrack;
-
     /** Label che mostra il nome della playlist corrente. */
     @FXML private Label labelNamePlaylist;
-
-    /** Label mostrata nella tabella quando la playlist non contiene tracce. */
-    @FXML private Label labelEmptyPlaylist;
 
     /** Label che mostra il numero di tracce presenti nella playlist. */
     @FXML private Label labelNumTracks;
@@ -148,17 +137,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      * Configura le cellValueFactory di ogni colonna.
      */
     private void setupColumns() {
-        colTitle.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getTitle()));
-        colAuthor.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getAuthor()));
-        colYear.setCellValueFactory(data ->
-                new SimpleObjectProperty<>(data.getValue().getYear()));
-        colGenre.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getGenre()));
-        colDuration.setCellValueFactory(data ->
-                new SimpleStringProperty(TrackFormatter.formatDuration(
-                        data.getValue().getDuration())));
+        TableColumnFactory.setupAllColumns(colTitle, colAuthor, colYear, colGenre, colDuration);
     }
 
     /**
@@ -210,7 +189,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      * Gestisce il click su "Rimuovi traccia".
      * Rimuove la traccia selezionata dalla playlist corrente.
      * La vista si aggiorna automaticamente tramite onCatalogChanged.
-     * selectedTrack è sempre non null qui: il bottone è abilitato
+     * Qui selectedTrack è sempre non null: il bottone è abilitato
      * solo quando una traccia è selezionata nella tabella (vedi initialize).
      */
     @FXML

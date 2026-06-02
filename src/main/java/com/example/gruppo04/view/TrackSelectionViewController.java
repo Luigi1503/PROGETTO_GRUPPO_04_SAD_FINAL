@@ -1,9 +1,7 @@
 package com.example.gruppo04.view;
 
 import com.example.gruppo04.interfaces.Track;
-import com.example.gruppo04.util.TrackFormatter;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import com.example.gruppo04.util.TableColumnFactory;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +47,7 @@ public class TrackSelectionViewController {
 
     /**
      * Listener notificato quando l'utente conferma la selezione di una traccia.
-     * Chi apre il pannello decide cosa fare con la traccia selezionata.
+     * Chi apre il pannello decide il comportamento da adottare in merito alla traccia selezionata.
      */
     private TrackSelectionListener listener;
 
@@ -85,17 +83,7 @@ public class TrackSelectionViewController {
      * Configura le cellValueFactory di ogni colonna.
      */
     private void setupColumns() {
-        colTitle.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getTitle()));
-        colAuthor.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getAuthor()));
-        colYear.setCellValueFactory(data ->
-                new SimpleObjectProperty<>(data.getValue().getYear()));
-        colGenre.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getGenre()));
-        colDuration.setCellValueFactory(data ->
-                new SimpleStringProperty(TrackFormatter.formatDuration(
-                        data.getValue().getDuration())));
+        TableColumnFactory.setupAllColumns(colTitle, colAuthor, colYear, colGenre, colDuration);
     }
 
     /**

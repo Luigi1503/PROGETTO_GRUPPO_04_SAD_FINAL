@@ -6,6 +6,7 @@ import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.controller.TrackController;
 
+import com.example.gruppo04.util.TableColumnFactory;
 import com.example.gruppo04.util.TrackFormatter;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -34,13 +35,11 @@ public class TrackListViewController implements CatalogObserver {
     @FXML
     private TableColumn<Track, String> artistCol;
     @FXML
-    private TableColumn<Track, Integer> durationCol;
+    private TableColumn<Track, String> durationCol;
     @FXML
     private TableColumn<Track, Integer> yearCol;
     @FXML
     private TableColumn<Track, String> genreCol;
-    @FXML
-    private Label statusLabel;
     @FXML
     private Button addTrackBtn;
     @FXML
@@ -116,24 +115,7 @@ public class TrackListViewController implements CatalogObserver {
     }
 
     private void configureColumns() {
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-        artistCol.setCellValueFactory(new PropertyValueFactory<>("author"));
-
-        durationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
-        durationCol.setCellFactory(column -> new TableCell<Track, Integer>() {
-            @Override
-            protected void updateItem(Integer item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                } else {
-                    setText(TrackFormatter.formatDuration(item));
-                }
-            }
-        });
-
-        yearCol.setCellValueFactory(new PropertyValueFactory<>("year"));
-        genreCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        TableColumnFactory.setupAllColumns(titleCol, artistCol, yearCol, genreCol, durationCol);
     }
 
     private void reloadTableData() {
