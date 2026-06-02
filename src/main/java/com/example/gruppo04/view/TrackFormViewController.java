@@ -2,6 +2,7 @@ package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.util.TrackFormatter;
 import com.mpatric.mp3agic.ID3v2;
 import com.mpatric.mp3agic.Mp3File;
 import javafx.event.ActionEvent;
@@ -51,6 +52,33 @@ public class TrackFormViewController {
         yearSpinner.setValueFactory(yearFactory);
 
         SpinnerValueFactory<Integer> durationFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 7200, 180);
+        durationFactory.setConverter(new javafx.util.StringConverter<Integer>() {
+
+            @Override
+            public String toString(Integer value) {
+                if (value == null) {
+                    return "00:00";
+                }
+                return TrackFormatter.formatDuration(value);
+            }
+
+            @Override
+            public Integer fromString(String text) {
+                if (text == null || text.isBlank()) {
+                    return 0;
+                }
+
+                try {
+                    String[] parts = text.trim().split(":");
+                    int minutes = Integer.parseInt(parts[0]);
+                    int seconds = Integer.parseInt(parts[1]);
+
+                    return minutes * 60 + seconds;
+                } catch (Exception e) {
+                    return 0;
+                }
+            }
+        });
         durationSpinner.setValueFactory(durationFactory);
 
         setCampiBloccati(true);
