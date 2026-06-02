@@ -75,7 +75,6 @@ class TrackControllerTest {
                 controller.addTrack("Titolo", "Autore", "Pop", -50, 180, null)
         );
 
-        // Verifica che il catalogo sia rimasto vuoto a seguito dell'errore
         assertEquals(0, catalog.getAllTracks().size());
     }
 
@@ -86,11 +85,9 @@ class TrackControllerTest {
      */
     @Test
     void updateTrack_validData_updatesTrackInCatalog() {
-        // Aggiungiamo una traccia di base
         controller.addTrack("Vecchio Titolo", "Vecchio Autore", "Jazz", 2000, 100, "vecchio_file.mp3");
         Track trackToUpdate = catalog.getAllTracks().iterator().next();
 
-        // Usiamo il controller per aggiornarla (ORA CON IL SETTIMO PARAMETRO!)
         controller.updateTrack(trackToUpdate, "Titolo Aggiornato", "Autore Aggiornato", "Rock", 2024, 300, "nuovo_file.mp3");
 
         // Controlliamo che l'oggetto sia mutato
@@ -99,7 +96,7 @@ class TrackControllerTest {
         assertEquals("Rock", trackToUpdate.getGenre());
         assertEquals(2024, trackToUpdate.getYear());
         assertEquals(300, trackToUpdate.getDuration());
-        assertEquals("nuovo_file.mp3", trackToUpdate.getFilePath()); // Verifica che anche il file si sia aggiornato
+        assertEquals("nuovo_file.mp3", trackToUpdate.getFilePath());
     }
 
     /**
@@ -110,7 +107,6 @@ class TrackControllerTest {
     @Test
     void updateTrack_nullTrack_throwsException() {
         assertThrows(IllegalArgumentException.class, () ->
-                // Aggiunto il parametro null alla fine per il filePath
                 controller.updateTrack(null, "Titolo", "Autore", "Pop", 2020, 200, null)
         );
     }
