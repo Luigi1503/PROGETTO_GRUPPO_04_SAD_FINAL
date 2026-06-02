@@ -7,9 +7,6 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.controller.TrackController;
-import com.example.gruppo04.util.TrackFormatter;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,9 +19,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import com.example.gruppo04.util.TableColumnFactory;
 
@@ -78,6 +75,10 @@ public class PlaylistDetailViewController implements CatalogObserver {
 
     /** Traccia attualmente selezionata nella tabella. */
     private Track selectedTrack;
+
+    /** Logger per la gestione degli errori di caricamento delle view. */
+    private static final Logger logger =
+            Logger.getLogger(PlaylistDetailViewController.class.getName());
 
     /**
      * Chiamato automaticamente da FXMLLoader dopo il caricamento dell'FXML.
@@ -138,6 +139,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     private void setupColumns() {
         TableColumnFactory.setupAllColumns(colTitle, colAuthor, colYear, colGenre, colDuration);
+
+        //per adattare le larghezza delle colonne presenti nella TableView:
+        tableTracks.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
     }
 
     /**
@@ -146,8 +150,10 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     public void updateView() {
         labelNamePlaylist.setText(currentPlaylist.getName());
+
         ObservableList<Track> tracks = FXCollections.observableArrayList(
                 currentPlaylist.getTracks());
+
         tableTracks.setItems(tracks);
         labelNumTracks.setText(tracks.size() + " tracce");
         labelTotalDuration.setText(calculateTotalDuration(tracks) + " min");
@@ -170,7 +176,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
                     .filter(t -> !currentPlaylist.getTracks().contains(t))
                     .collect(Collectors.toList());
 
-            // Lambda che implementa TrackSelectionListener
+            // Lambda che implementa TrackSelectionListener e definisce
+            // il comportamento da adottare con la traccia selezionata:
+            // ovvero aggiungerla alla playlist corrente.
             controller.init(availableTracks, track ->
                     playlistController.addTrackToPlaylist(currentPlaylist, track));
 
@@ -181,7 +189,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
             dialog.showAndWait();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Errore nel caricamento di TrackSelectionView", e);
         }
     }
 

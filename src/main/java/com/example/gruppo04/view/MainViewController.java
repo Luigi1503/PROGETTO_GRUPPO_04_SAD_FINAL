@@ -15,6 +15,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  * Controller JavaFX della finestra principale dell'applicazione.
@@ -47,6 +50,10 @@ public class MainViewController implements CatalogObserver {
 
     /** Controller MVC delle playlist. */
     private PlaylistController playlistController;
+
+    /** Logger per la gestione degli errori di caricamento delle view. */
+    private static final Logger logger =
+            Logger.getLogger(MainViewController.class.getName());
 
 
     /**
@@ -121,7 +128,7 @@ public class MainViewController implements CatalogObserver {
             setContent(view);
             setActiveButton(btnAllTracks);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Errore nel caricamento di TrackListView", e);
         }
     }
 
@@ -140,7 +147,7 @@ public class MainViewController implements CatalogObserver {
             setContent(view);
             setActiveButton(btnPlaylists);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Errore nel caricamento di PlaylistView", e);
         }
     }
 
@@ -158,7 +165,7 @@ public class MainViewController implements CatalogObserver {
             controller.init(playlist, playlistController, trackController, catalog);
             setContent(view);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Errore nel caricamento di PlaylistDetailView", e);
         }
     }
 
