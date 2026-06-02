@@ -170,13 +170,11 @@ public class TrackListViewController implements CatalogObserver {
     @FXML
     private void onAddTrackButtonClicked() {
         try {
-            // 1. Carica il file FXML del form
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gruppo04/Views/TrackForm.fxml"));
             javafx.scene.Parent root = loader.load();
             TrackFormViewController formController = loader.getController();
             formController.setTrackController(controller);
 
-            // 2. Crea un nuovo "Stage" (una nuova finestra)
             javafx.stage.Stage stage = new javafx.stage.Stage();
             stage.setTitle("Aggiungi Nuovo Brano");
             stage.setScene(new javafx.scene.Scene(root));
@@ -187,7 +185,6 @@ public class TrackListViewController implements CatalogObserver {
             stage.setMinHeight(580);
             stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
 
-            // 4. Mostra la finestra
             stage.showAndWait();
 
         } catch (Exception e) {
