@@ -2,7 +2,6 @@ package com.example.gruppo04.controller;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
-import com.example.gruppo04.model.PlaylistImpl;
 import com.example.gruppo04.interfaces.Track;
 
 /**

@@ -33,8 +33,6 @@ import javafx.scene.layout.Region;
  * {@link PlaylistController}. Non contiene logica di dominio né validazioni:
  * quelle vivono nel catalogo.
  *
- * È associato all'FXML in modo imperativo (loader.setController(...)), perciò
- * le dipendenze arrivano dal costruttore e l'FXML non dichiara un fx:controller.
  * L'aggiornamento della griglia avverrà tramite Observer, quando il catalogo
  * notifica un cambiamento.
  */
@@ -64,8 +62,7 @@ public class PlaylistViewController implements CatalogObserver {
 
     /**
      * Inizializzazione post-FXML: invocata da JavaFX dopo l'iniezione dei campi
-     * {@code @FXML}. Qui (non nel costruttore, dove i campi sarebbero ancora null)
-     * si lavora sui nodi e ci si registrerà come observer del catalogo.
+     * {@code @FXML}. Qui si lavora sui nodi e ci si registrerà come observer del catalogo.
      */
     @FXML
     public void initialize() {
