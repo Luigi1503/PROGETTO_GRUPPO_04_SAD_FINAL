@@ -2,6 +2,7 @@ package com.example.gruppo04;
 
 import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.controller.TrackController;
+import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.model.TrackImpl;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import com.example.gruppo04.view.MainViewController;
@@ -14,12 +15,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainApplication extends Application {
+    // ── Crea il catalogo ──────────────────────
+    private final MusicCatalog catalog = ConcreteMusicCatalog.getInstance();
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        // ── Crea il catalogo ──────────────────────
-        ConcreteMusicCatalog catalog = ConcreteMusicCatalog.getInstance();
 
         // ── Libreria iniziale di esempio ──────────
         catalog.addTrack(new TrackImpl("Hold Back The River", "James Bay",     "Rock",      2014, 354, null));
