@@ -19,7 +19,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         // ── Crea il catalogo ──────────────────────
-        ConcreteMusicCatalog catalog = new ConcreteMusicCatalog();
+        ConcreteMusicCatalog catalog = ConcreteMusicCatalog.getInstance();
 
         // ── Libreria iniziale di esempio ──────────
         catalog.addTrack(new TrackImpl("Hold Back The River", "James Bay",     "Rock",      2014, 354, null));
