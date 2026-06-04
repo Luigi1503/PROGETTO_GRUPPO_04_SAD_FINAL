@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class TrackControllerTest {
 
-    /** @brief Il catalogo musicale "finto" usato per il test. */
+    /** @brief Il catalogo musicale usato per il test. */
     private MusicCatalog catalog;
 
     /** @brief Il controller sotto test. */
@@ -27,14 +27,18 @@ class TrackControllerTest {
 
     /**
      * @brief Inizializza l'ambiente prima di ogni singolo test.
-     * @details Crea una nuova istanza di ConcreteMusicCatalog e la inietta
-     * in un nuovo TrackController. Questo garantisce che ogni test
-     * partirà con un catalogo vuoto, senza tracce residue dai test precedenti.
+     * @details Recupera l'istanza Singleton di ConcreteMusicCatalog ed esegue un reset
+     * dello stato interno prima di inniettarlo nel controller. Questo garantisce l'isolamento,
+     * assicurando che ogni test parta da una tabula rasa senza tracce residue.
      */
     @BeforeEach
     void setUp() {
-        catalog = new ConcreteMusicCatalog();
-        controller = new TrackController(catalog);
+        ConcreteMusicCatalog concreteCatalog = ConcreteMusicCatalog.getInstance();
+
+        concreteCatalog.reset();
+
+        this.catalog = concreteCatalog;
+        this.controller = new TrackController(catalog);
     }
 
     /**
@@ -162,8 +166,7 @@ class TrackControllerTest {
      * @details TARGET: Integrità atomica dello stato del Modello.
      * Inserisce una traccia valida e tenta di aggiornarla modificando il titolo (valido)
      * ma inserendo un anno non valido (futuro). Il sistema deve sollevare un'eccezione,
-     * bloccare l'aggiornamento sul catalogo e ripristinare tutti i campi originali della traccia
-     * (incluso il titolo), simulando un comportamento transazionale atomico.
+     * bloccare l'aggiornamento sul catalogo e ripristinare tutti i campi originali della traccia.
      */
     @Test
     void updateTrack_partialInvalidData_rollsBackAllChanges() {

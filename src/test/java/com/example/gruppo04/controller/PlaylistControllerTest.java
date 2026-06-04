@@ -30,12 +30,14 @@ class PlaylistControllerTest {
     private Track track2;
 
     /**
-     * Inizializza il catalogo, il controller e le tracce di esempio
-     * prima di ogni metodo di test, garantendo uno stato pulito e indipendente.
+     * Inizializza il catalogo singleton, lo resetta per garantire uno stato pulito,
+     * quindi inizializza il controller e le tracce di esempio prima di ogni metodo di test.
      */
     @BeforeEach
     void setUp() {
-        catalog = new ConcreteMusicCatalog();
+        catalog = ConcreteMusicCatalog.getInstance();
+        ((ConcreteMusicCatalog) catalog).reset();
+
         controller = new PlaylistController(catalog);
 
         track1 = new TrackImpl("Hold back the river", "James Bay", "Rock", 2014, 354, "holdBack.mp3");
@@ -136,13 +138,14 @@ class PlaylistControllerTest {
 
     /**
      * Verifica che la rinomina di una playlist non appartenente al catalogo
-     * restituisce false.
+     * restituisce false. Poiché il catalogo è un Singleton, viene usata
+     * una playlist creata e poi rimossa dal catalogo per simulare questo scenario.
      */
     @Test
     void renamePlaylist_notInCatalog_returnFalse() {
-        ConcreteMusicCatalog otherCatalog = new ConcreteMusicCatalog();
-        otherCatalog.createPlaylist("Other Playlist");
-        Playlist otherPlaylist = otherCatalog.getPlaylists().get(0);
+        controller.createPlaylist("Other Playlist");
+        Playlist otherPlaylist = catalog.getPlaylists().get(0);
+        catalog.deletePlaylist(otherPlaylist);
         boolean result = controller.renamePlaylist(otherPlaylist, "Pop Hits");
         assertFalse(result);
     }
@@ -163,14 +166,15 @@ class PlaylistControllerTest {
     }
 
     /**
-     * Verifica che la rimozione di una playlist non appartenente
-     * al catalogo restituisca false senza modificare lo stato del catalogo.
+     * Verifica che la rimozione di una playlist non appartenente al catalogo
+     * restituisca false. Poiché il catalogo è un Singleton, viene usata
+     * una playlist creata e poi rimossa dal catalogo per simulare questo scenario.
      */
     @Test
     void deletePlaylist_notInCatalog_returnsFalse() {
-        ConcreteMusicCatalog otherCatalog = new ConcreteMusicCatalog();
-        otherCatalog.createPlaylist("Other Playlist");
-        Playlist otherPlaylist = otherCatalog.getPlaylists().get(0);
+        controller.createPlaylist("Other Playlist");
+        Playlist otherPlaylist = catalog.getPlaylists().get(0);
+        catalog.deletePlaylist(otherPlaylist);
         boolean result = controller.deletePlaylist(otherPlaylist);
         assertFalse(result);
     }
@@ -220,16 +224,16 @@ class PlaylistControllerTest {
         assertEquals(track2, playlist.getTracks().get(1));
     }
 
-
     /**
      * Verifica che l'aggiunta di una traccia ad una playlist non appartenente
-     * al catalogo sollevi un'eccezione.
+     * al catalogo sollevi un'eccezione. Poiché il catalogo è un Singleton, viene usata
+     * una playlist creata e poi rimossa dal catalogo per simulare questo scenario.
      */
     @Test
     void addTrackToPlaylist_playlistNotInCatalog_throwsException() {
-        ConcreteMusicCatalog otherCatalog = new ConcreteMusicCatalog();
-        otherCatalog.createPlaylist("Other Playlist");
-        Playlist otherPlaylist = otherCatalog.getPlaylists().get(0);
+        controller.createPlaylist("Other Playlist");
+        Playlist otherPlaylist = catalog.getPlaylists().get(0);
+        catalog.deletePlaylist(otherPlaylist);
         assertThrows(IllegalArgumentException.class,
                 () -> controller.addTrackToPlaylist(otherPlaylist, track1));
     }

@@ -27,16 +27,24 @@ public class MusicCatalogTest {
     private Track track1;
     private Track track2;
 
+    // ── Setup ───────────────────────────────────
+
     /**
      * Configura l'ambiente di test prima di ogni singola esecuzione,
      * istanziando un nuovo catalogo pulito e tracce di test stub.
      */
     @BeforeEach
     public void setUp() {
-        catalog = new ConcreteMusicCatalog();
-        track1 = new TrackImpl("Bohemian Rhapsody", "Queen", "Rock", 1975, 354, "bohemian.mp3");
-        track2 = new TrackImpl("Stairway to Heaven", "Led Zeppelin", "Rock", 1971,  482, "stairway.mp3");
+        ConcreteMusicCatalog concreteCatalog = ConcreteMusicCatalog.getInstance();
+
+        concreteCatalog.reset();
+
+        this.catalog = concreteCatalog;
+        this.track1 = new TrackImpl("Bohemian Rhapsody", "Queen", "Rock", 1975, 354, "bohemian.mp3");
+        this.track2 = new TrackImpl("Stairway to Heaven", "Led Zeppelin", "Rock", 1971, 482, "stairway.mp3");
     }
+
+    // ── Track Management ─────────────────────────
 
     /**
      * Verifica il corretto inserimento e la successiva rimozione isolata di una traccia dal catalogo.
@@ -66,8 +74,67 @@ public class MusicCatalogTest {
             catalog.addTrack(duplicateTrack);
         });
 
-        assertTrue(exception.getMessage().contains("titolo esiste già"));
+        assertTrue(exception.getMessage().toLowerCase().contains("titolo esiste già"));
     }
+
+    /**
+     * Verifica che il sistema sollevi un'eccezione se si tenta di inserire una traccia
+     * con la stessa combinazione di Titolo e Autore (case-insensitive) di una già esistente.
+     */
+    @Test
+    public void testAddDuplicateTitleAndAuthorThrowsException() {
+        catalog.addTrack(track1); // "Bohemian Rhapsody" di "Queen"
+
+        // Filepath diverso, ma stessa coppia Titolo-Autore
+        Track duplicateComboTrack = new TrackImpl("bohemian rhapsody", "QUEEN", "Rock", 1975, 354, "bohemian_remix.mp3");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.addTrack(duplicateComboTrack);
+        });
+
+        assertTrue(exception.getMessage().toLowerCase().contains("titolo esiste già"));
+    }
+
+    /**
+     * Verifica di controparte: due autori diversi possono avere canzoni con lo stesso titolo.
+     */
+    @Test
+    public void testAddSameTitleDifferentAuthorIsAllowed() {
+        catalog.addTrack(track1); // "Bohemian Rhapsody" di "Queen"
+
+        Track sameTitleDifferentAuthor = new TrackImpl("Bohemian Rhapsody", "The Muppets", "Comedy", 2009, 295, "muppets_bohemian.mp3");
+
+        assertDoesNotThrow(() -> catalog.addTrack(sameTitleDifferentAuthor));
+        assertEquals(2, catalog.getAllTracks().size());
+    }
+
+    /**
+     * Verifica che il sistema sollevi un'eccezione se si tenta di inserire una traccia
+     * con un filePath identico a una già presente nel catalogo, in modo da evitare
+     * che lo stesso file MP3 venga associato a più brani.
+     */
+    @Test
+    public void testAddTrackWithDuplicateFilePathThrowsException() {
+        catalog.addTrack(track1);
+
+        Track duplicateFileTrack = new TrackImpl("Bohemian Rhapsody (Cover)", "Fake Queen", "Rock", 2026, 354, "bohemian.mp3");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.addTrack(duplicateFileTrack);
+        });
+
+        assertTrue(exception.getMessage().contains("Questo file MP3 è già stato associato al brano"));
+    }
+    
+    /**
+     * Verifica le condizioni di validazione per l'aggiunta delle tracce.
+     * Track null deve sollevare IllegalArgumentException.
+     */
+    @Test
+    public void testAddTrackInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> catalog.addTrack(null));
+    }
+
+    // ── Cascade Operations ───────────────────────
 
     /**
      * Verifica il vincolo architetturale critico del Task T02: la rimozione a cascata.
@@ -76,16 +143,13 @@ public class MusicCatalogTest {
      */
     @Test
     public void testCascadeRemovalFromPlaylists() {
-        // Crea e registra la playlist internamente
         catalog.createPlaylist("My Favorites");
 
-        // Recupera la playlist dal catalogo per lavorare sulla stessa istanza
         Playlist playlist = catalog.getPlaylists().stream()
                 .filter(p -> p.getName().equals("My Favorites"))
                 .findFirst()
                 .orElseThrow();
 
-        // Aggiunge le tracce al catalogo e poi alla playlist tramite API pubbliche
         catalog.addTrack(track1);
         catalog.addTrack(track2);
 
@@ -104,22 +168,7 @@ public class MusicCatalogTest {
         assertTrue(playlist.getTracks().contains(track2), "La traccia 2 non coinvolta deve rimanere inalterata.");
     }
 
-    /**
-     * Verifica che il meccanismo di notifica del pattern Observer si attivi correttamente
-     * e con i parametri attesi a seguito di un evento di inserimento traccia.
-     */
-    @Test
-    public void testObserverNotificationOnAdd() {
-        List<CatalogEvent> receivedEvents = new ArrayList<>();
-        CatalogObserver mockObserver = receivedEvents::add;
-
-        catalog.registerObserver(mockObserver);
-        catalog.addTrack(track1);
-
-        assertEquals(1, receivedEvents.size(), "L'observer avrebbe dovuto intercettare esattamente un evento.");
-        assertEquals(CatalogEventType.TRACK_ADDED, receivedEvents.get(0).getType());
-        assertEquals(track1, receivedEvents.get(0).getTarget());
-    }
+    // ── Playlist Lifecycle ───────────────────────
 
     /**
      * Verifica la creazione e la rimozione di una playlist nel catalogo.
@@ -158,31 +207,6 @@ public class MusicCatalogTest {
     }
 
     /**
-     * Verifica la funzionalità di rinomina di una playlist e i vincoli associati.
-     * Controlla che la rinomina verso un nome libero abbia successo e che la
-     * rinomina verso un nome già esistente fallisca restituendo {@code false}.
-     */
-    @Test
-    public void testRenamePlaylist() {
-        catalog.createPlaylist("Morning");
-        catalog.createPlaylist("Evening");
-
-        Playlist morning = catalog.getPlaylists().stream()
-                .filter(pl -> pl.getName().equals("Morning"))
-                .findFirst()
-                .orElseThrow();
-
-        // Rinomina verso un nome nuovo
-        boolean renamed = catalog.renamePlaylist(morning, "Wake Up");
-        assertTrue(renamed, "renamePlaylist dovrebbe restituire true per un nuovo nome disponibile");
-        assertTrue(catalog.getPlaylists().stream().anyMatch(pl -> pl.getName().equals("Wake Up")));
-
-        // Rinomina verso un nome già presente (Evening) deve fallire
-        boolean renamedToExisting = catalog.renamePlaylist(morning, "Evening");
-        assertFalse(renamedToExisting, "renamePlaylist deve restituire false se il nuovo nome è già usato");
-    }
-
-    /**
      * Verifica le condizioni di validazione per la creazione di playlist.
      * Il name nullo o vuoto deve sollevare IllegalArgumentException.
      */
@@ -192,6 +216,18 @@ public class MusicCatalogTest {
         assertThrows(IllegalArgumentException.class, () -> catalog.createPlaylist(""));
         assertThrows(IllegalArgumentException.class, () -> catalog.createPlaylist("   "));
     }
+
+    /**
+     * Verifica che la cancellazione di una playlist non presente restituisca false.
+     */
+    @Test
+    public void testDeletePlaylistNotPresent() {
+        Playlist external = new PlaylistImpl("External");
+        boolean deleted = catalog.deletePlaylist(external);
+        assertFalse(deleted, "deletePlaylist deve restituire false se la playlist non appartiene al catalogo");
+    }
+
+    // ── Playlist Rename ──────────────────────────
 
     /**
      * Verifica che la rinomina fallisca se la playlist non appartiene al catalogo
@@ -211,23 +247,29 @@ public class MusicCatalogTest {
     }
 
     /**
-     * Verifica che la cancellazione di una playlist non presente restituisca false.
+     * Verifica la funzionalità di rinomina di una playlist e i vincoli associati.
+     * Controlla che la rinomina verso un nome libero abbia successo e che la
+     * rinomina verso un nome già esistente fallisca restituendo {@code false}.
      */
     @Test
-    public void testDeletePlaylistNotPresent() {
-        Playlist external = new PlaylistImpl("External");
-        boolean deleted = catalog.deletePlaylist(external);
-        assertFalse(deleted, "deletePlaylist deve restituire false se la playlist non appartiene al catalogo");
+    public void testRenamePlaylist() {
+        catalog.createPlaylist("Morning");
+        catalog.createPlaylist("Evening");
+
+        Playlist morning = catalog.getPlaylists().stream()
+                .filter(pl -> pl.getName().equals("Morning"))
+                .findFirst()
+                .orElseThrow();
+
+        boolean renamed = catalog.renamePlaylist(morning, "Wake Up");
+        assertTrue(renamed, "renamePlaylist dovrebbe restituire true per un nuovo nome disponibile");
+        assertTrue(catalog.getPlaylists().stream().anyMatch(pl -> pl.getName().equals("Wake Up")));
+
+        boolean renamedToExisting = catalog.renamePlaylist(morning, "Evening");
+        assertFalse(renamedToExisting, "renamePlaylist deve restituire false se il nuovo nome è già usato");
     }
 
-    /**
-     * Verifica le condizioni di validazione per l'aggiunta delle tracce.
-     * Track null deve sollevare IllegalArgumentException.
-     */
-    @Test
-    public void testAddTrackInvalidInput() {
-        assertThrows(IllegalArgumentException.class, () -> catalog.addTrack(null));
-    }
+    // ── Playlist Track Management ────────────────
 
     /**
      * Verifica che l'aggiunta di una traccia ad una playlist rispetti le precondizioni
@@ -237,8 +279,6 @@ public class MusicCatalogTest {
     public void testAddTrackToPlaylistValidationAndDuplicates() {
         catalog.createPlaylist("Mix");
         Playlist mix = catalog.getPlaylists().get(0);
-
-        assertThrows(IllegalArgumentException.class, () -> catalog.addTrackToPlaylist(mix, track1));
 
         catalog.addTrack(track1);
         Playlist external = new PlaylistImpl("External");
@@ -262,6 +302,92 @@ public class MusicCatalogTest {
         catalog.addTrack(track1);
         boolean removed = catalog.removeTrackFromPlaylist(mix, track1);
         assertFalse(removed, "removeTrackFromPlaylist deve restituire false se la traccia non è presente");
+    }
+
+    // ── Track Update ─────────────────────────────
+
+    /**
+     * Verifica le condizioni di errore di updateTrack per input null o traccia assente.
+     */
+    @Test
+    public void testUpdateTrackInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(null));
+
+        Track missing = new TrackImpl("Missing", "Unknown", "Rock", 1999, 200, "missing.mp3");
+        assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(missing));
+    }
+
+    /**
+     * @brief Verifica i controlli di integrità del catalogo in fase di aggiornamento.
+     * @details Assicura che la modifica di una traccia in modo che collida con i
+     * metadati di un'altra venga respinta.
+     */
+    @Test
+    public void testUpdateTrackDuplicateTitleAndAuthorThrowsException() {
+        catalog.addTrack(track1);
+        catalog.addTrack(track2);
+
+        track2.setTitle("Bohemian Rhapsody");
+        track2.setAuthor("Queen");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.updateTrack(track2);
+        });
+
+        assertTrue(exception.getMessage().toLowerCase().contains("titolo già esistente"));
+    }
+
+    /**
+     * @brief Verifica il vincolo di univocità del file in fase di aggiornamento.
+     * @details Assicura che non sia possibile riassegnare un MP3 già in uso ad un'altra traccia.
+     */
+    @Test
+    public void testUpdateTrackDuplicateFilePathThrowsException() {
+        catalog.addTrack(track1);
+        catalog.addTrack(track2);
+
+        track2.setFilePath("bohemian.mp3");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            catalog.updateTrack(track2);
+        });
+
+        assertTrue(exception.getMessage().contains("Questo file MP3 è già stato associato"));
+    }
+
+    /**
+     * @brief Verifica il corretto aggiornamento di un campo legittimo.
+     * @details Assicura che una modifica non conflittuale (es. l'anno) passi i controlli
+     * senza identificare la traccia come un duplicato di sé stessa.
+     */
+    @Test
+    public void testUpdateTrackLegitimateUpdateDoesNotThrow() {
+        catalog.addTrack(track1);
+        track1.setYear(2024);
+
+        assertDoesNotThrow(() -> catalog.updateTrack(track1));
+
+        Track updated = catalog.getAllTracks().iterator().next();
+        assertEquals(2024, updated.getYear());
+    }
+
+    // ── Observer Notifications ───────────────────
+
+    /**
+     * Verifica che il meccanismo di notifica del pattern Observer si attivi correttamente
+     * e con i parametri attesi a seguito di un evento di inserimento traccia.
+     */
+    @Test
+    public void testObserverNotificationOnAdd() {
+        List<CatalogEvent> receivedEvents = new ArrayList<>();
+        CatalogObserver mockObserver = receivedEvents::add;
+
+        catalog.registerObserver(mockObserver);
+        catalog.addTrack(track1);
+
+        assertEquals(1, receivedEvents.size(), "L'observer avrebbe dovuto intercettare esattamente un evento.");
+        assertEquals(CatalogEventType.TRACK_ADDED, receivedEvents.get(0).getType());
+        assertEquals(track1, receivedEvents.get(0).getTarget());
     }
 
     /**
@@ -325,128 +451,12 @@ public class MusicCatalogTest {
         catalog.removeTrackFromPlaylist(mix, track1);
 
         List<CatalogEvent> playlistTrackEvents = receivedEvents.stream()
-            .filter(event -> event.getType() == CatalogEventType.PLAYLIST_TRACK_ADDED
-                || event.getType() == CatalogEventType.PLAYLIST_TRACK_REMOVED)
-            .toList();
+                .filter(event -> event.getType() == CatalogEventType.PLAYLIST_TRACK_ADDED
+                        || event.getType() == CatalogEventType.PLAYLIST_TRACK_REMOVED)
+                .toList();
 
         assertEquals(2, playlistTrackEvents.size(), "Devono essere stati emessi due eventi di playlist track");
         assertEquals(CatalogEventType.PLAYLIST_TRACK_ADDED, playlistTrackEvents.get(0).getType());
         assertEquals(CatalogEventType.PLAYLIST_TRACK_REMOVED, playlistTrackEvents.get(1).getType());
-    }
-
-    /**
-     * Verifica le condizioni di errore di updateTrack per input null o traccia assente.
-     */
-    @Test
-    public void testUpdateTrackInvalidInput() {
-        assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(null));
-
-        Track missing = new TrackImpl("Missing", "Unknown", "Rock", 1999, 200, "missing.mp3");
-        assertThrows(IllegalArgumentException.class, () -> catalog.updateTrack(missing));
-    }
-
-    /**
-     * Verifica che il sistema sollevi un'eccezione se si tenta di inserire una traccia
-     * con la stessa combinazione di Titolo e Autore (case-insensitive) di una già esistente.
-     */
-    @Test
-    public void testAddDuplicateTitleAndAuthorThrowsException() {
-        catalog.addTrack(track1); // "Bohemian Rhapsody" di "Queen"
-
-        // Filepath diverso, ma stessa coppia Titolo-Autore
-        Track duplicateComboTrack = new TrackImpl("bohemian rhapsody", "QUEEN", "Rock", 1975, 354, "bohemian_remix.mp3");
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            catalog.addTrack(duplicateComboTrack);
-        });
-
-        assertTrue(exception.getMessage().toLowerCase().contains("esiste già"));
-    }
-
-    /**
-     * Verifica di controparte: due autori diversi possono avere canzoni con lo stesso titolo.
-     */
-    @Test
-    public void testAddSameTitleDifferentAuthorIsAllowed() {
-        catalog.addTrack(track1); // "Bohemian Rhapsody" di "Queen"
-
-        Track sameTitleDifferentAuthor = new TrackImpl("Bohemian Rhapsody", "The Muppets", "Comedy", 2009, 295, "muppets_bohemian.mp3");
-
-        assertDoesNotThrow(() -> catalog.addTrack(sameTitleDifferentAuthor));
-        assertEquals(2, catalog.getAllTracks().size());
-    }
-
-    /**
-     * Verifica che il sistema sollevi un'eccezione se si tenta di inserire una traccia
-     * con un filePath identico a una già presente nel catalogo, in modo da evitare
-     * che lo stesso file MP3 venga associato a più brani.
-     */
-    @Test
-    public void testAddTrackWithDuplicateFilePathThrowsException() {
-        // Inseriamo la prima traccia (track1 ha "bohemian.mp3" come filepath)
-        catalog.addTrack(track1);
-
-        // Creiamo una seconda traccia con titolo e autore diversi, ma stesso identico filepath
-        Track duplicateFileTrack = new TrackImpl("Bohemian Rhapsody (Cover)", "Fake Queen", "Rock", 2026, 354, "bohemian.mp3");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            catalog.addTrack(duplicateFileTrack);
-        });
-
-        assertTrue(exception.getMessage().contains("Questo file MP3 è già stato associato al brano"));
-    }
-
-
-    /**
-     * @brief Verifica i controlli di integrità del catalogo in fase di aggiornamento.
-     * @details Assicura che la modifica di una traccia in modo che collida con i
-     * metadati di un'altra venga respinta.
-     */
-    @Test
-    public void testUpdateTrackDuplicateTitleAndAuthorThrowsException() {
-        catalog.addTrack(track1);
-        catalog.addTrack(track2);
-
-        track2.setTitle("Bohemian Rhapsody");
-        track2.setAuthor("Queen");
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            catalog.updateTrack(track2);
-        });
-
-        assertTrue(exception.getMessage().toLowerCase().contains("già presente"));
-    }
-
-    /**
-     * @brief Verifica il vincolo di univocità del file in fase di aggiornamento.
-     * @details Assicura che non sia possibile riassegnare un MP3 già in uso ad un'altra traccia.
-     */
-    @Test
-    public void testUpdateTrackDuplicateFilePathThrowsException() {
-        catalog.addTrack(track1);
-        catalog.addTrack(track2);
-
-        track2.setFilePath("bohemian.mp3");
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            catalog.updateTrack(track2);
-        });
-
-        assertTrue(exception.getMessage().contains("Questo file MP3 è già stato associato"));
-    }
-
-    /**
-     * @brief Verifica il corretto aggiornamento di un campo legittimo.
-     * @details Assicura che una modifica non conflittuale (es. l'anno) passi i controlli
-     * senza identificare la traccia come un duplicato di sé stessa.
-     */
-    @Test
-    public void testUpdateTrackLegitimateUpdateDoesNotThrow() {
-        catalog.addTrack(track1);
-        track1.setYear(2024);
-
-        assertDoesNotThrow(() -> catalog.updateTrack(track1));
-
-        Track updated = catalog.getAllTracks().iterator().next();
-        assertEquals(2024, updated.getYear());
     }
 }

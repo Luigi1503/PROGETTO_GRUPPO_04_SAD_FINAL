@@ -299,7 +299,7 @@ public class ConcreteMusicCatalog implements MusicCatalog {
 
     /**
      * Ripristina lo stato interno del catalogo.
-     * <b>Da usare esclusivamente nei test</b> per garantire isolamento tra i casi di test.
+     * <b>Metodo di utilità utilizzato esclusivamente nei test</b> per garantire isolamento tra i vari casi di test.
      */
     public void reset() {
         tracks.clear();
