@@ -1,13 +1,15 @@
 package com.example.gruppo04.model;
 
 import java.util.*;
+
+import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
 
 public class PlaylistImpl implements Playlist {
     private String name;
     private final String id;
-    private List<Track> tracks = new ArrayList<>();
+    private List<PlayableSource> tracks = new ArrayList<>();
 
     /**
      * Implementazione di {@link Playlist} basata su lista ad accesso ordinato.
@@ -78,14 +80,24 @@ public class PlaylistImpl implements Playlist {
         return result;
     }
 
-    @Override
-    public List<Track> getTracks(){
-        return Collections.unmodifiableList(this.tracks);
-    }
+
 
 
     @Override
     public String toString() {
         return this.name;
     }
+
+
+
+    @Override
+    public List<Track> getTracks() {
+        List<Track> allTracks = new ArrayList<>();
+        for (PlayableSource element : this.tracks) {
+            allTracks.addAll(element.getTracks());
+        }
+        return allTracks;
+
+    }
+
 }

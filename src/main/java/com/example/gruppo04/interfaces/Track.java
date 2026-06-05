@@ -8,7 +8,7 @@ import java.util.UUID;
  * le informazioni di un brano. L'identità di ogni traccia è garantita
  * da un identificatore UUID immutabile.
  */
-public interface Track extends Playable{
+public interface Track extends PlayableSource {
 
     /**
      * @brief Restituisce l'identificativo univoco della traccia.

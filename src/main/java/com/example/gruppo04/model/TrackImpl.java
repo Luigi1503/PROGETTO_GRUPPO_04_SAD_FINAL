@@ -1,6 +1,7 @@
 package com.example.gruppo04.model;
 import com.example.gruppo04.interfaces.Track;
 
+import java.util.List;
 import java.util.UUID;
 import java.time.Year;
 
@@ -246,6 +247,19 @@ public class TrackImpl implements Track {
     @Override
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+
+
+
+
+
+
+
+    @Override
+    public List<Track> getTracks() {
+        //Creaiamo una lista contenente solo questa traccia
+        return java.util.Collections.singletonList(this);
     }
 
     }
