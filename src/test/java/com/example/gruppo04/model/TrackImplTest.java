@@ -4,6 +4,8 @@ import com.example.gruppo04.interfaces.Track;
 import org.junit.jupiter.api.Test;
 
 import java.time.Year;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -143,5 +145,53 @@ class TrackImplTest {
 
         assertDoesNotThrow(() -> new TrackImpl("Valid Title", "Valid Author", "Pop", 2000, 180, ""),
                 "Dovrebbe essere possibile creare una traccia con filePath vuoto");
+    }
+
+
+    /**
+     * @brief Verifica il corretto incapsulamento della traccia in una lista.
+     * @details Controlla l'implementazione del contratto PlayableSource, assicurandosi
+     * che il metodo restituisca una lista non nulla contenente unicamente l'istanza
+     * della traccia stessa.
+     */
+    @Test
+    void getTracks_returnsSingletonListWithSelf() {
+        Track track = new TrackImpl("Valid Title", "Valid Author", "Pop", 2000, 180, "file.mp3");
+
+        List<Track> tracks = track.getTracks();
+
+        assertNotNull(tracks, "La lista restituita non deve essere nulla");
+        assertEquals(1, tracks.size(), "La lista deve contenere esattamente un elemento");
+        assertEquals(track, tracks.get(0), "L'unico elemento della lista deve essere la traccia stessa");
+    }
+
+    /**
+     * @brief Verifica la corretta generazione dei metadati e il loro ordine.
+     * @details Controlla che il dizionario generato contenga esattamente le quattro
+     * chiavi previste ("Titolo", "Autore", "Genere", "Anno") con i valori corretti.
+     * Verifica inoltre che l'ordine di iterazione della mappa (garantito dalla LinkedHashMap)
+     * sia rigorosamente rispettato per la corretta visualizzazione nella UI.
+     */
+    @Test
+    void getDisplayName_returnsOrderedMetadataMap() {
+        Track track = new TrackImpl("Valid Title", "Valid Author", "Pop", 2000, 180, "file.mp3");
+
+        Map<String, String> meta = track.getDisplayName();
+
+        assertNotNull(meta, "La mappa dei metadati non deve essere nulla");
+        assertEquals(4, meta.size(), "La mappa deve contenere esattamente 4 elementi");
+
+        // Verifica la correttezza dei valori associati alle chiavi
+        assertEquals("Valid Title", meta.get("Titolo"));
+        assertEquals("Valid Author", meta.get("Autore"));
+        assertEquals("Pop", meta.get("Genere"));
+        assertEquals("2000", meta.get("Anno"));
+
+        // Verifica l'ordine di inserimento (Cruciale per la LinkedHashMap)
+        java.util.Iterator<String> keyIterator = meta.keySet().iterator();
+        assertEquals("Titolo", keyIterator.next(), "La prima chiave deve essere 'Titolo'");
+        assertEquals("Autore", keyIterator.next(), "La seconda chiave deve essere 'Autore'");
+        assertEquals("Genere", keyIterator.next(), "La terza chiave deve essere 'Genere'");
+        assertEquals("Anno", keyIterator.next(), "La quarta chiave deve essere 'Anno'");
     }
 }

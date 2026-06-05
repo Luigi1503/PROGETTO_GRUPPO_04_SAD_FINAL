@@ -4,6 +4,10 @@ import com.example.gruppo04.interfaces.Track;
 import org.junit.jupiter.api.Test;
 import com.example.gruppo04.interfaces.Playlist;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -126,5 +130,56 @@ class PlaylistImplTest {
     void renamePlaylist(){
         playlist.setName("Rename Titolata");
         assertEquals("Rename Titolata", playlist.getName());
+    }
+
+
+    /**
+     * @brief Verifica l'estrazione delle tracce da una playlist popolata.
+     * @details Controlla che l'implementazione del contratto PlayableSource
+     * restituisca fedelmente tutte e sole le tracce inserite in precedenza.
+     */
+    @Test
+    void getTracks_populatedPlaylist_returnsAllTracks() {
+        playlist.addTrack(t);
+        playlist.addTrack(t2);
+
+        List<Track> extractedTracks = playlist.getTracks();
+
+        assertNotNull(extractedTracks, "La lista restituita non deve essere nulla");
+        assertEquals(2, extractedTracks.size(), "La lista deve contenere esattamente i 2 brani inseriti");
+
+        // Verifica che gli elementi siano esattamente quelli attesi (l'ordine di inserimento è mantenuto dall'ArrayList interna)
+        assertEquals(t, extractedTracks.get(0));
+        assertEquals(t2, extractedTracks.get(1));
+    }
+
+    /**
+     * @brief Verifica la corretta generazione dei metadati generali della playlist.
+     * @details Controlla che il dizionario generato contenga le chiavi previste
+     * ("Nome", "Tipo", "Brani Totali") con i valori corretti e dinamicamente aggiornati.
+     * Verifica inoltre l'ordine rigoroso di iterazione della mappa garantito
+     * dalla LinkedHashMap, fondamentale per una corretta visualizzazione nella UI.
+     */
+    @Test
+    void getDisplayName_returnsOrderedMetadataMap() {
+        // Aggiungiamo un paio di tracce per testare che il contatore "Brani Totali" si aggiorni correttamente
+        playlist.addTrack(t);
+        playlist.addTrack(t2);
+
+        Map<String, String> meta = playlist.getDisplayName();
+
+        assertNotNull(meta, "La mappa dei metadati non deve essere nulla");
+        assertEquals(3, meta.size(), "La mappa deve contenere esattamente 3 elementi");
+
+        // Verifica la correttezza dei valori (incluso il conteggio dinamico)
+        assertEquals("Late Night Vibes", meta.get("Nome"));
+        assertEquals("Playlist", meta.get("Tipo"));
+        assertEquals("2", meta.get("Brani Totali")); // Deve essere "2" perché abbiamo aggiunto t e t2
+
+        // Verifica l'ordine di inserimento (Cruciale per la LinkedHashMap e per chi scriverà la UI)
+        java.util.Iterator<String> keyIterator = meta.keySet().iterator();
+        assertEquals("Nome", keyIterator.next(), "La prima chiave deve essere 'Nome'");
+        assertEquals("Tipo", keyIterator.next(), "La seconda chiave deve essere 'Tipo'");
+        assertEquals("Brani Totali", keyIterator.next(), "La terza chiave deve essere 'Brani Totali'");
     }
 }
