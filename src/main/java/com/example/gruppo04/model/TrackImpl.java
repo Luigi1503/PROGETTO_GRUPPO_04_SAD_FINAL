@@ -145,10 +145,10 @@ public class TrackImpl implements Track {
      */
         @Override
         public void setYear(int year) {
-            int annoAttuale = Year.now().getValue();
+            int now = Year.now().getValue();
 
-            if (year < 1900 || year > annoAttuale) {
-                throw new IllegalArgumentException("Anno non valido. Deve essere compreso tra 1900 e " + annoAttuale);
+            if (year < 1900 || year > now) {
+                throw new IllegalArgumentException("Anno non valido. Deve essere compreso tra 1900 e " + now);
             }
 
             this.year = year;

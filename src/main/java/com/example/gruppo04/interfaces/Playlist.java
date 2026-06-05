@@ -8,7 +8,7 @@ import java.util.List;
  * Le tracce sono mantenute nell'ordine di inserimento; l'unicità all'interno della
  * playlist è garantita dall'implementazione.
  */
-public interface Playlist {
+public interface Playlist extends Playable{
     /**
      * Restituisce il nome della playlist.
      *
