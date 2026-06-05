@@ -9,7 +9,7 @@ import com.example.gruppo04.interfaces.Track;
 public class PlaylistImpl implements Playlist {
     private String name;
     private final String id;
-    private List<PlayableSource> tracks = new ArrayList<>();
+    private List<Track> tracks = new ArrayList<>();
 
     /**
      * Implementazione di {@link Playlist} basata su lista ad accesso ordinato.
@@ -89,7 +89,14 @@ public class PlaylistImpl implements Playlist {
     }
 
 
-
+    /**
+     * @brief Restituisce tutte le tracce contenute nella playlist.
+     * * @details Scorre tutti gli elementi registrati nella playlist ed estrae
+     * iterativamente le tracce per inserirle in una nuova lista aggregata.
+     * Restituisce una nuova istanza di ArrayList per preservare l'incapsulamento
+     * ed evitare che modifiche alla lista restituita alterino lo stato interno della playlist.
+     * * @return Una List<Track> contenente tutti i brani attualmente presenti nella playlist.
+     */
     @Override
     public List<Track> getTracks() {
         List<Track> allTracks = new ArrayList<>();
@@ -97,7 +104,24 @@ public class PlaylistImpl implements Playlist {
             allTracks.addAll(element.getTracks());
         }
         return allTracks;
-
     }
+
+    /**
+     * @brief Genera e restituisce un dizionario contenente i metadati generali della playlist.
+     * * @details Fornisce le informazioni di contesto del contenitore (Nome, Tipo e numero di brani).
+     * Utilizza una LinkedHashMap per garantire che i componenti dell'interfaccia utente
+     * leggano e mostrino i dati esattamente nell'ordine in cui sono stati inseriti.
+     * Il tipo è esplicitamente impostato a "Playlist" per differenziarlo dai singoli brani.
+     * * @return Una Map<String, String> contenente le coppie chiave-valore con i dettagli della playlist.
+     */
+    @Override
+    public Map<String, String> getDisplayName() {
+        Map<String, String> meta = new LinkedHashMap<>();
+        meta.put("Nome", this.name);
+        meta.put("Tipo", "Playlist");
+        meta.put("Brani Totali", String.valueOf(this.tracks.size()));
+        return meta;
+    }
+
 
 }

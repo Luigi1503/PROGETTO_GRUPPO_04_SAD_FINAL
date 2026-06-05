@@ -1,7 +1,9 @@
 package com.example.gruppo04.model;
 import com.example.gruppo04.interfaces.Track;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.time.Year;
 
@@ -250,16 +252,35 @@ public class TrackImpl implements Track {
     }
 
 
-
-
-
-
-
-
+    /**
+     * @brief Restituisce una lista contenente esclusivamente questa singola traccia.
+     * * @details Implementazione dell'interfaccia PlayableSource. Poiché questo oggetto
+     * rappresenta già una singola traccia (un nodo foglia nell'architettura),
+     * restituisce se stesso all'interno di una lista immutabile di un solo elemento.
+     * Questo approccio ottimizza la memoria evitando di istanziare un nuovo ArrayList vuoto.
+     * * @return Una List<Track> contenente unicamente l'istanza corrente.
+     */
     @Override
     public List<Track> getTracks() {
-        //Creaiamo una lista contenente solo questa traccia
         return java.util.Collections.singletonList(this);
+    }
+
+    /**
+     * @brief Genera e restituisce un dizionario contenente i metadati principali della traccia.
+     * * @details Utilizza una LinkedHashMap per garantire che l'ordine di inserimento
+     * (Titolo, Autore, Genere, Anno) venga preservato. In questo modo, i componenti
+     * della UI che itereranno su questa mappa mostreranno le informazioni a schermo
+     * sempre in un ordine coerente e prevedibile.
+     * * @return Una Map<String, String> contenente le coppie chiave-valore dei metadati.
+     */
+    @Override
+    public Map<String, String> getDisplayName() {
+        Map<String, String> meta = new LinkedHashMap<>();
+        meta.put("Titolo", this.title);
+        meta.put("Autore", this.author);
+        meta.put("Genere", this.genre);
+        meta.put("Anno", String.valueOf(this.year));
+        return meta;
     }
 
     }
