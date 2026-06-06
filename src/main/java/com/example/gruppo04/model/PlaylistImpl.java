@@ -99,11 +99,7 @@ public class PlaylistImpl implements Playlist {
      */
     @Override
     public List<Track> getTracks() {
-        List<Track> allTracks = new ArrayList<>();
-        for (PlayableSource element : this.tracks) {
-            allTracks.addAll(element.getTracks());
-        }
-        return allTracks;
+        return new ArrayList<>(this.tracks);
     }
 
     /**
