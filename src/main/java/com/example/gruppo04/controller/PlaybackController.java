@@ -2,6 +2,10 @@ package com.example.gruppo04.controller;
 
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.interfaces.PlayableSource;
+import com.example.gruppo04.interfaces.PlaybackStrategy;
+import com.example.gruppo04.observer.CatalogEvent;
+import com.example.gruppo04.observer.CatalogEventType;
+import com.example.gruppo04.observer.CatalogObserver;
 import java.util.List;
 
 /**
@@ -12,7 +16,7 @@ import java.util.List;
  * e la selezione della traccia successiva a {@link PlaybackStrategy}.
  * </p>
  */
-public class PlaybackController {
+public class PlaybackController implements CatalogObserver {
 
     private PlaybackState state;
     private PlaybackStrategy strategy;
@@ -98,5 +102,39 @@ public class PlaybackController {
      */
     public void addToQueue(PlayableSource source) {
         state.addToQueue(source);
+    }
+
+    /**
+     * Gestisce le notifiche di modifica del catalogo musicale.
+     * <p>
+     * Reagisce alla rimozione di tracce e playlist aggiornando la coda
+     * di riproduzione di conseguenza:
+     * </p>
+     * <ul>
+     *   <li>Se l'elemento rimosso è quello in riproduzione, avanza
+     *       automaticamente al successivo.</li>
+     *   <li>Se l'elemento rimosso è in coda ma non ancora riprodotto,
+     *       viene rimosso dalla coda senza interrompere la riproduzione.</li>
+     * </ul>
+     *
+     * @param event l'evento di modifica del catalogo; non deve essere {@code null}
+     */
+    @Override
+    public void onCatalogChanged(CatalogEvent event) {
+        if (event.getType() == CatalogEventType.TRACK_REMOVED) {
+            Track removed = (Track) event.getTarget();
+            if (removed.equals(state.getCurrentTrack())) {
+                skipTrack();
+            } else if (state.getQueue().contains(removed)) {
+                state.removeFromQueue(removed);
+            }
+        } else if (event.getType() == CatalogEventType.PLAYLIST_REMOVED) {
+            PlayableSource removed = (PlayableSource) event.getTarget();
+            if (removed.equals(state.getCurrentSource())) {
+                skipSource();
+            } else if (state.getQueue().contains(removed)) {
+                state.removeFromQueue(removed);
+            }
+        }
     }
 }
