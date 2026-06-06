@@ -6,9 +6,10 @@ import com.example.gruppo04.interfaces.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.model.SequentialStrategy;
 import com.example.gruppo04.observer.CatalogEvent;
+import com.example.gruppo04.observer.CatalogEventType;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.model.state.PlaybackState;
-
+import com.example.gruppo04.observer.ConcreteMusicCatalog;
 
 import java.util.List;
 
