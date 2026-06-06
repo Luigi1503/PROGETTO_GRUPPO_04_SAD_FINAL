@@ -2,7 +2,6 @@ package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.PlaylistController;
-import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;

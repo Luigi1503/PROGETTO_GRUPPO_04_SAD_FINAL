@@ -40,12 +40,6 @@ public class PlaybackBarViewController implements CatalogObserver {
     /** @brief Bottone play/pausa. */
     @FXML private Button btnPlayPause;
 
-    /** @brief Bottone skip traccia precedente. */
-    @FXML private Button btnPrevious;
-
-    /** @brief Bottone skip traccia successiva. */
-    @FXML private Button btnSkipTrack;
-
     /**
      * @brief Bottone skip playlist successiva.
      * @details Visibile solo durante la riproduzione di una playlist.
@@ -87,10 +81,6 @@ public class PlaybackBarViewController implements CatalogObserver {
 
     /** @brief Secondi trascorsi dall'inizio della riproduzione della traccia corrente. */
     private long elapsedSeconds = 0;
-
-    /** @brief Logger per la gestione degli errori. */
-    private static final Logger logger =
-            Logger.getLogger(PlaybackBarViewController.class.getName());
 
     /**
      * @brief Costruttore senza parametri richiesto da FXMLLoader.
@@ -212,18 +202,22 @@ public class PlaybackBarViewController implements CatalogObserver {
      * e il testo del bottone.
      */
     @FXML
-    void handlePlayPause(ActionEvent event) {
+    void handlePlayPause(@SuppressWarnings("unused") ActionEvent event) {
         if (isPlaying) {
             playbackController.pause();
             isPlaying = false;
             btnPlayPause.setText("▶");
             progressTimer.stop();
         } else {
-            // Riprende la riproduzione dalla pausa
-            playbackController.resume();
-            isPlaying = true;
-            btnPlayPause.setText("⏸");
-            progressTimer.start();
+            if (!playbackController.isStopped()) {
+                // riprende dalla pausa
+                playbackController.resume();
+                isPlaying = true;
+                btnPlayPause.setText("⏸");
+                progressTimer.start();
+            }
+            // se è STOPPED non fa nulla — il play viene avviato
+            // da PlaylistDetailView o TrackListView
         }
     }
 
