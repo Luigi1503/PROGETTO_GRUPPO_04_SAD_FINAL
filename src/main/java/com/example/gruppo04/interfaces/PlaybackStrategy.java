@@ -13,9 +13,9 @@ public interface PlaybackStrategy {
     /**
      * @brief Seleziona la traccia successiva nella lista.
      * 
-     * @param tracks La lista di tracce disponibili.
+     * @param sources La lista di {@PlayableSource} disponibili.
      * @param currentIndex L'indice della traccia corrente nella lista.
-     * @return La traccia successiva selezionata, o null se non esiste una traccia successiva.
+     * @return La source successiva selezionata, o null se non esiste una traccia successiva.
      */
-    Track nextTrack(List<Track> tracks, int currentIndex);
+    PlayableSource nextSource(List<PlayableSource> sources, int currentIndex);
 }

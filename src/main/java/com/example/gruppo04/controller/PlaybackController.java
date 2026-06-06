@@ -8,6 +8,7 @@ import com.example.gruppo04.model.*;
 import com.example.gruppo04.observer.*;
 import com.example.gruppo04.model.state.*;
 
+
 import java.util.List;
 
 /**
@@ -77,9 +78,8 @@ public class PlaybackController implements CatalogObserver {
     public void skipTrack() {
         List<Track> tracks = state.getCurrentSource().getTracks();
         int currentIndex = tracks.indexOf(state.getCurrentTrack());
-        Track track = strategy.nextTrack(tracks, currentIndex);
-        if (track != null) {
-            state.setCurrentTrack(track);
+        if (currentIndex + 1 < tracks.size()) {
+            state.setCurrentTrack(tracks.get(currentIndex + 1));
         } else {
             skipSource();
         }
@@ -92,10 +92,12 @@ public class PlaybackController implements CatalogObserver {
      * </p>
      */
     public void skipSource() {
-        PlayableSource nextSource = state.nextSource();
+        List<PlayableSource> queue = state.getQueue();
+        int currentIndex = queue.indexOf(state.getCurrentSource());
+        PlayableSource nextSource = strategy.nextSource(queue, currentIndex);
         if (nextSource != null) {
-            Track first = strategy.nextTrack(nextSource.getTracks(), -1);
-            state.setCurrentTrack(first);
+            state.setCurrentSource(nextSource);
+            state.setCurrentTrack(nextSource.getTracks().get(0));
         } else {
             state.stop();
         }

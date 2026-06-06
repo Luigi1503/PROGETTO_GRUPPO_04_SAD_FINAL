@@ -5,6 +5,7 @@ import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.model.TrackImpl;
+import com.example.gruppo04.model.state.PlaybackState;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import com.example.gruppo04.view.MainViewController;
 import javafx.application.Application;
