@@ -306,4 +306,8 @@ public class ConcreteMusicCatalog implements MusicCatalog {
         playlists.clear();
         observers.clear();
     }
+
+    public void notifyStrategyChanged(PlaybackStrategy strategy) {
+        notifyObservers(CatalogEventType.STRATEGY_CHANGED, strategy);
+    }
 }

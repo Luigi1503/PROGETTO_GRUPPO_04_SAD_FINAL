@@ -1,5 +1,6 @@
 package com.example.gruppo04.view;
 
+import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.interfaces.MusicCatalog;
@@ -64,6 +65,15 @@ public class PlaylistDetailViewController implements CatalogObserver {
     /** Label che mostra la durata totale di tutte le tracce della playlist in minuti. */
     @FXML private Label labelTotalDuration;
 
+    /* Bottone per la Riproduzione Sequenziale */
+    @FXML private Button btnPlayAll;
+
+    /** Bottone per la Riproduzione in Shuffle*/
+    @FXML private Button btnShuffle;
+
+    /** Bottone per la Riproduzione in Loop*/
+    @FXML private Button btnLoop;
+
     /** Controller MVC delle playlist, usato per aggiungere e rimuovere tracce. */
     private PlaylistController playlistController;
 
@@ -75,6 +85,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
 
     /** Traccia attualmente selezionata nella tabella. */
     private Track selectedTrack;
+
+    /*Playback Controller per la gestione dello stato e della strategia di riproduzione*/
+    private PlaybackController playbackController;
 
     /** Logger per la gestione degli errori di caricamento delle view. */
     private static final Logger logger =
@@ -104,11 +117,13 @@ public class PlaylistDetailViewController implements CatalogObserver {
      * @param playlistController il controller MVC delle playlist
      * @param trackController    il controller MVC delle tracce
      * @param catalog            il catalogo musicale, usato per la registrazione dell'Observer
+     * @param playbackController il controller del playback che gestisce stato di riproduzione e strategia
      */
     public void init(Playlist playlist, PlaylistController playlistController,
-                     TrackController trackController, MusicCatalog catalog) {
+                     TrackController trackController, MusicCatalog catalog, PlaybackController playbackController) {
         this.currentPlaylist = playlist;
         this.playlistController = playlistController;
+        this.playbackController = playbackController;
         this.trackController = trackController;
         catalog.registerObserver(this);
         updateView();
@@ -116,7 +131,8 @@ public class PlaylistDetailViewController implements CatalogObserver {
 
     /**
      * Chiamato dal catalogo quando si verifica un cambiamento.
-     * Aggiorna la vista se l'evento riguarda le tracce della playlist corrente.
+     * Aggiorna la vista se l'evento riguarda le tracce della playlist corrente
+     * o la rimozione di una traccia dal catalogo.
      *
      * @param event l'evento contenente i dettagli del cambiamento
      */
@@ -126,6 +142,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
             case PLAYLIST_TRACK_ADDED:
             case PLAYLIST_TRACK_REMOVED:
             case PLAYLIST_RENAMED:
+            case TRACK_REMOVED:
                 updateView();
                 break;
             default:
@@ -215,5 +232,31 @@ public class PlaylistDetailViewController implements CatalogObserver {
         return tracks.stream()
                 .mapToInt(Track::getDuration)
                 .sum() / 60;
+    }
+
+    /**
+     * Avvia la riproduzione della playlist in modalità sequenziale.
+     */
+    @FXML
+    private void handlePlayAll() {
+        playbackController.play(currentPlaylist, new SequentialStrategy());
+    }
+
+    /**
+     * Avvia la riproduzione della playlist in modalità shuffle.
+     * Le tracce vengono riprodotte in ordine casuale senza ripetizioni.
+     */
+    @FXML
+    private void handleShuffle() {
+        playbackController.play(currentPlaylist, new ShuffleStrategy());
+    }
+
+    /**
+     * Avvia la riproduzione della playlist in modalità loop.
+     * Al termine dell'ultima traccia la riproduzione riparte automaticamente.
+     */
+    @FXML
+    private void handleLoop() {
+        playbackController.play(currentPlaylist, new LoopStrategy());
     }
 }

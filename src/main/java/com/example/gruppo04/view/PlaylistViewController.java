@@ -188,7 +188,7 @@ public class PlaylistViewController implements CatalogObserver {
 
         MenuItem delete = new MenuItem("Elimina");
         delete.setOnAction(e -> playlistController.deletePlaylist(playlist));
-        delete.getStyleClass().add("danger");                 // ← per il rosso
+        delete.getStyleClass().add("danger");
 
         ContextMenu menu = new ContextMenu(rename, delete);
         menu.getStyleClass().add("playlist-context-menu");

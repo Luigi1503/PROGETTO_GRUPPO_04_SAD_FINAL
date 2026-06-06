@@ -1,5 +1,6 @@
 package com.example.gruppo04.interfaces;
 
+import com.example.gruppo04.observer.CatalogEventType;
 import com.example.gruppo04.observer.CatalogObserver;
 
 import java.util.Collection;
@@ -128,5 +129,13 @@ public interface MusicCatalog {
      */
     void unregisterObserver(CatalogObserver observer);
 
+    /**
+     * Notifica tutti gli observer registrati del cambio di modalità
+     * di riproduzione attiva.
+     *
+     * @param strategy la nuova strategia di riproduzione selezionata;
+     *                 non deve essere {@code null}
+     */
+    public void notifyStrategyChanged(PlaybackStrategy strategy);
 
 }

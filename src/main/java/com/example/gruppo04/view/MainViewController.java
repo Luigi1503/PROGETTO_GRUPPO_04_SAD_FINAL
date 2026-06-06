@@ -1,5 +1,6 @@
 package com.example.gruppo04.view;
 
+import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
@@ -51,6 +52,9 @@ public class MainViewController implements CatalogObserver {
     /** Controller MVC delle playlist. */
     private PlaylistController playlistController;
 
+    /** Controller della riproduzione musicale. */
+    private PlaybackController playbackController;
+
     /** Logger per la gestione degli errori di caricamento delle view. */
     private static final Logger logger =
             Logger.getLogger(MainViewController.class.getName());
@@ -71,6 +75,8 @@ public class MainViewController implements CatalogObserver {
         this.catalog = catalog;
         this.trackController = trackController;
         this.playlistController = playlistController;
+        // TODO: istanziare dopo che Luigi completa PlaybackState
+        // this.playbackController = new PlaybackController(new PlaybackState());
         catalog.registerObserver(this);
         updateSidebarPlaylists();
         showAllTracks();
@@ -162,7 +168,7 @@ public class MainViewController implements CatalogObserver {
                     getClass().getResource("/com/example/gruppo04/Views/PlaylistDetailView.fxml"));
             Node view = loader.load();
             PlaylistDetailViewController controller = loader.getController();
-            controller.init(playlist, playlistController, trackController, catalog);
+            controller.init(playlist, playlistController, trackController, catalog, playbackController);
             setContent(view);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Errore nel caricamento di PlaylistDetailView", e);

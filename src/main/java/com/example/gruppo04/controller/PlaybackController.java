@@ -1,10 +1,12 @@
 package com.example.gruppo04.controller;
 
-import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
+import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogEventType;
 import com.example.gruppo04.observer.CatalogObserver;
+import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ public class PlaybackController implements CatalogObserver {
 
     private PlaybackState state;
     private PlaybackStrategy strategy;
+    private MusicCatalog catalog;
 
     /**
      * Costruisce un {@code PlaybackController} con lo stato di riproduzione fornito.
@@ -27,6 +30,8 @@ public class PlaybackController implements CatalogObserver {
      */
     public PlaybackController(PlaybackState state) {
         this.state = state;
+        this.catalog = ConcreteMusicCatalog.getInstance();
+        catalog.registerObserver(this);
     }
 
     /**
@@ -135,5 +140,21 @@ public class PlaybackController implements CatalogObserver {
                 state.removeFromQueue(removed);
             }
         }
+    }
+
+    /**
+     * Aggiorna la modalità di riproduzione attiva e notifica la UI
+     * tramite il pattern Observer.
+     * <p>
+     * Il cambio di modalità non interrompe la riproduzione in corso ---
+     * la nuova strategia verrà applicata a partire dalla traccia successiva.
+     * </p>
+     *
+     * @param newStrategy la nuova strategia di riproduzione da applicare;
+     *                    non deve essere {@code null}
+     */
+    public void changeStrategy(PlaybackStrategy newStrategy) {
+        this.strategy = newStrategy;
+        catalog.notifyStrategyChanged(newStrategy);
     }
 }
