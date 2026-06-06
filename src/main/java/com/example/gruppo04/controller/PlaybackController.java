@@ -108,7 +108,7 @@ public class PlaybackController implements CatalogObserver {
     /**
      * Aggiunge una sorgente in fondo alla coda di riproduzione corrente.
      * <p>
-     * A differenza di {@link #play(PlayableSource, PlaybackStrategy)}, non interrompe
+     * A differenza di , non interrompe
      * la riproduzione in corso — la sorgente verrà riprodotta al termine di quelle
      * già presenti in coda.
      * </p>
