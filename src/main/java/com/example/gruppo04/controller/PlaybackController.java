@@ -192,8 +192,7 @@ public class PlaybackController implements CatalogObserver {
     /**
      * @brief Riprende la riproduzione dalla pausa.
      * @details Non ha effetto se la riproduzione è già in corso.
-     * A differenza di {@link #play(PlayableSource)}, non ricarica la coda
-     * ma riprende dal punto in cui era stata messa in pausa.
+     * Non ricarica la coda ma riprende dal punto in cui era stata messa in pausa.
      */
     public void resume() {
         if (!state.isPlaying()) {
