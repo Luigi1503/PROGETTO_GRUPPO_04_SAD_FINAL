@@ -1,6 +1,7 @@
 package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.PlaylistController;
+import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
@@ -42,6 +43,13 @@ public class MainViewController implements CatalogObserver {
     /** Pulsante di navigazione Playlists. */
     @FXML private Button btnPlaylists;
 
+    /**
+     * Controller della barra di riproduzione.
+     * Iniettato automaticamente da JavaFX tramite fx:include con fx:id="playbackBar"
+     * nella MainView.fxml — la convenzione è fx:id + "Controller".
+     */
+    @FXML private PlaybackBarViewController playbackBarController;
+
     /** Catalogo musicale centrale. */
     private MusicCatalog catalog;
 
@@ -50,6 +58,9 @@ public class MainViewController implements CatalogObserver {
 
     /** Controller MVC delle playlist. */
     private PlaylistController playlistController;
+
+    /** Controller MVC della riproduzione. */
+    private PlaybackController playbackController;
 
     /** Logger per la gestione degli errori di caricamento delle view. */
     private static final Logger logger =
@@ -62,16 +73,20 @@ public class MainViewController implements CatalogObserver {
      * carica la vista iniziale (All Tracks).
      * Da chiamare dopo il caricamento dell'FXML.
      *
-     * @param catalog            il catalogo musicale
-     * @param trackController    il controller MVC delle tracce
-     * @param playlistController il controller MVC delle playlist
+     * @param catalog             il catalogo musicale
+     * @param trackController     il controller MVC delle tracce
+     * @param playlistController  il controller MVC delle playlist
+     * @param playbackController  il controller MVC della riproduzione
      */
     public void init(MusicCatalog catalog, TrackController trackController,
-                     PlaylistController playlistController) {
+                     PlaylistController playlistController,
+                     PlaybackController playbackController) {
         this.catalog = catalog;
         this.trackController = trackController;
         this.playlistController = playlistController;
+        this.playbackController = playbackController;
         catalog.registerObserver(this);
+        playbackBarController.init(playbackController, catalog);
         updateSidebarPlaylists();
         showAllTracks();
     }
@@ -116,7 +131,6 @@ public class MainViewController implements CatalogObserver {
 
     /**
      * Mostra il pannello All Tracks nell'area centrale.
-     * Usa setControllerFactory in quanto TrackView ha un costruttore con parametri.
      */
     private void showAllTracks() {
         try {
@@ -134,7 +148,6 @@ public class MainViewController implements CatalogObserver {
 
     /**
      * Mostra il pannello Playlists nell'area centrale.
-     * Usa setControllerFactory perché PlaylistViewController ha un costruttore con parametri.
      */
     private void showPlaylists() {
         try {
