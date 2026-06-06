@@ -1,6 +1,7 @@
 package com.example.gruppo04;
 
 import com.example.gruppo04.controller.PlaylistController;
+import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.model.TrackImpl;
@@ -26,7 +27,7 @@ public class MainApplication extends Application {
         catalog.addTrack(new TrackImpl("Someday",  "OneRepublic",    "Pop",      2021, 391, null));
         catalog.addTrack(new TrackImpl("As It Was", "Harry Styles", "Pop", 2022, 300, null));
         catalog.addTrack(new TrackImpl("Levitating", "Dua Lipa", "Pop", 2020, 203, null));
-        catalog.addTrack(new TrackImpl("Blinding Lights", "The Weeknd", "Synth-Pop", 2019, 200, null));
+        catalog.addTrack(new TrackImpl("Blinding Lights", "The Weeknd", "Pop", 2019, 200, null));
 
         // ── Crea playlist di esempio ──────────────
         catalog.createPlaylist("Rock Classics");
@@ -36,12 +37,15 @@ public class MainApplication extends Application {
         TrackController trackController       = new TrackController(catalog);
         PlaylistController playlistController = new PlaylistController(catalog);
 
+        PlaybackState state = new PlaybackState();
+        PlaybackController playbackController = new PlaybackController(state);
+
         // ── Carica MainView ───────────────────────
         FXMLLoader loader = new FXMLLoader(
                 MainApplication.class.getResource("/com/example/gruppo04/Views/MainView.fxml"));
         BorderPane root = loader.load();
         MainViewController controller = loader.getController();
-        controller.init(catalog, trackController, playlistController);
+        controller.init(catalog, trackController, playlistController, playbackController);
 
         // ── Avvia la finestra ─────────────────────
         stage.setTitle("Music Playlist Manager");

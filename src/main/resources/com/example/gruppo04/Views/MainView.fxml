@@ -51,7 +51,6 @@
             <Separator style="-fx-background-color: #1B2A2F;"/>
 
             <!-- Navigazione principale -->
-            <!-- Navigazione principale -->
             <VBox spacing="2">
                 <padding><Insets top="12" bottom="12"/></padding>
 
@@ -116,5 +115,12 @@
                    style="-fx-background-color: #111C22;">
         </StackPane>
     </center>
+
+    <!-- ══════════════════════════════════════
+         BOTTOM — barra di riproduzione
+         ══════════════════════════════════════ -->
+    <bottom>
+        <fx:include fx:id="playbackBar" source="PlaybackBarView.fxml"/>
+    </bottom>
 
 </BorderPane>
