@@ -25,4 +25,6 @@ module com.example.gruppo04 {
 
     exports com.example.gruppo04.view to javafx.graphics;
     opens com.example.gruppo04.view to javafx.fxml;
+    exports com.example.gruppo04.model.state;
+    opens com.example.gruppo04.model.state to javafx.base, javafx.fxml;
 }
