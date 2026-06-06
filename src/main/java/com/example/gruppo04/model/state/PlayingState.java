@@ -12,7 +12,7 @@ public class PlayingState  implements PlayerState{
 
     @Override
     public void pause(PlaybackState context) {
-        context.changeContext(new PausedState());
+        context.changeState(new PausedState());
     }
 
     @Override
