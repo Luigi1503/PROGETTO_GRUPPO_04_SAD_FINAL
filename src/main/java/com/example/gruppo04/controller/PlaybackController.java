@@ -2,6 +2,7 @@ package com.example.gruppo04.controller;
 
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.interfaces.PlayableSource;
+import com.example.gruppo04.interfaces.PlaybackStrategy;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogEventType;
 import com.example.gruppo04.observer.CatalogObserver;
