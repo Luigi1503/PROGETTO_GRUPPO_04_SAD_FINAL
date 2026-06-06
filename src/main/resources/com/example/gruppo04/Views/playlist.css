@@ -122,3 +122,16 @@
 .playlist-dialog .button:hover            { -fx-background-color: #374D50; }
 .playlist-dialog .button:default          { -fx-background-color: #1D9E75; -fx-text-fill: #FFFFFF; }
 .playlist-dialog .button:default:hover    { -fx-background-color: #23B383; }
+
+.play-all-btn {
+    -fx-background-color: #1D6A72;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 7;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+.play-all-btn:hover {
+    -fx-background-color: #23B383;
+}

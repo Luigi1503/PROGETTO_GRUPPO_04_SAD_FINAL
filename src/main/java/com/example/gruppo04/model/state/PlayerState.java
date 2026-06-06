@@ -30,4 +30,10 @@ public interface PlayerState {
      * @return true se la musica è in esecuzione, false altrimenti.
      */
     boolean isPlaying();
+
+    /**
+     * @brief Indica se lo stato attuale corrisponde a una riproduzione in pausa.
+     * @return true se la musica è in stop, false altrimenti.
+     */
+    boolean isStopped();
 }

@@ -34,7 +34,7 @@
                       <Button fx:id="btnAddTrack" onAction="#handleAddTrack" style="-fx-background-color: #1D6A72;                                -fx-text-fill: #FFFFFF;                                -fx-font-weight: bold;                                -fx-font-size: 13px;                                -fx-background-radius: 7;                                -fx-padding: 8 18 8 18;                                -fx-cursor: hand;" text="+ Aggiungi Track" />
                       <Button fx:id="btnRemoveTrack" disable="true" onAction="#handleRemoveTrack" style="-fx-background-color: #1B2A2F;                                -fx-text-fill: #E8EDF0;                                -fx-font-size: 13px;                                -fx-background-radius: 7;                                -fx-border-color: #2C3E40;                                -fx-border-radius: 7;                                -fx-border-width: 1;                                -fx-padding: 8 18 8 18;                                -fx-cursor: hand;" text="Rimuovi Track" />
           <Region HBox.hgrow="ALWAYS"/>
-          <Button fx:id="btnPlayAll" onAction="#handlePlayAll"
+          <Button fx:id="btnPlay" onAction="#handlePlay"
                   style="-fx-background-color: #1D6A72;
            -fx-text-fill: #FFFFFF;
            -fx-font-weight: bold;
@@ -42,26 +42,7 @@
            -fx-background-radius: 7;
            -fx-padding: 8 18 8 18;
            -fx-cursor: hand;" text="▶ Play All"/>
-          <Button fx:id="btnShuffle" onAction="#handleShuffle"
-                  style="-fx-background-color: #1B2A2F;
-           -fx-text-fill: #E8EDF0;
-           -fx-font-size: 13px;
-           -fx-background-radius: 7;
-           -fx-border-color: #2C3E40;
-           -fx-border-radius: 7;
-           -fx-border-width: 1;
-           -fx-padding: 8 18 8 18;
-           -fx-cursor: hand;" text="⇄ Shuffle"/>
-          <Button fx:id="btnLoop" onAction="#handleLoop"
-                  style="-fx-background-color: #1B2A2F;
-           -fx-text-fill: #E8EDF0;
-           -fx-font-size: 13px;
-           -fx-background-radius: 7;
-           -fx-border-color: #2C3E40;
-           -fx-border-radius: 7;
-           -fx-border-width: 1;
-           -fx-padding: 8 18 8 18;
-           -fx-cursor: hand;" text="↺ Loop"/>
+
       </children>
                </HBox>
            </children>
@@ -82,7 +63,14 @@
                   -fx-control-inner-background: transparent;
                   -fx-padding: 0;"
                           VBox.vgrow="ALWAYS">
-   
+                   <contextMenu>
+                       <ContextMenu>
+                           <items>
+                               <MenuItem text="▶ Riproduci ora" onAction="#handlePlayTrack"/>
+                               <MenuItem text="✕ Rimuovi dalla playlist" onAction="#handleRemoveTrack"/>
+                           </items>
+                       </ContextMenu>
+                   </contextMenu>
                    <columns>
                        <TableColumn fx:id="colTitle" prefWidth="220" text="TITOLO" />
                        <TableColumn fx:id="colAuthor" prefWidth="160" text="AUTORE" />

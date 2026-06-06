@@ -26,15 +26,6 @@ public class PlaybackState {
         this.currentTrack = null;
     }
 
-
-
-
-
-
-
-
-
-
     public void changeState(PlayerState newState){
         this.currentState = newState;
     }
@@ -111,6 +102,22 @@ public class PlaybackState {
     public void removeFromQueue(PlayableSource source){
         this.queue.remove(source);
     }
+
+    public boolean isStopped() {
+        return this.currentState.isStopped();
+    }
+
+    public void setCurrentSource(PlayableSource source) {
+        this.currentSourceIndex = this.queue.indexOf(source);
+        if (!source.getTracks().isEmpty()) {
+            this.currentTrack = source.getTracks().get(0);
+        }
+    }
+
+    public PlayerState getStatus() {
+        return this.currentState;
+    }
+
 
 
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" prefHeight="80.0" prefWidth="1100.0" style="-fx-background-color: #0D1519;              -fx-border-color: #1B2A2F;              -fx-border-width: 1 0 0 0;              -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaybackBarViewController">
+<HBox alignment="CENTER" prefHeight="80.0" prefWidth="1100.0" style="-fx-background-color: #0D1519;              -fx-border-color: #1B2A2F;              -fx-border-width: 1 0 0 0;              -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaybackBarViewController" stylesheets="@PlaybackBarView.css">
 
     <padding><Insets bottom="0" left="24" right="24" top="0" /></padding>
    <children>
@@ -43,6 +43,7 @@
       
               </VBox>
       </children>
+
    
        </HBox>
    
@@ -102,7 +103,17 @@
        <!-- ══════════════════════════════════════
             DESTRA — modalità attiva (sola lettura, aggiornata da Observer)
             ══════════════════════════════════════ -->
-       <HBox alignment="CENTER_RIGHT" minWidth="280.0" prefWidth="280.0" />
+       <HBox alignment="CENTER_RIGHT" minWidth="280.0" prefWidth="280.0" spacing="8">
+           <children>
+               <Button fx:id="btnSequential" onAction="#handleSequential"
+                       styleClass="mode-btn" text="→ Sequential"/>
+               <Button fx:id="btnShuffle" onAction="#handleShuffle"
+                       styleClass="mode-btn" text="⇄ Shuffle"/>
+               <Button fx:id="btnLoop" onAction="#handleLoop"
+                       styleClass="mode-btn" text="↺ Loop"/>
+           </children>
+       </HBox>
+
    </children>
 
 </HBox>

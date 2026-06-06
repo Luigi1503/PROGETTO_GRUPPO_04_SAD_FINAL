@@ -1,7 +1,9 @@
 package com.example.gruppo04.view;
 
+import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.MusicCatalog;
+import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.observer.CatalogEvent;
@@ -14,6 +16,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 import javafx.scene.layout.StackPane;
@@ -42,6 +47,11 @@ public class PlaylistViewController implements CatalogObserver {
     @FXML
     private FlowPane playlistGrid;
 
+    /** Bottone per la riproduzione di tutte le playlist */
+    @FXML
+    private Button btnPlayAll;
+
+
     /** Icona condivisa da tutte le card. */
     private final Image noteIcon =
             new Image(getClass().getResourceAsStream("/img/note.png"));
@@ -49,13 +59,17 @@ public class PlaylistViewController implements CatalogObserver {
     private  PlaylistController playlistController;
     private  MusicCatalog catalog;
     private Consumer<Playlist> onPlaylistSelected = p -> {};
+
+    /** Palyback controller per la gestione della riproduzione delle playlist*/
+    private PlaybackController playbackController;
     /**
      * @param playlistController orchestratore a cui delegare le azioni sulle playlist
      * @param catalog            sorgente dati di sola lettura usata per disegnare la griglia
      */
-    public void init(PlaylistController playlistController, MusicCatalog catalog) {
+    public void init(PlaylistController playlistController, MusicCatalog catalog, PlaybackController playbackController) {
         this.playlistController = playlistController;
         this.catalog = catalog;
+        this.playbackController = playbackController;
         catalog.registerObserver(this);
         renderPlaylists();
     }
@@ -213,6 +227,24 @@ public class PlaylistViewController implements CatalogObserver {
         dialog.getDialogPane().getStyleClass().add("playlist-dialog");
         dialog.getDialogPane().getStylesheets().add(
                 getClass().getResource("/com/example/gruppo04/Views/playlist.css").toExternalForm());
-        dialog.setGraphic(null);   // toglie il "?" blu nell'header
+        dialog.setGraphic(null);
+    }
+
+
+
+    /**
+     * Avvia la riproduzione di tutte le playlist del catalogo
+     * partendo dalla prima, usando la strategia attualmente selezionata.
+     * <p>
+     * Passa {@code null} come traccia di partenza — la riproduzione
+     * inizia dalla prima traccia della prima playlist in coda.
+     * </p>
+     */
+    @FXML
+    private void handlePlayAll() {
+        List<PlayableSource> queue = new ArrayList<>(catalog.getPlaylists());
+        if (!queue.isEmpty()) {
+            playbackController.play(queue, queue.get(0), null);
+        }
     }
 }

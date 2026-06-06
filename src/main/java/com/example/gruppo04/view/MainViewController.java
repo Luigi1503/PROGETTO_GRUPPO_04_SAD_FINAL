@@ -139,7 +139,7 @@ public class MainViewController implements CatalogObserver {
                     getClass().getResource("/com/example/gruppo04/Views/track_list_view.fxml"));
             Node view = loader.load();
             TrackListViewController controller = loader.getController();
-            controller.init(trackController, catalog);
+            controller.init(trackController, catalog, playbackController);
             setContent(view);
             setActiveButton(btnAllTracks);
         } catch (IOException e) {
@@ -156,7 +156,7 @@ public class MainViewController implements CatalogObserver {
                     getClass().getResource("/com/example/gruppo04/Views/PlaylistView.fxml"));
             Node view = loader.load();
             PlaylistViewController controller = loader.getController();
-            controller.init(playlistController, catalog);
+            controller.init(playlistController, catalog, playbackController);
             controller.setOnPlaylistSelected(this::showPlaylistDetail);
             setContent(view);
             setActiveButton(btnPlaylists);

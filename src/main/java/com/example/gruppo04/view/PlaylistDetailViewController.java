@@ -1,6 +1,7 @@
 package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.PlaybackController;
+import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.model.LoopStrategy;
 import com.example.gruppo04.model.SequentialStrategy;
 import com.example.gruppo04.model.ShuffleStrategy;
@@ -23,6 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.List;
@@ -68,14 +70,11 @@ public class PlaylistDetailViewController implements CatalogObserver {
     /** Label che mostra la durata totale di tutte le tracce della playlist in minuti. */
     @FXML private Label labelTotalDuration;
 
-    /* Bottone per la Riproduzione Sequenziale */
-    @FXML private Button btnPlayAll;
-
-    /** Bottone per la Riproduzione in Shuffle*/
-    @FXML private Button btnShuffle;
-
-    /** Bottone per la Riproduzione in Loop*/
-    @FXML private Button btnLoop;
+    /**
+     * Pulsante per avviare la riproduzione dell'intera playlist.
+     * La strategia usata è quella attualmente attiva nella barra di riproduzione.
+     */
+    @FXML private Button btnPlay;
 
     /** Controller MVC delle playlist, usato per aggiungere e rimuovere tracce. */
     private PlaylistController playlistController;
@@ -91,6 +90,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
 
     /*Playback Controller per la gestione dello stato e della strategia di riproduzione*/
     private PlaybackController playbackController;
+
+    /*Catalog per l'elenco delle playlist*/
+    private MusicCatalog catalog;
 
     /** Logger per la gestione degli errori di caricamento delle view. */
     private static final Logger logger =
@@ -119,7 +121,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      * @param playlist           la playlist da visualizzare
      * @param playlistController il controller MVC delle playlist
      * @param trackController    il controller MVC delle tracce
-     * @param catalog            il catalogo musicale, usato per la registrazione dell'Observer
+     * @param catalog            il catalogo musicale, usato per la registrazione dell'Observer e per la lista di playlist
      * @param playbackController il controller del playback che gestisce stato di riproduzione e strategia
      */
     public void init(Playlist playlist, PlaylistController playlistController,
@@ -128,6 +130,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
         this.playlistController = playlistController;
         this.playbackController = playbackController;
         this.trackController = trackController;
+        this.catalog = catalog;
         catalog.registerObserver(this);
         updateView();
     }
@@ -238,28 +241,35 @@ public class PlaylistDetailViewController implements CatalogObserver {
     }
 
     /**
-     * Avvia la riproduzione della playlist in modalità sequenziale.
+     * Avvia la riproduzione dell'intera playlist usando la strategia
+     * attualmente selezionata nella barra di riproduzione.
+     *
+     * <p>La coda viene costruita con tutte le playlist del catalogo,
+     * partendo dalla playlist corrente. La strategia non viene passata qui:
+     * è già impostata nel {@link PlaybackController} tramite i bottoni
+     * Sequential/Shuffle/Loop presenti nella barra di riproduzione.</p>
      */
     @FXML
-    private void handlePlayAll() {
-        playbackController.play(currentPlaylist, new SequentialStrategy());
+    private void handlePlay() {
+        List<PlayableSource> queue = new ArrayList<>(catalog.getPlaylists());
+        playbackController.play(queue, currentPlaylist, null);
     }
 
     /**
-     * Avvia la riproduzione della playlist in modalità shuffle.
-     * Le tracce vengono riprodotte in ordine casuale senza ripetizioni.
+     * Avvia la riproduzione della traccia selezionata usando la strategia
+     * attualmente selezionata nella barra di riproduzione.
+     *
+     * <p>La coda viene costruita con tutte le playlist del catalogo,
+     * partendo dalla playlist corrente e dalla traccia selezionata.
+     * Al termine delle tracce della playlist corrente, la riproduzione
+     * continua con la playlist successiva nel catalogo.</p>
      */
     @FXML
-    private void handleShuffle() {
-        playbackController.play(currentPlaylist, new ShuffleStrategy());
+    private void handlePlayTrack() {
+        if (selectedTrack != null) {
+            List<PlayableSource> queue = new ArrayList<>(catalog.getPlaylists());
+            playbackController.play(queue, currentPlaylist, selectedTrack);
+        }
     }
 
-    /**
-     * Avvia la riproduzione della playlist in modalità loop.
-     * Al termine dell'ultima traccia la riproduzione riparte automaticamente.
-     */
-    @FXML
-    private void handleLoop() {
-        playbackController.play(currentPlaylist, new LoopStrategy());
-    }
 }

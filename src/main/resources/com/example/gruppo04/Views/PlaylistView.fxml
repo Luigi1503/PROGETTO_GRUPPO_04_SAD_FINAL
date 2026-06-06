@@ -7,7 +7,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 
+<?import javafx.geometry.Insets?>
 <BorderPane prefHeight="400.0" prefWidth="600.0" styleClass="playlist-panel" stylesheets="@playlist.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaylistViewController">
+
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="10">
+         <padding><Insets bottom="12" left="24" right="24" top="20"/></padding>
+         <children>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnPlayAll" onAction="#handlePlayAll"
+                    styleClass="play-all-btn" text="▶ Play All"/>
+         </children>
+      </HBox>
+   </top>
+
    <center>
       <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
          <content>

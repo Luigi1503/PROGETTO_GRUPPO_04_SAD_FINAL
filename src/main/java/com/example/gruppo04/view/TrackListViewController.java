@@ -1,6 +1,8 @@
 package com.example.gruppo04.view;
 
+import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
+import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
@@ -17,6 +19,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Rappresenta la componente View secondo il pattern MVC.
@@ -44,6 +49,10 @@ public class TrackListViewController implements CatalogObserver {
     private Button addTrackBtn;
     @FXML
     private MenuItem menuEdit;
+    @FXML
+    private MenuItem menuPlay;
+
+    private PlaybackController playbackController;
 
     private final ObservableList<Track> tableModel = FXCollections.observableArrayList();
 
@@ -55,9 +64,10 @@ public class TrackListViewController implements CatalogObserver {
     public TrackListViewController() {
     }
 
-    public TrackListViewController(TrackController controller, MusicCatalog catalog) {
+    public TrackListViewController(TrackController controller, MusicCatalog catalog, PlaybackController playbackController) {
         this.controller = controller;
         this.catalog = catalog;
+
     }
 
     /**
@@ -67,10 +77,10 @@ public class TrackListViewController implements CatalogObserver {
      * @param catalog il catalogo musicale da cui la View legge lo stato dell'applicazione in sola lettura
      */
     @FXML
-    public void init(TrackController controller, MusicCatalog catalog) {
+    public void init(TrackController controller, MusicCatalog catalog, PlaybackController playbackController) {
         this.controller = controller;
         this.catalog = catalog;
-        // La View si iscrive al Model (Subject) per osservare i cambiamenti
+        this.playbackController = playbackController;
         this.catalog.registerObserver(this);
         registerCatalogObserver();
         reloadTableData();
@@ -218,6 +228,27 @@ public class TrackListViewController implements CatalogObserver {
         } catch (Exception e) {
             e.printStackTrace();
             showError("Impossibile aprire la finestra di modifica: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Avvia la riproduzione della traccia selezionata dal catalogo.
+     * <p>
+     * La coda viene costruita con tutte le tracce del catalogo,
+     * partendo dalla traccia selezionata. Al termine della coda
+     * la riproduzione si ferma secondo la modalità attiva.
+     * La strategia non viene passata qui: è già impostata nel
+     * {@link PlaybackController} tramite i bottoni Sequential/Shuffle/Loop
+     * presenti nella barra di riproduzione.
+     * </p>
+     */
+    @FXML
+    private void handlePlayTrack() {
+        Track track = trackTable.getSelectionModel().getSelectedItem();
+        if (track != null) {
+            List<PlayableSource> queue = new ArrayList<>();
+            queue.addAll(catalog.getAllTracks());
+            playbackController.play(queue, track, null);
         }
     }
 }

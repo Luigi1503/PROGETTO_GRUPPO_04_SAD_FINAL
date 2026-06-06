@@ -2,7 +2,7 @@ package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
-import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.interfaces.*;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.util.TrackFormatter;
@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import com.example.gruppo04.model.*;
 
 import java.util.logging.Logger;
 
@@ -60,6 +61,15 @@ public class PlaybackBarViewController implements CatalogObserver {
     /** @brief Label che mostra la durata totale della traccia corrente. */
     @FXML private Label labelTotalTime;
 
+    /** @brief Button che definisce la modalità di riproduzione attualmente selezionata - Sequenziale*/
+    @FXML private Button btnSequential;
+
+    /** @brief Button che definisce la modalità di riproduzione attualmente selezionata - Shuffle*/
+    @FXML private Button btnShuffle;
+
+    /** @brief Button che definisce la modalità di riproduzione attualmente selezionata - Loop*/
+    @FXML private Button btnLoop;
+
     /** @brief Controller MVC della riproduzione. */
     private PlaybackController playbackController;
 
@@ -107,12 +117,14 @@ public class PlaybackBarViewController implements CatalogObserver {
     /**
      * @brief Chiamato automaticamente da FXMLLoader dopo il caricamento dell'FXML.
      * @details Inizializza lo stato iniziale della barra di riproduzione.
+     * Di default è attivo il bottone di sequenzializzazione
      */
     @FXML
     void initialize() {
         progressBar.setProgress(0);
         btnSkipPlaylist.setVisible(false); // è invisibile
         btnSkipPlaylist.setManaged(false); // ed è escluso dal layout
+        setActiveMode(btnSequential);
     }
 
     /**
@@ -148,6 +160,13 @@ public class PlaybackBarViewController implements CatalogObserver {
                     updateTrackInfo(playbackController.getCurrentTrack());
                     // btnSkipPlaylist rimane visibile perché siamo ancora in una playlist
                 }
+                break;
+
+            case STRATEGY_CHANGED:
+                PlaybackStrategy strategy = (PlaybackStrategy) event.getTarget();
+                if (strategy instanceof SequentialStrategy) setActiveMode(btnSequential);
+                else if (strategy instanceof ShuffleStrategy) setActiveMode(btnShuffle);
+                else if (strategy instanceof LoopStrategy) setActiveMode(btnLoop);
                 break;
 
             default:
@@ -318,5 +337,52 @@ public class PlaybackBarViewController implements CatalogObserver {
         isPlaying = false;
         btnPlayPause.setText("▶");
         progressTimer.stop();
+    }
+
+    /**
+     * @brief Imposta la modalità di riproduzione sequenziale.
+     * @details Chiama {@link PlaybackController#changeStrategy} con
+     * {@link SequentialStrategy} ed evidenzia il bottone corrispondente.
+     */
+    @FXML
+    void handleSequential(ActionEvent event) {
+        playbackController.changeStrategy(new SequentialStrategy());
+        setActiveMode(btnSequential);
+    }
+
+    /**
+     * @brief Imposta la modalità di riproduzione shuffle.
+     * @details Chiama {@link PlaybackController#changeStrategy} con
+     * {@link ShuffleStrategy} ed evidenzia il bottone corrispondente.
+     */
+    @FXML
+    void handleShuffle(ActionEvent event) {
+        playbackController.changeStrategy(new ShuffleStrategy());
+        setActiveMode(btnShuffle);
+    }
+
+    /**
+     * @brief Imposta la modalità di riproduzione loop.
+     * @details Chiama {@link PlaybackController#changeStrategy} con
+     * {@link LoopStrategy} ed evidenzia il bottone corrispondente.
+     */
+    @FXML
+    void handleLoop(ActionEvent event) {
+        playbackController.changeStrategy(new LoopStrategy());
+        setActiveMode(btnLoop);
+    }
+
+    /**
+     * @brief Evidenzia il bottone della modalità attiva e ripristina gli altri.
+     * @details Il bottone attivo riceve un bordo verde per indicare
+     * la modalità correntemente selezionata.
+     *
+     * @param active il bottone da evidenziare
+     */
+    private void setActiveMode(Button active) {
+        for (Button btn : new Button[]{btnSequential, btnShuffle, btnLoop}) {
+            btn.getStyleClass().remove("mode-btn-active");
+        }
+        active.getStyleClass().add("mode-btn-active");
     }
 }

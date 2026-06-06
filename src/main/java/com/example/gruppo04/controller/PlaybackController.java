@@ -4,9 +4,10 @@ import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Track;
-import com.example.gruppo04.model.*;
-import com.example.gruppo04.observer.*;
-import com.example.gruppo04.model.state.*;
+import com.example.gruppo04.model.SequentialStrategy;
+import com.example.gruppo04.observer.CatalogEvent;
+import com.example.gruppo04.observer.CatalogObserver;
+import com.example.gruppo04.model.state.PlaybackState;
 
 
 import java.util.List;
@@ -198,6 +199,4 @@ public class PlaybackController implements CatalogObserver {
             state.play();
         }
     }
-
-
 }

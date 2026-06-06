@@ -26,4 +26,9 @@ public class PlayingState  implements PlayerState{
     public boolean isPlaying() {
         return true;
     }
+
+    @Override
+    public boolean isStopped(){
+        return false;
+    }
 }

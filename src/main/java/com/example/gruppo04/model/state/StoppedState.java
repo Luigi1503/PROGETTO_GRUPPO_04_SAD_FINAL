@@ -21,4 +21,9 @@ public class StoppedState implements PlayerState{
     public boolean isPlaying() {
         return false;
     }
+
+    @Override
+    public boolean isStopped(){
+        return true;
+    }
 }

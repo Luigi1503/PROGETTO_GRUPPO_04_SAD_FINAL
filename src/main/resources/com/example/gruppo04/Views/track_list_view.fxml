@@ -62,7 +62,7 @@
             <contextMenu>
                 <ContextMenu style="-fx-background-color: #1B2A2F;                                     -fx-background-radius: 8;                                     -fx-border-color: #2C3E40;                                     -fx-border-radius: 8;                                     -fx-border-width: 1;                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);                                     -fx-padding: 4 0 4 0;">
                     <items>
-                        <MenuItem fx:id="menuPlay" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora" visible="false" />
+                        <MenuItem fx:id="menuPlay" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora"  onAction="#handlePlayTrack" />
                         <MenuItem fx:id="menuFav" style="-fx-text-fill: #E8EDF0;" text="☆   Aggiungi ai preferiti" visible="false" />
                         <MenuItem fx:id="menuMove" style="-fx-text-fill: #E8EDF0;" text="↕   Sposta su / giù" visible="false" />
                         <SeparatorMenuItem visible="false" />
