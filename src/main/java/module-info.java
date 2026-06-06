@@ -27,6 +27,4 @@ module com.example.gruppo04 {
     opens com.example.gruppo04.view to javafx.fxml;
     exports com.example.gruppo04.model.state;
     opens com.example.gruppo04.model.state to javafx.base, javafx.fxml;
-    exports com.example.gruppo04.persistence;
-    opens com.example.gruppo04.persistence to javafx.fxml;
 }

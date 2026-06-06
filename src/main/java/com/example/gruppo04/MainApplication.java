@@ -5,8 +5,6 @@ import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.model.TrackImpl;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
-import com.example.gruppo04.persistence.AutoSaveObserver;
-import com.example.gruppo04.persistence.PersistenceManager;
 import com.example.gruppo04.view.MainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,28 +13,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MainApplication extends Application {
     // ── Crea il catalogo ──────────────────────
     private final MusicCatalog catalog = ConcreteMusicCatalog.getInstance();
 
-    /** Logger per la gestione degli errori. */
-    private static final Logger logger =
-            Logger.getLogger(MainApplication.class.getName());
-
-
     @Override
     public void start(Stage stage) throws IOException {
-
-        // ── Caricamento stato persistente ─────────
-        PersistenceManager pm = PersistenceManager.getInstance();
-        try {
-            pm.load();
-        } catch (IOException | ClassNotFoundException e) {
-            logger.log(Level.INFO, "Nessun salvataggio trovato, avvio con catalogo vuoto");
-        }
 
         // ── Libreria iniziale di esempio ──────────
         catalog.addTrack(new TrackImpl("Hold Back The River", "James Bay",     "Rock",      2014, 354, null));
@@ -49,15 +32,9 @@ public class MainApplication extends Application {
         catalog.createPlaylist("Rock Classics");
         catalog.createPlaylist("Late Night Vibes");
 
-        // ── Registra Observer per salvataggio automatico ──
-        AutoSaveObserver autoSave = new AutoSaveObserver(catalog);
-        catalog.registerObserver(autoSave);
-
-
         // ── Crea i controller ─────────────────────
         TrackController trackController       = new TrackController(catalog);
         PlaylistController playlistController = new PlaylistController(catalog);
-
 
         // ── Carica MainView ───────────────────────
         FXMLLoader loader = new FXMLLoader(
