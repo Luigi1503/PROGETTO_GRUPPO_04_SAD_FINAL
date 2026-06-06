@@ -154,6 +154,22 @@ public class PlaybackController implements CatalogObserver {
     }
 
     /**
+     * @brief Torna alla traccia precedente nella sorgente corrente.
+     * @details Se la traccia corrente è la prima della sorgente,
+     * torna all'inizio della stessa traccia azzerando il tempo.
+     * Non cambia sorgente.
+     */
+    public void previousTrack() {
+        List<Track> tracks = state.getCurrentSource().getTracks();
+        int currentIndex = tracks.indexOf(state.getCurrentTrack());
+        if (currentIndex > 0) {
+            state.setCurrentTrack(tracks.get(currentIndex - 1));
+        } else {
+            state.setCurrentTrack(tracks.get(0));
+        }
+    }
+
+    /**
      * Aggiorna la modalità di riproduzione attiva e notifica la UI
      * tramite il pattern Observer.
      * <p>
