@@ -1,5 +1,6 @@
 package com.example.gruppo04.model;
 
+import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Track;
 import java.util.List;
@@ -12,14 +13,14 @@ import java.util.List;
 public class LoopStrategy implements PlaybackStrategy {
 
     @Override
-    public Track nextTrack(List<Track> tracks, int currentIndex) {
-        if (tracks == null || tracks.isEmpty()) {
+    public PlayableSource nextSource(List<PlayableSource> sources, int currentIndex) {
+        if (sources == null || sources.isEmpty()) {
             return null;
         }
-        int nextIndex = (currentIndex + 1) % tracks.size();
+        int nextIndex = (currentIndex + 1) % sources.size();
         if (nextIndex < 0) {
             nextIndex = 0;
         }
-        return tracks.get(nextIndex);
+        return sources.get(nextIndex);
     }
 }

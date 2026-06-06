@@ -89,7 +89,7 @@ public class PlaybackController implements CatalogObserver {
     public void skipSource() {
         PlayableSource nextSource = state.nextSource();
         if (nextSource != null) {
-            Track first = strategy.nextTrack(nextSource.getTracks(), null);
+            PlayableSource first = strategy.nextSource(nextSource.getTracks(), null);
             state.setCurrentTrack(first);
         } else {
             state.stop();
