@@ -17,7 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 
 
 /**
@@ -51,7 +51,7 @@ public class PlaybackBarViewController implements CatalogObserver {
     @FXML private Button btnSkipPlaylist;
 
     /** @brief Barra di avanzamento della traccia corrente. */
-    @FXML private ProgressBar progressBar;
+    @FXML private Slider progressBar;
 
     /** @brief Label che mostra il tempo corrente di riproduzione. */
     @FXML private Label labelCurrentTime;
@@ -122,7 +122,7 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @FXML
     void initialize() {
-        progressBar.setProgress(0);
+        progressBar.setValue(0);
         btnSkipPlaylist.setVisible(false); // è invisibile
         btnSkipPlaylist.setManaged(false); // ed è escluso dal layout
         setActiveMode(btnSequential);
@@ -365,7 +365,7 @@ public class PlaybackBarViewController implements CatalogObserver {
                         } else {
                             // la traccia non è finita
                             double progress = (double) elapsedSeconds / total;
-                            progressBar.setProgress(progress);
+                            progressBar.setValue(progress);
                             labelCurrentTime.setText(
                                     TrackFormatter.formatDuration((int) elapsedSeconds));
                         }
@@ -381,7 +381,7 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     private void resetProgress() {
         elapsedSeconds = 0;
-        progressBar.setProgress(0);
+        progressBar.setValue(0);
         labelCurrentTime.setText("0:00");
     }
 
@@ -396,7 +396,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         labelTrackGenre.setText("—");
         labelTotalTime.setText("0:00");
         labelCurrentTime.setText("0:00");
-        progressBar.setProgress(0);
+        progressBar.setValue(0);
         isPlaying = false;
         btnPlayPause.setText("▶");
         progressTimer.stop();

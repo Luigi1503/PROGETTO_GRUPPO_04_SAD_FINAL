@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" prefHeight="80.0" prefWidth="1100.0" style="-fx-background-color: #0D1519;              -fx-border-color: #1B2A2F;              -fx-border-width: 1 0 0 0;              -fx-font-family: 'Segoe UI', Arial, sans-serif;" stylesheets="@PlaybackBarView.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaybackBarViewController">
+<HBox alignment="CENTER" prefHeight="100.0" prefWidth="1100.0" style="-fx-background-color: #0D1519;              -fx-border-color: #1B2A2F;              -fx-border-width: 1 0 0 0;              -fx-font-family: 'Segoe UI', Arial, sans-serif;" stylesheets="@PlaybackBarView.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaybackBarViewController">
 
     <padding><Insets bottom="0" left="24" right="24" top="0" /></padding>
    <children>
@@ -18,9 +18,12 @@
       <children>
       
               <!-- Icona traccia -->
-              <StackPane prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #1B2A2F;                           -fx-background-radius: 8;">
+              <StackPane prefHeight="43.0" prefWidth="43.0"
+                         minWidth="43.0" minHeight="43.0"
+                         maxWidth="43.0" maxHeight="43.0"
+                      style="-fx-background-color: #1B2A2F;                           -fx-background-radius: 8;">
          <children>
-                     <Label style="-fx-text-fill: #1D9E75;                           -fx-font-size: 20px;" text="♪" />
+                     <Label style="-fx-text-fill: #1D9E75;                           -fx-font-size: 23px;" text="♪" />
          </children>
               </StackPane>
       
@@ -96,9 +99,12 @@
          <children>
          
                      <Label fx:id="labelCurrentTime" style="-fx-text-fill: #5C7A7D; -fx-font-size: 11px;" text="0:00" />
-         
-                     <ProgressBar fx:id="progressBar" prefHeight="4.0" prefWidth="300.0" progress="0.0" style="-fx-accent: #1D9E75;                                 -fx-background-color: #2C3E40;                                 -fx-background-radius: 4;" />
-         
+
+             <Slider fx:id="progressBar" min="0" max="1" value="0"
+                     prefWidth="300.0"
+                     style="-fx-control-inner-background: #2C3E40;
+               -fx-accent: #1D9E75;"
+                     mouseTransparent="true"/>
                      <Label fx:id="labelTotalTime" style="-fx-text-fill: #5C7A7D; -fx-font-size: 11px;" text="0:00" />
          </children>
       

@@ -174,6 +174,13 @@ public class PlaybackController implements CatalogObserver {
         // ──────────────────────────────────────────────────────────────────────
 
         if (nextSource != null) {
+            // verifica che la sorgente successiva abbia tracce
+            if (nextSource.getTracks().isEmpty()) {
+                // salta anche questa sorgente
+                state.setCurrentSource(nextSource);
+                skipSource();
+                return;
+            }
             state.setCurrentSource(nextSource);
             state.setCurrentTrack(nextSource.getTracks().get(0));
             System.out.println("[PlaybackController.skipSource] → prima traccia della nuova sorgente: "
