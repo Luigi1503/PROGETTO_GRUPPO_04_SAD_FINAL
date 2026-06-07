@@ -13,7 +13,7 @@ import java.util.List;
 public class SequentialStrategy implements PlaybackStrategy {
 
     @Override
-    public Track nextSource(List<PlayableSource> sources, int currentIndex) {
+    public PlayableSource nextSource(List<PlayableSource> sources, int currentIndex) {
         if (sources == null || sources.isEmpty()) {
             return null;
         }
