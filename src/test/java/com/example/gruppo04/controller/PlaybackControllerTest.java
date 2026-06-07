@@ -2,9 +2,8 @@ package com.example.gruppo04.controller;
 
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Track;
-import com.example.gruppo04.model.LoopStrategy;
-import com.example.gruppo04.model.SequentialStrategy;
-import com.example.gruppo04.model.ShuffleStrategy;
+import com.example.gruppo04.model.strategy.LoopStrategy;
+import com.example.gruppo04.model.strategy.ShuffleStrategy;
 import com.example.gruppo04.model.state.PlaybackState;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import org.junit.jupiter.api.BeforeEach;

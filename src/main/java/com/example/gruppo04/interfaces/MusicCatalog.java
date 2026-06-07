@@ -1,6 +1,6 @@
 package com.example.gruppo04.interfaces;
 
-import com.example.gruppo04.observer.CatalogEventType;
+import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.observer.CatalogObserver;
 
 import java.util.Collection;

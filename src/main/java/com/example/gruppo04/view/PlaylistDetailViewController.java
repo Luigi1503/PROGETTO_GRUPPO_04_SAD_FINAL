@@ -2,9 +2,6 @@ package com.example.gruppo04.view;
 
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.PlayableSource;
-import com.example.gruppo04.model.LoopStrategy;
-import com.example.gruppo04.model.SequentialStrategy;
-import com.example.gruppo04.model.ShuffleStrategy;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.interfaces.MusicCatalog;

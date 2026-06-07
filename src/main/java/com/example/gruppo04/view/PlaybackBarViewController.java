@@ -3,6 +3,10 @@ package com.example.gruppo04.view;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.*;
+import com.example.gruppo04.model.strategy.LoopStrategy;
+import com.example.gruppo04.model.strategy.PlaybackStrategy;
+import com.example.gruppo04.model.strategy.SequentialStrategy;
+import com.example.gruppo04.model.strategy.ShuffleStrategy;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.util.TrackFormatter;
@@ -12,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import com.example.gruppo04.model.*;
 
 
 /**

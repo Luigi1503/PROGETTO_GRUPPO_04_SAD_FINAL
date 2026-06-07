@@ -1,8 +1,11 @@
 package com.example.gruppo04.model;
 
-import com.example.gruppo04.interfaces.PlaybackStrategy;
+import com.example.gruppo04.model.strategy.LoopStrategy;
+import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.strategy.SequentialStrategy;
+import com.example.gruppo04.model.strategy.ShuffleStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

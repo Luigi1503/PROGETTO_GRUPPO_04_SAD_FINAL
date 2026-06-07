@@ -1,7 +1,6 @@
-package com.example.gruppo04.model;
+package com.example.gruppo04.model.strategy;
 
 import com.example.gruppo04.interfaces.PlayableSource;
-import com.example.gruppo04.interfaces.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Track;
 import java.util.List;
 
