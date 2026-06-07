@@ -7,6 +7,8 @@ import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.model.TrackImpl;
 import com.example.gruppo04.model.state.PlaybackState;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
+import com.example.gruppo04.persistence.AutoSaveObserver;
+import com.example.gruppo04.persistence.PersistenceManager;
 import com.example.gruppo04.view.MainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +17,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainApplication extends Application {
     // ── Crea il catalogo ──────────────────────
     private final MusicCatalog catalog = ConcreteMusicCatalog.getInstance();
+
+    /** Logger per la gestione degli errori. */
+    private static final Logger logger =
+            Logger.getLogger(MainApplication.class.getName());
 
     @Override
     public void start(Stage stage) throws IOException {
