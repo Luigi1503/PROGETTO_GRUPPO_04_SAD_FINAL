@@ -27,14 +27,22 @@ public class PlaybackStartedPayload {
     private final boolean isPlaylist;
 
     /**
+     * Il nome della playlist in riproduzione.
+     * {@code null} se la sorgente non è una playlist.
+     */
+    private final String playlistName;
+
+    /**
      * Costruisce un payload per l'evento PLAYBACK_STARTED.
      *
      * @param currentTrack la traccia corrente all'avvio; non deve essere {@code null}
      * @param isPlaylist   {@code true} se si sta riproducendo una playlist
+     *  @param playlistName il nome della playlist, {@code null} se non è una playlist
      */
-    public PlaybackStartedPayload(Track currentTrack, boolean isPlaylist) {
+    public PlaybackStartedPayload(Track currentTrack, boolean isPlaylist, String playlistName) {
         this.currentTrack = currentTrack;
         this.isPlaylist = isPlaylist;
+        this.playlistName = playlistName;
     }
 
     /**
@@ -50,4 +58,10 @@ public class PlaybackStartedPayload {
     public boolean isPlaylist() {
         return isPlaylist;
     }
+
+    /**
+     * @return il nome della playlist in riproduzione,
+     *         {@code null} se la sorgente non è una playlist
+     */
+    public String getPlaylistName() {return playlistName;}
 }

@@ -39,7 +39,14 @@
                             <Label fx:id="labelTrackGenre" style="-fx-text-fill: #5C7A7D;                               -fx-font-size: 11px;" text="—" />
             </children>
                      </HBox>
+
+             <Label fx:id="labelPlaylistName" text=""
+                    visible="false" managed="false"
+                    style="-fx-text-fill: #1D9E75;
+                      -fx-font-size: 10px;
+                      -fx-font-weight: bold;"/>
          </children>
+
       
               </VBox>
       </children>

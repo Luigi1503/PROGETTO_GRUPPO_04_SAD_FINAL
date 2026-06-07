@@ -2,6 +2,7 @@ package com.example.gruppo04.controller;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
+import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.model.strategy.SequentialStrategy;
@@ -75,8 +76,12 @@ public class PlaybackController implements CatalogObserver {
 
         // Notifica la barra di riproduzione che è iniziata una nuova riproduzione.
         // isPlaylist = true se startFrom è una Playlist, false se è una traccia singola del catalogo.
-        boolean isPlaylist = (startFrom instanceof com.example.gruppo04.interfaces.Playlist);
-        catalog.notifyPlaybackStarted(state.getCurrentTrack(), isPlaylist);
+        boolean isPlaylist = (startFrom instanceof Playlist);
+        String playlistName = null;
+        if (isPlaylist) {
+            playlistName = ((Playlist) startFrom).getName();
+        }
+        catalog.notifyPlaybackStarted(state.getCurrentTrack(), isPlaylist, playlistName);
         System.out.println("[PlaybackController.play] notifyPlaybackStarted inviato | isPlaylist=" + isPlaylist);
 
         // ── DEBUG ──────────────────────────────────────────────────────────────
@@ -260,5 +265,16 @@ public class PlaybackController implements CatalogObserver {
         if (!state.isPlaying()) {
             state.play();
         }
+    }
+
+    /**
+     * @return il nome della sorgente corrente se è una playlist, null altrimenti
+     */
+    public String getCurrentSourceName() {
+        PlayableSource source = state.getCurrentSource();
+        if (source instanceof Playlist) {
+            return ((Playlist) source).getName();
+        }
+        return null;
     }
 }

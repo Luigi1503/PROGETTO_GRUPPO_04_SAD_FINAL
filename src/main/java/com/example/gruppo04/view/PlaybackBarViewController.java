@@ -1,5 +1,7 @@
 package com.example.gruppo04.view;
 
+
+import com.example.gruppo04.observer.PlaybackStartedPayload;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.*;
@@ -65,6 +67,9 @@ public class PlaybackBarViewController implements CatalogObserver {
 
     /** @brief Button che definisce la modalità di riproduzione attualmente selezionata - Loop*/
     @FXML private Button btnLoop;
+
+    /** @brief Label che mostra il nome della playlist in riproduzione. */
+    @FXML private Label labelPlaylistName;
 
     /** @brief Controller MVC della riproduzione. */
     private PlaybackController playbackController;
@@ -159,13 +164,14 @@ public class PlaybackBarViewController implements CatalogObserver {
                 break;
 
             case PLAYBACK_STARTED:
-                com.example.gruppo04.observer.PlaybackStartedPayload payload =
-                        (com.example.gruppo04.observer.PlaybackStartedPayload) event.getTarget();
-                System.out.println("[PlaybackBarViewController.onCatalogChanged] PLAYBACK_STARTED → "
-                        + (payload.getCurrentTrack() != null ? payload.getCurrentTrack().getTitle() : "null")
-                        + " | isPlaylist=" + payload.isPlaylist());
+                PlaybackStartedPayload payload = (PlaybackStartedPayload) event.getTarget();
                 startPlayback(payload.getCurrentTrack());
                 setSkipPlaylistVisible(payload.isPlaylist());
+                if (payload.isPlaylist()) {
+                    updatePlaylistName(payload.getPlaylistName());
+                } else {
+                    updatePlaylistName(null);
+                }
                 break;
 
             case STRATEGY_CHANGED:
@@ -303,6 +309,9 @@ public class PlaybackBarViewController implements CatalogObserver {
         } else {
             updateTrackInfo(playbackController.getCurrentTrack());
             System.out.println("[PlaybackBarViewController.handleSkipPlaylist] → nuova sorgente caricata");
+            // aggiorna il nome della playlist successiva
+            String newPlaylistName = playbackController.getCurrentSourceName();
+            updatePlaylistName(newPlaylistName);
         }
     }
 
@@ -391,6 +400,8 @@ public class PlaybackBarViewController implements CatalogObserver {
         isPlaying = false;
         btnPlayPause.setText("▶");
         progressTimer.stop();
+        labelPlaylistName.setVisible(false);
+        labelPlaylistName.setManaged(false);
     }
 
     /**
@@ -456,6 +467,24 @@ public class PlaybackBarViewController implements CatalogObserver {
         isPlaying = true;
         btnPlayPause.setText("⏸");
         progressTimer.start();
+    }
+
+    /**
+     * @brief Aggiorna il nome della playlist in riproduzione.
+     * @details Mostra il nome se si sta riproducendo una playlist,
+     * nasconde la label se si riproduce dal catalogo.
+     *
+     * @param playlistName il nome della playlist, null per nascondere la label
+     */
+    public void updatePlaylistName(String playlistName) {
+        if (playlistName != null) {
+            labelPlaylistName.setText("▶ " + playlistName);
+            labelPlaylistName.setVisible(true);
+            labelPlaylistName.setManaged(true);
+        } else {
+            labelPlaylistName.setVisible(false);
+            labelPlaylistName.setManaged(false);
+        }
     }
 
 }
