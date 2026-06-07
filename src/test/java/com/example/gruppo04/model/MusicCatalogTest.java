@@ -459,4 +459,36 @@ public class MusicCatalogTest {
         assertEquals(CatalogEventType.PLAYLIST_TRACK_ADDED, playlistTrackEvents.get(0).getType());
         assertEquals(CatalogEventType.PLAYLIST_TRACK_REMOVED, playlistTrackEvents.get(1).getType());
     }
+
+    /**
+     * @brief Verifica che il metodo {@code restoreState} ripristini correttamente lo stato del catalogo
+     * e notifichi gli observer del cambiamento avvenuto.
+     */
+    @Test
+    public void testRestoreStateAndNotifyObservers() {
+        List<CatalogEvent> receivedEvents = new ArrayList<>();
+        catalog.registerObserver(receivedEvents::add);
+
+        // Prepariamo dati esterni simulati da caricare
+        List<Track> externalTracks = List.of(track1, track2);
+        catalog.createPlaylist("External Playlist");
+        Playlist externalPlaylist = catalog.getPlaylists().get(0);
+        List<Playlist> externalPlaylists = List.of(externalPlaylist);
+
+        receivedEvents.clear(); // Resettiamo gli eventi catturati finora
+
+        // Ripristiniamo lo stato tramite restoreState su ConcreteMusicCatalog
+        ((ConcreteMusicCatalog) catalog).restoreState(externalTracks, externalPlaylists);
+
+        // Verifichiamo che i dati siano stati impostati
+        assertEquals(2, catalog.getAllTracks().size(), "Il catalogo deve contenere 2 tracce ripristinate.");
+        assertEquals(1, catalog.getPlaylists().size(), "Il catalogo deve contenere 1 playlist ripristinata.");
+        assertTrue(catalog.getAllTracks().contains(track1));
+        assertTrue(catalog.getAllTracks().contains(track2));
+        assertEquals("External Playlist", catalog.getPlaylists().get(0).getName());
+
+        // Verifichiamo che gli observer siano stati notificati del ripristino dello stato
+        assertFalse(receivedEvents.isEmpty(), "Gli observer dovrebbero ricevere una notifica di aggiornamento dello stato.");
+        assertEquals(CatalogEventType.PLAYLIST_ADDED, receivedEvents.get(0).getType(), "L'evento di notifica deve essere di tipo PLAYLIST_ADDED per forzare il refresh.");
+    }
 }

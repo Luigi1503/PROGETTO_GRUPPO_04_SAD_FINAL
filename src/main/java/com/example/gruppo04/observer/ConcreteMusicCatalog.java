@@ -1,6 +1,7 @@
 package com.example.gruppo04.observer;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
+import com.example.gruppo04.interfaces.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.model.PlaylistImpl;
 import com.example.gruppo04.interfaces.Track;
@@ -20,8 +21,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class ConcreteMusicCatalog implements MusicCatalog {
 
-    /** Istanza unica del catalogo, volatile per garantire visibilità corretta in ambienti multi-thread. */
-    private static volatile ConcreteMusicCatalog instance;
+    /** Istanza unica del catalogo, inizializzata staticamente dalla JVM */
+    private static final ConcreteMusicCatalog instance = new ConcreteMusicCatalog();
 
     /**
      * Costruttore privato: impedisce l'istanziazione diretta dall'esterno,
@@ -31,21 +32,10 @@ public class ConcreteMusicCatalog implements MusicCatalog {
 
     /**
      * Restituisce l'unica istanza di {@code ConcreteMusicCatalog}.
-     * <p>
-     * Utilizza il pattern <b>Double-Checked Locking</b> per garantire la thread-safety
-     * senza introdurre sincronizzazione ad ogni invocazione.
-     * </p>
      *
      * @return l'istanza singleton del catalogo
      */
     public static ConcreteMusicCatalog getInstance() {
-        if (instance == null) {
-            synchronized (ConcreteMusicCatalog.class) {
-                if (instance == null) {
-                    instance = new ConcreteMusicCatalog();
-                }
-            }
-        }
         return instance;
     }
 
@@ -296,6 +286,28 @@ public class ConcreteMusicCatalog implements MusicCatalog {
         for (CatalogObserver observer : observers) {
             observer.onCatalogChanged(event);
         }
+    }
+
+    /**
+     * @brief Ripristina lo stato del catalogo da una collezione di tracce e una lista di playlist.
+     * * Non cancella gli observer registrati.
+     * Notifica gli observer con un evento per attivare il refresh della UI.
+     * * @param loadedTracks le tracce caricate da ripristinare.
+     * @param loadedPlaylists le playlist caricate da ripristinare.
+     */
+    public void restoreState(Collection<Track> loadedTracks, List<Playlist> loadedPlaylists) {
+        this.tracks.clear();
+        if (loadedTracks != null) {
+            for (Track t : loadedTracks) {
+                this.tracks.put(t.getId(), t);
+            }
+        }
+        this.playlists.clear();
+        if (loadedPlaylists != null) {
+            this.playlists.addAll(loadedPlaylists);
+        }
+        // Notifica gli observer per forzare il refresh
+        notifyObservers(CatalogEventType.PLAYLIST_ADDED, null);
     }
 
     /**

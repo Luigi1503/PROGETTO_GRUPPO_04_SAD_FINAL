@@ -11,7 +11,7 @@ import java.util.Map;
  * qualsiasi sorgente in modo polimorfico e trasparente, senza dover
  * implementare logiche separate per brani o playlist.
  */
-public interface PlayableSource {
+public interface PlayableSource extends java.io.Serializable {
 
     /**
      * @brief Recupera la sequenza di brani associata a questa sorgente.
