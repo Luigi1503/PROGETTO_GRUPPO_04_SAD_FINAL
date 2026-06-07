@@ -4,18 +4,19 @@ import java.util.List;
 
 /**
  * @brief Interfaccia per la strategia di riproduzione dei brani musicali.
- * 
- * Questa interfaccia definisce il contratto per la selezione della traccia
- * successiva all'interno di una lista di tracce, in base alla strategia scelta.
+ *
+ * Definisce il contratto per la selezione della sorgente successiva
+ * all'interno di una lista di sorgenti riproducibili, in base alla
+ * strategia scelta.
  */
 public interface PlaybackStrategy {
 
     /**
-     * @brief Seleziona la traccia successiva nella lista.
-     * 
-     * @param sources La lista di {@PlayableSource} disponibili.
-     * @param currentIndex L'indice della traccia corrente nella lista.
-     * @return La source successiva selezionata, o null se non esiste una traccia successiva.
+     * @brief Seleziona la sorgente successiva nella lista.
+     *
+     * @param sources la lista di {@link PlayableSource} disponibili.
+     * @param currentIndex l'indice della sorgente corrente nella lista.
+     * @return la sorgente successiva selezionata, o {@code null} se non esiste.
      */
     PlayableSource nextSource(List<PlayableSource> sources, int currentIndex);
 }
