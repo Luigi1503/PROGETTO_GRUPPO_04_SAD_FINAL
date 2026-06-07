@@ -197,7 +197,6 @@ class PersistenceManagerTest {
         assertEquals(1, catalog.getAllTracks().size());
     }
 
-
     /**
      * @brief Verifica che {@link PersistenceManager} rispetti il pattern Singleton restituendo sempre la stessa istanza.
      */
@@ -208,8 +207,62 @@ class PersistenceManagerTest {
         assertSame(instance1, instance2, "PersistenceManager deve essere un Singleton");
     }
 
+    // ── METODI AGGIUNTI DAL DOCUMENTO 3 ───────────────────────────
 
+    /**
+     * @brief Verifica il salvataggio e il caricamento di un catalogo privo di elementi con parametri espliciti.
+     * @throws Exception Se si verificano errori inattesi durante la persistenza.
+     */
+    @Test
+    void testSaveAndLoadEmptyCatalogWithExplicitPath() throws Exception {
+        File tempFile = File.createTempFile("catalog_test_empty", ".ser");
+        try {
+            pm.save(catalog, tempFile.getAbsolutePath());
+            MusicCatalog loadedCatalog = pm.load(tempFile.getAbsolutePath());
 
+            assertNotNull(loadedCatalog);
+            assertTrue(loadedCatalog.getAllTracks().isEmpty());
+            assertTrue(loadedCatalog.getPlaylists().isEmpty());
+        } finally {
+            if (tempFile.exists()) {
+                tempFile.delete();
+            }
+        }
+    }
 
+    /**
+     * @brief Verifica che il caricamento restituisca sempre il singleton del catalogo.
+     * @throws Exception Se si verificano errori durante il test.
+     */
+    @Test
+    void testLoadReturnsSingletonCatalogInstance() throws Exception {
+        trackController.addTrack("Test Track", "Test Artist", "Rock", 2020, 180, "test.mp3");
+        pm.save(catalog);
+        ConcreteMusicCatalog.getInstance().reset();
 
+        MusicCatalog loadedCatalog = pm.load();
+        assertSame(ConcreteMusicCatalog.getInstance(), loadedCatalog,
+                "load() deve restituire l'istanza singleton di ConcreteMusicCatalog");
+    }
+
+    /**
+     * @brief Verifica che percorsi file con soli spazi sollevino eccezioni in fase di salvataggio.
+     */
+    @Test
+    void testSaveWithSpacesOnlyPathThrowsException() {
+        assertThrows(IllegalArgumentException.class,
+                () -> pm.save(catalog, "   "),
+                "save() deve lanciare IllegalArgumentException per path con soli spazi");
+    }
+
+    /**
+     * @brief Verifica che il percorso di default possa essere impostato e successivamente recuperato correttamente.
+     */
+    @Test
+    void testSetAndGetDefaultFilePath() {
+        String path = "abc.ser";
+        pm.setDefaultFilePath(path);
+        assertEquals(path, pm.getDefaultFilePath(),
+                "getDefaultFilePath() deve restituire il valore impostato");
+    }
 }
