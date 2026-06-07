@@ -1,11 +1,10 @@
 package com.example.gruppo04.observer;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
-import com.example.gruppo04.interfaces.PlaybackStrategy;
+import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.model.PlaylistImpl;
 import com.example.gruppo04.interfaces.Track;
-import com.example.gruppo04.model.strategy.PlaybackStrategy;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
