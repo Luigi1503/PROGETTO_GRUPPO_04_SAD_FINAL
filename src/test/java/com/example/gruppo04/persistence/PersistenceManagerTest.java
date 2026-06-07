@@ -155,16 +155,13 @@ class PersistenceManagerTest {
      */
     @Test
     void saveAndLoad_trackFieldsIntegrity() throws IOException, ClassNotFoundException {
-        // arrange
         trackController.addTrack("Bohemian Rhapsody", "Queen", "Rock", 1975, 354, "queen.mp3");
         Track original = catalog.getAllTracks().iterator().next();
 
-        // act
         pm.save(catalog);
         ConcreteMusicCatalog.getInstance().reset();
         pm.load();
 
-        // assert
         Track loaded = catalog.getAllTracks().iterator().next();
         assertEquals(original.getTitle(),    loaded.getTitle());
         assertEquals(original.getAuthor(),   loaded.getAuthor());
