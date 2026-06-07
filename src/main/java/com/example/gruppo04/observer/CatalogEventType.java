@@ -26,5 +26,11 @@ public enum CatalogEventType {
     /** Rilasciato quando una traccia viene rimossa dalla playlist */
     PLAYLIST_TRACK_REMOVED,
     /** Rilasciato quando la strategia di riproduzione viene modificata **/
-    STRATEGY_CHANGED
+    STRATEGY_CHANGED,
+    /**
+     * Rilasciato quando viene avviata una nuova riproduzione tramite {@code PlaybackController.play()}.
+     * Il target dell'evento è un {@code PlaybackStartedPayload} contenente la traccia corrente
+     * e un flag che indica se la sorgente è una playlist (true) o una traccia singola (false).
+     */
+    PLAYBACK_STARTED
 }

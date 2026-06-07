@@ -64,10 +64,16 @@
                   -fx-padding: 0;"
                           VBox.vgrow="ALWAYS">
                    <contextMenu>
-                       <ContextMenu>
+                       <ContextMenu style="-fx-background-color: #1B2A2F;
+                        -fx-background-radius: 8;
+                        -fx-border-color: #2C3E40;
+                        -fx-border-radius: 8;
+                        -fx-border-width: 1;
+                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);
+                        -fx-padding: 4 0 4 0;">
                            <items>
-                               <MenuItem text="▶ Riproduci ora" onAction="#handlePlayTrack"/>
-                               <MenuItem text="✕ Rimuovi dalla playlist" onAction="#handleRemoveTrack"/>
+                               <MenuItem text="▶   Riproduci ora" style="-fx-text-fill: #E8EDF0;" onAction="#handlePlayTrack"/>
+                               <MenuItem text="✕   Rimuovi dalla playlist" style="-fx-text-fill: #E05555;" onAction="#handleRemoveTrack"/>
                            </items>
                        </ContextMenu>
                    </contextMenu>

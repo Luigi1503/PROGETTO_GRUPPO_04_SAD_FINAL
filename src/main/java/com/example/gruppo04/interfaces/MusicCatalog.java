@@ -138,4 +138,12 @@ public interface MusicCatalog {
      */
     public void notifyStrategyChanged(PlaybackStrategy strategy);
 
+
+    /**
+     * Notifica tutti gli observer registrati dell'inizio di una riproduzione
+     *
+     * @param currentTrack la prima canzone da cui iniziare la riproduzione
+     * @param isPlaylist boolean che verifica se la riproduzione è in una playlist o è una playlist
+     */
+    public void notifyPlaybackStarted(Track currentTrack, boolean isPlaylist);
 }

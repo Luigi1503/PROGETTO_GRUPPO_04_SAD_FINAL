@@ -311,4 +311,9 @@ public class ConcreteMusicCatalog implements MusicCatalog {
     public void notifyStrategyChanged(PlaybackStrategy strategy) {
         notifyObservers(CatalogEventType.STRATEGY_CHANGED, strategy);
     }
+
+    public void notifyPlaybackStarted(Track currentTrack, boolean isPlaylist) {
+        notifyObservers(CatalogEventType.PLAYBACK_STARTED,
+                new PlaybackStartedPayload(currentTrack, isPlaylist));
+    }
 }

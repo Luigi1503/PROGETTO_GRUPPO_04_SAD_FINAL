@@ -102,6 +102,9 @@ public class PlaybackBarViewController implements CatalogObserver {
         this.catalog = catalog;
         this.catalog.registerObserver(this);
         setupProgressTimer();
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.init] barra inizializzata e registrata come Observer");
+        // ──────────────────────────────────────────────────────────────────────
     }
 
     /**
@@ -126,10 +129,13 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @Override
     public void onCatalogChanged(CatalogEvent event) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.onCatalogChanged] evento ricevuto: "
+                + event.getType());
+        // ──────────────────────────────────────────────────────────────────────
+
         switch (event.getType()) {
             case TRACK_REMOVED:
-                // Se la traccia rimossa è quella in riproduzione
-                // la barra si aggiorna con la nuova traccia corrente.
                 Track removedTrack = (Track) event.getTarget();
                 if (removedTrack.equals(currentTrack)) {
                     if (playbackController.isStopped()) {
@@ -142,18 +148,29 @@ public class PlaybackBarViewController implements CatalogObserver {
 
             case PLAYLIST_REMOVED:
                 if (playbackController.isStopped()) {
-                    // nessuna playlist successiva quindi la riproduzione si ferma
                     setSkipPlaylistVisible(false);
                     resetLabels();
                 } else {
-                    // c'è una playlist successiva in coda quindi si aggiorna la traccia
                     updateTrackInfo(playbackController.getCurrentTrack());
-                    // btnSkipPlaylist rimane visibile perché siamo ancora in una playlist
                 }
+                break;
+
+            case PLAYBACK_STARTED:
+                com.example.gruppo04.observer.PlaybackStartedPayload payload =
+                        (com.example.gruppo04.observer.PlaybackStartedPayload) event.getTarget();
+                System.out.println("[PlaybackBarViewController.onCatalogChanged] PLAYBACK_STARTED → "
+                        + (payload.getCurrentTrack() != null ? payload.getCurrentTrack().getTitle() : "null")
+                        + " | isPlaylist=" + payload.isPlaylist());
+                startPlayback(payload.getCurrentTrack());
+                setSkipPlaylistVisible(payload.isPlaylist());
                 break;
 
             case STRATEGY_CHANGED:
                 PlaybackStrategy strategy = (PlaybackStrategy) event.getTarget();
+                // ── DEBUG ──────────────────────────────────────────────────────────────
+                System.out.println("[PlaybackBarViewController.onCatalogChanged] STRATEGY_CHANGED → "
+                        + strategy.getClass().getSimpleName());
+                // ──────────────────────────────────────────────────────────────────────
                 if (strategy instanceof SequentialStrategy) setActiveMode(btnSequential);
                 else if (strategy instanceof ShuffleStrategy) setActiveMode(btnShuffle);
                 else if (strategy instanceof LoopStrategy) setActiveMode(btnLoop);
@@ -164,6 +181,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         }
     }
 
+
     /**
      * @brief Aggiorna le label della barra con i dati della traccia fornita.
      * @details Da chiamare quando cambia la traccia in riproduzione.
@@ -171,6 +189,10 @@ public class PlaybackBarViewController implements CatalogObserver {
      * @param track la traccia da mostrare nella barra; null per resettare
      */
     public void updateTrackInfo(Track track) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.updateTrackInfo] traccia ricevuta: "
+                + (track != null ? track.getTitle() + " | autore: " + track.getAuthor() : "null"));
+        // ──────────────────────────────────────────────────────────────────────
         this.currentTrack = track;
         if (track != null) {
             labelTrackTitle.setText(track.getTitle());
@@ -179,45 +201,57 @@ public class PlaybackBarViewController implements CatalogObserver {
             labelTrackGenre.setText(track.getGenre());
             labelTotalTime.setText(TrackFormatter.formatDuration(track.getDuration()));
             resetProgress();
+            // ── DEBUG ──────────────────────────────────────────────────────────────
+            System.out.println("[PlaybackBarViewController.updateTrackInfo] label aggiornate correttamente");
+            // ──────────────────────────────────────────────────────────────────────
         } else {
             resetLabels();
+            System.out.println("[PlaybackBarViewController.updateTrackInfo] track null → resetLabels()");
         }
     }
 
+
     /**
      * @brief Mostra o nasconde il bottone di skip playlist.
-     * @details Da chiamare quando si inizia o si termina
-     * la riproduzione di una playlist.
      *
      * @param visible true se si sta riproducendo una playlist, false altrimenti
      */
     public void setSkipPlaylistVisible(boolean visible) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.setSkipPlaylistVisible] visible=" + visible);
+        // ──────────────────────────────────────────────────────────────────────
         btnSkipPlaylist.setVisible(visible);
         btnSkipPlaylist.setManaged(visible);
     }
 
     /**
      * @brief Gestisce il click su Play/Pausa.
-     * @details Alterna tra riproduzione e pausa aggiornando il timer
-     * e il testo del bottone.
      */
     @FXML
-    void handlePlayPause( ActionEvent event) {
+    void handlePlayPause(ActionEvent event) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.handlePlayPause] isPlaying=" + isPlaying
+                + " | isStopped=" + playbackController.isStopped()
+                + " | currentTrack=" + (currentTrack != null ? currentTrack.getTitle() : "null"));
+        // ──────────────────────────────────────────────────────────────────────
+
         if (isPlaying) {
             playbackController.pause();
             isPlaying = false;
             btnPlayPause.setText("▶");
+            System.out.println("[PlaybackBarViewController.handlePlayPause] → pausa");
         } else {
             if (!playbackController.isStopped()) {
-                // riprende dalla pausa
                 playbackController.resume();
                 isPlaying = true;
                 btnPlayPause.setText("⏸");
+                System.out.println("[PlaybackBarViewController.handlePlayPause] → resume");
+            } else {
+                System.out.println("[PlaybackBarViewController.handlePlayPause] → stato STOPPED, nessuna azione (play deve partire da TrackList/PlaylistDetail)");
             }
-            // se è STOPPED non fa nulla — il play viene avviato
-            // da PlaylistDetailView o TrackListView
         }
     }
+
 
     /**
      * @brief Gestisce il click su Skip Traccia precedente.
@@ -225,6 +259,9 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @FXML
     void handlePrevious(ActionEvent event) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.handlePrevious] richiesto previous");
+        // ──────────────────────────────────────────────────────────────────────
         playbackController.previousTrack();
         resetProgress();
         updateTrackInfo(playbackController.getCurrentTrack());
@@ -236,6 +273,9 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @FXML
     void handleSkipTrack(ActionEvent event) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.handleSkipTrack] richiesto skip traccia");
+        // ──────────────────────────────────────────────────────────────────────
         playbackController.skipTrack();
         resetProgress();
         updateTrackInfo(playbackController.getCurrentTrack());
@@ -248,13 +288,18 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @FXML
     void handleSkipPlaylist(ActionEvent event) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.handleSkipPlaylist] richiesto skip playlist");
+        // ──────────────────────────────────────────────────────────────────────
         playbackController.skipSource();
         resetProgress();
         if (playbackController.isStopped()) {
             resetLabels();
             setSkipPlaylistVisible(false);
+            System.out.println("[PlaybackBarViewController.handleSkipPlaylist] → stop, nessuna sorgente successiva");
         } else {
             updateTrackInfo(playbackController.getCurrentTrack());
+            System.out.println("[PlaybackBarViewController.handleSkipPlaylist] → nuova sorgente caricata");
         }
     }
 
@@ -284,8 +329,21 @@ public class PlaybackBarViewController implements CatalogObserver {
                             progressTimer.stop();
                             isPlaying = false;
                             btnPlayPause.setText("▶");
+                            // ── DEBUG ──────────────────────────────────────────────────────────────
+                            System.out.println("[PlaybackBarViewController.timer] traccia terminata: "
+                                    + currentTrack.getTitle() + " → skipTrack automatico");
+                            // ──────────────────────────────────────────────────────────────────────
                             playbackController.skipTrack();
-                            updateTrackInfo(playbackController.getCurrentTrack());
+                            Track next = playbackController.getCurrentTrack();
+
+                            // ── DEBUG ──────────────────────────────────────────────────────────────
+                            System.out.println("[PlaybackBarViewController.timer] traccia successiva: "
+                                    + (next != null ? next.getTitle() : "null")
+                                    + " | isStopped=" + playbackController.isStopped());
+                            // ──────────────────────────────────────────────────────────────────────
+
+                            updateTrackInfo(next);
+
                             if (!playbackController.isStopped()) {
                                 // c'è una traccia successiva
                                 isPlaying = true;
@@ -378,4 +436,23 @@ public class PlaybackBarViewController implements CatalogObserver {
         }
         active.getStyleClass().add("mode-btn-active");
     }
+    /**
+     * Avvia la riproduzione dalla barra aggiornando le label e il timer.
+     * Da chiamare dopo {@link PlaybackController#play} per sincronizzare
+     * la barra con il nuovo stato.
+     *
+     * @param track la traccia con cui aggiornare la barra
+     */
+    public void startPlayback(Track track) {
+        // ── DEBUG ──────────────────────────────────────────────────────────────
+        System.out.println("[PlaybackBarViewController.startPlayback] chiamato con: "
+                + (track != null ? track.getTitle() : "null"));
+        // ──────────────────────────────────────────────────────────────────────
+
+        updateTrackInfo(track);
+        isPlaying = true;
+        btnPlayPause.setText("⏸");
+        progressTimer.start();
+    }
+
 }

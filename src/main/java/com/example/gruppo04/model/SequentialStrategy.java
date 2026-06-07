@@ -23,4 +23,21 @@ public class SequentialStrategy implements PlaybackStrategy {
         }
         return null;
     }
+
+    /**
+            * {@inheritDoc}
+     * Restituisce la traccia all'indice successivo, o {@code null} se è l'ultima
+     * (segnale per passare alla sorgente successiva).
+            */
+    @Override
+    public Track nextTrack(List<Track> tracks, int currentIndex) {
+        if (tracks == null || tracks.isEmpty()) {
+            return null;
+        }
+        int nextIndex = currentIndex + 1;
+        if (nextIndex < tracks.size()) {
+            return tracks.get(nextIndex);
+        }
+        return null; // fine sorgente → skipSource
+    }
 }

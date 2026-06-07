@@ -23,4 +23,18 @@ public class LoopStrategy implements PlaybackStrategy {
         }
         return sources.get(nextIndex);
     }
+
+    /**
+     * {@inheritDoc}
+     * Restituisce la traccia successiva in modo ciclico: dopo l'ultima
+     * ricomincia dalla prima, senza mai uscire dalla sorgente corrente.
+     */
+    @Override
+    public Track nextTrack(List<Track> tracks, int currentIndex) {
+        if (tracks == null || tracks.isEmpty()) {
+            return null;
+        }
+        int nextIndex = (currentIndex + 1) % tracks.size();
+        return tracks.get(nextIndex);
+    }
 }
