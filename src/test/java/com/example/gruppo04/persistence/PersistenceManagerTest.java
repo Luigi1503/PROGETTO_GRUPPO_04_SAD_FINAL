@@ -28,6 +28,11 @@ class PersistenceManagerTest {
     private PlaylistController playlistController;
     private static final String TEST_FILE = "test_catalog.ser";
 
+    /**
+     * @brief Configura l'ambiente prima di ogni singolo test.
+     * @details Pulisce lo stato del catalogo, acquisisce le istanze Singleton
+     * e imposta il percorso del file di test.
+     */
     @BeforeEach
     void setUp() {
         ConcreteMusicCatalog.getInstance().reset();
@@ -38,6 +43,9 @@ class PersistenceManagerTest {
         playlistController = new PlaylistController(catalog);
     }
 
+    /**
+     * @brief Ripristina lo stato ed elimina il file temporaneo dopo ogni test.
+     */
     @AfterEach
     void tearDown() {
         // elimina il file di test dopo ogni test
@@ -188,4 +196,20 @@ class PersistenceManagerTest {
         pm.load();
         assertEquals(1, catalog.getAllTracks().size());
     }
+
+
+    /**
+     * @brief Verifica che {@link PersistenceManager} rispetti il pattern Singleton restituendo sempre la stessa istanza.
+     */
+    @Test
+    public void testSingletonInstance() {
+        PersistenceManager instance1 = PersistenceManager.getInstance();
+        PersistenceManager instance2 = PersistenceManager.getInstance();
+        assertSame(instance1, instance2, "PersistenceManager deve essere un Singleton");
+    }
+
+
+
+
+
 }
