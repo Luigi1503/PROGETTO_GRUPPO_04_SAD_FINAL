@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" prefHeight="80.0" prefWidth="1100.0" style="-fx-background-color: #0D1519;              -fx-border-color: #1B2A2F;              -fx-border-width: 1 0 0 0;              -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaybackBarViewController" stylesheets="@PlaybackBarView.css">
+<HBox alignment="CENTER" prefHeight="80.0" prefWidth="1100.0" style="-fx-background-color: #0D1519;              -fx-border-color: #1B2A2F;              -fx-border-width: 1 0 0 0;              -fx-font-family: 'Segoe UI', Arial, sans-serif;" stylesheets="@PlaybackBarView.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.PlaybackBarViewController">
 
     <padding><Insets bottom="0" left="24" right="24" top="0" /></padding>
    <children>
@@ -58,7 +58,7 @@
          <children>
          
                      <!-- Skip precedente -->
-                     <Button fx:id="btnPrevious" onAction="#handlePrevious" style="-fx-background-color: transparent;                            -fx-text-fill: #9FB2B8;                            -fx-font-size: 16px;                            -fx-cursor: hand;                            -fx-padding: 4;" text="⏮">
+                     <Button onAction="#handlePrevious" style="-fx-background-color: transparent;                            -fx-text-fill: #9FB2B8;                            -fx-font-size: 16px;                            -fx-cursor: hand;                            -fx-padding: 4;" text="⏮">
                          <tooltip>
                         <Tooltip text="Traccia precedente" />
                      </tooltip>
@@ -68,7 +68,7 @@
                      <Button fx:id="btnPlayPause" onAction="#handlePlayPause" style="-fx-background-color: #1D9E75;                            -fx-text-fill: #FFFFFF;                            -fx-font-size: 14px;                            -fx-background-radius: 50;                            -fx-min-width: 36; -fx-min-height: 36;                            -fx-max-width: 36; -fx-max-height: 36;                            -fx-cursor: hand;                            -fx-padding: 0;" text="▶" />
          
                      <!-- Skip traccia successiva -->
-                     <Button fx:id="btnSkipTrack" onAction="#handleSkipTrack" style="-fx-background-color: transparent;                            -fx-text-fill: #9FB2B8;                            -fx-font-size: 16px;                            -fx-cursor: hand;                            -fx-padding: 4;" text="⏭">
+                     <Button onAction="#handleSkipTrack" style="-fx-background-color: transparent;                            -fx-text-fill: #9FB2B8;                            -fx-font-size: 16px;                            -fx-cursor: hand;                            -fx-padding: 4;" text="⏭">
                          <tooltip>
                         <Tooltip text="Traccia successiva" />
                      </tooltip>
@@ -105,12 +105,9 @@
             ══════════════════════════════════════ -->
        <HBox alignment="CENTER_RIGHT" minWidth="280.0" prefWidth="280.0" spacing="8">
            <children>
-               <Button fx:id="btnSequential" onAction="#handleSequential"
-                       styleClass="mode-btn" text="→ Sequential"/>
-               <Button fx:id="btnShuffle" onAction="#handleShuffle"
-                       styleClass="mode-btn" text="⇄ Shuffle"/>
-               <Button fx:id="btnLoop" onAction="#handleLoop"
-                       styleClass="mode-btn" text="↺ Loop"/>
+               <Button fx:id="btnSequential" onAction="#handleSequential" styleClass="mode-btn" text="→ Sequential" />
+               <Button fx:id="btnShuffle" onAction="#handleShuffle" styleClass="mode-btn" text="⇄ Shuffle" />
+               <Button fx:id="btnLoop" onAction="#handleLoop" styleClass="mode-btn" text="↺ Loop" />
            </children>
        </HBox>
 

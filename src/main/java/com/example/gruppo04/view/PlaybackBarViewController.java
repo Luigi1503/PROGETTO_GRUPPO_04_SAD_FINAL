@@ -6,7 +6,7 @@ import com.example.gruppo04.interfaces.*;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.util.TrackFormatter;
-import javafx.application.Platform;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -75,6 +75,12 @@ public class PlaybackBarViewController implements CatalogObserver {
     /** @brief Traccia attualmente in riproduzione. */
     private Track currentTrack;
 
+    /** @brief Timer per l'aggiornamento in tempo reale della barra di avanzamento. */
+    private AnimationTimer progressTimer;
+
+    /** @brief Secondi trascorsi dall'inizio della riproduzione della traccia corrente. */
+    private long elapsedSeconds = 0;
+
 
     /**
      * @brief Costruttore senza parametri richiesto da FXMLLoader.
@@ -95,6 +101,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         this.playbackController = playbackController;
         this.catalog = catalog;
         this.catalog.registerObserver(this);
+        setupProgressTimer();
     }
 
     /**
@@ -152,16 +159,6 @@ public class PlaybackBarViewController implements CatalogObserver {
                 else if (strategy instanceof LoopStrategy) setActiveMode(btnLoop);
                 break;
 
-            case TRACK_TIME_UPDATED:
-                int elapsed = (int) event.getTarget();
-                Platform.runLater(() -> {
-                    if (currentTrack != null) {
-                        progressBar.setProgress((double) elapsed / currentTrack.getDuration());
-                        labelCurrentTime.setText(TrackFormatter.formatDuration(elapsed));
-                    }
-                });
-                break;
-
             default:
                 break;
         }
@@ -205,7 +202,7 @@ public class PlaybackBarViewController implements CatalogObserver {
      * e il testo del bottone.
      */
     @FXML
-    void handlePlayPause(@SuppressWarnings("unused") ActionEvent event) {
+    void handlePlayPause( ActionEvent event) {
         if (isPlaying) {
             playbackController.pause();
             isPlaying = false;
@@ -261,11 +258,59 @@ public class PlaybackBarViewController implements CatalogObserver {
         }
     }
 
+    /**
+     * @brief Configura il timer per l'aggiornamento in tempo reale
+     * della barra di avanzamento.
+     * @details Usa {@link AnimationTimer} per aggiornare la UI sul thread
+     * JavaFX ogni secondo. Al termine della traccia esegue lo skip automatico.
+     */
+    private void setupProgressTimer() {
+        progressTimer = new AnimationTimer() {
+            private long lastUpdate = 0;
+
+            @Override
+            // il seguente metodo è chiamato circa 60 volte al secondo da AnimationTimer
+            // now è il tempo corrente in nanosecondi
+            public void handle(long now) {
+                if (now - lastUpdate >= 1_000_000_000L) {
+                    // è trascorso 1 secondo
+                    lastUpdate = now;
+                    if (currentTrack != null && isPlaying) {
+                        elapsedSeconds++;
+                        int total = currentTrack.getDuration();
+                        if (elapsedSeconds >= total) {
+                            // la traccia è terminata
+                            elapsedSeconds = total;
+                            progressTimer.stop();
+                            isPlaying = false;
+                            btnPlayPause.setText("▶");
+                            playbackController.skipTrack();
+                            updateTrackInfo(playbackController.getCurrentTrack());
+                            if (!playbackController.isStopped()) {
+                                // c'è una traccia successiva
+                                isPlaying = true;
+                                btnPlayPause.setText("⏸");
+                                progressTimer.start();
+                            }
+                        } else {
+                            // la traccia non è finita
+                            double progress = (double) elapsedSeconds / total;
+                            progressBar.setProgress(progress);
+                            labelCurrentTime.setText(
+                                    TrackFormatter.formatDuration((int) elapsedSeconds));
+                        }
+                    }
+                }
+            }
+        };
+    }
+
 
     /**
      * @brief Azzera il progresso della barra di avanzamento e il tempo trascorso.
      */
     private void resetProgress() {
+        elapsedSeconds = 0;
         progressBar.setProgress(0);
         labelCurrentTime.setText("0:00");
     }
@@ -284,6 +329,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         progressBar.setProgress(0);
         isPlaying = false;
         btnPlayPause.setText("▶");
+        progressTimer.stop();
     }
 
     /**

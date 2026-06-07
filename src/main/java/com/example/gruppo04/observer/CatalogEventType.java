@@ -26,7 +26,5 @@ public enum CatalogEventType {
     /** Rilasciato quando una traccia viene rimossa dalla playlist */
     PLAYLIST_TRACK_REMOVED,
     /** Rilasciato quando la strategia di riproduzione viene modificata **/
-    STRATEGY_CHANGED,
-    /** Rilasciato ogni secondo durante la riproduzione**/
-    TRACK_TIME_UPDATED
+    STRATEGY_CHANGED
 }
