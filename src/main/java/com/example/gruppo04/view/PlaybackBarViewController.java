@@ -1,6 +1,7 @@
 package com.example.gruppo04.view;
 
 
+import com.example.gruppo04.model.state.StoppedState;
 import com.example.gruppo04.observer.PlaybackStartedPayload;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
@@ -43,6 +44,15 @@ public class PlaybackBarViewController implements CatalogObserver {
 
     /** @brief Bottone play/pausa. */
     @FXML private Button btnPlayPause;
+
+    /** @brief Bottone brano precedente. */
+    @FXML private Button btnPrevious;
+
+    /** @brief Bottone brano successivo. */
+    @FXML private Button btnSkip;
+
+    /** @brief Bottone stop riproduzione. */
+    @FXML private Button btnStop;
 
     /**
      * @brief Bottone skip playlist successiva.
@@ -109,6 +119,10 @@ public class PlaybackBarViewController implements CatalogObserver {
         this.playbackController = playbackController;
         this.catalog = catalog;
         this.catalog.registerObserver(this);
+        btnPlayPause.setDisable(true);
+        btnPrevious.setDisable(true);
+        btnSkip.setDisable(true);
+        btnStop.setDisable(true);
         setupProgressTimer();
         // ── DEBUG ──────────────────────────────────────────────────────────────
         System.out.println("[PlaybackBarViewController.init] barra inizializzata e registrata come Observer");
@@ -245,15 +259,20 @@ public class PlaybackBarViewController implements CatalogObserver {
         // ──────────────────────────────────────────────────────────────────────
 
         if (isPlaying) {
+            // pausa playback e ferma timer UI
             playbackController.pause();
             isPlaying = false;
             btnPlayPause.setText("▶");
+            progressTimer.stop();
             System.out.println("[PlaybackBarViewController.handlePlayPause] → pausa");
         } else {
+            // prova a riprendere la riproduzione (chiamata sicura anche se lo stato fosse STOPPED)
+            playbackController.resume();
             if (!playbackController.isStopped()) {
-                playbackController.resume();
                 isPlaying = true;
                 btnPlayPause.setText("⏸");
+                // assicurati che il timer della UI sia attivo e sincronizzato
+                progressTimer.start();
                 System.out.println("[PlaybackBarViewController.handlePlayPause] → resume");
             } else {
                 System.out.println("[PlaybackBarViewController.handlePlayPause] → stato STOPPED, nessuna azione (play deve partire da TrackList/PlaylistDetail)");
@@ -261,6 +280,18 @@ public class PlaybackBarViewController implements CatalogObserver {
         }
     }
 
+    @FXML
+    private void handleStop(ActionEvent event) {
+        playbackController.stop();
+        resetLabels();
+        setSkipPlaylistVisible(false);
+        btnPlayPause.setDisable(true);
+        btnPrevious.setDisable(true);
+        btnSkip.setDisable(true);
+        btnStop.setDisable(true);
+        updatePlaylistName(null);
+        System.out.println("[PlaybackBarViewController.handleStop] Pulsante Stop premuto: UI resettata");
+    }
 
     /**
      * @brief Gestisce il click su Skip Traccia precedente.
@@ -395,8 +426,8 @@ public class PlaybackBarViewController implements CatalogObserver {
         labelTrackYear.setText("—");
         labelTrackGenre.setText("—");
         labelTotalTime.setText("0:00");
-        labelCurrentTime.setText("0:00");
-        progressBar.setValue(0);
+        // azzera progressi e timer
+        resetProgress();
         isPlaying = false;
         btnPlayPause.setText("▶");
         progressTimer.stop();
@@ -466,6 +497,10 @@ public class PlaybackBarViewController implements CatalogObserver {
         updateTrackInfo(track);
         isPlaying = true;
         btnPlayPause.setText("⏸");
+        btnPlayPause.setDisable(false);
+        btnPrevious.setDisable(false);
+        btnSkip.setDisable(false);
+        btnStop.setDisable(false);
         progressTimer.start();
     }
 
