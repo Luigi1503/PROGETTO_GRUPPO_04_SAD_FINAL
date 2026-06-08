@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="450.0" prefWidth="400.0" styleClass="form-container" stylesheets="@trackform.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackFormViewController">
     <children>
@@ -57,7 +58,7 @@
                         <Spinner fx:id="yearSpinner" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
                         <Label text="Durata:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                        <Spinner fx:id="durationSpinner" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="durationSpinner" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>
 

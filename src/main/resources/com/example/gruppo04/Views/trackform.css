@@ -42,9 +42,11 @@
 .form-container .combo-box:focused {
     -fx-border-color: #1D9E75;
 }
-.form-container .combo-box .label {
-    -fx-text-fill: #E8EDF0;
+
+.form-container .combo-box .list-cell {
+    -fx-text-fill: #FFFFFF;
 }
+
 .form-container .combo-box .arrow-button {
     -fx-background-color: transparent;
 }
@@ -52,7 +54,6 @@
     -fx-background-color: #6B7B80;
 }
 
-/* Liste a discesa della ComboBox */
 .combo-box-popup .list-view {
     -fx-background-color: #1B2A2F;
     -fx-background-radius: 6;
@@ -60,7 +61,7 @@
     -fx-border-width: 1;
 }
 .combo-box-popup .list-cell {
-    -fx-text-fill: #E8EDF0;
+    -fx-text-fill: #FFFFFF;
     -fx-padding: 6 10;
     -fx-background-color: transparent;
 }
@@ -68,7 +69,6 @@
     -fx-background-color: #2C3E40;
     -fx-text-fill: #FFFFFF;
 }
-
 /* Stile per gli Spinner*/
 .form-container .spinner {
     -fx-background-color: transparent;

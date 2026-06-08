@@ -24,7 +24,7 @@ public class TrackFormViewController {
     @FXML
     private TextField authorField;
     @FXML
-    private Spinner<Integer> durationSpinner;
+    private TextField durationSpinner;
     @FXML
     private ComboBox<String> genreComboBox;
     @FXML
@@ -48,6 +48,7 @@ public class TrackFormViewController {
     /** @brief Percorso temporaneo del file MP3 importato, pronto per essere salvato. */
     private String tempFilePath = null;
 
+    private int duration;
 
     /**
      * @brief Inizializza i componenti grafici della View subito dopo il caricamento del file FXML.
@@ -63,41 +64,13 @@ public class TrackFormViewController {
         SpinnerValueFactory<Integer> yearFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1900, 2026, 2024);
         yearSpinner.setValueFactory(yearFactory);
 
-        SpinnerValueFactory<Integer> durationFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 7200, 180);
-        durationFactory.setConverter(new javafx.util.StringConverter<Integer>() {
 
-            @Override
-            public String toString(Integer value) {
-                if (value == null) {
-                    return "00:00";
-                }
-                return TrackFormatter.formatDuration(value);
-            }
-
-            @Override
-            public Integer fromString(String text) {
-                if (text == null || text.isBlank()) {
-                    return 0;
-                }
-
-                try {
-                    String[] parts = text.trim().split(":");
-                    int minutes = Integer.parseInt(parts[0]);
-                    int seconds = Integer.parseInt(parts[1]);
-
-                    return minutes * 60 + seconds;
-                } catch (Exception e) {
-                    return 0;
-                }
-            }
-        });
-        durationSpinner.setValueFactory(durationFactory);
 
         setCampiBloccati(true);
         addButton.setDisable(true);
         updateButton.setDisable(true);
         yearSpinner.getEditor().clear();
-        durationSpinner.getEditor().clear();
+        durationSpinner.clear();
     }
 
 
@@ -179,7 +152,8 @@ public class TrackFormViewController {
             Mp3File mp3file = new Mp3File(file.getAbsolutePath());
 
             if (mp3file.getLengthInSeconds() > 0) {
-                durationSpinner.getValueFactory().setValue((int) mp3file.getLengthInSeconds());
+                this.duration = (int) mp3file.getLengthInSeconds();
+                durationSpinner.setText(TrackFormatter.formatDuration(this.duration));
             }
 
             if (mp3file.hasId3v2Tag()) {
@@ -234,9 +208,8 @@ public class TrackFormViewController {
             String author = authorField.getText();
             String genre = genreComboBox.getValue();
             int year = yearSpinner.getValue();
-            int duration = durationSpinner.getValue();
+            trackController.addTrack(title, author, genre, year, this.duration, tempFilePath);
 
-            trackController.addTrack(title, author, genre, year, duration, tempFilePath);
 
             System.out.println("Successo: Traccia aggiunta correttamente al catalogo.");
 
@@ -298,7 +271,7 @@ public class TrackFormViewController {
             String newAuthor = authorField.getText();
             String newGenre = genreComboBox.getValue();
             int newYear = yearSpinner.getValue();
-            int newDuration = durationSpinner.getValue();
+            int newDuration = duration;
 
 
             String newFilePath = (tempFilePath != null) ? tempFilePath : currentSelectedTrack.getFilePath();
@@ -346,7 +319,9 @@ public class TrackFormViewController {
         authorField.clear();
         genreComboBox.getSelectionModel().clearSelection();
         yearSpinner.getValueFactory().setValue(2024);
-        durationSpinner.getValueFactory().setValue(180);
+
+        durationSpinner.clear();
+
         currentSelectedTrack = null;
         tempFilePath = null;
         filePathLabel.setText("Nessun file selezionato");
@@ -355,7 +330,6 @@ public class TrackFormViewController {
         addButton.setDisable(true);
         updateButton.setDisable(true);
         yearSpinner.getEditor().clear();
-        durationSpinner.getEditor().clear();
     }
 
 
@@ -371,8 +345,8 @@ public class TrackFormViewController {
         authorField.setText(track.getAuthor());
         genreComboBox.setValue(track.getGenre());
         yearSpinner.getValueFactory().setValue(track.getYear());
-        durationSpinner.getValueFactory().setValue(track.getDuration());
-
+        this.duration = track.getDuration();
+        durationSpinner.setText(TrackFormatter.formatDuration(this.duration));
         if(track.getFilePath() != null) {
             File f = new File(track.getFilePath());
             filePathLabel.setText(f.getName());
