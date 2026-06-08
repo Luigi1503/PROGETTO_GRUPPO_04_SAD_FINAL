@@ -107,6 +107,17 @@ public class PlaybackController implements CatalogObserver {
             state.pause();
         }
     }
+
+    /**
+     * Interrompe la riproduzione corrente.
+     * <p>
+     * Non ha effetto se la riproduzione non è in corso.
+     * </p>
+     */
+    public void stop() {
+         state.stop();
+    }
+
     /**
      * Salta la traccia corrente e avanza alla traccia successiva
      * all'interno della sorgente corrente secondo la strategia attiva.
