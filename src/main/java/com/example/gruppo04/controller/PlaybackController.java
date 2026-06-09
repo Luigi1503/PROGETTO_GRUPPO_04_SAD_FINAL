@@ -77,11 +77,8 @@ public class PlaybackController implements CatalogObserver {
         // Notifica la barra di riproduzione che è iniziata una nuova riproduzione.
         // isPlaylist = true se startFrom è una Playlist, false se è una traccia singola del catalogo.
         boolean isPlaylist = (startFrom instanceof Playlist);
-        String playlistName = null;
-        if (isPlaylist) {
-            playlistName = ((Playlist) startFrom).getName();
-        }
-        catalog.notifyPlaybackStarted(state.getCurrentTrack(), isPlaylist, playlistName);
+
+        catalog.notifyPlaybackStarted(state.getCurrentTrack(), isPlaylist, startFrom);
         System.out.println("[PlaybackController.play] notifyPlaybackStarted inviato | isPlaylist=" + isPlaylist);
 
         // ── DEBUG ──────────────────────────────────────────────────────────────
@@ -153,6 +150,7 @@ public class PlaybackController implements CatalogObserver {
         if (next != null) {
             state.setCurrentTrack(next);
             System.out.println("[PlaybackController.skipTrack] → traccia successiva (strategia): " + next.getTitle());
+            catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
             System.out.println("[PlaybackController.skipTrack] → fine sorgente secondo la strategia, delego a skipSource()");
             skipSource();
@@ -196,6 +194,7 @@ public class PlaybackController implements CatalogObserver {
             state.setCurrentTrack(nextSource.getTracks().get(0));
             System.out.println("[PlaybackController.skipSource] → prima traccia della nuova sorgente: "
                     + nextSource.getTracks().get(0).getTitle());
+            catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
             state.stop();
             System.out.println("[PlaybackController.skipSource] → riproduzione fermata (stop)");
@@ -245,6 +244,7 @@ public class PlaybackController implements CatalogObserver {
         } else {
             state.setCurrentTrack(tracks.get(0));
         }
+        catalog.notifyTrackChanged(state.getCurrentTrack());
     }
 
     /**
@@ -294,5 +294,11 @@ public class PlaybackController implements CatalogObserver {
             return ((Playlist) source).getName();
         }
         return null;
+    }
+    /**
+     * @return la sorgente corrente 
+     */
+    public PlayableSource getCurrentSource() {
+        return state.getCurrentSource();
     }
 }

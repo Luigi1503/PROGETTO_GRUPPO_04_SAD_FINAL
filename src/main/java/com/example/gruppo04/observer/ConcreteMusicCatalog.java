@@ -1,6 +1,7 @@
 package com.example.gruppo04.observer;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
+import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.model.PlaylistImpl;
@@ -323,8 +324,12 @@ public class ConcreteMusicCatalog implements MusicCatalog {
         notifyObservers(CatalogEventType.STRATEGY_CHANGED, strategy);
     }
 
-    public void notifyPlaybackStarted(Track currentTrack, boolean isPlaylist, String playlistName) {
+    public void notifyPlaybackStarted(Track currentTrack, boolean isPlaylist, PlayableSource currentSource) {
         notifyObservers(CatalogEventType.PLAYBACK_STARTED,
-                new PlaybackStartedPayload(currentTrack, isPlaylist, playlistName));
+                new PlaybackStartedPayload(currentTrack, isPlaylist, currentSource));
+    }
+
+    public void notifyTrackChanged(Track track) {
+        notifyObservers(CatalogEventType.TRACK_CHANGED, track);
     }
 }

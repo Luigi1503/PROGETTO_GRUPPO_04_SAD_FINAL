@@ -8,6 +8,7 @@ import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.controller.TrackController;
 
+import com.example.gruppo04.observer.PlaybackStartedPayload;
 import com.example.gruppo04.util.TableColumnFactory;
 import com.example.gruppo04.util.TrackFormatter;
 import javafx.application.Platform;
@@ -171,6 +172,13 @@ public class TrackListViewController implements CatalogObserver {
                 case TRACK_UPDATED:
                     reloadTableData();
                     break;
+                case PLAYBACK_STARTED:
+                    PlaybackStartedPayload p = (PlaybackStartedPayload) event.getTarget();
+                    highlightCurrentTrack(p.getCurrentTrack());
+                    break;
+                case TRACK_CHANGED:
+                    highlightCurrentTrack((Track) event.getTarget());
+                    break;
                 default:
                     break;
             }
@@ -249,6 +257,21 @@ public class TrackListViewController implements CatalogObserver {
             List<PlayableSource> queue = new ArrayList<>();
             queue.addAll(catalog.getAllTracks());
             playbackController.play(queue, track, null);
+        }
+    }
+
+
+    private void highlightCurrentTrack(Track track) {
+        if (track == null) {
+            trackTable.getSelectionModel().clearSelection();
+            return;
+        }
+        int index = trackTable.getItems().indexOf(track);
+        if (index >= 0) {
+            trackTable.getSelectionModel().select(index);
+            trackTable.scrollTo(index);
+        } else {
+            trackTable.getSelectionModel().clearSelection();
         }
     }
 }

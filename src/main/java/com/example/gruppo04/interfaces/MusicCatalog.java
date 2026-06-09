@@ -145,5 +145,13 @@ public interface MusicCatalog {
      * @param currentTrack la prima canzone da cui iniziare la riproduzione
      * @param isPlaylist boolean che verifica se la riproduzione è in una playlist o è una playlist
      */
-    public void notifyPlaybackStarted(Track currentTrack, boolean isPlaylist, String playlistName);
+    public void notifyPlaybackStarted(Track currentTrack, boolean isPlaylist, PlayableSource currentSource);
+
+    /**
+     * Notifica tutti gli observer registrati dell'inizio di una riproduzione
+     * per evidenziare la traccia attualmente in riproduzione
+     *
+     * @param track la canzone attuale
+     */
+    public void notifyTrackChanged(Track track);
 }

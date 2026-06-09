@@ -1,5 +1,6 @@
 package com.example.gruppo04.observer;
 
+import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Track;
 
 /**
@@ -30,19 +31,19 @@ public class PlaybackStartedPayload {
      * Il nome della playlist in riproduzione.
      * {@code null} se la sorgente non è una playlist.
      */
-    private final String playlistName;
+    private final PlayableSource currentSource;
 
     /**
      * Costruisce un payload per l'evento PLAYBACK_STARTED.
      *
      * @param currentTrack la traccia corrente all'avvio; non deve essere {@code null}
      * @param isPlaylist   {@code true} se si sta riproducendo una playlist
-     *  @param playlistName il nome della playlist, {@code null} se non è una playlist
+     *  @param currentSource la sorgente corrente (playlist o traccia singola)
      */
-    public PlaybackStartedPayload(Track currentTrack, boolean isPlaylist, String playlistName) {
+    public PlaybackStartedPayload(Track currentTrack, boolean isPlaylist, PlayableSource currentSource) {
         this.currentTrack = currentTrack;
         this.isPlaylist = isPlaylist;
-        this.playlistName = playlistName;
+        this.currentSource = currentSource;
     }
 
     /**
@@ -60,8 +61,9 @@ public class PlaybackStartedPayload {
     }
 
     /**
-     * @return il nome della playlist in riproduzione,
-     *         {@code null} se la sorgente non è una playlist
+     * @return la source in riproduzione
      */
-    public String getPlaylistName() {return playlistName;}
+    public PlayableSource getCurrentSource() {
+        return currentSource;
+    }
 }

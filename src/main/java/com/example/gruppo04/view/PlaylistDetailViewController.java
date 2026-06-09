@@ -9,6 +9,7 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.controller.TrackController;
+import com.example.gruppo04.observer.PlaybackStartedPayload;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -148,6 +149,29 @@ public class PlaylistDetailViewController implements CatalogObserver {
             case TRACK_REMOVED:
                 updateView();
                 break;
+            case PLAYBACK_STARTED:
+                PlaybackStartedPayload payload = (PlaybackStartedPayload) event.getTarget();
+                if (payload.getCurrentSource() instanceof Playlist) {
+                    Playlist newPlaylist = (Playlist) payload.getCurrentSource();
+                    if (!newPlaylist.equals(currentPlaylist)) {
+                        currentPlaylist = newPlaylist;
+                        updateView();
+                    }
+                }
+                highlightCurrentTrack(payload.getCurrentTrack());
+                break;
+            case TRACK_CHANGED:
+                Track changedTrack = (Track) event.getTarget();
+                if (!currentPlaylist.getTracks().contains(changedTrack)) {
+                    // la traccia appartiene a un'altra playlist — aggiorna la vista
+                    PlayableSource currentSource = playbackController.getCurrentSource();
+                    if (currentSource instanceof Playlist) {
+                        currentPlaylist = (Playlist) currentSource;
+                        updateView();
+                    }
+                }
+                highlightCurrentTrack(changedTrack);
+                break;
             default:
                 break;
         }
@@ -266,6 +290,27 @@ public class PlaylistDetailViewController implements CatalogObserver {
         if (selectedTrack != null) {
             List<PlayableSource> queue = new ArrayList<>(catalog.getPlaylists());
             playbackController.play(queue, currentPlaylist, selectedTrack);
+        }
+    }
+
+    /**
+     * Evidenzia nella tabella la traccia attualmente in riproduzione.
+     * Se la traccia non appartiene alla playlist corrente, deseleziona tutto.
+     *
+     * @param track la traccia corrente in riproduzione
+     */
+    private void highlightCurrentTrack(Track track) {
+        if (track == null) {
+            tableTracks.getSelectionModel().clearSelection();
+            return;
+        }
+        List<Track> tracks = tableTracks.getItems();
+        int index = tracks.indexOf(track);
+        if (index >= 0) {
+            tableTracks.getSelectionModel().select(index);
+            tableTracks.scrollTo(index);
+        } else {
+            tableTracks.getSelectionModel().clearSelection();
         }
     }
 

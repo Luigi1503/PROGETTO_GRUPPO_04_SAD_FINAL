@@ -181,8 +181,8 @@ public class PlaybackBarViewController implements CatalogObserver {
                 PlaybackStartedPayload payload = (PlaybackStartedPayload) event.getTarget();
                 startPlayback(payload.getCurrentTrack());
                 setSkipPlaylistVisible(payload.isPlaylist());
-                if (payload.isPlaylist()) {
-                    updatePlaylistName(payload.getPlaylistName());
+                if (payload.isPlaylist() && payload.getCurrentSource() instanceof Playlist) {
+                    updatePlaylistName(((Playlist) payload.getCurrentSource()).getName());
                 } else {
                     updatePlaylistName(null);
                 }

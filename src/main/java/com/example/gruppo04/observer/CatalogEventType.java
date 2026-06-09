@@ -32,5 +32,8 @@ public enum CatalogEventType {
      * Il target dell'evento è un {@code PlaybackStartedPayload} contenente la traccia corrente
      * e un flag che indica se la sorgente è una playlist (true) o una traccia singola (false).
      */
-    PLAYBACK_STARTED
+    PLAYBACK_STARTED,
+
+    /** Rilasciato quando la traccia in riproduzione cambia (skip, fine traccia, previous). */
+    TRACK_CHANGED
 }
