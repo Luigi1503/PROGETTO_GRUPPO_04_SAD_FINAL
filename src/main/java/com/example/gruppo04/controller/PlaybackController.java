@@ -11,7 +11,7 @@ import com.example.gruppo04.observer.CatalogEventType;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.model.state.PlaybackState;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
-
+import com.example.gruppo04.model.AudioEngine;
 import java.util.List;
 
 /**
@@ -26,6 +26,7 @@ public class PlaybackController implements CatalogObserver {
 
     private PlaybackState state;
     private MusicCatalog catalog;
+    private AudioEngine audioEngine;
 
     /**
      * Costruisce un {@code PlaybackController} con lo stato di riproduzione fornito.
@@ -37,6 +38,7 @@ public class PlaybackController implements CatalogObserver {
         this.state.setStrategy(new SequentialStrategy()); // default
         this.catalog = ConcreteMusicCatalog.getInstance();
         catalog.registerObserver(this);
+        this.audioEngine = new AudioEngine();
     }
 /**
      * Avvia la riproduzione della coda fornita a partire dalla sorgente
@@ -72,6 +74,7 @@ public class PlaybackController implements CatalogObserver {
             state.setCurrentTrack(startTrack);
         }
         state.play();
+        avviaAudioFisico();
 
         // Notifica la barra di riproduzione che è iniziata una nuova riproduzione.
         // isPlaylist = true se startFrom è una Playlist, false se è una traccia singola del catalogo.
@@ -92,6 +95,27 @@ public class PlaybackController implements CatalogObserver {
         // ──────────────────────────────────────────────────────────────────────
     }
 
+    private void avviaAudioFisico() {
+        Track currentTrack = state.getCurrentTrack();
+        if (currentTrack != null) {
+            String pathFileMp3 = currentTrack.getFilePath();
+
+            // === CONTROLLO DI SICUREZZA ===
+            if (pathFileMp3 == null) {
+                System.err.println("[PlaybackController] ATTENZIONE: La traccia '"
+                        + currentTrack.getTitle() + "' non ha un percorso MP3 valido (è null)!");
+                // Opzionale: puoi decidere di fare uno skip automatico se il file manca
+                this.skipTrack();
+                return;
+            }
+
+            audioEngine.playTrack(pathFileMp3, () -> {
+                System.out.println("[PlaybackController] Canzone terminata naturalmente. Passo alla prossima!");
+                this.skipTrack();
+            });
+        }
+    }
+
     /**
      * Mette in pausa la riproduzione corrente.
      * <p>
@@ -101,6 +125,7 @@ public class PlaybackController implements CatalogObserver {
     public void pause() {
         if (state.isPlaying()) {
             state.pause();
+            audioEngine.pause();
         }
     }
 
@@ -111,7 +136,8 @@ public class PlaybackController implements CatalogObserver {
      * </p>
      */
     public void stop() {
-         state.stop();
+        state.stop();
+        audioEngine.stop();
     }
 
     /**
@@ -148,6 +174,7 @@ public class PlaybackController implements CatalogObserver {
         Track next = state.getStrategy().nextTrack(tracks, currentIndex);
         if (next != null) {
             state.setCurrentTrack(next);
+            avviaAudioFisico();
             System.out.println("[PlaybackController.skipTrack] → traccia successiva (strategia): " + next.getTitle());
             catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
@@ -219,14 +246,24 @@ public class PlaybackController implements CatalogObserver {
         if (event.getType() == CatalogEventType.TRACK_REMOVED) {
             Track removed = (Track) event.getTarget();
             if (removed.equals(state.getCurrentTrack())) {
-                skipTrack();
+                System.out.println("[PlaybackController] Traccia in riproduzione rimossa dal catalogo. Stop.");
+                this.stop();
             } else if (state.getQueue().contains(removed)) {
                 state.removeFromQueue(removed);
             }
-        } else if (event.getType() == CatalogEventType.PLAYLIST_REMOVED) {
+        }
+        else if (event.getType() == CatalogEventType.PLAYLIST_TRACK_REMOVED) {
+            Track removed = (Track) event.getTarget();
+            if (removed.equals(state.getCurrentTrack())) {
+                System.out.println("[PlaybackController] Traccia in riproduzione rimossa dalla playlist. Stop.");
+                this.stop();
+            }
+        }
+        else if (event.getType() == CatalogEventType.PLAYLIST_REMOVED) {
             PlayableSource removed = (PlayableSource) event.getTarget();
             if (removed.equals(state.getCurrentSource())) {
-                skipSource();
+                System.out.println("[PlaybackController] La playlist in riproduzione è stata eliminata. Stop.");
+                this.stop();
             } else if (state.getQueue().contains(removed)) {
                 state.removeFromQueue(removed);
             }
@@ -243,6 +280,7 @@ public class PlaybackController implements CatalogObserver {
         } else {
             state.setCurrentTrack(tracks.get(0));
         }
+        avviaAudioFisico();
         catalog.notifyTrackChanged(state.getCurrentTrack());
     }
 
@@ -281,6 +319,7 @@ public class PlaybackController implements CatalogObserver {
     public void resume() {
         if (!state.isPlaying()) {
             state.play();
+            audioEngine.resume();
         }
     }
 
@@ -299,5 +338,8 @@ public class PlaybackController implements CatalogObserver {
      */
     public PlayableSource getCurrentSource() {
         return state.getCurrentSource();
+    }
+    public double getCurrentAudioTime() {
+        return audioEngine.getCurrentTimeInSeconds();
     }
 }

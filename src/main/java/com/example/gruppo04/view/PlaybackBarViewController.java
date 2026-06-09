@@ -152,19 +152,23 @@ public class PlaybackBarViewController implements CatalogObserver {
     @Override
     public void onCatalogChanged(CatalogEvent event) {
         // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackBarViewController.onCatalogChanged] evento ricevuto: "
-                + event.getType());
+        System.out.println("[PlaybackBarViewController.onCatalogChanged] evento ricevuto: " + event.getType());
         // ──────────────────────────────────────────────────────────────────────
 
         switch (event.getType()) {
             case TRACK_REMOVED:
                 Track removedTrack = (Track) event.getTarget();
                 if (removedTrack.equals(currentTrack)) {
-                    if (playbackController.isStopped()) {
-                        resetLabels();
-                    } else {
-                        updateTrackInfo(playbackController.getCurrentTrack());
-                    }
+                    resetLabels();
+                    btnStop.fire();
+                }
+                break;
+
+            case PLAYLIST_TRACK_REMOVED:
+                Track removedPlTrack = (Track) event.getTarget();
+                if (removedPlTrack.equals(currentTrack)) {
+                    resetLabels();
+                    btnStop.fire();
                 }
                 break;
 
@@ -179,21 +183,39 @@ public class PlaybackBarViewController implements CatalogObserver {
 
             case PLAYBACK_STARTED:
                 PlaybackStartedPayload payload = (PlaybackStartedPayload) event.getTarget();
-                startPlayback(payload.getCurrentTrack());
-                setSkipPlaylistVisible(payload.isPlaylist());
-                if (payload.isPlaylist() && payload.getCurrentSource() instanceof Playlist) {
+                this.currentTrack = payload.getCurrentTrack();
+                startPlayback(currentTrack);
+
+                boolean isPlaylist = payload.getCurrentSource() instanceof Playlist;
+                setSkipPlaylistVisible(isPlaylist);
+
+                if (isPlaylist) {
                     updatePlaylistName(((Playlist) payload.getCurrentSource()).getName());
                 } else {
                     updatePlaylistName(null);
+                }
+
+                this.isPlaying = true;
+                btnPlayPause.setText("⏸");
+                progressTimer.start();
+                break;
+
+            case TRACK_CHANGED:
+                Track newTrack = (Track) event.getTarget();
+                this.currentTrack = newTrack;
+
+                if (!playbackController.isStopped()) {
+                    updateTrackInfo(newTrack);
+                    this.isPlaying = true;
+                    btnPlayPause.setText("⏸");
+                    progressTimer.start();
+                } else {
+                    resetLabels();
                 }
                 break;
 
             case STRATEGY_CHANGED:
                 PlaybackStrategy strategy = (PlaybackStrategy) event.getTarget();
-                // ── DEBUG ──────────────────────────────────────────────────────────────
-                System.out.println("[PlaybackBarViewController.onCatalogChanged] STRATEGY_CHANGED → "
-                        + strategy.getClass().getSimpleName());
-                // ──────────────────────────────────────────────────────────────────────
                 if (strategy instanceof SequentialStrategy) setActiveMode(btnSequential);
                 else if (strategy instanceof ShuffleStrategy) setActiveMode(btnShuffle);
                 else if (strategy instanceof LoopStrategy) setActiveMode(btnLoop);
@@ -354,52 +376,15 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     private void setupProgressTimer() {
         progressTimer = new AnimationTimer() {
-            private long lastUpdate = 0;
-
             @Override
-            // il seguente metodo è chiamato circa 60 volte al secondo da AnimationTimer
-            // now è il tempo corrente in nanosecondi
             public void handle(long now) {
-                if (now - lastUpdate >= 1_000_000_000L) {
-                    // è trascorso 1 secondo
-                    lastUpdate = now;
-                    if (currentTrack != null && isPlaying) {
-                        elapsedSeconds++;
-                        int total = currentTrack.getDuration();
-                        if (elapsedSeconds >= total) {
-                            // la traccia è terminata
-                            elapsedSeconds = total;
-                            progressTimer.stop();
-                            isPlaying = false;
-                            btnPlayPause.setText("▶");
-                            // ── DEBUG ──────────────────────────────────────────────────────────────
-                            System.out.println("[PlaybackBarViewController.timer] traccia terminata: "
-                                    + currentTrack.getTitle() + " → skipTrack automatico");
-                            // ──────────────────────────────────────────────────────────────────────
-                            playbackController.skipTrack();
-                            Track next = playbackController.getCurrentTrack();
+                if (currentTrack != null && isPlaying) {
+                    double realElapsedSeconds = playbackController.getCurrentAudioTime();
+                    double total = currentTrack.getDuration();
 
-                            // ── DEBUG ──────────────────────────────────────────────────────────────
-                            System.out.println("[PlaybackBarViewController.timer] traccia successiva: "
-                                    + (next != null ? next.getTitle() : "null")
-                                    + " | isStopped=" + playbackController.isStopped());
-                            // ──────────────────────────────────────────────────────────────────────
-
-                            updateTrackInfo(next);
-
-                            if (!playbackController.isStopped()) {
-                                // c'è una traccia successiva
-                                isPlaying = true;
-                                btnPlayPause.setText("⏸");
-                                progressTimer.start();
-                            }
-                        } else {
-                            // la traccia non è finita
-                            double progress = (double) elapsedSeconds / total;
-                            progressBar.setValue(progress);
-                            labelCurrentTime.setText(
-                                    TrackFormatter.formatDuration((int) elapsedSeconds));
-                        }
+                    if (total > 0) {
+                        progressBar.setValue(realElapsedSeconds / total);
+                        labelCurrentTime.setText(TrackFormatter.formatDuration((int) realElapsedSeconds));
                     }
                 }
             }
@@ -407,11 +392,11 @@ public class PlaybackBarViewController implements CatalogObserver {
     }
 
 
+
     /**
      * @brief Azzera il progresso della barra di avanzamento e il tempo trascorso.
      */
     private void resetProgress() {
-        elapsedSeconds = 0;
         progressBar.setValue(0);
         labelCurrentTime.setText("0:00");
     }
@@ -422,17 +407,19 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     private void resetLabels() {
         labelTrackTitle.setText("Nessuna traccia");
-        labelTrackArtist.setText("—");
+        labelTrackArtist.setText("— · — · —");
         labelTrackYear.setText("—");
         labelTrackGenre.setText("—");
         labelTotalTime.setText("0:00");
-        // azzera progressi e timer
         resetProgress();
+
         isPlaying = false;
         btnPlayPause.setText("▶");
         progressTimer.stop();
+
         labelPlaylistName.setVisible(false);
         labelPlaylistName.setManaged(false);
+
     }
 
     /**
