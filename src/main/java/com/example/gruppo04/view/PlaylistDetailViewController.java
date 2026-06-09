@@ -109,6 +109,18 @@ public class PlaylistDetailViewController implements CatalogObserver {
                     selectedTrack = newVal;
                     btnRemoveTrack.setDisable(newVal == null);
                 });
+
+        tableTracks.setRowFactory(tv -> {
+            TableRow<Track> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    handlePlayTrack();
+                }
+            });
+
+            return row;
+        });
     }
 
     /**

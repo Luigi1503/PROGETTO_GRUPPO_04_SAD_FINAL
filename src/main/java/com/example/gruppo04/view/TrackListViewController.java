@@ -123,6 +123,18 @@ public class TrackListViewController implements CatalogObserver {
                 }
             }
         });
+
+        trackTable.setRowFactory(tv -> {
+            TableRow<Track> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    handlePlayTrack();
+                }
+            });
+
+            return row;
+        });
     }
 
     private void configureColumns() {

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackListViewController" stylesheets="@global.css">
+<BorderPane style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" stylesheets="@global.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackListViewController">
 
     <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
 
@@ -62,7 +62,7 @@
             <contextMenu>
                 <ContextMenu style="-fx-background-color: #1B2A2F;                                     -fx-background-radius: 8;                                     -fx-border-color: #2C3E40;                                     -fx-border-radius: 8;                                     -fx-border-width: 1;                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);                                     -fx-padding: 4 0 4 0;">
                     <items>
-                        <MenuItem fx:id="menuPlay" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora"  onAction="#handlePlayTrack" />
+                        <MenuItem fx:id="menuPlay" onAction="#handlePlayTrack" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora" />
                         <MenuItem fx:id="menuFav" style="-fx-text-fill: #E8EDF0;" text="☆   Aggiungi ai preferiti" visible="false" />
                         <MenuItem fx:id="menuMove" style="-fx-text-fill: #E8EDF0;" text="↕   Sposta su / giù" visible="false" />
                         <SeparatorMenuItem visible="false" />
@@ -86,7 +86,7 @@
     <bottom>
         <HBox alignment="CENTER_LEFT" spacing="16">
             <padding><Insets top="12" /></padding>
-            <Label fx:id="statusLabel" style="-fx-text-fill: #3A5258; -fx-font-size: 11px; -fx-font-style: italic;" text="Caricamento tracce..." />
+            <Label fx:id="statusLabel" style="-fx-text-fill: #3A5258; -fx-font-size: 11px; -fx-font-style: italic;" />
             <Region HBox.hgrow="ALWAYS" />
             <Label fx:id="countLabel" style="-fx-text-fill: #3A5258; -fx-font-size: 11px;" text="" />
         </HBox>
