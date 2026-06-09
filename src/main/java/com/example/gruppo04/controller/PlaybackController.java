@@ -25,7 +25,6 @@ import java.util.List;
 public class PlaybackController implements CatalogObserver {
 
     private PlaybackState state;
-    private PlaybackStrategy strategy;
     private MusicCatalog catalog;
 
     /**
@@ -35,7 +34,7 @@ public class PlaybackController implements CatalogObserver {
      */
     public PlaybackController(PlaybackState state) {
         this.state = state;
-        this.strategy = new SequentialStrategy(); // default
+        this.state.setStrategy(new SequentialStrategy()); // default
         this.catalog = ConcreteMusicCatalog.getInstance();
         catalog.registerObserver(this);
     }
@@ -64,7 +63,7 @@ public class PlaybackController implements CatalogObserver {
         System.out.println("[PlaybackController.play] startTrack: "
                 + (startTrack != null ? startTrack.getTitle() : "null (prima della sorgente)"));
         System.out.println("[PlaybackController.play] strategia attiva: "
-                + strategy.getClass().getSimpleName());
+                + state.getStrategy().getClass().getSimpleName());
         // ──────────────────────────────────────────────────────────────────────
 
         state.loadQueue(queue);
@@ -140,13 +139,13 @@ public class PlaybackController implements CatalogObserver {
         // ── DEBUG ──────────────────────────────────────────────────────────────
         System.out.println("[PlaybackController.skipTrack] indice traccia corrente: " + currentIndex
                 + " | totale tracce nella sorgente: " + tracks.size()
-                + " | strategia: " + strategy.getClass().getSimpleName());
+                + " | strategia: " + state.getStrategy().getClass().getSimpleName());
         // ──────────────────────────────────────────────────────────────────────
 
         // Delega alla strategia attiva la selezione della traccia successiva.
         // null significa che la sorgente è terminata secondo la strategia corrente
         // e si deve passare alla sorgente successiva.
-        Track next = strategy.nextTrack(tracks, currentIndex);
+        Track next = state.getStrategy().nextTrack(tracks, currentIndex);
         if (next != null) {
             state.setCurrentTrack(next);
             System.out.println("[PlaybackController.skipTrack] → traccia successiva (strategia): " + next.getTitle());
@@ -172,10 +171,10 @@ public class PlaybackController implements CatalogObserver {
         System.out.println("[PlaybackController.skipSource] coda totale: " + queue.size()
                 + " | indice corrente: " + currentIndex);
         System.out.println("[PlaybackController.skipSource] strategia: "
-                + strategy.getClass().getSimpleName());
+                + state.getStrategy().getClass().getSimpleName());
         // ──────────────────────────────────────────────────────────────────────
 
-        PlayableSource nextSource = strategy.nextSource(queue, currentIndex);
+        PlayableSource nextSource = state.getStrategy().nextSource(queue, currentIndex);
 
         // ── DEBUG ──────────────────────────────────────────────────────────────
         System.out.println("[PlaybackController.skipSource] nextSource restituito dalla strategia: "
@@ -258,7 +257,7 @@ public class PlaybackController implements CatalogObserver {
         System.out.println("[PlaybackController.changeStrategy] nuova strategia: "
                 + newStrategy.getClass().getSimpleName());
         // ──────────────────────────────────────────────────────────────────────
-        this.strategy = newStrategy;
+        this.state.setStrategy(newStrategy);
         catalog.notifyStrategyChanged(newStrategy);
     }
 
