@@ -9,6 +9,7 @@ module com.example.gruppo04 {
     requires org.kordamp.ikonli.materialdesign2;
     requires java.logging;
     requires java.sql;
+    requires javafx.media;
 
     opens com.example.gruppo04 to javafx.fxml;
     opens com.example.gruppo04.model to javafx.base, javafx.fxml;
