@@ -3,6 +3,8 @@ package com.example.gruppo04.model.state;
 
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.strategy.PlaybackStrategy;
+import com.example.gruppo04.model.strategy.SequentialStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class PlaybackState {
     private int currentSourceIndex;
     private int currentTrackIndex;
     private Track currentTrack;
+    private PlaybackStrategy strategy;
 
     public PlaybackState() {
         this.currentState = new StoppedState();
@@ -24,6 +27,16 @@ public class PlaybackState {
         this.currentSourceIndex = 0;
         this.currentTrackIndex = 0;
         this.currentTrack = null;
+        //necessaria per inizializzare correttamente la strategia di default
+        this.strategy = new SequentialStrategy();
+    }
+
+    public void setStrategy(PlaybackStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public PlaybackStrategy getStrategy() {
+        return this.strategy;
     }
 
     public void changeState(PlayerState newState){
