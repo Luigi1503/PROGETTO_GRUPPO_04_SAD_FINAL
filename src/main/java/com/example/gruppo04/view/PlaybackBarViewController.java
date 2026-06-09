@@ -295,14 +295,14 @@ public class PlaybackBarViewController implements CatalogObserver {
 
     /**
      * @brief Gestisce il click su Skip Traccia precedente.
-     * @details Torna alla traccia precedente e azzera il progresso della barra.
+     * @details Nel catalogo riavvia la traccia corrente. Invece in una playlist se la traccia corrente in riproduzione
+     * ha superato i 10 secondi allora essa riparte da capo
+     * altrimenti torna alla traccia precedente.
      */
     @FXML
     void handlePrevious(ActionEvent event) {
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackBarViewController.handlePrevious] richiesto previous");
-        // ──────────────────────────────────────────────────────────────────────
-        playbackController.previousTrack();
+        if(elapsedSeconds <= 10)
+            playbackController.previousTrack();
         resetProgress();
         updateTrackInfo(playbackController.getCurrentTrack());
     }
