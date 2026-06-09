@@ -204,13 +204,17 @@ public class PlaybackBarViewController implements CatalogObserver {
                 Track newTrack = (Track) event.getTarget();
                 this.currentTrack = newTrack;
 
+                updateTrackInfo(newTrack);
+
                 if (!playbackController.isStopped()) {
-                    updateTrackInfo(newTrack);
                     this.isPlaying = true;
                     btnPlayPause.setText("⏸");
                     progressTimer.start();
                 } else {
-                    resetLabels();
+                    this.isPlaying = false;
+                    btnPlayPause.setText("▶");
+                    progressTimer.stop();
+                    resetProgress();
                 }
                 break;
 
@@ -325,7 +329,6 @@ public class PlaybackBarViewController implements CatalogObserver {
     void handlePrevious(ActionEvent event) {
         if(elapsedSeconds <= 10)
             playbackController.previousTrack();
-        resetProgress();
         updateTrackInfo(playbackController.getCurrentTrack());
     }
 
@@ -339,7 +342,6 @@ public class PlaybackBarViewController implements CatalogObserver {
         System.out.println("[PlaybackBarViewController.handleSkipTrack] richiesto skip traccia");
         // ──────────────────────────────────────────────────────────────────────
         playbackController.skipTrack();
-        resetProgress();
         updateTrackInfo(playbackController.getCurrentTrack());
     }
 
@@ -356,7 +358,6 @@ public class PlaybackBarViewController implements CatalogObserver {
         playbackController.skipSource();
         resetProgress();
         if (playbackController.isStopped()) {
-            resetLabels();
             setSkipPlaylistVisible(false);
             System.out.println("[PlaybackBarViewController.handleSkipPlaylist] → stop, nessuna sorgente successiva");
         } else {
