@@ -10,6 +10,7 @@ import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.observer.PlaybackStartedPayload;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -83,6 +84,13 @@ public class PlaylistDetailViewController implements CatalogObserver {
     /** Playlist attualmente visualizzata nel pannello. */
     private Playlist currentPlaylist;
 
+    /**
+     * Indica se questa vista sta "seguendo" la riproduzione, cioè se la playlist
+     * mostrata coincide con la sorgente in riproduzione. Solo in tal caso la vista
+     * evidenzia la traccia corrente e segue gli skip verso le playlist successive.
+     */
+    private boolean followingPlayback = false;
+
     /** Traccia attualmente selezionata nella tabella. */
     private Track selectedTrack;
 
@@ -143,6 +151,50 @@ public class PlaylistDetailViewController implements CatalogObserver {
         this.catalog = catalog;
         catalog.registerObserver(this);
         updateView();
+        // Allinea lo stato di "following" e l'evidenziazione quando la vista (ri)appare:
+        // l'indicatore deve essere presente solo se la playlist mostrata è quella in
+        // riproduzione, e deve riapparire subito senza attendere un nuovo evento.
+        followingPlayback = isActiveSource();
+        syncHighlight();
+    }
+
+    /**
+     * @return {@code true} se la playlist mostrata è la sorgente attualmente in
+     *         riproduzione (quindi questa vista deve evidenziare la traccia corrente).
+     */
+    private boolean isActiveSource() {
+        return playbackController != null
+                && !playbackController.isStopped()
+                && currentPlaylist.equals(playbackController.getCurrentSource());
+    }
+
+    /**
+     * Evidenzia la traccia in riproduzione solo se questa vista mostra la sorgente
+     * attiva; altrimenti azzera la selezione (l'evidenziazione non deve comparire
+     * nelle playlist diverse da quella in riproduzione).
+     */
+    private void syncHighlight() {
+        if (isActiveSource()) {
+            highlightCurrentTrack(playbackController.getCurrentTrack());
+        } else {
+            tableTracks.getSelectionModel().clearSelection();
+        }
+    }
+
+    /**
+     * Reagisce a un evento di riproduzione (avvio/cambio traccia): se la vista sta
+     * seguendo la riproduzione e la sorgente è passata a un'altra playlist, segue il
+     * cambio mostrando la nuova playlist; quindi riallinea l'evidenziazione.
+     */
+    private void syncWithPlayback() {
+        PlayableSource source = playbackController.getCurrentSource();
+        if (followingPlayback && !playbackController.isStopped()
+                && source instanceof Playlist && !source.equals(currentPlaylist)) {
+            currentPlaylist = (Playlist) source;
+            updateView();
+        }
+        followingPlayback = isActiveSource();
+        syncHighlight();
     }
 
     /**
@@ -154,35 +206,36 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @Override
     public void onCatalogChanged(CatalogEvent event) {
+        // I cambi di traccia possono essere notificati dal thread audio (fine traccia
+        // naturale): marshalliamo sempre sul thread JavaFX prima di toccare la UI.
+        Platform.runLater(() -> handleCatalogChanged(event));
+    }
+
+    private void handleCatalogChanged(CatalogEvent event) {
         switch (event.getType()) {
             case PLAYLIST_TRACK_ADDED:
             case PLAYLIST_TRACK_REMOVED:
             case PLAYLIST_RENAMED:
             case TRACK_REMOVED:
                 updateView();
+                syncHighlight();
                 break;
             case PLAYBACK_STARTED:
                 PlaybackStartedPayload payload = (PlaybackStartedPayload) event.getTarget();
-                if (payload.getCurrentSource() instanceof Playlist) {
-                    Playlist newPlaylist = (Playlist) payload.getCurrentSource();
-                    if (!newPlaylist.equals(currentPlaylist)) {
-                        currentPlaylist = newPlaylist;
-                        updateView();
-                    }
+                // Se è stata avviata la riproduzione della playlist mostrata, inizia a seguirla.
+                if (payload.getCurrentSource() instanceof Playlist
+                        && payload.getCurrentSource().equals(currentPlaylist)) {
+                    followingPlayback = true;
                 }
-                highlightCurrentTrack(payload.getCurrentTrack());
+                syncWithPlayback();
                 break;
             case TRACK_CHANGED:
-                Track changedTrack = (Track) event.getTarget();
-                if (!currentPlaylist.getTracks().contains(changedTrack)) {
-                    // la traccia appartiene a un'altra playlist — aggiorna la vista
-                    PlayableSource currentSource = playbackController.getCurrentSource();
-                    if (currentSource instanceof Playlist) {
-                        currentPlaylist = (Playlist) currentSource;
-                        updateView();
-                    }
-                }
-                highlightCurrentTrack(changedTrack);
+                syncWithPlayback();
+                break;
+            case PLAYBACK_STOPPED:
+                // Riproduzione terminata: smetti di seguire e azzera l'evidenziazione.
+                followingPlayback = false;
+                tableTracks.getSelectionModel().clearSelection();
                 break;
             default:
                 break;

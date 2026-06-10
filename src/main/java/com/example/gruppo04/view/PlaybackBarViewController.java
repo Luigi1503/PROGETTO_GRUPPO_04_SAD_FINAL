@@ -14,6 +14,7 @@ import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.util.TrackFormatter;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -59,6 +60,13 @@ public class PlaybackBarViewController implements CatalogObserver {
      * @details Visibile solo durante la riproduzione di una playlist.
      */
     @FXML private Button btnSkipPlaylist;
+
+    /**
+     * @brief Bottone playlist precedente.
+     * @details Simmetrico a {@link #btnSkipPlaylist}: visibile solo durante la
+     * riproduzione di una playlist. Torna alla sorgente precedente nella coda.
+     */
+    @FXML private Button btnPreviousPlaylist;
 
     /** @brief Barra di avanzamento della traccia corrente. */
     @FXML private Slider progressBar;
@@ -137,8 +145,7 @@ public class PlaybackBarViewController implements CatalogObserver {
     @FXML
     void initialize() {
         progressBar.setValue(0);
-        btnSkipPlaylist.setVisible(false); // è invisibile
-        btnSkipPlaylist.setManaged(false); // ed è escluso dal layout
+        setSkipPlaylistVisible(false); // nascondi i bottoni di navigazione playlist
         setActiveMode(btnSequential);
     }
 
@@ -218,6 +225,19 @@ public class PlaybackBarViewController implements CatalogObserver {
                 }
                 break;
 
+            case PLAYBACK_STOPPED:
+                // La riproduzione è terminata del tutto (stop o fine coda): azzera la barra.
+                Platform.runLater(() -> {
+                    resetLabels();
+                    setSkipPlaylistVisible(false);
+                    updatePlaylistName(null);
+                    btnPlayPause.setDisable(true);
+                    btnPrevious.setDisable(true);
+                    btnSkip.setDisable(true);
+                    btnStop.setDisable(true);
+                });
+                break;
+
             case STRATEGY_CHANGED:
                 PlaybackStrategy strategy = (PlaybackStrategy) event.getTarget();
                 if (strategy instanceof SequentialStrategy) setActiveMode(btnSequential);
@@ -271,6 +291,8 @@ public class PlaybackBarViewController implements CatalogObserver {
         // ──────────────────────────────────────────────────────────────────────
         btnSkipPlaylist.setVisible(visible);
         btnSkipPlaylist.setManaged(visible);
+        btnPreviousPlaylist.setVisible(visible);
+        btnPreviousPlaylist.setManaged(visible);
     }
 
     /**
@@ -367,6 +389,20 @@ public class PlaybackBarViewController implements CatalogObserver {
             String newPlaylistName = playbackController.getCurrentSourceName();
             updatePlaylistName(newPlaylistName);
         }
+    }
+
+    /**
+     * @brief Gestisce il click su Playlist precedente.
+     * @details Simmetrico a {@link #handleSkipPlaylist}: torna alla sorgente
+     * precedente nella coda e ne riproduce l'ultima traccia.
+     */
+    @FXML
+    void handlePreviousPlaylist(ActionEvent event) {
+        System.out.println("[PlaybackBarViewController.handlePreviousPlaylist] richiesto playlist precedente");
+        playbackController.previousSource();
+        resetProgress();
+        updateTrackInfo(playbackController.getCurrentTrack());
+        updatePlaylistName(playbackController.getCurrentSourceName());
     }
 
     /**

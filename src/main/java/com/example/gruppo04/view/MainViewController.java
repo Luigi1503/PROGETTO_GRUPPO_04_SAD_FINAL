@@ -62,6 +62,13 @@ public class MainViewController implements CatalogObserver {
     /** Controller MVC della riproduzione. */
     private PlaybackController playbackController;
 
+    /**
+     * Controller della vista attualmente mostrata nell'area centrale, registrato
+     * come Observer del catalogo. Viene deregistrato quando si naviga verso un'altra
+     * vista, per evitare che istanze non più visibili continuino a ricevere eventi.
+     */
+    private CatalogObserver currentContentController;
+
     /** Logger per la gestione degli errori di caricamento delle view. */
     private static final Logger logger =
             Logger.getLogger(MainViewController.class.getName());
@@ -139,7 +146,7 @@ public class MainViewController implements CatalogObserver {
             Node view = loader.load();
             TrackListViewController controller = loader.getController();
             controller.init(trackController, catalog, playbackController);
-            setContent(view);
+            setContent(view, controller);
             setActiveButton(btnAllTracks);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Errore nel caricamento di TrackListView", e);
@@ -157,7 +164,7 @@ public class MainViewController implements CatalogObserver {
             PlaylistViewController controller = loader.getController();
             controller.init(playlistController, catalog, playbackController);
             controller.setOnPlaylistSelected(this::showPlaylistDetail);
-            setContent(view);
+            setContent(view, controller);
             setActiveButton(btnPlaylists);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Errore nel caricamento di PlaylistView", e);
@@ -176,7 +183,7 @@ public class MainViewController implements CatalogObserver {
             Node view = loader.load();
             PlaylistDetailViewController controller = loader.getController();
             controller.init(playlist, playlistController, trackController, catalog, playbackController);
-            setContent(view);
+            setContent(view, controller);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Errore nel caricamento di PlaylistDetailView", e);
         }
@@ -187,7 +194,14 @@ public class MainViewController implements CatalogObserver {
      *
      * @param node il pannello da mostrare
      */
-    private void setContent(Node node) {
+    private void setContent(Node node, CatalogObserver controller) {
+        // Deregistra la vista precedente così che le istanze non più visibili non
+        // restino in ascolto sul catalogo (evita leak di Observer e aggiornamenti
+        // su nodi UI ormai scollegati).
+        if (currentContentController != null) {
+            catalog.unregisterObserver(currentContentController);
+        }
+        currentContentController = controller;
         contentArea.getChildren().clear();
         contentArea.getChildren().add(node);
     }

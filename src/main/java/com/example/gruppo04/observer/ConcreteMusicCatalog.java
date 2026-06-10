@@ -332,4 +332,9 @@ public class ConcreteMusicCatalog implements MusicCatalog {
     public void notifyTrackChanged(Track track) {
         notifyObservers(CatalogEventType.TRACK_CHANGED, track);
     }
+
+    @Override
+    public void notifyPlaybackStopped() {
+        notifyObservers(CatalogEventType.PLAYBACK_STOPPED, null);
+    }
 }

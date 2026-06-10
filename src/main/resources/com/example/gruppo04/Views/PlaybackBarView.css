@@ -1,13 +1,105 @@
+/* ============================================================
+   Playback bar — transport controls
+   ============================================================ */
+
+/* Secondary transport buttons: previous, next, prev-playlist, skip-playlist, stop */
+.transport-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #9FB2B8;
+    -fx-font-size: 15px;
+    -fx-min-width: 36;
+    -fx-min-height: 36;
+    -fx-max-width: 36;
+    -fx-max-height: 36;
+    -fx-background-radius: 50;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+}
+
+.transport-btn:hover {
+    -fx-background-color: #1B2A2F;
+    -fx-text-fill: #E8EDF0;
+}
+
+.transport-btn:pressed {
+    -fx-background-color: #243842;
+}
+
+/* The wide double-glyph playlist buttons need a smaller font to fit the circle */
+.transport-btn-small {
+    -fx-font-size: 11px;
+}
+
+/* Stop: same shape as the others, with a red intent on hover */
+.transport-btn-stop:hover {
+    -fx-background-color: #3A2026;
+    -fx-text-fill: #FF6B7A;
+}
+
+.transport-btn-stop:pressed {
+    -fx-background-color: #2A171B;
+}
+
+/* Primary play/pause button */
+.transport-btn-play {
+    -fx-background-color: #1D9E75;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-min-width: 44;
+    -fx-min-height: 44;
+    -fx-max-width: 44;
+    -fx-max-height: 44;
+    -fx-background-radius: 50;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(29,158,117,0.40), 12, 0.0, 0, 2);
+}
+
+.transport-btn-play:hover {
+    -fx-background-color: #22B488;
+}
+
+.transport-btn-play:pressed {
+    -fx-background-color: #178A66;
+}
+
+/* ============================================================
+   Progress slider
+   ============================================================ */
+.progress-slider .track {
+    -fx-background-color: #243842;
+    -fx-background-radius: 4;
+    -fx-pref-height: 5px;
+}
+
+.progress-slider .thumb {
+    -fx-background-color: #1D9E75;
+    -fx-background-radius: 50;
+    -fx-pref-width: 12px;
+    -fx-pref-height: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0.0, 0, 1);
+}
+
+/* ============================================================
+   Playback mode buttons (Sequential / Shuffle / Loop)
+   ============================================================ */
 .mode-btn {
     -fx-background-color: #1B2A2F;
     -fx-text-fill: #9FB2B8;
     -fx-font-size: 11px;
-    -fx-background-radius: 5;
+    -fx-background-radius: 6;
     -fx-border-color: #2C3E40;
-    -fx-border-radius: 5;
+    -fx-border-radius: 6;
     -fx-border-width: 1;
-    -fx-padding: 4 10 4 10;
+    -fx-padding: 5 12 5 12;
     -fx-cursor: hand;
+}
+
+.mode-btn:hover {
+    -fx-background-color: #22343A;
+    -fx-text-fill: #E8EDF0;
 }
 
 .mode-btn-active {
@@ -15,10 +107,15 @@
     -fx-text-fill: #1D9E75;
     -fx-font-size: 11px;
     -fx-font-weight: bold;
-    -fx-background-radius: 5;
+    -fx-background-radius: 6;
     -fx-border-color: #1D9E75;
-    -fx-border-radius: 5;
+    -fx-border-radius: 6;
     -fx-border-width: 1.5;
-    -fx-padding: 4 10 4 10;
+    -fx-padding: 5 12 5 12;
     -fx-cursor: hand;
+}
+
+.mode-btn-active:hover {
+    -fx-background-color: #12463C;
+    -fx-text-fill: #1D9E75;
 }

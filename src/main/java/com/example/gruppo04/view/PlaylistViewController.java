@@ -7,6 +7,7 @@ import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.observer.CatalogEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -99,9 +100,32 @@ public class PlaylistViewController implements CatalogObserver {
      */
     @Override
     public void onCatalogChanged(CatalogEvent event) {
-        switch (event.getType()) {
-            case PLAYLIST_ADDED, PLAYLIST_REMOVED, PLAYLIST_RENAMED -> renderPlaylists();
-            default -> { }
+        // I cambi di riproduzione possono arrivare dal thread audio: marshalla sul thread JavaFX.
+        Platform.runLater(() -> {
+            switch (event.getType()) {
+                case PLAYLIST_ADDED, PLAYLIST_REMOVED, PLAYLIST_RENAMED -> renderPlaylists();
+                case PLAYBACK_STARTED, TRACK_CHANGED, PLAYBACK_STOPPED -> highlightActivePlaylist();
+                default -> { }
+            }
+        });
+    }
+
+    /**
+     * Evidenzia nella griglia la card della playlist attualmente in riproduzione,
+     * coerentemente con il resto dell'app: viene evidenziata solo la sorgente attiva.
+     * Se la riproduzione è ferma o non proviene da una playlist, nessuna card è evidenziata.
+     */
+    private void highlightActivePlaylist() {
+        PlayableSource source = (playbackController != null && !playbackController.isStopped())
+                ? playbackController.getCurrentSource() : null;
+
+        for (Node node : playlistGrid.getChildren()) {
+            Object data = node.getUserData();
+            boolean active = (data instanceof Playlist) && data.equals(source);
+            node.getStyleClass().remove("playlist-card-active");
+            if (active) {
+                node.getStyleClass().add("playlist-card-active");
+            }
         }
     }
 
@@ -116,6 +140,10 @@ public class PlaylistViewController implements CatalogObserver {
             playlistGrid.getChildren().add(buildPlaylistCard(playlist));
         }
         playlistGrid.getChildren().add(buildAddCard());
+
+        // Ripristina l'evidenziazione della playlist in riproduzione dopo ogni ridisegno
+        // (anche tornando su questa vista mentre una playlist è in riproduzione).
+        highlightActivePlaylist();
     }
 
     /**
@@ -182,6 +210,8 @@ public class PlaylistViewController implements CatalogObserver {
         VBox card = new VBox(art, name);
         card.getStyleClass().add("playlist-card");
         card.setPickOnBounds(true);
+        // Associa la playlist alla card per poterla evidenziare quando è in riproduzione.
+        card.setUserData(playlist);
 
         // menu contestuale (tasto destro)
         MenuItem rename = new MenuItem("Rinomina");

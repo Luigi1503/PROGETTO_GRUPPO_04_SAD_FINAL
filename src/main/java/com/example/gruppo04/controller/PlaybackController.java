@@ -12,6 +12,7 @@ import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.model.state.PlaybackState;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import com.example.gruppo04.model.AudioEngine;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -97,6 +98,8 @@ public class PlaybackController implements CatalogObserver {
 
     private void avviaAudioFisico() {
         Track currentTrack = state.getCurrentTrack();
+        System.out.println("[PlaybackController.avviaAudioFisico] richiesto avvio audio per: "
+                + (currentTrack != null ? currentTrack.getTitle() : "null"));
         if (currentTrack != null) {
             String pathFileMp3 = currentTrack.getFilePath();
 
@@ -138,6 +141,8 @@ public class PlaybackController implements CatalogObserver {
     public void stop() {
         state.stop();
         audioEngine.stop();
+        // Notifica le viste così che azzerino l'evidenziazione della traccia.
+        catalog.notifyPlaybackStopped();
     }
 
     /**
@@ -220,9 +225,10 @@ public class PlaybackController implements CatalogObserver {
             state.setCurrentTrack(nextSource.getTracks().get(0));
             System.out.println("[PlaybackController.skipSource] → prima traccia della nuova sorgente: "
                     + nextSource.getTracks().get(0).getTitle());
+            avviaAudioFisico();
             catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
-            state.stop();
+            stop();
             System.out.println("[PlaybackController.skipSource] → riproduzione fermata (stop)");
         }
     }
@@ -257,6 +263,10 @@ public class PlaybackController implements CatalogObserver {
             if (removed.equals(state.getCurrentTrack())) {
                 System.out.println("[PlaybackController] Traccia in riproduzione rimossa dalla playlist. Stop.");
                 this.stop();
+            } else {
+                // La playlist modificata potrebbe essere più avanti nella coda:
+                // riallinea la coda al contenuto aggiornato del catalogo.
+                refreshQueueFromCatalog();
             }
         }
         else if (event.getType() == CatalogEventType.PLAYLIST_REMOVED) {
@@ -264,22 +274,86 @@ public class PlaybackController implements CatalogObserver {
             if (removed.equals(state.getCurrentSource())) {
                 System.out.println("[PlaybackController] La playlist in riproduzione è stata eliminata. Stop.");
                 this.stop();
-            } else if (state.getQueue().contains(removed)) {
-                state.removeFromQueue(removed);
+            } else {
+                refreshQueueFromCatalog();
             }
+        }
+        else if (event.getType() == CatalogEventType.PLAYLIST_TRACK_ADDED
+                || event.getType() == CatalogEventType.PLAYLIST_CONTENT_CHANGED
+                || event.getType() == CatalogEventType.PLAYLIST_REORDERED
+                || event.getType() == CatalogEventType.PLAYLIST_RENAMED
+                || event.getType() == CatalogEventType.PLAYLIST_ADDED) {
+            // Una playlist è stata modificata/aggiunta: aggiorna la coda così che
+            // lo skip alla playlist successiva rifletta lo stato corrente.
+            refreshQueueFromCatalog();
+        }
+    }
+
+    /**
+     * Riallinea la coda di riproduzione alle playlist attualmente presenti nel
+     * catalogo, preservando la sorgente e la traccia in riproduzione.
+     * <p>
+     * Agisce solo quando la riproduzione corrente è basata su playlist: durante
+     * la riproduzione di tracce singole del catalogo la coda non è composta da
+     * playlist e non va sovrascritta.
+     * </p>
+     */
+    private void refreshQueueFromCatalog() {
+        if (state.getCurrentSource() instanceof Playlist) {
+            state.refreshQueue(new ArrayList<PlayableSource>(catalog.getPlaylists()));
         }
     }
     /**
-     * Torna alla traccia precedente nella sorgente corrente.
+     * Torna alla traccia precedente.
+     * <p>
+     * Se esiste una traccia precedente all'interno della sorgente corrente
+     * (es. una playlist con più tracce) vi torna direttamente. Se invece siamo
+     * già alla prima traccia della sorgente corrente, delega a {@link #previousSource()}
+     * per tornare alla sorgente precedente nella coda. Quest'ultimo caso è ciò che
+     * rende corretta la navigazione dal catalogo, dove ogni traccia è una sorgente
+     * singola e la navigazione avviene a livello di coda (in modo simmetrico a
+     * {@link #skipTrack()} → {@link #skipSource()}).
+     * </p>
      */
     public void previousTrack() {
         List<Track> tracks = state.getCurrentSource().getTracks();
         int currentIndex = tracks.indexOf(state.getCurrentTrack());
         if (currentIndex > 0) {
+            // C'è una traccia precedente all'interno della sorgente corrente.
             state.setCurrentTrack(tracks.get(currentIndex - 1));
+            avviaAudioFisico();
+            catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
-            state.setCurrentTrack(tracks.get(0));
+            // Siamo all'inizio della sorgente corrente: torna alla sorgente precedente.
+            previousSource();
         }
+    }
+
+    /**
+     * Torna alla sorgente precedente nella coda e ne riproduce l'ultima traccia.
+     * <p>
+     * Se non esiste una sorgente precedente (siamo già alla prima della coda)
+     * riavvia da capo la traccia corrente.
+     * </p>
+     */
+    public void previousSource() {
+        List<PlayableSource> queue = state.getQueue();
+        int currentIndex = queue.indexOf(state.getCurrentSource());
+
+        // Cerca la prima sorgente precedente non vuota.
+        int prevIndex = currentIndex - 1;
+        while (prevIndex >= 0 && queue.get(prevIndex).getTracks().isEmpty()) {
+            prevIndex--;
+        }
+
+        if (prevIndex >= 0) {
+            PlayableSource prevSource = queue.get(prevIndex);
+            List<Track> prevTracks = prevSource.getTracks();
+            state.setCurrentSource(prevSource);
+            state.setCurrentTrack(prevTracks.get(prevTracks.size() - 1));
+        }
+        // Se non c'è una sorgente precedente, riavvia la traccia corrente da capo.
+
         avviaAudioFisico();
         catalog.notifyTrackChanged(state.getCurrentTrack());
     }

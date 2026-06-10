@@ -64,6 +64,32 @@ public class PlaybackState {
         return this.queue;
     }
 
+    /**
+     * Aggiorna la coda di riproduzione con un nuovo insieme di sorgenti
+     * (es. dopo la modifica di una playlist) preservando la sorgente e la
+     * traccia attualmente in riproduzione.
+     * <p>
+     * La sorgente corrente viene ri-localizzata nella nuova coda tramite
+     * {@code equals} (per le playlist l'uguaglianza è basata sull'id), così da
+     * agganciare l'istanza aggiornata e mantenere coerente l'indice corrente.
+     * Se la sorgente corrente non è più presente, l'indice viene riportato in
+     * un intervallo valido.
+     * </p>
+     *
+     * @param sources la nuova lista di sorgenti; non deve essere {@code null}
+     */
+    public void refreshQueue(List<PlayableSource> sources) {
+        PlayableSource current = getCurrentSource();
+        this.queue = new ArrayList<>(sources);
+
+        int idx = (current != null) ? this.queue.indexOf(current) : -1;
+        if (idx >= 0) {
+            this.currentSourceIndex = idx;
+        } else if (this.currentSourceIndex >= this.queue.size()) {
+            this.currentSourceIndex = Math.max(0, this.queue.size() - 1);
+        }
+    }
+
     public Track getCurrentTrack(){
         return this.currentTrack;
     }

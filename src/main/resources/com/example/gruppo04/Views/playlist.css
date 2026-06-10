@@ -15,6 +15,19 @@
     -fx-background-color: rgba(255,255,255,0.05);
 }
 
+/* Playlist attualmente in riproduzione: evidenziata con l'accento verde */
+.playlist-card-active {
+    -fx-background-color: rgba(29,158,117,0.08);
+}
+.playlist-card-active .card-art {
+    -fx-border-color: #1D9E75;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(29,158,117,0.45), 18, 0, 0, 4);
+}
+.playlist-card-active .card-title {
+    -fx-text-fill: #1D9E75;
+}
+
 .card-art {
     -fx-min-width: 150; -fx-min-height: 150;
     -fx-max-width: 150; -fx-max-height: 150;

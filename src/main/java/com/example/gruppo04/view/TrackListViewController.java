@@ -3,12 +3,12 @@ package com.example.gruppo04.view;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
+import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.controller.TrackController;
 
-import com.example.gruppo04.observer.PlaybackStartedPayload;
 import com.example.gruppo04.util.TableColumnFactory;
 import com.example.gruppo04.util.TrackFormatter;
 import javafx.application.Platform;
@@ -85,6 +85,34 @@ public class TrackListViewController implements CatalogObserver {
         this.catalog.registerObserver(this);
         registerCatalogObserver();
         reloadTableData();
+        // Ripristina l'evidenziazione della traccia in riproduzione: tornando su questa
+        // vista mentre un brano è in riproduzione dal catalogo, l'indicazione deve
+        // riapparire subito senza attendere il prossimo evento di cambio traccia.
+        syncHighlight();
+    }
+
+    /**
+     * Allinea l'evidenziazione della tabella allo stato di riproduzione: evidenzia
+     * la traccia corrente solo se la riproduzione proviene dal catalogo (sorgente
+     * non playlist), altrimenti azzera la selezione. Così l'evidenziazione non
+     * compare nel catalogo mentre è in riproduzione una playlist.
+     */
+    private void syncHighlight() {
+        if (isCatalogPlayback()) {
+            highlightCurrentTrack(playbackController.getCurrentTrack());
+        } else {
+            trackTable.getSelectionModel().clearSelection();
+        }
+    }
+
+    /**
+     * @return {@code true} se è in corso una riproduzione la cui sorgente è il
+     *         catalogo (una traccia singola), non una playlist.
+     */
+    private boolean isCatalogPlayback() {
+        return playbackController != null
+                && !playbackController.isStopped()
+                && !(playbackController.getCurrentSource() instanceof Playlist);
     }
 
     /**
@@ -185,11 +213,11 @@ public class TrackListViewController implements CatalogObserver {
                     reloadTableData();
                     break;
                 case PLAYBACK_STARTED:
-                    PlaybackStartedPayload p = (PlaybackStartedPayload) event.getTarget();
-                    highlightCurrentTrack(p.getCurrentTrack());
-                    break;
                 case TRACK_CHANGED:
-                    highlightCurrentTrack((Track) event.getTarget());
+                    syncHighlight();
+                    break;
+                case PLAYBACK_STOPPED:
+                    trackTable.getSelectionModel().clearSelection();
                     break;
                 default:
                     break;

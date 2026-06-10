@@ -154,4 +154,11 @@ public interface MusicCatalog {
      * @param track la canzone attuale
      */
     public void notifyTrackChanged(Track track);
+
+    /**
+     * Notifica tutti gli observer registrati che la riproduzione è stata
+     * fermata del tutto, così che le viste possano azzerare l'evidenziazione
+     * della traccia in riproduzione.
+     */
+    public void notifyPlaybackStopped();
 }
