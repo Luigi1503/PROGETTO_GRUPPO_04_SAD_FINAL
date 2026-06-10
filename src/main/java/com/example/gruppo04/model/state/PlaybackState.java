@@ -156,7 +156,4 @@ public class PlaybackState {
     public PlayerState getStatus() {
         return this.currentState;
     }
-
-
-
 }
