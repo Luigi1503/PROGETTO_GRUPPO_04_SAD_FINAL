@@ -104,9 +104,6 @@ public class PlaybackBarViewController implements CatalogObserver {
     /** @brief Timer per l'aggiornamento in tempo reale della barra di avanzamento. */
     private AnimationTimer progressTimer;
 
-    /** @brief Secondi trascorsi dall'inizio della riproduzione della traccia corrente. */
-    private long elapsedSeconds = 0;
-
 
     /**
      * @brief Costruttore senza parametri richiesto da FXMLLoader.
@@ -349,8 +346,15 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @FXML
     void handlePrevious(ActionEvent event) {
-        if(elapsedSeconds <= 10)
+        // Tempo reale trascorso sulla traccia corrente (in secondi).
+        double elapsed = playbackController.getCurrentAudioTime();
+        if (elapsed <= 10) {
+            // Entro i primi 10s: torna alla traccia precedente.
             playbackController.previousTrack();
+        } else {
+            // Oltre i 10s: riavvia la traccia corrente dall'inizio.
+            playbackController.restartTrack();
+        }
         updateTrackInfo(playbackController.getCurrentTrack());
     }
 
