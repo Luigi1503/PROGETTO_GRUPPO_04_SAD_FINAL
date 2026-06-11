@@ -1,7 +1,6 @@
 package com.example.gruppo04.view;
 
 
-import com.example.gruppo04.model.state.StoppedState;
 import com.example.gruppo04.observer.PlaybackStartedPayload;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
@@ -325,6 +324,11 @@ public class PlaybackBarViewController implements CatalogObserver {
         }
     }
 
+    /**
+     * @brief Gestisce il click su Stop Traccia corrente.
+     * @details Ferma immediatamente la traccia corrente in riproduzione, disabilita tutti i pulsanti della barra
+     * di riproduzione, in tal modo la traccia non può più essere avviata.
+     */
     @FXML
     private void handleStop(ActionEvent event) {
         playbackController.stop();
@@ -426,6 +430,7 @@ public class PlaybackBarViewController implements CatalogObserver {
                     if (total > 0) {
                         progressBar.setValue(realElapsedSeconds / total);
                         labelCurrentTime.setText(TrackFormatter.formatDuration((int) realElapsedSeconds));
+                        labelTotalTime.setText("-"+TrackFormatter.formatDuration((int) (total - realElapsedSeconds)));
                     }
                 }
             }

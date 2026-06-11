@@ -107,7 +107,6 @@ public class PlaybackController implements CatalogObserver {
             if (pathFileMp3 == null) {
                 System.err.println("[PlaybackController] ATTENZIONE: La traccia '"
                         + currentTrack.getTitle() + "' non ha un percorso MP3 valido (è null)!");
-                // Opzionale: puoi decidere di fare uno skip automatico se il file manca
                 this.skipTrack();
                 return;
             }
