@@ -16,11 +16,13 @@ public class LoopStrategy implements PlaybackStrategy {
         if (sources == null || sources.isEmpty()) {
             return null;
         }
-        int nextIndex = (currentIndex + 1) % sources.size();
-        if (nextIndex < 0) {
-            nextIndex = 0;
+        // In Loop la riproduzione resta sulla stessa sorgente: lo skip playlist
+        // (e l'eventuale fine coda) riavvia la playlist corrente, senza passare
+        // alla successiva.
+        if (currentIndex >= 0 && currentIndex < sources.size()) {
+            return sources.get(currentIndex);
         }
-        return sources.get(nextIndex);
+        return sources.get(0);
     }
 
     /**

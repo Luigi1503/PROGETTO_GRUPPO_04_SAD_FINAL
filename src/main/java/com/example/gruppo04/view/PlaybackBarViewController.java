@@ -1,7 +1,6 @@
 package com.example.gruppo04.view;
 
 
-import com.example.gruppo04.model.state.StoppedState;
 import com.example.gruppo04.observer.PlaybackStartedPayload;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
@@ -103,9 +102,6 @@ public class PlaybackBarViewController implements CatalogObserver {
 
     /** @brief Timer per l'aggiornamento in tempo reale della barra di avanzamento. */
     private AnimationTimer progressTimer;
-
-    /** @brief Secondi trascorsi dall'inizio della riproduzione della traccia corrente. */
-    private long elapsedSeconds = 0;
 
 
     /**
@@ -328,6 +324,11 @@ public class PlaybackBarViewController implements CatalogObserver {
         }
     }
 
+    /**
+     * @brief Gestisce il click su Stop Traccia corrente.
+     * @details Ferma immediatamente la traccia corrente in riproduzione, disabilita tutti i pulsanti della barra
+     * di riproduzione, in tal modo la traccia non può più essere avviata.
+     */
     @FXML
     private void handleStop(ActionEvent event) {
         playbackController.stop();
@@ -349,8 +350,15 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @FXML
     void handlePrevious(ActionEvent event) {
-        if(elapsedSeconds <= 10)
+        // Tempo reale trascorso sulla traccia corrente (in secondi).
+        double elapsed = playbackController.getCurrentAudioTime();
+        if (elapsed <= 10) {
+            // Entro i primi 10s: torna alla traccia precedente.
             playbackController.previousTrack();
+        } else {
+            // Oltre i 10s: riavvia la traccia corrente dall'inizio.
+            playbackController.restartTrack();
+        }
         updateTrackInfo(playbackController.getCurrentTrack());
     }
 
@@ -422,6 +430,7 @@ public class PlaybackBarViewController implements CatalogObserver {
                     if (total > 0) {
                         progressBar.setValue(realElapsedSeconds / total);
                         labelCurrentTime.setText(TrackFormatter.formatDuration((int) realElapsedSeconds));
+                        labelTotalTime.setText("-"+TrackFormatter.formatDuration((int) (total - realElapsedSeconds)));
                     }
                 }
             }

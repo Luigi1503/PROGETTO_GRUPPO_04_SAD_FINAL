@@ -107,7 +107,6 @@ public class PlaybackController implements CatalogObserver {
             if (pathFileMp3 == null) {
                 System.err.println("[PlaybackController] ATTENZIONE: La traccia '"
                         + currentTrack.getTitle() + "' non ha un percorso MP3 valido (è null)!");
-                // Opzionale: puoi decidere di fare uno skip automatico se il file manca
                 this.skipTrack();
                 return;
             }
@@ -307,7 +306,7 @@ public class PlaybackController implements CatalogObserver {
      * Torna alla traccia precedente.
      * <p>
      * Se esiste una traccia precedente all'interno della sorgente corrente
-     * (es. una playlist con più tracce) vi torna direttamente. Se invece siamo
+     * (es. una playlist con più tracce) torna direttamente. Se invece siamo
      * già alla prima traccia della sorgente corrente, delega a {@link #previousSource()}
      * per tornare alla sorgente precedente nella coda. Quest'ultimo caso è ciò che
      * rende corretta la navigazione dal catalogo, dove ogni traccia è una sorgente
@@ -315,6 +314,14 @@ public class PlaybackController implements CatalogObserver {
      * {@link #skipTrack()} → {@link #skipSource()}).
      * </p>
      */
+    /**
+     * Riavvia la traccia corrente dall'inizio, senza cambiare traccia né sorgente.
+     */
+    public void restartTrack() {
+        avviaAudioFisico();
+        catalog.notifyTrackChanged(state.getCurrentTrack());
+    }
+
     public void previousTrack() {
         List<Track> tracks = state.getCurrentSource().getTracks();
         int currentIndex = tracks.indexOf(state.getCurrentTrack());
