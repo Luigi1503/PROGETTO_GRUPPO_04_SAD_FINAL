@@ -1,5 +1,8 @@
 package com.example.gruppo04.interfaces;
 
+import com.example.gruppo04.model.TagType;
+
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -93,5 +96,46 @@ public interface Track extends PlayableSource {
      * @param filePath Il percorso assoluto del file.
      */
     void setFilePath(String filePath);
+
+    /**
+     * Incrementa il numero di riproduzioni della traccia.
+     */
+    void incrementPlayCount();
+
+    /**
+     * Restituisce il numero di riproduzioni della traccia.
+     *
+     * @return numero di riproduzioni registrate
+     */
+    int getPlayCount();
+
+    /**
+     * Aggiunge un tag alla traccia.
+     *
+     * @param tag tag da aggiungere
+     */
+    void addTag(TagType tag);
+
+    /**
+     * Rimuove un tag dalla traccia.
+     *
+     * @param tag tag da rimuovere
+     */
+    void removeTag(TagType tag);
+
+    /**
+     * Restituisce i tag associati alla traccia.
+     *
+     * @return insieme non modificabile dei tag
+     */
+    Set<TagType> getTags();
+
+    /**
+     * Verifica se la traccia possiede un tag.
+     *
+     * @param tag tag da verificare
+     * @return true se il tag e' presente, false altrimenti
+     */
+    boolean hasTag(TagType tag);
 
 }

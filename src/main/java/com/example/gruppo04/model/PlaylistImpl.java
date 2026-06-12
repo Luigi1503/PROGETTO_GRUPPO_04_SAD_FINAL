@@ -10,6 +10,7 @@ public class PlaylistImpl implements Playlist {
     private String name;
     private final String id;
     private List<Track> tracks = new ArrayList<>();
+    private int playCount;
 
     /**
      * Implementazione di {@link Playlist} basata su lista ad accesso ordinato.
@@ -24,6 +25,7 @@ public class PlaylistImpl implements Playlist {
         }
         this.name = name;
         this.id = UUID.randomUUID().toString();
+        this.playCount = 0;
     }
 
     @Override
@@ -119,5 +121,14 @@ public class PlaylistImpl implements Playlist {
         return meta;
     }
 
+    @Override
+    public void incrementPlayCount() {
+        this.playCount++;
+    }
+
+    @Override
+    public int getPlayCount() {
+        return this.playCount;
+    }
 
 }

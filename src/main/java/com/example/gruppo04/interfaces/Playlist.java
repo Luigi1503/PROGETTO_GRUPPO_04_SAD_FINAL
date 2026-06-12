@@ -49,4 +49,16 @@ public interface Playlist extends PlayableSource {
      *         modificarla solleva {@link UnsupportedOperationException}
      */
     List<Track> getTracks();
+
+    /**
+     * Incrementa il numero di riproduzioni della playlist.
+     */
+    void incrementPlayCount();
+
+    /**
+     * Restituisce il numero di riproduzioni della playlist.
+     *
+     * @return numero di riproduzioni registrate
+     */
+    int getPlayCount();
 }

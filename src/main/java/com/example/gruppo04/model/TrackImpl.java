@@ -1,9 +1,12 @@
 package com.example.gruppo04.model;
 import com.example.gruppo04.interfaces.Track;
 
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.time.Year;
 
@@ -39,6 +42,12 @@ public class TrackImpl implements Track {
     /** @brief Il percorso assoluto del file audio nel file system locale. */
     private String filePath;
 
+    /** @brief Numero di avvii di riproduzione della traccia. */
+    private int playCount;
+
+    /** @brief Tag associati alla traccia. */
+    private Set<TagType> tags = EnumSet.noneOf(TagType.class);
+
 
     /**
      * @brief Costruisce una nuova traccia assegnandole un UUID generato automaticamente.
@@ -57,6 +66,7 @@ public class TrackImpl implements Track {
         setYear(year);
         setDuration(duration);
         this.filePath = filePath;
+        this.playCount = 0;
     }
 
 
@@ -249,6 +259,54 @@ public class TrackImpl implements Track {
     @Override
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    @Override
+    public void incrementPlayCount() {
+        this.playCount++;
+    }
+
+    @Override
+    public int getPlayCount() {
+        return this.playCount;
+    }
+
+    @Override
+    public void addTag(TagType tag) {
+        if (tag == null) {
+            throw new IllegalArgumentException("Il tag non puo essere nullo");
+        }
+        ensureTags().add(tag);
+    }
+
+    @Override
+    public void removeTag(TagType tag) {
+        if (tag == null) {
+            throw new IllegalArgumentException("Il tag non puo essere nullo");
+        }
+        ensureTags().remove(tag);
+    }
+
+    @Override
+    public Set<TagType> getTags() {
+        Set<TagType> copy = EnumSet.noneOf(TagType.class);
+        copy.addAll(ensureTags());
+        return Collections.unmodifiableSet(copy);
+    }
+
+    @Override
+    public boolean hasTag(TagType tag) {
+        if (tag == null) {
+            return false;
+        }
+        return ensureTags().contains(tag);
+    }
+
+    private Set<TagType> ensureTags() {
+        if (this.tags == null) {
+            this.tags = EnumSet.noneOf(TagType.class);
+        }
+        return this.tags;
     }
 
 
