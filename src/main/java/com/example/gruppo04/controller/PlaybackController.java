@@ -233,8 +233,9 @@ public class PlaybackController implements CatalogObserver {
                 skipSource();
                 return;
             }
-            state.setCurrentSource(nextSource);
-            state.setCurrentTrack(nextSource.getTracks().get(0));
+                state.setCurrentSource(nextSource);
+                state.setCurrentTrack(nextSource.getTracks().get(0));
+                incrementPlayCounters(nextSource);
             System.out.println("[PlaybackController.skipSource] → prima traccia della nuova sorgente: "
                     + nextSource.getTracks().get(0).getTitle());
             avviaAudioFisico();
@@ -372,8 +373,9 @@ public class PlaybackController implements CatalogObserver {
             PlayableSource prevSource = queue.get(prevIndex);
             List<Track> prevTracks = prevSource.getTracks();
             state.setCurrentSource(prevSource);
-            PlayableSource previousSource = prevTracks.get(prevTracks.size() - 1);
-            incrementPlayCounters(previousSource);
+            Track previousTrack = prevTracks.get(prevTracks.size() - 1);
+            state.setCurrentTrack(previousTrack);
+            incrementPlayCounters(prevSource);
         }
         // Se non c'è una sorgente precedente, riavvia la traccia corrente da capo.
 

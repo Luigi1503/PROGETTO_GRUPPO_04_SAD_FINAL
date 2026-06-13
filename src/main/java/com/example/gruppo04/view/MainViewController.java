@@ -95,7 +95,7 @@ public class MainViewController implements CatalogObserver {
         catalog.registerObserver(this);
         playbackBarController.init(playbackController, catalog);
         updateSidebarPlaylists();
-        showAllTracks();
+        showHome();
     }
 
     /**
@@ -190,6 +190,23 @@ public class MainViewController implements CatalogObserver {
     }
 
     /**
+     * Mostra la Home con le sezioni "Tracce più ascoltate" e "Playlist più ascoltate".
+     */
+    private void showHome() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/gruppo04/Views/HomeView.fxml"));
+            Node view = loader.load();
+            HomeViewController controller = loader.getController();
+            controller.init(trackController, playlistController, playbackController, catalog);
+            setContent(view, controller);
+            setActiveButton(btnHome);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Errore nel caricamento di HomeView", e);
+        }
+    }
+
+    /**
      * Sostituisce il contenuto dell'area centrale con il nodo fornito.
      *
      * @param node il pannello da mostrare
@@ -232,13 +249,10 @@ public class MainViewController implements CatalogObserver {
 
     /**
      * Gestisce il click su "Home".
-     * TODO: Sprint 2 — mostrare Most Played e Recent Playlists.
      */
     @FXML
     void handleHome(ActionEvent event) {
-        // TODO: Sprint 2 — implementare la home page con Most Played
-        showAllTracks();
-        setActiveButton(btnHome);
+        showHome();
     }
 
     /**
