@@ -131,4 +131,9 @@ public class PlaylistImpl implements Playlist {
         return this.playCount;
     }
 
+    @Override
+    public void moveTrack(int from, int to) {
+        Track track = tracks.remove(from);
+        tracks.add(to, track);
+    }
 }

@@ -5,6 +5,10 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
+import com.example.gruppo04.model.strategy.LoopStrategy;
+import com.example.gruppo04.model.strategy.PlaybackStrategy;
+import com.example.gruppo04.model.strategy.SequentialStrategy;
+import com.example.gruppo04.model.strategy.ShuffleStrategy;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import javafx.event.ActionEvent;
@@ -12,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -42,6 +47,20 @@ public class MainViewController implements CatalogObserver {
 
     /** Pulsante di navigazione Playlists. */
     @FXML private Button btnPlaylists;
+
+    /* Pulsante di Help Box*/
+    @FXML private Button btnHelp;
+
+    /*Box di Help*/
+    @FXML private VBox helpBox;
+
+    /* Tag per evidenziare la strategia attiva nella HelpBox*/
+    @FXML private VBox cellCatalogSequential;
+    @FXML private VBox cellCatalogLoop;
+    @FXML private VBox cellCatalogShuffle;
+    @FXML private VBox cellPlaylistSequential;
+    @FXML private VBox cellPlaylistLoop;
+    @FXML private VBox cellPlaylistShuffle;
 
     /**
      * Controller della barra di riproduzione.
@@ -111,6 +130,11 @@ public class MainViewController implements CatalogObserver {
             case PLAYLIST_REMOVED:
             case PLAYLIST_RENAMED:
                 updateSidebarPlaylists();
+                break;
+            case STRATEGY_CHANGED:
+                if (helpBox.isVisible()) {
+                    highlightStrategy(playbackController.getCurrentStrategy());
+                }
                 break;
             default:
                 break;
@@ -229,7 +253,6 @@ public class MainViewController implements CatalogObserver {
                 "-fx-background-radius: 6;" +
                 "-fx-cursor: hand;");
     }
-
     /**
      * Gestisce il click su "Home".
      * TODO: Sprint 2 — mostrare Most Played e Recent Playlists.
@@ -255,5 +278,48 @@ public class MainViewController implements CatalogObserver {
     @FXML
     void handlePlaylists(ActionEvent event) {
         showPlaylists();
+    }
+
+
+    /**
+     *
+     *
+     * Gestisce il click sull'Help Button
+     *
+     */
+    @FXML
+    void handleHelp(ActionEvent event) {
+        boolean visible = !helpBox.isVisible();
+        helpBox.setVisible(visible);
+        helpBox.setManaged(visible);
+        if (visible) {
+            highlightStrategy(playbackController.getCurrentStrategy());
+        }
+    }
+
+    private void highlightStrategy(PlaybackStrategy strategy) {
+        boolean isPlaylist = playbackController.getCurrentSource() instanceof Playlist;
+
+        String active   = "-fx-background-color: #1D9E75; -fx-padding: 10; -fx-background-radius: 6;";
+        String inactive = "-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;";
+
+        // reset tutte le celle
+        for (VBox cell : new VBox[]{cellCatalogSequential, cellCatalogLoop, cellCatalogShuffle,
+                cellPlaylistSequential, cellPlaylistLoop, cellPlaylistShuffle}) {
+            cell.setStyle(inactive);
+        }
+
+        // evidenzia la cella attiva solo se c'è una riproduzione in corso
+        if (!playbackController.isStopped()) {
+            if (isPlaylist) {
+                if (strategy instanceof SequentialStrategy)      cellPlaylistSequential.setStyle(active);
+                else if (strategy instanceof ShuffleStrategy)    cellPlaylistShuffle.setStyle(active);
+                else if (strategy instanceof LoopStrategy)       cellPlaylistLoop.setStyle(active);
+            } else {
+                if (strategy instanceof SequentialStrategy)      cellCatalogSequential.setStyle(active);
+                else if (strategy instanceof ShuffleStrategy)    cellCatalogShuffle.setStyle(active);
+                else if (strategy instanceof LoopStrategy)       cellCatalogLoop.setStyle(active);
+            }
+        }
     }
 }
