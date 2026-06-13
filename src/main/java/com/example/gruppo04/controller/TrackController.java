@@ -1,5 +1,9 @@
 package com.example.gruppo04.controller;
 
+import com.example.gruppo04.command.AddTrackCommand;
+import com.example.gruppo04.command.Command;
+import com.example.gruppo04.command.CommandManager;
+import com.example.gruppo04.command.RemoveTrackCommand;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.model.TrackImpl;
@@ -26,6 +30,7 @@ public class TrackController {
      * implementazioni concrete in fase di testing o refactoring.
      */
     private final MusicCatalog catalog;
+    private CommandManager managerTrack;
 
     /**
      * @brief Costruttore del controller che inizializza la dipendenza del catalogo.
@@ -41,6 +46,7 @@ public class TrackController {
             throw new IllegalArgumentException("Il catalogo non può essere nullo.");
         }
         this.catalog = catalog;
+        this.managerTrack = new CommandManager();
     }
 
     /**
@@ -62,7 +68,8 @@ public class TrackController {
      */
     public void addTrack(String title, String author, String genre, int year, int duration, String filePath) {
         Track newTrack = new TrackImpl(title, author, genre, year, duration, filePath);
-        catalog.addTrack(newTrack);
+        Command cmd = new AddTrackCommand(newTrack, catalog);
+        managerTrack.executeCommand(cmd);
     }
 
     /**
@@ -128,7 +135,8 @@ public class TrackController {
      */
     public void removeTrack(Track trackToRemove) {
         if (trackToRemove != null) {
-            catalog.removeTrack(trackToRemove.getId());
+            Command cmd = new RemoveTrackCommand(trackToRemove, catalog);
+            managerTrack.executeCommand(cmd);
         }
     }
 
@@ -145,6 +153,9 @@ public class TrackController {
         return catalog.getAllTracks();
     }
 
+    public CommandManager getManager() {
+        return this.managerTrack;
+    }
 
 
 }

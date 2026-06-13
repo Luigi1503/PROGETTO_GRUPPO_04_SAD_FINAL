@@ -7,17 +7,13 @@ import java.util.Stack;
 
 
 public class CommandManager {
-    private static final CommandManager instance = new CommandManager();
     private Stack<Command> stack;
     private final BooleanProperty canUndoProperty = new SimpleBooleanProperty(false);
 
-    private CommandManager() {
+    public CommandManager() {
         this.stack = new Stack<>();
     }
 
-    public static CommandManager getInstance() {
-        return instance;
-    }
 
     public void executeCommand(Command cmd){
         if (cmd != null) {

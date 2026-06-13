@@ -1,5 +1,6 @@
 package com.example.gruppo04.view;
 
+import com.example.gruppo04.command.CommandManager;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
@@ -20,6 +21,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,10 @@ public class TrackListViewController implements CatalogObserver {
     private MenuItem menuEdit;
     @FXML
     private MenuItem menuPlay;
+
+
+    /** Pulsante per fare undo dell'inserimento di inserimento di una canzone nella playlist */
+    @FXML private Button undoBtn;
 
     private PlaybackController playbackController;
 
@@ -89,6 +96,33 @@ public class TrackListViewController implements CatalogObserver {
         // vista mentre un brano è in riproduzione dal catalogo, l'indicazione deve
         // riapparire subito senza attendere il prossimo evento di cambio traccia.
         syncHighlight();
+
+        //Aggiungiamo in listener per disabilitare il bottone quando nno puo essere premuto il comando di undo
+        CommandManager manager = controller.getManager();
+        boolean statoAttuale = manager.canUndoProperty().get();
+        undoBtn.setDisable(!statoAttuale);
+
+        manager.canUndoProperty().addListener((observable, vecchioValore, nuovoValore) -> {
+            if (nuovoValore == true) {
+                undoBtn.setDisable(false);
+            } else {
+                undoBtn.setDisable(true);
+            }
+        });
+
+        // 1. Carica l'immagine (assicurati che il percorso sia corretto)
+        Image undoIcon = new Image(getClass().getResourceAsStream("/img/undo.png"));
+
+        // 2. Mettila in una ImageView e ridimensionala
+        ImageView iconView = new ImageView(undoIcon);
+        iconView.setFitHeight(20);
+        iconView.setFitWidth(20);
+        iconView.setPreserveRatio(true);
+
+        // 3. Assegnala al bottone e togli il testo
+        undoBtn.setGraphic(iconView);
+        undoBtn.setText("");
+
     }
 
     /**
@@ -163,6 +197,26 @@ public class TrackListViewController implements CatalogObserver {
 
             return row;
         });
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+    /**
+     * È il gestore dell'undo, permette di
+     * tornare indietro ed elminare la scelta fatta in precedenza.
+     */
+    @FXML
+    private void handleUndo(){
+        controller.getManager().undo();
     }
 
     private void configureColumns() {

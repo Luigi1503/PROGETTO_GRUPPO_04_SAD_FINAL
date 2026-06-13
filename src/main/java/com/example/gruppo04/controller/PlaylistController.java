@@ -1,5 +1,6 @@
 package com.example.gruppo04.controller;
 
+import com.example.gruppo04.command.*;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
@@ -15,12 +16,17 @@ import com.example.gruppo04.interfaces.Track;
 public class PlaylistController {
     private final MusicCatalog catalog;
 
+    private final CommandManager managerPlaylist;       // Per creare/eliminare playlist
+    private final CommandManager managerTrackPlaylist; // Per aggiungere/togliere brani dalla playlist
+
     /**
      * @param catalog il catalogo a cui delegare le operazioni; iniettato dal
      *                composition root (la MainWindow)
      */
     public PlaylistController(MusicCatalog catalog) {
         this.catalog = catalog;
+        this.managerPlaylist = new CommandManager();
+        this.managerTrackPlaylist = new CommandManager();
     }
 
     /**
@@ -32,7 +38,9 @@ public class PlaylistController {
      *         valore con cui la View mostra il riscontro
      */
     public boolean createPlaylist(String name) {
-        return catalog.createPlaylist(name);
+        Command cmd = new AddPlaylistCommand(catalog, name);
+        managerPlaylist.executeCommand(cmd);
+        return true;
     }
 
     /**
@@ -56,7 +64,9 @@ public class PlaylistController {
      * @return {@code true} se rimossa, {@code false} se non presente
      */
     public boolean deletePlaylist(Playlist playlist) {
-        return catalog.deletePlaylist(playlist);
+        Command cmd = new RemovePlaylistCommand(playlist, catalog);
+        managerPlaylist.executeCommand(cmd);
+        return true;
     }
 
     /**
@@ -69,7 +79,9 @@ public class PlaylistController {
      *         presente nella playlist
      */
     public boolean addTrackToPlaylist(Playlist playlist, Track track) {
-        return catalog.addTrackToPlaylist(playlist, track);
+        Command cmd = new AddTrackToPlaylistCommand(track, catalog, playlist);
+        managerTrackPlaylist.executeCommand(cmd);
+        return true;
     }
 
     /**
@@ -82,8 +94,19 @@ public class PlaylistController {
      *         presente nella playlist
      */
     public boolean removeTrackFromPlaylist(Playlist playlist, Track track) {
-        return catalog.removeTrackFromPlaylist(playlist, track);
+        Command cmd = new RemoveTrackFromPlaylistCommand(playlist, track, catalog);
+        managerTrackPlaylist.executeCommand(cmd);
+        return true;
     }
 
-    
+
+
+    public CommandManager getManagerPlaylist() {
+        return this.managerPlaylist;
+    }
+
+
+    public CommandManager getManagerTrackPlaylist() {
+        return this.managerTrackPlaylist;
+    }
 }
