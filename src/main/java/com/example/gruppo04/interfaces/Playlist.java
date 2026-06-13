@@ -61,4 +61,12 @@ public interface Playlist extends PlayableSource {
      * @return numero di riproduzioni registrate
      */
     int getPlayCount();
+
+    /**
+     * Sposta la traccia dalla posizione {@code from} alla posizione {@code to}.
+     *
+     * @param from indice di partenza della traccia
+     * @param to   indice di destinazione della traccia
+     */
+    void moveTrack(int from, int to);
 }

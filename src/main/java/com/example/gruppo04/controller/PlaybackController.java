@@ -423,4 +423,15 @@ public class PlaybackController implements CatalogObserver {
     public double getCurrentAudioTime() {
         return audioEngine.getCurrentTimeInSeconds();
     }
+
+    /**
+     * @return il nome semplice della strategia di riproduzione attiva
+     *         (es. "SequentialStrategy", "ShuffleStrategy", "LoopStrategy")
+     */
+    /**
+     * @return la strategia di riproduzione attualmente attiva
+     */
+    public PlaybackStrategy getCurrentStrategy() {
+        return state.getStrategy();
+    }
 }

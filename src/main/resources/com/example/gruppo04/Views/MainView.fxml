@@ -28,6 +28,19 @@
                     <FontIcon iconLiteral="mdi2m-music-circle" iconSize="20" iconColor="#1D9E75"/>
                 </graphic>
             </Label>
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Bottone help -->
+            <Button fx:id="btnHelp" text="?" onAction="#handleHelp"
+                    style="-fx-background-color: #1B2A2F;
+                       -fx-text-fill: #E8EDF0;
+                       -fx-font-size: 14px;
+                       -fx-font-weight: bold;
+                       -fx-background-radius: 50%;
+                       -fx-min-width: 30px;
+                       -fx-min-height: 30px;
+                       -fx-cursor: hand;"/>
         </HBox>
     </top>
 
@@ -111,8 +124,134 @@
          AREA CENTRALE — pannelli intercambiabili
          ══════════════════════════════════════ -->
     <center>
-        <StackPane fx:id="contentArea"
-                   style="-fx-background-color: #111C22;">
+        <StackPane>
+            <StackPane fx:id="contentArea"
+                       style="-fx-background-color: #111C22;"/>
+
+            <!-- Pannello help — nascosto di default -->
+            <VBox fx:id="helpBox" visible="false" managed="false"
+                  alignment="TOP_CENTER"
+                  style="-fx-background-color: #0D1519;
+                     -fx-padding: 32;
+                     -fx-border-color: #1B2A2F;
+                     -fx-border-width: 1;">
+
+                <Label text="Guida alle modalità di riproduzione"
+                       style="-fx-text-fill: #1D9E75;
+                          -fx-font-size: 15px;
+                          -fx-font-weight: bold;
+                          -fx-padding: 0 0 20 0;"/>
+
+                <GridPane hgap="16" vgap="16">
+
+                    <!-- ── Intestazioni colonne ── -->
+                    <Label text=""
+                           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+                    <Label fx:id="lblSequential" text="▶  Sequential"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0"
+                           style="-fx-text-fill: #1D9E75; -fx-font-weight: bold; -fx-font-size: 13px;
+                  -fx-background-color: transparent; -fx-padding: 6 12 6 12;
+                  -fx-background-radius: 6;"/>
+
+                    <Label fx:id="lblShuffle" text="⇄  Shuffle"
+                           GridPane.columnIndex="2" GridPane.rowIndex="0"
+                           style="-fx-text-fill: #1D9E75; -fx-font-weight: bold; -fx-font-size: 13px;
+                  -fx-background-color: transparent; -fx-padding: 6 12 6 12;
+                  -fx-background-radius: 6;"/>
+
+                    <Label fx:id="lblLoop" text="↺  Loop"
+                           GridPane.columnIndex="3" GridPane.rowIndex="0"
+                           style="-fx-text-fill: #1D9E75; -fx-font-weight: bold; -fx-font-size: 13px;
+                  -fx-background-color: transparent; -fx-padding: 6 12 6 12;
+                  -fx-background-radius: 6;"/>
+
+                    <!-- ── Riga Catalogo ── -->
+                    <Label text="Catalogo"
+                           GridPane.columnIndex="0" GridPane.rowIndex="1"
+                           style="-fx-text-fill: #8AABAE; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+
+                    <VBox fx:id="cellCatalogSequential" spacing="6"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1"
+                          style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
+                        <Label text="⏭  →  traccia successiva in ordine"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮  →  traccia precedente in ordine"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="Traccia Terminata  →  traccia successiva in ordine"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                    <VBox fx:id="cellCatalogShuffle" spacing="6"
+                          GridPane.columnIndex="2" GridPane.rowIndex="1"
+                          style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
+                        <Label text="⏭  →  traccia casuale dal catalogo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮  →  traccia casuale dal catalogo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="Traccia Terminata  →  traccia casuale dal catalogo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                    <VBox fx:id="cellCatalogLoop" spacing="6"
+                          GridPane.columnIndex="3" GridPane.rowIndex="1"
+                          style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
+                        <Label text="⏭  →  stessa traccia"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮  →  stessa traccia"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="Traccia Terminata  →  stessa traccia in loop"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                    <!-- ── Riga Playlist ── -->
+                    <Label text="Playlist"
+                           GridPane.columnIndex="0" GridPane.rowIndex="2"
+                           style="-fx-text-fill: #8AABAE; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+
+                    <VBox fx:id="cellPlaylistSequential" spacing="6"
+                          GridPane.columnIndex="1" GridPane.rowIndex="2"
+                          style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
+                        <Label text="⏭  →  traccia successiva in ordine"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮  →  traccia precedente (anche in altra playlist)"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏭⏭  →  playlist successiva nel catalogo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮⏮  →  playlist precedente nel catalogo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="Playlist Terminata  →  traccia successiva, poi playlist successiva"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                    <VBox fx:id="cellPlaylistShuffle" spacing="6"
+                          GridPane.columnIndex="2" GridPane.rowIndex="2"
+                          style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
+                        <Label text="⏭  →  traccia casuale nella playlist"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏭⏭  →  playlist casuale dal catalogo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮⏮  →  playlist casuale dal catalogo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="Playlist Terminata  →  traccia casuale, resta nella playlist"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                    <VBox fx:id="cellPlaylistLoop" spacing="6"
+                          GridPane.columnIndex="3" GridPane.rowIndex="2"
+                          style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
+                        <Label text="⏭  →  traccia successiva in ordine"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏭⏭  →  playlist corrente riparte da capo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮⏮  →  playlist corrente riparte da capo"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="Playlist Terminata  →  sequenza in loop sulla playlist"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                </GridPane>
+            </VBox>
         </StackPane>
     </center>
 

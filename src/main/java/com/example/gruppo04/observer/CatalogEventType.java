@@ -38,5 +38,5 @@ public enum CatalogEventType {
     TRACK_CHANGED,
 
     /** Rilasciato quando la riproduzione viene fermata del tutto (stop/fine coda). */
-    PLAYBACK_STOPPED
+    PLAYBACK_STOPPED,
 }
