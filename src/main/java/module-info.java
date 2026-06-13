@@ -32,7 +32,6 @@ module com.example.gruppo04 {
     exports com.example.gruppo04.model.strategy;
     opens com.example.gruppo04.model.strategy to javafx.base, javafx.fxml;
 
-    exports com.example.gruppo04.model.FactoryMethod;
-    opens com.example.gruppo04.model.FactoryMethod to javafx.fxml;
+    exports com.example.gruppo04.model.factoryMethod;
 
 }

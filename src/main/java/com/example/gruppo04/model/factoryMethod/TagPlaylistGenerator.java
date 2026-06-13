@@ -1,4 +1,4 @@
-package com.example.gruppo04.model.FactoryMethod;
+package com.example.gruppo04.model.factoryMethod;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
