@@ -226,6 +226,7 @@ public class PlaybackController implements CatalogObserver {
                     + nextSource.getTracks().get(0).getTitle());
             avviaAudioFisico();
             catalog.notifyTrackChanged(state.getCurrentTrack());
+            catalog.notifySourceChanged(nextSource);
         } else {
             stop();
             System.out.println("[PlaybackController.skipSource] → riproduzione fermata (stop)");
@@ -357,6 +358,8 @@ public class PlaybackController implements CatalogObserver {
             PlayableSource prevSource = queue.get(prevIndex);
             List<Track> prevTracks = prevSource.getTracks();
             state.setCurrentSource(prevSource);
+            if (prevSource instanceof Playlist)
+                catalog.notifySourceChanged((Playlist) prevSource);
             state.setCurrentTrack(prevTracks.get(prevTracks.size() - 1));
         }
         // Se non c'è una sorgente precedente, riavvia la traccia corrente da capo.
@@ -385,6 +388,13 @@ public class PlaybackController implements CatalogObserver {
      */
     public boolean isStopped() {
         return state.isStopped();
+    }
+
+    /**
+     * @return {@code true} se la riproduzione è in corso
+     */
+    public boolean isPlaying() {
+        return state.isPlaying();
     }
 
     /**

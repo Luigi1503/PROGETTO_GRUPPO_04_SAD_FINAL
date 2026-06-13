@@ -155,6 +155,15 @@ public interface MusicCatalog {
      */
     public void notifyTrackChanged(Track track);
 
+
+    /**
+     * Notifica tutti gli observer registrati dell'inizio della riproduzione
+     * di una sorgente
+     *
+     * @param source la playlist attuale
+     */
+    public void notifySourceChanged(PlayableSource source);
+
     /**
      * Notifica tutti gli observer registrati che la riproduzione è stata
      * fermata del tutto, così che le viste possano azzerare l'evidenziazione

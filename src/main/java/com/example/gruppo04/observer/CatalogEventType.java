@@ -37,6 +37,9 @@ public enum CatalogEventType {
     /** Rilasciato quando la traccia in riproduzione cambia (skip, fine traccia, previous). */
     TRACK_CHANGED,
 
+    /** Rilasciato quando la sorgente in riproduzione cambia (skip, fine traccia, previous). */
+    SOURCE_CHANGED,
+
     /** Rilasciato quando la riproduzione viene fermata del tutto (stop/fine coda). */
     PLAYBACK_STOPPED,
 }
