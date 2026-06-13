@@ -5,6 +5,7 @@ import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.TagType;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -168,6 +169,23 @@ class PersistenceManagerTest {
         assertEquals(original.getYear(),     loaded.getYear());
         assertEquals(original.getDuration(), loaded.getDuration());
         assertEquals(original.getId(),       loaded.getId());
+    }
+
+    @Test
+    void saveAndLoad_trackTags() throws IOException, ClassNotFoundException {
+        trackController.addTrack("Bohemian Rhapsody", "Queen", "Rock", 1975, 354, "queen.mp3");
+        Track original = catalog.getAllTracks().iterator().next();
+        original.addTag(TagType.FAVOURITE);
+        original.addTag(TagType.NEW_RELEASE);
+
+        pm.save(catalog);
+        ConcreteMusicCatalog.getInstance().reset();
+        pm.load();
+
+        Track loaded = catalog.getAllTracks().iterator().next();
+        assertTrue(loaded.hasTag(TagType.FAVOURITE));
+        assertTrue(loaded.hasTag(TagType.NEW_RELEASE));
+        assertFalse(loaded.hasTag(TagType.EXPLICIT));
     }
 
     /**

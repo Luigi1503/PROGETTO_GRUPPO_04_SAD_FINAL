@@ -101,7 +101,7 @@ public class PlaylistImpl implements Playlist {
      */
     @Override
     public List<Track> getTracks() {
-        return new ArrayList<>(this.tracks);
+        return Collections.unmodifiableList(new ArrayList<>(this.tracks));
     }
 
     /**
