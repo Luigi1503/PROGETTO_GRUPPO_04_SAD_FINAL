@@ -24,6 +24,7 @@ module com.example.gruppo04 {
     exports com.example.gruppo04.interfaces;
     exports com.example.gruppo04.observer;
     exports com.example.gruppo04.util;
+    exports com.example.gruppo04.model.factory_method;
 
     exports com.example.gruppo04.view to javafx.graphics;
     opens com.example.gruppo04.view to javafx.fxml;
@@ -32,6 +33,6 @@ module com.example.gruppo04 {
     exports com.example.gruppo04.model.strategy;
     opens com.example.gruppo04.model.strategy to javafx.base, javafx.fxml;
 
-    exports com.example.gruppo04.model.factoryMethod;
+
 
 }
