@@ -13,8 +13,11 @@ import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.model.state.PlaybackState;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 import com.example.gruppo04.model.AudioEngine;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Controller responsabile della gestione della riproduzione musicale.
@@ -29,6 +32,18 @@ public class PlaybackController implements CatalogObserver {
     private PlaybackState state;
     private MusicCatalog catalog;
     private AudioEngine audioEngine;
+
+    /**
+     * Storico di riproduzione effettivo (coppie sorgente+traccia), usato dalle
+     * strategie che basano il "torna indietro" (⏮) sullo storico reale anziché
+     * sull'ordine — vedi {@link PlaybackStrategy#usesHistoryForPrevious()}.
+     * Viene alimentato a ogni avanzamento e azzerato all'avvio di una nuova coda.
+     */
+    private final Deque<HistoryEntry> playbackHistory = new ArrayDeque<>();
+
+    /** Voce dello storico di riproduzione: la sorgente e la traccia riprodotte. */
+    private record HistoryEntry(PlayableSource source, Track track) {
+    }
 
     /**
      * Costruisce un {@code PlaybackController} con lo stato di riproduzione fornito.
@@ -69,6 +84,9 @@ public class PlaybackController implements CatalogObserver {
         System.out.println("[PlaybackController.play] strategia attiva: "
                 + state.getStrategy().getClass().getSimpleName());
         // ──────────────────────────────────────────────────────────────────────
+
+        // Nuova coda → lo storico di riproduzione precedente non è più rilevante.
+        playbackHistory.clear();
 
         state.loadQueue(queue);
         state.setCurrentSource(startFrom);
@@ -175,6 +193,10 @@ public class PlaybackController implements CatalogObserver {
                 ? state.getCurrentTrack().getTitle() : "null"));
         // ──────────────────────────────────────────────────────────────────────
 
+        // Registra il brano corrente nello storico prima di avanzare, così che
+        // il "torna indietro" possa riportare esattamente qui.
+        recordHistory();
+
         List<Track> tracks = state.getCurrentSource().getTracks();
         int currentIndex = tracks.indexOf(state.getCurrentTrack());
 
@@ -208,6 +230,11 @@ public class PlaybackController implements CatalogObserver {
      * </p>
      */
     public void skipSource() {
+        // Registra il brano corrente nello storico prima di avanzare. Quando
+        // skipSource è invocato da skipTrack la voce è già presente: recordHistory
+        // de-duplica e non la inserisce due volte.
+        recordHistory();
+
         // ── DEBUG ──────────────────────────────────────────────────────────────
         System.out.println("[PlaybackController.skipSource] === SKIP SORGENTE ===");
         List<PlayableSource> queue = state.getQueue();
@@ -325,18 +352,6 @@ public class PlaybackController implements CatalogObserver {
         }
     }
     /**
-     * Torna alla traccia precedente.
-     * <p>
-     * Se esiste una traccia precedente all'interno della sorgente corrente
-     * (es. una playlist con più tracce) torna direttamente. Se invece siamo
-     * già alla prima traccia della sorgente corrente, delega a {@link #previousSource()}
-     * per tornare alla sorgente precedente nella coda. Quest'ultimo caso è ciò che
-     * rende corretta la navigazione dal catalogo, dove ogni traccia è una sorgente
-     * singola e la navigazione avviene a livello di coda (in modo simmetrico a
-     * {@link #skipTrack()} → {@link #skipSource()}).
-     * </p>
-     */
-    /**
      * Riavvia la traccia corrente dall'inizio, senza cambiare traccia né sorgente.
      */
     public void restartTrack() {
@@ -344,55 +359,143 @@ public class PlaybackController implements CatalogObserver {
         catalog.notifyTrackChanged(state.getCurrentTrack());
     }
 
+    /**
+     * Torna alla traccia precedente secondo la strategia attiva.
+     * <p>
+     * Per le strategie che usano lo storico reale ({@link
+     * PlaybackStrategy#usesHistoryForPrevious()}, es. Shuffle) torna al brano che
+     * ha effettivamente preceduto quello corrente — anche se appartiene a un'altra
+     * sorgente, come nel catalogo — oppure riavvia il brano corrente se lo storico
+     * è vuoto. Per le strategie deterministiche delega invece alla strategia
+     * (simmetrico a {@link #skipTrack()} → {@link PlaybackStrategy#nextTrack});
+     * un valore {@code null} indica l'inizio della sorgente e si passa alla
+     * sorgente precedente riprendendone l'ultima traccia (sequenza inversa continua).
+     * Rispetta il pannello Help: in ordine (Sequential), brano precedentemente
+     * riprodotto (Shuffle), ciclica/stessa traccia (Loop).
+     * </p>
+     */
     public void previousTrack() {
+        if (state.getStrategy().usesHistoryForPrevious()) {
+            playPreviousFromHistory();
+            return;
+        }
+
         List<Track> tracks = state.getCurrentSource().getTracks();
         int currentIndex = tracks.indexOf(state.getCurrentTrack());
-        if (currentIndex > 0) {
-            // C'è una traccia precedente all'interno della sorgente corrente.
-            Track previousTrack = tracks.get(currentIndex - 1);
-            state.setCurrentTrack(previousTrack);
-            incrementPlayCounters(previousTrack);
+
+        Track previous = state.getStrategy().previousTrack(tracks, currentIndex);
+        if (previous != null) {
+            state.setCurrentTrack(previous);
+            incrementPlayCounters(previous);
             avviaAudioFisico();
             catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
-            // Siamo all'inizio della sorgente corrente: torna alla sorgente precedente.
-            previousSource();
+            // Inizio sorgente secondo la strategia: torna alla sorgente precedente
+            // riprendendone l'ultima traccia (sequenza inversa continua).
+            goToPreviousSource(true);
         }
     }
 
     /**
-     * Torna alla sorgente precedente nella coda e ne riproduce l'ultima traccia.
+     * Registra la sorgente e la traccia correnti in cima allo storico di
+     * riproduzione, evitando voci duplicate consecutive.
+     */
+    private void recordHistory() {
+        PlayableSource source = state.getCurrentSource();
+        Track track = state.getCurrentTrack();
+        if (source == null || track == null) {
+            return;
+        }
+        HistoryEntry top = playbackHistory.peek();
+        if (top != null && Objects.equals(top.source(), source) && Objects.equals(top.track(), track)) {
+            return;
+        }
+        playbackHistory.push(new HistoryEntry(source, track));
+    }
+
+    /**
+     * Riproduce il brano precedentemente riprodotto preso dallo storico reale,
+     * spostandosi anche su un'altra sorgente se necessario (es. nel catalogo dove
+     * ogni traccia è una sorgente a sé). Le voci non più valide (sorgente assente
+     * dalla coda o traccia rimossa) vengono scartate. Se lo storico è vuoto,
+     * riavvia il brano corrente da capo.
+     */
+    private void playPreviousFromHistory() {
+        while (!playbackHistory.isEmpty()) {
+            HistoryEntry entry = playbackHistory.pop();
+            if (state.getQueue().contains(entry.source())
+                    && entry.source().getTracks().contains(entry.track())) {
+                state.setCurrentSource(entry.source());
+                state.setCurrentTrack(entry.track());
+                incrementPlayCounters(entry.source());
+                avviaAudioFisico();
+                catalog.notifyTrackChanged(state.getCurrentTrack());
+                if (entry.source() instanceof Playlist playlist) {
+                    catalog.notifySourceChanged(playlist);
+                }
+                return;
+            }
+        }
+        // Nessun brano precedente nello storico → riavvia la traccia corrente.
+        avviaAudioFisico();
+        catalog.notifyTrackChanged(state.getCurrentTrack());
+    }
+
+    /**
+     * Torna alla sorgente precedente nella coda secondo la strategia attiva
+     * (pulsante "playlist precedente"), facendone ripartire la prima traccia.
      * <p>
-     * Se non esiste una sorgente precedente (siamo già alla prima della coda)
-     * riavvia da capo la traccia corrente.
+     * Simmetrico a {@link #skipSource()}: la scelta della sorgente è delegata alla
+     * strategia ({@link PlaybackStrategy#previousSource}) e rispetta il pannello
+     * Help — playlist precedente (Sequential), playlist casuale (Shuffle), playlist
+     * corrente che riparte da capo (Loop).
      * </p>
      */
     public void previousSource() {
+        goToPreviousSource(false);
+    }
+
+    /**
+     * Sposta la riproduzione alla sorgente precedente scelta dalla strategia.
+     *
+     * @param playLastTrack se {@code true} riprende l'ultima traccia della sorgente
+     *        precedente (usato dal "torna alla traccia precedente" quando attraversa
+     *        i confini della sorgente); se {@code false} riparte dalla prima traccia
+     *        (usato dal pulsante "playlist precedente", simmetrico a {@link #skipSource()}).
+     */
+    private void goToPreviousSource(boolean playLastTrack) {
         List<PlayableSource> queue = state.getQueue();
         int currentIndex = queue.indexOf(state.getCurrentSource());
 
-        // Cerca la prima sorgente precedente non vuota.
-        int prevIndex = currentIndex - 1;
-        while (prevIndex >= 0 && queue.get(prevIndex).getTracks().isEmpty()) {
-            prevIndex--;
+        PlayableSource prevSource = state.getStrategy().previousSource(queue, currentIndex);
+
+        if (prevSource == null) {
+            // Nessuna sorgente precedente: riavvia la traccia corrente da capo.
+            avviaAudioFisico();
+            catalog.notifyTrackChanged(state.getCurrentTrack());
+            return;
         }
 
-        if (prevIndex >= 0) {
-            PlayableSource prevSource = queue.get(prevIndex);
-            List<Track> prevTracks = prevSource.getTracks();
+        // Salta eventuali sorgenti precedenti vuote (simmetrico a skipSource()).
+        if (prevSource.getTracks().isEmpty()) {
             state.setCurrentSource(prevSource);
-
-            if (prevSource instanceof Playlist)
-                catalog.notifySourceChanged((Playlist) prevSource);
-            state.setCurrentTrack(prevTracks.get(prevTracks.size() - 1));
-            Track previousTrack = prevTracks.get(prevTracks.size() - 1);
-            state.setCurrentTrack(previousTrack);
-            incrementPlayCounters(prevSource);
+            goToPreviousSource(playLastTrack);
+            return;
         }
-        // Se non c'è una sorgente precedente, riavvia la traccia corrente da capo.
 
+        state.setCurrentSource(prevSource);
+        List<Track> prevTracks = prevSource.getTracks();
+        Track target = playLastTrack
+                ? prevTracks.get(prevTracks.size() - 1)
+                : prevTracks.get(0);
+        state.setCurrentTrack(target);
+        incrementPlayCounters(prevSource);
         avviaAudioFisico();
+
         catalog.notifyTrackChanged(state.getCurrentTrack());
+        if (prevSource instanceof Playlist playlist) {
+            catalog.notifySourceChanged(playlist);
+        }
     }
 
     /**

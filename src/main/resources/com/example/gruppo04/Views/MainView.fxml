@@ -196,7 +196,7 @@
                           style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
                         <Label text="⏭  →  traccia casuale dal catalogo"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
-                        <Label text="⏮  →  traccia casuale dal catalogo"
+                        <Label text="⏮  →  traccia precedentemente riprodotta"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
                         <Label text="Traccia Terminata  →  traccia casuale dal catalogo"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
@@ -229,7 +229,7 @@
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
                         <Label text="⏮⏮  →  playlist precedente nel catalogo"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
-                        <Label text="Playlist Terminata  →  traccia successiva, poi playlist successiva"
+                        <Label text="Playlist Terminata  →  playlist successiva"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 11px;"/>
                     </VBox>
 
@@ -237,6 +237,8 @@
                           GridPane.columnIndex="2" GridPane.rowIndex="2"
                           style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
                         <Label text="⏭  →  traccia casuale nella playlist"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮  →  traccia precedentemente riprodotta"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
                         <Label text="⏭⏭  →  playlist casuale dal catalogo"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
@@ -250,6 +252,8 @@
                           GridPane.columnIndex="3" GridPane.rowIndex="2"
                           style="-fx-background-color: #111C22; -fx-padding: 10; -fx-background-radius: 6;">
                         <Label text="⏭  →  traccia successiva in ordine"
+                               style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                        <Label text="⏮  →  traccia precedentemente riprodotta"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
                         <Label text="⏭⏭  →  playlist corrente riparte da capo"
                                style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>

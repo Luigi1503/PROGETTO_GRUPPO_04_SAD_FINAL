@@ -345,10 +345,18 @@ public class TrackListViewController implements CatalogObserver {
                 case TRACK_ADDED:
                 case TRACK_REMOVED:
                 case TRACK_UPDATED:
-                case TRACK_CHANGED:
                     reloadTableData();
+                    syncHighlight();
+                    break;
+                case TRACK_CHANGED:
+                    // La traccia in riproduzione è cambiata (anche tramite avanti/indietro
+                    // dal catalogo): aggiorna i dati ed evidenzia la traccia corrente.
+                    reloadTableData();
+                    syncHighlight();
                     break;
                 case PLAYBACK_STARTED:
+                case SOURCE_CHANGED:
+                    syncHighlight();
                     break;
                 case PLAYBACK_STOPPED:
                     trackTable.getSelectionModel().clearSelection();

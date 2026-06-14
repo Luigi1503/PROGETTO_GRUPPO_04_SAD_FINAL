@@ -37,7 +37,7 @@ public class GenrePlaylistGenerator extends AutoPlaylistGenerator {
     public Playlist createPlaylist(MusicCatalog catalog) {
         Playlist playlist = new PlaylistImpl(getCriterionName());
         for (Track track : catalog.getAllTracks()) {
-            if (track.getGenre().equalsIgnoreCase(genre)) {
+            if (genre != null && genre.equalsIgnoreCase(track.getGenre())) {
                 playlist.addTrack(track);
             }
         }

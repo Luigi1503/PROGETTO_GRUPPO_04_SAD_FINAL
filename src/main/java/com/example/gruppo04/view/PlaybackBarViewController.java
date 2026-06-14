@@ -231,7 +231,12 @@ public class PlaybackBarViewController implements CatalogObserver {
 
             case SOURCE_CHANGED:
                 PlayableSource source =  (PlayableSource) event.getTarget();
-                updatePlaylistName(((Playlist) source).getName());
+                // La sorgente è una playlist solo durante la riproduzione di playlist;
+                // dal catalogo è una traccia singola e non ha un nome di playlist.
+                if (source instanceof Playlist playlist)
+                    updatePlaylistName(playlist.getName());
+                else
+                    updatePlaylistName(null);
                 break;
 
 

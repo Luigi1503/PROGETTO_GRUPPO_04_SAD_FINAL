@@ -28,7 +28,7 @@
          <content>
             <VBox fx:id="playlistSections" spacing="6">
                <children>
-                  <Label fx:id="manualSectionTitle" styleClass="playlist-section-title" text="Playlist create" />
+                  <Label fx:id="manualSectionTitle" styleClass="playlist-section-title" text="Le tue Playlist" />
                   <FlowPane fx:id="playlistGrid" />
                   <Label fx:id="automaticSectionTitle" styleClass="playlist-section-title" text="Playlist automatiche" />
                   <FlowPane fx:id="automaticPlaylistGrid" />

@@ -39,4 +39,37 @@ public class SequentialStrategy implements PlaybackStrategy {
         }
         return null; // fine sorgente → skipSource
     }
+
+    /**
+     * {@inheritDoc}
+     * Restituisce la sorgente all'indice precedente, o {@code null} se è la prima.
+     */
+    @Override
+    public PlayableSource previousSource(List<PlayableSource> sources, int currentIndex) {
+        if (sources == null || sources.isEmpty()) {
+            return null;
+        }
+        int prevIndex = currentIndex - 1;
+        if (prevIndex >= 0 && prevIndex < sources.size()) {
+            return sources.get(prevIndex);
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * Restituisce la traccia all'indice precedente, o {@code null} se è la prima
+     * (segnale per passare alla sorgente precedente).
+     */
+    @Override
+    public Track previousTrack(List<Track> tracks, int currentIndex) {
+        if (tracks == null || tracks.isEmpty()) {
+            return null;
+        }
+        int prevIndex = currentIndex - 1;
+        if (prevIndex >= 0) {
+            return tracks.get(prevIndex);
+        }
+        return null; // inizio sorgente → previousSource
+    }
 }
