@@ -38,7 +38,7 @@
                     <Label style="-fx-text-fill: #5C7A7D; -fx-font-size: 12px;"
                            text="Elenco completo delle tracce audio disponibili" />
                 </VBox>
-                <Button fx:id="undoBtn" mnemonicParsing="false" onAction="#handleUndo" text="Undo" styleClass="undo-button" />
+                <Button fx:id="undoBtn" mnemonicParsing="false" onAction="#handleUndo" text="↺ Undo" styleClass="undo-button" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Region HBox.hgrow="ALWAYS" />
 

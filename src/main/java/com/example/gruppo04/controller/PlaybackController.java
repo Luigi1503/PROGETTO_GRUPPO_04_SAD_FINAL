@@ -455,6 +455,23 @@ public class PlaybackController implements CatalogObserver {
     }
 
     /**
+     * Sposta la riproduzione della traccia corrente al tempo indicato.
+     * <p>
+     * Non ha effetto se nessuna traccia è in riproduzione. La nuova posizione
+     * si riflette immediatamente sull'audio (o al successivo resume se in pausa).
+     * </p>
+     *
+     * @param targetSeconds posizione desiderata in secondi dall'inizio della traccia
+     */
+    public void seek(double targetSeconds) {
+        Track current = state.getCurrentTrack();
+        if (current == null) {
+            return;
+        }
+        audioEngine.seek(targetSeconds, current.getDuration());
+    }
+
+    /**
      * @return il nome semplice della strategia di riproduzione attiva
      *         (es. "SequentialStrategy", "ShuffleStrategy", "LoopStrategy")
      */

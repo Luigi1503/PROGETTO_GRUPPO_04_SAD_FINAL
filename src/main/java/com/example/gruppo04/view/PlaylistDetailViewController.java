@@ -19,8 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -192,19 +190,6 @@ public class PlaylistDetailViewController implements CatalogObserver {
                 undoBtn.setDisable(true);
             }
         });
-
-        // 1. Carica l'immagine (assicurati che il percorso sia corretto)
-        Image undoIcon = new Image(getClass().getResourceAsStream("/img/undo.png"));
-
-        // 2. Mettila in una ImageView e ridimensionala
-        ImageView iconView = new ImageView(undoIcon);
-        iconView.setFitHeight(20);
-        iconView.setFitWidth(20);
-        iconView.setPreserveRatio(true);
-
-        // 3. Assegnala al bottone e togli il testo
-        undoBtn.setGraphic(iconView);
-        undoBtn.setText("");
 
     }
 

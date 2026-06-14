@@ -163,6 +163,57 @@ public class AudioEngine {
         }
     }
 
+    /**
+     * Riposiziona la riproduzione corrente al tempo indicato.
+     * <p>
+     * La posizione in byte viene stimata in modo proporzionale rispetto alla
+     * durata totale della traccia (approccio coerente con il riposizionamento
+     * per byte già usato in pausa/resume). Su MP3 a bitrate costante la stima è
+     * praticamente esatta; su VBR è approssimata. Se la traccia è in pausa la
+     * nuova posizione viene applicata e usata al successivo {@code resume()};
+     * se è in riproduzione, riparte immediatamente dal nuovo punto.
+     *
+     * @param targetSeconds        posizione desiderata in secondi dall'inizio
+     * @param totalDurationSeconds durata totale della traccia in secondi
+     */
+    public synchronized void seek(double targetSeconds, double totalDurationSeconds) {
+        // Niente da riposizionare se la riproduzione è ferma o i dati non sono validi.
+        if ((!isPlaying && !isPaused) || totalDurationSeconds <= 0 || totalFileSize <= 0) {
+            return;
+        }
+
+        double clamped = Math.max(0.0, Math.min(targetSeconds, totalDurationSeconds));
+        long bytePos = (long) ((clamped / totalDurationSeconds) * totalFileSize);
+
+        boolean wasPaused = isPaused;
+
+        // Invalida il thread/callback in volo e chiude la linea audio corrente.
+        playbackGeneration++;
+        if (player != null) {
+            player.close();
+            player = null;
+        }
+        if (fis != null) {
+            closeQuietly(fis);
+            fis = null;
+        }
+        playbackThread = null;
+
+        // Allinea posizione in byte e tempo accumulato al nuovo punto.
+        lastBytePosition = bytePos;
+        timeAccruedBeforePause = (long) (clamped * 1000);
+
+        if (wasPaused) {
+            // Resta in pausa: la nuova posizione verrà usata al prossimo resume().
+            isPlaying = false;
+            isPaused = true;
+        } else {
+            // Riprende immediatamente dal nuovo punto.
+            isPaused = false;
+            startPlayback();
+        }
+    }
+
     public synchronized void stop() {
         // Invalida la riproduzione corrente: il vecchio thread, quando la sua play()
         // termina (o quando scopre la generazione cambiata), si chiude da solo.

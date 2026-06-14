@@ -98,7 +98,7 @@
 
                         <Label fx:id="labelCurrentTime" style="-fx-text-fill: #5C7A7D; -fx-font-size: 11px;" text="0:00" />
 
-                        <Slider fx:id="progressBar" max="1" min="0" mouseTransparent="true" prefWidth="320.0" styleClass="progress-slider" value="0" />
+                        <Slider fx:id="progressBar" max="1" min="0" prefWidth="320.0" styleClass="progress-slider" value="0" />
 
                         <Label fx:id="labelTotalTime" style="-fx-text-fill: #5C7A7D; -fx-font-size: 11px;" text="0:00" />
                     </children>

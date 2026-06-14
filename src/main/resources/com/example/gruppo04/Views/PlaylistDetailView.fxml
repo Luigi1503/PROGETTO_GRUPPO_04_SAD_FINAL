@@ -38,7 +38,7 @@
       <children>
                       <Button fx:id="btnAddTrack" onAction="#handleAddTrack" style="-fx-background-color: #1D6A72;                                -fx-text-fill: #FFFFFF;                                -fx-font-weight: bold;                                -fx-font-size: 13px;                                -fx-background-radius: 7;                                -fx-padding: 8 18 8 18;                                -fx-cursor: hand;" text="+ Aggiungi Track" />
                       <Button fx:id="btnRemoveTrack" disable="true" onAction="#handleRemoveTrack" style="-fx-background-color: #1B2A2F;                                -fx-text-fill: #E8EDF0;                                -fx-font-size: 13px;                                -fx-background-radius: 7;                                -fx-border-color: #2C3E40;                                -fx-border-radius: 7;                                -fx-border-width: 1;                                -fx-padding: 8 18 8 18;                                -fx-cursor: hand;" text="Rimuovi Track" />
-                  <Button fx:id="undoBtn" mnemonicParsing="false" onAction="#handleUndo" text="Undo" styleClass="undo-button"/>
+                  <Button fx:id="undoBtn" mnemonicParsing="false" onAction="#handleUndo" text="↺ Undo" styleClass="undo-button"/>
           <Region HBox.hgrow="ALWAYS" />
           <Button fx:id="btnPlay" onAction="#handlePlay" style="-fx-background-color: #1D6A72;            -fx-text-fill: #FFFFFF;            -fx-font-weight: bold;            -fx-font-size: 13px;            -fx-background-radius: 7;            -fx-padding: 8 18 8 18;            -fx-cursor: hand;" text="▶ Play All" />
 

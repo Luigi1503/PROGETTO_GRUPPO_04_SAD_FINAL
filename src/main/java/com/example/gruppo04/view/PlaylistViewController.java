@@ -92,19 +92,6 @@ public class PlaylistViewController implements CatalogObserver {
             }
         });
 
-        // 1. Carica l'immagine (assicurati che il percorso sia corretto)
-        Image undoIcon = new Image(getClass().getResourceAsStream("/img/undo.png"));
-
-        // 2. Mettila in una ImageView e ridimensionala
-        ImageView iconView = new ImageView(undoIcon);
-        iconView.setFitHeight(20);
-        iconView.setFitWidth(20);
-        iconView.setPreserveRatio(true);
-
-        // 3. Assegnala al bottone e togli il testo
-        undoBtn.setGraphic(iconView);
-        undoBtn.setText("");
-
     }
 
     /**

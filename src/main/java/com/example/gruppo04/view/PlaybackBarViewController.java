@@ -100,6 +100,13 @@ public class PlaybackBarViewController implements CatalogObserver {
     /** @brief Timer per l'aggiornamento in tempo reale della barra di avanzamento. */
     private AnimationTimer progressTimer;
 
+    /**
+     * @brief Indica che l'utente sta interagendo con la barra (drag/click).
+     * @details Quando true il timer non sovrascrive il valore dello slider, così
+     * il trascinamento dell'utente non viene "combattuto" dall'aggiornamento automatico.
+     */
+    private boolean userSeeking = false;
+
 
     /**
      * @brief Costruttore senza parametri richiesto da FXMLLoader.
@@ -125,6 +132,51 @@ public class PlaybackBarViewController implements CatalogObserver {
         btnSkip.setDisable(true);
         btnStop.setDisable(true);
         setupProgressTimer();
+        setupSeekControls();
+    }
+
+    /**
+     * @brief Abilita il riposizionamento (seek) tramite la barra di avanzamento.
+     * @details L'utente può trascinare o cliccare sulla barra per spostarsi nel
+     * brano. Durante l'interazione viene mostrata in anteprima la nuova posizione
+     * sulle label del tempo; al rilascio viene applicato il seek sull'audio reale.
+     */
+    private void setupSeekControls() {
+        // Inizio interazione: blocca l'aggiornamento automatico del timer.
+        progressBar.setOnMousePressed(e -> userSeeking = true);
+
+        // Trascinamento: anteprima del minutaggio corrispondente alla posizione.
+        progressBar.setOnMouseDragged(e -> updateTimeLabelsPreview());
+
+        // Rilascio (sia per click che per fine trascinamento): applica il seek.
+        progressBar.setOnMouseReleased(e -> {
+            applySeekFromSlider();
+            userSeeking = false;
+        });
+    }
+
+    /**
+     * @brief Aggiorna le label del tempo in base alla posizione corrente dello slider.
+     * @details Usato come anteprima durante il trascinamento, senza toccare l'audio.
+     */
+    private void updateTimeLabelsPreview() {
+        if (currentTrack == null) return;
+        int total = currentTrack.getDuration();
+        int target = (int) (progressBar.getValue() * total);
+        labelCurrentTime.setText(TrackFormatter.formatDuration(target));
+        labelTotalTime.setText("-" + TrackFormatter.formatDuration(total - target));
+    }
+
+    /**
+     * @brief Applica il riposizionamento dell'audio in base al valore dello slider.
+     * @details Converte la frazione (0..1) dello slider in secondi e delega al
+     * {@link PlaybackController}, riflettendo lo spostamento sulla riproduzione reale.
+     */
+    private void applySeekFromSlider() {
+        if (currentTrack == null) return;
+        double target = progressBar.getValue() * currentTrack.getDuration();
+        playbackController.seek(target);
+        updateTimeLabelsPreview();
     }
 
     /**
@@ -342,7 +394,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         progressTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (currentTrack != null && playbackController.isPlaying()) {
+                if (currentTrack != null && playbackController.isPlaying() && !userSeeking) {
                     double realElapsedSeconds = playbackController.getCurrentAudioTime();
                     double total = currentTrack.getDuration();
 
