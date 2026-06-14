@@ -91,9 +91,6 @@ public class PlaybackBarViewController implements CatalogObserver {
     /** @brief Controller MVC della riproduzione. */
     private PlaybackController playbackController;
 
-    /** @brief Catalogo musicale, usato per la registrazione come Observer. */
-    private MusicCatalog catalog;
-
     /** @brief Traccia attualmente in riproduzione. */
     private Track currentTrack;
 
@@ -125,12 +122,11 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     public void init(PlaybackController playbackController, MusicCatalog catalog) {
         this.playbackController = playbackController;
-        this.catalog = catalog;
-        this.catalog.registerObserver(this);
         btnPlayPause.setDisable(true);
         btnPrevious.setDisable(true);
         btnSkip.setDisable(true);
         btnStop.setDisable(true);
+        catalog.registerObserver(this);
         setupProgressTimer();
         setupSeekControls();
     }
