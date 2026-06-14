@@ -182,4 +182,14 @@ class PlaylistImplTest {
         assertEquals("Tipo", keyIterator.next(), "La seconda chiave deve essere 'Tipo'");
         assertEquals("Brani Totali", keyIterator.next(), "La terza chiave deve essere 'Brani Totali'");
     }
+
+    @Test
+    void playCount_incrementsFromZero() {
+        assertEquals(0, playlist.getPlayCount());
+
+        playlist.incrementPlayCount();
+        playlist.incrementPlayCount();
+
+        assertEquals(2, playlist.getPlayCount());
+    }
 }

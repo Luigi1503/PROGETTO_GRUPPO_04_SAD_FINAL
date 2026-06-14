@@ -194,4 +194,36 @@ class TrackImplTest {
         assertEquals("Genere", keyIterator.next(), "La terza chiave deve essere 'Genere'");
         assertEquals("Anno", keyIterator.next(), "La quarta chiave deve essere 'Anno'");
     }
+
+    @Test
+    void playCount_incrementsFromZero() {
+        Track track = new TrackImpl("Valid Title", "Valid Author", "Pop", 2000, 180, "file.mp3");
+
+        assertEquals(0, track.getPlayCount());
+
+        track.incrementPlayCount();
+        track.incrementPlayCount();
+
+        assertEquals(2, track.getPlayCount());
+    }
+
+    @Test
+    void tags_addRemoveGetAndHasTag() {
+        Track track = new TrackImpl("Valid Title", "Valid Author", "Pop", 2000, 180, "file.mp3");
+
+        track.addTag(TagType.FAVOURITE);
+        track.addTag(TagType.EXPLICIT);
+        track.addTag(TagType.FAVOURITE);
+
+        assertTrue(track.hasTag(TagType.FAVOURITE));
+        assertTrue(track.hasTag(TagType.EXPLICIT));
+        assertFalse(track.hasTag(TagType.NEW_RELEASE));
+        assertEquals(2, track.getTags().size());
+        assertThrows(UnsupportedOperationException.class,
+                () -> track.getTags().add(TagType.NEW_RELEASE));
+
+        track.removeTag(TagType.EXPLICIT);
+
+        assertFalse(track.hasTag(TagType.EXPLICIT));
+    }
 }

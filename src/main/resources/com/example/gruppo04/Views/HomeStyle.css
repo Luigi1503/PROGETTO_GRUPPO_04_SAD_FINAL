@@ -1,0 +1,73 @@
+/* ── Liste (ListView della Home) ── */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 4px 0px;
+}
+
+/* Righe della lista (Celle): Struttura fissa e stabile */
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #b5c7cb;
+    -fx-padding: 14px 18px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 13.5px;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+    -fx-border-width: 0px;
+    -fx-border-color: transparent;
+}
+
+.list-cell:hover {
+    -fx-background-color: rgba(29, 158, 117, 0.08);
+    -fx-text-fill: #ffffff;
+}
+
+.list-cell:selected {
+    -fx-background-color: #1D9E75;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(29, 158, 117, 0.4), 10, 0, 0, 0);
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-effect: null;
+}
+/* ── Liste (ListView della Home) ── */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 4px 0px;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #b5c7cb;
+    -fx-padding: 14px 18px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 13.5px;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+    -fx-border-width: 0px;
+    -fx-border-color: transparent;
+}
+
+.list-cell:hover {
+    -fx-background-color: rgba(29, 158, 117, 0.08);
+    -fx-text-fill: #ffffff;
+}
+
+.list-cell:selected {
+    -fx-background-color: #1D9E75;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(29, 158, 117, 0.4), 10, 0, 0, 0);
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-effect: null;
+}

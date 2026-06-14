@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      fx:controller="com.example.gruppo04.view.HomeViewController"
+      spacing="32"
+      styleClass="root-container"
+      stylesheets="@HomeStyle.css"
+      prefWidth="900" prefHeight="550">
+
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <!-- Intestazione con sottotitolo dinamico -->
+    <VBox spacing="4">
+        <Label text="Home"
+               style="-fx-font-size: 36px; -fx-font-weight: 800; -fx-text-fill: #ffffff; -fx-letter-spacing: -0.5px;"/>
+        <Label text="Bentornato. Ecco la tua musica di oggi."
+               style="-fx-font-size: 14px; -fx-text-fill: #617d82;"/>
+    </VBox>
+
+    <HBox spacing="32" VBox.vgrow="ALWAYS">
+
+        <!-- Sezione Tracce più ascoltate -->
+        <VBox spacing="20" HBox.hgrow="ALWAYS" styleClass="card-panel">
+            <padding>
+                <Insets top="24" right="24" bottom="24" left="24"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="♪" style="-fx-font-size: 20px; -fx-text-fill: #1DB954; -fx-font-weight: bold;"/>
+                <Label text="Tracce più ascoltate"
+                       style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #ffffff;"/>
+            </HBox>
+
+            <ListView fx:id="tracksListView" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
+        <!-- Sezione Playlist più ascoltate -->
+        <VBox spacing="20" HBox.hgrow="ALWAYS" styleClass="card-panel">
+            <padding>
+                <Insets top="24" right="24" bottom="24" left="24"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="▶" style="-fx-font-size: 16px; -fx-text-fill: #1DB954;"/>
+                <Label text="Playlist più ascoltate"
+                       style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #ffffff;"/>
+            </HBox>
+
+            <ListView fx:id="playlistsListView" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
+    </HBox>
+</VBox>

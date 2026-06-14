@@ -43,16 +43,6 @@ public class MainApplication extends Application {
         } catch (IOException | ClassNotFoundException e) {
             // file non esiste — prima volta che si avvia l'app
             logger.log(Level.INFO, "Nessun salvataggio trovato, avvio con catalogo di esempio.");
-
-            // ── Libreria iniziale di esempio ──────────
-            catalog.addTrack(new TrackImpl("Hold Back The River", "James Bay",    "Rock",      2014, 354, null));
-            catalog.addTrack(new TrackImpl("Someday",             "OneRepublic",  "Pop",       2021, 391, null));
-            catalog.addTrack(new TrackImpl("As It Was",           "Harry Styles", "Pop",       2022, 300, null));
-            catalog.addTrack(new TrackImpl("Levitating",          "Dua Lipa",     "Pop",       2020, 203, null));
-            catalog.addTrack(new TrackImpl("Blinding Lights",     "The Weeknd",   "Synth-Pop", 2019, 200, null));
-
-            catalog.createPlaylist("Rock Classics");
-            catalog.createPlaylist("Late Night Vibes");
         }
 
 

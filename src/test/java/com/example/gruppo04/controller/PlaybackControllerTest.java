@@ -1,7 +1,10 @@
 package com.example.gruppo04.controller;
 
 import com.example.gruppo04.interfaces.PlayableSource;
+import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.PlaylistImpl;
+import com.example.gruppo04.model.TagType;
 import com.example.gruppo04.model.strategy.LoopStrategy;
 import com.example.gruppo04.model.strategy.ShuffleStrategy;
 import com.example.gruppo04.model.state.PlaybackState;
@@ -11,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,6 +45,8 @@ class PlaybackControllerTest {
     private static Track stubTrack(String title) {
         return new Track() {
             private final UUID id = UUID.randomUUID();
+            private int playCount;
+            private final Set<TagType> tags = new java.util.HashSet<>();
             @Override public UUID getId()           { return id; }
             @Override public String getTitle()      { return title; }
             @Override public String getAuthor()     { return "Autore"; }
@@ -54,6 +60,12 @@ class PlaybackControllerTest {
             @Override public void setYear(int y)       {}
             @Override public void setDuration(int d)   {}
             @Override public void setFilePath(String p){}
+            @Override public void incrementPlayCount() { playCount++; }
+            @Override public int getPlayCount() { return playCount; }
+            @Override public void addTag(TagType tag) { tags.add(tag); }
+            @Override public void removeTag(TagType tag) { tags.remove(tag); }
+            @Override public Set<TagType> getTags() { return Set.copyOf(tags); }
+            @Override public boolean hasTag(TagType tag) { return tags.contains(tag); }
             // Track extends PlayableSource: implementa anche i metodi di PlayableSource
             @Override public List<Track> getTracks() { return List.of(this); }
             @Override public Map<String, String> getDisplayName() {
@@ -180,6 +192,26 @@ class PlaybackControllerTest {
         controller.play(List.of(source1), source1, t2);
 
         assertEquals(t2, controller.getCurrentTrack());
+    }
+
+    @Test
+    void play_incrementsTrackPlayCount() {
+        controller.play(List.of(source1), source1, t2);
+
+        assertEquals(1, t2.getPlayCount());
+        assertEquals(0, t1.getPlayCount());
+    }
+
+    @Test
+    void play_fromPlaylist_incrementsTrackAndPlaylistPlayCount() {
+        Playlist playlist = new PlaylistImpl("Playlist test");
+        playlist.addTrack(t1);
+        playlist.addTrack(t2);
+
+        controller.play(List.of(playlist), playlist, t2);
+
+        assertEquals(1, playlist.getPlayCount());
+        assertEquals(1, t2.getPlayCount());
     }
 
     // ── skip traccia — SequentialStrategy ────────────────────────────────────

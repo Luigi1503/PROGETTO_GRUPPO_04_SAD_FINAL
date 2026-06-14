@@ -75,6 +75,7 @@ public class PlaybackController implements CatalogObserver {
             state.setCurrentTrack(startTrack);
         }
         state.play();
+        incrementPlayCounters(startFrom);
         avviaAudioFisico();
 
         // Notifica la barra di riproduzione che è iniziata una nuova riproduzione.
@@ -94,6 +95,16 @@ public class PlaybackController implements CatalogObserver {
                 + (state.getCurrentSource() != null
                 ? state.getCurrentSource().getDisplayName() : "null"));
         // ──────────────────────────────────────────────────────────────────────
+    }
+
+    private void incrementPlayCounters(PlayableSource startFrom) {
+        Track currentTrack = state.getCurrentTrack();
+        if (currentTrack != null) {
+            currentTrack.incrementPlayCount();
+        }
+        if (startFrom instanceof Playlist playlist) {
+            playlist.incrementPlayCount();
+        }
     }
 
     private void avviaAudioFisico() {
@@ -178,6 +189,7 @@ public class PlaybackController implements CatalogObserver {
         Track next = state.getStrategy().nextTrack(tracks, currentIndex);
         if (next != null) {
             state.setCurrentTrack(next);
+            incrementPlayCounters(next);
             avviaAudioFisico();
             System.out.println("[PlaybackController.skipTrack] → traccia successiva (strategia): " + next.getTitle());
             catalog.notifyTrackChanged(state.getCurrentTrack());
@@ -217,11 +229,13 @@ public class PlaybackController implements CatalogObserver {
             if (nextSource.getTracks().isEmpty()) {
                 // salta anche questa sorgente
                 state.setCurrentSource(nextSource);
+                incrementPlayCounters(nextSource);
                 skipSource();
                 return;
             }
-            state.setCurrentSource(nextSource);
-            state.setCurrentTrack(nextSource.getTracks().get(0));
+                state.setCurrentSource(nextSource);
+                state.setCurrentTrack(nextSource.getTracks().get(0));
+                incrementPlayCounters(nextSource);
             System.out.println("[PlaybackController.skipSource] → prima traccia della nuova sorgente: "
                     + nextSource.getTracks().get(0).getTitle());
             avviaAudioFisico();
@@ -328,7 +342,9 @@ public class PlaybackController implements CatalogObserver {
         int currentIndex = tracks.indexOf(state.getCurrentTrack());
         if (currentIndex > 0) {
             // C'è una traccia precedente all'interno della sorgente corrente.
-            state.setCurrentTrack(tracks.get(currentIndex - 1));
+            Track previousTrack = tracks.get(currentIndex - 1);
+            state.setCurrentTrack(previousTrack);
+            incrementPlayCounters(previousTrack);
             avviaAudioFisico();
             catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
@@ -358,9 +374,13 @@ public class PlaybackController implements CatalogObserver {
             PlayableSource prevSource = queue.get(prevIndex);
             List<Track> prevTracks = prevSource.getTracks();
             state.setCurrentSource(prevSource);
+
             if (prevSource instanceof Playlist)
                 catalog.notifySourceChanged((Playlist) prevSource);
             state.setCurrentTrack(prevTracks.get(prevTracks.size() - 1));
+            Track previousTrack = prevTracks.get(prevTracks.size() - 1);
+            state.setCurrentTrack(previousTrack);
+            incrementPlayCounters(prevSource);
         }
         // Se non c'è una sorgente precedente, riavvia la traccia corrente da capo.
 

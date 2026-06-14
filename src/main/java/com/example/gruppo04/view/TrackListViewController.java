@@ -6,6 +6,7 @@ import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.TagType;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.controller.TrackController;
@@ -20,9 +21,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+//import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,8 @@ public class TrackListViewController implements CatalogObserver {
     private MenuItem menuEdit;
     @FXML
     private MenuItem menuPlay;
+    @FXML
+    private TableColumn<Track, Void> tagCol;
 
 
     /** Pulsante per fare undo dell'inserimento di inserimento di una canzone nella playlist */
@@ -149,6 +153,92 @@ public class TrackListViewController implements CatalogObserver {
                 && !(playbackController.getCurrentSource() instanceof Playlist);
     }
 
+    private void setupTagColumn() {
+
+        if (tagCol == null) {
+            System.err.println("tagCol NON INIETTATA");
+            return;
+        }
+
+        tagCol.setCellValueFactory(p ->
+                new javafx.beans.property.SimpleObjectProperty<>(null));
+
+        tagCol.setCellFactory(col -> new TableCell<Track, Void>() {
+
+            private final HBox box = new HBox(8);
+
+            private final Label fav = new Label();
+            private final Label exp = new Label("EXP");
+            private final Label news = new Label("NEW");
+
+            {
+                box.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+                box.getChildren().addAll(fav, exp, news);
+
+                fav.setStyle("-fx-cursor: hand; -fx-text-fill: gold; -fx-font-size: 15px;");
+                exp.setStyle("-fx-cursor: hand; -fx-text-fill: #E05555; -fx-font-weight: bold;");
+                news.setStyle("-fx-cursor: hand; -fx-text-fill: #4FC3F7; -fx-font-weight: bold;");
+
+                fav.setTooltip(new Tooltip("Preferito"));
+                exp.setTooltip(new Tooltip("Contenuto esplicito"));
+                news.setTooltip(new Tooltip("Nuova uscita"));
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                    return;
+                }
+
+                Track track = getTableView().getItems().get(getIndex());
+
+                setText(null);
+
+                // ⭐ FAVORITE
+                boolean isFav = track.hasTag(TagType.FAVOURITE);
+                fav.setText(isFav ? "★" : "☆");
+
+                fav.setOnMouseClicked(e -> {
+                    if (track.hasTag(TagType.FAVOURITE)) {
+                        track.removeTag(TagType.FAVOURITE);
+                    } else {
+                        track.addTag(TagType.FAVOURITE);
+                    }
+                    getTableView().refresh();
+                });
+
+                // ⚠ EXP
+                exp.setOpacity(track.hasTag(TagType.EXPLICIT) ? 1 : 0.3);
+
+                exp.setOnMouseClicked(e -> {
+                    if (track.hasTag(TagType.EXPLICIT)) {
+                        track.removeTag(TagType.EXPLICIT);
+                    } else {
+                        track.addTag(TagType.EXPLICIT);
+                    }
+                    getTableView().refresh();
+                });
+
+                // 🆕 NEW
+                news.setOpacity(track.hasTag(TagType.NEW_RELEASE) ? 1 : 0.3);
+
+                news.setOnMouseClicked(e -> {
+                    if (track.hasTag(TagType.NEW_RELEASE)) {
+                        track.removeTag(TagType.NEW_RELEASE);
+                    } else {
+                        track.addTag(TagType.NEW_RELEASE);
+                    }
+                    getTableView().refresh();
+                });
+
+                setGraphic(box);
+            }
+        });
+    }
+
     /**
      * Inizializzazione della View post-caricamento FXML.
      */
@@ -170,6 +260,9 @@ public class TrackListViewController implements CatalogObserver {
         SortedList<Track> sorted = new SortedList<>(tableModel);
         sorted.comparatorProperty().bind(trackTable.comparatorProperty());
         trackTable.setItems(sorted);
+
+        //visualizzazione tag
+        setupTagColumn();
 
         // Se l'utente fa click col tasto destro su una riga, selezionala prima
         trackTable.setOnMousePressed(event -> {
