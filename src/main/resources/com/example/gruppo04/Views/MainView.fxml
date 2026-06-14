@@ -96,6 +96,16 @@
                         <FontIcon iconLiteral="mdi2p-playlist-music" iconSize="18" iconColor="#E8EDF0"/>
                     </graphic>
                 </Button>
+
+                <Button fx:id="btnAutomaticPlaylists" text="Automatic Playlists" graphicTextGap="14"
+                        maxWidth="Infinity" onAction="#handleAutomaticPlaylists"
+                        style="-fx-background-color: transparent; -fx-text-fill: #E8EDF0;
+                   -fx-font-size: 13px; -fx-alignment: CENTER_LEFT;
+                   -fx-padding: 10 20 10 20; -fx-cursor: hand;">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2p-playlist-music" iconSize="18" iconColor="#E8EDF0"/>
+                    </graphic>
+                </Button>
             </VBox>
 
             <Separator style="-fx-background-color: #1B2A2F;"/>
@@ -116,7 +126,6 @@
                     <padding><Insets right="0" left="0"/></padding>
                 </VBox>
             </ScrollPane>
-
         </VBox>
     </left>
 

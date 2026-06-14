@@ -193,6 +193,7 @@ public class TrackListViewController implements CatalogObserver {
                         track.addTag(TagType.FAVOURITE);
                     }
                     getTableView().refresh();
+                    catalog.notifyTrackChanged(track);
                 });
 
                 // ⚠ EXP
@@ -205,6 +206,7 @@ public class TrackListViewController implements CatalogObserver {
                         track.addTag(TagType.EXPLICIT);
                     }
                     getTableView().refresh();
+                    catalog.notifyTrackChanged(track);
                 });
 
                 // 🆕 NEW
@@ -217,6 +219,7 @@ public class TrackListViewController implements CatalogObserver {
                         track.addTag(TagType.NEW_RELEASE);
                     }
                     getTableView().refresh();
+                    catalog.notifyTrackChanged(track);
                 });
 
                 setGraphic(box);
@@ -342,11 +345,10 @@ public class TrackListViewController implements CatalogObserver {
                 case TRACK_ADDED:
                 case TRACK_REMOVED:
                 case TRACK_UPDATED:
+                case TRACK_CHANGED:
                     reloadTableData();
                     break;
                 case PLAYBACK_STARTED:
-                case TRACK_CHANGED:
-                    syncHighlight();
                     break;
                 case PLAYBACK_STOPPED:
                     trackTable.getSelectionModel().clearSelection();

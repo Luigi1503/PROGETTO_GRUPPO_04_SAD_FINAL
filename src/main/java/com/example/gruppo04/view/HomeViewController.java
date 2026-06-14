@@ -6,6 +6,7 @@ import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogObserver;
 import javafx.application.Platform;
@@ -16,6 +17,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +38,7 @@ public class HomeViewController implements CatalogObserver {
     private MusicCatalog catalog;
     private PlaybackController playbackController;
     private MainViewController mainViewController;
+    private AutomaticPlaylistService automaticPlaylistService;
 
     private final ObservableList<Track> tracksModel = FXCollections.observableArrayList();
     private final ObservableList<Playlist> playlistsModel = FXCollections.observableArrayList();
@@ -60,6 +63,7 @@ public class HomeViewController implements CatalogObserver {
         this.playbackController = playbackController;
         this.catalog = catalog;
         this.mainViewController = mainViewController;
+        this.automaticPlaylistService = AutomaticPlaylistService.getInstance();
 
         if (this.catalog != null) {
             this.catalog.registerObserver(this);
@@ -132,7 +136,11 @@ public class HomeViewController implements CatalogObserver {
                     if (p != null && playbackController != null) {
                         java.util.ArrayList<com.example.gruppo04.interfaces.PlayableSource> q =
                                 new java.util.ArrayList<>();
-                        q.addAll(catalog.getPlaylists());
+                        if (catalog.getPlaylists().contains(p)) {
+                            q.addAll(catalog.getPlaylists());
+                        } else {
+                            q.addAll(automaticPlaylistService.refresh(catalog));
+                        }
                         playbackController.play(
                                 q,
                                 p,
@@ -159,7 +167,10 @@ public class HomeViewController implements CatalogObserver {
                 .limit(5)
                 .collect(Collectors.toList());
 
-        List<Playlist> topPlaylists = catalog.getPlaylists().stream()
+        List<Playlist> allPlaylists = new ArrayList<>(catalog.getPlaylists());
+        allPlaylists.addAll(automaticPlaylistService.refresh(catalog));
+
+        List<Playlist> topPlaylists = allPlaylists.stream()
                 .sorted(Comparator.comparingInt(Playlist::getPlayCount).reversed())
                 .limit(5)
                 .collect(Collectors.toList());

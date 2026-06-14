@@ -10,6 +10,7 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
 import com.example.gruppo04.controller.TrackController;
+import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
 import com.example.gruppo04.observer.PlaybackStartedPayload;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -71,10 +72,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
     @FXML private Label labelTotalDuration;
 
     /**
-     * Pulsante per avviare la riproduzione dell'intera playlist.
-     * La strategia usata è quella attualmente attiva nella barra di riproduzione.
+     * Pulsante per aggiungere un brano alla playlist.
      */
-    @FXML private Button btnPlay;
+    @FXML private Button btnAddTrack;
 
     /** Pulsante per fare undo dell'inserimento di inserimento di una canzone nella playlist */
     @FXML private Button undoBtn;
@@ -105,6 +105,8 @@ public class PlaylistDetailViewController implements CatalogObserver {
     /*Catalog per l'elenco delle playlist*/
     private MusicCatalog catalog;
 
+    private boolean automaticPlaylist;
+
     /** Logger per la gestione degli errori di caricamento delle view. */
     private static final Logger logger =
             Logger.getLogger(PlaylistDetailViewController.class.getName());
@@ -120,7 +122,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
         tableTracks.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {
                     selectedTrack = newVal;
-                    btnRemoveTrack.setDisable(newVal == null);
+                    btnRemoveTrack.setDisable(automaticPlaylist || newVal == null);
                 });
 
         tableTracks.setRowFactory(tv -> {
@@ -147,6 +149,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @FXML
     private void handleUndo(){
+        if (automaticPlaylist) {
+            return;
+        }
         playlistController.getManagerTrackPlaylist().undo();
     }
 
@@ -169,6 +174,8 @@ public class PlaylistDetailViewController implements CatalogObserver {
         this.playbackController = playbackController;
         this.trackController = trackController;
         this.catalog = catalog;
+        this.automaticPlaylist = !catalog.getPlaylists().contains(playlist)
+                && AutomaticPlaylistService.getInstance().getPlaylists().contains(playlist);
         catalog.registerObserver(this);
         updateView();
         // Allinea lo stato di "following" e l'evidenziazione quando la vista (ri)appare:
@@ -185,12 +192,11 @@ public class PlaylistDetailViewController implements CatalogObserver {
 
         manager.canUndoProperty().addListener((observable, vecchioValore, nuovoValore) -> {
             if (nuovoValore == true) {
-                undoBtn.setDisable(false);
+                undoBtn.setDisable(automaticPlaylist);
             } else {
                 undoBtn.setDisable(true);
             }
         });
-
     }
 
     /**
@@ -241,8 +247,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @Override
     public void onCatalogChanged(CatalogEvent event) {
-        // I cambi di traccia possono essere notificati dal thread audio (fine traccia
-        // naturale): marshalliamo sempre sul thread JavaFX prima di toccare la UI.
+        // I cambi di traccia possono essere notificati dal thread audio (fine traccia naturale)
         Platform.runLater(() -> handleCatalogChanged(event));
     }
 
@@ -310,6 +315,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @FXML
     void handleAddTrack(ActionEvent event) {
+        if (automaticPlaylist) {
+            return;
+        }
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/example/gruppo04/Views/TrackSelectionView.fxml"));
@@ -346,6 +354,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @FXML
     void handleRemoveTrack(ActionEvent event) {
+        if (automaticPlaylist) {
+            return;
+        }
         playlistController.removeTrackFromPlaylist(currentPlaylist, selectedTrack);
     }
 
@@ -372,7 +383,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @FXML
     private void handlePlay() {
-        List<PlayableSource> queue = new ArrayList<>(catalog.getPlaylists());
+        List<PlayableSource> queue = playbackQueueForCurrentPlaylist();
         playbackController.play(queue, currentPlaylist, null);
     }
 
@@ -388,9 +399,19 @@ public class PlaylistDetailViewController implements CatalogObserver {
     @FXML
     private void handlePlayTrack() {
         if (selectedTrack != null) {
-            List<PlayableSource> queue = new ArrayList<>(catalog.getPlaylists());
+            List<PlayableSource> queue = playbackQueueForCurrentPlaylist();
             playbackController.play(queue, currentPlaylist, selectedTrack);
         }
+    }
+
+    private List<PlayableSource> playbackQueueForCurrentPlaylist() {
+        List<PlayableSource> queue = new ArrayList<>();
+        if (catalog.getPlaylists().contains(currentPlaylist)) {
+            queue.addAll(catalog.getPlaylists());
+        } else {
+            queue.addAll(AutomaticPlaylistService.getInstance().refresh(catalog));
+        }
+        return queue;
     }
 
     /**

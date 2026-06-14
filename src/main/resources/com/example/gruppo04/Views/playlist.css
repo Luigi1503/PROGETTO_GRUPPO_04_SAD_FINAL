@@ -1,7 +1,14 @@
 .playlist-grid {
     -fx-hgap: 18;
     -fx-vgap: 18;
-    -fx-padding: 24;
+    -fx-padding: 10 24 24 24;
+}
+
+.playlist-section-title {
+    -fx-text-fill: #8AABAE;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 22 24 0 24;
 }
 
 .playlist-card {
@@ -91,7 +98,6 @@
     -fx-background-color: transparent;
 }
 
-/* ── context menu della playlist 01/06 ── */
 .playlist-context-menu {
     -fx-background-color: #0D1519;
     -fx-background-radius: 8;
@@ -173,5 +179,45 @@
 }
 
 .undo-button:disabled {
-    -fx-opacity: 0.4;
+    -fx-opacity: 0.35;
+}
+
+/* 1. Rendi trasparente lo sfondo generale dello ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+/* Evita che l'area interna dello ScrollPane rimanga bianca */
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* 2. Personalizza lo sfondo (il tracciato) della scrollbar */
+.scroll-pane .scroll-bar:vertical,
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: #1a1f26; /* Colore scuro simile al tuo sfondo */
+}
+
+/* 3. Personalizza la barra di trascinamento (il cursore) */
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #3f4754; /* Grigio medio visibile */
+    -fx-background-radius: 4px;    /* Arrotonda gli angoli */
+}
+
+/* Cambia colore quando l'utente passa il mouse sopra la barra */
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: #525c6e;
+}
+
+/* 4. Nascondi o colora i bottoni con le frecce (opzionale) */
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-shape: ""; /* Rimuove le freccette per un look minimale */
+    -fx-padding: 0;
 }

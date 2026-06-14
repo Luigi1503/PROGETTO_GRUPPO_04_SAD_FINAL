@@ -6,6 +6,7 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
+import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.observer.CatalogEvent;
 import javafx.application.Platform;
@@ -16,7 +17,6 @@ import javafx.scene.layout.FlowPane;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -49,6 +49,15 @@ public class PlaylistViewController implements CatalogObserver {
     @FXML
     private FlowPane playlistGrid;
 
+    @FXML
+    private FlowPane automaticPlaylistGrid;
+
+    @FXML
+    private Label manualSectionTitle;
+
+    @FXML
+    private Label automaticSectionTitle;
+
     /** Bottone per la riproduzione di tutte le playlist */
     @FXML
     private Button btnPlayAll;
@@ -65,6 +74,8 @@ public class PlaylistViewController implements CatalogObserver {
     private  PlaylistController playlistController;
     private  MusicCatalog catalog;
     private Consumer<Playlist> onPlaylistSelected = p -> {};
+    private AutomaticPlaylistService automaticPlaylistService;
+    private boolean automaticOnly;
 
     /** Palyback controller per la gestione della riproduzione delle playlist*/
     private PlaybackController playbackController;
@@ -76,6 +87,8 @@ public class PlaylistViewController implements CatalogObserver {
         this.playlistController = playlistController;
         this.catalog = catalog;
         this.playbackController = playbackController;
+        this.automaticPlaylistService = AutomaticPlaylistService.getInstance();
+        this.automaticOnly = false;
         catalog.registerObserver(this);
         renderPlaylists();
 
@@ -94,6 +107,14 @@ public class PlaylistViewController implements CatalogObserver {
 
     }
 
+    public void initAutomaticOnly(PlaylistController playlistController, MusicCatalog catalog, PlaybackController playbackController) {
+        init(playlistController, catalog, playbackController);
+        this.automaticOnly = true;
+        undoBtn.setVisible(false);
+        undoBtn.setManaged(false);
+        renderPlaylists();
+    }
+
     /**
      * È il gestore dell'undo, permette di
      * tornare indietro ed elminare la scelta fatta in precedenza.
@@ -110,6 +131,7 @@ public class PlaylistViewController implements CatalogObserver {
     @FXML
     public void initialize() {
         playlistGrid.getStyleClass().add("playlist-grid");
+        automaticPlaylistGrid.getStyleClass().add("playlist-grid");
 
         playlistGrid.sceneProperty().addListener((obs, oldS, scene) -> {
             if (scene != null) {
@@ -133,7 +155,8 @@ public class PlaylistViewController implements CatalogObserver {
         // I cambi di riproduzione possono arrivare dal thread audio: marshalla sul thread JavaFX.
         Platform.runLater(() -> {
             switch (event.getType()) {
-                case PLAYLIST_ADDED, PLAYLIST_REMOVED, PLAYLIST_RENAMED -> renderPlaylists();
+                case PLAYLIST_ADDED, PLAYLIST_REMOVED, PLAYLIST_RENAMED,
+                     TRACK_ADDED, TRACK_REMOVED, TRACK_UPDATED -> renderPlaylists();
                 case PLAYBACK_STARTED, TRACK_CHANGED, PLAYBACK_STOPPED -> highlightActivePlaylist();
                 default -> { }
             }
@@ -150,12 +173,19 @@ public class PlaylistViewController implements CatalogObserver {
                 ? playbackController.getCurrentSource() : null;
 
         for (Node node : playlistGrid.getChildren()) {
-            Object data = node.getUserData();
-            boolean active = (data instanceof Playlist) && data.equals(source);
-            node.getStyleClass().remove("playlist-card-active");
-            if (active) {
-                node.getStyleClass().add("playlist-card-active");
-            }
+            highlightNode(node, source);
+        }
+        for (Node node : automaticPlaylistGrid.getChildren()) {
+            highlightNode(node, source);
+        }
+    }
+
+    private void highlightNode(Node node, PlayableSource source) {
+        Object data = node.getUserData();
+        boolean active = (data instanceof Playlist) && data.equals(source);
+        node.getStyleClass().remove("playlist-card-active");
+        if (active) {
+            node.getStyleClass().add("playlist-card-active");
         }
     }
 
@@ -165,11 +195,27 @@ public class PlaylistViewController implements CatalogObserver {
      */
     private void renderPlaylists() {
         playlistGrid.getChildren().clear();
+        automaticPlaylistGrid.getChildren().clear();
 
-        for (Playlist playlist : catalog.getPlaylists()) {
-            playlistGrid.getChildren().add(buildPlaylistCard(playlist));
+        List<Playlist> automaticPlaylists = automaticPlaylistService.refresh(catalog);
+
+        manualSectionTitle.setVisible(!automaticOnly);
+        manualSectionTitle.setManaged(!automaticOnly);
+        playlistGrid.setVisible(!automaticOnly);
+        playlistGrid.setManaged(!automaticOnly);
+        undoBtn.setVisible(!automaticOnly);
+        undoBtn.setManaged(!automaticOnly);
+
+        if (!automaticOnly) {
+            for (Playlist playlist : catalog.getPlaylists()) {
+                playlistGrid.getChildren().add(buildPlaylistCard(playlist, true));
+            }
+            playlistGrid.getChildren().add(buildAddCard());
         }
-        playlistGrid.getChildren().add(buildAddCard());
+
+        for (Playlist playlist : automaticPlaylists) {
+            automaticPlaylistGrid.getChildren().add(buildPlaylistCard(playlist, false));
+        }
 
         // Ripristina l'evidenziazione della playlist in riproduzione dopo ogni ridisegno
         // (anche tornando su questa vista mentre una playlist è in riproduzione).
@@ -225,7 +271,7 @@ public class PlaylistViewController implements CatalogObserver {
      * @param playlist la playlist da rappresentare
      * @return il nodo della card
      */
-    private Node buildPlaylistCard(Playlist playlist) {
+    private Node buildPlaylistCard(Playlist playlist, boolean editable) {
         ImageView icon = new ImageView(noteIcon);
         icon.setFitWidth(64);
         icon.setFitHeight(64);
@@ -243,6 +289,7 @@ public class PlaylistViewController implements CatalogObserver {
         // Associa la playlist alla card per poterla evidenziare quando è in riproduzione.
         card.setUserData(playlist);
 
+        if (editable) {
         // menu contestuale (tasto destro)
         MenuItem rename = new MenuItem("Rinomina");
         rename.setOnAction(e -> {
@@ -267,6 +314,7 @@ public class PlaylistViewController implements CatalogObserver {
         ContextMenu menu = new ContextMenu(rename, delete);
         menu.getStyleClass().add("playlist-context-menu");
         card.setOnContextMenuRequested(e -> menu.show(card, e.getScreenX(), e.getScreenY()));   // si apre da solo col tasto destro
+        }
 
         // click sinistro → apre il dettaglio
         card.setOnMousePressed(e -> {
@@ -302,7 +350,12 @@ public class PlaylistViewController implements CatalogObserver {
      */
     @FXML
     private void handlePlayAll() {
-        List<PlayableSource> queue = new ArrayList<>(catalog.getPlaylists());
+        List<PlayableSource> queue = automaticOnly
+                ? new ArrayList<>(automaticPlaylistService.refresh(catalog))
+                : new ArrayList<>(catalog.getPlaylists());
+        if (!automaticOnly) {
+            queue.addAll(automaticPlaylistService.refresh(catalog));
+        }
         if (!queue.isEmpty()) {
             playbackController.play(queue, queue.get(0), null);
         }

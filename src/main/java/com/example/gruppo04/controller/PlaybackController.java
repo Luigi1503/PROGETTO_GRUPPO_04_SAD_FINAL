@@ -5,6 +5,7 @@ import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
 import com.example.gruppo04.model.strategy.SequentialStrategy;
 import com.example.gruppo04.observer.CatalogEvent;
 import com.example.gruppo04.observer.CatalogEventType;
@@ -314,7 +315,13 @@ public class PlaybackController implements CatalogObserver {
      */
     private void refreshQueueFromCatalog() {
         if (state.getCurrentSource() instanceof Playlist) {
-            state.refreshQueue(new ArrayList<PlayableSource>(catalog.getPlaylists()));
+            List<PlayableSource> refreshedQueue = new ArrayList<>();
+            if (catalog.getPlaylists().contains(state.getCurrentSource())) {
+                refreshedQueue.addAll(catalog.getPlaylists());
+            } else {
+                refreshedQueue.addAll(AutomaticPlaylistService.getInstance().refresh(catalog));
+            }
+            state.refreshQueue(refreshedQueue);
         }
     }
     /**

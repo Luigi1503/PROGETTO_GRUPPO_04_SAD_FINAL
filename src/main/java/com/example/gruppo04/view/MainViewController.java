@@ -48,6 +48,8 @@ public class MainViewController implements CatalogObserver {
     /** Pulsante di navigazione Playlists. */
     @FXML private Button btnPlaylists;
 
+    @FXML private Button btnAutomaticPlaylists;
+
     /* Pulsante di Help Box*/
     @FXML private Button btnHelp;
 
@@ -196,6 +198,25 @@ public class MainViewController implements CatalogObserver {
     }
 
     /**
+     * Mostra il pannello delle sole playlist automatiche nell'area centrale.
+     */
+    private void showAutomaticPlaylists() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/gruppo04/Views/PlaylistView.fxml"));
+            Node view = loader.load();
+            PlaylistViewController controller = loader.getController();
+            controller.initAutomaticOnly(playlistController, catalog, playbackController);
+            controller.setOnPlaylistSelected(this::showPlaylistDetail);
+            setContent(view, controller);
+            setActiveButton(btnAutomaticPlaylists);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Errore nel caricamento di AutomaticPlaylists", e);
+        }
+    }
+
+
+    /**
      * Mostra il pannello di dettaglio di una playlist nell'area centrale.
      *
      * @param playlist la playlist selezionata dall'utente
@@ -253,7 +274,7 @@ public class MainViewController implements CatalogObserver {
      * @param active il bottone da evidenziare
      */
     private void setActiveButton(Button active) {
-        for (Button btn : new Button[]{btnHome, btnAllTracks, btnPlaylists}) {
+        for (Button btn : new Button[]{btnHome, btnAllTracks, btnPlaylists, btnAutomaticPlaylists}) {
             btn.setStyle("-fx-background-color: transparent;" +
                     "-fx-text-fill: #E8EDF0;" +
                     "-fx-font-size: 13px;" +
@@ -292,6 +313,11 @@ public class MainViewController implements CatalogObserver {
     @FXML
     void handlePlaylists(ActionEvent event) {
         showPlaylists();
+    }
+
+    @FXML
+    void handleAutomaticPlaylists(ActionEvent event) {
+        showAutomaticPlaylists();
     }
 
 
