@@ -198,7 +198,7 @@ public class MainViewController implements CatalogObserver {
                     getClass().getResource("/com/example/gruppo04/Views/HomeView.fxml"));
             Node view = loader.load();
             HomeViewController controller = loader.getController();
-            controller.init(trackController, playlistController, playbackController, catalog);
+            controller.init(trackController, playlistController, playbackController, catalog, this);
             setContent(view, controller);
             setActiveButton(btnHome);
         } catch (IOException e) {

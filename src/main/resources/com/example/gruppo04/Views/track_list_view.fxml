@@ -14,36 +14,76 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;" stylesheets="@global.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gruppo04.view.TrackListViewController">
+<BorderPane style="-fx-background-color: #111C22; -fx-font-family: 'Segoe UI', Arial, sans-serif;"
+            stylesheets="@global.css"
+            xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gruppo04.view.TrackListViewController">
 
-    <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
 
     <!-- ── HEADER ── -->
     <top>
         <VBox spacing="4">
-            <padding><Insets bottom="16" /></padding>
+            <padding>
+                <Insets bottom="16" />
+            </padding>
 
-            <!-- titolo + pulsante -->
             <HBox alignment="CENTER_LEFT" spacing="12">
                 <VBox spacing="3" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #E8EDF0; -fx-font-size: 22px; -fx-font-weight: bold;" text="Catalogo Musicale" />
-                    <Label style="-fx-text-fill: #5C7A7D; -fx-font-size: 12px;" text="Elenco completo delle tracce audio disponibili" />
+                    <Label style="-fx-text-fill: #E8EDF0; -fx-font-size: 22px; -fx-font-weight: bold;"
+                           text="Catalogo Musicale" />
+                    <Label style="-fx-text-fill: #5C7A7D; -fx-font-size: 12px;"
+                           text="Elenco completo delle tracce audio disponibili" />
                 </VBox>
+
                 <Region HBox.hgrow="ALWAYS" />
-                <Button fx:id="addTrackBtn" style="-fx-background-color: #1D6A72;                            -fx-text-fill: #FFFFFF;                            -fx-font-weight: bold;                            -fx-font-size: 13px;                            -fx-background-radius: 7;                            -fx-padding: 8 18 8 18;                            -fx-cursor: hand;" text="+ Aggiungi brano" />
+
+                <Button fx:id="addTrackBtn"
+                        text="+ Aggiungi brano"
+                        style="-fx-background-color: #1D6A72;
+                               -fx-text-fill: #FFFFFF;
+                               -fx-font-weight: bold;
+                               -fx-font-size: 13px;
+                               -fx-background-radius: 7;
+                               -fx-padding: 8 18 8 18;
+                               -fx-cursor: hand;" />
             </HBox>
 
-            <!-- barra ricerca -->
             <HBox alignment="CENTER_LEFT" spacing="8">
-                <padding><Insets top="10" /></padding>
-                <TextField fx:id="searchField" maxWidth="400" promptText="Cerca per titolo, artista, genere..." style="-fx-background-color: #1B2A2F;                            -fx-text-fill: #E8EDF0;                            -fx-prompt-text-fill: #4A6468;                            -fx-background-radius: 7;                            -fx-border-color: #2C3E40;                            -fx-border-radius: 7;                            -fx-border-width: 1;                            -fx-padding: 7 12 7 12;                            -fx-font-size: 13px;" visible="false" HBox.hgrow="ALWAYS" />
+                <padding>
+                    <Insets top="10" />
+                </padding>
+
+                <TextField fx:id="searchField"
+                           maxWidth="400"
+                           promptText="Cerca per titolo, artista, genere..."
+                           visible="false"
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-background-color: #1B2A2F;
+                                  -fx-text-fill: #E8EDF0;
+                                  -fx-prompt-text-fill: #4A6468;
+                                  -fx-background-radius: 7;
+                                  -fx-border-color: #2C3E40;
+                                  -fx-border-radius: 7;
+                                  -fx-border-width: 1;
+                                  -fx-padding: 7 12 7 12;
+                                  -fx-font-size: 13px;" />
             </HBox>
         </VBox>
     </top>
 
-    <!-- ── TABELLA ── -->
+    <!-- ── TABLE ── -->
     <center>
-        <TableView fx:id="trackTable" style="-fx-background-color: transparent;                    -fx-table-cell-border-color: transparent;                    -fx-table-header-border-color: transparent;                    -fx-border-color: transparent;                    -fx-control-inner-background: transparent;                    -fx-padding: 0;">
+        <TableView fx:id="trackTable"
+                   style="-fx-background-color: transparent;
+                          -fx-table-cell-border-color: transparent;
+                          -fx-table-header-border-color: transparent;
+                          -fx-border-color: transparent;
+                          -fx-control-inner-background: transparent;
+                          -fx-padding: 0;">
 
             <columns>
 
@@ -51,44 +91,87 @@
 
                 <TableColumn fx:id="artistCol" prefWidth="180" text="ARTISTA" />
 
-                <TableColumn fx:id="yearCol" prefWidth="70" style="-fx-alignment: CENTER_RIGHT;" text="ANNO" />
+                <TableColumn fx:id="yearCol" prefWidth="70" text="ANNO"
+                             style="-fx-alignment: CENTER_RIGHT;" />
 
                 <TableColumn fx:id="genreCol" prefWidth="130" text="GENERE" />
 
-                <TableColumn fx:id="durationCol" prefWidth="70" style="-fx-alignment: CENTER_RIGHT;" text="DURATA" />
+                <TableColumn fx:id="durationCol" prefWidth="70" text="DURATA"
+                             style="-fx-alignment: CENTER_RIGHT;" />
+
+                <!-- ⭐ NUOVA COLONNA TAG -->
+                <TableColumn fx:id="tagCol" prefWidth="120" text="TAG" />
+
             </columns>
 
             <!-- context menu -->
             <contextMenu>
-                <ContextMenu style="-fx-background-color: #1B2A2F;                                     -fx-background-radius: 8;                                     -fx-border-color: #2C3E40;                                     -fx-border-radius: 8;                                     -fx-border-width: 1;                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);                                     -fx-padding: 4 0 4 0;">
+                <ContextMenu style="-fx-background-color: #1B2A2F;
+                                   -fx-background-radius: 8;
+                                   -fx-border-color: #2C3E40;
+                                   -fx-border-radius: 8;
+                                   -fx-border-width: 1;
+                                   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);
+                                   -fx-padding: 4 0 4 0;">
+
                     <items>
-                        <MenuItem fx:id="menuPlay" onAction="#handlePlayTrack" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora" />
-                        <MenuItem fx:id="menuFav" style="-fx-text-fill: #E8EDF0;" text="☆   Aggiungi ai preferiti" visible="false" />
-                        <MenuItem fx:id="menuMove" style="-fx-text-fill: #E8EDF0;" text="↕   Sposta su / giù" visible="false" />
+                        <MenuItem fx:id="menuPlay"
+                                  text="▶   Riproduci ora"
+                                  onAction="#handlePlayTrack"
+                                  style="-fx-text-fill: #E8EDF0;" />
+
+                        <MenuItem fx:id="menuFav"
+                                  text="☆   Aggiungi ai preferiti"
+                                  visible="false"
+                                  style="-fx-text-fill: #E8EDF0;" />
+
+                        <MenuItem fx:id="menuMove"
+                                  text="↕   Sposta su / giù"
+                                  visible="false"
+                                  style="-fx-text-fill: #E8EDF0;" />
+
                         <SeparatorMenuItem visible="false" />
-                        <MenuItem fx:id="menuRemove" onAction="#onDeleteButtonClicked" style="-fx-text-fill: #E05555;" text="✕   Rimuovi traccia" />
-                        <MenuItem fx:id="menuEdit" style="-fx-text-fill: #E8EDF0;" text="✏   Modifica traccia" />
+
+                        <MenuItem fx:id="menuRemove"
+                                  text="✕   Rimuovi traccia"
+                                  onAction="#onDeleteButtonClicked"
+                                  style="-fx-text-fill: #E05555;" />
+
+                        <MenuItem fx:id="menuEdit"
+                                  text="✏   Modifica traccia"
+                                  style="-fx-text-fill: #E8EDF0;" />
                     </items>
+
                 </ContextMenu>
             </contextMenu>
 
-            <!-- placeholder tabella vuota -->
+            <!-- placeholder -->
             <placeholder>
                 <VBox alignment="CENTER" spacing="8">
-                    <Label style="-fx-text-fill: #3A5258; -fx-font-size: 15px; -fx-font-weight: bold;" text="Nessuna traccia trovata" />
-                    <Label style="-fx-text-fill: #2C3E40; -fx-font-size: 12px;" text="Aggiungi il tuo primo brano con il pulsante in alto" />
+                    <Label text="Nessuna traccia trovata"
+                           style="-fx-text-fill: #3A5258; -fx-font-size: 15px; -fx-font-weight: bold;" />
+                    <Label text="Aggiungi il tuo primo brano con il pulsante in alto"
+                           style="-fx-text-fill: #2C3E40; -fx-font-size: 12px;" />
                 </VBox>
             </placeholder>
+
         </TableView>
     </center>
 
     <!-- ── FOOTER ── -->
     <bottom>
         <HBox alignment="CENTER_LEFT" spacing="16">
-            <padding><Insets top="12" /></padding>
-            <Label fx:id="statusLabel" style="-fx-text-fill: #3A5258; -fx-font-size: 11px; -fx-font-style: italic;" />
+            <padding>
+                <Insets top="12" />
+            </padding>
+
+            <Label fx:id="statusLabel"
+                   style="-fx-text-fill: #3A5258; -fx-font-size: 11px; -fx-font-style: italic;" />
+
             <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="countLabel" style="-fx-text-fill: #3A5258; -fx-font-size: 11px;" text="" />
+
+            <Label fx:id="countLabel"
+                   style="-fx-text-fill: #3A5258; -fx-font-size: 11px;" />
         </HBox>
     </bottom>
 

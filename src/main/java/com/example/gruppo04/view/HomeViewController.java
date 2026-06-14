@@ -35,6 +35,7 @@ public class HomeViewController implements CatalogObserver {
 
     private MusicCatalog catalog;
     private PlaybackController playbackController;
+    private MainViewController mainViewController;
 
     private final ObservableList<Track> tracksModel = FXCollections.observableArrayList();
     private final ObservableList<Playlist> playlistsModel = FXCollections.observableArrayList();
@@ -53,10 +54,12 @@ public class HomeViewController implements CatalogObserver {
     public void init(TrackController trackController,
                      PlaylistController playlistController,
                      PlaybackController playbackController,
-                     MusicCatalog catalog) {
+                     MusicCatalog catalog,
+                     MainViewController mainViewController) {
 
         this.playbackController = playbackController;
         this.catalog = catalog;
+        this.mainViewController = mainViewController;
 
         if (this.catalog != null) {
             this.catalog.registerObserver(this);
@@ -100,6 +103,9 @@ public class HomeViewController implements CatalogObserver {
                                 new java.util.ArrayList<>();
                         q.addAll(catalog.getAllTracks());
                         playbackController.play(q, t, null);
+                        if (mainViewController != null) {
+                            mainViewController.handleAllTracks(null);
+                        }
                     }
                 }
             });
