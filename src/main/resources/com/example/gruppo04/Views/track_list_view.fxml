@@ -29,7 +29,7 @@
                     <Label style="-fx-text-fill: #E8EDF0; -fx-font-size: 22px; -fx-font-weight: bold;" text="Catalogo Musicale" />
                     <Label style="-fx-text-fill: #5C7A7D; -fx-font-size: 12px;" text="Elenco completo delle tracce audio disponibili" />
                 </VBox>
-            <Button fx:id="undoBtn" mnemonicParsing="false" onAction="#handleUndo" text="Undo" />
+            <Button fx:id="undoBtn" mnemonicParsing="false" onAction="#handleUndo" text="Undo" styleClass="undo-button" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Button fx:id="addTrackBtn" style="-fx-background-color: #1D6A72;                            -fx-text-fill: #FFFFFF;                            -fx-font-weight: bold;                            -fx-font-size: 13px;                            -fx-background-radius: 7;                            -fx-padding: 8 18 8 18;                            -fx-cursor: hand;" text="+ Aggiungi brano" />
             </HBox>
