@@ -36,7 +36,7 @@ public class GenrePlaylistGenerator extends AutoPlaylistGenerator {
     @Override
     public Playlist createPlaylist(MusicCatalog catalog) {
         Playlist playlist = new PlaylistImpl(getCriterionName());
-        filterTracks(catalog, t -> t.getGenre().equalsIgnoreCase(genre))
+        filterTracks(catalog, t -> genre.equalsIgnoreCase(t.getGenre()))
                 .forEach(playlist::addTrack);
         return playlist;
     }
