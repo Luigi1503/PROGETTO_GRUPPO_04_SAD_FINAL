@@ -85,6 +85,23 @@ public class PlaybackState {
         int idx = (current != null) ? this.queue.indexOf(current) : -1;
         if (idx >= 0) {
             this.currentSourceIndex = idx;
+            // Re-align currentTrack to the instance contained in the refreshed source
+            Track oldCurrentTrack = this.currentTrack;
+            if (oldCurrentTrack != null) {
+                List<Track> newTracks = this.queue.get(idx).getTracks();
+                int newTrackIdx = newTracks.indexOf(oldCurrentTrack);
+                if (newTrackIdx >= 0) {
+                    this.currentTrack = newTracks.get(newTrackIdx);
+                } else {
+                    // If the current track no longer exists in the refreshed source,
+                    // fall back to the first track (if any) to keep a valid state.
+                    if (!newTracks.isEmpty()) {
+                        this.currentTrack = newTracks.get(0);
+                    } else {
+                        this.currentTrack = null;
+                    }
+                }
+            }
         } else if (this.currentSourceIndex >= this.queue.size()) {
             this.currentSourceIndex = Math.max(0, this.queue.size() - 1);
         }

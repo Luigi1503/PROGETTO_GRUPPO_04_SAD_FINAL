@@ -2,16 +2,14 @@ package com.example.gruppo04.view;
 
 import com.example.gruppo04.command.CommandManager;
 import com.example.gruppo04.controller.PlaybackController;
-import com.example.gruppo04.interfaces.PlayableSource;
-import com.example.gruppo04.observer.CatalogEvent;
-import com.example.gruppo04.observer.CatalogObserver;
-import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.controller.PlaylistController;
+import com.example.gruppo04.controller.TrackController;
+import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
-import com.example.gruppo04.controller.TrackController;
-import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
-import com.example.gruppo04.observer.PlaybackStartedPayload;
+import com.example.gruppo04.observer.CatalogEvent;
+import com.example.gruppo04.observer.CatalogObserver;
+import com.example.gruppo04.util.TableColumnFactory;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,419 +18,367 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.List;
 import java.util.stream.Collectors;
-import com.example.gruppo04.util.TableColumnFactory;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
- * Controller JavaFX del pannello di dettaglio di una playlist.
- * Mostra le tracce contenute nella playlist corrente e permette
- * di aggiungerne o rimuoverne tramite PlaylistController.
- * Implementa CatalogObserver (è un ConcreteObserver) per aggiornarsi automaticamente
- * quando il catalogo cambia.
+ * Controller JavaFX della vista di dettaglio di una playlist.
+ *
+ * <p>Responsabilità principali:</p>
+ * <ul>
+ *     <li>Gestione della UI della playlist (tabella, bottoni, label)</li>
+ *     <li>Aggiunta/rimozione e riordinamento tracce</li>
+ *     <li>Interazione con PlaylistController e TrackController</li>
+ *     <li>Delegare la logica di playback a PlaylistPlaybackHandler</li>
+ *     <li>Ascolto eventi del catalogo (CatalogObserver)</li>
+ * </ul>
  */
 public class PlaylistDetailViewController implements CatalogObserver {
 
-    /** Tabella che mostra le tracce contenute nella playlist corrente. */
+    /** Tabella delle tracce della playlist corrente */
     @FXML private TableView<Track> tableTracks;
 
-    /** Colonna che mostra il titolo di ogni traccia. */
+    /** Colonne tabella */
     @FXML private TableColumn<Track, String> colTitle;
-
-    /** Colonna che mostra l'autore di ogni traccia. */
     @FXML private TableColumn<Track, String> colAuthor;
-
-    /** Colonna che mostra l'anno di pubblicazione di ogni traccia. */
     @FXML private TableColumn<Track, Integer> colYear;
-
-    /** Colonna che mostra il genere musicale di ogni traccia. */
     @FXML private TableColumn<Track, String> colGenre;
-
-    /** Colonna che mostra la durata di ogni traccia nel formato mm:ss. */
     @FXML private TableColumn<Track, String> colDuration;
 
-    /** Pulsante per rimuovere la traccia selezionata dalla playlist. Disabilitato se nessuna traccia è selezionata. */
+    /** Pulsanti UI */
     @FXML private Button btnRemoveTrack;
+    @FXML private Button btnAddTrack;
+    @FXML private Button undoBtn;
+    @FXML private Button btnMoveUp;
+    @FXML private Button btnMoveDown;
 
-    /** Label che mostra il nome della playlist corrente. */
+    /** Label informativi */
     @FXML private Label labelNamePlaylist;
-
-    /** Label che mostra il numero di tracce presenti nella playlist. */
     @FXML private Label labelNumTracks;
-
-    /** Label che mostra la durata totale di tutte le tracce della playlist in minuti. */
     @FXML private Label labelTotalDuration;
 
-    /**
-     * Pulsante per aggiungere un brano alla playlist.
-     */
-    @FXML private Button btnAddTrack;
-
-    /** Pulsante per fare undo dell'inserimento di inserimento di una canzone nella playlist */
-    @FXML private Button undoBtn;
-
-
-    /** Controller MVC delle playlist, usato per aggiungere e rimuovere tracce. */
+    /** Controller applicativi */
     private PlaylistController playlistController;
-
-    /** Controller MVC delle tracce, usato per recuperare le tracce disponibili. */
     private TrackController trackController;
-
-    /** Playlist attualmente visualizzata nel pannello. */
-    private Playlist currentPlaylist;
-
-    /**
-     * Indica se questa vista sta "seguendo" la riproduzione, cioè se la playlist
-     * mostrata coincide con la sorgente in riproduzione. Solo in tal caso la vista
-     * evidenzia la traccia corrente e segue gli skip verso le playlist successive.
-     */
-    private boolean followingPlayback = false;
-
-    /** Traccia attualmente selezionata nella tabella. */
-    private Track selectedTrack;
-
-    /*Playback Controller per la gestione dello stato e della strategia di riproduzione*/
     private PlaybackController playbackController;
 
-    /*Catalog per l'elenco delle playlist*/
+    /** Catalogo musicale */
     private MusicCatalog catalog;
 
+    /** Playlist attualmente visualizzata */
+    private Playlist currentPlaylist;
+
+    /** Traccia selezionata nella tabella */
+    private Track selectedTrack;
+
+    /** Flag playlist automatica */
     private boolean automaticPlaylist;
 
-    /** Logger per la gestione degli errori di caricamento delle view. */
+    /** Handler dedicato alla logica di playback */
+    private PlaylistPlaybackHandler playbackHandler;
+
+    /** Logger per errori UI */
     private static final Logger logger =
             Logger.getLogger(PlaylistDetailViewController.class.getName());
 
     /**
-     * Chiamato automaticamente da FXMLLoader dopo il caricamento dell'FXML.
-     * Configura le colonne e il listener sulla selezione della tabella.
+     * Metodo di inizializzazione chiamato da FXMLLoader.
+     * Configura UI, listener e drag & drop.
      */
     @FXML
     void initialize() {
         setupColumns();
-        // Abilita btnRemoveTrack solo se una traccia è selezionata
+
         tableTracks.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {
                     selectedTrack = newVal;
                     btnRemoveTrack.setDisable(automaticPlaylist || newVal == null);
+                    updateMoveButtonsState();
                 });
 
-        tableTracks.setRowFactory(tv -> {
-            TableRow<Track> row = new TableRow<>();
+        setupDragAndDrop();
+    }
 
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && !row.isEmpty()) {
-                    handlePlayTrack();
-                }
-            });
+    /**
+     * Configura i cell value factory delle colonne della tabella.
+     */
+    private void setupColumns() {
+        colTitle.setCellValueFactory(cell ->
+                new SimpleStringProperty(cell.getValue() != null ? cell.getValue().getTitle() : ""));
 
-            return row;
+        colAuthor.setCellValueFactory(cell ->
+                new SimpleStringProperty(cell.getValue() != null ? cell.getValue().getAuthor() : ""));
+
+        colYear.setCellValueFactory(cell -> {
+            Track t = cell.getValue();
+            return new SimpleIntegerProperty(t != null ? t.getYear() : 0).asObject();
         });
 
+        colGenre.setCellValueFactory(cell ->
+                new SimpleStringProperty(cell.getValue() != null ? cell.getValue().getGenre() : ""));
 
-
-
+        colDuration.setCellValueFactory(cell -> {
+            Track t = cell.getValue();
+            if (t == null) return new SimpleStringProperty("");
+            int sec = t.getDuration();
+            String formatted = String.format("%d:%02d", sec / 60, sec % 60);
+            return new SimpleStringProperty(formatted);
+        });
     }
 
-
     /**
-     * È il gestore dell'undo, permette di
-     * tornare indietro ed elminare la scelta fatta in precedenza.
+     * Configura drag & drop per il riordinamento delle tracce.
      */
-    @FXML
-    private void handleUndo(){
-        if (automaticPlaylist) {
-            return;
-        }
-        playlistController.getManagerTrackPlaylist().undo();
-    }
+    private void setupDragAndDrop() {
+        tableTracks.setRowFactory(tv -> new TableRow<>() {
 
+            {
+                setOnMouseClicked(e -> {
+                    if (e.getClickCount() == 2 && !isEmpty()) {
+                        handlePlayTrack();
+                    }
+                });
 
-    /**
-     * Inizializza il pannello con la playlist selezionata.
-     * Registra questo controller come Observer del catalogo.
-     * Da chiamare dopo il caricamento dell'FXML.
-     *
-     * @param playlist           la playlist da visualizzare
-     * @param playlistController il controller MVC delle playlist
-     * @param trackController    il controller MVC delle tracce
-     * @param catalog            il catalogo musicale, usato per la registrazione dell'Observer e per la lista di playlist
-     * @param playbackController il controller del playback che gestisce stato di riproduzione e strategia
-     */
-    public void init(Playlist playlist, PlaylistController playlistController,
-                     TrackController trackController, MusicCatalog catalog, PlaybackController playbackController) {
-        this.currentPlaylist = playlist;
-        this.playlistController = playlistController;
-        this.playbackController = playbackController;
-        this.trackController = trackController;
-        this.catalog = catalog;
-        this.automaticPlaylist = !catalog.getPlaylists().contains(playlist)
-                && AutomaticPlaylistService.getInstance().getPlaylists().contains(playlist);
-        catalog.registerObserver(this);
-        updateView();
-        // Allinea lo stato di "following" e l'evidenziazione quando la vista (ri)appare:
-        // l'indicatore deve essere presente solo se la playlist mostrata è quella in
-        // riproduzione, e deve riapparire subito senza attendere un nuovo evento.
-        followingPlayback = isActiveSource();
-        syncHighlight();
+                setOnDragDetected(e -> {
+                    if (automaticPlaylist || isEmpty()) return;
 
+                    Dragboard db = startDragAndDrop(TransferMode.MOVE);
+                    ClipboardContent content = new ClipboardContent();
+                    content.putString(String.valueOf(getIndex()));
+                    db.setContent(content);
 
-        //Aggiungiamo in listener per disabilitare il bottone quando nno puo essere premuto il comando di undo
-        CommandManager manager = playlistController.getManagerTrackPlaylist();
-        boolean statoAttuale = manager.canUndoProperty().get();
-        undoBtn.setDisable(!statoAttuale);
+                    e.consume();
+                });
 
-        manager.canUndoProperty().addListener((observable, vecchioValore, nuovoValore) -> {
-            if (nuovoValore == true) {
-                undoBtn.setDisable(automaticPlaylist);
-            } else {
-                undoBtn.setDisable(true);
+                setOnDragOver(e -> {
+                    if (e.getGestureSource() != this && e.getDragboard().hasString()) {
+                        e.acceptTransferModes(TransferMode.MOVE);
+                    }
+                });
+
+                setOnDragDropped(e -> {
+                    Dragboard db = e.getDragboard();
+                    if (!db.hasString()) return;
+
+                    int from = Integer.parseInt(db.getString());
+                    int to = isEmpty()
+                            ? tableTracks.getItems().size() - 1
+                            : getIndex();
+
+                    playlistController.moveTrackInPlaylist(currentPlaylist, from, to);
+                });
             }
         });
     }
 
     /**
-     * @return {@code true} se la playlist mostrata è la sorgente attualmente in
-     *         riproduzione (quindi questa vista deve evidenziare la traccia corrente).
+     * Inizializza il controller con le dipendenze necessarie.
      */
-    private boolean isActiveSource() {
-        return playbackController != null
-                && !playbackController.isStopped()
-                && currentPlaylist.equals(playbackController.getCurrentSource());
+    public void init(Playlist playlist,
+                     PlaylistController playlistController,
+                     TrackController trackController,
+                     MusicCatalog catalog,
+                     PlaybackController playbackController) {
+
+        this.currentPlaylist = playlist;
+        this.playlistController = playlistController;
+        this.trackController = trackController;
+        this.catalog = catalog;
+        this.playbackController = playbackController;
+
+        this.automaticPlaylist =
+                !catalog.getPlaylists().contains(playlist);
+
+        this.playbackHandler = new PlaylistPlaybackHandler(
+                playbackController,
+                catalog,
+                tableTracks,
+                currentPlaylist
+        );
+
+        catalog.registerObserver(this);
+
+        updateView();
+        playbackHandler.syncHighlight();
+        setupUndoBinding();
     }
 
     /**
-     * Evidenzia la traccia in riproduzione solo se questa vista mostra la sorgente
-     * attiva; altrimenti azzera la selezione (l'evidenziazione non deve comparire
-     * nelle playlist diverse da quella in riproduzione).
+     * Binding del bottone undo.
      */
-    private void syncHighlight() {
-        if (isActiveSource()) {
-            highlightCurrentTrack(playbackController.getCurrentTrack());
-        } else {
-            tableTracks.getSelectionModel().clearSelection();
+    private void setupUndoBinding() {
+        CommandManager manager = playlistController.getManagerTrackPlaylist();
+
+        undoBtn.setDisable(!manager.canUndoProperty().get());
+
+        manager.canUndoProperty().addListener((obs, oldV, newV) ->
+                undoBtn.setDisable(automaticPlaylist || !newV));
+    }
+
+    /**
+     * Aggiorna la vista della playlist.
+     */
+    public void updateView() {
+
+        labelNamePlaylist.setText(currentPlaylist.getName());
+
+        ObservableList<Track> tracks =
+                FXCollections.observableArrayList(currentPlaylist.getTracks());
+
+        tableTracks.setItems(tracks);
+
+        labelNumTracks.setText(tracks.size() + " tracce");
+        labelTotalDuration.setText(
+                tracks.stream().mapToInt(Track::getDuration).sum() / 60 + " min"
+        );
+    }
+
+    /**
+     * Aggiorna stato bottoni move.
+     */
+    private void updateMoveButtonsState() {
+
+        if (automaticPlaylist || selectedTrack == null) {
+            btnMoveUp.setDisable(true);
+            btnMoveDown.setDisable(true);
+            return;
         }
+
+        int index = tableTracks.getItems().indexOf(selectedTrack);
+        int size = tableTracks.getItems().size();
+
+        btnMoveUp.setDisable(index <= 0);
+        btnMoveDown.setDisable(index < 0 || index >= size - 1);
     }
 
     /**
-     * Reagisce a un evento di riproduzione (avvio/cambio traccia): se la vista sta
-     * seguendo la riproduzione e la sorgente è passata a un'altra playlist, segue il
-     * cambio mostrando la nuova playlist; quindi riallinea l'evidenziazione.
-     */
-    private void syncWithPlayback() {
-        PlayableSource source = playbackController.getCurrentSource();
-        if (followingPlayback && !playbackController.isStopped()
-                && source instanceof Playlist && !source.equals(currentPlaylist)) {
-            currentPlaylist = (Playlist) source;
-            updateView();
-        }
-        followingPlayback = isActiveSource();
-        syncHighlight();
-    }
-
-    /**
-     * Chiamato dal catalogo quando si verifica un cambiamento.
-     * Aggiorna la vista se l'evento riguarda le tracce della playlist corrente
-     * o la rimozione di una traccia dal catalogo.
-     *
-     * @param event l'evento contenente i dettagli del cambiamento
+     * Observer del catalogo musicale.
      */
     @Override
     public void onCatalogChanged(CatalogEvent event) {
-        // I cambi di traccia possono essere notificati dal thread audio (fine traccia naturale)
-        Platform.runLater(() -> handleCatalogChanged(event));
-    }
+        Platform.runLater(() -> {
+            playbackHandler.handleEvent(event, this);
 
-    private void handleCatalogChanged(CatalogEvent event) {
-        switch (event.getType()) {
-            case PLAYLIST_TRACK_ADDED:
-            case PLAYLIST_TRACK_REMOVED:
-            case PLAYLIST_RENAMED:
-            case TRACK_REMOVED:
-                updateView();
-                syncHighlight();
-                break;
-            case PLAYBACK_STARTED:
-                PlaybackStartedPayload payload = (PlaybackStartedPayload) event.getTarget();
-                // Se è stata avviata la riproduzione della playlist mostrata, inizia a seguirla.
-                if (payload.getCurrentSource() instanceof Playlist
-                        && payload.getCurrentSource().equals(currentPlaylist)) {
-                    followingPlayback = true;
-                }
-                syncWithPlayback();
-                break;
-            case TRACK_CHANGED:
-                syncWithPlayback();
-                break;
-            case PLAYBACK_STOPPED:
-                // Riproduzione terminata: smetti di seguire e azzera l'evidenziazione.
-                followingPlayback = false;
-                tableTracks.getSelectionModel().clearSelection();
-                break;
-            default:
-                break;
-        }
-    }
-
-
-    /**
-     * Configura le cellValueFactory di ogni colonna.
-     */
-    private void setupColumns() {
-        TableColumnFactory.setupAllColumns(colTitle, colAuthor, colYear, colGenre, colDuration);
-
-        //per adattare le larghezza delle colonne presenti nella TableView:
-        tableTracks.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
+            // Aggiorna la vista se l'evento riguarda la playlist corrente
+            switch (event.getType()) {
+                case PLAYLIST_TRACK_ADDED,
+                     PLAYLIST_TRACK_REMOVED,
+                     PLAYLIST_REORDERED,
+                     PLAYLIST_RENAMED,
+                     PLAYLIST_CONTENT_CHANGED -> updateView();
+                default -> {}
+            }
+        });
     }
 
     /**
-     * Aggiorna la vista con i dati aggiornati della playlist corrente.
-     * Chiamato automaticamente dall'Observer quando il catalogo cambia.
-     */
-    public void updateView() {
-        labelNamePlaylist.setText(currentPlaylist.getName());
-
-        ObservableList<Track> tracks = FXCollections.observableArrayList(
-                currentPlaylist.getTracks());
-
-        tableTracks.setItems(tracks);
-        labelNumTracks.setText(tracks.size() + " tracce");
-        labelTotalDuration.setText(calculateTotalDuration(tracks) + " min");
-    }
-
-    /**
-     * Gestisce il click su "Aggiungi traccia".
-     * Apre il dialog di selezione traccia mostrando solo le tracce
-     * del catalogo non ancora presenti nella playlist corrente.
+     * Aggiunge una traccia alla playlist.
      */
     @FXML
-    void handleAddTrack(ActionEvent event) {
-        if (automaticPlaylist) {
-            return;
-        }
+    private void handleAddTrack(ActionEvent e) {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/example/gruppo04/Views/TrackSelectionView.fxml"));
+
             VBox root = loader.load();
             TrackSelectionViewController controller = loader.getController();
 
-            List<Track> availableTracks = trackController.getAllTracks().stream()
+            List<Track> available = trackController.getAllTracks().stream()
                     .filter(t -> !currentPlaylist.getTracks().contains(t))
                     .collect(Collectors.toList());
 
-            // Lambda che implementa TrackSelectionListener e definisce
-            // il comportamento da adottare con la traccia selezionata:
-            // ovvero aggiungerla alla playlist corrente.
-            controller.init(availableTracks, track ->
-                    playlistController.addTrackToPlaylist(currentPlaylist, track));
+            controller.init(available,
+                    track -> playlistController.addTrackToPlaylist(currentPlaylist, track));
 
-            Stage dialog = new Stage();
-            dialog.setTitle("Aggiungi traccia");
-            dialog.setScene(new Scene(root));
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.showAndWait();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
 
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Errore nel caricamento di TrackSelectionView", e);
+        } catch (IOException ex) {
+            logger.log(Level.SEVERE, "Errore caricamento TrackSelectionView", ex);
         }
     }
 
     /**
-     * Gestisce il click su "Rimuovi traccia".
-     * Rimuove la traccia selezionata dalla playlist corrente.
-     * La vista si aggiorna automaticamente tramite onCatalogChanged.
-     * Qui selectedTrack è sempre non null: il bottone è abilitato
-     * solo quando una traccia è selezionata nella tabella (vedi initialize).
+     * Rimuove la traccia selezionata.
      */
     @FXML
-    void handleRemoveTrack(ActionEvent event) {
-        if (automaticPlaylist) {
-            return;
-        }
+    private void handleRemoveTrack(ActionEvent e) {
         playlistController.removeTrackFromPlaylist(currentPlaylist, selectedTrack);
     }
 
     /**
-     * Calcola la durata totale della playlist in minuti.
-     *
-     * @param tracks la lista delle tracce
-     * @return durata totale in minuti
+     * Gestore per l'undo (richiama il manager dei comandi).
      */
-    private int calculateTotalDuration(ObservableList<Track> tracks) {
-        return tracks.stream()
-                .mapToInt(Track::getDuration)
-                .sum() / 60;
+    @FXML
+    private void handleUndo() {
+        CommandManager manager = playlistController.getManagerTrackPlaylist();
+        if (manager != null && manager.canUndoProperty().get()) {
+            manager.undo();
+        }
     }
 
     /**
-     * Avvia la riproduzione dell'intera playlist usando la strategia
-     * attualmente selezionata nella barra di riproduzione.
-     *
-     * <p>La coda viene costruita con tutte le playlist del catalogo,
-     * partendo dalla playlist corrente. La strategia non viene passata qui:
-     * è già impostata nel {@link PlaybackController} tramite i bottoni
-     * Sequential/Shuffle/Loop presenti nella barra di riproduzione.</p>
+     * Sposta la traccia selezionata verso l'alto.
+     */
+    @FXML
+    private void handleMoveUp() {
+        if (automaticPlaylist || selectedTrack == null) return;
+        int idx = tableTracks.getItems().indexOf(selectedTrack);
+        if (idx > 0) {
+            playlistController.moveTrackInPlaylist(currentPlaylist, idx, idx - 1);
+            updateMoveButtonsState();
+        }
+    }
+
+    /**
+     * Sposta la traccia selezionata verso il basso.
+     */
+    @FXML
+    private void handleMoveDown() {
+        if (automaticPlaylist || selectedTrack == null) return;
+        int idx = tableTracks.getItems().indexOf(selectedTrack);
+        int size = tableTracks.getItems().size();
+        if (idx >= 0 && idx < size - 1) {
+            playlistController.moveTrackInPlaylist(currentPlaylist, idx, idx + 1);
+            updateMoveButtonsState();
+        }
+    }
+
+    /**
+     * Avvia riproduzione playlist.
      */
     @FXML
     private void handlePlay() {
-        List<PlayableSource> queue = playbackQueueForCurrentPlaylist();
-        playbackController.play(queue, currentPlaylist, null);
+        playbackController.play(
+                playbackHandler.buildQueue(),
+                currentPlaylist,
+                null
+        );
     }
 
     /**
-     * Avvia la riproduzione della traccia selezionata usando la strategia
-     * attualmente selezionata nella barra di riproduzione.
-     *
-     * <p>La coda viene costruita con tutte le playlist del catalogo,
-     * partendo dalla playlist corrente e dalla traccia selezionata.
-     * Al termine delle tracce della playlist corrente, la riproduzione
-     * continua con la playlist successiva nel catalogo.</p>
+     * Avvia riproduzione dalla traccia selezionata.
      */
     @FXML
     private void handlePlayTrack() {
         if (selectedTrack != null) {
-            List<PlayableSource> queue = playbackQueueForCurrentPlaylist();
-            playbackController.play(queue, currentPlaylist, selectedTrack);
+            playbackController.play(
+                    playbackHandler.buildQueue(),
+                    currentPlaylist,
+                    selectedTrack
+            );
         }
     }
-
-    private List<PlayableSource> playbackQueueForCurrentPlaylist() {
-        List<PlayableSource> queue = new ArrayList<>();
-        if (catalog.getPlaylists().contains(currentPlaylist)) {
-            queue.addAll(catalog.getPlaylists());
-        } else {
-            queue.addAll(AutomaticPlaylistService.getInstance().refresh(catalog));
-        }
-        return queue;
-    }
-
-    /**
-     * Evidenzia nella tabella la traccia attualmente in riproduzione.
-     * Se la traccia non appartiene alla playlist corrente, deseleziona tutto.
-     *
-     * @param track la traccia corrente in riproduzione
-     */
-    private void highlightCurrentTrack(Track track) {
-        if (track == null) {
-            tableTracks.getSelectionModel().clearSelection();
-            return;
-        }
-        List<Track> tracks = tableTracks.getItems();
-        int index = tracks.indexOf(track);
-        if (index >= 0) {
-            tableTracks.getSelectionModel().select(index);
-            tableTracks.scrollTo(index);
-        } else {
-            tableTracks.getSelectionModel().clearSelection();
-        }
-    }
-
 }

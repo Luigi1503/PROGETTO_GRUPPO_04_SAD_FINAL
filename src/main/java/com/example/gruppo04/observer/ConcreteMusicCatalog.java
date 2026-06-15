@@ -341,4 +341,21 @@ public class ConcreteMusicCatalog implements MusicCatalog {
     public void notifyPlaybackStopped() {
         notifyObservers(CatalogEventType.PLAYBACK_STOPPED, null);
     }
+
+    /**
+     * Sposta una traccia all'interno di una playlist e notifica gli observer.
+     *
+     * @param playlist la playlist in cui spostare la traccia
+     * @param from     indice di partenza (0-based)
+     * @param to       indice di destinazione (0-based)
+     */
+    @Override
+    public void moveTrackInPlaylist(Playlist playlist, int from, int to) {
+        List<com.example.gruppo04.interfaces.Track> tracks = playlist.getTracks();
+        if (from < 0 || to < 0 || from >= tracks.size() || to >= tracks.size()) {
+            return;
+        }
+        playlist.moveTrack(from, to);
+        notifyObservers(CatalogEventType.PLAYLIST_REORDERED, playlist);
+    }
 }

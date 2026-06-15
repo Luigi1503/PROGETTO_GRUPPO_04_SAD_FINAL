@@ -165,6 +165,17 @@ public interface MusicCatalog {
     public void notifySourceChanged(PlayableSource source);
 
     /**
+     * Sposta una traccia all'interno di una playlist dal indice {@code from}
+     * all'indice {@code to}.
+     * In caso di successo notifica gli observer con l'evento {@code PLAYLIST_REORDERED}.
+     *
+     * @param playlist la playlist in cui spostare la traccia; deve appartenere al catalogo
+     * @param from     indice di partenza (0-based)
+     * @param to       indice di destinazione (0-based)
+     */
+    void moveTrackInPlaylist(Playlist playlist, int from, int to);
+
+    /**
      * Notifica tutti gli observer registrati che la riproduzione è stata
      * fermata del tutto, così che le viste possano azzerare l'evidenziazione
      * della traccia in riproduzione.

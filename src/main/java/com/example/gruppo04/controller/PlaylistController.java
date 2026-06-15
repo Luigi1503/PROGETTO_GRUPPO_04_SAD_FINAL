@@ -109,4 +109,18 @@ public class PlaylistController {
     public CommandManager getManagerTrackPlaylist() {
         return this.managerTrackPlaylist;
     }
+
+    /**
+     * Sposta una traccia all'interno di una playlist, delegando a
+     * {@link MusicCatalog#moveTrackInPlaylist(Playlist, int, int)}.
+     * L'operazione è registrata nel CommandManager e supporta l'undo.
+     *
+     * @param playlist la playlist selezionata nella View
+     * @param from     indice di partenza della traccia
+     * @param to       indice di destinazione della traccia
+     */
+    public void moveTrackInPlaylist(Playlist playlist, int from, int to) {
+        Command cmd = new MoveTrackInPlaylistCommand(playlist, from, to, catalog);
+        managerTrackPlaylist.executeCommand(cmd);
+    }
 }

@@ -40,6 +40,8 @@
                       <Button fx:id="btnRemoveTrack" disable="true" onAction="#handleRemoveTrack" style="-fx-background-color: #1B2A2F;                                -fx-text-fill: #E8EDF0;                                -fx-font-size: 13px;                                -fx-background-radius: 7;                                -fx-border-color: #2C3E40;                                -fx-border-radius: 7;                                -fx-border-width: 1;                                -fx-padding: 8 18 8 18;                                -fx-cursor: hand;" text="Rimuovi Track" />
 
                   <Button fx:id="undoBtn" mnemonicParsing="false" onAction="#handleUndo" text="↺ Undo" styleClass="undo-button"/>
+                  <Button fx:id="btnMoveUp" disable="true" onAction="#handleMoveUp" style="-fx-background-color: #1B2A2F;                                -fx-text-fill: #E8EDF0;                                -fx-font-size: 14px;                                -fx-background-radius: 7;                                -fx-border-color: #2C3E40;                                -fx-border-radius: 7;                                -fx-border-width: 1;                                -fx-padding: 7 14 7 14;                                -fx-cursor: hand;" text="▲" />
+                  <Button fx:id="btnMoveDown" disable="true" onAction="#handleMoveDown" style="-fx-background-color: #1B2A2F;                                -fx-text-fill: #E8EDF0;                                -fx-font-size: 14px;                                -fx-background-radius: 7;                                -fx-border-color: #2C3E40;                                -fx-border-radius: 7;                                -fx-border-width: 1;                                -fx-padding: 7 14 7 14;                                -fx-cursor: hand;" text="▼" />
           <Region HBox.hgrow="ALWAYS" />
           <Button fx:id="btnPlay" onAction="#handlePlay" style="-fx-background-color: #1D6A72;            -fx-text-fill: #FFFFFF;            -fx-font-weight: bold;            -fx-font-size: 13px;            -fx-background-radius: 7;            -fx-padding: 8 18 8 18;            -fx-cursor: hand;" text="▶ Play All" />
 
@@ -60,6 +62,8 @@
                        <ContextMenu style="-fx-background-color: #1B2A2F;                         -fx-background-radius: 8;                         -fx-border-color: #2C3E40;                         -fx-border-radius: 8;                         -fx-border-width: 1;                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 12, 0, 0, 4);                         -fx-padding: 4 0 4 0;">
                            <items>
                                <MenuItem onAction="#handlePlayTrack" style="-fx-text-fill: #E8EDF0;" text="▶   Riproduci ora" />
+                               <MenuItem onAction="#handleMoveUp" style="-fx-text-fill: #E8EDF0;" text="▲   Sposta su" />
+                               <MenuItem onAction="#handleMoveDown" style="-fx-text-fill: #E8EDF0;" text="▼   Sposta giù" />
                                <MenuItem onAction="#handleRemoveTrack" style="-fx-text-fill: #E05555;" text="✕   Rimuovi dalla playlist" />
                            </items>
                        </ContextMenu>
