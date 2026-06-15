@@ -226,21 +226,25 @@ public class PlaybackBarViewController implements CatalogObserver {
 
             case TRACK_CHANGED:
                 Track newTrack = (Track) event.getTarget();
-                this.currentTrack = newTrack;
-                updateTrackInfo(newTrack);
-                progressTimer.stop();
-                progressTimer.start();
-                btnPlayPause.setText("⏸");
+                Platform.runLater(() -> {
+                    this.currentTrack = newTrack;
+                    updateTrackInfo(newTrack);
+                    progressTimer.stop();
+                    progressTimer.start();
+                    btnPlayPause.setText("⏸");
+                });
                 break;
 
             case SOURCE_CHANGED:
                 PlayableSource source =  (PlayableSource) event.getTarget();
                 // La sorgente è una playlist solo durante la riproduzione di playlist;
                 // dal catalogo è una traccia singola e non ha un nome di playlist.
-                if (source instanceof Playlist playlist)
-                    updatePlaylistName(playlist.getName());
-                else
-                    updatePlaylistName(null);
+                Platform.runLater(() -> {
+                    if (source instanceof Playlist playlist)
+                        updatePlaylistName(playlist.getName());
+                    else
+                        updatePlaylistName(null);
+                });
                 break;
 
 
@@ -252,10 +256,7 @@ public class PlaybackBarViewController implements CatalogObserver {
                     btnPrevious.setDisable(true);
                     btnSkip.setDisable(true);
                     btnStop.setDisable(true);
-                    // nascondi i bottoni playlist solo se la riproduzione è davvero ferma
-                    if (playbackController.isStopped()) {
-                        setSkipPlaylistVisible(false);
-                    }
+                    setSkipPlaylistVisible(false);
                 });
                 break;
 
@@ -353,6 +354,9 @@ public class PlaybackBarViewController implements CatalogObserver {
             playbackController.previousTrack();
         else // Oltre i 10s: riavvia la traccia corrente dall'inizio.
             playbackController.restartTrack();
+        btnPlayPause.setText("⏸");
+        progressTimer.stop();
+        progressTimer.start();
     }
 
     /**
@@ -362,7 +366,9 @@ public class PlaybackBarViewController implements CatalogObserver {
     @FXML
     void handleSkipTrack(ActionEvent event) {
         playbackController.skipTrack();
-
+        progressTimer.stop();
+        progressTimer.start();
+        btnPlayPause.setText("⏸");
     }
 
     /**
@@ -374,8 +380,6 @@ public class PlaybackBarViewController implements CatalogObserver {
     void handleSkipPlaylist(ActionEvent event) {
         playbackController.skipSource();
         resetProgress();
-        if (playbackController.isStopped())
-            setSkipPlaylistVisible(false);
     }
 
     /**
@@ -399,7 +403,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         progressTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (currentTrack != null && playbackController.isPlaying() && !userSeeking) {
+                if (currentTrack != null && !userSeeking) {
                     double realElapsedSeconds = playbackController.getCurrentAudioTime();
                     double total = currentTrack.getDuration();
 
