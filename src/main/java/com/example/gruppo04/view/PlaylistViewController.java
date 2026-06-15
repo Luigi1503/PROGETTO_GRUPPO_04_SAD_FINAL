@@ -6,31 +6,29 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
-import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
+import com.example.gruppo04.model.TagType;
+import com.example.gruppo04.model.factory_method.*;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.observer.CatalogEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.*;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import javafx.scene.layout.StackPane;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.event.Event;
 
 import javafx.scene.input.MouseButton;
-
-import javafx.scene.layout.Region;
+import javafx.util.StringConverter;
 
 /**
  * Controller di vista (layer View) del pannello di gestione delle playlist.
@@ -243,9 +241,9 @@ public class PlaylistViewController implements CatalogObserver {
             playlistGrid.getChildren().add(buildAddCard());
         }
 
-        for (Playlist playlist : automaticPlaylists) {
+        for (Playlist playlist : automaticPlaylists)
             automaticPlaylistGrid.getChildren().add(buildPlaylistCard(playlist, false));
-        }
+        automaticPlaylistGrid.getChildren().add(buildAddAutoCard());
 
         // Ripristina l'evidenziazione della playlist in riproduzione dopo ogni ridisegno
         // (anche tornando su questa vista mentre una playlist è in riproduzione).
@@ -285,6 +283,30 @@ public class PlaylistViewController implements CatalogObserver {
     }
 
     /**
+     * @brief Costruisce la card "+" per la creazione di una playlist automatica personalizzata.
+     * @details Crea un nodo grafico identico alla card di aggiunta delle playlist manuali
+     * ma con un'azione diversa al click: apre {@link #showAutoPlaylistDialog()} per
+     * consentire all'utente di scegliere il criterio di generazione (genere, anno, tag) di una playlist.
+     *
+     * @return il nodo della card di creazione playlist automatica
+     */
+    private Node buildAddAutoCard() {
+        // Bottone "+" che apre il dialog di selezione del criterio
+        Button addButton = new Button("+");
+        addButton.getStyleClass().add("add-button");
+        addButton.setOnAction(e -> showAutoPlaylistDialog());
+
+        // Contenitore dell'icona della card
+        StackPane art = new StackPane(addButton);
+        art.getStyleClass().add("card-art");
+
+        // Card completa con stile visivo identico alle card esistenti
+        VBox card = new VBox(art);
+        card.getStyleClass().addAll("playlist-card", "add-card");
+        return card;
+    }
+
+    /**
      * Mostra un messaggio di errore bloccante all'utente.
      *
      * @param messaggio testo da mostrare
@@ -306,8 +328,10 @@ public class PlaylistViewController implements CatalogObserver {
      * </p>
      *
      * @param playlist playlist da rappresentare
-     * @param editable {@code true} se la playlist può essere rinominata o eliminata,
-     *                 {@code false} altrimenti
+     * @param editable {@code true} se la playlist è manuale e può essere rinominata
+     *                 o eliminata tramite menu contestuale;
+     *                 {@code false} se è una playlist automatica — in tal caso
+     *                 il menu contestuale offre solo la rimozione dal generatore
      * @return nodo JavaFX che rappresenta la card della playlist
      */
     private Node buildPlaylistCard(Playlist playlist, boolean editable) {
@@ -353,6 +377,18 @@ public class PlaylistViewController implements CatalogObserver {
         ContextMenu menu = new ContextMenu(rename, delete);
         menu.getStyleClass().add("playlist-context-menu");
         card.setOnContextMenuRequested(e -> menu.show(card, e.getScreenX(), e.getScreenY()));   // si apre da solo col tasto destro
+        }
+        else{
+            MenuItem delete = new MenuItem("Rimuovi");
+            delete.setOnAction(e -> {
+                automaticPlaylistService.removeGenerator(playlist.getName());
+                automaticPlaylistService.refresh(catalog);
+                renderPlaylists();
+            });
+            ContextMenu menu = new ContextMenu(delete);
+            menu.getStyleClass().add("playlist-context-menu");
+            card.setOnContextMenuRequested(e ->
+                    menu.show(card, e.getScreenX(), e.getScreenY()));
         }
 
         // click sinistro → apre il dettaglio
@@ -416,5 +452,132 @@ public class PlaylistViewController implements CatalogObserver {
         if (!queue.isEmpty()) {
             playbackController.play(queue, queue.get(0), null);
         }
+    }
+
+
+    /**
+     * @brief Mostra un dialog per la creazione di una playlist automatica personalizzata.
+     * @details Permette all'utente di scegliere il criterio di generazione tra:
+     * <ul>
+     *     <li><b>Genere</b> — filtra le tracce per genere musicale</li>
+     *     <li><b>Anno</b> — filtra le tracce per periodo di pubblicazione</li>
+     *     <li><b>Tag</b> — filtra le tracce per tag assegnato</li>
+     * </ul>
+     * Al click su OK genera la playlist tramite il pattern Factory Method e
+     * aggiorna la griglia delle playlist automatiche.
+     */
+    private void showAutoPlaylistDialog() {
+        List<AutoPlaylistGenerator> available =
+                automaticPlaylistService.getAvailableGenerators();
+
+        if (available.isEmpty()) {
+            showError("Tutte le playlist automatiche disponibili sono già state create.");
+            return;
+        }
+
+        ComboBox<AutoPlaylistGenerator> genreCombo = new ComboBox<>();
+        ComboBox<AutoPlaylistGenerator> yearCombo = new ComboBox<>();
+        ComboBox<AutoPlaylistGenerator> tagCombo = new ComboBox<>();
+
+        for (AutoPlaylistGenerator g : available) {
+            if (g instanceof GenrePlaylistGenerator) genreCombo.getItems().add(g);
+            else if (g instanceof YearPlaylistGenerator) yearCombo.getItems().add(g);
+            else if (g instanceof TagPlaylistGenerator) tagCombo.getItems().add(g);
+        }
+
+        StringConverter<AutoPlaylistGenerator> converter =
+                new javafx.util.StringConverter<>() {
+                    @Override public String toString(AutoPlaylistGenerator g) {
+                        return g != null ? g.getCriterionName() : "—";
+                    }
+                    @Override public AutoPlaylistGenerator fromString(String s) { return null; }
+                };
+
+        genreCombo.setConverter(converter);
+        yearCombo.setConverter(converter);
+        tagCombo.setConverter(converter);
+
+        genreCombo.setMaxWidth(Double.MAX_VALUE);
+        yearCombo.setMaxWidth(Double.MAX_VALUE);
+        tagCombo.setMaxWidth(Double.MAX_VALUE);
+
+        // Radio button per la selezione della categoria
+        RadioButton rbGenre = new RadioButton("Genere");
+        RadioButton rbYear  = new RadioButton("Anno");
+        RadioButton rbTag   = new RadioButton("Tag");
+
+        rbGenre.setStyle("-fx-text-fill: #E8EDF0;");
+        rbYear.setStyle("-fx-text-fill: #E8EDF0;");
+        rbTag.setStyle("-fx-text-fill: #E8EDF0;");
+
+        ToggleGroup group = new ToggleGroup();
+        rbGenre.setToggleGroup(group);
+        rbYear.setToggleGroup(group);
+        rbTag.setToggleGroup(group);
+
+        // nasconde le ComboBox non selezionate
+        genreCombo.setVisible(false); genreCombo.setManaged(false);
+        yearCombo.setVisible(false);  yearCombo.setManaged(false);
+        tagCombo.setVisible(false);   tagCombo.setManaged(false);
+
+        rbGenre.setOnAction(e -> {
+            genreCombo.setVisible(true);  genreCombo.setManaged(true);
+            yearCombo.setVisible(false);  yearCombo.setManaged(false);
+            tagCombo.setVisible(false);   tagCombo.setManaged(false);
+            if (!genreCombo.getItems().isEmpty()) genreCombo.setValue(genreCombo.getItems().get(0));
+        });
+        rbYear.setOnAction(e -> {
+            genreCombo.setVisible(false); genreCombo.setManaged(false);
+            yearCombo.setVisible(true);   yearCombo.setManaged(true);
+            tagCombo.setVisible(false);   tagCombo.setManaged(false);
+            if (!yearCombo.getItems().isEmpty()) yearCombo.setValue(yearCombo.getItems().get(0));
+        });
+        rbTag.setOnAction(e -> {
+            genreCombo.setVisible(false); genreCombo.setManaged(false);
+            yearCombo.setVisible(false);  yearCombo.setManaged(false);
+            tagCombo.setVisible(true);    tagCombo.setManaged(true);
+            if (!tagCombo.getItems().isEmpty()) tagCombo.setValue(tagCombo.getItems().get(0));
+        });
+
+        // seleziona il primo radio button disponibile
+        if (!genreCombo.getItems().isEmpty())
+            rbGenre.fire();
+        else if (!yearCombo.getItems().isEmpty())
+            rbYear.fire();
+        else
+            rbTag.fire();
+
+
+        VBox content = new VBox(10,
+                rbGenre, genreCombo,
+                rbYear,  yearCombo,
+                rbTag,   tagCombo
+        );
+        content.setStyle("-fx-padding: 10;");
+
+        Dialog<AutoPlaylistGenerator> dialog = new Dialog<>();
+        dialog.setHeaderText("Aggiungi playlist automatica");
+        styleDialog(dialog);
+        dialog.getDialogPane().setContent(content);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        dialog.setResultConverter(btn -> {
+            System.out.println("btn: " + btn);
+            System.out.println("rbGenre selected: " + rbGenre.isSelected());
+            System.out.println("rbYear selected: " + rbYear.isSelected());
+            System.out.println("rbTag selected: " + rbTag.isSelected());
+            System.out.println("genreCombo value: " + (genreCombo.getValue() != null ? genreCombo.getValue().getCriterionName() : "null"));
+            if (btn != ButtonType.OK) return null;
+            if (rbGenre.isSelected()) return genreCombo.getValue();
+            if (rbYear.isSelected())  return yearCombo.getValue();
+            if (rbTag.isSelected())   return tagCombo.getValue();
+            return null;
+        });
+
+        dialog.showAndWait().ifPresent(generator -> {
+            System.out.println("generator ricevuto: " + (generator.getCriterionName()));
+            automaticPlaylistService.addCustomGenerator(generator);
+            renderPlaylists();
+        });
     }
 }

@@ -59,7 +59,7 @@ public class TrackFormViewController {
      */
     @FXML
     public void initialize() {
-        genreComboBox.getItems().addAll("Pop", "Rock", "Jazz", "Classica", "Hip Hop", "Elettronica", "Reggae");
+        genreComboBox.getItems().addAll("Pop", "Rock", "Jazz", "Classica", "Hip Hop", "Electronic", "Reggae");
 
         SpinnerValueFactory<Integer> yearFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1900, 2026, 2024);
         yearSpinner.setValueFactory(yearFactory);
