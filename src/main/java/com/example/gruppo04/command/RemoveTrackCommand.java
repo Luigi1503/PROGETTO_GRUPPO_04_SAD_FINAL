@@ -34,5 +34,9 @@ public class RemoveTrackCommand implements Command {
     @Override
     public void undo() {
         catalog.addTrack(track);
+        // Forza una notifica di update per assicurare che tutte le view
+        // (es. HomeView con la classifica "più ascoltate") ricalcolino
+        // correttamente e mostrino la traccia ripristinata.
+        catalog.notifyTrackUpdated(track);
     }
 }

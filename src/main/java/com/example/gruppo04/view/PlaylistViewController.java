@@ -77,7 +77,7 @@ public class PlaylistViewController implements CatalogObserver {
     private AutomaticPlaylistService automaticPlaylistService;
     private boolean automaticOnly;
 
-    /** Palyback controller per la gestione della riproduzione delle playlist*/
+    /** Playback controller per la gestione della riproduzione delle playlist*/
     private PlaybackController playbackController;
     /**
      * @param playlistController orchestratore a cui delegare le azioni sulle playlist
@@ -107,6 +107,22 @@ public class PlaylistViewController implements CatalogObserver {
 
     }
 
+    /**
+     * Inizializza la vista in modalità "solo playlist automatiche".
+     * <p>
+     * Esegue l'inizializzazione standard tramite {@link #init(PlaylistController, MusicCatalog, PlaybackController)}
+     * e successivamente:
+     * <ul>
+     *     <li>abilita la modalità {@code automaticOnly};</li>
+     *     <li>nasconde il pulsante di undo;</li>
+     *     <li>mostra esclusivamente le playlist generate automaticamente.</li>
+     * </ul>
+     * </p>
+     *
+     * @param playlistController controller responsabile delle operazioni sulle playlist
+     * @param catalog catalogo musicale da osservare e visualizzare
+     * @param playbackController controller responsabile della riproduzione
+     */
     public void initAutomaticOnly(PlaylistController playlistController, MusicCatalog catalog, PlaybackController playbackController) {
         init(playlistController, catalog, playbackController);
         this.automaticOnly = true;
@@ -116,8 +132,12 @@ public class PlaylistViewController implements CatalogObserver {
     }
 
     /**
-     * È il gestore dell'undo, permette di
-     * tornare indietro ed elminare la scelta fatta in precedenza.
+     * Gestisce la richiesta di annullamento dell'ultima operazione eseguita
+     * sulle playlist tramite il {@link CommandManager}.
+     * <p>
+     * Se disponibile un comando annullabile, viene eseguito il metodo
+     * {@code undo()} del manager associato al controller delle playlist.
+     * </p>
      */
     @FXML
     private void handleUndo(){
@@ -164,9 +184,11 @@ public class PlaylistViewController implements CatalogObserver {
     }
 
     /**
-     * Evidenzia nella griglia la card della playlist attualmente in riproduzione,
-     * coerentemente con il resto dell'app: viene evidenziata solo la sorgente attiva.
-     * Se la riproduzione è ferma o non proviene da una playlist, nessuna card è evidenziata.
+     * Evidenzia la card corrispondente alla playlist attualmente in riproduzione.
+     * <p>
+     * Se la riproduzione è ferma oppure la sorgente attiva non è una playlist,
+     * tutte le evidenziazioni vengono rimosse.
+     * </p>
      */
     private void highlightActivePlaylist() {
         PlayableSource source = (playbackController != null && !playbackController.isStopped())
@@ -180,6 +202,14 @@ public class PlaylistViewController implements CatalogObserver {
         }
     }
 
+    /**
+     * Applica o rimuove lo stile grafico che evidenzia la playlist
+     * attualmente in riproduzione.
+     *
+     * @param node nodo grafico associato a una playlist
+     * @param source sorgente di riproduzione attualmente attiva; può essere {@code null}
+     *               se la riproduzione è ferma
+     */
     private void highlightNode(Node node, PlayableSource source) {
         Object data = node.getUserData();
         boolean active = (data instanceof Playlist) && data.equals(source);
@@ -264,12 +294,21 @@ public class PlaylistViewController implements CatalogObserver {
     }
 
     /**
-     * Costruisce la card di una singola playlist: icona, nome e le azioni
-     * Rinomina/Elimina, ciascuna delegata al controller sulla playlist data.
-     * Il click sulla card servirà a selezionarla per il pannello di dettaglio.
+     * Costruisce e restituisce la rappresentazione grafica di una playlist.
+     * <p>
+     * La card mostra:
+     * <ul>
+     *     <li>l'icona della playlist;</li>
+     *     <li>il nome della playlist;</li>
+     *     <li>un menu contestuale per rinomina ed eliminazione (se modificabile);</li>
+     *     <li>la selezione della playlist tramite click sinistro.</li>
+     * </ul>
+     * </p>
      *
-     * @param playlist la playlist da rappresentare
-     * @return il nodo della card
+     * @param playlist playlist da rappresentare
+     * @param editable {@code true} se la playlist può essere rinominata o eliminata,
+     *                 {@code false} altrimenti
+     * @return nodo JavaFX che rappresenta la card della playlist
      */
     private Node buildPlaylistCard(Playlist playlist, boolean editable) {
         ImageView icon = new ImageView(noteIcon);
@@ -325,12 +364,30 @@ public class PlaylistViewController implements CatalogObserver {
 
         return card;
     }
-    /** Imposta cosa fare quando l'utente seleziona una playlist (lo collega MainView). */
+
+    /**
+     * Registra il comportamento da eseguire quando l'utente seleziona una playlist.
+     * <p>
+     * Il consumer ricevuto viene invocato ogni volta che l'utente effettua
+     * un click sinistro su una card playlist.
+     * </p>
+     *
+     * @param handler funzione da eseguire alla selezione di una playlist
+     */
     public void setOnPlaylistSelected(Consumer<Playlist> handler) {
         //System.out.println(">> setOnPlaylistSelected chiamato");
         this.onPlaylistSelected = handler;
     }
 
+    /**
+     * Applica lo stile CSS personalizzato a una finestra di dialogo.
+     * <p>
+     * Il metodo aggiunge il foglio di stile dedicato alle playlist e
+     * rimuove eventuali elementi grafici predefiniti.
+     * </p>
+     *
+     * @param dialog finestra di dialogo da personalizzare
+     */
     private void styleDialog(Dialog<?> dialog) {
         dialog.getDialogPane().getStyleClass().add("playlist-dialog");
         dialog.getDialogPane().getStylesheets().add(

@@ -150,7 +150,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
                 });
 
                 setOnDragDetected(e -> {
-                    if (automaticPlaylist || isEmpty()) return;
+                    if (isEmpty()) return;
 
                     Dragboard db = startDragAndDrop(TransferMode.MOVE);
                     ClipboardContent content = new ClipboardContent();
@@ -222,7 +222,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
         undoBtn.setDisable(!manager.canUndoProperty().get());
 
         manager.canUndoProperty().addListener((obs, oldV, newV) ->
-                undoBtn.setDisable(automaticPlaylist || !newV));
+                undoBtn.setDisable(!newV));
     }
 
     /**
@@ -248,7 +248,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     private void updateMoveButtonsState() {
 
-        if (automaticPlaylist || selectedTrack == null) {
+        if (selectedTrack == null) {
             btnMoveUp.setDisable(true);
             btnMoveDown.setDisable(true);
             return;
@@ -334,7 +334,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @FXML
     private void handleMoveUp() {
-        if (automaticPlaylist || selectedTrack == null) return;
+        if (selectedTrack == null) return;
         int idx = tableTracks.getItems().indexOf(selectedTrack);
         if (idx > 0) {
             playlistController.moveTrackInPlaylist(currentPlaylist, idx, idx - 1);
@@ -347,7 +347,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @FXML
     private void handleMoveDown() {
-        if (automaticPlaylist || selectedTrack == null) return;
+        if (selectedTrack == null) return;
         int idx = tableTracks.getItems().indexOf(selectedTrack);
         int size = tableTracks.getItems().size();
         if (idx >= 0 && idx < size - 1) {
