@@ -264,6 +264,18 @@
                     </VBox>
 
                 </GridPane>
+                <Separator style="-fx-background-color: #1B2A2F;">
+                    <VBox.margin><Insets top="10" bottom="10"/></VBox.margin>
+                </Separator>
+
+                <VBox spacing="6" style="-fx-padding: 0 0 0 0;">
+                    <Label text="⏮  Comportamento del pulsante precedente:"
+                           style="-fx-text-fill: #1D9E75; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+                    <Label text="• Entro i primi 10 secondi  →  torna alla traccia precedente"
+                           style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                    <Label text="• Dopo i 10 secondi  →  la traccia corrente riparte dall'inizio"
+                           style="-fx-text-fill: #E8EDF0; -fx-font-size: 12px;"/>
+                </VBox>
             </VBox>
         </StackPane>
     </center>

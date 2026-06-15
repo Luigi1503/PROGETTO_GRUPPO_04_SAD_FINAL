@@ -213,6 +213,7 @@ public class PlaybackController implements CatalogObserver {
         if (next != null) {
             state.setCurrentTrack(next);
             incrementPlayCounters(next);
+            state.play();
             avviaAudioFisico();
             System.out.println("[PlaybackController.skipTrack] → traccia successiva (strategia): " + next.getTitle());
             catalog.notifyTrackChanged(state.getCurrentTrack());
@@ -266,6 +267,7 @@ public class PlaybackController implements CatalogObserver {
                 incrementPlayCounters(nextSource);
             System.out.println("[PlaybackController.skipSource] → prima traccia della nuova sorgente: "
                     + nextSource.getTracks().get(0).getTitle());
+            state.play();
             avviaAudioFisico();
             catalog.notifyTrackChanged(state.getCurrentTrack());
             catalog.notifySourceChanged(nextSource);
@@ -355,6 +357,7 @@ public class PlaybackController implements CatalogObserver {
      * Riavvia la traccia corrente dall'inizio, senza cambiare traccia né sorgente.
      */
     public void restartTrack() {
+        state.play();
         avviaAudioFisico();
         catalog.notifyTrackChanged(state.getCurrentTrack());
     }
@@ -387,6 +390,7 @@ public class PlaybackController implements CatalogObserver {
         if (previous != null) {
             state.setCurrentTrack(previous);
             incrementPlayCounters(previous);
+            state.play();
             avviaAudioFisico();
             catalog.notifyTrackChanged(state.getCurrentTrack());
         } else {
@@ -544,16 +548,6 @@ public class PlaybackController implements CatalogObserver {
         }
     }
 
-    /**
-     * @return il nome della sorgente corrente se è una playlist, null altrimenti
-     */
-    public String getCurrentSourceName() {
-        PlayableSource source = state.getCurrentSource();
-        if (source instanceof Playlist) {
-            return ((Playlist) source).getName();
-        }
-        return null;
-    }
     /**
      * @return la sorgente corrente 
      */

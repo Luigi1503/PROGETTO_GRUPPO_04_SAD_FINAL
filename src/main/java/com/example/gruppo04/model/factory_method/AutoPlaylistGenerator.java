@@ -2,6 +2,11 @@ package com.example.gruppo04.model.factory_method;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
+import com.example.gruppo04.interfaces.Track;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @brief Creator astratto del pattern Factory Method.
@@ -29,4 +34,23 @@ public abstract class AutoPlaylistGenerator {
      * @return il nome del criterio
      */
     public abstract String getCriterionName();
+
+    /**
+     * @brief Metodo di utilità comune a tutti i generatori.
+     * @details Itera su tutte le tracce del catalogo e restituisce
+     * quelle che soddisfano il predicato fornito dalla sottoclasse.
+     *
+     * @param catalog   il catalogo da cui estrarre le tracce
+     * @param predicate il criterio di filtraggio
+     * @return lista delle tracce che soddisfano il criterio
+     */
+    protected List<Track> filterTracks(MusicCatalog catalog, Predicate<Track> predicate) {
+        List<Track> result = new ArrayList<>();
+        for (Track track : catalog.getAllTracks()) {
+            if (predicate.test(track)) {
+                result.add(track);
+            }
+        }
+        return result;
+    }
 }
