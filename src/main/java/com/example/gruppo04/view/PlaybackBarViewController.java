@@ -97,6 +97,9 @@ public class PlaybackBarViewController implements CatalogObserver {
     /** @brief Timer per l'aggiornamento in tempo reale della barra di avanzamento. */
     private AnimationTimer progressTimer;
 
+    /** @brief Soglia in secondi entro cui il pulsante precedente torna alla traccia precedente. */
+    private static final int PREVIOUS_RESTART_THRESHOLD_SECONDS = 10;
+
     /**
      * @brief Indica che l'utente sta interagendo con la barra (drag/click).
      * @details Quando true il timer non sovrascrive il valore dello slider, così
@@ -346,7 +349,7 @@ public class PlaybackBarViewController implements CatalogObserver {
     @FXML
     void handlePrevious(ActionEvent event) {
         double elapsed = playbackController.getCurrentAudioTime();
-        if (elapsed <= 10) // Entro i primi 10s: torna alla traccia precedente.
+        if (elapsed <= PREVIOUS_RESTART_THRESHOLD_SECONDS) // Entro i primi 10s: torna alla traccia precedente.
             playbackController.previousTrack();
         else // Oltre i 10s: riavvia la traccia corrente dall'inizio.
             playbackController.restartTrack();
