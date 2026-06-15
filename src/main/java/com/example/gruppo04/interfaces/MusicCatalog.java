@@ -157,6 +157,16 @@ public interface MusicCatalog {
 
 
     /**
+     * Notifica tutti gli observer registrati che le proprietà di una traccia
+     * esistente sono cambiate (ad esempio l'aggiunta o la rimozione di un tag),
+     * senza che ciò comporti un cambio della traccia in riproduzione.
+     *
+     * @param track la traccia le cui proprietà sono state modificate
+     */
+    public void notifyTrackUpdated(Track track);
+
+
+    /**
      * Notifica tutti gli observer registrati dell'inizio della riproduzione
      * di una sorgente
      *
