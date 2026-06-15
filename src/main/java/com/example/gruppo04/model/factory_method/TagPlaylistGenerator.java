@@ -36,11 +36,8 @@ public class TagPlaylistGenerator extends AutoPlaylistGenerator {
     @Override
     public Playlist createPlaylist(MusicCatalog catalog) {
         Playlist playlist = new PlaylistImpl(getCriterionName());
-        for (Track track : catalog.getAllTracks()) {
-            if (track.hasTag(tag)) {
-                playlist.addTrack(track);
-            }
-        }
+        filterTracks(catalog, t -> t.hasTag(tag))
+                .forEach(playlist::addTrack);
         return playlist;
     }
 

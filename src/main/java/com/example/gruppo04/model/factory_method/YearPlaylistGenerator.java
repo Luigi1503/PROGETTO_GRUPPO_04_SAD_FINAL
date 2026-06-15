@@ -40,11 +40,8 @@ public class YearPlaylistGenerator extends AutoPlaylistGenerator {
     @Override
     public Playlist createPlaylist(MusicCatalog catalog) {
         Playlist playlist = new PlaylistImpl(getCriterionName());
-        for (Track track : catalog.getAllTracks()) {
-            if (track.getYear() >= fromYear && track.getYear() <= toYear) {
-                playlist.addTrack(track);
-            }
-        }
+        filterTracks(catalog, t -> t.getYear() >= fromYear && t.getYear() <= toYear)
+                .forEach(playlist::addTrack);
         return playlist;
     }
 
