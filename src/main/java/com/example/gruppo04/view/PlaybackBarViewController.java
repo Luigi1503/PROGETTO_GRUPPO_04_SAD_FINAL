@@ -225,6 +225,7 @@ public class PlaybackBarViewController implements CatalogObserver {
                 Track newTrack = (Track) event.getTarget();
                 this.currentTrack = newTrack;
                 updateTrackInfo(newTrack);
+                progressTimer.stop();
                 progressTimer.start();
                 btnPlayPause.setText("⏸");
                 break;

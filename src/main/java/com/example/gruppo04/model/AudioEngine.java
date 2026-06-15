@@ -100,8 +100,7 @@ public class AudioEngine {
                             isPlaying = false;
                             if (!isPaused) {
                                 try {
-                                    if (fisRef.getChannel().position() >= fileSize - 2000
-                                            && onFinished != null) {
+                                    if (!isPaused && onFinished != null) {
                                         onFinished.run();
                                     }
                                 } catch (Exception e) {

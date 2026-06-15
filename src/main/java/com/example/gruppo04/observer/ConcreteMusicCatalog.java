@@ -6,6 +6,7 @@ import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.model.PlaylistImpl;
 import com.example.gruppo04.interfaces.Track;
+import javafx.application.Platform;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -330,16 +331,22 @@ public class ConcreteMusicCatalog implements MusicCatalog {
     }
 
     public void notifyTrackChanged(Track track) {
-        notifyObservers(CatalogEventType.TRACK_CHANGED, track);
+        Platform.runLater(() ->
+            notifyObservers(CatalogEventType.TRACK_CHANGED, track)
+        );
     }
 
     public void notifySourceChanged(PlayableSource source) {
-        notifyObservers(CatalogEventType.SOURCE_CHANGED, source);
+        Platform.runLater(() ->
+            notifyObservers(CatalogEventType.SOURCE_CHANGED, source)
+        );
     }
 
     @Override
     public void notifyPlaybackStopped() {
-        notifyObservers(CatalogEventType.PLAYBACK_STOPPED, null);
+        Platform.runLater(() ->
+            notifyObservers(CatalogEventType.PLAYBACK_STOPPED, null)
+        );
     }
 
     /**

@@ -6,6 +6,7 @@ import com.example.gruppo04.interfaces.Track;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @brief Creator astratto del pattern Factory Method.
@@ -43,8 +44,7 @@ public abstract class AutoPlaylistGenerator {
      * @param predicate il criterio di filtraggio
      * @return lista delle tracce che soddisfano il criterio
      */
-    protected List<Track> filterTracks(MusicCatalog catalog,
-                                       java.util.function.Predicate<Track> predicate) {
+    protected List<Track> filterTracks(MusicCatalog catalog, Predicate<Track> predicate) {
         List<Track> result = new ArrayList<>();
         for (Track track : catalog.getAllTracks()) {
             if (predicate.test(track)) {

@@ -545,16 +545,6 @@ public class PlaybackController implements CatalogObserver {
     }
 
     /**
-     * @return il nome della sorgente corrente se è una playlist, null altrimenti
-     */
-    public String getCurrentSourceName() {
-        PlayableSource source = state.getCurrentSource();
-        if (source instanceof Playlist) {
-            return ((Playlist) source).getName();
-        }
-        return null;
-    }
-    /**
      * @return la sorgente corrente 
      */
     public PlayableSource getCurrentSource() {
