@@ -218,5 +218,45 @@ public final class AutomaticPlaylistService {
         return removed;
     }
 
+    /**
+     * Restituisce una copia immutabile dei generatori attivi.
+     *
+     * @return lista dei generatori attivi
+     */
+    public synchronized List<AutoPlaylistGenerator> getGeneratorsSnapshot() {
+        return List.copyOf(generators);
+    }
+
+    /**
+     * Ripristina lo stato interno del servizio a partire dai generatori e dalle
+     * playlist gia' generate.
+     *
+     * @param restoredGenerators generatori attivi da ripristinare
+     * @param restoredPlaylists playlist automatiche persistite
+     */
+    public synchronized void restoreState(List<AutoPlaylistGenerator> restoredGenerators,
+                                          List<Playlist> restoredPlaylists) {
+        generators.clear();
+        if (restoredGenerators != null) {
+            generators.addAll(restoredGenerators);
+        }
+
+        playlistsByName.clear();
+        if (restoredPlaylists != null) {
+            for (Playlist playlist : restoredPlaylists) {
+                playlistsByName.put(playlist.getName(), playlist);
+            }
+        }
+    }
+
+    /**
+     * Cancella tutto lo stato interno del servizio. Usato in fase di bootstrap
+     * quando non esiste alcun salvataggio precedente.
+     */
+    public synchronized void reset() {
+        generators.clear();
+        playlistsByName.clear();
+    }
+
 
 }
