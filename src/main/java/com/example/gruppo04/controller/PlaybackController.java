@@ -343,15 +343,36 @@ public class PlaybackController implements CatalogObserver {
      * </p>
      */
     private void refreshQueueFromCatalog() {
-        if (state.getCurrentSource() instanceof Playlist) {
-            List<PlayableSource> refreshedQueue = new ArrayList<>();
-            if (catalog.getPlaylists().contains(state.getCurrentSource())) {
-                refreshedQueue.addAll(catalog.getPlaylists());
-            } else {
-                refreshedQueue.addAll(AutomaticPlaylistService.getInstance().refresh(catalog));
-            }
-            state.refreshQueue(refreshedQueue);
+        if (state.getCurrentSource() instanceof Playlist playlist) {
+            state.refreshQueue(buildContinuationQueue(playlist));
         }
+    }
+
+    /**
+     * Avvia la riproduzione di una playlist, costruendo automaticamente la coda
+     * di continuazione corretta: le altre playlist manuali del catalogo se
+     * {@code playlist} è manuale, le playlist automatiche se è generata.
+     *
+     * @param playlist   la playlist da riprodurre; non deve essere {@code null}
+     * @param startTrack la traccia da cui partire; se {@code null} parte dalla prima
+     */
+    public void playPlaylist(Playlist playlist, Track startTrack) {
+        play(buildContinuationQueue(playlist), playlist, startTrack);
+    }
+
+    /**
+     * Costruisce la coda di continuazione per la playlist data: le playlist
+     * manuali del catalogo se {@code playlist} ne fa parte, altrimenti le
+     * playlist generate automaticamente.
+     */
+    private List<PlayableSource> buildContinuationQueue(Playlist playlist) {
+        List<PlayableSource> queue = new ArrayList<>();
+        if (catalog.getPlaylists().contains(playlist)) {
+            queue.addAll(catalog.getPlaylists());
+        } else {
+            queue.addAll(AutomaticPlaylistService.getInstance().refresh(catalog));
+        }
+        return queue;
     }
     /**
      * Riavvia la traccia corrente dall'inizio, senza cambiare traccia né sorgente.

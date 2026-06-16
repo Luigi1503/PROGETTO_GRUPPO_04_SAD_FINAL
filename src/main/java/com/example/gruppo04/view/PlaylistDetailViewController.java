@@ -201,7 +201,6 @@ public class PlaylistDetailViewController implements CatalogObserver {
 
         this.playbackHandler = new PlaylistPlaybackHandler(
                 playbackController,
-                catalog,
                 tableTracks,
                 currentPlaylist
         );
@@ -360,11 +359,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
      */
     @FXML
     private void handlePlay() {
-        playbackController.play(
-                playbackHandler.buildQueue(),
-                currentPlaylist,
-                null
-        );
+        playbackController.playPlaylist(currentPlaylist, null);
     }
 
     /**
@@ -373,11 +368,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
     @FXML
     private void handlePlayTrack() {
         if (selectedTrack != null) {
-            playbackController.play(
-                    playbackHandler.buildQueue(),
-                    currentPlaylist,
-                    selectedTrack
-            );
+            playbackController.playPlaylist(currentPlaylist, selectedTrack);
         }
     }
 }

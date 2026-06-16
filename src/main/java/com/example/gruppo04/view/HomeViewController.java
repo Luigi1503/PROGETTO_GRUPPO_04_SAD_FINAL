@@ -134,18 +134,7 @@ public class HomeViewController implements CatalogObserver {
                 if (ev.getClickCount() == 2) {
                     Playlist p = playlistsListView.getSelectionModel().getSelectedItem();
                     if (p != null && playbackController != null) {
-                        java.util.ArrayList<com.example.gruppo04.interfaces.PlayableSource> q =
-                                new java.util.ArrayList<>();
-                        if (catalog.getPlaylists().contains(p)) {
-                            q.addAll(catalog.getPlaylists());
-                        } else {
-                            q.addAll(automaticPlaylistService.refresh(catalog));
-                        }
-                        playbackController.play(
-                                q,
-                                p,
-                                p.getTracks().isEmpty() ? null : p.getTracks().get(0)
-                        );
+                        playbackController.playPlaylist(p, null);
                     }
                 }
             });

@@ -3,12 +3,8 @@ package com.example.gruppo04.view;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.interfaces.*;
 import com.example.gruppo04.observer.CatalogEvent;
-import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
 
 import javafx.scene.control.TableView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Gestisce tutta la logica relativa alla sincronizzazione tra
@@ -25,7 +21,6 @@ import java.util.List;
 public class PlaylistPlaybackHandler {
 
     private final PlaybackController playbackController;
-    private final MusicCatalog catalog;
     private final TableView<Track> tableTracks;
 
     private Playlist currentPlaylist;
@@ -36,12 +31,10 @@ public class PlaylistPlaybackHandler {
      */
     public PlaylistPlaybackHandler(
             PlaybackController playbackController,
-            MusicCatalog catalog,
             TableView<Track> tableTracks,
             Playlist playlist) {
 
         this.playbackController = playbackController;
-        this.catalog = catalog;
         this.tableTracks = tableTracks;
         this.currentPlaylist = playlist;
     }
@@ -135,19 +128,6 @@ public class PlaylistPlaybackHandler {
         return playbackController != null
                 && !playbackController.isStopped()
                 && currentPlaylist.equals(playbackController.getCurrentSource());
-    }
-
-    /**
-     * Costruisce la coda di riproduzione.
-     */
-    public List<PlayableSource> buildQueue() {
-
-        if (catalog.getPlaylists().contains(currentPlaylist)) {
-            return new ArrayList<>(catalog.getPlaylists());
-        }
-
-        return new ArrayList<>(
-                AutomaticPlaylistService.getInstance().refresh(catalog));
     }
 
     /**
