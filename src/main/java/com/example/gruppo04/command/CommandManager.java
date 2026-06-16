@@ -44,6 +44,7 @@ public class CommandManager {
             cmd.execute();
             if (cmd.wasExecuted()) {
                 stack.push(cmd);
+                cmd.notifyCatalogChanged();
                 fireCanUndoChanged();
             }
         }
@@ -56,6 +57,7 @@ public class CommandManager {
         if (!stack.isEmpty()) {
             Command command = stack.pop();
             command.undo();
+            command.notifyCatalogChanged();
             fireCanUndoChanged();
         }
     }

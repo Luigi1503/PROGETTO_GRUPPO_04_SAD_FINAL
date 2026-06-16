@@ -32,4 +32,12 @@ public interface Command {
     default boolean wasExecuted() {
         return true;
     }
+
+    /**
+     * Hook invocato dal {@link CommandManager} dopo un execute/undo efficace,
+     * utile per i comandi che modificano il modello senza passare direttamente
+     * da un metodo notificante del catalogo.
+     */
+    default void notifyCatalogChanged() {
+    }
 }

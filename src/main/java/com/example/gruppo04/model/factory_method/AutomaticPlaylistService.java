@@ -171,6 +171,24 @@ public final class AutomaticPlaylistService {
     }
 
     /**
+     * Restituisce il generatore attivo associato al criterio indicato.
+     *
+     * @param criterionName nome del criterio da cercare
+     * @return il generatore attivo corrispondente, oppure {@code null} se assente
+     */
+    public synchronized AutoPlaylistGenerator getGeneratorByCriterionName(String criterionName) {
+        if (criterionName == null) {
+            return null;
+        }
+        for (AutoPlaylistGenerator generator : generators) {
+            if (generator.getCriterionName().equalsIgnoreCase(criterionName)) {
+                return generator;
+            }
+        }
+        return null;
+    }
+
+    /**
      * @brief Aggiunge un generatore personalizzato alla lista dei generatori attivi.
      * @details Il generatore viene aggiunto solo se non esiste già un criterio
      * con lo stesso nome. Dopo l'aggiunta il generatore sarà incluso nelle
@@ -193,10 +211,11 @@ public final class AutomaticPlaylistService {
      *
      * @param criterionName il nome del criterio da rimuovere
      */
-    public synchronized void removeGenerator(String criterionName) {
-        generators.removeIf(g ->
+    public synchronized boolean removeGenerator(String criterionName) {
+        boolean removed = generators.removeIf(g ->
                 g.getCriterionName().equalsIgnoreCase(criterionName));
         playlistsByName.remove(criterionName);
+        return removed;
     }
 
 

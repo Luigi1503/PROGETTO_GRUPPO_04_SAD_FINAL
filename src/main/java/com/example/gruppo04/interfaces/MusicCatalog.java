@@ -206,6 +206,15 @@ public interface MusicCatalog {
      */
     public void notifyTrackUpdated(Track track);
 
+    /**
+     * Notifica tutti gli observer registrati che il contenuto delle playlist
+     * e' cambiato senza passare da una singola operazione del catalogo.
+     *
+     * @param target l'oggetto interessato dalla modifica, oppure {@code null}
+     *               quando il refresh riguarda piu' playlist
+     */
+    public void notifyPlaylistContentChanged(Object target);
+
 
     /**
      * Notifica tutti gli observer registrati dell'inizio della riproduzione
