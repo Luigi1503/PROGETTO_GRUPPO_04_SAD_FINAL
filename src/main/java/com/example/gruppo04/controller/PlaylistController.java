@@ -99,13 +99,18 @@ public class PlaylistController {
         return cmd.wasExecuted();
     }
 
-
-
+    /**
+     * @brief Restituisce il command manager dedicato alla gestione delle playlist.
+     * @return L'istanza di {@link CommandManager} per le operazioni sulle playlist.
+     */
     public CommandManager getManagerPlaylist() {
         return this.managerPlaylist;
     }
 
-
+    /**
+     * @brief Restituisce il command manager dedicato alla gestione delle tracce nelle playlist.
+     * @return L'istanza di {@link CommandManager} per le operazioni sulle tracce all'interno delle playlist.
+     */
     public CommandManager getManagerTrackPlaylist() {
         return this.managerTrackPlaylist;
     }
