@@ -163,6 +163,10 @@ public class PlaybackState {
         return this.currentState.isStopped();
     }
 
+    public boolean isPaused() {
+        return this.currentState.isPaused();
+    }
+
     public void setCurrentSource(PlayableSource source) {
         this.currentSourceIndex = this.queue.indexOf(source);
         if (!source.getTracks().isEmpty()) {

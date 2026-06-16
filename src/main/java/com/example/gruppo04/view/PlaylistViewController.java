@@ -92,16 +92,9 @@ public class PlaylistViewController implements CatalogObserver {
 
         //Aggiungiamo in listener per disabilitare il bottone quando nno puo essere premuto il comando di undo
         CommandManager manager = playlistController.getManagerPlaylist();
-        boolean statoAttuale = manager.canUndoProperty().get();
-        undoBtn.setDisable(!statoAttuale);
+        undoBtn.setDisable(!manager.canUndo());
 
-        manager.canUndoProperty().addListener((observable, vecchioValore, nuovoValore) -> {
-            if (nuovoValore == true) {
-                undoBtn.setDisable(false);
-            } else {
-                undoBtn.setDisable(true);
-            }
-        });
+        manager.addCanUndoListener(canUndo -> undoBtn.setDisable(!canUndo));
 
     }
 
@@ -506,10 +499,6 @@ public class PlaylistViewController implements CatalogObserver {
         RadioButton rbYear  = new RadioButton("Anno");
         RadioButton rbTag   = new RadioButton("Tag");
 
-        rbGenre.setStyle("-fx-text-fill: #E8EDF0;");
-        rbYear.setStyle("-fx-text-fill: #E8EDF0;");
-        rbTag.setStyle("-fx-text-fill: #E8EDF0;");
-
         ToggleGroup group = new ToggleGroup();
         rbGenre.setToggleGroup(group);
         rbYear.setToggleGroup(group);
@@ -553,7 +542,7 @@ public class PlaylistViewController implements CatalogObserver {
                 rbYear,  yearCombo,
                 rbTag,   tagCombo
         );
-        content.setStyle("-fx-padding: 10;");
+        content.getStyleClass().add("auto-playlist-content");
 
         Dialog<AutoPlaylistGenerator> dialog = new Dialog<>();
         dialog.setHeaderText("Aggiungi playlist automatica");
@@ -562,11 +551,6 @@ public class PlaylistViewController implements CatalogObserver {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         dialog.setResultConverter(btn -> {
-            System.out.println("btn: " + btn);
-            System.out.println("rbGenre selected: " + rbGenre.isSelected());
-            System.out.println("rbYear selected: " + rbYear.isSelected());
-            System.out.println("rbTag selected: " + rbTag.isSelected());
-            System.out.println("genreCombo value: " + (genreCombo.getValue() != null ? genreCombo.getValue().getCriterionName() : "null"));
             if (btn != ButtonType.OK) return null;
             if (rbGenre.isSelected()) return genreCombo.getValue();
             if (rbYear.isSelected())  return yearCombo.getValue();
@@ -575,7 +559,6 @@ public class PlaylistViewController implements CatalogObserver {
         });
 
         dialog.showAndWait().ifPresent(generator -> {
-            System.out.println("generator ricevuto: " + (generator.getCriterionName()));
             automaticPlaylistService.addCustomGenerator(generator);
             renderPlaylists();
         });

@@ -38,9 +38,9 @@ public class PlaylistController {
      *         valore con cui la View mostra il riscontro
      */
     public boolean createPlaylist(String name) {
-        Command cmd = new AddPlaylistCommand(catalog, name);
+        AddPlaylistCommand cmd = new AddPlaylistCommand(catalog, name);
         managerPlaylist.executeCommand(cmd);
-        return true;
+        return cmd.wasExecuted();
     }
 
     /**
@@ -64,9 +64,9 @@ public class PlaylistController {
      * @return {@code true} se rimossa, {@code false} se non presente
      */
     public boolean deletePlaylist(Playlist playlist) {
-        Command cmd = new RemovePlaylistCommand(playlist, catalog);
+        RemovePlaylistCommand cmd = new RemovePlaylistCommand(playlist, catalog);
         managerPlaylist.executeCommand(cmd);
-        return true;
+        return cmd.wasExecuted();
     }
 
     /**
@@ -79,9 +79,9 @@ public class PlaylistController {
      *         presente nella playlist
      */
     public boolean addTrackToPlaylist(Playlist playlist, Track track) {
-        Command cmd = new AddTrackToPlaylistCommand(track, catalog, playlist);
+        AddTrackToPlaylistCommand cmd = new AddTrackToPlaylistCommand(track, catalog, playlist);
         managerTrackPlaylist.executeCommand(cmd);
-        return true;
+        return cmd.wasExecuted();
     }
 
     /**
@@ -94,9 +94,9 @@ public class PlaylistController {
      *         presente nella playlist
      */
     public boolean removeTrackFromPlaylist(Playlist playlist, Track track) {
-        Command cmd = new RemoveTrackFromPlaylistCommand(playlist, track, catalog);
+        RemoveTrackFromPlaylistCommand cmd = new RemoveTrackFromPlaylistCommand(playlist, track, catalog);
         managerTrackPlaylist.executeCommand(cmd);
-        return true;
+        return cmd.wasExecuted();
     }
 
 

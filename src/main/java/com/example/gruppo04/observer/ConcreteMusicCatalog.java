@@ -59,7 +59,7 @@ public class ConcreteMusicCatalog implements MusicCatalog {
      * prima della creazione dell'istanza {@link PlaylistImpl}.</p>
      */
     @Override
-    public boolean createPlaylist(String name) {
+    public Playlist createPlaylist(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Il nome della playlist non può essere nullo o vuoto.");
         }
@@ -68,7 +68,7 @@ public class ConcreteMusicCatalog implements MusicCatalog {
 
         for (Playlist p : playlists) {
             if (p.getName().equalsIgnoreCase(correctName)) {
-                return false;
+                return null;
             }
         }
 
@@ -76,6 +76,25 @@ public class ConcreteMusicCatalog implements MusicCatalog {
         playlists.add(newPlaylist);
         notifyObservers(CatalogEventType.PLAYLIST_ADDED, newPlaylist);
 
+        return newPlaylist;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean addPlaylistAt(int index, Playlist playlist) {
+        if (playlist == null) {
+            throw new IllegalArgumentException("La playlist non può essere null.");
+        }
+
+        for (Playlist p : playlists) {
+            if (p.getName().equalsIgnoreCase(playlist.getName())) {
+                return false;
+            }
+        }
+
+        int i = Math.max(0, Math.min(index, playlists.size()));
+        playlists.add(i, playlist);
+        notifyObservers(CatalogEventType.PLAYLIST_ADDED, playlist);
         return true;
     }
 
@@ -178,6 +197,50 @@ public class ConcreteMusicCatalog implements MusicCatalog {
             notifyObservers(CatalogEventType.PLAYLIST_TRACK_ADDED, track);
         }
         return added;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean addTrackToPlaylistAt(Playlist playlist, Track track, int index) {
+        if (track == null) {
+            throw new IllegalArgumentException("La traccia da aggiungere non può essere null.");
+        }
+        if (!playlists.contains(playlist)) {
+            throw new IllegalArgumentException("La playlist non appartiene a questo catalogo.");
+        }
+        if (!tracks.containsKey(track.getId())) {
+            throw new IllegalArgumentException("La traccia non è presente nel catalogo.");
+        }
+
+        boolean added = playlist.addTrackAt(index, track);
+        if (added) {
+            notifyObservers(CatalogEventType.PLAYLIST_TRACK_ADDED, track);
+        }
+        return added;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void addTrackAt(int index, Track track) {
+        if (track == null) {
+            throw new IllegalArgumentException("La traccia non può essere nulla.");
+        }
+        // Se già presente non duplichiamo (es. undo ripetuti): ne preserviamo la posizione attuale.
+        if (tracks.containsKey(track.getId())) {
+            return;
+        }
+
+        // LinkedHashMap non supporta l'inserimento posizionale: ricostruiamo
+        // l'ordine inserendo la traccia all'indice richiesto.
+        List<Map.Entry<UUID, Track>> entries = new ArrayList<>(tracks.entrySet());
+        int i = Math.max(0, Math.min(index, entries.size()));
+        entries.add(i, new AbstractMap.SimpleEntry<>(track.getId(), track));
+
+        tracks.clear();
+        for (Map.Entry<UUID, Track> e : entries) {
+            tracks.put(e.getKey(), e.getValue());
+        }
+        notifyObservers(CatalogEventType.TRACK_ADDED, track);
     }
 
     /**

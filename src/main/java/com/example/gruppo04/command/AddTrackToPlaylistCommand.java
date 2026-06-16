@@ -12,6 +12,7 @@ public class AddTrackToPlaylistCommand implements Command {
     private final Track track;
     private final MusicCatalog catalog;
     private final Playlist playlist;
+    private boolean added; // esito dell'aggiunta
 
     /**
      * @param track    la traccia da aggiungere alla playlist
@@ -29,7 +30,7 @@ public class AddTrackToPlaylistCommand implements Command {
      */
     @Override
     public void execute() {
-        catalog.addTrackToPlaylist(playlist, track);
+        added = catalog.addTrackToPlaylist(playlist, track);
     }
 
     /**
@@ -38,5 +39,13 @@ public class AddTrackToPlaylistCommand implements Command {
     @Override
     public void undo() {
         catalog.removeTrackFromPlaylist(playlist, track);
+    }
+
+    /**
+     * @return {@code true} se la traccia è stata aggiunta, {@code false} se era già presente
+     */
+    @Override
+    public boolean wasExecuted() {
+        return added;
     }
 }

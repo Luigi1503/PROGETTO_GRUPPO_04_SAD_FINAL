@@ -73,6 +73,16 @@ public class PlaylistImpl implements Playlist {
     }
 
     @Override
+    public boolean addTrackAt(int index, Track track){
+        if (tracks.contains(track)) {
+            return false;
+        }
+        int i = Math.max(0, Math.min(index, tracks.size()));
+        tracks.add(i, track);
+        return true;
+    }
+
+    @Override
     public boolean removeTrack(Track track){
         boolean result = false;
         if(tracks.contains(track)) {

@@ -532,6 +532,13 @@ public class PlaybackController implements CatalogObserver {
     }
 
     /**
+     * @return {@code true} se la riproduzione è in pausa (ancora attiva, non ferma)
+     */
+    public boolean isPaused() {
+        return state.isPaused();
+    }
+
+    /**
      * @return la traccia corrente, o {@code null} se nessuna traccia è in riproduzione
      */
     public Track getCurrentTrack() {

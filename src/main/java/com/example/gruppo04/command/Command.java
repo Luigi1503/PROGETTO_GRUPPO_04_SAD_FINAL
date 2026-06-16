@@ -20,4 +20,16 @@ public interface Command {
      * allo stato precedente all'esecuzione del comando.
      */
     void undo();
+
+    /**
+     * Indica se l'ultima {@link #execute()} ha effettivamente prodotto una
+     * modifica al Model. I comandi che possono fallire silenziosamente (es. nome
+     * playlist duplicato, traccia già presente) sovrascrivono questo metodo: in
+     * caso di esito negativo il comando non viene registrato per l'undo.
+     *
+     * @return {@code true} se il comando ha avuto effetto (default), {@code false} altrimenti
+     */
+    default boolean wasExecuted() {
+        return true;
+    }
 }

@@ -37,8 +37,8 @@ public interface MusicCatalog {
      *
      * @param name il nome della nuova playlist; non {@code null}, non vuoto e
      *             univoco rispetto alle playlist già presenti
-     * @return {@code true} se la playlist è stata creata, {@code false} se
-     *         esiste già una playlist con lo stesso name
+     * @return l'istanza della playlist creata, oppure {@code null} se esiste già
+     *         una playlist con lo stesso name
      * @throws IllegalArgumentException se {@code name} è {@code null} o vuoto
      */
 
@@ -53,7 +53,22 @@ public interface MusicCatalog {
      */
     public void updateTrack(Track updatedTrack);
 
-    boolean createPlaylist(String name);
+    Playlist createPlaylist(String name);
+
+    /**
+     * Re-inserisce un'istanza di playlist <b>già esistente</b> nel catalogo,
+     * preservandone l'identità (e quindi le tracce e i riferimenti esterni).
+     * Pensato per l'undo/redo dei comandi: a differenza di
+     * {@link #createPlaylist(String)} non crea un nuovo oggetto.
+     * In caso di successo notifica gli observer con l'evento {@code PLAYLIST_ADDED}.
+     *
+     * @param index    posizione (0-based) in cui inserire la playlist; valori fuori
+     *                 range vengono riportati nell'intervallo valido
+     * @param playlist l'istanza di playlist da reinserire; non {@code null}
+     * @return {@code true} se reinserita, {@code false} se esiste già una playlist
+     *         con lo stesso nome
+     */
+    boolean addPlaylistAt(int index, Playlist playlist);
 
     /**
      * Rinomina una playlist già presente nel catalogo.
@@ -97,6 +112,32 @@ public interface MusicCatalog {
      *         presente nella playlist
      */
     boolean addTrackToPlaylist(Playlist playlist, Track track);
+
+    /**
+     * Aggiunge una traccia a una playlist a una posizione specifica.
+     * Pensato per l'undo della rimozione, così da ripristinare la traccia
+     * esattamente dove si trovava in origine.
+     * In caso di successo notifica gli observer con l'evento {@code PLAYLIST_TRACK_ADDED}.
+     *
+     * @param playlist la playlist a cui aggiungere la traccia
+     * @param track    la traccia da aggiungere
+     * @param index    posizione (0-based); valori fuori range vengono riportati
+     *                 nell'intervallo valido
+     * @return {@code true} se aggiunta, {@code false} se la traccia è già presente
+     */
+    boolean addTrackToPlaylistAt(Playlist playlist, Track track, int index);
+
+    /**
+     * Re-inserisce una traccia nel catalogo a una posizione specifica nell'ordine
+     * di inserimento. Pensato per l'undo della rimozione dal catalogo, così da
+     * ripristinare la traccia nello stesso punto in cui si trovava.
+     * In caso di successo notifica gli observer con l'evento {@code TRACK_ADDED}.
+     *
+     * @param index posizione (0-based); valori fuori range vengono riportati
+     *              nell'intervallo valido
+     * @param track la traccia da reinserire; non {@code null}
+     */
+    void addTrackAt(int index, Track track);
 
     /**
      * Rimuove una traccia da una playlist del catalogo.

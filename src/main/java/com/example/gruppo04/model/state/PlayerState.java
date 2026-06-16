@@ -32,8 +32,18 @@ public interface PlayerState {
     boolean isPlaying();
 
     /**
-     * @brief Indica se lo stato attuale corrisponde a una riproduzione in pausa.
-     * @return true se la musica è in stop, false altrimenti.
+     * @brief Indica se la riproduzione è stata fermata del tutto (stato Stopped).
+     * Nota: la pausa NON è uno stato fermo, quindi {@code PausedState} ritorna
+     * {@code false} qui e {@code true} su {@link #isPaused()}.
+     * @return true se la musica è ferma, false altrimenti.
      */
     boolean isStopped();
+
+    /**
+     * @brief Indica se lo stato attuale corrisponde a una riproduzione in pausa.
+     * Permette alle View di distinguere "in pausa" (riproduzione ancora attiva,
+     * brano e sorgente correnti da mantenere) da "ferma".
+     * @return true se la musica è in pausa, false altrimenti.
+     */
+    boolean isPaused();
 }

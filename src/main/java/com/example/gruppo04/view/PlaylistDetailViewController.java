@@ -219,10 +219,9 @@ public class PlaylistDetailViewController implements CatalogObserver {
     private void setupUndoBinding() {
         CommandManager manager = playlistController.getManagerTrackPlaylist();
 
-        undoBtn.setDisable(!manager.canUndoProperty().get());
+        undoBtn.setDisable(!manager.canUndo());
 
-        manager.canUndoProperty().addListener((obs, oldV, newV) ->
-                undoBtn.setDisable(!newV));
+        manager.addCanUndoListener(canUndo -> undoBtn.setDisable(!canUndo));
     }
 
     /**
@@ -324,7 +323,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
     @FXML
     private void handleUndo() {
         CommandManager manager = playlistController.getManagerTrackPlaylist();
-        if (manager != null && manager.canUndoProperty().get()) {
+        if (manager != null && manager.canUndo()) {
             manager.undo();
         }
     }

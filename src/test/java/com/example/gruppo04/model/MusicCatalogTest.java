@@ -179,8 +179,8 @@ public class MusicCatalogTest {
     public void testCreateAndDeletePlaylist() {
         assertTrue(catalog.getPlaylists().isEmpty(), "Catalogo inizialmente vuoto di playlist");
 
-        boolean created = catalog.createPlaylist("Chill Vibes");
-        assertTrue(created, "createPlaylist dovrebbe restituire true alla prima creazione");
+        Playlist created = catalog.createPlaylist("Chill Vibes");
+        assertNotNull(created, "createPlaylist dovrebbe restituire l'istanza creata");
         assertEquals(1, catalog.getPlaylists().size());
 
         Playlist p = catalog.getPlaylists().get(0);
@@ -197,11 +197,11 @@ public class MusicCatalogTest {
      */
     @Test
     public void testCreatePlaylistDuplicateName() {
-        boolean first = catalog.createPlaylist("Road Trip");
-        assertTrue(first);
+        Playlist first = catalog.createPlaylist("Road Trip");
+        assertNotNull(first);
 
-        boolean second = catalog.createPlaylist("Road Trip");
-        assertFalse(second, "createPlaylist deve restituire false se il nome esiste già");
+        Playlist second = catalog.createPlaylist("Road Trip");
+        assertNull(second, "createPlaylist deve restituire null se il nome esiste già");
 
         assertEquals(1, catalog.getPlaylists().size(), "Deve rimanere una sola playlist con quel nome");
     }

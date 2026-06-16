@@ -142,6 +142,54 @@
 .playlist-dialog .button:default          { -fx-background-color: #1D9E75; -fx-text-fill: #FFFFFF; }
 .playlist-dialog .button:default:hover    { -fx-background-color: #23B383; }
 
+/* ── form playlist automatica (scelta criterio) ── */
+.auto-playlist-content { -fx-padding: 14 16 6 16; }
+
+.playlist-dialog .radio-button            { -fx-text-fill: #E8EDF0; }
+.playlist-dialog .radio-button .radio {
+    -fx-background-color: #0F1A1E;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 50%;
+    -fx-padding: 3;
+}
+.playlist-dialog .radio-button:hover .radio        { -fx-border-color: #1D9E75; }
+.playlist-dialog .radio-button:selected .radio     { -fx-border-color: #1D9E75; }
+.playlist-dialog .radio-button:selected .dot       { -fx-background-color: #1D9E75; }
+
+.playlist-dialog .combo-box {
+    -fx-background-color: #0F1A1E;
+    -fx-background-radius: 6;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 6;
+}
+.playlist-dialog .combo-box:hover         { -fx-border-color: #1D9E75; }
+.playlist-dialog .combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8EDF0;
+    -fx-padding: 6 10;
+}
+.playlist-dialog .combo-box .arrow-button { -fx-background-color: transparent; }
+.playlist-dialog .combo-box .arrow        { -fx-background-color: #8AABAE; }
+
+/* tendina aperta della combo: vive in un popup separato, quindi va stilata
+   con selettori non annidati nel dialog */
+.combo-box-popup .list-view {
+    -fx-background-color: #0D1519;
+    -fx-border-color: #2C3E40;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #0D1519;
+    -fx-text-fill: #E8EDF0;
+    -fx-padding: 6 12;
+}
+.combo-box-popup .list-view .list-cell:filled:hover,
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: #2C3E40;
+    -fx-text-fill: #FFFFFF;
+}
+
 .play-all-btn {
     -fx-background-color: #1D6A72;
     -fx-text-fill: #FFFFFF;

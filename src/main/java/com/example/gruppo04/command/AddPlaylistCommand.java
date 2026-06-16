@@ -22,19 +22,33 @@ public class AddPlaylistCommand implements Command {
     }
 
     /**
-     * Crea la playlist nel catalogo e ne salva il riferimento per l'undo.
+     * Crea la playlist nel catalogo e ne salva l'istanza esatta per l'undo.
+     * Usa il valore di ritorno di {@code createPlaylist} invece di {@code getLast()},
+     * così da preservare l'identità dell'oggetto ed evitare di agganciare per errore
+     * una playlist diversa (es. generata nel frattempo).
      */
     @Override
     public void execute() {
-        catalog.createPlaylist(name);
-        playlistCreated = catalog.getPlaylists().getLast();
+        playlistCreated = catalog.createPlaylist(name);
     }
 
     /**
      * Annulla la creazione eliminando la playlist dal catalogo.
+     * Se la creazione non era andata a buon fine (nome duplicato), l'undo è un no-op.
      */
     @Override
     public void undo() {
-        catalog.deletePlaylist(playlistCreated);
+        if (playlistCreated != null) {
+            catalog.deletePlaylist(playlistCreated);
+        }
+    }
+
+    /**
+     * @return {@code true} se la playlist è stata effettivamente creata,
+     *         {@code false} se il nome era duplicato
+     */
+    @Override
+    public boolean wasExecuted() {
+        return playlistCreated != null;
     }
 }

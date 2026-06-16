@@ -2,20 +2,20 @@ package com.example.gruppo04.command;
 
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
-import com.example.gruppo04.interfaces.Track;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Comando per la rimozione di una playlist dal catalogo.
- * Supporta l'annullamento tramite ripristino della playlist con le sue tracce.
+ * Supporta l'annullamento ripristinando la <b>stessa istanza</b> di playlist
+ * nella posizione originale: poiché l'oggetto (con le sue tracce e i riferimenti
+ * esterni) non viene ricreato, l'identità è preservata e l'undo non può fallire
+ * a metà se una traccia non è più nel catalogo.
  */
 public class RemovePlaylistCommand implements Command {
 
     private final Playlist playlist;
     private final MusicCatalog catalog;
-    private List<Track> tracksBackup; // salva le tracce per il ripristino
+    private int originalIndex; // posizione originale per ripristinarla nello stesso punto
+    private boolean removed;   // esito della rimozione
 
     /**
      * @param playlist la playlist da rimuovere
@@ -27,23 +27,27 @@ public class RemovePlaylistCommand implements Command {
     }
 
     /**
-     * Salva le tracce della playlist e la rimuove dal catalogo.
+     * Memorizza la posizione originale della playlist e la rimuove dal catalogo.
      */
     @Override
     public void execute() {
-        tracksBackup = new ArrayList<>(playlist.getTracks());
-        catalog.deletePlaylist(playlist);
+        originalIndex = catalog.getPlaylists().indexOf(playlist);
+        removed = catalog.deletePlaylist(playlist);
     }
 
     /**
-     * Ripristina la playlist con le tracce che conteneva prima della rimozione.
+     * Ripristina la stessa istanza di playlist nella posizione originale.
      */
     @Override
     public void undo() {
-        catalog.createPlaylist(playlist.getName());
-        Playlist reloaded = catalog.getPlaylists().getLast();
-        for (Track t : tracksBackup) {
-            catalog.addTrackToPlaylist(reloaded, t);
-        }
+        catalog.addPlaylistAt(originalIndex, playlist);
+    }
+
+    /**
+     * @return {@code true} se la playlist era presente ed è stata rimossa
+     */
+    @Override
+    public boolean wasExecuted() {
+        return removed;
     }
 }

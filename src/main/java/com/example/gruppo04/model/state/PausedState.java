@@ -26,6 +26,13 @@ public class PausedState implements PlayerState{
 
     @Override
     public boolean isStopped(){
+        // In pausa la riproduzione è ancora "attiva": NON è uno stato fermo.
+        // Distinguibile da Stopped tramite isPaused().
+        return false;
+    }
+
+    @Override
+    public boolean isPaused(){
         return true;
     }
 }

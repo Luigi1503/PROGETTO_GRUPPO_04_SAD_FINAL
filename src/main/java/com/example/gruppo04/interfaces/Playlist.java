@@ -34,6 +34,18 @@ public interface Playlist extends PlayableSource {
     boolean addTrack(Track track);
 
     /**
+     * Inserisce una traccia a una posizione specifica, se non già presente.
+     * Utile per ripristinare l'ordine originale dopo un undo.
+     *
+     * @param index posizione (0-based) in cui inserire; valori fuori range
+     *              vengono riportati nell'intervallo valido
+     * @param track la traccia da inserire
+     * @return {@code true} se la traccia è stata inserita, {@code false} se era
+     *         già presente (in tal caso la playlist resta invariata)
+     */
+    boolean addTrackAt(int index, Track track);
+
+    /**
      * Rimuove una traccia dalla playlist, se presente.
      *
      * @param track la traccia da rimuovere

@@ -12,6 +12,8 @@ public class RemoveTrackFromPlaylistCommand implements Command {
     private final Playlist playlist;
     private final Track track;
     private final MusicCatalog catalog;
+    private int originalIndex; // posizione originale nella playlist per il ripristino
+    private boolean removed;   // esito della rimozione
 
     /**
      * @param playlist la playlist da cui rimuovere la traccia
@@ -25,19 +27,32 @@ public class RemoveTrackFromPlaylistCommand implements Command {
     }
 
     /**
-     * Rimuove la traccia dalla playlist.
+     * Memorizza la posizione della traccia e la rimuove dalla playlist.
      */
     @Override
     public void execute() {
-        catalog.removeTrackFromPlaylist(playlist, track);
+        originalIndex = playlist.getTracks().indexOf(track);
+        removed = catalog.removeTrackFromPlaylist(playlist, track);
     }
 
     /**
-     * Annulla la rimozione reinserendo la traccia nella playlist.
+     * Annulla la rimozione reinserendo la traccia nella stessa posizione di prima.
      */
     @Override
     public void undo() {
-        catalog.addTrackToPlaylist(playlist, track);
+        if (originalIndex >= 0) {
+            catalog.addTrackToPlaylistAt(playlist, track, originalIndex);
+        } else {
+            catalog.addTrackToPlaylist(playlist, track);
+        }
+    }
+
+    /**
+     * @return {@code true} se la traccia era presente nella playlist ed è stata rimossa
+     */
+    @Override
+    public boolean wasExecuted() {
+        return removed;
     }
 }
 

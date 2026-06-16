@@ -101,16 +101,9 @@ public class TrackListViewController implements CatalogObserver {
 
         //Aggiungiamo in listener per disabilitare il bottone quando nno puo essere premuto il comando di undo
         CommandManager manager = controller.getManager();
-        boolean statoAttuale = manager.canUndoProperty().get();
-        undoBtn.setDisable(!statoAttuale);
+        undoBtn.setDisable(!manager.canUndo());
 
-        manager.canUndoProperty().addListener((observable, vecchioValore, nuovoValore) -> {
-            if (nuovoValore == true) {
-                undoBtn.setDisable(false);
-            } else {
-                undoBtn.setDisable(true);
-            }
-        });
+        manager.addCanUndoListener(canUndo -> undoBtn.setDisable(!canUndo));
 
     }
 
