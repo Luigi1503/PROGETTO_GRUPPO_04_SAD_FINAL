@@ -1,6 +1,9 @@
 package com.example.gruppo04.view;
 
+import com.example.gruppo04.command.AddAutoGeneratorCommand;
+import com.example.gruppo04.command.Command;
 import com.example.gruppo04.command.CommandManager;
+import com.example.gruppo04.command.RemoveAutoGeneratorCommand;
 import com.example.gruppo04.controller.PlaybackController;
 import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.MusicCatalog;
@@ -117,9 +120,12 @@ public class PlaylistViewController implements CatalogObserver {
     public void initAutomaticOnly(PlaylistController playlistController, MusicCatalog catalog, PlaybackController playbackController) {
         init(playlistController, catalog, playbackController);
         this.automaticOnly = true;
-        undoBtn.setVisible(false);
-        undoBtn.setManaged(false);
         renderPlaylists();
+        catalog.registerObserver(this);
+        CommandManager manager = playlistController.getManagerPlaylist();
+        undoBtn.setDisable(!manager.canUndo());
+
+        manager.addCanUndoListener(canUndo -> undoBtn.setDisable(!canUndo));
     }
 
     /**
@@ -167,6 +173,7 @@ public class PlaylistViewController implements CatalogObserver {
         Platform.runLater(() -> {
             switch (event.getType()) {
                 case PLAYLIST_ADDED, PLAYLIST_REMOVED, PLAYLIST_RENAMED,
+                     PLAYLIST_CONTENT_CHANGED,
                      TRACK_ADDED, TRACK_REMOVED, TRACK_UPDATED -> renderPlaylists();
                 case PLAYBACK_STARTED, TRACK_CHANGED, PLAYBACK_STOPPED -> highlightActivePlaylist();
                 default -> { }
@@ -222,10 +229,10 @@ public class PlaylistViewController implements CatalogObserver {
 
         manualSectionTitle.setVisible(!automaticOnly);
         manualSectionTitle.setManaged(!automaticOnly);
+        automaticSectionTitle.setVisible(automaticOnly);
+        automaticSectionTitle.setManaged(automaticOnly);
         playlistGrid.setVisible(!automaticOnly);
         playlistGrid.setManaged(!automaticOnly);
-        undoBtn.setVisible(!automaticOnly);
-        undoBtn.setManaged(!automaticOnly);
 
         if (!automaticOnly) {
             for (Playlist playlist : catalog.getPlaylists()) {
@@ -234,9 +241,12 @@ public class PlaylistViewController implements CatalogObserver {
             playlistGrid.getChildren().add(buildAddCard());
         }
 
-        for (Playlist playlist : automaticPlaylists)
-            automaticPlaylistGrid.getChildren().add(buildPlaylistCard(playlist, false));
-        automaticPlaylistGrid.getChildren().add(buildAddAutoCard());
+        if(automaticOnly) {
+            for (Playlist playlist : automaticPlaylists)
+                automaticPlaylistGrid.getChildren().add(buildPlaylistCard(playlist, false));
+            automaticPlaylistGrid.getChildren().add(buildAddAutoCard());
+        }
+
 
         // Ripristina l'evidenziazione della playlist in riproduzione dopo ogni ridisegno
         // (anche tornando su questa vista mentre una playlist è in riproduzione).
@@ -374,9 +384,18 @@ public class PlaylistViewController implements CatalogObserver {
         else{
             MenuItem delete = new MenuItem("Rimuovi");
             delete.setOnAction(e -> {
-                automaticPlaylistService.removeGenerator(playlist.getName());
-                automaticPlaylistService.refresh(catalog);
-                renderPlaylists();
+                AutoPlaylistGenerator generator =
+                        automaticPlaylistService.getGeneratorByCriterionName(playlist.getName());
+                if (generator == null) {
+                    showError("La playlist automatica non e' piu' disponibile.");
+                    return;
+                }
+                Command cmd = new RemoveAutoGeneratorCommand(
+                        automaticPlaylistService,
+                        generator,
+                        catalog
+                );
+                playlistController.getManagerPlaylist().executeCommand(cmd);
             });
             ContextMenu menu = new ContextMenu(delete);
             menu.getStyleClass().add("playlist-context-menu");
@@ -559,8 +578,13 @@ public class PlaylistViewController implements CatalogObserver {
         });
 
         dialog.showAndWait().ifPresent(generator -> {
-            automaticPlaylistService.addCustomGenerator(generator);
-            renderPlaylists();
+            Command cmd = new AddAutoGeneratorCommand(
+                    automaticPlaylistService,
+                    generator,
+                    catalog
+            );
+
+            playlistController.getManagerPlaylist().executeCommand(cmd);
         });
     }
 }
