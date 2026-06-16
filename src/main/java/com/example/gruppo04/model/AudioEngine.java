@@ -7,6 +7,16 @@ import javazoom.jl.player.advanced.PlaybackListener;
 import java.io.File;
 import java.io.FileInputStream;
 
+/**
+ * @class AudioEngine
+ * @brief Motore di riproduzione audio basato su JLayer (AdvancedPlayer).
+ *
+ * Gestisce la riproduzione fisica dei file MP3 in un thread dedicato,
+ * supportando play, pause, resume, seek e stop. Utilizza un contatore di
+ * generazione (playbackGeneration) per invalidare in modo sicuro thread e
+ * callback di riproduzioni superate, evitando riproduzioni "fantasma" o
+ * sovrapposte dovute alla natura asincrona di {@code player.play()}.
+ */
 public class AudioEngine {
 
     private AdvancedPlayer player;
@@ -35,6 +45,15 @@ public class AudioEngine {
      */
     private int playbackGeneration = 0;
 
+    /**
+     * @brief Avvia la riproduzione di un nuovo file audio, interrompendo quella in corso.
+     *
+     * Ferma eventuale riproduzione attiva, reimposta i parametri di posizione
+     * e dimensione del file, e avvia la nuova riproduzione dall'inizio.
+     *
+     * @param filePath Il percorso del file MP3 da riprodurre.
+     * @param onFinished Callback invocata al termine naturale della riproduzione.
+     */
     public synchronized void playTrack(String filePath, Runnable onFinished) {
         if (filePath == null) {
             System.err.println("[AudioEngine] Impossibile riprodurre: il filePath fornito è NULL.");
@@ -53,6 +72,19 @@ public class AudioEngine {
         startPlayback();
     }
 
+    /**
+     * @brief Avvia un nuovo thread di riproduzione a partire dalla posizione corrente.
+     *
+     * Incrementa la generazione di riproduzione (rendendo questa l'unica
+     * riproduzione valida), apre lo stream sul file, si posiziona al byte
+     * indicato da lastBytePosition (se necessario per resume/seek) e avvia
+     * l'AdvancedPlayer. Il player viene pubblicato sui campi condivisi solo
+     * se la generazione è ancora valida al momento dell'apertura, per evitare
+     * di sottrarre la linea audio a una riproduzione successiva già avviata.
+     * Registra un PlaybackListener che invoca la callback onFinished al
+     * termine naturale della riproduzione, ignorando eventi provenienti da
+     * generazioni superate.
+     */
     private synchronized void startPlayback() {
         // Questa riproduzione diventa quella corrente: invalida eventuali thread precedenti.
         final int gen = ++playbackGeneration;
@@ -130,6 +162,15 @@ public class AudioEngine {
         t.start();
     }
 
+    /**
+     * @brief Metti in pausa la riproduzione corrente.
+     *
+     * Invalida la generazione di riproduzione corrente (così il callback
+     * della riproduzione in corso non avanzerà al brano successivo), salva
+     * il tempo accumulato e la posizione in byte raggiunta, quindi chiude
+     * il player. Non ha effetto se non si sta riproducendo nulla o se la
+     * riproduzione è già in pausa.
+     */
     public synchronized void pause() {
         if (isPlaying && !isPaused) {
             // Invalida la riproduzione corrente: il suo callback non deve avanzare al brano dopo.
@@ -155,6 +196,11 @@ public class AudioEngine {
         }
     }
 
+    /**
+     * @brief Riprende la riproduzione dalla posizione in cui era stata messa in pausa.
+     *
+     * Non ha effetto se la riproduzione non è attualmente in pausa.
+     */
     public synchronized void resume() {
         if (isPaused) {
             isPaused = false;
@@ -213,6 +259,14 @@ public class AudioEngine {
         }
     }
 
+    /**
+     * @brief Interrompe completamente la riproduzione corrente.
+     *
+     * Invalida la generazione di riproduzione corrente, azzera tempo e
+     * posizione accumulati, e chiude player e stream del file. Il vecchio
+     * thread di riproduzione, quando la sua play() termina (o scopre che
+     * la generazione è cambiata), si chiude autonomamente.
+     */
     public synchronized void stop() {
         // Invalida la riproduzione corrente: il vecchio thread, quando la sua play()
         // termina (o quando scopre la generazione cambiata), si chiude da solo.
@@ -233,6 +287,10 @@ public class AudioEngine {
         playbackThread = null;
     }
 
+    /**
+     * @brief Chiude uno stream di file ignorando eventuali eccezioni.
+     * @param stream Lo stream da chiudere, può essere null.
+     */
     private static void closeQuietly(FileInputStream stream) {
         if (stream != null) {
             try {
