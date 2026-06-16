@@ -135,9 +135,13 @@ public class PlaybackController implements CatalogObserver {
 
             // === CONTROLLO DI SICUREZZA ===
             if (pathFileMp3 == null) {
+                // Nessun file audio associato: non si avvia l'audio fisico, ma la
+                // riproduzione logica (stato, traccia/sorgente corrente) resta valida.
+                // NON si delega a skipTrack(): in Loop/Shuffle nextTrack non termina
+                // mai la sorgente, quindi un avanzamento automatico qui genererebbe
+                // ricorsione infinita (StackOverflow).
                 System.err.println("[PlaybackController] ATTENZIONE: La traccia '"
                         + currentTrack.getTitle() + "' non ha un percorso MP3 valido (è null)!");
-                this.skipTrack();
                 return;
             }
 

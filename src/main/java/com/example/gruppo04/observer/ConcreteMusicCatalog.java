@@ -394,9 +394,26 @@ public class ConcreteMusicCatalog implements MusicCatalog {
     }
 
     public void notifyTrackChanged(Track track) {
-        Platform.runLater(() ->
+        runOnUiThread(() ->
             notifyObservers(CatalogEventType.TRACK_CHANGED, track)
         );
+    }
+
+    /**
+     * Esegue un'azione sul thread della UI JavaFX quando il toolkit è disponibile.
+     * <p>
+     * In ambienti privi di toolkit JavaFX (es. test headless) {@link Platform#runLater}
+     * solleva {@link IllegalStateException} ("Toolkit not initialized"): in tal caso
+     * l'azione viene eseguita in modo sincrono, così che la logica di notifica resti
+     * verificabile dai test senza richiedere l'avvio dell'applicazione JavaFX.
+     * </p>
+     */
+    private static void runOnUiThread(Runnable action) {
+        try {
+            Platform.runLater(action);
+        } catch (IllegalStateException toolkitNotInitialized) {
+            action.run();
+        }
     }
 
     @Override
@@ -405,14 +422,14 @@ public class ConcreteMusicCatalog implements MusicCatalog {
     }
 
     public void notifySourceChanged(PlayableSource source) {
-        Platform.runLater(() ->
+        runOnUiThread(() ->
             notifyObservers(CatalogEventType.SOURCE_CHANGED, source)
         );
     }
 
     @Override
     public void notifyPlaybackStopped() {
-        Platform.runLater(() ->
+        runOnUiThread(() ->
             notifyObservers(CatalogEventType.PLAYBACK_STOPPED, null)
         );
     }
