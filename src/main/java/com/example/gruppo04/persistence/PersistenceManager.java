@@ -3,6 +3,8 @@ package com.example.gruppo04.persistence;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
+import com.example.gruppo04.model.factory_method.AutoPlaylistGenerator;
+import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
 import com.example.gruppo04.observer.ConcreteMusicCatalog;
 
 import java.io.*;
@@ -86,7 +88,13 @@ public class PersistenceManager {
             throw new IllegalArgumentException("Il percorso del file non può essere nullo o vuoto.");
         }
 
-        SerializableCatalogData data = new SerializableCatalogData(catalog.getAllTracks(), catalog.getPlaylists());
+        AutomaticPlaylistService autoService = AutomaticPlaylistService.getInstance();
+        SerializableCatalogData data = new SerializableCatalogData(
+                catalog.getAllTracks(),
+                catalog.getPlaylists(),
+                autoService.getGeneratorsSnapshot(),
+                autoService.getPlaylists()
+        );
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
             oos.writeObject(data);
@@ -122,6 +130,10 @@ public class PersistenceManager {
             SerializableCatalogData data = (SerializableCatalogData) ois.readObject();
             ConcreteMusicCatalog catalog = ConcreteMusicCatalog.getInstance();
             catalog.restoreState(data.getTracks(), data.getPlaylists());
+            AutomaticPlaylistService.getInstance().restoreState(
+                    data.getGenerators(),
+                    data.getAutomaticPlaylists()
+            );
             return catalog;
         }
     }
@@ -140,14 +152,25 @@ public class PersistenceManager {
         /** @brief Lista di playlist da serializzare. */
         private final List<Playlist> playlists;
 
+        /** @brief Lista dei generatori attivi delle playlist automatiche. */
+        private final List<AutoPlaylistGenerator> generators;
+
+        /** @brief Lista delle playlist automatiche persistite. */
+        private final List<Playlist> automaticPlaylists;
+
         /**
          * @brief Costruisce un oggetto wrapper contenente copie delle collezioni da serializzare.
          * * @param tracks Le tracce del catalogo.
          * @param playlists Le playlist del catalogo.
          */
-        public SerializableCatalogData(Collection<Track> tracks, List<Playlist> playlists) {
+        public SerializableCatalogData(Collection<Track> tracks,
+                                       List<Playlist> playlists,
+                                       List<AutoPlaylistGenerator> generators,
+                                       List<Playlist> automaticPlaylists) {
             this.tracks = new ArrayList<>(tracks);
             this.playlists = new ArrayList<>(playlists);
+            this.generators = new ArrayList<>(generators);
+            this.automaticPlaylists = new ArrayList<>(automaticPlaylists);
         }
 
         /**
@@ -164,6 +187,14 @@ public class PersistenceManager {
          */
         public List<Playlist> getPlaylists() {
             return playlists;
+        }
+
+        public List<AutoPlaylistGenerator> getGenerators() {
+            return generators;
+        }
+
+        public List<Playlist> getAutomaticPlaylists() {
+            return automaticPlaylists;
         }
     }
 }

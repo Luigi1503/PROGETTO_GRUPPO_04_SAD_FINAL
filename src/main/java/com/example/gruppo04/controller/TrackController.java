@@ -153,6 +153,10 @@ public class TrackController {
         return catalog.getAllTracks();
     }
 
+    /**
+     * @brief Restituisce il command manager dedicato alla gestione delle tracce.
+     * @return L'istanza di {@link CommandManager} per le operazioni sulle tracce.
+     */
     public CommandManager getManager() {
         return this.managerTrack;
     }

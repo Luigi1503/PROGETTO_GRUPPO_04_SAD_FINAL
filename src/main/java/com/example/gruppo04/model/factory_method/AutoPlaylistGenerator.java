@@ -4,6 +4,7 @@ import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
 import com.example.gruppo04.interfaces.Track;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -14,7 +15,9 @@ import java.util.function.Predicate;
  * che ogni ConcreteCreator deve implementare per generare una playlist
  * secondo il proprio criterio di filtraggio.
  */
-public abstract class AutoPlaylistGenerator {
+public abstract class AutoPlaylistGenerator implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @brief Metodo factory astratto.
