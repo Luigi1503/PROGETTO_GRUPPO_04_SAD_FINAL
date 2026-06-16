@@ -1,0 +1,92 @@
+\doxysection{Riferimenti per l\textquotesingle{}interfaccia com.\+example.\+gruppo04.\+interfaces.\+Playable\+Source}
+\hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{}\label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}\index{com.example.gruppo04.interfaces.PlayableSource@{com.example.gruppo04.interfaces.PlayableSource}}
+
+
+Interfaccia base per tutti gli elementi riproducibili del sistema musicale.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+interfaces.\+Playable\+Source
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+interfaces.\+Playable\+Source\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_ad870952bbe1b0e73519681a94d9013d6}{get\+Tracks}} ()
+\begin{DoxyCompactList}\small\item\em Recupera la sequenza di brani associata a questa sorgente. \end{DoxyCompactList}\item 
+Map$<$ String, String $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_aaf0b62fae866df609880183d09625d1d}{get\+Display\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Recupera il dizionario dei metadati descrittivi della sorgente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Interfaccia base per tutti gli elementi riproducibili del sistema musicale. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Definisce il contratto comune per entità singole (come le tracce) e per entità aggregate (come le playlist). Grazie a questa interfaccia, i controller della UI e il motore del Media Player possono trattare qualsiasi sorgente in modo polimorfico e trasparente, senza dover implementare logiche separate per brani o playlist. 
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_aaf0b62fae866df609880183d09625d1d}\index{com.example.gruppo04.interfaces.PlayableSource@{com.example.gruppo04.interfaces.PlayableSource}!getDisplayName@{getDisplayName}}
+\index{getDisplayName@{getDisplayName}!com.example.gruppo04.interfaces.PlayableSource@{com.example.gruppo04.interfaces.PlayableSource}}
+\doxysubsubsection{\texorpdfstring{getDisplayName()}{getDisplayName()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_aaf0b62fae866df609880183d09625d1d} 
+Map$<$ String, String $>$ com.\+example.\+gruppo04.\+interfaces.\+Playable\+Source.\+get\+Display\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera il dizionario dei metadati descrittivi della sorgente. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Restituisce le informazioni necessarie per popolare dinamicamente i componenti dell\textquotesingle{}interfaccia grafica (etichette, tabelle, player). L\textquotesingle{}implementazione deve garantire chiavi coerenti (es. "{}\+Titolo"{}, "{}\+Autore"{} per le tracce; "{}\+Nome"{}, "{}\+Brani Totali"{} per le playlist).
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+Una {\ttfamily Map$<$\+String, String$>$} contenente le coppie chiave-\/valore da mostrare nella UI. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl_aae4c46bf4164d963c84edf5ee3d2ab9e}{com.\+example.\+gruppo04.\+model.\+Playlist\+Impl}}, e \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_ac1ade5d121a3ea2a382cb637f93b7a08}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_ad870952bbe1b0e73519681a94d9013d6}\index{com.example.gruppo04.interfaces.PlayableSource@{com.example.gruppo04.interfaces.PlayableSource}!getTracks@{getTracks}}
+\index{getTracks@{getTracks}!com.example.gruppo04.interfaces.PlayableSource@{com.example.gruppo04.interfaces.PlayableSource}}
+\doxysubsubsection{\texorpdfstring{getTracks()}{getTracks()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_ad870952bbe1b0e73519681a94d9013d6} 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ com.\+example.\+gruppo04.\+interfaces.\+Playable\+Source.\+get\+Tracks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera la sequenza di brani associata a questa sorgente. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Il comportamento varia in base all\textquotesingle{}implementazione\+:
+\begin{DoxyItemize}
+\item Se la sorgente è una singola {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}, restituisce una lista di un solo elemento (se stessa).
+\item Se la sorgente è una {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}, restituisce l\textquotesingle{}elenco completo dei brani contenuti.
+\item \begin{DoxyReturn}{Restituisce}
+Una {\ttfamily List$<$\+Track$>$} rappresentante la coda da riprodurre. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implementato in \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist_a5704b3a11039d3dccfd16e12e71bcd35}{com.\+example.\+gruppo04.\+interfaces.\+Playlist}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl_a091268b84fd56d92c1f16a628d5883c7}{com.\+example.\+gruppo04.\+model.\+Playlist\+Impl}}, e \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a84a3bcadcb67a49da34378c271b9ef93}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+
+
+La documentazione per questa interfaccia è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/interfaces/\mbox{\hyperlink{_playable_source_8java}{Playable\+Source.\+java}}\end{DoxyCompactItemize}

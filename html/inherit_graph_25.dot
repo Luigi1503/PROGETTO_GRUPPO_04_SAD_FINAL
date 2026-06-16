@@ -1,0 +1,19 @@
+digraph "Grafico della gerarchia delle classi"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="java.io.Serializable",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node0 -> Node1 [id="edge26_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="com.example.gruppo04.interfaces.\lPlayableSource",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source.html",tooltip="Interfaccia base per tutti gli elementi riproducibili del sistema musicale."];
+  Node1 -> Node2 [id="edge27_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="com.example.gruppo04.interfaces.\lPlaylist",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist.html",tooltip="Rappresenta una playlist: una collezione ordinata di tracce, priva di duplicati, identificata in modo..."];
+  Node2 -> Node3 [id="edge28_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="com.example.gruppo04.model.\lPlaylistImpl",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl.html",tooltip=" "];
+  Node1 -> Node4 [id="edge29_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="com.example.gruppo04.interfaces.\lTrack",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html",tooltip="Rappresenta il contratto per una traccia musicale all'interno del sistema."];
+  Node4 -> Node5 [id="edge30_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="com.example.gruppo04.model.\lTrackImpl",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html",tooltip="Implementazione concreta dell'interfaccia Track."];
+}

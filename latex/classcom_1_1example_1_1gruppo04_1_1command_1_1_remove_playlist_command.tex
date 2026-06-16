@@ -1,0 +1,139 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command}{}\label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+
+
+Comando per la rimozione di una playlist dal catalogo.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_aef145b0fa8863a46e7b0c70c7bf1b2dd}{Remove\+Playlist\+Command}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a29273abae15a91abba17869037f14424}{playlist}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a453fc4d8da785ff9e7826951ae800b6c}{catalog}})
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_ac5116f7b78d063ad3bfda2ea2d35f615}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Memorizza la posizione originale della playlist e la rimuove dal catalogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a197a24b61f8f547d615405d38c8bd714}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Ripristina la stessa istanza di playlist nella posizione originale. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_aa4bb6ff1667897c5a4fee408a41df3dc}{was\+Executed}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{com.\+example.\+gruppo04.\+command.\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+default void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a8b1d1fdea0b0005112d14083a0c5ac36}{notify\+Catalog\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Hook invocato dal {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} dopo un execute/undo efficace, utile per i comandi che modificano il modello senza passare direttamente da un metodo notificante del catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a29273abae15a91abba17869037f14424}{playlist}}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a453fc4d8da785ff9e7826951ae800b6c}{catalog}}
+\item 
+int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a2693bb0a342b28b54c748c57d947eb34}{original\+Index}}
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a06194a236fad1c927eef57b9ae77ab45}{removed}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Comando per la rimozione di una playlist dal catalogo. 
+
+Supporta l\textquotesingle{}annullamento ripristinando la {\bfseries{stessa istanza}} di playlist nella posizione originale\+: poiché l\textquotesingle{}oggetto (con le sue tracce e i riferimenti esterni) non viene ricreato, l\textquotesingle{}identità è preservata e l\textquotesingle{}undo non può fallire a metà se una traccia non è più nel catalogo. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_aef145b0fa8863a46e7b0c70c7bf1b2dd}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!RemovePlaylistCommand@{RemovePlaylistCommand}}
+\index{RemovePlaylistCommand@{RemovePlaylistCommand}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{RemovePlaylistCommand()}{RemovePlaylistCommand()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_aef145b0fa8863a46e7b0c70c7bf1b2dd} 
+com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+Remove\+Playlist\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist da rimuovere \\
+\hline
+{\em catalog} & il catalogo su cui operare \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_ac5116f7b78d063ad3bfda2ea2d35f615}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!execute@{execute}}
+\index{execute@{execute}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_ac5116f7b78d063ad3bfda2ea2d35f615} 
+void com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Memorizza la posizione originale della playlist e la rimuove dal catalogo. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a197a24b61f8f547d615405d38c8bd714}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!undo@{undo}}
+\index{undo@{undo}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a197a24b61f8f547d615405d38c8bd714} 
+void com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Ripristina la stessa istanza di playlist nella posizione originale. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_ade8a11435dd621a02d5b365752c4f9dc}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_aa4bb6ff1667897c5a4fee408a41df3dc}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!wasExecuted@{wasExecuted}}
+\index{wasExecuted@{wasExecuted}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{wasExecuted()}{wasExecuted()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_aa4bb6ff1667897c5a4fee408a41df3dc} 
+boolean com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+was\+Executed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se la playlist era presente ed è stata rimossa 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a3a5e91428749cb7e47964517d06774d9}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a453fc4d8da785ff9e7826951ae800b6c}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a453fc4d8da785ff9e7826951ae800b6c} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a2693bb0a342b28b54c748c57d947eb34}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!originalIndex@{originalIndex}}
+\index{originalIndex@{originalIndex}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{originalIndex}{originalIndex}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a2693bb0a342b28b54c748c57d947eb34} 
+int com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+original\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a29273abae15a91abba17869037f14424}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!playlist@{playlist}}
+\index{playlist@{playlist}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{playlist}{playlist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a29273abae15a91abba17869037f14424} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a06194a236fad1c927eef57b9ae77ab45}\index{com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}!removed@{removed}}
+\index{removed@{removed}!com.example.gruppo04.command.RemovePlaylistCommand@{com.example.gruppo04.command.RemovePlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{removed}{removed}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command_a06194a236fad1c927eef57b9ae77ab45} 
+boolean com.\+example.\+gruppo04.\+command.\+Remove\+Playlist\+Command.\+removed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/command/\mbox{\hyperlink{_remove_playlist_command_8java}{Remove\+Playlist\+Command.\+java}}\end{DoxyCompactItemize}

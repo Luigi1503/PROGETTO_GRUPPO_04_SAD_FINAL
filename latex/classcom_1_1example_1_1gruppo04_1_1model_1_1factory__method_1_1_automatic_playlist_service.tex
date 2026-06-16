@@ -1,0 +1,354 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+
+
+Servizio singleton responsabile della gestione delle playlist automatiche.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service\+:
+% FIG 0
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+synchronized List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_afe3c7417b3a35ae09d4b00b127b3b678}{refresh}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog)
+\begin{DoxyCompactList}\small\item\em Aggiorna o sincronizza tutte le playlist automatiche a partire dallo stato corrente del catalogo. \end{DoxyCompactList}\item 
+synchronized List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a1be2f1df16c8b9bdfabc2e266759fdf0}{get\+Playlists}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce tutte le playlist automatiche attualmente gestite. \end{DoxyCompactList}\item 
+synchronized List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a8e6f4cf9c04b1dae468cd178621f6bfb}{get\+Available\+Generators}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce i generatori disponibili non ancora attivi. \end{DoxyCompactList}\item 
+synchronized \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a96bfc5ac44c98631a38b2a80dda06b4a}{get\+Generator\+By\+Criterion\+Name}} (String criterion\+Name)
+\begin{DoxyCompactList}\small\item\em Restituisce il generatore attivo associato al criterio indicato. \end{DoxyCompactList}\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a7a7143d455520cf8cfb44e7ababb0f6e}{add\+Custom\+Generator}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} generator)
+\begin{DoxyCompactList}\small\item\em Aggiunge un generatore personalizzato alla lista dei generatori attivi. \end{DoxyCompactList}\item 
+synchronized boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a7aa9f085943101f3dfad7afb391b08f4}{remove\+Generator}} (String criterion\+Name)
+\begin{DoxyCompactList}\small\item\em Rimuove il generatore con il criterio specificato. \end{DoxyCompactList}\item 
+synchronized List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_ab650bdd13326a7799fc3abed36688bc3}{get\+Generators\+Snapshot}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce una copia immutabile dei generatori attivi. \end{DoxyCompactList}\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a8a60dc0f50ad92c35218f11b19239c6f}{restore\+State}} (List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$ restored\+Generators, List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ restored\+Playlists)
+\begin{DoxyCompactList}\small\item\em Ripristina lo stato interno del servizio a partire dai generatori e dalle playlist gia\textquotesingle{} generate. \end{DoxyCompactList}\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_aef586d27ccb612056cc1bdf18c7e9e99}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Cancella tutto lo stato interno del servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri pubblici statici}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a5ca34f6acb81566479e9225a266a67ba}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l’istanza singleton del servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_ae9f942bf5576cc6bbab641b6c085d444}{Automatic\+Playlist\+Service}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore privato per garantire il pattern Singleton. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a664135b4ff832556167a004cfd221a75}{sync\+Tracks}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} target, List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ desired\+Tracks)
+\begin{DoxyCompactList}\small\item\em Sincronizza i brani di una playlist mantenendo l’istanza stabile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a020fe7e1490580df45fba08808f5172c}{generators}}
+\begin{DoxyCompactList}\small\item\em Generatori attivi di playlist automatiche. \end{DoxyCompactList}\item 
+final Map$<$ String, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a66870b3de7f7a80353a12245a8b20e36}{playlists\+By\+Name}}
+\begin{DoxyCompactList}\small\item\em Mappa delle playlist persistenti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a019c53b22242d1cfd0dfd51d9864aaee}{INSTANCE}}
+\begin{DoxyCompactList}\small\item\em Istanza singleton del servizio. \end{DoxyCompactList}\item 
+static final List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_af86aca4bbc81a93d33a0006df5afcbfc}{ALL\+\_\+\+AVAILABLE\+\_\+\+GENERATORS}}
+\begin{DoxyCompactList}\small\item\em Insieme di possibili generatori di playlist automatiche. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Servizio singleton responsabile della gestione delle playlist automatiche. 
+
+Le playlist vengono generate tramite diversi {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} (tag, genere, anno, ecc.) e mantenute in modo stabile nel tempo.
+
+Il servizio garantisce che\+: 
+\begin{DoxyItemize}
+\item le playlist non vengano ricreate da zero ad ogni aggiornamento 
+\item i metadati runtime (es. numero di riproduzioni) non vengano persi 
+\item i brani siano sincronizzati con il catalogo corrente 
+\end{DoxyItemize}
+
+Pattern utilizzato\+: Singleton + Factory Method.
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_ae9f942bf5576cc6bbab641b6c085d444}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!AutomaticPlaylistService@{AutomaticPlaylistService}}
+\index{AutomaticPlaylistService@{AutomaticPlaylistService}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{AutomaticPlaylistService()}{AutomaticPlaylistService()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_ae9f942bf5576cc6bbab641b6c085d444} 
+com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+Automatic\+Playlist\+Service (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruttore privato per garantire il pattern Singleton. 
+
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a7a7143d455520cf8cfb44e7ababb0f6e}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!addCustomGenerator@{addCustomGenerator}}
+\index{addCustomGenerator@{addCustomGenerator}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{addCustomGenerator()}{addCustomGenerator()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a7a7143d455520cf8cfb44e7ababb0f6e} 
+synchronized void com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+add\+Custom\+Generator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}}}]{generator}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge un generatore personalizzato alla lista dei generatori attivi. 
+
+Il generatore viene aggiunto solo se non esiste già un criterio con lo stesso nome. Dopo l\textquotesingle{}aggiunta il generatore sarà incluso nelle chiamate successive a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_afe3c7417b3a35ae09d4b00b127b3b678}{refresh(\+Music\+Catalog)}}.
+
+
+\begin{DoxyParams}{Parametri}
+{\em generator} & il generatore da aggiungere; non deve essere {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a8e6f4cf9c04b1dae468cd178621f6bfb}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!getAvailableGenerators@{getAvailableGenerators}}
+\index{getAvailableGenerators@{getAvailableGenerators}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{getAvailableGenerators()}{getAvailableGenerators()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a8e6f4cf9c04b1dae468cd178621f6bfb} 
+synchronized List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+get\+Available\+Generators (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce i generatori disponibili non ancora attivi. 
+
+Filtra {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a020fe7e1490580df45fba08808f5172c}{generators}} escludendo quelli il cui criterio corrisponde ad una playlist già presente.
+
+\begin{DoxyReturn}{Restituisce}
+lista dei generatori disponibili per l\textquotesingle{}aggiunta 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a96bfc5ac44c98631a38b2a80dda06b4a}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!getGeneratorByCriterionName@{getGeneratorByCriterionName}}
+\index{getGeneratorByCriterionName@{getGeneratorByCriterionName}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{getGeneratorByCriterionName()}{getGeneratorByCriterionName()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a96bfc5ac44c98631a38b2a80dda06b4a} 
+synchronized \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+get\+Generator\+By\+Criterion\+Name (\begin{DoxyParamCaption}\item[{String}]{criterion\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il generatore attivo associato al criterio indicato. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em criterion\+Name} & nome del criterio da cercare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+il generatore attivo corrispondente, oppure {\ttfamily null} se assente 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_ab650bdd13326a7799fc3abed36688bc3}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!getGeneratorsSnapshot@{getGeneratorsSnapshot}}
+\index{getGeneratorsSnapshot@{getGeneratorsSnapshot}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{getGeneratorsSnapshot()}{getGeneratorsSnapshot()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_ab650bdd13326a7799fc3abed36688bc3} 
+synchronized List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+get\+Generators\+Snapshot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce una copia immutabile dei generatori attivi. 
+
+\begin{DoxyReturn}{Restituisce}
+lista dei generatori attivi 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a5ca34f6acb81566479e9225a266a67ba}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a5ca34f6acb81566479e9225a266a67ba} 
+static \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Restituisce l’istanza singleton del servizio. 
+
+\begin{DoxyReturn}{Restituisce}
+istanza unica di {\ttfamily Automatic\+Playlist\+Service} 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a1be2f1df16c8b9bdfabc2e266759fdf0}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!getPlaylists@{getPlaylists}}
+\index{getPlaylists@{getPlaylists}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{getPlaylists()}{getPlaylists()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a1be2f1df16c8b9bdfabc2e266759fdf0} 
+synchronized List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+get\+Playlists (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce tutte le playlist automatiche attualmente gestite. 
+
+La lista è immutabile per evitare modifiche esterne.
+
+\begin{DoxyReturn}{Restituisce}
+lista delle playlist automatiche 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_afe3c7417b3a35ae09d4b00b127b3b678}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!refresh@{refresh}}
+\index{refresh@{refresh}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_afe3c7417b3a35ae09d4b00b127b3b678} 
+synchronized List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Aggiorna o sincronizza tutte le playlist automatiche a partire dallo stato corrente del catalogo. 
+
+Se una playlist non esiste ancora viene creata, altrimenti viene aggiornata preservando l’istanza esistente.
+
+
+\begin{DoxyParams}{Parametri}
+{\em catalog} & catalogo musicale di riferimento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+lista non modificabile delle playlist automatiche aggiornate 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a7aa9f085943101f3dfad7afb391b08f4}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!removeGenerator@{removeGenerator}}
+\index{removeGenerator@{removeGenerator}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{removeGenerator()}{removeGenerator()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a7aa9f085943101f3dfad7afb391b08f4} 
+synchronized boolean com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+remove\+Generator (\begin{DoxyParamCaption}\item[{String}]{criterion\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove il generatore con il criterio specificato. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em criterion\+Name} & il nome del criterio da rimuovere \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_aef586d27ccb612056cc1bdf18c7e9e99}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!reset@{reset}}
+\index{reset@{reset}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_aef586d27ccb612056cc1bdf18c7e9e99} 
+synchronized void com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Cancella tutto lo stato interno del servizio. 
+
+Usato in fase di bootstrap quando non esiste alcun salvataggio precedente. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a8a60dc0f50ad92c35218f11b19239c6f}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!restoreState@{restoreState}}
+\index{restoreState@{restoreState}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{restoreState()}{restoreState()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a8a60dc0f50ad92c35218f11b19239c6f} 
+synchronized void com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+restore\+State (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} $>$}]{restored\+Generators}{, }\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$}]{restored\+Playlists}{}\end{DoxyParamCaption})}
+
+
+
+Ripristina lo stato interno del servizio a partire dai generatori e dalle playlist gia\textquotesingle{} generate. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em restored\+Generators} & generatori attivi da ripristinare \\
+\hline
+{\em restored\+Playlists} & playlist automatiche persistite \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a664135b4ff832556167a004cfd221a75}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!syncTracks@{syncTracks}}
+\index{syncTracks@{syncTracks}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{syncTracks()}{syncTracks()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a664135b4ff832556167a004cfd221a75} 
+void com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+sync\+Tracks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{target}{, }\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{desired\+Tracks}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sincronizza i brani di una playlist mantenendo l’istanza stabile. 
+
+Rimuove i brani non più presenti e aggiunge quelli nuovi senza ricreare la playlist, preservando i metadati runtime.
+
+
+\begin{DoxyParams}{Parametri}
+{\em target} & playlist da aggiornare \\
+\hline
+{\em desired\+Tracks} & lista aggiornata di brani desiderati \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_af86aca4bbc81a93d33a0006df5afcbfc}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!ALL\_AVAILABLE\_GENERATORS@{ALL\_AVAILABLE\_GENERATORS}}
+\index{ALL\_AVAILABLE\_GENERATORS@{ALL\_AVAILABLE\_GENERATORS}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{ALL\_AVAILABLE\_GENERATORS}{ALL\_AVAILABLE\_GENERATORS}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_af86aca4bbc81a93d33a0006df5afcbfc} 
+final List$<$\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}}$>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+ALL\+\_\+\+AVAILABLE\+\_\+\+GENERATORS\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ List.of(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ TagPlaylistGenerator(TagType.FAVOURITE),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ TagPlaylistGenerator(TagType.NEW\_RELEASE),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ TagPlaylistGenerator(TagType.EXPLICIT),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Pop"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Rock"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Jazz"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Classica"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Hip-\/Hop"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Electronic"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Reggae"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(1960,\ 1970),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(1971,\ 1980),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(1981,\ 1990),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(1991,\ 2000),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(2001,\ 2010),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(2011,\ 2020),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(2021,\ 2026)}
+\DoxyCodeLine{\ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Insieme di possibili generatori di playlist automatiche. 
+
+Ogni generatore produce una playlist basata su una regola diversa. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a020fe7e1490580df45fba08808f5172c}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!generators@{generators}}
+\index{generators@{generators}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{generators}{generators}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a020fe7e1490580df45fba08808f5172c} 
+final List$<$\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}}$>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+generators\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ ArrayList<>(List.of(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ TagPlaylistGenerator(TagType.FAVOURITE),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ TagPlaylistGenerator(TagType.NEW\_RELEASE),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Pop"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ GenrePlaylistGenerator(\textcolor{stringliteral}{"{}Rock"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ YearPlaylistGenerator(1991,\ 2000)}
+\DoxyCodeLine{\ \ \ \ ))}
+
+\end{DoxyCode}
+
+
+Generatori attivi di playlist automatiche. 
+
+Ogni generatore produce una playlist basata su una regola diversa. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a019c53b22242d1cfd0dfd51d9864aaee}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!INSTANCE@{INSTANCE}}
+\index{INSTANCE@{INSTANCE}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{INSTANCE}{INSTANCE}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a019c53b22242d1cfd0dfd51d9864aaee} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+INSTANCE\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_ae9f942bf5576cc6bbab641b6c085d444}{AutomaticPlaylistService}}()}
+
+\end{DoxyCode}
+
+
+Istanza singleton del servizio. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a66870b3de7f7a80353a12245a8b20e36}\index{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}!playlistsByName@{playlistsByName}}
+\index{playlistsByName@{playlistsByName}!com.example.gruppo04.model.factory\_method.AutomaticPlaylistService@{com.example.gruppo04.model.factory\_method.AutomaticPlaylistService}}
+\doxysubsubsection{\texorpdfstring{playlistsByName}{playlistsByName}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service_a66870b3de7f7a80353a12245a8b20e36} 
+final Map$<$String, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}$>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Automatic\+Playlist\+Service.\+playlists\+By\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ LinkedHashMap<>()}
+
+\end{DoxyCode}
+
+
+Mappa delle playlist persistenti. 
+
+La chiave è il nome della playlist, mentre il valore è l’istanza stabile che mantiene i metadati runtime.
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/factory\+\_\+method/\mbox{\hyperlink{_automatic_playlist_service_8java}{Automatic\+Playlist\+Service.\+java}}\end{DoxyCompactItemize}

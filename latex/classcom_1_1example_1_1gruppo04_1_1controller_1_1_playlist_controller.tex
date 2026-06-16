@@ -8,20 +8,14 @@ Controller (MVC) per la gestione delle playlist.
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=238pt]{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller__coll__graph}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a13078ac07a5fe5f7ca270a1c52998f4b}{Playlist\+Controller}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a7caa3ce325b8db2ca49f5de9ede150e4}{catalog}})
 \item 
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_adf0fcaf4ca9695ecc2e67a7de51fb11c}{create\+Playlist}} (String name)
-\begin{DoxyCompactList}\small\item\em Richiede la creazione di una nuova playlist, delegando a {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a98a087dd1d3c26db051fc007f748d9ac}{Music\+Catalog\#create\+Playlist(\+String)}} (che esegue controlli e notifica). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Richiede la creazione di una nuova playlist, delegando a {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ac64a61a76f53aa2eb8fa522ef7dd4758}{Music\+Catalog\#create\+Playlist(\+String)}} (che esegue controlli e notifica). \end{DoxyCompactList}\item 
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a95856c13e3fd3d3fbfc96418cb366b1a}{rename\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, String new\+Name)
 \begin{DoxyCompactList}\small\item\em Richiede la rinomina di una playlist esistente, delegando a {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_aedfbbeb6f3853ae4b13f3e0a69c59c6b}{Music\+Catalog\#rename\+Playlist(\+Playlist, String)}}. \end{DoxyCompactList}\item 
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a228a706839412684b6aebf83ab0fb848}{delete\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
@@ -29,21 +23,29 @@ boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playl
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_ae88a1fefc122383819db30c80cd68d24}{add\+Track\+To\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
 \begin{DoxyCompactList}\small\item\em Aggiunge una traccia ad una playlist esistente, delegando {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a2f1e67870daea6b8c1c6cc4f757a9a8d}{Music\+Catalog\#add\+Track\+To\+Playlist(\+Playlist, Track)}}. \end{DoxyCompactList}\item 
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a6b90e1c8421eb245ab81bc2ab50fcb16}{remove\+Track\+From\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
-\begin{DoxyCompactList}\small\item\em Rimuove una traccia da una playlist esistente, delegando {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ac1fd4b3fbb0620e1f2247a8bdb4f3d62}{Music\+Catalog\#remove\+Track\+From\+Playlist(\+Playlist, Track)}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Rimuove una traccia da una playlist esistente, delegando {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ac1fd4b3fbb0620e1f2247a8bdb4f3d62}{Music\+Catalog\#remove\+Track\+From\+Playlist(\+Playlist, Track)}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a5f7e99ea6a3ca40a43efbe7ff67ae5fc}{get\+Manager\+Playlist}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il command manager dedicato alla gestione delle playlist. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_af57c94505df4ca26264ab4795fabb91e}{get\+Manager\+Track\+Playlist}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il command manager dedicato alla gestione delle tracce nelle playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a9d3c4dc95e5247bbc1a0f0f58b5bbc2b}{move\+Track\+In\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, int from, int to)
+\begin{DoxyCompactList}\small\item\em Sposta una traccia all\textquotesingle{}interno di una playlist, delegando a {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_abb219a0323fa36bed4f4ab8816898538}{Music\+Catalog\#move\+Track\+In\+Playlist(\+Playlist, int, int)}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Attributi privati}
 \begin{DoxyCompactItemize}
 \item 
 final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a7caa3ce325b8db2ca49f5de9ede150e4}{catalog}}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a3740c6b2f8a5672839900bc4e279e6d2}{manager\+Playlist}}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_ac6c78be6a2365d8803efc1a58a962552}{manager\+Track\+Playlist}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
 Controller (MVC) per la gestione delle playlist. 
 
-Fa da tramite tra la View e il {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}\+: riceve le richieste dell\textquotesingle{}utente, le delega al catalogo e restituisce l\textquotesingle{}esito, così la View può dare un riscontro (es. un banner successo/errore). Non possiede stato di dominio e non aggiorna l\textquotesingle{}interfaccia\+: il refresh dei pannelli avviene tramite gli eventi Observer emessi dal catalogo. 
+Fa da tramite tra la View e il {\ttfamily \doxylink{}{Music\+Catalog}}\+: riceve le richieste dell\textquotesingle{}utente, le delega al catalogo e restituisce l\textquotesingle{}esito, così la View può dare un riscontro (es. un banner successo/errore). Non possiede stato di dominio e non aggiorna l\textquotesingle{}interfaccia\+: il refresh dei pannelli avviene tramite gli eventi Observer emessi dal catalogo. 
 
-\label{doc-constructors}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_doc-constructors}
 \doxysubsection{Documentazione dei costruttori e dei distruttori}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a13078ac07a5fe5f7ca270a1c52998f4b}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!PlaylistController@{PlaylistController}}
 \index{PlaylistController@{PlaylistController}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
@@ -58,8 +60,6 @@ com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+Playlist\+Control
 \end{DoxyParams}
 
 
-\label{doc-func-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_doc-func-members}
 \doxysubsection{Documentazione delle funzioni membro}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_ae88a1fefc122383819db30c80cd68d24}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!addTrackToPlaylist@{addTrackToPlaylist}}
 \index{addTrackToPlaylist@{addTrackToPlaylist}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
@@ -89,7 +89,7 @@ boolean com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+create\+P
 
 
 
-Richiede la creazione di una nuova playlist, delegando a {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a98a087dd1d3c26db051fc007f748d9ac}{Music\+Catalog\#create\+Playlist(\+String)}} (che esegue controlli e notifica). 
+Richiede la creazione di una nuova playlist, delegando a {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ac64a61a76f53aa2eb8fa522ef7dd4758}{Music\+Catalog\#create\+Playlist(\+String)}} (che esegue controlli e notifica). 
 
 
 \begin{DoxyParams}{Parametri}
@@ -117,6 +117,53 @@ Richiede la rimozione di una playlist, delegando a {\ttfamily \doxylink{interfac
 \begin{DoxyReturn}{Restituisce}
 {\ttfamily true} se rimossa, {\ttfamily false} se non presente 
 \end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a5f7e99ea6a3ca40a43efbe7ff67ae5fc}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!getManagerPlaylist@{getManagerPlaylist}}
+\index{getManagerPlaylist@{getManagerPlaylist}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
+\doxysubsubsection{\texorpdfstring{getManagerPlaylist()}{getManagerPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a5f7e99ea6a3ca40a43efbe7ff67ae5fc} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+get\+Manager\+Playlist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il command manager dedicato alla gestione delle playlist. 
+
+\begin{DoxyReturn}{Restituisce}
+L\textquotesingle{}istanza di {\ttfamily \doxylink{}{Command\+Manager}} per le operazioni sulle playlist. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_af57c94505df4ca26264ab4795fabb91e}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!getManagerTrackPlaylist@{getManagerTrackPlaylist}}
+\index{getManagerTrackPlaylist@{getManagerTrackPlaylist}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
+\doxysubsubsection{\texorpdfstring{getManagerTrackPlaylist()}{getManagerTrackPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_af57c94505df4ca26264ab4795fabb91e} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+get\+Manager\+Track\+Playlist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il command manager dedicato alla gestione delle tracce nelle playlist. 
+
+\begin{DoxyReturn}{Restituisce}
+L\textquotesingle{}istanza di {\ttfamily \doxylink{}{Command\+Manager}} per le operazioni sulle tracce all\textquotesingle{}interno delle playlist. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a9d3c4dc95e5247bbc1a0f0f58b5bbc2b}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!moveTrackInPlaylist@{moveTrackInPlaylist}}
+\index{moveTrackInPlaylist@{moveTrackInPlaylist}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
+\doxysubsubsection{\texorpdfstring{moveTrackInPlaylist()}{moveTrackInPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a9d3c4dc95e5247bbc1a0f0f58b5bbc2b} 
+void com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+move\+Track\+In\+Playlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{int}]{from}{, }\item[{int}]{to}{}\end{DoxyParamCaption})}
+
+
+
+Sposta una traccia all\textquotesingle{}interno di una playlist, delegando a {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_abb219a0323fa36bed4f4ab8816898538}{Music\+Catalog\#move\+Track\+In\+Playlist(\+Playlist, int, int)}}. 
+
+L\textquotesingle{}operazione è registrata nel Command\+Manager e supporta l\textquotesingle{}undo.
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist selezionata nella View \\
+\hline
+{\em from} & indice di partenza della traccia \\
+\hline
+{\em to} & indice di destinazione della traccia \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a6b90e1c8421eb245ab81bc2ab50fcb16}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!removeTrackFromPlaylist@{removeTrackFromPlaylist}}
 \index{removeTrackFromPlaylist@{removeTrackFromPlaylist}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
 \doxysubsubsection{\texorpdfstring{removeTrackFromPlaylist()}{removeTrackFromPlaylist()}}
@@ -159,14 +206,24 @@ Richiede la rinomina di una playlist esistente, delegando a {\ttfamily \doxylink
 \end{DoxyReturn}
 
 
-\label{doc-variable-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_doc-variable-members}
 \doxysubsection{Documentazione dei membri dato}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a7caa3ce325b8db2ca49f5de9ede150e4}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!catalog@{catalog}}
 \index{catalog@{catalog}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
 \doxysubsubsection{\texorpdfstring{catalog}{catalog}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a7caa3ce325b8db2ca49f5de9ede150e4} 
 final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a3740c6b2f8a5672839900bc4e279e6d2}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!managerPlaylist@{managerPlaylist}}
+\index{managerPlaylist@{managerPlaylist}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
+\doxysubsubsection{\texorpdfstring{managerPlaylist}{managerPlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_a3740c6b2f8a5672839900bc4e279e6d2} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+manager\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_ac6c78be6a2365d8803efc1a58a962552}\index{com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}!managerTrackPlaylist@{managerTrackPlaylist}}
+\index{managerTrackPlaylist@{managerTrackPlaylist}!com.example.gruppo04.controller.PlaylistController@{com.example.gruppo04.controller.PlaylistController}}
+\doxysubsubsection{\texorpdfstring{managerTrackPlaylist}{managerTrackPlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller_ac6c78be6a2365d8803efc1a58a962552} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} com.\+example.\+gruppo04.\+controller.\+Playlist\+Controller.\+manager\+Track\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

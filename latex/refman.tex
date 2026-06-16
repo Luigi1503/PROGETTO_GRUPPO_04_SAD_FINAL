@@ -136,7 +136,7 @@
   }
   % ToC, LoF, LoT, bibliography, and index
   % Indices & bibliography
-  \usepackage[numbers]{natbib}
+  \usepackage{natbib}
   \usepackage[titles]{tocloft}
   \setcounter{tocdepth}{3}
   \setcounter{secnumdepth}{5}
@@ -222,7 +222,7 @@
   \begin{center}%
   {\Large Music Playlist Manager -\/-\/ Gruppo 04}\\
   \vspace*{1cm}
-  {\large Generato da Doxygen 1.14.0}\\
+  {\large Generato da Doxygen 1.12.0}\\
   \end{center}
   \end{titlepage}
   \clearemptydoublepage
@@ -243,29 +243,67 @@
 \input{files}
 \chapter{Documentazione dei namespace}
 \input{namespacecom_1_1example_1_1gruppo04}
+\input{namespacecom_1_1example_1_1gruppo04_1_1command}
 \input{namespacecom_1_1example_1_1gruppo04_1_1controller}
 \input{namespacecom_1_1example_1_1gruppo04_1_1interfaces}
 \input{namespacecom_1_1example_1_1gruppo04_1_1model}
+\input{namespacecom_1_1example_1_1gruppo04_1_1model_1_1factory__method}
+\input{namespacecom_1_1example_1_1gruppo04_1_1model_1_1state}
+\input{namespacecom_1_1example_1_1gruppo04_1_1model_1_1strategy}
 \input{namespacecom_1_1example_1_1gruppo04_1_1observer}
+\input{namespacecom_1_1example_1_1gruppo04_1_1persistence}
 \input{namespacecom_1_1example_1_1gruppo04_1_1util}
 \input{namespacecom_1_1example_1_1gruppo04_1_1view}
 \chapter{Documentazione delle classi}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_playlist_command}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_to_playlist_command}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}
+\input{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer}
+\input{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}
 \input{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}
 \input{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}
 \input{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}
+\input{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}
 \input{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}
-\input{classcom_1_1example_1_1gruppo04_1_1_hello_controller}
-\input{classcom_1_1example_1_1gruppo04_1_1_launcher}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator}
+\input{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_loop_strategy}
 \input{classcom_1_1example_1_1gruppo04_1_1_main_application}
 \input{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command}
 \input{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}
 \input{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state}
+\input{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}
+\input{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}
+\input{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller}
+\input{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}
+\input{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}
+\input{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}
+\input{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playing_state}
 \input{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}
 \input{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}
 \input{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller}
 \input{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl}
+\input{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler}
 \input{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command}
+\input{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_from_playlist_command}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_shuffle_strategy}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_stopped_state}
 \input{classcom_1_1example_1_1gruppo04_1_1util_1_1_table_column_factory}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_tag_playlist_generator}
+\input{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}
 \input{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}
 \input{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}
 \input{classcom_1_1example_1_1gruppo04_1_1util_1_1_track_formatter}
@@ -274,34 +312,77 @@
 \input{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller}
 \input{interfacecom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_listener}
 \input{classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller}
+\input{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator}
 \chapter{Documentazione dei file}
+\input{_add_auto_generator_command_8java}
+\input{_add_playlist_command_8java}
+\input{_add_track_command_8java}
+\input{_add_track_to_playlist_command_8java}
+\input{_command_8java}
+\input{_command_manager_8java}
+\input{_move_track_in_playlist_command_8java}
+\input{_remove_auto_generator_command_8java}
+\input{_remove_playlist_command_8java}
+\input{_remove_track_command_8java}
+\input{_remove_track_from_playlist_command_8java}
+\input{_playback_controller_8java}
 \input{_playlist_controller_8java}
 \input{_track_controller_8java}
-\input{_hello_controller_8java}
 \input{_music_catalog_8java}
+\input{_playable_source_8java}
 \input{_playlist_8java}
 \input{_track_8java}
-\input{_launcher_8java}
 \input{_main_application_8java}
+\input{_audio_engine_8java}
+\input{_automatic_playlist_service_8java}
+\input{_auto_playlist_generator_8java}
+\input{_genre_playlist_generator_8java}
+\input{_tag_playlist_generator_8java}
+\input{_year_playlist_generator_8java}
 \input{_playlist_impl_8java}
+\input{_paused_state_8java}
+\input{_playback_state_8java}
+\input{_player_state_8java}
+\input{_playing_state_8java}
+\input{_stopped_state_8java}
+\input{_loop_strategy_8java}
+\input{_playback_strategy_8java}
+\input{_sequential_strategy_8java}
+\input{_shuffle_strategy_8java}
+\input{_tag_type_8java}
 \input{_track_impl_8java}
 \input{_catalog_event_8java}
 \input{_catalog_event_type_8java}
 \input{_catalog_observer_8java}
 \input{_concrete_music_catalog_8java}
+\input{_playback_started_payload_8java}
+\input{_auto_save_observer_8java}
+\input{_persistence_manager_8java}
 \input{_table_column_factory_8java}
 \input{_track_formatter_8java}
+\input{_home_view_controller_8java}
 \input{_main_view_controller_8java}
+\input{_playback_bar_view_controller_8java}
 \input{_playlist_detail_view_controller_8java}
+\input{_playlist_playback_handler_8java}
 \input{_playlist_view_controller_8java}
 \input{_track_form_view_controller_8java}
 \input{_track_list_view_controller_8java}
 \input{_track_selection_listener_8java}
 \input{_track_selection_view_controller_8java}
 \input{module-info_8java}
+\input{_command_manager_test_8java}
+\input{_command_test_8java}
+\input{_playback_controller_test_8java}
 \input{_playlist_controller_test_8java}
+\input{_previous_navigation_test_8java}
+\input{_track_controller_test_8java}
+\input{_auto_playlist_generator_test_8java}
 \input{_music_catalog_test_8java}
+\input{_playback_strategy_test_8java}
 \input{_playlist_impl_test_8java}
+\input{_track_impl_test_8java}
+\input{_persistence_manager_test_8java}
 %--- End generated contents ---
 % Index
   \backmatter

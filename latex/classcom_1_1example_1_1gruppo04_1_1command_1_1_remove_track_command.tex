@@ -1,0 +1,134 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command}{}\label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+
+
+Comando per la rimozione di una traccia dal catalogo.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_aefebfee08ba218a23fe68e055488712c}{Remove\+Track\+Command}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a81d807f42b7105d0ef9da834db8cde15}{track}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_abe55b696fb923a41cf6244c944f36124}{catalog}})
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_af8741f9eaa7cba67048488b10b6301e9}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Memorizza la posizione nel catalogo e nelle playlist, poi rimuove la traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a87ada42921dd7d4abfb86c6e9bfb3a27}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Annulla la rimozione\+: reinserisce la traccia nel catalogo nella sua posizione originale e la ripristina in tutte le playlist che la contenevano, mantenendo l\textquotesingle{}ordine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{com.\+example.\+gruppo04.\+command.\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+default boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a3a5e91428749cb7e47964517d06774d9}{was\+Executed}} ()
+\begin{DoxyCompactList}\small\item\em Indica se l\textquotesingle{}ultima {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{execute()}} ha effettivamente prodotto una modifica al Model. \end{DoxyCompactList}\item 
+default void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a8b1d1fdea0b0005112d14083a0c5ac36}{notify\+Catalog\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Hook invocato dal {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} dopo un execute/undo efficace, utile per i comandi che modificano il modello senza passare direttamente da un metodo notificante del catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a81d807f42b7105d0ef9da834db8cde15}{track}}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_abe55b696fb923a41cf6244c944f36124}{catalog}}
+\item 
+int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a589f7703075daaf27c870fc494975a0c}{catalog\+Index}}
+\begin{DoxyCompactList}\small\item\em Posizione originale della traccia nell\textquotesingle{}ordine del catalogo. \end{DoxyCompactList}\item 
+final Map$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}, Integer $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a097d42fb234ff16b8bd8e44771d2cfa3}{playlist\+Positions}} = new Linked\+Hash\+Map$<$$>$()
+\begin{DoxyCompactList}\small\item\em Playlist che contenevano la traccia, con la posizione che vi occupava. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Comando per la rimozione di una traccia dal catalogo. 
+
+Supporta l\textquotesingle{}annullamento reinserendo la traccia nella stessa posizione del catalogo e ripristinando le appartenenze alle playlist (con le rispettive posizioni) da cui era stata rimossa a cascata. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_aefebfee08ba218a23fe68e055488712c}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}!RemoveTrackCommand@{RemoveTrackCommand}}
+\index{RemoveTrackCommand@{RemoveTrackCommand}!com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+\doxysubsubsection{\texorpdfstring{RemoveTrackCommand()}{RemoveTrackCommand()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_aefebfee08ba218a23fe68e055488712c} 
+com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command.\+Remove\+Track\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la traccia da rimuovere dal catalogo \\
+\hline
+{\em catalog} & il catalogo su cui operare \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_af8741f9eaa7cba67048488b10b6301e9}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}!execute@{execute}}
+\index{execute@{execute}!com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_af8741f9eaa7cba67048488b10b6301e9} 
+void com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command.\+execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Memorizza la posizione nel catalogo e nelle playlist, poi rimuove la traccia. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a87ada42921dd7d4abfb86c6e9bfb3a27}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}!undo@{undo}}
+\index{undo@{undo}!com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a87ada42921dd7d4abfb86c6e9bfb3a27} 
+void com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command.\+undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Annulla la rimozione\+: reinserisce la traccia nel catalogo nella sua posizione originale e la ripristina in tutte le playlist che la contenevano, mantenendo l\textquotesingle{}ordine. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_ade8a11435dd621a02d5b365752c4f9dc}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_abe55b696fb923a41cf6244c944f36124}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_abe55b696fb923a41cf6244c944f36124} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a589f7703075daaf27c870fc494975a0c}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}!catalogIndex@{catalogIndex}}
+\index{catalogIndex@{catalogIndex}!com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+\doxysubsubsection{\texorpdfstring{catalogIndex}{catalogIndex}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a589f7703075daaf27c870fc494975a0c} 
+int com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command.\+catalog\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Posizione originale della traccia nell\textquotesingle{}ordine del catalogo. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a097d42fb234ff16b8bd8e44771d2cfa3}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}!playlistPositions@{playlistPositions}}
+\index{playlistPositions@{playlistPositions}!com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+\doxysubsubsection{\texorpdfstring{playlistPositions}{playlistPositions}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a097d42fb234ff16b8bd8e44771d2cfa3} 
+final Map$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}, Integer$>$ com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command.\+playlist\+Positions = new Linked\+Hash\+Map$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Playlist che contenevano la traccia, con la posizione che vi occupava. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a81d807f42b7105d0ef9da834db8cde15}\index{com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}!track@{track}}
+\index{track@{track}!com.example.gruppo04.command.RemoveTrackCommand@{com.example.gruppo04.command.RemoveTrackCommand}}
+\doxysubsubsection{\texorpdfstring{track}{track}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command_a81d807f42b7105d0ef9da834db8cde15} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+command.\+Remove\+Track\+Command.\+track\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/command/\mbox{\hyperlink{_remove_track_command_8java}{Remove\+Track\+Command.\+java}}\end{DoxyCompactItemize}

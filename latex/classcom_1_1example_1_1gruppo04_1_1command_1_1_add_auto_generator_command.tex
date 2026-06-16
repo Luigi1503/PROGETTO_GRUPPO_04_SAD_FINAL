@@ -1,0 +1,138 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command}{}\label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+
+
+Comando per l\textquotesingle{}aggiunta di un generatore automatico di playlist.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_ae0d423a7798ff2502a8e9e3080f64edb}{Add\+Auto\+Generator\+Command}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a3b58eecb25024aa1d188e5d163ff1cf9}{service}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a05eaf792729b8d2c9aa7ba1e2f435b84}{generator}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a9ff0671850839bd9712108f3b234bd06}{catalog}})
+\begin{DoxyCompactList}\small\item\em Costruisce il comando per l\textquotesingle{}aggiunta di un generatore automatico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a916dbb9006c29a6c6bb4d5a31c3f1c4c}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Esegue il comando registrando il generatore personalizzato nel servizio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a8a68dc42629f939b59a2dbe73ee864dd}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Annulla l\textquotesingle{}esecuzione del comando rimuovendo il generatore registrato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_af6e8d21b511b8adfcc1e694c760ebdfd}{notify\+Catalog\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Notifica al catalogo che il contenuto delle playlist è cambiato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{com.\+example.\+gruppo04.\+command.\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+default boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a3a5e91428749cb7e47964517d06774d9}{was\+Executed}} ()
+\begin{DoxyCompactList}\small\item\em Indica se l\textquotesingle{}ultima {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{execute()}} ha effettivamente prodotto una modifica al Model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a3b58eecb25024aa1d188e5d163ff1cf9}{service}}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a05eaf792729b8d2c9aa7ba1e2f435b84}{generator}}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a9ff0671850839bd9712108f3b234bd06}{catalog}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Comando per l\textquotesingle{}aggiunta di un generatore automatico di playlist. 
+
+Implementa il pattern \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{Command} per registrare un nuovo {\ttfamily \doxylink{}{Auto\+Playlist\+Generator}} presso l\textquotesingle{}{\ttfamily \doxylink{}{Automatic\+Playlist\+Service}}, permettendo l\textquotesingle{}esecuzione e l\textquotesingle{}annullamento dell\textquotesingle{}operazione in modo reversibile. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_ae0d423a7798ff2502a8e9e3080f64edb}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}!AddAutoGeneratorCommand@{AddAutoGeneratorCommand}}
+\index{AddAutoGeneratorCommand@{AddAutoGeneratorCommand}!com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{AddAutoGeneratorCommand()}{AddAutoGeneratorCommand()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_ae0d423a7798ff2502a8e9e3080f64edb} 
+com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command.\+Add\+Auto\+Generator\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}}}]{service}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}}}]{generator}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce il comando per l\textquotesingle{}aggiunta di un generatore automatico. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em service} & Il servizio responsabile della gestione dei generatori automatici. \\
+\hline
+{\em generator} & Il generatore di playlist automatiche da aggiungere. \\
+\hline
+{\em catalog} & Il catalogo musicale da aggiornare e notificare. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a916dbb9006c29a6c6bb4d5a31c3f1c4c}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}!execute@{execute}}
+\index{execute@{execute}!com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a916dbb9006c29a6c6bb4d5a31c3f1c4c} 
+void com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command.\+execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Esegue il comando registrando il generatore personalizzato nel servizio. 
+
+Aggiunge il generatore al servizio di playlist automatiche e forza l\textquotesingle{}aggiornamento delle playlist generate in base al catalogo corrente. 
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_af6e8d21b511b8adfcc1e694c760ebdfd}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}!notifyCatalogChanged@{notifyCatalogChanged}}
+\index{notifyCatalogChanged@{notifyCatalogChanged}!com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{notifyCatalogChanged()}{notifyCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_af6e8d21b511b8adfcc1e694c760ebdfd} 
+void com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command.\+notify\+Catalog\+Changed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Notifica al catalogo che il contenuto delle playlist è cambiato. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a8b1d1fdea0b0005112d14083a0c5ac36}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a8a68dc42629f939b59a2dbe73ee864dd}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}!undo@{undo}}
+\index{undo@{undo}!com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a8a68dc42629f939b59a2dbe73ee864dd} 
+void com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command.\+undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Annulla l\textquotesingle{}esecuzione del comando rimuovendo il generatore registrato. 
+
+Rimuove il generatore dal servizio identificandolo tramite il nome del criterio e forza l\textquotesingle{}aggiornamento delle playlist generate. 
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_ade8a11435dd621a02d5b365752c4f9dc}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a9ff0671850839bd9712108f3b234bd06}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a9ff0671850839bd9712108f3b234bd06} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a05eaf792729b8d2c9aa7ba1e2f435b84}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}!generator@{generator}}
+\index{generator@{generator}!com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{generator}{generator}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a05eaf792729b8d2c9aa7ba1e2f435b84} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command.\+generator\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a3b58eecb25024aa1d188e5d163ff1cf9}\index{com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}!service@{service}}
+\index{service@{service}!com.example.gruppo04.command.AddAutoGeneratorCommand@{com.example.gruppo04.command.AddAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{service}{service}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command_a3b58eecb25024aa1d188e5d163ff1cf9} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} com.\+example.\+gruppo04.\+command.\+Add\+Auto\+Generator\+Command.\+service\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/command/\mbox{\hyperlink{_add_auto_generator_command_8java}{Add\+Auto\+Generator\+Command.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,504 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+controller.\+Playback\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+
+
+Controller responsabile della gestione della riproduzione musicale.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+controller.\+Playback\+Controller
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+controller.\+Playback\+Controller\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aeb8f608b1ec99b88c3c9d22b6be02f98}{Playback\+Controller}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a68a360cb8bd9769088f3b30fb5cc6d1a}{state}})
+\begin{DoxyCompactList}\small\item\em Costruisce un {\ttfamily Playback\+Controller} con lo stato di riproduzione fornito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_adf44f58162ac4cb226db14c3f576cd33}{play}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ queue, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} start\+From, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} start\+Track)
+\begin{DoxyCompactList}\small\item\em Avvia la riproduzione della coda fornita a partire dalla sorgente e dalla traccia specificata, secondo la strategia attualmente selezionata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a74adf253280c6deb51d26586b2af4abe}{pause}} ()
+\begin{DoxyCompactList}\small\item\em Mette in pausa la riproduzione corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7064abf5199a8d015b2eaf11cba6fa3a}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Interrompe la riproduzione corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9c67ca91fab3d796b0dcf9130dea53fd}{skip\+Track}} ()
+\begin{DoxyCompactList}\small\item\em Salta la traccia corrente e avanza alla traccia successiva all\textquotesingle{}interno della sorgente corrente secondo la strategia attiva. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a876a7e96e8ebeae639d5458373799541}{skip\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Salta l\textquotesingle{}intera sorgente corrente e avanza alla sorgente successiva nella coda. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a48f89c9c3609d4a43b7f2a60dd409d68}{add\+To\+Queue}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} source)
+\begin{DoxyCompactList}\small\item\em Aggiunge una sorgente in fondo alla coda di riproduzione corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a25ffaa36addce4f66d92d97697639c3e}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Gestisce le notifiche di modifica del catalogo musicale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_af083cb2bc26682336761cf5ac33586ec}{play\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} start\+Track)
+\begin{DoxyCompactList}\small\item\em Avvia la riproduzione di una playlist, costruendo automaticamente la coda di continuazione corretta\+: le altre playlist manuali del catalogo se {\ttfamily playlist} è manuale, le playlist automatiche se è generata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a934b8c767eed6433020330df15d6bcff}{restart\+Track}} ()
+\begin{DoxyCompactList}\small\item\em Riavvia la traccia corrente dall\textquotesingle{}inizio, senza cambiare traccia né sorgente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a53a3e6715dfd9fe70bfd850ef12db4fd}{previous\+Track}} ()
+\begin{DoxyCompactList}\small\item\em Torna alla traccia precedente secondo la strategia attiva. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_af5117a7f2cda303608f56a581f16251e}{previous\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Torna alla sorgente precedente nella coda secondo la strategia attiva (pulsante "{}playlist precedente"{}), facendone ripartire la prima traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a4593e555e61c93eb0e682ea3c22b0443}{change\+Strategy}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} new\+Strategy)
+\begin{DoxyCompactList}\small\item\em Aggiorna la modalità di riproduzione attiva. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a05d2b2cfe7406902766c7cb247995398}{is\+Stopped}} ()
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9e39bc5158e0be9650b73c855cd6f32d}{is\+Playing}} ()
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7064d917b9901594869c21ef137c5bfb}{is\+Paused}} ()
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aefc6d023f9cdef99b7495158e4d343f8}{get\+Current\+Track}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7ffb4bdbb3d07200ead1d6efb924b3b3}{resume}} ()
+\begin{DoxyCompactList}\small\item\em Riprende la riproduzione dalla pausa. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ad957e2d647c372cf29bdadabce9e2001}{get\+Current\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la sorgente attualmente in riproduzione. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a047549f723041be2e99eaf4663ceb991}{get\+Current\+Audio\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il tempo di riproduzione corrente dell\textquotesingle{}audio in corso. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a71dc73e1c6bfb3e0a69569c111a108ee}{seek}} (double target\+Seconds)
+\begin{DoxyCompactList}\small\item\em Sposta la riproduzione della traccia corrente al tempo indicato. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_abeb511a28f26dd35be9b9cd17200ec8e}{get\+Current\+Strategy}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+record \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a6efea22fff3921d74b0d11bb9a0c2676}{History\+Entry}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} source, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Voce dello storico di riproduzione\+: la sorgente e la traccia riprodotte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_afe550b66013946e91aaaf19c827bd464}{increment\+Play\+Counters}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} start\+From)
+\begin{DoxyCompactList}\small\item\em Incrementa i contatori di riproduzione della traccia e, se applicabile, della playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ae2d609876d0db405705637313b7dec69}{avvia\+Audio\+Fisico}} ()
+\begin{DoxyCompactList}\small\item\em Avvia la riproduzione audio fisica della traccia corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a55b0da145129adea9ad750ced88fd107}{refresh\+Queue\+From\+Catalog}} ()
+\begin{DoxyCompactList}\small\item\em Riallinea la coda di riproduzione alle playlist attualmente presenti nel catalogo, preservando la sorgente e la traccia in riproduzione. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a951048e25dfbd1f87d9367a2638d95cb}{build\+Continuation\+Queue}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
+\begin{DoxyCompactList}\small\item\em Costruisce la coda di continuazione per la playlist data\+: le playlist manuali del catalogo se {\ttfamily playlist} ne fa parte, altrimenti le playlist generate automaticamente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aff9fa35562e280ec5b9022a40f0193e3}{record\+History}} ()
+\begin{DoxyCompactList}\small\item\em Registra la sorgente e la traccia correnti in cima allo storico di riproduzione, evitando voci duplicate consecutive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ae4a3fc7868f86cf7e97968dce4483fd4}{play\+Previous\+From\+History}} ()
+\begin{DoxyCompactList}\small\item\em Riproduce il brano precedentemente riprodotto preso dallo storico reale, spostandosi anche su un\textquotesingle{}altra sorgente se necessario (es. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ad005c80a751a3eb56c8ab2407dbb7d3e}{go\+To\+Previous\+Source}} (boolean play\+Last\+Track)
+\begin{DoxyCompactList}\small\item\em Sposta la riproduzione alla sorgente precedente scelta dalla strategia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a68a360cb8bd9769088f3b30fb5cc6d1a}{state}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a906c5a7fa07c4b4b57ab0624913c7283}{catalog}}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine}{Audio\+Engine}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a37ea428ddc78f876977f5aa8b4c88759}{audio\+Engine}}
+\item 
+final Deque$<$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a6efea22fff3921d74b0d11bb9a0c2676}{History\+Entry}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a381d4e857ff273a4f4906026bccb8483}{playback\+History}} = new Array\+Deque$<$$>$()
+\begin{DoxyCompactList}\small\item\em Storico di riproduzione effettivo (coppie sorgente+traccia), usato dalle strategie che basano il "{}torna indietro"{} (⏮) sullo storico reale anziché sull\textquotesingle{}ordine — vedi {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a50d4f14cbb2ae1eed44d05612ade9856}{Playback\+Strategy\#uses\+History\+For\+Previous()}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Controller responsabile della gestione della riproduzione musicale. 
+
+Agisce come Client dei pattern State e Strategy\+: delega la gestione dello stato a {\ttfamily \doxylink{}{Playback\+State}} e la selezione della traccia successiva a {\ttfamily \doxylink{}{Playback\+Strategy}}. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aeb8f608b1ec99b88c3c9d22b6be02f98}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!PlaybackController@{PlaybackController}}
+\index{PlaybackController@{PlaybackController}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{PlaybackController()}{PlaybackController()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aeb8f608b1ec99b88c3c9d22b6be02f98} 
+com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+Playback\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce un {\ttfamily Playback\+Controller} con lo stato di riproduzione fornito. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em state} & lo stato di riproduzione da utilizzare; non deve essere {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a48f89c9c3609d4a43b7f2a60dd409d68}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!addToQueue@{addToQueue}}
+\index{addToQueue@{addToQueue}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{addToQueue()}{addToQueue()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a48f89c9c3609d4a43b7f2a60dd409d68} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+add\+To\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{source}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge una sorgente in fondo alla coda di riproduzione corrente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em source} & la sorgente da aggiungere in coda; non deve essere {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ae2d609876d0db405705637313b7dec69}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!avviaAudioFisico@{avviaAudioFisico}}
+\index{avviaAudioFisico@{avviaAudioFisico}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{avviaAudioFisico()}{avviaAudioFisico()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ae2d609876d0db405705637313b7dec69} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+avvia\+Audio\+Fisico (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Avvia la riproduzione audio fisica della traccia corrente. 
+
+Recupera il percorso del file MP3 della traccia corrente e ne avvia la riproduzione tramite il motore audio. Se la traccia non ha un percorso file valido (null), la riproduzione fisica viene saltata ma lo stato logico (traccia/sorgente corrente) resta valido\+: non si delega a \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9c67ca91fab3d796b0dcf9130dea53fd}{skip\+Track()}, poiché in Loop/\+Shuffle next\+Track non termina mai la sorgente, e un avanzamento automatico qui genererebbe ricorsione infinita (Stack\+Overflow). Al termine naturale della riproduzione, viene invocato automaticamente \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9c67ca91fab3d796b0dcf9130dea53fd}{skip\+Track()} per passare alla traccia successiva. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a951048e25dfbd1f87d9367a2638d95cb}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!buildContinuationQueue@{buildContinuationQueue}}
+\index{buildContinuationQueue@{buildContinuationQueue}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{buildContinuationQueue()}{buildContinuationQueue()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a951048e25dfbd1f87d9367a2638d95cb} 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+build\+Continuation\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruisce la coda di continuazione per la playlist data\+: le playlist manuali del catalogo se {\ttfamily playlist} ne fa parte, altrimenti le playlist generate automaticamente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a4593e555e61c93eb0e682ea3c22b0443}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!changeStrategy@{changeStrategy}}
+\index{changeStrategy@{changeStrategy}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{changeStrategy()}{changeStrategy()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a4593e555e61c93eb0e682ea3c22b0443} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+change\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}}}]{new\+Strategy}{}\end{DoxyParamCaption})}
+
+
+
+Aggiorna la modalità di riproduzione attiva. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em new\+Strategy} & la nuova strategia di riproduzione da applicare; non deve essere {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a047549f723041be2e99eaf4663ceb991}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!getCurrentAudioTime@{getCurrentAudioTime}}
+\index{getCurrentAudioTime@{getCurrentAudioTime}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{getCurrentAudioTime()}{getCurrentAudioTime()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a047549f723041be2e99eaf4663ceb991} 
+double com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+get\+Current\+Audio\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il tempo di riproduzione corrente dell\textquotesingle{}audio in corso. 
+
+\begin{DoxyReturn}{Restituisce}
+Il tempo corrente espresso in secondi. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ad957e2d647c372cf29bdadabce9e2001}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!getCurrentSource@{getCurrentSource}}
+\index{getCurrentSource@{getCurrentSource}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{getCurrentSource()}{getCurrentSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ad957e2d647c372cf29bdadabce9e2001} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+get\+Current\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la sorgente attualmente in riproduzione. 
+
+\begin{DoxyReturn}{Restituisce}
+La sorgente corrente, o null se nessuna sorgente è attiva. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_abeb511a28f26dd35be9b9cd17200ec8e}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!getCurrentStrategy@{getCurrentStrategy}}
+\index{getCurrentStrategy@{getCurrentStrategy}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{getCurrentStrategy()}{getCurrentStrategy()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_abeb511a28f26dd35be9b9cd17200ec8e} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+get\+Current\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+il nome semplice della strategia di riproduzione attiva (es. "{}\+Sequential\+Strategy"{}, "{}\+Shuffle\+Strategy"{}, "{}\+Loop\+Strategy"{})
+
+la strategia di riproduzione attualmente attiva 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aefc6d023f9cdef99b7495158e4d343f8}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!getCurrentTrack@{getCurrentTrack}}
+\index{getCurrentTrack@{getCurrentTrack}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{getCurrentTrack()}{getCurrentTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aefc6d023f9cdef99b7495158e4d343f8} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+get\+Current\+Track (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+la traccia corrente, o {\ttfamily null} se nessuna traccia è in riproduzione 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ad005c80a751a3eb56c8ab2407dbb7d3e}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!goToPreviousSource@{goToPreviousSource}}
+\index{goToPreviousSource@{goToPreviousSource}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{goToPreviousSource()}{goToPreviousSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ad005c80a751a3eb56c8ab2407dbb7d3e} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+go\+To\+Previous\+Source (\begin{DoxyParamCaption}\item[{boolean}]{play\+Last\+Track}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sposta la riproduzione alla sorgente precedente scelta dalla strategia. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em play\+Last\+Track} & se {\ttfamily true} riprende l\textquotesingle{}ultima traccia della sorgente precedente (usato dal "{}torna alla traccia precedente"{} quando attraversa i confini della sorgente); se {\ttfamily false} riparte dalla prima traccia (usato dal pulsante "{}playlist precedente"{}, simmetrico a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a876a7e96e8ebeae639d5458373799541}{skip\+Source()}}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a6efea22fff3921d74b0d11bb9a0c2676}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!HistoryEntry@{HistoryEntry}}
+\index{HistoryEntry@{HistoryEntry}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{HistoryEntry()}{HistoryEntry()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a6efea22fff3921d74b0d11bb9a0c2676} 
+record com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+History\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{source}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Voce dello storico di riproduzione\+: la sorgente e la traccia riprodotte. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_afe550b66013946e91aaaf19c827bd464}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!incrementPlayCounters@{incrementPlayCounters}}
+\index{incrementPlayCounters@{incrementPlayCounters}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{incrementPlayCounters()}{incrementPlayCounters()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_afe550b66013946e91aaaf19c827bd464} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+increment\+Play\+Counters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{start\+From}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Incrementa i contatori di riproduzione della traccia e, se applicabile, della playlist. 
+
+Incrementa il play count della traccia attualmente in riproduzione (se presente) e, qualora la sorgente di partenza sia una {\ttfamily \doxylink{}{Playlist}}, incrementa anche il play count della playlist stessa.
+
+
+\begin{DoxyParams}{Parametri}
+{\em start\+From} & La sorgente di riproduzione da cui è partita la traccia. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7064d917b9901594869c21ef137c5bfb}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!isPaused@{isPaused}}
+\index{isPaused@{isPaused}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{isPaused()}{isPaused()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7064d917b9901594869c21ef137c5bfb} 
+boolean com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+is\+Paused (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se la riproduzione è in pausa (ancora attiva, non ferma) 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9e39bc5158e0be9650b73c855cd6f32d}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9e39bc5158e0be9650b73c855cd6f32d} 
+boolean com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+is\+Playing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se la riproduzione è in corso 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a05d2b2cfe7406902766c7cb247995398}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!isStopped@{isStopped}}
+\index{isStopped@{isStopped}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{isStopped()}{isStopped()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a05d2b2cfe7406902766c7cb247995398} 
+boolean com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+is\+Stopped (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se la riproduzione è ferma 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a25ffaa36addce4f66d92d97697639c3e}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!onCatalogChanged@{onCatalogChanged}}
+\index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a25ffaa36addce4f66d92d97697639c3e} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+on\+Catalog\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Gestisce le notifiche di modifica del catalogo musicale. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em event} & l\textquotesingle{}evento di modifica del catalogo; non deve essere {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer_a36eb26536a7687957f477934bdafbfb0}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a74adf253280c6deb51d26586b2af4abe}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!pause@{pause}}
+\index{pause@{pause}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a74adf253280c6deb51d26586b2af4abe} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Mette in pausa la riproduzione corrente. 
+
+Non ha effetto se la riproduzione non è in corso. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_adf44f58162ac4cb226db14c3f576cd33}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!play@{play}}
+\index{play@{play}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_adf44f58162ac4cb226db14c3f576cd33} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+play (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$}]{queue}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{start\+From}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{start\+Track}{}\end{DoxyParamCaption})}
+
+
+
+Avvia la riproduzione della coda fornita a partire dalla sorgente e dalla traccia specificata, secondo la strategia attualmente selezionata. 
+
+Sovrascrive la coda corrente e imposta lo stato a PLAYING. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em queue} & la lista ordinata di sorgenti da riprodurre; non deve essere {\ttfamily null} \\
+\hline
+{\em start\+From} & la sorgente da cui partire nella coda; non deve essere {\ttfamily null} \\
+\hline
+{\em start\+Track} & la traccia da cui partire nella sorgente; se {\ttfamily null} parte dalla prima \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_af083cb2bc26682336761cf5ac33586ec}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!playPlaylist@{playPlaylist}}
+\index{playPlaylist@{playPlaylist}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{playPlaylist()}{playPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_af083cb2bc26682336761cf5ac33586ec} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+play\+Playlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{start\+Track}{}\end{DoxyParamCaption})}
+
+
+
+Avvia la riproduzione di una playlist, costruendo automaticamente la coda di continuazione corretta\+: le altre playlist manuali del catalogo se {\ttfamily playlist} è manuale, le playlist automatiche se è generata. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist da riprodurre; non deve essere {\ttfamily null} \\
+\hline
+{\em start\+Track} & la traccia da cui partire; se {\ttfamily null} parte dalla prima \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ae4a3fc7868f86cf7e97968dce4483fd4}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!playPreviousFromHistory@{playPreviousFromHistory}}
+\index{playPreviousFromHistory@{playPreviousFromHistory}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{playPreviousFromHistory()}{playPreviousFromHistory()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_ae4a3fc7868f86cf7e97968dce4483fd4} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+play\+Previous\+From\+History (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Riproduce il brano precedentemente riprodotto preso dallo storico reale, spostandosi anche su un\textquotesingle{}altra sorgente se necessario (es. 
+
+nel catalogo dove ogni traccia è una sorgente a sé). Le voci non più valide (sorgente assente dalla coda o traccia rimossa) vengono scartate. Se lo storico è vuoto, riavvia il brano corrente da capo. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_af5117a7f2cda303608f56a581f16251e}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!previousSource@{previousSource}}
+\index{previousSource@{previousSource}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{previousSource()}{previousSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_af5117a7f2cda303608f56a581f16251e} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+previous\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Torna alla sorgente precedente nella coda secondo la strategia attiva (pulsante "{}playlist precedente"{}), facendone ripartire la prima traccia. 
+
+Simmetrico a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a876a7e96e8ebeae639d5458373799541}{skip\+Source()}}\+: la scelta della sorgente è delegata alla strategia ({\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_af2a298da9dd896d0c78481549f383543}{Playback\+Strategy\#previous\+Source}}) e rispetta il pannello Help — playlist precedente (Sequential), playlist casuale (Shuffle), playlist corrente che riparte da capo (Loop). \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a53a3e6715dfd9fe70bfd850ef12db4fd}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!previousTrack@{previousTrack}}
+\index{previousTrack@{previousTrack}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{previousTrack()}{previousTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a53a3e6715dfd9fe70bfd850ef12db4fd} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+previous\+Track (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Torna alla traccia precedente secondo la strategia attiva. 
+
+Per le strategie che usano lo storico reale ({\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a50d4f14cbb2ae1eed44d05612ade9856}{Playback\+Strategy\#uses\+History\+For\+Previous()}}, es. Shuffle) torna al brano che ha effettivamente preceduto quello corrente — anche se appartiene a un\textquotesingle{}altra sorgente, come nel catalogo — oppure riavvia il brano corrente se lo storico è vuoto. Per le strategie deterministiche delega invece alla strategia (simmetrico a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9c67ca91fab3d796b0dcf9130dea53fd}{skip\+Track()}} → {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a4c718901248a6ea5442a1c03f36c935e}{Playback\+Strategy\#next\+Track}}); un valore {\ttfamily null} indica l\textquotesingle{}inizio della sorgente e si passa alla sorgente precedente riprendendone l\textquotesingle{}ultima traccia (sequenza inversa continua). Rispetta il pannello Help\+: in ordine (Sequential), brano precedentemente riprodotto (Shuffle), ciclica/stessa traccia (Loop). \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aff9fa35562e280ec5b9022a40f0193e3}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!recordHistory@{recordHistory}}
+\index{recordHistory@{recordHistory}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{recordHistory()}{recordHistory()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_aff9fa35562e280ec5b9022a40f0193e3} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+record\+History (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Registra la sorgente e la traccia correnti in cima allo storico di riproduzione, evitando voci duplicate consecutive. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a55b0da145129adea9ad750ced88fd107}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!refreshQueueFromCatalog@{refreshQueueFromCatalog}}
+\index{refreshQueueFromCatalog@{refreshQueueFromCatalog}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{refreshQueueFromCatalog()}{refreshQueueFromCatalog()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a55b0da145129adea9ad750ced88fd107} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+refresh\+Queue\+From\+Catalog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Riallinea la coda di riproduzione alle playlist attualmente presenti nel catalogo, preservando la sorgente e la traccia in riproduzione. 
+
+Agisce solo quando la riproduzione corrente è basata su playlist\+: durante la riproduzione di tracce singole del catalogo la coda non è composta da playlist e non va sovrascritta. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a934b8c767eed6433020330df15d6bcff}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!restartTrack@{restartTrack}}
+\index{restartTrack@{restartTrack}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{restartTrack()}{restartTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a934b8c767eed6433020330df15d6bcff} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+restart\+Track (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Riavvia la traccia corrente dall\textquotesingle{}inizio, senza cambiare traccia né sorgente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7ffb4bdbb3d07200ead1d6efb924b3b3}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!resume@{resume}}
+\index{resume@{resume}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7ffb4bdbb3d07200ead1d6efb924b3b3} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+resume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Riprende la riproduzione dalla pausa. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a71dc73e1c6bfb3e0a69569c111a108ee}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!seek@{seek}}
+\index{seek@{seek}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a71dc73e1c6bfb3e0a69569c111a108ee} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+seek (\begin{DoxyParamCaption}\item[{double}]{target\+Seconds}{}\end{DoxyParamCaption})}
+
+
+
+Sposta la riproduzione della traccia corrente al tempo indicato. 
+
+Non ha effetto se nessuna traccia è in riproduzione. La nuova posizione si riflette immediatamente sull\textquotesingle{}audio (o al successivo resume se in pausa). 
+
+
+\begin{DoxyParams}{Parametri}
+{\em target\+Seconds} & posizione desiderata in secondi dall\textquotesingle{}inizio della traccia \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a876a7e96e8ebeae639d5458373799541}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!skipSource@{skipSource}}
+\index{skipSource@{skipSource}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{skipSource()}{skipSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a876a7e96e8ebeae639d5458373799541} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+skip\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Salta l\textquotesingle{}intera sorgente corrente e avanza alla sorgente successiva nella coda. 
+
+Se non esiste una sorgente successiva, ferma la riproduzione. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9c67ca91fab3d796b0dcf9130dea53fd}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!skipTrack@{skipTrack}}
+\index{skipTrack@{skipTrack}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{skipTrack()}{skipTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a9c67ca91fab3d796b0dcf9130dea53fd} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+skip\+Track (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Salta la traccia corrente e avanza alla traccia successiva all\textquotesingle{}interno della sorgente corrente secondo la strategia attiva. 
+
+Se non esiste una traccia successiva nella sorgente corrente, delega a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a876a7e96e8ebeae639d5458373799541}{skip\+Source()}}. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7064abf5199a8d015b2eaf11cba6fa3a}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!stop@{stop}}
+\index{stop@{stop}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a7064abf5199a8d015b2eaf11cba6fa3a} 
+void com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Interrompe la riproduzione corrente. 
+
+Non ha effetto se la riproduzione non è in corso. 
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a37ea428ddc78f876977f5aa8b4c88759}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!audioEngine@{audioEngine}}
+\index{audioEngine@{audioEngine}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{audioEngine}{audioEngine}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a37ea428ddc78f876977f5aa8b4c88759} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine}{Audio\+Engine}} com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+audio\+Engine\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a906c5a7fa07c4b4b57ab0624913c7283}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a906c5a7fa07c4b4b57ab0624913c7283} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a381d4e857ff273a4f4906026bccb8483}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!playbackHistory@{playbackHistory}}
+\index{playbackHistory@{playbackHistory}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{playbackHistory}{playbackHistory}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a381d4e857ff273a4f4906026bccb8483} 
+final Deque$<$\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a6efea22fff3921d74b0d11bb9a0c2676}{History\+Entry}}$>$ com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+playback\+History = new Array\+Deque$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storico di riproduzione effettivo (coppie sorgente+traccia), usato dalle strategie che basano il "{}torna indietro"{} (⏮) sullo storico reale anziché sull\textquotesingle{}ordine — vedi {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a50d4f14cbb2ae1eed44d05612ade9856}{Playback\+Strategy\#uses\+History\+For\+Previous()}}. 
+
+Viene alimentato a ogni avanzamento e azzerato all\textquotesingle{}avvio di una nuova coda. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a68a360cb8bd9769088f3b30fb5cc6d1a}\index{com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}!state@{state}}
+\index{state@{state}!com.example.gruppo04.controller.PlaybackController@{com.example.gruppo04.controller.PlaybackController}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_a68a360cb8bd9769088f3b30fb5cc6d1a} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} com.\+example.\+gruppo04.\+controller.\+Playback\+Controller.\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/controller/\mbox{\hyperlink{_playback_controller_8java}{Playback\+Controller.\+java}}\end{DoxyCompactItemize}

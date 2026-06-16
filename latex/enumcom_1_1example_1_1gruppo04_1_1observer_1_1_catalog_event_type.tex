@@ -8,13 +8,7 @@ Rappresenta i tipi di eventi di dominio che possono verificarsi all\textquotesin
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=253pt]{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type__coll__graph}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Attributi pubblici}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,7 +31,17 @@ Diagramma di collaborazione per com.\+example.\+gruppo04.\+observer.\+Catalog\+E
 \mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_af529493e357e6f951248d7be1ff0fe73}{PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}}
 \begin{DoxyCompactList}\small\item\em Rilasciato quando una nuova traccia viene aggiunta alla playlist. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_afa2ae1ece338fade17639896e1c33fa0}{PLAYLIST\+\_\+\+TRACK\+\_\+\+REMOVED}}
-\begin{DoxyCompactList}\small\item\em Rilasciato quando una traccia viene rimossa dalla playlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando una traccia viene rimossa dalla playlist. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ae30c01dc3da174578f28ae0717242d6a}{STRATEGY\+\_\+\+CHANGED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando la strategia di riproduzione viene modificata. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac6cd79a1c46d3e971ca03e442020b0ef}{PLAYBACK\+\_\+\+STARTED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando viene avviata una nuova riproduzione tramite {\ttfamily Playback\+Controller.\+play()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac78ac4d2849f8d1ad0aa1b705d36eb41}{TRACK\+\_\+\+CHANGED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando la traccia in riproduzione cambia (skip, fine traccia, previous). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a55c689e7df89f1ec71ee5c06b683a7bb}{SOURCE\+\_\+\+CHANGED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando la sorgente in riproduzione cambia (skip, fine traccia, previous). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a173d15f9d6de8bc40fa32626c1f32c9d}{PLAYBACK\+\_\+\+STOPPED}}
+\begin{DoxyCompactList}\small\item\em Rilasciato quando la riproduzione viene fermata del tutto (stop/fine coda). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
@@ -45,9 +49,27 @@ Rappresenta i tipi di eventi di dominio che possono verificarsi all\textquotesin
 
 Permette agli observer di filtrare le notifiche ricevute in base alla loro granularità. 
 
-\label{doc-variable-members}
-\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_doc-variable-members}
 \doxysubsection{Documentazione dei membri dato}
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac6cd79a1c46d3e971ca03e442020b0ef}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYBACK\_STARTED@{PLAYBACK\_STARTED}}
+\index{PLAYBACK\_STARTED@{PLAYBACK\_STARTED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYBACK\_STARTED}{PLAYBACK\_STARTED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac6cd79a1c46d3e971ca03e442020b0ef} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYBACK\+\_\+\+STARTED}
+
+
+
+Rilasciato quando viene avviata una nuova riproduzione tramite {\ttfamily Playback\+Controller.\+play()}. 
+
+Il target dell\textquotesingle{}evento è un {\ttfamily Playback\+Started\+Payload} contenente la traccia corrente e un flag che indica se la sorgente è una playlist (true) o una traccia singola (false). \Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a173d15f9d6de8bc40fa32626c1f32c9d}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYBACK\_STOPPED@{PLAYBACK\_STOPPED}}
+\index{PLAYBACK\_STOPPED@{PLAYBACK\_STOPPED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{PLAYBACK\_STOPPED}{PLAYBACK\_STOPPED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a173d15f9d6de8bc40fa32626c1f32c9d} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYBACK\+\_\+\+STOPPED}
+
+
+
+Rilasciato quando la riproduzione viene fermata del tutto (stop/fine coda). 
+
 \Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ae2dcd7639e2b1c45aaa5642736410332}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!PLAYLIST\_ADDED@{PLAYLIST\_ADDED}}
 \index{PLAYLIST\_ADDED@{PLAYLIST\_ADDED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
 \doxysubsubsection{\texorpdfstring{PLAYLIST\_ADDED}{PLAYLIST\_ADDED}}
@@ -118,6 +140,26 @@ com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+PLAYLIST\+\_\+\+TRA
 
 Rilasciato quando una traccia viene rimossa dalla playlist. 
 
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a55c689e7df89f1ec71ee5c06b683a7bb}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!SOURCE\_CHANGED@{SOURCE\_CHANGED}}
+\index{SOURCE\_CHANGED@{SOURCE\_CHANGED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{SOURCE\_CHANGED}{SOURCE\_CHANGED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_a55c689e7df89f1ec71ee5c06b683a7bb} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+SOURCE\+\_\+\+CHANGED}
+
+
+
+Rilasciato quando la sorgente in riproduzione cambia (skip, fine traccia, previous). 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ae30c01dc3da174578f28ae0717242d6a}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!STRATEGY\_CHANGED@{STRATEGY\_CHANGED}}
+\index{STRATEGY\_CHANGED@{STRATEGY\_CHANGED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{STRATEGY\_CHANGED}{STRATEGY\_CHANGED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ae30c01dc3da174578f28ae0717242d6a} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+STRATEGY\+\_\+\+CHANGED}
+
+
+
+Rilasciato quando la strategia di riproduzione viene modificata. 
+
 \Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_aecbe9736840f632924a230ef4fb75e23}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!TRACK\_ADDED@{TRACK\_ADDED}}
 \index{TRACK\_ADDED@{TRACK\_ADDED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
 \doxysubsubsection{\texorpdfstring{TRACK\_ADDED}{TRACK\_ADDED}}
@@ -127,6 +169,16 @@ com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+TRACK\+\_\+\+ADDED}
 
 
 Rilasciato quando una nuova traccia viene inserita con successo nel catalogo. 
+
+\Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac78ac4d2849f8d1ad0aa1b705d36eb41}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!TRACK\_CHANGED@{TRACK\_CHANGED}}
+\index{TRACK\_CHANGED@{TRACK\_CHANGED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}
+\doxysubsubsection{\texorpdfstring{TRACK\_CHANGED}{TRACK\_CHANGED}}
+{\footnotesize\ttfamily \label{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac78ac4d2849f8d1ad0aa1b705d36eb41} 
+com.\+example.\+gruppo04.\+observer.\+Catalog\+Event\+Type.\+TRACK\+\_\+\+CHANGED}
+
+
+
+Rilasciato quando la traccia in riproduzione cambia (skip, fine traccia, previous). 
 
 \Hypertarget{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac8ce8f164864e44533d7b73efad49c99}\index{com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}!TRACK\_REMOVED@{TRACK\_REMOVED}}
 \index{TRACK\_REMOVED@{TRACK\_REMOVED}!com.example.gruppo04.observer.CatalogEventType@{com.example.gruppo04.observer.CatalogEventType}}

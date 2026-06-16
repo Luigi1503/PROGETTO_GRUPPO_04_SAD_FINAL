@@ -1,15 +1,24 @@
 var classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl =
 [
     [ "TrackImpl", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#abbd0ca9298d308744f3f8ff391c778f3", null ],
+    [ "addTag", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#ac10b7bc5e55353ae0263b3bafda4ae3f", null ],
+    [ "ensureTags", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a3fbcb7e43c73678df7a6d5fb9e764ca8", null ],
     [ "equals", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a72d3b73b1f177ba7df7bdb13e9059d59", null ],
     [ "getAuthor", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a3174ef0d87b5565429c7d6f17b39207d", null ],
+    [ "getDisplayName", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#ac1ade5d121a3ea2a382cb637f93b7a08", null ],
     [ "getDuration", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a6eac65e5a316313dad27c678af0740ef", null ],
     [ "getFilePath", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#afbd755c9a1dad7be010311e25509e8ec", null ],
     [ "getGenre", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#acdcce2662f58985617854f7c985530c7", null ],
     [ "getId", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a55d80ec13615adc2c3229a8fab103e98", null ],
+    [ "getPlayCount", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a1bea6fad821a087e72531b9e39854f25", null ],
+    [ "getTags", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a4d1238c09bb7d96289ce420eb4347f40", null ],
     [ "getTitle", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#ae1f7a466f4863d315aca7aec4954b07b", null ],
+    [ "getTracks", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a84a3bcadcb67a49da34378c271b9ef93", null ],
     [ "getYear", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a025b78543e08efbf1581a80def806f82", null ],
     [ "hashCode", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#ac0246c93a153cac0327223b625200191", null ],
+    [ "hasTag", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a496befd77970b8a005df163f1a81de1a", null ],
+    [ "incrementPlayCount", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a29e70d38e187425f06921a1e23fa0803", null ],
+    [ "removeTag", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a30af217009dd066f02b4cf269d27ed37", null ],
     [ "setAuthor", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a9592d6451a1e2f53cca20b1bcf1e7b2d", null ],
     [ "setDuration", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a08ed285da3661c78d8766ade825c3410", null ],
     [ "setFilePath", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a7d53d79a909eb84f7455508b39c42e6d", null ],
@@ -22,6 +31,8 @@ var classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl =
     [ "filePath", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a9a310ae29b754489d869930d33a46297", null ],
     [ "genre", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#aafcf22f1675faa998f79b65239249be1", null ],
     [ "id", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a83c3acea4c6650375b48a377424bb02b", null ],
+    [ "playCount", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a5a42c5df0ad4c89f3b4d2206cda4cd84", null ],
+    [ "tags", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a63b4ca6fe8bfa12a3824db65be4eee70", null ],
     [ "title", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a60326408d3f1078275a3926ccc9804bd", null ],
     [ "year", "classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a3bd4b2fce329a0e89ff3af30f0a1eeba", null ]
 ];

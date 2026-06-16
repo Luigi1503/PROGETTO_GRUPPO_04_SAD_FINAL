@@ -1,0 +1,126 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer}{}\label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer}\index{com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}}
+
+
+Observer che salva automaticamente il catalogo ad ogni modifica.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a494d646839e9f2d60735551031c9061d}{Auto\+Save\+Observer}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_afb0cf5d1eb598e51c99cec85a451ad0f}{catalog}})
+\begin{DoxyCompactList}\small\item\em Costruisce un {\ttfamily Auto\+Save\+Observer} per il catalogo fornito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_add242ac8fa207f50fae6d89c76d14a93}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Chiamato dal catalogo quando si verifica un cambiamento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a5660fee1ade39f9ce11f3120c1dd3bcd}{pm}} = \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a79d8d355a07e7c6aef4a725165a0db17}{Persistence\+Manager.\+get\+Instance}}()
+\begin{DoxyCompactList}\small\item\em Istanza del gestore della persistenza. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_afb0cf5d1eb598e51c99cec85a451ad0f}{catalog}}
+\begin{DoxyCompactList}\small\item\em Catalogo musicale da salvare ad ogni modifica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final Logger \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a6a1b16016329799d422de39f14c145ab}{logger}}
+\begin{DoxyCompactList}\small\item\em Logger per la gestione degli errori di salvataggio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Observer che salva automaticamente il catalogo ad ogni modifica. 
+
+Si registra come Concrete\+Observer su {\ttfamily \doxylink{}{Music\+Catalog}} e delega il salvataggio a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}} ad ogni notifica di modifica del catalogo, garantendo la persistenza dello stato tra gli accessi all\textquotesingle{}applicazione. Integra il pattern Observer già esistente con il pattern Singleton di {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}}. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a494d646839e9f2d60735551031c9061d}\index{com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}!AutoSaveObserver@{AutoSaveObserver}}
+\index{AutoSaveObserver@{AutoSaveObserver}!com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}}
+\doxysubsubsection{\texorpdfstring{AutoSaveObserver()}{AutoSaveObserver()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a494d646839e9f2d60735551031c9061d} 
+com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer.\+Auto\+Save\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce un {\ttfamily Auto\+Save\+Observer} per il catalogo fornito. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em catalog} & il catalogo musicale da osservare e salvare; non deve essere null \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_add242ac8fa207f50fae6d89c76d14a93}\index{com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}!onCatalogChanged@{onCatalogChanged}}
+\index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}}
+\doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_add242ac8fa207f50fae6d89c76d14a93} 
+void com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer.\+on\+Catalog\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Chiamato dal catalogo quando si verifica un cambiamento. 
+
+Salva automaticamente lo stato corrente del catalogo su file ad ogni notifica di modifica, indipendentemente dal tipo di evento ricevuto.
+
+
+\begin{DoxyParams}{Parametri}
+{\em event} & l\textquotesingle{}evento contenente i dettagli del cambiamento \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer_a36eb26536a7687957f477934bdafbfb0}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_afb0cf5d1eb598e51c99cec85a451ad0f}\index{com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_afb0cf5d1eb598e51c99cec85a451ad0f} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Catalogo musicale da salvare ad ogni modifica. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a6a1b16016329799d422de39f14c145ab}\index{com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}!logger@{logger}}
+\index{logger@{logger}!com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a6a1b16016329799d422de39f14c145ab} 
+final Logger com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer.\+logger\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Logger.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a494d646839e9f2d60735551031c9061d}{AutoSaveObserver}}.class.getName())}
+
+\end{DoxyCode}
+
+
+Logger per la gestione degli errori di salvataggio. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a5660fee1ade39f9ce11f3120c1dd3bcd}\index{com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}!pm@{pm}}
+\index{pm@{pm}!com.example.gruppo04.persistence.AutoSaveObserver@{com.example.gruppo04.persistence.AutoSaveObserver}}
+\doxysubsubsection{\texorpdfstring{pm}{pm}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer_a5660fee1ade39f9ce11f3120c1dd3bcd} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}} com.\+example.\+gruppo04.\+persistence.\+Auto\+Save\+Observer.\+pm = \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a79d8d355a07e7c6aef4a725165a0db17}{Persistence\+Manager.\+get\+Instance}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Istanza del gestore della persistenza. 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/persistence/\mbox{\hyperlink{_auto_save_observer_8java}{Auto\+Save\+Observer.\+java}}\end{DoxyCompactItemize}

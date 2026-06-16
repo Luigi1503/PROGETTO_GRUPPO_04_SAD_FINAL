@@ -1,0 +1,192 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+strategy.\+Sequential\+Strategy}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy}\index{com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}}
+
+
+Strategia di riproduzione sequenziale.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+model.\+strategy.\+Sequential\+Strategy
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+strategy.\+Sequential\+Strategy\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_a86590134fb382e22bac370e0cef902b6}{next\+Source}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ sources, int current\+Index)
+\begin{DoxyCompactList}\small\item\em Seleziona la sorgente successiva nella lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_ad18ca74ac7adbf7a5cd12411c65c2020}{next\+Track}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ tracks, int current\+Index)
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_a44e7a4e2435dec5829812a8a7bd78f78}{previous\+Source}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ sources, int current\+Index)
+\begin{DoxyCompactList}\small\item\em Seleziona la sorgente precedente nella lista.
+
+È l\textquotesingle{}operazione simmetrica a {\ttfamily \doxylink{}{next\+Source(\+List, int)}} e ne rispecchia la logica per ciascuna strategia\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Sequential}}\+: sorgente precedente in ordine; {\ttfamily null} se è la prima. 
+\item {\bfseries{Shuffle}}\+: una sorgente casuale ("{}playlist casuale dal catalogo"{}). 
+\item {\bfseries{Loop}}\+: resta sulla sorgente corrente (la playlist riparte da capo). 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parametri}
+{\em sources} & la lista di {\ttfamily \doxylink{}{Playable\+Source}} disponibili. \\
+\hline
+{\em current\+Index} & l\textquotesingle{}indice della sorgente corrente nella lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la sorgente precedente selezionata, o {\ttfamily null} se non esiste.
+\end{DoxyReturn}
+ Restituisce la sorgente all\textquotesingle{}indice precedente, o {\ttfamily null} se è la prima. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_afc7e7529c4a097fda90c18ed118d8eda}{previous\+Track}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ tracks, int current\+Index)
+\begin{DoxyCompactList}\small\item\em Seleziona la traccia precedente all\textquotesingle{}interno di una sorgente.
+
+È l\textquotesingle{}operazione simmetrica a {\ttfamily \doxylink{}{next\+Track(\+List, int)}} e ne rispecchia la logica per ciascuna strategia\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Sequential}}\+: traccia precedente in ordine; {\ttfamily null} se è la prima (segnale per passare alla sorgente precedente). 
+\item {\bfseries{Loop}}\+: traccia precedente in ordine in modo ciclico; dalla prima torna all\textquotesingle{}ultima (con un\textquotesingle{}unica traccia resta sulla stessa). 
+\item {\bfseries{Shuffle}}\+: traccia precedentemente riprodotta (dallo storico); se non esiste, la traccia corrente (così da riavviarla da capo). 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parametri}
+{\em tracks} & la lista di {\ttfamily \doxylink{}{Track}} della sorgente corrente. \\
+\hline
+{\em current\+Index} & l\textquotesingle{}indice della traccia corrente nella lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la traccia precedente selezionata, o {\ttfamily null} se si è all\textquotesingle{}inizio della sorgente e si deve passare alla sorgente precedente.
+\end{DoxyReturn}
+ Restituisce la traccia all\textquotesingle{}indice precedente, o {\ttfamily null} se è la prima (segnale per passare alla sorgente precedente). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{com.\+example.\+gruppo04.\+model.\+strategy.\+Playback\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+default boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a50d4f14cbb2ae1eed44d05612ade9856}{uses\+History\+For\+Previous}} ()
+\begin{DoxyCompactList}\small\item\em Indica se la navigazione "{}indietro"{} a livello di traccia (⏮) deve basarsi sullo storico di riproduzione effettivo anziché su {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a8cd6a674e2bd210f91521b8ecbb3a9fc}{previous\+Track}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Strategia di riproduzione sequenziale. 
+
+Riproduce i brani nell\textquotesingle{}ordine in cui si trovano nella lista. 
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_a86590134fb382e22bac370e0cef902b6}\index{com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}!nextSource@{nextSource}}
+\index{nextSource@{nextSource}!com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}}
+\doxysubsubsection{\texorpdfstring{nextSource()}{nextSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_a86590134fb382e22bac370e0cef902b6} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} com.\+example.\+gruppo04.\+model.\+strategy.\+Sequential\+Strategy.\+next\+Source (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$}]{sources}{, }\item[{int}]{current\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Seleziona la sorgente successiva nella lista. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em sources} & la lista di {\ttfamily \doxylink{}{Playable\+Source}} disponibili. \\
+\hline
+{\em current\+Index} & l\textquotesingle{}indice della sorgente corrente nella lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la sorgente successiva selezionata, o {\ttfamily null} se non esiste. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a19a45285acad772e13a86748724a2dcb}{com.\+example.\+gruppo04.\+model.\+strategy.\+Playback\+Strategy}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_ad18ca74ac7adbf7a5cd12411c65c2020}\index{com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}!nextTrack@{nextTrack}}
+\index{nextTrack@{nextTrack}!com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}}
+\doxysubsubsection{\texorpdfstring{nextTrack()}{nextTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_ad18ca74ac7adbf7a5cd12411c65c2020} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+model.\+strategy.\+Sequential\+Strategy.\+next\+Track (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{tracks}{, }\item[{int}]{current\+Index}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}   {@inheritDoc}
+\end{DoxyVerb}
+ Restituisce la traccia all\textquotesingle{}indice successivo, o {\ttfamily null} se è l\textquotesingle{}ultima (segnale per passare alla sorgente successiva). 
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a4c718901248a6ea5442a1c03f36c935e}{com.\+example.\+gruppo04.\+model.\+strategy.\+Playback\+Strategy}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_a44e7a4e2435dec5829812a8a7bd78f78}\index{com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}!previousSource@{previousSource}}
+\index{previousSource@{previousSource}!com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}}
+\doxysubsubsection{\texorpdfstring{previousSource()}{previousSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_a44e7a4e2435dec5829812a8a7bd78f78} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} com.\+example.\+gruppo04.\+model.\+strategy.\+Sequential\+Strategy.\+previous\+Source (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$}]{sources}{, }\item[{int}]{current\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Seleziona la sorgente precedente nella lista.
+
+È l\textquotesingle{}operazione simmetrica a {\ttfamily \doxylink{}{next\+Source(\+List, int)}} e ne rispecchia la logica per ciascuna strategia\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Sequential}}\+: sorgente precedente in ordine; {\ttfamily null} se è la prima. 
+\item {\bfseries{Shuffle}}\+: una sorgente casuale ("{}playlist casuale dal catalogo"{}). 
+\item {\bfseries{Loop}}\+: resta sulla sorgente corrente (la playlist riparte da capo). 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parametri}
+{\em sources} & la lista di {\ttfamily \doxylink{}{Playable\+Source}} disponibili. \\
+\hline
+{\em current\+Index} & l\textquotesingle{}indice della sorgente corrente nella lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la sorgente precedente selezionata, o {\ttfamily null} se non esiste.
+\end{DoxyReturn}
+ Restituisce la sorgente all\textquotesingle{}indice precedente, o {\ttfamily null} se è la prima. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_af2a298da9dd896d0c78481549f383543}{com.\+example.\+gruppo04.\+model.\+strategy.\+Playback\+Strategy}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_afc7e7529c4a097fda90c18ed118d8eda}\index{com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}!previousTrack@{previousTrack}}
+\index{previousTrack@{previousTrack}!com.example.gruppo04.model.strategy.SequentialStrategy@{com.example.gruppo04.model.strategy.SequentialStrategy}}
+\doxysubsubsection{\texorpdfstring{previousTrack()}{previousTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy_afc7e7529c4a097fda90c18ed118d8eda} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+model.\+strategy.\+Sequential\+Strategy.\+previous\+Track (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{tracks}{, }\item[{int}]{current\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Seleziona la traccia precedente all\textquotesingle{}interno di una sorgente.
+
+È l\textquotesingle{}operazione simmetrica a {\ttfamily \doxylink{}{next\+Track(\+List, int)}} e ne rispecchia la logica per ciascuna strategia\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Sequential}}\+: traccia precedente in ordine; {\ttfamily null} se è la prima (segnale per passare alla sorgente precedente). 
+\item {\bfseries{Loop}}\+: traccia precedente in ordine in modo ciclico; dalla prima torna all\textquotesingle{}ultima (con un\textquotesingle{}unica traccia resta sulla stessa). 
+\item {\bfseries{Shuffle}}\+: traccia precedentemente riprodotta (dallo storico); se non esiste, la traccia corrente (così da riavviarla da capo). 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parametri}
+{\em tracks} & la lista di {\ttfamily \doxylink{}{Track}} della sorgente corrente. \\
+\hline
+{\em current\+Index} & l\textquotesingle{}indice della traccia corrente nella lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la traccia precedente selezionata, o {\ttfamily null} se si è all\textquotesingle{}inizio della sorgente e si deve passare alla sorgente precedente.
+\end{DoxyReturn}
+ Restituisce la traccia all\textquotesingle{}indice precedente, o {\ttfamily null} se è la prima (segnale per passare alla sorgente precedente). 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy_a8cd6a674e2bd210f91521b8ecbb3a9fc}{com.\+example.\+gruppo04.\+model.\+strategy.\+Playback\+Strategy}}.
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/strategy/\mbox{\hyperlink{_sequential_strategy_8java}{Sequential\+Strategy.\+java}}\end{DoxyCompactItemize}

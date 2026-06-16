@@ -1,0 +1,427 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+
+
+Mantiene lo stato corrente della riproduzione musicale.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State\+:
+% FIG 0
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a311c4cef87e981dbed67f72c3e875aaf}{Playback\+State}} ()
+\begin{DoxyCompactList}\small\item\em Costruisce un nuovo stato di riproduzione con valori di default. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a4b0adb626f7106caf0d17b9ff063e65a}{set\+Strategy}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a2d17de4f66487bec2699cef76f0e8163}{strategy}})
+\begin{DoxyCompactList}\small\item\em Imposta la strategia di navigazione da utilizzare. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_aec07ea9f9429d8835696f7dd04c1de0c}{get\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la strategia di navigazione attualmente impostata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a23670c95d436b41e665760cb73f9b0d0}{change\+State}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}} new\+State)
+\begin{DoxyCompactList}\small\item\em Cambia lo stato corrente del player (pattern State). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a8101c79c96daaec64c24d803570a1803}{reset\+Playback\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Azzera il tempo di riproduzione corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a60de0edd59ead660b8409ffc4c7cb27d}{load\+Queue}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ sources)
+\begin{DoxyCompactList}\small\item\em Carica una nuova coda di sorgenti riproducibili, ripartendo dall\textquotesingle{}inizio. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a01996e9d9fc385100c4c5143cf93d23e}{get\+Queue}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la coda di sorgenti riproducibili. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a0fe8ccacab5490a0b494d42a53542db0}{refresh\+Queue}} (List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ sources)
+\begin{DoxyCompactList}\small\item\em Aggiorna la coda di riproduzione con un nuovo insieme di sorgenti (es. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_abea7aacd32553cec08978605384561ff}{get\+Current\+Track}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la traccia attualmente in riproduzione. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a4f5cfaec13808c125c994f0b6b721c77}{get\+Current\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la sorgente attualmente in riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a08662b75957c57b15c8da7af35872085}{set\+Current\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Imposta la traccia attualmente in riproduzione. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a01c517a9ce009279543f94dac0fc7d6f}{next\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Avanza alla sorgente successiva nella coda. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a659c0ddf04d614d06755cd7668a61f02}{pause}} ()
+\begin{DoxyCompactList}\small\item\em Metti in pausa la riproduzione, delegando allo stato corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab22e790c6422d8f3a6dd9d6695e37480}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Interrompe la riproduzione, delegando allo stato corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_af624fb9f6424e8290fb8985fa0b88bf8}{play}} ()
+\begin{DoxyCompactList}\small\item\em Avvia/riprende la riproduzione, delegando allo stato corrente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a016108f3c054f0b4887269c1cd2f38a9}{is\+Playing}} ()
+\begin{DoxyCompactList}\small\item\em Indica se la riproduzione è attualmente in corso. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_add0f30e3f3dc9d3e207b620f49eb92d8}{add\+To\+Queue}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} source)
+\begin{DoxyCompactList}\small\item\em Aggiunge una sorgente in coda alla lista di riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab2dcd9d07cf22086cffcec5811a72006}{remove\+From\+Queue}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} source)
+\begin{DoxyCompactList}\small\item\em Rimuove una sorgente dalla coda di riproduzione. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_af5cdf682df219b2b111981e9a9f6b7bd}{is\+Stopped}} ()
+\begin{DoxyCompactList}\small\item\em Indica se la riproduzione è ferma. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ad9d6f6e0234fd04802bbfea39cbfe398}{is\+Paused}} ()
+\begin{DoxyCompactList}\small\item\em Indica se la riproduzione è in pausa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a240bb504f151e4fc99206f90105461fe}{set\+Current\+Source}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} source)
+\begin{DoxyCompactList}\small\item\em Imposta la sorgente corrente individuandola nella coda. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ad503d0b9dafe33e0c43539d954fc9100}{get\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce lo stato corrente del player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab17aafcb7de14866fb9fac7c031d5b0a}{current\+State}}
+\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a694ea9073e22532fd2dfbb640330dd65}{queue}}
+\item 
+int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a191e4e0138584f0885fb0e13d46de536}{current\+Time}}
+\item 
+int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a5f030fedb42238f1eab8f748e9bebc91}{current\+Source\+Index}}
+\item 
+int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a84b94a23eeffea64d8eb36c8ed58e982}{current\+Track\+Index}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a0c50db1eb8596a345dbc927d50df2b1c}{current\+Track}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a2d17de4f66487bec2699cef76f0e8163}{strategy}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Mantiene lo stato corrente della riproduzione musicale. 
+
+Funziona da contesto per il pattern State (gestendo le transizioni tra {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}}) e mantiene la coda di sorgenti riproducibili, la traccia/sorgente correntemente in riproduzione e la strategia di navigazione attiva (pattern Strategy). 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a311c4cef87e981dbed67f72c3e875aaf}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!PlaybackState@{PlaybackState}}
+\index{PlaybackState@{PlaybackState}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{PlaybackState()}{PlaybackState()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a311c4cef87e981dbed67f72c3e875aaf} 
+com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+Playback\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce un nuovo stato di riproduzione con valori di default. 
+
+Inizializza lo stato a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_stopped_state}{Stopped\+State}}, la coda vuota, gli indici a zero, nessuna traccia corrente e la strategia di default a {\ttfamily \doxylink{}{Sequential\+Strategy}}. 
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_add0f30e3f3dc9d3e207b620f49eb92d8}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!addToQueue@{addToQueue}}
+\index{addToQueue@{addToQueue}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{addToQueue()}{addToQueue()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_add0f30e3f3dc9d3e207b620f49eb92d8} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+add\+To\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{source}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge una sorgente in coda alla lista di riproduzione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em source} & La sorgente da aggiungere. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a23670c95d436b41e665760cb73f9b0d0}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!changeState@{changeState}}
+\index{changeState@{changeState}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{changeState()}{changeState()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a23670c95d436b41e665760cb73f9b0d0} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+change\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}}}]{new\+State}{}\end{DoxyParamCaption})}
+
+
+
+Cambia lo stato corrente del player (pattern State). 
+
+
+\begin{DoxyParams}{Parametri}
+{\em new\+State} & Il nuovo {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}} da impostare. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a4f5cfaec13808c125c994f0b6b721c77}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!getCurrentSource@{getCurrentSource}}
+\index{getCurrentSource@{getCurrentSource}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{getCurrentSource()}{getCurrentSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a4f5cfaec13808c125c994f0b6b721c77} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+get\+Current\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la sorgente attualmente in riproduzione. 
+
+\begin{DoxyReturn}{Restituisce}
+La sorgente corrente, o null se la coda è vuota o l\textquotesingle{}indice non è valido. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_abea7aacd32553cec08978605384561ff}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!getCurrentTrack@{getCurrentTrack}}
+\index{getCurrentTrack@{getCurrentTrack}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{getCurrentTrack()}{getCurrentTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_abea7aacd32553cec08978605384561ff} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+get\+Current\+Track (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la traccia attualmente in riproduzione. 
+
+\begin{DoxyReturn}{Restituisce}
+La traccia corrente, o null se non impostata. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a01996e9d9fc385100c4c5143cf93d23e}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!getQueue@{getQueue}}
+\index{getQueue@{getQueue}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{getQueue()}{getQueue()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a01996e9d9fc385100c4c5143cf93d23e} 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$ com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+get\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la coda di sorgenti riproducibili. 
+
+\begin{DoxyReturn}{Restituisce}
+La lista delle sorgenti attualmente in coda. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ad503d0b9dafe33e0c43539d954fc9100}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ad503d0b9dafe33e0c43539d954fc9100} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+get\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce lo stato corrente del player. 
+
+\begin{DoxyReturn}{Restituisce}
+Il {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}} attualmente attivo. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_aec07ea9f9429d8835696f7dd04c1de0c}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!getStrategy@{getStrategy}}
+\index{getStrategy@{getStrategy}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{getStrategy()}{getStrategy()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_aec07ea9f9429d8835696f7dd04c1de0c} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+get\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la strategia di navigazione attualmente impostata. 
+
+\begin{DoxyReturn}{Restituisce}
+La {\ttfamily \doxylink{}{Playback\+Strategy}} corrente. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ad9d6f6e0234fd04802bbfea39cbfe398}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!isPaused@{isPaused}}
+\index{isPaused@{isPaused}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{isPaused()}{isPaused()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ad9d6f6e0234fd04802bbfea39cbfe398} 
+boolean com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+is\+Paused (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indica se la riproduzione è in pausa. 
+
+\begin{DoxyReturn}{Restituisce}
+true se lo stato corrente è paused, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a016108f3c054f0b4887269c1cd2f38a9}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a016108f3c054f0b4887269c1cd2f38a9} 
+boolean com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+is\+Playing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indica se la riproduzione è attualmente in corso. 
+
+\begin{DoxyReturn}{Restituisce}
+true se lo stato corrente è in riproduzione, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_af5cdf682df219b2b111981e9a9f6b7bd}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!isStopped@{isStopped}}
+\index{isStopped@{isStopped}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{isStopped()}{isStopped()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_af5cdf682df219b2b111981e9a9f6b7bd} 
+boolean com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+is\+Stopped (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indica se la riproduzione è ferma. 
+
+\begin{DoxyReturn}{Restituisce}
+true se lo stato corrente è stopped, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a60de0edd59ead660b8409ffc4c7cb27d}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!loadQueue@{loadQueue}}
+\index{loadQueue@{loadQueue}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{loadQueue()}{loadQueue()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a60de0edd59ead660b8409ffc4c7cb27d} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+load\+Queue (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$}]{sources}{}\end{DoxyParamCaption})}
+
+
+
+Carica una nuova coda di sorgenti riproducibili, ripartendo dall\textquotesingle{}inizio. 
+
+Sostituisce la coda corrente, azzera gli indici di sorgente e traccia, e imposta come traccia corrente la prima traccia della prima sorgente (se presente). 
+\begin{DoxyParams}{Parametri}
+{\em sources} & La lista di sorgenti da caricare in coda. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a01c517a9ce009279543f94dac0fc7d6f}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!nextSource@{nextSource}}
+\index{nextSource@{nextSource}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{nextSource()}{nextSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a01c517a9ce009279543f94dac0fc7d6f} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+next\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Avanza alla sorgente successiva nella coda. 
+
+Incrementa l\textquotesingle{}indice di sorgente e azzera l\textquotesingle{}indice di traccia. \begin{DoxyReturn}{Restituisce}
+La nuova sorgente corrente, oppure null se non ci sono più sorgenti in coda. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a659c0ddf04d614d06755cd7668a61f02}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!pause@{pause}}
+\index{pause@{pause}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a659c0ddf04d614d06755cd7668a61f02} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Metti in pausa la riproduzione, delegando allo stato corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_af624fb9f6424e8290fb8985fa0b88bf8}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!play@{play}}
+\index{play@{play}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_af624fb9f6424e8290fb8985fa0b88bf8} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Avvia/riprende la riproduzione, delegando allo stato corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a0fe8ccacab5490a0b494d42a53542db0}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!refreshQueue@{refreshQueue}}
+\index{refreshQueue@{refreshQueue}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{refreshQueue()}{refreshQueue()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a0fe8ccacab5490a0b494d42a53542db0} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+refresh\+Queue (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} $>$}]{sources}{}\end{DoxyParamCaption})}
+
+
+
+Aggiorna la coda di riproduzione con un nuovo insieme di sorgenti (es. 
+
+dopo la modifica di una playlist) preservando la sorgente e la traccia attualmente in riproduzione. 
+
+La sorgente corrente viene ri-\/localizzata nella nuova coda tramite {\ttfamily equals} (per le playlist l\textquotesingle{}uguaglianza è basata sull\textquotesingle{}id), così da agganciare l\textquotesingle{}istanza aggiornata e mantenere coerente l\textquotesingle{}indice corrente. Se la sorgente corrente non è più presente, l\textquotesingle{}indice viene riportato in un intervallo valido. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em sources} & la nuova lista di sorgenti; non deve essere {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab2dcd9d07cf22086cffcec5811a72006}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!removeFromQueue@{removeFromQueue}}
+\index{removeFromQueue@{removeFromQueue}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{removeFromQueue()}{removeFromQueue()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab2dcd9d07cf22086cffcec5811a72006} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+remove\+From\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{source}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove una sorgente dalla coda di riproduzione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em source} & La sorgente da rimuovere. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a8101c79c96daaec64c24d803570a1803}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!resetPlaybackTime@{resetPlaybackTime}}
+\index{resetPlaybackTime@{resetPlaybackTime}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{resetPlaybackTime()}{resetPlaybackTime()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a8101c79c96daaec64c24d803570a1803} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+reset\+Playback\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Azzera il tempo di riproduzione corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a240bb504f151e4fc99206f90105461fe}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!setCurrentSource@{setCurrentSource}}
+\index{setCurrentSource@{setCurrentSource}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{setCurrentSource()}{setCurrentSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a240bb504f151e4fc99206f90105461fe} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+set\+Current\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{source}{}\end{DoxyParamCaption})}
+
+
+
+Imposta la sorgente corrente individuandola nella coda. 
+
+Aggiorna l\textquotesingle{}indice di sorgente corrente in base alla posizione della sorgente fornita nella coda, e imposta come traccia corrente la prima traccia della sorgente (se presente). 
+\begin{DoxyParams}{Parametri}
+{\em source} & La sorgente da impostare come corrente. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a08662b75957c57b15c8da7af35872085}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!setCurrentTrack@{setCurrentTrack}}
+\index{setCurrentTrack@{setCurrentTrack}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{setCurrentTrack()}{setCurrentTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a08662b75957c57b15c8da7af35872085} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+set\+Current\+Track (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Imposta la traccia attualmente in riproduzione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & La traccia da impostare come corrente. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a4b0adb626f7106caf0d17b9ff063e65a}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!setStrategy@{setStrategy}}
+\index{setStrategy@{setStrategy}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{setStrategy()}{setStrategy()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a4b0adb626f7106caf0d17b9ff063e65a} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+set\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}}}]{strategy}{}\end{DoxyParamCaption})}
+
+
+
+Imposta la strategia di navigazione da utilizzare. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em strategy} & La nuova {\ttfamily \doxylink{}{Playback\+Strategy}} da applicare. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab22e790c6422d8f3a6dd9d6695e37480}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!stop@{stop}}
+\index{stop@{stop}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab22e790c6422d8f3a6dd9d6695e37480} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Interrompe la riproduzione, delegando allo stato corrente. 
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a5f030fedb42238f1eab8f748e9bebc91}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!currentSourceIndex@{currentSourceIndex}}
+\index{currentSourceIndex@{currentSourceIndex}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{currentSourceIndex}{currentSourceIndex}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a5f030fedb42238f1eab8f748e9bebc91} 
+int com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+current\+Source\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab17aafcb7de14866fb9fac7c031d5b0a}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!currentState@{currentState}}
+\index{currentState@{currentState}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{currentState}{currentState}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_ab17aafcb7de14866fb9fac7c031d5b0a} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{Player\+State}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+current\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a191e4e0138584f0885fb0e13d46de536}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!currentTime@{currentTime}}
+\index{currentTime@{currentTime}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{currentTime}{currentTime}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a191e4e0138584f0885fb0e13d46de536} 
+int com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+current\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a0c50db1eb8596a345dbc927d50df2b1c}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!currentTrack@{currentTrack}}
+\index{currentTrack@{currentTrack}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{currentTrack}{currentTrack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a0c50db1eb8596a345dbc927d50df2b1c} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+current\+Track\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a84b94a23eeffea64d8eb36c8ed58e982}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!currentTrackIndex@{currentTrackIndex}}
+\index{currentTrackIndex@{currentTrackIndex}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{currentTrackIndex}{currentTrackIndex}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a84b94a23eeffea64d8eb36c8ed58e982} 
+int com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+current\+Track\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a694ea9073e22532fd2dfbb640330dd65}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!queue@{queue}}
+\index{queue@{queue}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{queue}{queue}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a694ea9073e22532fd2dfbb640330dd65} 
+List$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}$>$ com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+queue\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a2d17de4f66487bec2699cef76f0e8163}\index{com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}!strategy@{strategy}}
+\index{strategy@{strategy}!com.example.gruppo04.model.state.PlaybackState@{com.example.gruppo04.model.state.PlaybackState}}
+\doxysubsubsection{\texorpdfstring{strategy}{strategy}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state_a2d17de4f66487bec2699cef76f0e8163} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} com.\+example.\+gruppo04.\+model.\+state.\+Playback\+State.\+strategy\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/state/\mbox{\hyperlink{_playback_state_8java}{Playback\+State.\+java}}\end{DoxyCompactItemize}

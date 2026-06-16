@@ -1,12 +1,18 @@
 var interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track =
 [
+    [ "addTag", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#ab078ce117025583946a86bdb5a0d78d1", null ],
     [ "getAuthor", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a7b101e998466af83344555023e6a7a04", null ],
     [ "getDuration", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a56ba15e0b349da0ee021bc5a6a927d20", null ],
     [ "getFilePath", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a4a04e12deb32e0e9813d37ead9c5c49c", null ],
     [ "getGenre", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a0131e8419f4d53dd777b452cd2b7a317", null ],
     [ "getId", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a150961a8e72f4051540f53b413b56875", null ],
+    [ "getPlayCount", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a6324b072645b5157b62f93df3ed19f92", null ],
+    [ "getTags", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a4af86fdca50576611617e97a6c64bac3", null ],
     [ "getTitle", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a73d3be0fe1cd851d80c43b1026fd76a0", null ],
     [ "getYear", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#af82a601f717aefec9b11fea6a5e71515", null ],
+    [ "hasTag", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#ae6af8d43ad3d98af4497cee1f12b2e20", null ],
+    [ "incrementPlayCount", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#ab31b6e5068cfa17da08685edd07e0dcd", null ],
+    [ "removeTag", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#aa69d3d9e8a98ba1de6dadfa9400083c0", null ],
     [ "setAuthor", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a0186f1e417bb50e703306241fd961d7e", null ],
     [ "setDuration", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#a1d7c439bd241c446d152d98399e6c2fd", null ],
     [ "setFilePath", "interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track.html#afe71a8af8030bcf92e6edd81f42d610d", null ],

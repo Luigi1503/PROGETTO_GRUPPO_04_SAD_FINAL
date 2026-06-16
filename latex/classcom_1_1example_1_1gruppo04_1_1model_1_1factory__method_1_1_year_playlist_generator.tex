@@ -1,0 +1,135 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator}\index{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}}
+
+
+Concrete\+Creator del pattern Factory Method per il criterio anno/periodo.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a98455d52abc53f44526a5f4ecc0f5428}{Year\+Playlist\+Generator}} (int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a088e155ba44190a76a57f49e80f3db7f}{from\+Year}}, int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a70677d38d1e062f0550d57f0104ccff6}{to\+Year}})
+\begin{DoxyCompactList}\small\item\em Costruisce un generatore per il periodo di anni specificato. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_abf24a9483de8c6ba1380cd0362126bf7}{create\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog)
+\begin{DoxyCompactList}\small\item\em Crea una playlist con tutte le tracce pubblicate nel periodo specificato. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_aa02afd9da06361608b9f3d0bac5ecf58}{get\+Criterion\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il nome del criterio di generazione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a088e155ba44190a76a57f49e80f3db7f}{from\+Year}}
+\begin{DoxyCompactList}\small\item\em Anno di inizio del periodo di filtraggio (incluso). \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a70677d38d1e062f0550d57f0104ccff6}{to\+Year}}
+\begin{DoxyCompactList}\small\item\em Anno di fine del periodo di filtraggio (incluso). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Altri membri ereditati}
+\doxysubsection*{Membri protetti ereditati da \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a9172e20c3cbcda52394194483d252ed8}{filter\+Tracks}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog, Predicate$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ predicate)
+\begin{DoxyCompactList}\small\item\em Metodo di utilità comune a tutti i generatori. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Concrete\+Creator del pattern Factory Method per il criterio anno/periodo. 
+
+Genera una playlist contenente esclusivamente le tracce pubblicate nell\textquotesingle{}intervallo di anni specificato nel costruttore. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a98455d52abc53f44526a5f4ecc0f5428}\index{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}!YearPlaylistGenerator@{YearPlaylistGenerator}}
+\index{YearPlaylistGenerator@{YearPlaylistGenerator}!com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{YearPlaylistGenerator()}{YearPlaylistGenerator()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a98455d52abc53f44526a5f4ecc0f5428} 
+com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator.\+Year\+Playlist\+Generator (\begin{DoxyParamCaption}\item[{int}]{from\+Year}{, }\item[{int}]{to\+Year}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce un generatore per il periodo di anni specificato. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em from\+Year} & anno di inizio del periodo (incluso) \\
+\hline
+{\em to\+Year} & anno di fine del periodo (incluso) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_abf24a9483de8c6ba1380cd0362126bf7}\index{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}!createPlaylist@{createPlaylist}}
+\index{createPlaylist@{createPlaylist}!com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{createPlaylist()}{createPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_abf24a9483de8c6ba1380cd0362126bf7} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator.\+create\+Playlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Crea una playlist con tutte le tracce pubblicate nel periodo specificato. 
+
+Itera su tutte le tracce del catalogo e aggiunge alla playlist quelle il cui anno di pubblicazione è compreso nell\textquotesingle{}intervallo definito.
+
+
+\begin{DoxyParams}{Parametri}
+{\em catalog} & il catalogo musicale da cui estrarre le tracce \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la playlist generata contenente le tracce del periodo specificato 
+\end{DoxyReturn}
+
+
+Reimplementa \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_ac3f89478f0c592b85024055d0b4dc56f}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_aa02afd9da06361608b9f3d0bac5ecf58}\index{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}!getCriterionName@{getCriterionName}}
+\index{getCriterionName@{getCriterionName}!com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{getCriterionName()}{getCriterionName()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_aa02afd9da06361608b9f3d0bac5ecf58} 
+String com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator.\+get\+Criterion\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il nome del criterio di generazione. 
+
+\begin{DoxyReturn}{Restituisce}
+il periodo in formato "{}from\+Year–to\+Year"{}, o solo l\textquotesingle{}anno se coincidono 
+\end{DoxyReturn}
+
+
+Reimplementa \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a8209fa3830dfd5108ca2693838f063ab}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a088e155ba44190a76a57f49e80f3db7f}\index{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}!fromYear@{fromYear}}
+\index{fromYear@{fromYear}!com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{fromYear}{fromYear}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a088e155ba44190a76a57f49e80f3db7f} 
+final int com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator.\+from\+Year\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Anno di inizio del periodo di filtraggio (incluso). 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a70677d38d1e062f0550d57f0104ccff6}\index{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}!toYear@{toYear}}
+\index{toYear@{toYear}!com.example.gruppo04.model.factory\_method.YearPlaylistGenerator@{com.example.gruppo04.model.factory\_method.YearPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{toYear}{toYear}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_a70677d38d1e062f0550d57f0104ccff6} 
+final int com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator.\+to\+Year\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Anno di fine del periodo di filtraggio (incluso). 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/factory\+\_\+method/\mbox{\hyperlink{_year_playlist_generator_8java}{Year\+Playlist\+Generator.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,119 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}\index{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}}
+
+
+Creator astratto del pattern Factory Method.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+abstract \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_ac3f89478f0c592b85024055d0b4dc56f}{create\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog)
+\begin{DoxyCompactList}\small\item\em Metodo factory astratto. \end{DoxyCompactList}\item 
+abstract String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a8209fa3830dfd5108ca2693838f063ab}{get\+Criterion\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il nome del criterio di generazione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri protetti}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a9172e20c3cbcda52394194483d252ed8}{filter\+Tracks}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog, Predicate$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ predicate)
+\begin{DoxyCompactList}\small\item\em Metodo di utilità comune a tutti i generatori. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final long \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a51f520520c8c10cf58d12779d8ad6ddf}{serial\+Version\+UID}} = 1L
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Creator astratto del pattern Factory Method. 
+
+Definisce il metodo factory astratto {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_ac3f89478f0c592b85024055d0b4dc56f}{create\+Playlist(\+Music\+Catalog)}} che ogni Concrete\+Creator deve implementare per generare una playlist secondo il proprio criterio di filtraggio. 
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_ac3f89478f0c592b85024055d0b4dc56f}\index{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}!createPlaylist@{createPlaylist}}
+\index{createPlaylist@{createPlaylist}!com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{createPlaylist()}{createPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_ac3f89478f0c592b85024055d0b4dc56f} 
+abstract \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator.\+create\+Playlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Metodo factory astratto. 
+
+Ogni sottoclasse implementa questo metodo per creare una playlist contenente esclusivamente le tracce che soddisfano il criterio specifico.
+
+
+\begin{DoxyParams}{Parametri}
+{\em catalog} & il catalogo musicale da cui estrarre le tracce \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la playlist generata secondo il criterio del generatore 
+\end{DoxyReturn}
+
+
+Reimplementata in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a1766dd5f4a6b8d81acae2781128904e0}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_tag_playlist_generator_a5abe14e5ed5cd0bcb47e597f5bcecba3}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Tag\+Playlist\+Generator}}, e \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_abf24a9483de8c6ba1380cd0362126bf7}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a9172e20c3cbcda52394194483d252ed8}\index{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}!filterTracks@{filterTracks}}
+\index{filterTracks@{filterTracks}!com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{filterTracks()}{filterTracks()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a9172e20c3cbcda52394194483d252ed8} 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator.\+filter\+Tracks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{Predicate$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{predicate}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Metodo di utilità comune a tutti i generatori. 
+
+Itera su tutte le tracce del catalogo e restituisce quelle che soddisfano il predicato fornito dalla sottoclasse.
+
+
+\begin{DoxyParams}{Parametri}
+{\em catalog} & il catalogo da cui estrarre le tracce \\
+\hline
+{\em predicate} & il criterio di filtraggio \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+lista delle tracce che soddisfano il criterio 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a8209fa3830dfd5108ca2693838f063ab}\index{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}!getCriterionName@{getCriterionName}}
+\index{getCriterionName@{getCriterionName}!com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{getCriterionName()}{getCriterionName()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a8209fa3830dfd5108ca2693838f063ab} 
+abstract String com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator.\+get\+Criterion\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Restituisce il nome del criterio di generazione. 
+
+Usato per identificare il tipo di playlist generata (es. "{}\+Rock"{}, "{}2020–2024"{}, "{}\+Preferite"{}).
+
+\begin{DoxyReturn}{Restituisce}
+il nome del criterio 
+\end{DoxyReturn}
+
+
+Reimplementata in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a7bd2d9fc7adf22e902677c9ca96bd33e}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_tag_playlist_generator_a0bd4fcfd3e99382ae6f0dfecd397ae6d}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Tag\+Playlist\+Generator}}, e \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator_aa02afd9da06361608b9f3d0bac5ecf58}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Year\+Playlist\+Generator}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a51f520520c8c10cf58d12779d8ad6ddf}\index{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}!serialVersionUID@{serialVersionUID}}
+\index{serialVersionUID@{serialVersionUID}!com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator@{com.example.gruppo04.model.factory\_method.AutoPlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{serialVersionUID}{serialVersionUID}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a51f520520c8c10cf58d12779d8ad6ddf} 
+final long com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator.\+serial\+Version\+UID = 1L\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/factory\+\_\+method/\mbox{\hyperlink{_auto_playlist_generator_8java}{Auto\+Playlist\+Generator.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,8 @@
+var namespacecom_1_1example_1_1gruppo04_1_1model_1_1factory__method =
+[
+    [ "AutomaticPlaylistService", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service.html", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service" ],
+    [ "AutoPlaylistGenerator", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator.html", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator" ],
+    [ "GenrePlaylistGenerator", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator.html", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator" ],
+    [ "TagPlaylistGenerator", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_tag_playlist_generator.html", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_tag_playlist_generator" ],
+    [ "YearPlaylistGenerator", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator.html", "classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_year_playlist_generator" ]
+];

@@ -3,38 +3,59 @@
 
 
 Diagramma delle classi per com.\+example.\+gruppo04.\+Main\+Application
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=213pt]{classcom_1_1example_1_1gruppo04_1_1_main_application__inherit__graph}
-\end{center}
-\end{figure}
+% FIG 0
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+Main\+Application\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=213pt]{classcom_1_1example_1_1gruppo04_1_1_main_application__coll__graph}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1_main_application_a155d2dd752a562cee3617d1e2e68624f}{start}} (Stage stage)  throws IOException 
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1_main_application_ab0940b61467948d22ec4b69f46ee7a33}{catalog}} = \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a0ebb6b1f3863dd0f7b6dec04bd8df18b}{Concrete\+Music\+Catalog.\+get\+Instance}}()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final Logger \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1_main_application_a697a34177e1f5ffbcff94942401a23d2}{logger}}
+\begin{DoxyCompactList}\small\item\em Logger per la gestione degli errori. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\label{doc-func-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1_main_application_doc-func-members}
 \doxysubsection{Documentazione delle funzioni membro}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1_main_application_a155d2dd752a562cee3617d1e2e68624f}\index{com.example.gruppo04.MainApplication@{com.example.gruppo04.MainApplication}!start@{start}}
 \index{start@{start}!com.example.gruppo04.MainApplication@{com.example.gruppo04.MainApplication}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1_main_application_a155d2dd752a562cee3617d1e2e68624f} 
 void com.\+example.\+gruppo04.\+Main\+Application.\+start (\begin{DoxyParamCaption}\item[{Stage}]{stage}{}\end{DoxyParamCaption}) throws IOException}
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1_main_application_ab0940b61467948d22ec4b69f46ee7a33}\index{com.example.gruppo04.MainApplication@{com.example.gruppo04.MainApplication}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.MainApplication@{com.example.gruppo04.MainApplication}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1_main_application_ab0940b61467948d22ec4b69f46ee7a33} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+Main\+Application.\+catalog = \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a0ebb6b1f3863dd0f7b6dec04bd8df18b}{Concrete\+Music\+Catalog.\+get\+Instance}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1_main_application_a697a34177e1f5ffbcff94942401a23d2}\index{com.example.gruppo04.MainApplication@{com.example.gruppo04.MainApplication}!logger@{logger}}
+\index{logger@{logger}!com.example.gruppo04.MainApplication@{com.example.gruppo04.MainApplication}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1_main_application_a697a34177e1f5ffbcff94942401a23d2} 
+final Logger com.\+example.\+gruppo04.\+Main\+Application.\+logger\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valore iniziale\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Logger.getLogger(MainApplication.class.getName())}
+
+\end{DoxyCode}
+
+
+Logger per la gestione degli errori. 
 
 
 

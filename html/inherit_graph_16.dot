@@ -1,0 +1,25 @@
+digraph "Grafico della gerarchia delle classi"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="com.example.gruppo04.observer.\lCatalogObserver",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer.html",tooltip="Interfaccia che deve essere implementata da qualsiasi componente (View o Controller) che necessiti di..."];
+  Node0 -> Node1 [id="edge18_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="com.example.gruppo04.controller.\lPlaybackController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller.html",tooltip="Controller responsabile della gestione della riproduzione musicale."];
+  Node0 -> Node2 [id="edge19_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="com.example.gruppo04.persistence.\lAutoSaveObserver",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1persistence_1_1_auto_save_observer.html",tooltip="Observer che salva automaticamente il catalogo ad ogni modifica."];
+  Node0 -> Node3 [id="edge20_Node000000_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="com.example.gruppo04.view.\lHomeViewController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller.html",tooltip="Controller della Home view."];
+  Node0 -> Node4 [id="edge21_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="com.example.gruppo04.view.\lMainViewController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html",tooltip="Controller JavaFX della finestra principale dell'applicazione."];
+  Node0 -> Node5 [id="edge22_Node000000_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="com.example.gruppo04.view.\lPlaybackBarViewController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html",tooltip="Controller JavaFX della barra di riproduzione."];
+  Node0 -> Node6 [id="edge23_Node000000_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="com.example.gruppo04.view.\lPlaylistDetailViewController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html",tooltip="Controller JavaFX della vista di dettaglio di una playlist."];
+  Node0 -> Node7 [id="edge24_Node000000_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="com.example.gruppo04.view.\lPlaylistViewController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html",tooltip="Controller di vista (layer View) del pannello di gestione delle playlist."];
+  Node0 -> Node8 [id="edge25_Node000000_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="com.example.gruppo04.view.\lTrackListViewController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html",tooltip="Rappresenta la componente View secondo il pattern MVC."];
+}

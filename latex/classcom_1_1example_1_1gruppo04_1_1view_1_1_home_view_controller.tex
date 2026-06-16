@@ -1,0 +1,184 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+
+
+Controller della Home view.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a9b874ea559dca5fcc6d4205da5dcfc3a}{init}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} track\+Controller, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} playlist\+Controller, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a5404844888822adf5bb700c55f691226}{playback\+Controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a2c8950e5376f117dfc4a217df3a47d44}{catalog}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}{Main\+View\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ac12faea66eb0c3627bc2a90c022bf022}{main\+View\+Controller}})
+\begin{DoxyCompactList}\small\item\em Inizializza il controller con i controller di dominio e il catalogo musicale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a3dc778cad84708de436b6e114cc17a27}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Callback invocata quando il catalogo musicale cambia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_adec13a1dd6ba9d3c137a884238cc8ed7}{configure\+Lists}} ()
+\begin{DoxyCompactList}\small\item\em Configura le List\+View della UI\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_aee2906051b79331e156a7af2c50722e4}{refresh\+Lists}} ()
+\begin{DoxyCompactList}\small\item\em Aggiorna le liste delle "{}\+Top Tracks"{} e "{}\+Top Playlists"{} ordinandole per numero di riproduzioni. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+List\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ae1e2a8842666d4ab82657a462aaf4ff8}{tracks\+List\+View}}
+\item 
+List\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ad1c3065d79edb3bd4afe16c5f5612e5c}{playlists\+List\+View}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a2c8950e5376f117dfc4a217df3a47d44}{catalog}}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a5404844888822adf5bb700c55f691226}{playback\+Controller}}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}{Main\+View\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ac12faea66eb0c3627bc2a90c022bf022}{main\+View\+Controller}}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ad28bba5b48d10dcf82a383168779aab6}{automatic\+Playlist\+Service}}
+\item 
+final Observable\+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a689abef8371f4e92569ffb278b1896c4}{tracks\+Model}} = FXCollections.\+observable\+Array\+List()
+\item 
+final Observable\+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a86c3e187db19b181212f00ad4f8343fc}{playlists\+Model}} = FXCollections.\+observable\+Array\+List()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Controller della Home view. 
+
+Mostra le sezioni "{}\+Tracce più ascoltate"{} e "{}\+Playlist più ascoltate"{}, ordinate in modo decrescente per numero di riproduzioni.
+
+Si registra come {\ttfamily \doxylink{}{Catalog\+Observer}} per ricevere aggiornamenti in tempo reale dal {\ttfamily \doxylink{}{Music\+Catalog}} e aggiornare le classifiche.
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_adec13a1dd6ba9d3c137a884238cc8ed7}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!configureLists@{configureLists}}
+\index{configureLists@{configureLists}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{configureLists()}{configureLists()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_adec13a1dd6ba9d3c137a884238cc8ed7} 
+void com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+configure\+Lists (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Configura le List\+View della UI\+: 
+
+
+\begin{DoxyItemize}
+\item Binding con gli Observable\+List 
+\item Definizione delle celle personalizzate 
+\item Gestione del doppio click per avviare la riproduzione 
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a9b874ea559dca5fcc6d4205da5dcfc3a}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!init@{init}}
+\index{init@{init}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a9b874ea559dca5fcc6d4205da5dcfc3a} 
+void com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{track\+Controller}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}}}]{playback\+Controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}{Main\+View\+Controller}}}]{main\+View\+Controller}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza il controller con i controller di dominio e il catalogo musicale. 
+
+Registra anche questo controller come observer del catalogo e configura le liste della UI.
+
+
+\begin{DoxyParams}{Parametri}
+{\em track\+Controller} & controller delle tracce (attualmente non usato direttamente) \\
+\hline
+{\em playlist\+Controller} & controller delle playlist (attualmente non usato direttamente) \\
+\hline
+{\em playback\+Controller} & controller responsabile della riproduzione \\
+\hline
+{\em catalog} & catalogo musicale dell’applicazione \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a3dc778cad84708de436b6e114cc17a27}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!onCatalogChanged@{onCatalogChanged}}
+\index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a3dc778cad84708de436b6e114cc17a27} 
+void com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+on\+Catalog\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Callback invocata quando il catalogo musicale cambia. 
+
+In risposta a qualsiasi evento rilevante, la vista viene aggiornata ricalcolando le classifiche.
+
+
+\begin{DoxyParams}{Parametri}
+{\em event} & evento di modifica del catalogo \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer_a36eb26536a7687957f477934bdafbfb0}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_aee2906051b79331e156a7af2c50722e4}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!refreshLists@{refreshLists}}
+\index{refreshLists@{refreshLists}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{refreshLists()}{refreshLists()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_aee2906051b79331e156a7af2c50722e4} 
+void com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+refresh\+Lists (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aggiorna le liste delle "{}\+Top Tracks"{} e "{}\+Top Playlists"{} ordinandole per numero di riproduzioni. 
+
+Il refresh viene eseguito sul Java\+FX Application Thread tramite {\ttfamily \doxylink{}{Platform\#run\+Later(\+Runnable)}}.
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ad28bba5b48d10dcf82a383168779aab6}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!automaticPlaylistService@{automaticPlaylistService}}
+\index{automaticPlaylistService@{automaticPlaylistService}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{automaticPlaylistService}{automaticPlaylistService}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ad28bba5b48d10dcf82a383168779aab6} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+automatic\+Playlist\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a2c8950e5376f117dfc4a217df3a47d44}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a2c8950e5376f117dfc4a217df3a47d44} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ac12faea66eb0c3627bc2a90c022bf022}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!mainViewController@{mainViewController}}
+\index{mainViewController@{mainViewController}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{mainViewController}{mainViewController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ac12faea66eb0c3627bc2a90c022bf022} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}{Main\+View\+Controller}} com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+main\+View\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a5404844888822adf5bb700c55f691226}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!playbackController@{playbackController}}
+\index{playbackController@{playbackController}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{playbackController}{playbackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a5404844888822adf5bb700c55f691226} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+playback\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ad1c3065d79edb3bd4afe16c5f5612e5c}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!playlistsListView@{playlistsListView}}
+\index{playlistsListView@{playlistsListView}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{playlistsListView}{playlistsListView}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ad1c3065d79edb3bd4afe16c5f5612e5c} 
+List\+View$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}$>$ com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+playlists\+List\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a86c3e187db19b181212f00ad4f8343fc}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!playlistsModel@{playlistsModel}}
+\index{playlistsModel@{playlistsModel}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{playlistsModel}{playlistsModel}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a86c3e187db19b181212f00ad4f8343fc} 
+final Observable\+List$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}$>$ com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+playlists\+Model = FXCollections.\+observable\+Array\+List()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ae1e2a8842666d4ab82657a462aaf4ff8}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!tracksListView@{tracksListView}}
+\index{tracksListView@{tracksListView}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{tracksListView}{tracksListView}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_ae1e2a8842666d4ab82657a462aaf4ff8} 
+List\+View$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}$>$ com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+tracks\+List\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a689abef8371f4e92569ffb278b1896c4}\index{com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}!tracksModel@{tracksModel}}
+\index{tracksModel@{tracksModel}!com.example.gruppo04.view.HomeViewController@{com.example.gruppo04.view.HomeViewController}}
+\doxysubsubsection{\texorpdfstring{tracksModel}{tracksModel}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller_a689abef8371f4e92569ffb278b1896c4} 
+final Observable\+List$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}$>$ com.\+example.\+gruppo04.\+view.\+Home\+View\+Controller.\+tracks\+Model = FXCollections.\+observable\+Array\+List()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_home_view_controller_8java}{Home\+View\+Controller.\+java}}\end{DoxyCompactItemize}

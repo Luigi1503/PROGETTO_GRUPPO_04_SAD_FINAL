@@ -1,0 +1,199 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+
+
+Gestisce tutta la logica relativa alla sincronizzazione tra playback e vista della playlist.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler\+:
+% FIG 0
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a6e9d11d877879e02eb57acf954a3cb5e}{Playlist\+Playback\+Handler}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a047f60a6b00809e0e7722a9c04a629e2}{playback\+Controller}}, Table\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a449fafc6eb3020b2d16d979193956576}{table\+Tracks}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
+\begin{DoxyCompactList}\small\item\em Costruttore. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_af650c38ac17034288a1497b4e4c0b981}{set\+Current\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
+\begin{DoxyCompactList}\small\item\em Aggiorna la playlist corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a564370971e18fa0c85711bbbbd2e47ca}{sync\+Highlight}} ()
+\begin{DoxyCompactList}\small\item\em Evidenzia la traccia corrente se in riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a689b8c8d411ba25d0862c7ab963a216a}{handle\+Playback\+Started}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Gestione evento PLAYBACK\+\_\+\+STARTED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_ab48bc1aa0f4c8464c4e9d1cd5524027d}{handle\+Track\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Gestione evento TRACK\+\_\+\+CHANGED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a6cd54462700e91d0b0abdfdfaf6ac224}{handle\+Playback\+Stopped}} ()
+\begin{DoxyCompactList}\small\item\em Gestione evento PLAYBACK\+\_\+\+STOPPED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_ac60fec66340d0b2559c8d5a0237ae70b}{handle\+Event}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller}{Playlist\+Detail\+View\+Controller}} view)
+\begin{DoxyCompactList}\small\item\em Gestisce eventi catalogo delegati dal controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a5ef2b133da4aac0eb1b7f0390bcfaff4}{sync\+With\+Playback}} ()
+\begin{DoxyCompactList}\small\item\em Logica principale di sincronizzazione playback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_adc9e09508f10ae298ce5c018655981fd}{highlight}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Evidenzia una traccia nella tabella. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_afed9b73fe123ba097e9bdb1056a3a911}{is\+Active\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se la playlist è attiva in playback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a047f60a6b00809e0e7722a9c04a629e2}{playback\+Controller}}
+\item 
+final Table\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a449fafc6eb3020b2d16d979193956576}{table\+Tracks}}
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_aaa5a07dc2de8dad22346406abdd0a798}{current\+Playlist}}
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a20f8b15adbad9234a951df7413dfb069}{following\+Playback}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Gestisce tutta la logica relativa alla sincronizzazione tra playback e vista della playlist. 
+
+Responsabilità\+:
+
+
+\begin{DoxyItemize}
+\item Tracking della playlist attualmente in riproduzione 
+\item Highlight della traccia corrente 
+\item Sincronizzazione con eventi di playback 
+\item Costruzione della coda di riproduzione 
+\end{DoxyItemize}
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a6e9d11d877879e02eb57acf954a3cb5e}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!PlaylistPlaybackHandler@{PlaylistPlaybackHandler}}
+\index{PlaylistPlaybackHandler@{PlaylistPlaybackHandler}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{PlaylistPlaybackHandler()}{PlaylistPlaybackHandler()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a6e9d11d877879e02eb57acf954a3cb5e} 
+com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+Playlist\+Playback\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}}}]{playback\+Controller}{, }\item[{Table\+View$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{table\+Tracks}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore. 
+
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_ac60fec66340d0b2559c8d5a0237ae70b}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!handleEvent@{handleEvent}}
+\index{handleEvent@{handleEvent}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{handleEvent()}{handleEvent()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_ac60fec66340d0b2559c8d5a0237ae70b} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+handle\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller}{Playlist\+Detail\+View\+Controller}}}]{view}{}\end{DoxyParamCaption})}
+
+
+
+Gestisce eventi catalogo delegati dal controller. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a689b8c8d411ba25d0862c7ab963a216a}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!handlePlaybackStarted@{handlePlaybackStarted}}
+\index{handlePlaybackStarted@{handlePlaybackStarted}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{handlePlaybackStarted()}{handlePlaybackStarted()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a689b8c8d411ba25d0862c7ab963a216a} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+handle\+Playback\+Started (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Gestione evento PLAYBACK\+\_\+\+STARTED. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a6cd54462700e91d0b0abdfdfaf6ac224}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!handlePlaybackStopped@{handlePlaybackStopped}}
+\index{handlePlaybackStopped@{handlePlaybackStopped}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{handlePlaybackStopped()}{handlePlaybackStopped()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a6cd54462700e91d0b0abdfdfaf6ac224} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+handle\+Playback\+Stopped (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gestione evento PLAYBACK\+\_\+\+STOPPED. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_ab48bc1aa0f4c8464c4e9d1cd5524027d}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!handleTrackChanged@{handleTrackChanged}}
+\index{handleTrackChanged@{handleTrackChanged}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{handleTrackChanged()}{handleTrackChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_ab48bc1aa0f4c8464c4e9d1cd5524027d} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+handle\+Track\+Changed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gestione evento TRACK\+\_\+\+CHANGED. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_adc9e09508f10ae298ce5c018655981fd}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!highlight@{highlight}}
+\index{highlight@{highlight}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{highlight()}{highlight()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_adc9e09508f10ae298ce5c018655981fd} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+highlight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Evidenzia una traccia nella tabella. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_afed9b73fe123ba097e9bdb1056a3a911}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!isActiveSource@{isActiveSource}}
+\index{isActiveSource@{isActiveSource}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{isActiveSource()}{isActiveSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_afed9b73fe123ba097e9bdb1056a3a911} 
+boolean com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+is\+Active\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Verifica se la playlist è attiva in playback. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_af650c38ac17034288a1497b4e4c0b981}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!setCurrentPlaylist@{setCurrentPlaylist}}
+\index{setCurrentPlaylist@{setCurrentPlaylist}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{setCurrentPlaylist()}{setCurrentPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_af650c38ac17034288a1497b4e4c0b981} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+set\+Current\+Playlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{}\end{DoxyParamCaption})}
+
+
+
+Aggiorna la playlist corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a564370971e18fa0c85711bbbbd2e47ca}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!syncHighlight@{syncHighlight}}
+\index{syncHighlight@{syncHighlight}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{syncHighlight()}{syncHighlight()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a564370971e18fa0c85711bbbbd2e47ca} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+sync\+Highlight (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Evidenzia la traccia corrente se in riproduzione. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a5ef2b133da4aac0eb1b7f0390bcfaff4}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!syncWithPlayback@{syncWithPlayback}}
+\index{syncWithPlayback@{syncWithPlayback}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{syncWithPlayback()}{syncWithPlayback()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a5ef2b133da4aac0eb1b7f0390bcfaff4} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+sync\+With\+Playback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Logica principale di sincronizzazione playback. 
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_aaa5a07dc2de8dad22346406abdd0a798}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!currentPlaylist@{currentPlaylist}}
+\index{currentPlaylist@{currentPlaylist}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{currentPlaylist}{currentPlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_aaa5a07dc2de8dad22346406abdd0a798} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+current\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a20f8b15adbad9234a951df7413dfb069}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!followingPlayback@{followingPlayback}}
+\index{followingPlayback@{followingPlayback}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{followingPlayback}{followingPlayback}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a20f8b15adbad9234a951df7413dfb069} 
+boolean com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+following\+Playback\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a047f60a6b00809e0e7722a9c04a629e2}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!playbackController@{playbackController}}
+\index{playbackController@{playbackController}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{playbackController}{playbackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a047f60a6b00809e0e7722a9c04a629e2} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+playback\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a449fafc6eb3020b2d16d979193956576}\index{com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}!tableTracks@{tableTracks}}
+\index{tableTracks@{tableTracks}!com.example.gruppo04.view.PlaylistPlaybackHandler@{com.example.gruppo04.view.PlaylistPlaybackHandler}}
+\doxysubsubsection{\texorpdfstring{tableTracks}{tableTracks}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_playback_handler_a449fafc6eb3020b2d16d979193956576} 
+final Table\+View$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+Playback\+Handler.\+table\+Tracks\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_playlist_playback_handler_8java}{Playlist\+Playback\+Handler.\+java}}\end{DoxyCompactItemize}

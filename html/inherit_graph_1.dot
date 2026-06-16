@@ -1,0 +1,27 @@
+digraph "Grafico della gerarchia delle classi"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="com.example.gruppo04.command.\lCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command.html",tooltip="Rappresenta un'operazione eseguibile e reversibile nel Music Playlist Manager."];
+  Node0 -> Node1 [id="edge2_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="com.example.gruppo04.command.\lAddAutoGeneratorCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_add_auto_generator_command.html",tooltip="Comando per l'aggiunta di un generatore automatico di playlist."];
+  Node0 -> Node2 [id="edge3_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="com.example.gruppo04.command.\lAddPlaylistCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_add_playlist_command.html",tooltip="Comando per la creazione di una nuova playlist nel catalogo."];
+  Node0 -> Node3 [id="edge4_Node000000_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="com.example.gruppo04.command.\lAddTrackCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command.html",tooltip="Comando per l'aggiunta di una traccia al catalogo."];
+  Node0 -> Node4 [id="edge5_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="com.example.gruppo04.command.\lAddTrackToPlaylistCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_to_playlist_command.html",tooltip="Comando per l'aggiunta di una traccia a una playlist."];
+  Node0 -> Node5 [id="edge6_Node000000_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="com.example.gruppo04.command.\lMoveTrackInPlaylistCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command.html",tooltip="Comando per lo spostamento di una traccia all'interno di una playlist."];
+  Node0 -> Node6 [id="edge7_Node000000_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="com.example.gruppo04.command.\lRemoveAutoGeneratorCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command.html",tooltip="Comando per la rimozione di un generatore automatico di playlist."];
+  Node0 -> Node7 [id="edge8_Node000000_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="com.example.gruppo04.command.\lRemovePlaylistCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_playlist_command.html",tooltip="Comando per la rimozione di una playlist dal catalogo."];
+  Node0 -> Node8 [id="edge9_Node000000_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="com.example.gruppo04.command.\lRemoveTrackCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_command.html",tooltip="Comando per la rimozione di una traccia dal catalogo."];
+  Node0 -> Node9 [id="edge10_Node000000_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="com.example.gruppo04.command.\lRemoveTrackFromPlaylistCommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_track_from_playlist_command.html",tooltip="Comando per la rimozione di una traccia da una playlist."];
+}

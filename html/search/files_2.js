@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['launcher_2ejava_0',['Launcher.java',['../_launcher_8java.html',1,'']]]
+  ['genreplaylistgenerator_2ejava_0',['GenrePlaylistGenerator.java',['../_genre_playlist_generator_8java.html',1,'']]]
 ];

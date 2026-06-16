@@ -8,28 +8,32 @@ Implementazione concreta del catalogo musicale.
 
 
 Diagramma delle classi per com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog__inherit__graph}
-\end{center}
-\end{figure}
+% FIG 0
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog__coll__graph}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
-boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ab4af6a20b2c7cc0bff1e65323a535b21}{create\+Playlist}} (String name)
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a9c9524ce71b76bf455d6bbd0792aa9dd}{create\+Playlist}} (String name)
 \item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aedee96826e97005370b436f339978c92}{add\+Playlist\+At}} (int index, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
+\begin{DoxyCompactList}\small\item\em Re-\/inserisce un\textquotesingle{}istanza di playlist {\bfseries{già esistente}} nel catalogo, preservandone l\textquotesingle{}identità (e quindi le tracce e i riferimenti esterni).
+
+Pensato per l\textquotesingle{}undo/redo dei comandi\+: a differenza di {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ac64a61a76f53aa2eb8fa522ef7dd4758}{create\+Playlist(\+String)}} non crea un nuovo oggetto. In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+ADDED}.
+
+
+\begin{DoxyParams}{Parametri}
+{\em index} & posizione (0-\/based) in cui inserire la playlist; valori fuori range vengono riportati nell\textquotesingle{}intervallo valido \\
+\hline
+{\em playlist} & l\textquotesingle{}istanza di playlist da reinserire; non {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se reinserita, {\ttfamily false} se esiste già una playlist con lo stesso nome
+\end{DoxyReturn}
+ \end{DoxyCompactList}\item 
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a52b1e04fcf9a326b925780e9a99b43cf}{rename\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, String new\+Name)
 \begin{DoxyCompactList}\small\item\em Rinomina una playlist già presente nel catalogo.
 
@@ -75,24 +79,88 @@ una vista in sola lettura delle playlist (mai {\ttfamily null}; vuota se non ce 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aad778a50ed7ddeceae1d763a7b253b95}{add\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
 \begin{DoxyCompactList}\small\item\em Aggiunge una nuova traccia al catalogo. \end{DoxyCompactList}\item 
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae490ae3d063ab00f3fd9aedbfbe4d92c}{add\+Track\+To\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
-\begin{DoxyCompactList}\small\item\em Aggiunge una nuova traccia alla playlist In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Aggiunge una traccia a una playlist del catalogo. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ac3014d9125f873a4459f7f09ce88755d}{add\+Track\+To\+Playlist\+At}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track, int index)
+\begin{DoxyCompactList}\small\item\em Aggiunge una traccia a una playlist a una posizione specifica.
+
+Pensato per l\textquotesingle{}undo della rimozione, così da ripristinare la traccia esattamente dove si trovava in origine. In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}.
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist a cui aggiungere la traccia \\
+\hline
+{\em track} & la traccia da aggiungere \\
+\hline
+{\em index} & posizione (0-\/based); valori fuori range vengono riportati nell\textquotesingle{}intervallo valido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se aggiunta, {\ttfamily false} se la traccia è già presente
+\end{DoxyReturn}
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a8d50ed346f2874d00620fcce8b6e5448}{add\+Track\+At}} (int index, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Re-\/inserisce una traccia nel catalogo a una posizione specifica nell\textquotesingle{}ordine di inserimento.
+
+Pensato per l\textquotesingle{}undo della rimozione dal catalogo, così da ripristinare la traccia nello stesso punto in cui si trovava. In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily TRACK\+\_\+\+ADDED}.
+
+
+\begin{DoxyParams}{Parametri}
+{\em index} & posizione (0-\/based); valori fuori range vengono riportati nell\textquotesingle{}intervallo valido \\
+\hline
+{\em track} & la traccia da reinserire; non {\ttfamily null}\\
+\hline
+\end{DoxyParams}
+ \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aa04c412d20c477d90d133c039bfb2269}{remove\+Track}} (UUID track\+Id)
-\begin{DoxyCompactList}\small\item\em Rimuove una traccia dal catalogo dato il suo identificatore univoco (UUID). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Rimuove una traccia dal catalogo e, a cascata, da tutte le playlist che la contengono. \end{DoxyCompactList}\item 
 boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1aa8fde56f0eaf9c9f32407d7bbb275b}{remove\+Track\+From\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
-\begin{DoxyCompactList}\small\item\em Rimuove una nuova traccia dalla playlist In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+REMOVED}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Rimuove una traccia da una playlist specifica. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae092451bcbefc6cf9c618b4fd47d5d63}{update\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} updated\+Track)
 \begin{DoxyCompactList}\small\item\em Aggiorna i dati di una traccia esistente nel catalogo. \end{DoxyCompactList}\item 
 Collection$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a4585bc33d8314f98e4e34abe900d4d39}{get\+All\+Tracks}} ()
 \begin{DoxyCompactList}\small\item\em Restituisce tutte le tracce presenti nel catalogo, mantenendo l\textquotesingle{}ordine di inserimento. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a7ab6a2a59fa3562894a4405e93c68b34}{register\+Observer}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}} observer)
-\begin{DoxyCompactList}\small\item\em Registra un nuovo observer per l\textquotesingle{}ascolto degli eventi di dominio del catalogo. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Registra un nuovo observer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a26041eb429ffdf023e72d5232c8f1cd6}{unregister\+Observer}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}} observer)
-\begin{DoxyCompactList}\small\item\em Rimuove un observer precedentemente registrato, cessando l\textquotesingle{}invio delle notifiche. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Rimuove un observer precedentemente registrato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a66f03f8e9be47f16c0ce089dbc1fd8ea}{restore\+State}} (Collection$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ loaded\+Tracks, List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ loaded\+Playlists)
+\begin{DoxyCompactList}\small\item\em Ripristina lo stato del catalogo da una collezione di tracce e una lista di playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae3a0893801351dd52abf2b3c2470184e}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Ripristina lo stato interno del catalogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a46e3f20a89f6c1cedec27c5d3f803f2d}{notify\+Strategy\+Changed}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} strategy)
+\begin{DoxyCompactList}\small\item\em Notifica tutti gli observer registrati del cambio di modalità di riproduzione attiva. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1aab02388f0b795a40ed1e00acc6b808}{notify\+Playback\+Started}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} current\+Track, boolean is\+Playlist, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} current\+Source)
+\begin{DoxyCompactList}\small\item\em Notifica tutti gli observer registrati dell\textquotesingle{}inizio di una riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1755bebca6d088c22971f37758ff6db6}{notify\+Track\+Changed}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Notifica tutti gli observer registrati dell\textquotesingle{}inizio di una riproduzione per evidenziare la traccia attualmente in riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1da767096f5eb2c1882cdfbcc408187f}{notify\+Track\+Updated}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Notifica tutti gli observer registrati che le proprietà di una traccia esistente sono cambiate (ad esempio l\textquotesingle{}aggiunta o la rimozione di un tag), senza che ciò comporti un cambio della traccia in riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae5ad47edbf540e5bf681d713ae8afe17}{notify\+Playlist\+Content\+Changed}} (Object target)
+\begin{DoxyCompactList}\small\item\em Notifica tutti gli observer registrati che il contenuto delle playlist e\textquotesingle{} cambiato senza passare da una singola operazione del catalogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aa1235137d2fcdcc5caa870fec5fbd262}{notify\+Source\+Changed}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} source)
+\begin{DoxyCompactList}\small\item\em Notifica tutti gli observer registrati dell\textquotesingle{}inizio della riproduzione di una sorgente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a7256165f5aef5ad830039a0e2eab82e5}{notify\+Playback\+Stopped}} ()
+\begin{DoxyCompactList}\small\item\em Notifica tutti gli observer registrati che la riproduzione è stata fermata del tutto, così che le viste possano azzerare l\textquotesingle{}evidenziazione della traccia in riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a55d1d0ebad46c469b82917b9d2b622b4}{move\+Track\+In\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, int from, int to)
+\begin{DoxyCompactList}\small\item\em Sposta una traccia all\textquotesingle{}interno di una playlist e notifica gli observer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}}
+\doxysubsubsection*{Membri pubblici statici}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a0ebb6b1f3863dd0f7b6dec04bd8df18b}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}unica istanza di {\ttfamily Concrete\+Music\+Catalog}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Membri privati}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a26edd4bbf1444b26ccb8648f1b180bdf}{Concrete\+Music\+Catalog}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore privato\+: impedisce l\textquotesingle{}istanziazione diretta dall\textquotesingle{}esterno, rispettando il contratto del pattern Singleton. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_af4ad45ebfeb8f9981cefc29f64e0b61e}{notify\+Observers}} (\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type}{Catalog\+Event\+Type}} type, Object target)
-\begin{DoxyCompactList}\small\item\em Metodo interno di utilità per costruire e inviare eventi a tutti gli observer in ascolto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Costruisce e invia un evento a tutti gli observer registrati. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a955d44d4ba8a492ea57291df474cb9d4}{run\+On\+Ui\+Thread}} (Runnable action)
+\begin{DoxyCompactList}\small\item\em Esegue un\textquotesingle{}azione sul thread della UI Java\+FX quando il toolkit è disponibile. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Attributi privati}
 \begin{DoxyCompactItemize}
 \item 
@@ -101,17 +169,61 @@ final Map$<$ UUID, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1inter
 final List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a78adc13be669b705e25a027bd8b1d4bf}{playlists}} = new Array\+List$<$$>$()
 \begin{DoxyCompactList}\small\item\em Lista per la memorizzazione ordinata delle playlist. \end{DoxyCompactList}\item 
 final List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a7b422360c7518d6a47304b8d6a79bca1}{observers}} = new Copy\+On\+Write\+Array\+List$<$$>$()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Lista thread-\/safe degli observer registrati. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1cefa5b6ad6900a42ef8bdaa66afa175}{instance}} = new \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}}()
+\begin{DoxyCompactList}\small\item\em Istanza unica del catalogo, inizializzata staticamente dalla JVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
 Implementazione concreta del catalogo musicale. 
 
-Questa classe agisce come sorgente di verità (Aggregate Root) per le tracce e le playlist. Implementa inoltre il pattern Observer (ruolo di Subject) per notificare alle viste o ai controller registrati ogni cambiamento di stato interno. 
+Questa classe agisce come sorgente di verità (Aggregate Root) per le tracce e le playlist. Implementa il pattern Singleton per garantire un\textquotesingle{}unica istanza del catalogo nell\textquotesingle{}applicazione, e il pattern Observer (ruolo di Subject) per notificare alle viste o ai controller registrati ogni cambiamento di stato interno. 
 
-\label{doc-func-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_doc-func-members}
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a26edd4bbf1444b26ccb8648f1b180bdf}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!ConcreteMusicCatalog@{ConcreteMusicCatalog}}
+\index{ConcreteMusicCatalog@{ConcreteMusicCatalog}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{ConcreteMusicCatalog()}{ConcreteMusicCatalog()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a26edd4bbf1444b26ccb8648f1b180bdf} 
+com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+Concrete\+Music\+Catalog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruttore privato\+: impedisce l\textquotesingle{}istanziazione diretta dall\textquotesingle{}esterno, rispettando il contratto del pattern Singleton. 
+
+
+
 \doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aedee96826e97005370b436f339978c92}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!addPlaylistAt@{addPlaylistAt}}
+\index{addPlaylistAt@{addPlaylistAt}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{addPlaylistAt()}{addPlaylistAt()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aedee96826e97005370b436f339978c92} 
+boolean com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+add\+Playlist\+At (\begin{DoxyParamCaption}\item[{int}]{index}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{}\end{DoxyParamCaption})}
+
+
+
+Re-\/inserisce un\textquotesingle{}istanza di playlist {\bfseries{già esistente}} nel catalogo, preservandone l\textquotesingle{}identità (e quindi le tracce e i riferimenti esterni).
+
+Pensato per l\textquotesingle{}undo/redo dei comandi\+: a differenza di {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ac64a61a76f53aa2eb8fa522ef7dd4758}{create\+Playlist(\+String)}} non crea un nuovo oggetto. In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+ADDED}.
+
+
+\begin{DoxyParams}{Parametri}
+{\em index} & posizione (0-\/based) in cui inserire la playlist; valori fuori range vengono riportati nell\textquotesingle{}intervallo valido \\
+\hline
+{\em playlist} & l\textquotesingle{}istanza di playlist da reinserire; non {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se reinserita, {\ttfamily false} se esiste già una playlist con lo stesso nome
+\end{DoxyReturn}
+ 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a3d618de24381db8a800d62a58e0d00ba}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aad778a50ed7ddeceae1d763a7b253b95}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!addTrack@{addTrack}}
 \index{addTrack@{addTrack}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{addTrack()}{addTrack()}}
@@ -131,12 +243,37 @@ In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfami
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Eccezioni}
-{\em Illegal\+Argument\+Exception} & se {\ttfamily track} è {\ttfamily null} o se esiste già una traccia con lo stesso titolo nel catalogo \\
+{\em Illegal\+Argument\+Exception} & se {\ttfamily track} è {\ttfamily null}, se esiste già una traccia con lo stesso titolo e autore, oppure se il filepath è già usato \\
 \hline
 \end{DoxyExceptions}
 
 
 Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_aba9eae2e032c91236b6a7236463542ff}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a8d50ed346f2874d00620fcce8b6e5448}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!addTrackAt@{addTrackAt}}
+\index{addTrackAt@{addTrackAt}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{addTrackAt()}{addTrackAt()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a8d50ed346f2874d00620fcce8b6e5448} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+add\+Track\+At (\begin{DoxyParamCaption}\item[{int}]{index}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Re-\/inserisce una traccia nel catalogo a una posizione specifica nell\textquotesingle{}ordine di inserimento.
+
+Pensato per l\textquotesingle{}undo della rimozione dal catalogo, così da ripristinare la traccia nello stesso punto in cui si trovava. In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily TRACK\+\_\+\+ADDED}.
+
+
+\begin{DoxyParams}{Parametri}
+{\em index} & posizione (0-\/based); valori fuori range vengono riportati nell\textquotesingle{}intervallo valido \\
+\hline
+{\em track} & la traccia da reinserire; non {\ttfamily null}\\
+\hline
+\end{DoxyParams}
+ 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_af351b22445841e490e1584c009992c56}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
 
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae490ae3d063ab00f3fd9aedbfbe4d92c}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!addTrackToPlaylist@{addTrackToPlaylist}}
 \index{addTrackToPlaylist@{addTrackToPlaylist}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
@@ -146,7 +283,35 @@ boolean com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+add\+Tr
 
 
 
-Aggiunge una nuova traccia alla playlist In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}. 
+Aggiunge una traccia a una playlist del catalogo. 
+
+In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}.
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist destinazione \\
+\hline
+{\em track} & la traccia da aggiungere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se aggiunta, {\ttfamily false} se già presente nella playlist 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a2f1e67870daea6b8c1c6cc4f757a9a8d}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ac3014d9125f873a4459f7f09ce88755d}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!addTrackToPlaylistAt@{addTrackToPlaylistAt}}
+\index{addTrackToPlaylistAt@{addTrackToPlaylistAt}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{addTrackToPlaylistAt()}{addTrackToPlaylistAt()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ac3014d9125f873a4459f7f09ce88755d} 
+boolean com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+add\+Track\+To\+Playlist\+At (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{, }\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge una traccia a una playlist a una posizione specifica.
+
+Pensato per l\textquotesingle{}undo della rimozione, così da ripristinare la traccia esattamente dove si trovava in origine. In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+ADDED}.
 
 
 \begin{DoxyParams}{Parametri}
@@ -154,27 +319,31 @@ Aggiunge una nuova traccia alla playlist In caso di successo notifica gli observ
 \hline
 {\em track} & la traccia da aggiungere \\
 \hline
+{\em index} & posizione (0-\/based); valori fuori range vengono riportati nell\textquotesingle{}intervallo valido \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-{\ttfamily true} se aggiunta, {\ttfamily false} se la traccia è già presente nella playlist 
+{\ttfamily true} se aggiunta, {\ttfamily false} se la traccia è già presente
 \end{DoxyReturn}
+ 
 
 
-Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a2f1e67870daea6b8c1c6cc4f757a9a8d}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
 
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ab4af6a20b2c7cc0bff1e65323a535b21}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!createPlaylist@{createPlaylist}}
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a477444bd2feceffd6e1dc34fe547f208}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a9c9524ce71b76bf455d6bbd0792aa9dd}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!createPlaylist@{createPlaylist}}
 \index{createPlaylist@{createPlaylist}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{createPlaylist()}{createPlaylist()}}
-{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ab4af6a20b2c7cc0bff1e65323a535b21} 
-boolean com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+create\+Playlist (\begin{DoxyParamCaption}\item[{String}]{name}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a9c9524ce71b76bf455d6bbd0792aa9dd} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+create\+Playlist (\begin{DoxyParamCaption}\item[{String}]{name}{}\end{DoxyParamCaption})}
 
 
 
 
 
-In questa implementazione, il nome viene automaticamente ripulito da spazi iniziali e finali (trim) prima della creazione dell\textquotesingle{}istanza {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl}{Playlist\+Impl}}.
+In questa implementazione, il nome viene automaticamente ripulito da spazi iniziali e finali (trim) prima della creazione dell\textquotesingle{}istanza {\ttfamily \doxylink{}{Playlist\+Impl}}.
 
-Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a98a087dd1d3c26db051fc007f748d9ac}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ac64a61a76f53aa2eb8fa522ef7dd4758}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
 
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a88be36a255d38dce9b7fdceffc89db43}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!deletePlaylist@{deletePlaylist}}
 \index{deletePlaylist@{deletePlaylist}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
@@ -219,6 +388,19 @@ una vista in sola lettura della collezione di tracce (mai {\ttfamily null})
 
 Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a08a9d5ea4e642ec81c3e5afab92d11c5}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
 
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a0ebb6b1f3863dd0f7b6dec04bd8df18b}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a0ebb6b1f3863dd0f7b6dec04bd8df18b} 
+static \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}} com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Restituisce l\textquotesingle{}unica istanza di {\ttfamily Concrete\+Music\+Catalog}. 
+
+\begin{DoxyReturn}{Restituisce}
+l\textquotesingle{}istanza singleton del catalogo 
+\end{DoxyReturn}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_af2b699ad5af255ae0e04256c8dff629d}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!getPlaylists@{getPlaylists}}
 \index{getPlaylists@{getPlaylists}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{getPlaylists()}{getPlaylists()}}
@@ -238,6 +420,29 @@ una vista in sola lettura delle playlist (mai {\ttfamily null}; vuota se non ce 
 
 Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a25ca736660f26f5bfe73176b78a752bc}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
 
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a55d1d0ebad46c469b82917b9d2b622b4}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!moveTrackInPlaylist@{moveTrackInPlaylist}}
+\index{moveTrackInPlaylist@{moveTrackInPlaylist}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{moveTrackInPlaylist()}{moveTrackInPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a55d1d0ebad46c469b82917b9d2b622b4} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+move\+Track\+In\+Playlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{int}]{from}{, }\item[{int}]{to}{}\end{DoxyParamCaption})}
+
+
+
+Sposta una traccia all\textquotesingle{}interno di una playlist e notifica gli observer. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist in cui spostare la traccia \\
+\hline
+{\em from} & indice di partenza (0-\/based) \\
+\hline
+{\em to} & indice di destinazione (0-\/based) \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_abb219a0323fa36bed4f4ab8816898538}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_af4ad45ebfeb8f9981cefc29f64e0b61e}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifyObservers@{notifyObservers}}
 \index{notifyObservers@{notifyObservers}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{notifyObservers()}{notifyObservers()}}
@@ -246,15 +451,145 @@ void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Ob
 
 
 
-Metodo interno di utilità per costruire e inviare eventi a tutti gli observer in ascolto. 
+Costruisce e invia un evento a tutti gli observer registrati. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em type} & la tipologia dell\textquotesingle{}evento (es. TRACK\+\_\+\+ADDED, PLAYLIST\+\_\+\+REMOVED) \\
+{\em type} & la tipologia dell\textquotesingle{}evento \\
 \hline
-{\em target} & l\textquotesingle{}oggetto specifico che ha subito la modifica (es. istanza di \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track} o \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}) \\
+{\em target} & l\textquotesingle{}oggetto che ha subito la modifica \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1aab02388f0b795a40ed1e00acc6b808}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifyPlaybackStarted@{notifyPlaybackStarted}}
+\index{notifyPlaybackStarted@{notifyPlaybackStarted}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{notifyPlaybackStarted()}{notifyPlaybackStarted()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1aab02388f0b795a40ed1e00acc6b808} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Playback\+Started (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{current\+Track}{, }\item[{boolean}]{is\+Playlist}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{current\+Source}{}\end{DoxyParamCaption})}
+
+
+
+Notifica tutti gli observer registrati dell\textquotesingle{}inizio di una riproduzione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em current\+Track} & la prima canzone da cui iniziare la riproduzione \\
+\hline
+{\em is\+Playlist} & boolean che verifica se la riproduzione è in una playlist o è una playlist \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a69da1c00bef8261a22c4ae71c44d9350}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a7256165f5aef5ad830039a0e2eab82e5}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifyPlaybackStopped@{notifyPlaybackStopped}}
+\index{notifyPlaybackStopped@{notifyPlaybackStopped}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{notifyPlaybackStopped()}{notifyPlaybackStopped()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a7256165f5aef5ad830039a0e2eab82e5} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Playback\+Stopped (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Notifica tutti gli observer registrati che la riproduzione è stata fermata del tutto, così che le viste possano azzerare l\textquotesingle{}evidenziazione della traccia in riproduzione. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_af210bd3c4c5a8e86934c672003e4b14c}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae5ad47edbf540e5bf681d713ae8afe17}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifyPlaylistContentChanged@{notifyPlaylistContentChanged}}
+\index{notifyPlaylistContentChanged@{notifyPlaylistContentChanged}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{notifyPlaylistContentChanged()}{notifyPlaylistContentChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae5ad47edbf540e5bf681d713ae8afe17} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Playlist\+Content\+Changed (\begin{DoxyParamCaption}\item[{Object}]{target}{}\end{DoxyParamCaption})}
+
+
+
+Notifica tutti gli observer registrati che il contenuto delle playlist e\textquotesingle{} cambiato senza passare da una singola operazione del catalogo. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em target} & l\textquotesingle{}oggetto interessato dalla modifica, oppure {\ttfamily null} quando il refresh riguarda piu\textquotesingle{} playlist \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a513325a077a41219971ace8af116d242}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aa1235137d2fcdcc5caa870fec5fbd262}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifySourceChanged@{notifySourceChanged}}
+\index{notifySourceChanged@{notifySourceChanged}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{notifySourceChanged()}{notifySourceChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_aa1235137d2fcdcc5caa870fec5fbd262} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Source\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{source}{}\end{DoxyParamCaption})}
+
+
+
+Notifica tutti gli observer registrati dell\textquotesingle{}inizio della riproduzione di una sorgente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em source} & la playlist attuale \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ae20cb3d2efd4ad3dee99c7f6b3bbb11c}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a46e3f20a89f6c1cedec27c5d3f803f2d}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifyStrategyChanged@{notifyStrategyChanged}}
+\index{notifyStrategyChanged@{notifyStrategyChanged}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{notifyStrategyChanged()}{notifyStrategyChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a46e3f20a89f6c1cedec27c5d3f803f2d} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Strategy\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}}}]{strategy}{}\end{DoxyParamCaption})}
+
+
+
+Notifica tutti gli observer registrati del cambio di modalità di riproduzione attiva. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em strategy} & la nuova strategia di riproduzione selezionata; non deve essere {\ttfamily null} \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a84c5d28ac7db825b8e244f45a2c6f04d}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1755bebca6d088c22971f37758ff6db6}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifyTrackChanged@{notifyTrackChanged}}
+\index{notifyTrackChanged@{notifyTrackChanged}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{notifyTrackChanged()}{notifyTrackChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1755bebca6d088c22971f37758ff6db6} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Track\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Notifica tutti gli observer registrati dell\textquotesingle{}inizio di una riproduzione per evidenziare la traccia attualmente in riproduzione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la canzone attuale \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_a555ed3895ee804d93f1f9b3fe8ffb817}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1da767096f5eb2c1882cdfbcc408187f}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!notifyTrackUpdated@{notifyTrackUpdated}}
+\index{notifyTrackUpdated@{notifyTrackUpdated}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{notifyTrackUpdated()}{notifyTrackUpdated()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1da767096f5eb2c1882cdfbcc408187f} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+notify\+Track\+Updated (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Notifica tutti gli observer registrati che le proprietà di una traccia esistente sono cambiate (ad esempio l\textquotesingle{}aggiunta o la rimozione di un tag), senza che ciò comporti un cambio della traccia in riproduzione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la traccia le cui proprietà sono state modificate \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_ab310b3ee97a8551c8b64a612f3afad91}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a7ab6a2a59fa3562894a4405e93c68b34}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!registerObserver@{registerObserver}}
 \index{registerObserver@{registerObserver}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{registerObserver()}{registerObserver()}}
@@ -263,9 +598,9 @@ void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+register\+
 
 
 
-Registra un nuovo observer per l\textquotesingle{}ascolto degli eventi di dominio del catalogo. 
+Registra un nuovo observer. 
 
-Se l\textquotesingle{}observer è già registrato o è nullo, l\textquotesingle{}operazione viene ignorata.
+Se già presente o nullo, l\textquotesingle{}operazione viene ignorata.
 
 
 \begin{DoxyParams}{Parametri}
@@ -284,11 +619,9 @@ void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+remove\+Tr
 
 
 
-Rimuove una traccia dal catalogo dato il suo identificatore univoco (UUID). 
+Rimuove una traccia dal catalogo e, a cascata, da tutte le playlist che la contengono. 
 
-{\bfseries{Effetto a cascata\+:}} La rimozione di una traccia dal catalogo la elimina automaticamente da tutte le playlist in cui è inclusa. 
-
-Se la traccia è trovata e rimossa, notifica gli observer con l\textquotesingle{}evento {\ttfamily TRACK\+\_\+\+REMOVED}.
+In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily TRACK\+\_\+\+REMOVED}.
 
 
 \begin{DoxyParams}{Parametri}
@@ -307,17 +640,19 @@ boolean com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+remove\
 
 
 
-Rimuove una nuova traccia dalla playlist In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+REMOVED}. 
+Rimuove una traccia da una playlist specifica. 
+
+In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily PLAYLIST\+\_\+\+TRACK\+\_\+\+REMOVED}.
 
 
 \begin{DoxyParams}{Parametri}
-{\em playlist} & la playlist in cui si deve rimuovere la traccia \\
+{\em playlist} & la playlist da cui rimuovere la traccia \\
 \hline
 {\em track} & la traccia da rimuovere \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-{\ttfamily true} se rimossa, {\ttfamily false} se la traccia non è presente nella playlist 
+{\ttfamily true} se rimossa, {\ttfamily false} se non era presente 
 \end{DoxyReturn}
 
 
@@ -356,7 +691,48 @@ Questa implementazione effettua il trim del nuovo nome ed evita di sollevare con
 
 Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog_aedfbbeb6f3853ae4b13f3e0a69c59c6b}{com.\+example.\+gruppo04.\+interfaces.\+Music\+Catalog}}.
 
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a26041eb429ffdf023e72d5232c8f1cd6}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!unregisterObserver@{unregisterObserver}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae3a0893801351dd52abf2b3c2470184e}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!reset@{reset}}
+\index{reset@{reset}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_ae3a0893801351dd52abf2b3c2470184e} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Ripristina lo stato interno del catalogo. 
+
+{\bfseries{Metodo di utilità utilizzato esclusivamente nei test}} per garantire isolamento tra i vari casi di test. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a66f03f8e9be47f16c0ce089dbc1fd8ea}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!restoreState@{restoreState}}
+\index{restoreState@{restoreState}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{restoreState()}{restoreState()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a66f03f8e9be47f16c0ce089dbc1fd8ea} 
+void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+restore\+State (\begin{DoxyParamCaption}\item[{Collection$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$}]{loaded\+Tracks}{, }\item[{List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$}]{loaded\+Playlists}{}\end{DoxyParamCaption})}
+
+
+
+Ripristina lo stato del catalogo da una collezione di tracce e una lista di playlist. 
+
+
+\begin{DoxyItemize}
+\item Non cancella gli observer registrati. Notifica gli observer con un evento per attivare il refresh della UI.
+\item 
+\begin{DoxyParams}{Parametri}
+{\em loaded\+Tracks} & le tracce caricate da ripristinare. \\
+\hline
+{\em loaded\+Playlists} & le playlist caricate da ripristinare. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a955d44d4ba8a492ea57291df474cb9d4}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!runOnUiThread@{runOnUiThread}}
+\index{runOnUiThread@{runOnUiThread}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{runOnUiThread()}{runOnUiThread()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a955d44d4ba8a492ea57291df474cb9d4} 
+static void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+run\+On\+Ui\+Thread (\begin{DoxyParamCaption}\item[{Runnable}]{action}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Esegue un\textquotesingle{}azione sul thread della UI Java\+FX quando il toolkit è disponibile. 
+
+In ambienti privi di toolkit Java\+FX (es. test headless) {\ttfamily \doxylink{}{Platform\#run\+Later}} solleva {\ttfamily \doxylink{}{Illegal\+State\+Exception}} ("{}\+Toolkit not initialized"{})\+: in tal caso l\textquotesingle{}azione viene eseguita in modo sincrono, così che la logica di notifica resti verificabile dai test senza richiedere l\textquotesingle{}avvio dell\textquotesingle{}applicazione Java\+FX. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a26041eb429ffdf023e72d5232c8f1cd6}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!unregisterObserver@{unregisterObserver}}
 \index{unregisterObserver@{unregisterObserver}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{unregisterObserver()}{unregisterObserver()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a26041eb429ffdf023e72d5232c8f1cd6} 
@@ -364,7 +740,7 @@ void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+unregister
 
 
 
-Rimuove un observer precedentemente registrato, cessando l\textquotesingle{}invio delle notifiche. 
+Rimuove un observer precedentemente registrato. 
 
 
 \begin{DoxyParams}{Parametri}
@@ -385,16 +761,16 @@ void com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+update\+Tr
 
 Aggiorna i dati di una traccia esistente nel catalogo. 
 
-In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily TRACK\+\_\+\+UPDATED}.
+Applica controlli di integrità per impedire duplicati o collisioni sui filepath. In caso di successo notifica gli observer con l\textquotesingle{}evento {\ttfamily TRACK\+\_\+\+UPDATED}.
 
 
 \begin{DoxyParams}{Parametri}
-{\em updated\+Track} & la traccia con i dati aggiornati; il suo ID deve corrispondere a una traccia già presente nel catalogo \\
+{\em updated\+Track} & la traccia con i dati aggiornati \\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Eccezioni}
-{\em Illegal\+Argument\+Exception} & se {\ttfamily updated\+Track} è {\ttfamily null} o non corrisponde a nessuna traccia nota nel catalogo \\
+{\em Illegal\+Argument\+Exception} & se crea duplicati o la traccia non è trovata \\
 \hline
 \end{DoxyExceptions}
 
@@ -403,9 +779,17 @@ Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_
 
 
 
-\label{doc-variable-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_doc-variable-members}
 \doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1cefa5b6ad6900a42ef8bdaa66afa175}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!instance@{instance}}
+\index{instance@{instance}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a1cefa5b6ad6900a42ef8bdaa66afa175} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}} com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+instance = new \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}}()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Istanza unica del catalogo, inizializzata staticamente dalla JVM. 
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a7b422360c7518d6a47304b8d6a79bca1}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!observers@{observers}}
 \index{observers@{observers}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{observers}{observers}}
@@ -413,9 +797,10 @@ Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_
 final List$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}}$>$ com.\+example.\+gruppo04.\+observer.\+Concrete\+Music\+Catalog.\+observers = new Copy\+On\+Write\+Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
 
 
-\begin{DoxyItemize}
-\item Lista thread-\/safe degli observer registrati. Evita Concurrent\+Modification\+Exception se un observer si registra/deregistra durante una fase di notifica. 
-\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a78adc13be669b705e25a027bd8b1d4bf}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!playlists@{playlists}}
+
+Lista thread-\/safe degli observer registrati. 
+
+Evita Concurrent\+Modification\+Exception se un observer si registra/deregistra durante una fase di notifica. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a78adc13be669b705e25a027bd8b1d4bf}\index{com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}!playlists@{playlists}}
 \index{playlists@{playlists}!com.example.gruppo04.observer.ConcreteMusicCatalog@{com.example.gruppo04.observer.ConcreteMusicCatalog}}
 \doxysubsubsection{\texorpdfstring{playlists}{playlists}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog_a78adc13be669b705e25a027bd8b1d4bf} 

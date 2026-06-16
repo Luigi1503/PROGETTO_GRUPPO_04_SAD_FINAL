@@ -1,0 +1,12 @@
+digraph "src/main/java/com/example/gruppo04/model/factory_method"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_7d64e996bfeb5ae5d3c92cdac0a3d73c {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="model", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_7d64e996bfeb5ae5d3c92cdac0a3d73c.html",tooltip=""]
+  dir_dc6c8b51299c628a4ed1ad595f1f9e4a [label="factory_method", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_dc6c8b51299c628a4ed1ad595f1f9e4a.html",tooltip=""];
+  }
+}

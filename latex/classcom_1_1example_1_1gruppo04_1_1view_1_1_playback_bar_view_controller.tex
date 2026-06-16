@@ -1,0 +1,544 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller}{}\label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+
+
+Controller Java\+FX della barra di riproduzione.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8961bc9cd2e7abda11852681d40ed932}{Playback\+Bar\+View\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore senza parametri richiesto da FXMLLoader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8d305eb7efee9eee0680631c9f3f4d17}{init}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a7652bc45d33c412d76a00a20abaf62a0}{playback\+Controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog)
+\begin{DoxyCompactList}\small\item\em Inizializza la barra di riproduzione con le dipendenze necessarie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a81dee1d823ba37794884dfcde7ff8abb}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Chiamato dal catalogo quando si verifica un cambiamento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa081024a51584caa4ab1b373c995c5b4}{update\+Track\+Info}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Aggiorna le label della barra con i dati della traccia fornita. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae14198244b756c8555ae00db23a69b1f}{set\+Skip\+Playlist\+Visible}} (boolean visible)
+\begin{DoxyCompactList}\small\item\em Mostra o nasconde il bottone di skip playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a3f454fcc6df3b11062fe0beb5784803e}{start\+Playback}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track)
+\begin{DoxyCompactList}\small\item\em Avvia la riproduzione dalla barra aggiornando le label e il timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a091476dce0fda1ed864224f814812ecc}{update\+Playlist\+Name}} (String playlist\+Name)
+\begin{DoxyCompactList}\small\item\em Aggiorna il nome della playlist in riproduzione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a08cf878dee0cdfcf1a2d6bc849c9e08b}{setup\+Seek\+Controls}} ()
+\begin{DoxyCompactList}\small\item\em Abilita il riposizionamento (seek) tramite la barra di avanzamento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a2a5b7786df9aa4da1d84a630d3ce551e}{update\+Time\+Labels\+Preview}} ()
+\begin{DoxyCompactList}\small\item\em Aggiorna le label del tempo in base alla posizione corrente dello slider. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a4f9b6cbcd74011cfdc9d1e5ad0b107c2}{apply\+Seek\+From\+Slider}} ()
+\begin{DoxyCompactList}\small\item\em Applica il riposizionamento dell\textquotesingle{}audio in base al valore dello slider. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae85f436366f5589d7ff6b7f80db15a94}{handle\+Stop}} (Action\+Event event)
+\begin{DoxyCompactList}\small\item\em Gestisce il click su Stop Traccia corrente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a7c9ca9dc690b6edb8e081b2362150903}{setup\+Progress\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Configura il timer per l\textquotesingle{}aggiornamento in tempo reale della barra di avanzamento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_abb6837cc54a72c6f149179fa98a5c235}{reset\+Progress}} ()
+\begin{DoxyCompactList}\small\item\em Azzera il progresso della barra di avanzamento e il tempo trascorso. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a365fda038899b016138a426c360478ac}{reset\+Labels}} ()
+\begin{DoxyCompactList}\small\item\em Reimposta tutte le label ai valori di default. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ad97ee3fa66e1342281283bef009efe88}{set\+Active\+Mode}} (Button active)
+\begin{DoxyCompactList}\small\item\em Evidenzia il bottone della modalità attiva e ripristina gli altri. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a1b60be87e425794cb2171e14c07d83a1}{label\+Track\+Title}}
+\begin{DoxyCompactList}\small\item\em Label che mostra il titolo della traccia corrente. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a143aadf4db6027dd718ede49bfb33d5d}{label\+Track\+Artist}}
+\begin{DoxyCompactList}\small\item\em Label che mostra l\textquotesingle{}artista della traccia corrente. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8cb1b02de35e08f10f2f828c10824312}{label\+Track\+Year}}
+\begin{DoxyCompactList}\small\item\em Label che mostra l\textquotesingle{}anno della traccia corrente. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a2b4f30fa92e6cd5d6e9d3cc6ba526eb2}{label\+Track\+Genre}}
+\begin{DoxyCompactList}\small\item\em Label che mostra il genere della traccia corrente. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a0eed4b06b9e94bfd4ecbf41d7cfb6b2d}{btn\+Play\+Pause}}
+\begin{DoxyCompactList}\small\item\em Bottone play/pausa. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_afb628a82303b4227d97e15a4b9b95758}{btn\+Previous}}
+\begin{DoxyCompactList}\small\item\em Bottone brano precedente. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a39612de03958103ae49ecb2502b1f3c9}{btn\+Skip}}
+\begin{DoxyCompactList}\small\item\em Bottone brano successivo. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a40dda4e80191937532c1d993674caac8}{btn\+Stop}}
+\begin{DoxyCompactList}\small\item\em Bottone stop riproduzione. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a470a464705783c1b20c2b0f628f713f9}{btn\+Skip\+Playlist}}
+\begin{DoxyCompactList}\small\item\em Bottone skip playlist successiva. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa82f085709722e62aefc1e973652885f}{btn\+Previous\+Playlist}}
+\begin{DoxyCompactList}\small\item\em Bottone playlist precedente. \end{DoxyCompactList}\item 
+Slider \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a1036097f2ae3ef35dde303b11a784d6c}{progress\+Bar}}
+\begin{DoxyCompactList}\small\item\em Barra di avanzamento della traccia corrente. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a81edcbcc9f4708cb50d7760ae6c5be27}{label\+Current\+Time}}
+\begin{DoxyCompactList}\small\item\em Label che mostra il tempo corrente di riproduzione. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a4e179612d126d4bd0e8c071db3b253a3}{label\+Total\+Time}}
+\begin{DoxyCompactList}\small\item\em Label che mostra la durata totale della traccia corrente. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aeaa962bbed99c54a37261541c20dd30e}{btn\+Sequential}}
+\begin{DoxyCompactList}\small\item\em Button che definisce la modalità di riproduzione attualmente selezionata -\/ Sequenziale. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a89be81486766f5e7c17c5554250f769e}{btn\+Shuffle}}
+\begin{DoxyCompactList}\small\item\em Button che definisce la modalità di riproduzione attualmente selezionata -\/ Shuffle. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a886cdffdbdeaee84a77bb99df8768131}{btn\+Loop}}
+\begin{DoxyCompactList}\small\item\em Button che definisce la modalità di riproduzione attualmente selezionata -\/ Loop. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a71fe9b4665e2230387af0fa758aeb9f4}{label\+Playlist\+Name}}
+\begin{DoxyCompactList}\small\item\em Label che mostra il nome della playlist in riproduzione. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a7652bc45d33c412d76a00a20abaf62a0}{playback\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller MVC della riproduzione. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa79cd9c0c49d4d3233065bb68f2b453a}{current\+Track}}
+\begin{DoxyCompactList}\small\item\em Traccia attualmente in riproduzione. \end{DoxyCompactList}\item 
+Animation\+Timer \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ac68f2de8bbdd0bb685329f1a31947150}{progress\+Timer}}
+\begin{DoxyCompactList}\small\item\em Timer per l\textquotesingle{}aggiornamento in tempo reale della barra di avanzamento. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae0ec90b11cafe687406a61ad1fac4534}{user\+Seeking}} = false
+\begin{DoxyCompactList}\small\item\em Indica che l\textquotesingle{}utente sta interagendo con la barra (drag/click). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static final int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a33636522987922573a6120ff52bf0178}{PREVIOUS\+\_\+\+RESTART\+\_\+\+THRESHOLD\+\_\+\+SECONDS}} = 10
+\begin{DoxyCompactList}\small\item\em Soglia in secondi entro cui il pulsante precedente torna alla traccia precedente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Controller Java\+FX della barra di riproduzione. 
+
+Mostra le informazioni sulla traccia corrente e permette di controllare la riproduzione tramite {\ttfamily \doxylink{}{Playback\+Controller}}. Implementa {\ttfamily \doxylink{}{Catalog\+Observer}} per aggiornarsi automaticamente quando cambia la traccia in riproduzione. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8961bc9cd2e7abda11852681d40ed932}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!PlaybackBarViewController@{PlaybackBarViewController}}
+\index{PlaybackBarViewController@{PlaybackBarViewController}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{PlaybackBarViewController()}{PlaybackBarViewController()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8961bc9cd2e7abda11852681d40ed932} 
+com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+Playback\+Bar\+View\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore senza parametri richiesto da FXMLLoader. 
+
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a4f9b6cbcd74011cfdc9d1e5ad0b107c2}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!applySeekFromSlider@{applySeekFromSlider}}
+\index{applySeekFromSlider@{applySeekFromSlider}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{applySeekFromSlider()}{applySeekFromSlider()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a4f9b6cbcd74011cfdc9d1e5ad0b107c2} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+apply\+Seek\+From\+Slider (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Applica il riposizionamento dell\textquotesingle{}audio in base al valore dello slider. 
+
+Converte la frazione (0..1) dello slider in secondi e delega al {\ttfamily \doxylink{}{Playback\+Controller}}, riflettendo lo spostamento sulla riproduzione reale. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae85f436366f5589d7ff6b7f80db15a94}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!handleStop@{handleStop}}
+\index{handleStop@{handleStop}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{handleStop()}{handleStop()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae85f436366f5589d7ff6b7f80db15a94} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+handle\+Stop (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce il click su Stop Traccia corrente. 
+
+Ferma immediatamente la traccia corrente in riproduzione, disabilita tutti i pulsanti della barra di riproduzione, in tal modo la traccia non può più essere avviata. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8d305eb7efee9eee0680631c9f3f4d17}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!init@{init}}
+\index{init@{init}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8d305eb7efee9eee0680631c9f3f4d17} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}}}]{playback\+Controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza la barra di riproduzione con le dipendenze necessarie. 
+
+Registra questo controller come Observer del catalogo e configura il timer per l\textquotesingle{}aggiornamento in tempo reale. Da chiamare dopo il caricamento dell\textquotesingle{}FXML.
+
+
+\begin{DoxyParams}{Parametri}
+{\em playback\+Controller} & il controller MVC della riproduzione \\
+\hline
+{\em catalog} & il catalogo musicale \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a81dee1d823ba37794884dfcde7ff8abb}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!onCatalogChanged@{onCatalogChanged}}
+\index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a81dee1d823ba37794884dfcde7ff8abb} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+on\+Catalog\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Chiamato dal catalogo quando si verifica un cambiamento. 
+
+Aggiorna la barra con le informazioni della traccia corrente in risposta agli eventi di modifica del catalogo.
+
+
+\begin{DoxyParams}{Parametri}
+{\em event} & l\textquotesingle{}evento contenente i dettagli del cambiamento \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer_a36eb26536a7687957f477934bdafbfb0}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a365fda038899b016138a426c360478ac}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!resetLabels@{resetLabels}}
+\index{resetLabels@{resetLabels}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{resetLabels()}{resetLabels()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a365fda038899b016138a426c360478ac} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+reset\+Labels (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reimposta tutte le label ai valori di default. 
+
+Chiamato quando nessuna traccia è in riproduzione. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_abb6837cc54a72c6f149179fa98a5c235}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!resetProgress@{resetProgress}}
+\index{resetProgress@{resetProgress}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{resetProgress()}{resetProgress()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_abb6837cc54a72c6f149179fa98a5c235} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+reset\+Progress (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Azzera il progresso della barra di avanzamento e il tempo trascorso. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ad97ee3fa66e1342281283bef009efe88}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!setActiveMode@{setActiveMode}}
+\index{setActiveMode@{setActiveMode}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{setActiveMode()}{setActiveMode()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ad97ee3fa66e1342281283bef009efe88} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+set\+Active\+Mode (\begin{DoxyParamCaption}\item[{Button}]{active}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Evidenzia il bottone della modalità attiva e ripristina gli altri. 
+
+Il bottone attivo riceve un bordo verde per indicare la modalità correntemente selezionata.
+
+
+\begin{DoxyParams}{Parametri}
+{\em active} & il bottone da evidenziare \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae14198244b756c8555ae00db23a69b1f}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!setSkipPlaylistVisible@{setSkipPlaylistVisible}}
+\index{setSkipPlaylistVisible@{setSkipPlaylistVisible}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{setSkipPlaylistVisible()}{setSkipPlaylistVisible()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae14198244b756c8555ae00db23a69b1f} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+set\+Skip\+Playlist\+Visible (\begin{DoxyParamCaption}\item[{boolean}]{visible}{}\end{DoxyParamCaption})}
+
+
+
+Mostra o nasconde il bottone di skip playlist. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em visible} & true se si sta riproducendo una playlist, false altrimenti \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a7c9ca9dc690b6edb8e081b2362150903}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!setupProgressTimer@{setupProgressTimer}}
+\index{setupProgressTimer@{setupProgressTimer}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{setupProgressTimer()}{setupProgressTimer()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a7c9ca9dc690b6edb8e081b2362150903} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+setup\+Progress\+Timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Configura il timer per l\textquotesingle{}aggiornamento in tempo reale della barra di avanzamento. 
+
+Usa {\ttfamily \doxylink{}{Animation\+Timer}} per aggiornare la UI sul thread Java\+FX ogni secondo. Al termine della traccia esegue lo skip automatico. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a08cf878dee0cdfcf1a2d6bc849c9e08b}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!setupSeekControls@{setupSeekControls}}
+\index{setupSeekControls@{setupSeekControls}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{setupSeekControls()}{setupSeekControls()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a08cf878dee0cdfcf1a2d6bc849c9e08b} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+setup\+Seek\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Abilita il riposizionamento (seek) tramite la barra di avanzamento. 
+
+L\textquotesingle{}utente può trascinare o cliccare sulla barra per spostarsi nel brano. Durante l\textquotesingle{}interazione viene mostrata in anteprima la nuova posizione sulle label del tempo; al rilascio viene applicato il seek sull\textquotesingle{}audio reale. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a3f454fcc6df3b11062fe0beb5784803e}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!startPlayback@{startPlayback}}
+\index{startPlayback@{startPlayback}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{startPlayback()}{startPlayback()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a3f454fcc6df3b11062fe0beb5784803e} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+start\+Playback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Avvia la riproduzione dalla barra aggiornando le label e il timer. 
+
+Da chiamare dopo {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller_adf44f58162ac4cb226db14c3f576cd33}{Playback\+Controller\#play}} per sincronizzare la barra con il nuovo stato.
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la traccia con cui aggiornare la barra \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a091476dce0fda1ed864224f814812ecc}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!updatePlaylistName@{updatePlaylistName}}
+\index{updatePlaylistName@{updatePlaylistName}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{updatePlaylistName()}{updatePlaylistName()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a091476dce0fda1ed864224f814812ecc} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+update\+Playlist\+Name (\begin{DoxyParamCaption}\item[{String}]{playlist\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Aggiorna il nome della playlist in riproduzione. 
+
+Mostra il nome se si sta riproducendo una playlist, nasconde la label se si riproduce dal catalogo.
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist\+Name} & il nome della playlist, null per nascondere la label \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a2a5b7786df9aa4da1d84a630d3ce551e}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!updateTimeLabelsPreview@{updateTimeLabelsPreview}}
+\index{updateTimeLabelsPreview@{updateTimeLabelsPreview}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{updateTimeLabelsPreview()}{updateTimeLabelsPreview()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a2a5b7786df9aa4da1d84a630d3ce551e} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+update\+Time\+Labels\+Preview (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aggiorna le label del tempo in base alla posizione corrente dello slider. 
+
+Usato come anteprima durante il trascinamento, senza toccare l\textquotesingle{}audio. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa081024a51584caa4ab1b373c995c5b4}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!updateTrackInfo@{updateTrackInfo}}
+\index{updateTrackInfo@{updateTrackInfo}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{updateTrackInfo()}{updateTrackInfo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa081024a51584caa4ab1b373c995c5b4} 
+void com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+update\+Track\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{}\end{DoxyParamCaption})}
+
+
+
+Aggiorna le label della barra con i dati della traccia fornita. 
+
+Da chiamare quando cambia la traccia in riproduzione.
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la traccia da mostrare nella barra; null per resettare \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a886cdffdbdeaee84a77bb99df8768131}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnLoop@{btnLoop}}
+\index{btnLoop@{btnLoop}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnLoop}{btnLoop}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a886cdffdbdeaee84a77bb99df8768131} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Button che definisce la modalità di riproduzione attualmente selezionata -\/ Loop. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a0eed4b06b9e94bfd4ecbf41d7cfb6b2d}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnPlayPause@{btnPlayPause}}
+\index{btnPlayPause@{btnPlayPause}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnPlayPause}{btnPlayPause}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a0eed4b06b9e94bfd4ecbf41d7cfb6b2d} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Play\+Pause\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone play/pausa. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_afb628a82303b4227d97e15a4b9b95758}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnPrevious@{btnPrevious}}
+\index{btnPrevious@{btnPrevious}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnPrevious}{btnPrevious}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_afb628a82303b4227d97e15a4b9b95758} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Previous\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone brano precedente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa82f085709722e62aefc1e973652885f}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnPreviousPlaylist@{btnPreviousPlaylist}}
+\index{btnPreviousPlaylist@{btnPreviousPlaylist}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnPreviousPlaylist}{btnPreviousPlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa82f085709722e62aefc1e973652885f} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Previous\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone playlist precedente. 
+
+Simmetrico a {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a470a464705783c1b20c2b0f628f713f9}{btn\+Skip\+Playlist}}\+: visibile solo durante la riproduzione di una playlist. Torna alla sorgente precedente nella coda. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aeaa962bbed99c54a37261541c20dd30e}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnSequential@{btnSequential}}
+\index{btnSequential@{btnSequential}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnSequential}{btnSequential}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aeaa962bbed99c54a37261541c20dd30e} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Sequential\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Button che definisce la modalità di riproduzione attualmente selezionata -\/ Sequenziale. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a89be81486766f5e7c17c5554250f769e}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnShuffle@{btnShuffle}}
+\index{btnShuffle@{btnShuffle}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnShuffle}{btnShuffle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a89be81486766f5e7c17c5554250f769e} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Shuffle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Button che definisce la modalità di riproduzione attualmente selezionata -\/ Shuffle. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a39612de03958103ae49ecb2502b1f3c9}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnSkip@{btnSkip}}
+\index{btnSkip@{btnSkip}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnSkip}{btnSkip}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a39612de03958103ae49ecb2502b1f3c9} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Skip\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone brano successivo. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a470a464705783c1b20c2b0f628f713f9}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnSkipPlaylist@{btnSkipPlaylist}}
+\index{btnSkipPlaylist@{btnSkipPlaylist}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnSkipPlaylist}{btnSkipPlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a470a464705783c1b20c2b0f628f713f9} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Skip\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone skip playlist successiva. 
+
+Visibile solo durante la riproduzione di una playlist. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a40dda4e80191937532c1d993674caac8}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!btnStop@{btnStop}}
+\index{btnStop@{btnStop}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{btnStop}{btnStop}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a40dda4e80191937532c1d993674caac8} 
+Button com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+btn\+Stop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone stop riproduzione. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa79cd9c0c49d4d3233065bb68f2b453a}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!currentTrack@{currentTrack}}
+\index{currentTrack@{currentTrack}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{currentTrack}{currentTrack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_aa79cd9c0c49d4d3233065bb68f2b453a} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+current\+Track\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Traccia attualmente in riproduzione. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a81edcbcc9f4708cb50d7760ae6c5be27}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!labelCurrentTime@{labelCurrentTime}}
+\index{labelCurrentTime@{labelCurrentTime}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{labelCurrentTime}{labelCurrentTime}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a81edcbcc9f4708cb50d7760ae6c5be27} 
+Label com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+label\+Current\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra il tempo corrente di riproduzione. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a71fe9b4665e2230387af0fa758aeb9f4}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!labelPlaylistName@{labelPlaylistName}}
+\index{labelPlaylistName@{labelPlaylistName}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{labelPlaylistName}{labelPlaylistName}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a71fe9b4665e2230387af0fa758aeb9f4} 
+Label com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+label\+Playlist\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra il nome della playlist in riproduzione. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a4e179612d126d4bd0e8c071db3b253a3}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!labelTotalTime@{labelTotalTime}}
+\index{labelTotalTime@{labelTotalTime}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{labelTotalTime}{labelTotalTime}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a4e179612d126d4bd0e8c071db3b253a3} 
+Label com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+label\+Total\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra la durata totale della traccia corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a143aadf4db6027dd718ede49bfb33d5d}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!labelTrackArtist@{labelTrackArtist}}
+\index{labelTrackArtist@{labelTrackArtist}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{labelTrackArtist}{labelTrackArtist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a143aadf4db6027dd718ede49bfb33d5d} 
+Label com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+label\+Track\+Artist\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra l\textquotesingle{}artista della traccia corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a2b4f30fa92e6cd5d6e9d3cc6ba526eb2}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!labelTrackGenre@{labelTrackGenre}}
+\index{labelTrackGenre@{labelTrackGenre}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{labelTrackGenre}{labelTrackGenre}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a2b4f30fa92e6cd5d6e9d3cc6ba526eb2} 
+Label com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+label\+Track\+Genre\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra il genere della traccia corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a1b60be87e425794cb2171e14c07d83a1}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!labelTrackTitle@{labelTrackTitle}}
+\index{labelTrackTitle@{labelTrackTitle}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{labelTrackTitle}{labelTrackTitle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a1b60be87e425794cb2171e14c07d83a1} 
+Label com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+label\+Track\+Title\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra il titolo della traccia corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8cb1b02de35e08f10f2f828c10824312}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!labelTrackYear@{labelTrackYear}}
+\index{labelTrackYear@{labelTrackYear}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{labelTrackYear}{labelTrackYear}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a8cb1b02de35e08f10f2f828c10824312} 
+Label com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+label\+Track\+Year\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label che mostra l\textquotesingle{}anno della traccia corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a7652bc45d33c412d76a00a20abaf62a0}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!playbackController@{playbackController}}
+\index{playbackController@{playbackController}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{playbackController}{playbackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a7652bc45d33c412d76a00a20abaf62a0} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+playback\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller MVC della riproduzione. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a33636522987922573a6120ff52bf0178}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!PREVIOUS\_RESTART\_THRESHOLD\_SECONDS@{PREVIOUS\_RESTART\_THRESHOLD\_SECONDS}}
+\index{PREVIOUS\_RESTART\_THRESHOLD\_SECONDS@{PREVIOUS\_RESTART\_THRESHOLD\_SECONDS}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{PREVIOUS\_RESTART\_THRESHOLD\_SECONDS}{PREVIOUS\_RESTART\_THRESHOLD\_SECONDS}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a33636522987922573a6120ff52bf0178} 
+final int com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+PREVIOUS\+\_\+\+RESTART\+\_\+\+THRESHOLD\+\_\+\+SECONDS = 10\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Soglia in secondi entro cui il pulsante precedente torna alla traccia precedente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a1036097f2ae3ef35dde303b11a784d6c}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!progressBar@{progressBar}}
+\index{progressBar@{progressBar}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{progressBar}{progressBar}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_a1036097f2ae3ef35dde303b11a784d6c} 
+Slider com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+progress\+Bar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Barra di avanzamento della traccia corrente. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ac68f2de8bbdd0bb685329f1a31947150}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!progressTimer@{progressTimer}}
+\index{progressTimer@{progressTimer}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{progressTimer}{progressTimer}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ac68f2de8bbdd0bb685329f1a31947150} 
+Animation\+Timer com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+progress\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timer per l\textquotesingle{}aggiornamento in tempo reale della barra di avanzamento. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae0ec90b11cafe687406a61ad1fac4534}\index{com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}!userSeeking@{userSeeking}}
+\index{userSeeking@{userSeeking}!com.example.gruppo04.view.PlaybackBarViewController@{com.example.gruppo04.view.PlaybackBarViewController}}
+\doxysubsubsection{\texorpdfstring{userSeeking}{userSeeking}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller_ae0ec90b11cafe687406a61ad1fac4534} 
+boolean com.\+example.\+gruppo04.\+view.\+Playback\+Bar\+View\+Controller.\+user\+Seeking = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indica che l\textquotesingle{}utente sta interagendo con la barra (drag/click). 
+
+Quando true il timer non sovrascrive il valore dello slider, così il trascinamento dell\textquotesingle{}utente non viene "{}combattuto"{} dall\textquotesingle{}aggiornamento automatico. 
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/view/\mbox{\hyperlink{_playback_bar_view_controller_8java}{Playback\+Bar\+View\+Controller.\+java}}\end{DoxyCompactItemize}

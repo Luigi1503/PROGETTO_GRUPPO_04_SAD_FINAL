@@ -8,30 +8,19 @@ Controller Java\+FX della finestra principale dell\textquotesingle{}applicazione
 
 
 Diagramma delle classi per com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=232pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller__inherit__graph}
-\end{center}
-\end{figure}
+% FIG 0
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller__coll__graph}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0adcb436a2253baaf26e9e7253236ed4}{init}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acb9972775744870242c2e74bcbcd9131}{catalog}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a579927ca1ad26a125083c2030e6caadf}{track\+Controller}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052}{playlist\+Controller}})
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad0e05bb63c17e3a6880f7ca1cc0ba026}{init}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acb9972775744870242c2e74bcbcd9131}{catalog}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a579927ca1ad26a125083c2030e6caadf}{track\+Controller}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052}{playlist\+Controller}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad015194e77bff9023ef27fa78ded4e9a}{playback\+Controller}})
 \begin{DoxyCompactList}\small\item\em Inizializza la Main\+Window con le dipendenze necessarie. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4e8e64136d5fc2d79ae4540e3d31f425}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
 \begin{DoxyCompactList}\small\item\em Chiamato dal catalogo quando si verifica un cambiamento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}}
 \doxysubsubsection*{Membri privati}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,12 +30,18 @@ void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_cont
 \begin{DoxyCompactList}\small\item\em Mostra il pannello All Tracks nell\textquotesingle{}area centrale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4188145a3b01a5d653eab75e60927041}{show\+Playlists}} ()
 \begin{DoxyCompactList}\small\item\em Mostra il pannello Playlists nell\textquotesingle{}area centrale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a72bc9fa85d59832d9cec9861e6532269}{show\+Automatic\+Playlists}} ()
+\begin{DoxyCompactList}\small\item\em Mostra il pannello delle sole playlist automatiche nell\textquotesingle{}area centrale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad458a8b04475f8ea32ec2947438dc0db}{show\+Playlist\+Detail}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
 \begin{DoxyCompactList}\small\item\em Mostra il pannello di dettaglio di una playlist nell\textquotesingle{}area centrale. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a842e2be1849acc9fd8a7761f1aa2fad6}{set\+Content}} (Node node)
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a5bce0d4a41cf090126b801ee50e67ce4}{show\+Home}} ()
+\begin{DoxyCompactList}\small\item\em Mostra la Home con le sezioni "{}\+Tracce più ascoltate"{} e "{}\+Playlist più ascoltate"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a95b46ee0d2a7bab5e526362841555e0e}{set\+Content}} (Node node, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}} controller)
 \begin{DoxyCompactList}\small\item\em Sostituisce il contenuto dell\textquotesingle{}area centrale con il nodo fornito. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a862dae0b901498c11fdd97b221be302b}{set\+Active\+Button}} (Button active)
-\begin{DoxyCompactList}\small\item\em Imposta lo stile del bottone attivo nella sidebar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Imposta lo stile del bottone attivo nella sidebar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a6fcebd3332e83cb537d224e403aaf07b}{highlight\+Strategy}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}} strategy)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Attributi privati}
 \begin{DoxyCompactItemize}
 \item 
@@ -60,12 +55,36 @@ Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_co
 \begin{DoxyCompactList}\small\item\em Pulsante di navigazione All Tracks. \end{DoxyCompactList}\item 
 Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_aadc7d046bd4c2058ffda231c96b1360a}{btn\+Playlists}}
 \begin{DoxyCompactList}\small\item\em Pulsante di navigazione Playlists. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_abbf430a803ae6ed330c63666df5eea43}{btn\+Automatic\+Playlists}}
+\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0362e511c0197ba488a41d142d18fb19}{btn\+Help}}
+\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a50d4ad7441cf6b4e1c1bd9e2df06dac8}{help\+Box}}
+\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4403a6420f6c92c3ea19868ad83d0be1}{cell\+Catalog\+Sequential}}
+\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a1d044e22e674504e8d19f9a4da520e31}{cell\+Catalog\+Loop}}
+\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_afb85d0f12a7598eb476a3ab93960e65e}{cell\+Catalog\+Shuffle}}
+\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a5bc0605dcc2a36832517fca19e6d1c73}{cell\+Playlist\+Sequential}}
+\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a7d3f48dcd9e9faf224e21c016322ab9e}{cell\+Playlist\+Loop}}
+\item 
+VBox \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_afa5529c20b960138762b6b2297aac7ea}{cell\+Playlist\+Shuffle}}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller}{Playback\+Bar\+View\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a854b506396847b8f94a6d97c3ae80a01}{playback\+Bar\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller della barra di riproduzione. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acb9972775744870242c2e74bcbcd9131}{catalog}}
 \begin{DoxyCompactList}\small\item\em Catalogo musicale centrale. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a579927ca1ad26a125083c2030e6caadf}{track\+Controller}}
 \begin{DoxyCompactList}\small\item\em Controller MVC delle tracce. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052}{playlist\+Controller}}
-\begin{DoxyCompactList}\small\item\em Controller MVC delle playlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Controller MVC delle playlist. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad015194e77bff9023ef27fa78ded4e9a}{playback\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller MVC della riproduzione. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a7da05a67316da8f16b461859f728cc49}{current\+Content\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controller della vista attualmente mostrata nell\textquotesingle{}area centrale, registrato come Observer del catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Attributi privati statici}
 \begin{DoxyCompactItemize}
 \item 
@@ -76,16 +95,20 @@ static final Logger \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1
 \doxysubsection{Descrizione dettagliata}
 Controller Java\+FX della finestra principale dell\textquotesingle{}applicazione. 
 
-Assembla tutte le view e gestisce la navigazione tra i pannelli tramite la sidebar sinistra. Implementa \doxylink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer} per aggiornare la lista delle playlist nella sidebar. 
+Assembla tutte le view e gestisce la navigazione tra i pannelli tramite la sidebar sinistra. Implementa Catalog\+Observer per aggiornare la lista delle playlist nella sidebar. 
 
-\label{doc-func-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_doc-func-members}
 \doxysubsection{Documentazione delle funzioni membro}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0adcb436a2253baaf26e9e7253236ed4}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!init@{init}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a6fcebd3332e83cb537d224e403aaf07b}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!highlightStrategy@{highlightStrategy}}
+\index{highlightStrategy@{highlightStrategy}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{highlightStrategy()}{highlightStrategy()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a6fcebd3332e83cb537d224e403aaf07b} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+highlight\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_playback_strategy}{Playback\+Strategy}}}]{strategy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad0e05bb63c17e3a6880f7ca1cc0ba026}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!init@{init}}
 \index{init@{init}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
 \doxysubsubsection{\texorpdfstring{init()}{init()}}
-{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0adcb436a2253baaf26e9e7253236ed4} 
-void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{track\+Controller}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad0e05bb63c17e3a6880f7ca1cc0ba026} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller}{Track\+Controller}}}]{track\+Controller}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}}}]{playback\+Controller}{}\end{DoxyParamCaption})}
 
 
 
@@ -100,6 +123,8 @@ Registra questo controller come Observer del catalogo e carica la vista iniziale
 {\em track\+Controller} & il controller MVC delle tracce \\
 \hline
 {\em playlist\+Controller} & il controller MVC delle playlist \\
+\hline
+{\em playback\+Controller} & il controller MVC della riproduzione \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4e8e64136d5fc2d79ae4540e3d31f425}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!onCatalogChanged@{onCatalogChanged}}
@@ -138,11 +163,11 @@ Imposta lo stile del bottone attivo nella sidebar.
 {\em active} & il bottone da evidenziare \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a842e2be1849acc9fd8a7761f1aa2fad6}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!setContent@{setContent}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a95b46ee0d2a7bab5e526362841555e0e}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!setContent@{setContent}}
 \index{setContent@{setContent}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
 \doxysubsubsection{\texorpdfstring{setContent()}{setContent()}}
-{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a842e2be1849acc9fd8a7761f1aa2fad6} 
-void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+set\+Content (\begin{DoxyParamCaption}\item[{Node}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a95b46ee0d2a7bab5e526362841555e0e} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+set\+Content (\begin{DoxyParamCaption}\item[{Node}]{node}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}}}]{controller}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -163,7 +188,27 @@ void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+show\+All\+Track
 
 Mostra il pannello All Tracks nell\textquotesingle{}area centrale. 
 
-Usa set\+Controller\+Factory in quanto Track\+View ha un costruttore con parametri. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad458a8b04475f8ea32ec2947438dc0db}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!showPlaylistDetail@{showPlaylistDetail}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a72bc9fa85d59832d9cec9861e6532269}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!showAutomaticPlaylists@{showAutomaticPlaylists}}
+\index{showAutomaticPlaylists@{showAutomaticPlaylists}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{showAutomaticPlaylists()}{showAutomaticPlaylists()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a72bc9fa85d59832d9cec9861e6532269} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+show\+Automatic\+Playlists (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mostra il pannello delle sole playlist automatiche nell\textquotesingle{}area centrale. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a5bce0d4a41cf090126b801ee50e67ce4}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!showHome@{showHome}}
+\index{showHome@{showHome}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{showHome()}{showHome()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a5bce0d4a41cf090126b801ee50e67ce4} 
+void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+show\+Home (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mostra la Home con le sezioni "{}\+Tracce più ascoltate"{} e "{}\+Playlist più ascoltate"{}. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad458a8b04475f8ea32ec2947438dc0db}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!showPlaylistDetail@{showPlaylistDetail}}
 \index{showPlaylistDetail@{showPlaylistDetail}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
 \doxysubsubsection{\texorpdfstring{showPlaylistDetail()}{showPlaylistDetail()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad458a8b04475f8ea32ec2947438dc0db} 
@@ -188,7 +233,7 @@ void com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+show\+Playlists 
 
 Mostra il pannello Playlists nell\textquotesingle{}area centrale. 
 
-Usa set\+Controller\+Factory perché \doxylink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller}{Playlist\+View\+Controller} ha un costruttore con parametri. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4313a1021e9cbd5a0fbe64ff37884955}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!updateSidebarPlaylists@{updateSidebarPlaylists}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4313a1021e9cbd5a0fbe64ff37884955}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!updateSidebarPlaylists@{updateSidebarPlaylists}}
 \index{updateSidebarPlaylists@{updateSidebarPlaylists}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
 \doxysubsubsection{\texorpdfstring{updateSidebarPlaylists()}{updateSidebarPlaylists()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4313a1021e9cbd5a0fbe64ff37884955} 
@@ -200,8 +245,6 @@ Aggiorna la lista delle playlist nella sidebar sinistra.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_doc-variable-members}
 \doxysubsection{Documentazione dei membri dato}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a65841d735fffc0baf6f2d2cbda88f4cc}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!btnAllTracks@{btnAllTracks}}
 \index{btnAllTracks@{btnAllTracks}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
@@ -212,6 +255,18 @@ Button com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+btn\+All\+Trac
 
 
 Pulsante di navigazione All Tracks. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_abbf430a803ae6ed330c63666df5eea43}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!btnAutomaticPlaylists@{btnAutomaticPlaylists}}
+\index{btnAutomaticPlaylists@{btnAutomaticPlaylists}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{btnAutomaticPlaylists}{btnAutomaticPlaylists}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_abbf430a803ae6ed330c63666df5eea43} 
+Button com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+btn\+Automatic\+Playlists\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0362e511c0197ba488a41d142d18fb19}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!btnHelp@{btnHelp}}
+\index{btnHelp@{btnHelp}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{btnHelp}{btnHelp}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a0362e511c0197ba488a41d142d18fb19} 
+Button com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+btn\+Help\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_acbd4714a0ed88a037a048b4bbf6dad02}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!btnHome@{btnHome}}
 \index{btnHome@{btnHome}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
@@ -243,6 +298,42 @@ Pulsante di navigazione Playlists.
 
 Catalogo musicale centrale. 
 
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a1d044e22e674504e8d19f9a4da520e31}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!cellCatalogLoop@{cellCatalogLoop}}
+\index{cellCatalogLoop@{cellCatalogLoop}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{cellCatalogLoop}{cellCatalogLoop}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a1d044e22e674504e8d19f9a4da520e31} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+cell\+Catalog\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4403a6420f6c92c3ea19868ad83d0be1}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!cellCatalogSequential@{cellCatalogSequential}}
+\index{cellCatalogSequential@{cellCatalogSequential}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{cellCatalogSequential}{cellCatalogSequential}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a4403a6420f6c92c3ea19868ad83d0be1} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+cell\+Catalog\+Sequential\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_afb85d0f12a7598eb476a3ab93960e65e}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!cellCatalogShuffle@{cellCatalogShuffle}}
+\index{cellCatalogShuffle@{cellCatalogShuffle}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{cellCatalogShuffle}{cellCatalogShuffle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_afb85d0f12a7598eb476a3ab93960e65e} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+cell\+Catalog\+Shuffle\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a7d3f48dcd9e9faf224e21c016322ab9e}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!cellPlaylistLoop@{cellPlaylistLoop}}
+\index{cellPlaylistLoop@{cellPlaylistLoop}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{cellPlaylistLoop}{cellPlaylistLoop}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a7d3f48dcd9e9faf224e21c016322ab9e} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+cell\+Playlist\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a5bc0605dcc2a36832517fca19e6d1c73}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!cellPlaylistSequential@{cellPlaylistSequential}}
+\index{cellPlaylistSequential@{cellPlaylistSequential}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{cellPlaylistSequential}{cellPlaylistSequential}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a5bc0605dcc2a36832517fca19e6d1c73} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+cell\+Playlist\+Sequential\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_afa5529c20b960138762b6b2297aac7ea}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!cellPlaylistShuffle@{cellPlaylistShuffle}}
+\index{cellPlaylistShuffle@{cellPlaylistShuffle}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{cellPlaylistShuffle}{cellPlaylistShuffle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_afa5529c20b960138762b6b2297aac7ea} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+cell\+Playlist\+Shuffle\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a60a5f81db7c99ee8b50454afb648f26e}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!contentArea@{contentArea}}
 \index{contentArea@{contentArea}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
 \doxysubsubsection{\texorpdfstring{contentArea}{contentArea}}
@@ -253,6 +344,22 @@ Stack\+Pane com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+content\+
 
 Area centrale che contiene il pannello attualmente visualizzato. 
 
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a7da05a67316da8f16b461859f728cc49}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!currentContentController@{currentContentController}}
+\index{currentContentController@{currentContentController}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{currentContentController}{currentContentController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a7da05a67316da8f16b461859f728cc49} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{Catalog\+Observer}} com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+current\+Content\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller della vista attualmente mostrata nell\textquotesingle{}area centrale, registrato come Observer del catalogo. 
+
+Viene deregistrato quando si naviga verso un\textquotesingle{}altra vista, per evitare che istanze non più visibili continuino a ricevere eventi. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a50d4ad7441cf6b4e1c1bd9e2df06dac8}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!helpBox@{helpBox}}
+\index{helpBox@{helpBox}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{helpBox}{helpBox}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a50d4ad7441cf6b4e1c1bd9e2df06dac8} 
+VBox com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+help\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ae6471ed27322d15bb32945a9ac11f7c7}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!logger@{logger}}
 \index{logger@{logger}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
 \doxysubsubsection{\texorpdfstring{logger}{logger}}
@@ -262,12 +369,32 @@ final Logger com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+logger\h
 {\bfseries Valore iniziale\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{=}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Logger.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller}{MainViewController}}.class.getName())}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Logger.getLogger(MainViewController.class.getName())}
 
 \end{DoxyCode}
 
 
 Logger per la gestione degli errori di caricamento delle view. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a854b506396847b8f94a6d97c3ae80a01}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!playbackBarController@{playbackBarController}}
+\index{playbackBarController@{playbackBarController}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{playbackBarController}{playbackBarController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a854b506396847b8f94a6d97c3ae80a01} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller}{Playback\+Bar\+View\+Controller}} com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+playback\+Bar\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller della barra di riproduzione. 
+
+Iniettato automaticamente da Java\+FX tramite fx\+:include con fx\+:id="{}playback\+Bar"{} nella Main\+View.\+fxml — la convenzione è fx\+:id + "{}\+Controller"{}. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad015194e77bff9023ef27fa78ded4e9a}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!playbackController@{playbackController}}
+\index{playbackController@{playbackController}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}
+\doxysubsubsection{\texorpdfstring{playbackController}{playbackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_ad015194e77bff9023ef27fa78ded4e9a} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} com.\+example.\+gruppo04.\+view.\+Main\+View\+Controller.\+playback\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controller MVC della riproduzione. 
 
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller_a01328c42866fdadd8a36b9118eeb0052}\index{com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}!playlistController@{playlistController}}
 \index{playlistController@{playlistController}!com.example.gruppo04.view.MainViewController@{com.example.gruppo04.view.MainViewController}}

@@ -8,23 +8,11 @@ Rappresenta il contratto per una traccia musicale all\textquotesingle{}interno d
 
 
 Diagramma delle classi per com.\+example.\+gruppo04.\+interfaces.\+Track
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track__inherit__graph}
-\end{center}
-\end{figure}
+% FIG 0
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+interfaces.\+Track\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=238pt]{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track__coll__graph}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,7 +41,26 @@ void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_trac
 String \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a4a04e12deb32e0e9813d37ead9c5c49c}{get\+File\+Path}} ()
 \begin{DoxyCompactList}\small\item\em Restituisce il percorso fisico del file audio associato alla traccia. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_afe71a8af8030bcf92e6edd81f42d610d}{set\+File\+Path}} (String file\+Path)
-\begin{DoxyCompactList}\small\item\em Imposta il percorso fisico del file audio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Imposta il percorso fisico del file audio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ab31b6e5068cfa17da08685edd07e0dcd}{increment\+Play\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Incrementa il numero di riproduzioni della traccia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a6324b072645b5157b62f93df3ed19f92}{get\+Play\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il numero di riproduzioni della traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ab078ce117025583946a86bdb5a0d78d1}{add\+Tag}} (\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}} tag)
+\begin{DoxyCompactList}\small\item\em Aggiunge un tag alla traccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_aa69d3d9e8a98ba1de6dadfa9400083c0}{remove\+Tag}} (\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}} tag)
+\begin{DoxyCompactList}\small\item\em Rimuove un tag dalla traccia. \end{DoxyCompactList}\item 
+Set$<$ \mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}} $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a4af86fdca50576611617e97a6c64bac3}{get\+Tags}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce i tag associati alla traccia. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ae6af8d43ad3d98af4497cee1f12b2e20}{has\+Tag}} (\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}} tag)
+\begin{DoxyCompactList}\small\item\em Verifica se la traccia possiede un tag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{com.\+example.\+gruppo04.\+interfaces.\+Playable\+Source}}}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_ad870952bbe1b0e73519681a94d9013d6}{get\+Tracks}} ()
+\begin{DoxyCompactList}\small\item\em Recupera la sequenza di brani associata a questa sorgente. \end{DoxyCompactList}\item 
+Map$<$ String, String $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source_aaf0b62fae866df609880183d09625d1d}{get\+Display\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Recupera il dizionario dei metadati descrittivi della sorgente. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
@@ -64,9 +71,26 @@ Rappresenta il contratto per una traccia musicale all\textquotesingle{}interno d
 \item Questa interfaccia definisce i metodi necessari per leggere e manipolare le informazioni di un brano. L\textquotesingle{}identità di ogni traccia è garantita da un identificatore UUID immutabile. 
 \end{DoxyItemize}
 
-\label{doc-func-members}
-\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_doc-func-members}
 \doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ab078ce117025583946a86bdb5a0d78d1}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!addTag@{addTag}}
+\index{addTag@{addTag}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{addTag()}{addTag()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ab078ce117025583946a86bdb5a0d78d1} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+add\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}}}]{tag}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge un tag alla traccia. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em tag} & tag da aggiungere \\
+\hline
+\end{DoxyParams}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_ac10b7bc5e55353ae0263b3bafda4ae3f}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
 \Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a7b101e998466af83344555023e6a7a04}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getAuthor@{getAuthor}}
 \index{getAuthor@{getAuthor}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
 \doxysubsubsection{\texorpdfstring{getAuthor()}{getAuthor()}}
@@ -165,6 +189,40 @@ L\textquotesingle{}UUID immutabile associato alla traccia.
 
 Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a55d80ec13615adc2c3229a8fab103e98}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
 
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a6324b072645b5157b62f93df3ed19f92}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getPlayCount@{getPlayCount}}
+\index{getPlayCount@{getPlayCount}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getPlayCount()}{getPlayCount()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a6324b072645b5157b62f93df3ed19f92} 
+int com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Play\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il numero di riproduzioni della traccia. 
+
+\begin{DoxyReturn}{Restituisce}
+numero di riproduzioni registrate 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a1bea6fad821a087e72531b9e39854f25}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a4af86fdca50576611617e97a6c64bac3}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getTags@{getTags}}
+\index{getTags@{getTags}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{getTags()}{getTags()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a4af86fdca50576611617e97a6c64bac3} 
+Set$<$ \mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}} $>$ com.\+example.\+gruppo04.\+interfaces.\+Track.\+get\+Tags (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce i tag associati alla traccia. 
+
+\begin{DoxyReturn}{Restituisce}
+insieme non modificabile dei tag 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a4d1238c09bb7d96289ce420eb4347f40}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
 \Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a73d3be0fe1cd851d80c43b1026fd76a0}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!getTitle@{getTitle}}
 \index{getTitle@{getTitle}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
 \doxysubsubsection{\texorpdfstring{getTitle()}{getTitle()}}
@@ -204,6 +262,61 @@ L\textquotesingle{}anno di pubblicazione (es. 1990).
 \end{DoxyItemize}
 
 Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a025b78543e08efbf1581a80def806f82}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ae6af8d43ad3d98af4497cee1f12b2e20}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!hasTag@{hasTag}}
+\index{hasTag@{hasTag}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{hasTag()}{hasTag()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ae6af8d43ad3d98af4497cee1f12b2e20} 
+boolean com.\+example.\+gruppo04.\+interfaces.\+Track.\+has\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}}}]{tag}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se la traccia possiede un tag. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em tag} & tag da verificare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+true se il tag e\textquotesingle{} presente, false altrimenti 
+\end{DoxyReturn}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a496befd77970b8a005df163f1a81de1a}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ab31b6e5068cfa17da08685edd07e0dcd}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!incrementPlayCount@{incrementPlayCount}}
+\index{incrementPlayCount@{incrementPlayCount}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{incrementPlayCount()}{incrementPlayCount()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_ab31b6e5068cfa17da08685edd07e0dcd} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+increment\+Play\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Incrementa il numero di riproduzioni della traccia. 
+
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a29e70d38e187425f06921a1e23fa0803}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
+
+\Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_aa69d3d9e8a98ba1de6dadfa9400083c0}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!removeTag@{removeTag}}
+\index{removeTag@{removeTag}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}
+\doxysubsubsection{\texorpdfstring{removeTag()}{removeTag()}}
+{\footnotesize\ttfamily \label{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_aa69d3d9e8a98ba1de6dadfa9400083c0} 
+void com.\+example.\+gruppo04.\+interfaces.\+Track.\+remove\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type}{Tag\+Type}}}]{tag}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove un tag dalla traccia. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em tag} & tag da rimuovere \\
+\hline
+\end{DoxyParams}
+
+
+Implementato in \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl_a30af217009dd066f02b4cf269d27ed37}{com.\+example.\+gruppo04.\+model.\+Track\+Impl}}.
 
 \Hypertarget{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track_a0186f1e417bb50e703306241fd961d7e}\index{com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}!setAuthor@{setAuthor}}
 \index{setAuthor@{setAuthor}!com.example.gruppo04.interfaces.Track@{com.example.gruppo04.interfaces.Track}}

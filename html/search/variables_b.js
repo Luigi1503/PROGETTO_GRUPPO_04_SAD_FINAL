@@ -1,13 +1,6 @@
 var searchData=
 [
-  ['playlist_5fadded_0',['PLAYLIST_ADDED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#ae2dcd7639e2b1c45aaa5642736410332',1,'com::example::gruppo04::observer::CatalogEventType']]],
-  ['playlist_5fcontent_5fchanged_1',['PLAYLIST_CONTENT_CHANGED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#a621fe5a75bb5f0d30498565b30ac85e0',1,'com::example::gruppo04::observer::CatalogEventType']]],
-  ['playlist_5fremoved_2',['PLAYLIST_REMOVED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#a6191310152f17218c77ace6c36abc2f9',1,'com::example::gruppo04::observer::CatalogEventType']]],
-  ['playlist_5frenamed_3',['PLAYLIST_RENAMED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#a66353758b21cf5046d956741af5b717a',1,'com::example::gruppo04::observer::CatalogEventType']]],
-  ['playlist_5freordered_4',['PLAYLIST_REORDERED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#ab91bd7ac1297796d87cb9261d1747ee7',1,'com::example::gruppo04::observer::CatalogEventType']]],
-  ['playlist_5ftrack_5fadded_5',['PLAYLIST_TRACK_ADDED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#af529493e357e6f951248d7be1ff0fe73',1,'com::example::gruppo04::observer::CatalogEventType']]],
-  ['playlist_5ftrack_5fremoved_6',['PLAYLIST_TRACK_REMOVED',['../enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#afa2ae1ece338fade17639896e1c33fa0',1,'com::example::gruppo04::observer::CatalogEventType']]],
-  ['playlistcontroller_7',['playlistController',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#a01328c42866fdadd8a36b9118eeb0052',1,'com.example.gruppo04.view.MainViewController.playlistController'],['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#a4e73d3b98a0ff9c7af4175f4284a1278',1,'com.example.gruppo04.view.PlaylistDetailViewController.playlistController'],['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html#a223cc042158a7f91a19fcc12666ceb89',1,'com.example.gruppo04.view.PlaylistViewController.playlistController']]],
-  ['playlistgrid_8',['playlistGrid',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html#ad06d6cb5395192486207c382765d0413',1,'com::example::gruppo04::view::PlaylistViewController']]],
-  ['playlists_9',['playlists',['../classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog.html#a78adc13be669b705e25a027bd8b1d4bf',1,'com::example::gruppo04::observer::ConcreteMusicCatalog']]]
+  ['name_0',['name',['../classcom_1_1example_1_1gruppo04_1_1command_1_1_add_playlist_command.html#a936d1462fe03284440e10262b67a6fcc',1,'com.example.gruppo04.command.AddPlaylistCommand.name'],['../classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl.html#aca15f07777ae57a85ae25830e4ada9dc',1,'com.example.gruppo04.model.PlaylistImpl.name']]],
+  ['new_5frelease_1',['NEW_RELEASE',['../enumcom_1_1example_1_1gruppo04_1_1model_1_1_tag_type.html#a7f67ba912fba5d398987f62bf6437e57',1,'com::example::gruppo04::model::TagType']]],
+  ['noteicon_2',['noteIcon',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html#a1ae00d7a199600c6ee961d507c44f43d',1,'com::example::gruppo04::view::PlaylistViewController']]]
 ];

@@ -1,9 +1,24 @@
 var searchData=
 [
-  ['btnalltracks_0',['btnAllTracks',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#a65841d735fffc0baf6f2d2cbda88f4cc',1,'com::example::gruppo04::view::MainViewController']]],
-  ['btncancel_1',['btnCancel',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller.html#a696bb9d63906435dda18b348c23981e1',1,'com::example::gruppo04::view::TrackSelectionViewController']]],
-  ['btnhome_2',['btnHome',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#acbd4714a0ed88a037a048b4bbf6dad02',1,'com::example::gruppo04::view::MainViewController']]],
-  ['btnplaylists_3',['btnPlaylists',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#aadc7d046bd4c2058ffda231c96b1360a',1,'com::example::gruppo04::view::MainViewController']]],
-  ['btnremovetrack_4',['btnRemoveTrack',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#a5f591554ee2be4d8baf9e65784776b49',1,'com::example::gruppo04::view::PlaylistDetailViewController']]],
-  ['btnselection_5',['btnSelection',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller.html#a33e287a11fc9ef809c33e7efd54f2df8',1,'com::example::gruppo04::view::TrackSelectionViewController']]]
+  ['btnaddtrack_0',['btnAddTrack',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#ae1c2a8eb3d4ebf5af2ffe66b08320892',1,'com::example::gruppo04::view::PlaylistDetailViewController']]],
+  ['btnalltracks_1',['btnAllTracks',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#a65841d735fffc0baf6f2d2cbda88f4cc',1,'com::example::gruppo04::view::MainViewController']]],
+  ['btnautomaticplaylists_2',['btnAutomaticPlaylists',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#abbf430a803ae6ed330c63666df5eea43',1,'com::example::gruppo04::view::MainViewController']]],
+  ['btncancel_3',['btnCancel',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller.html#a696bb9d63906435dda18b348c23981e1',1,'com::example::gruppo04::view::TrackSelectionViewController']]],
+  ['btnhelp_4',['btnHelp',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#a0362e511c0197ba488a41d142d18fb19',1,'com::example::gruppo04::view::MainViewController']]],
+  ['btnhome_5',['btnHome',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#acbd4714a0ed88a037a048b4bbf6dad02',1,'com::example::gruppo04::view::MainViewController']]],
+  ['btnloop_6',['btnLoop',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#a886cdffdbdeaee84a77bb99df8768131',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnmovedown_7',['btnMoveDown',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#a5428ca770560f022fa59dbebd94baf9d',1,'com::example::gruppo04::view::PlaylistDetailViewController']]],
+  ['btnmoveup_8',['btnMoveUp',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#a8b334f65dd6b3150c0e5efb0ea1abfb4',1,'com::example::gruppo04::view::PlaylistDetailViewController']]],
+  ['btnplayall_9',['btnPlayAll',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html#aa4833b1fb99734092f9aa096c95530cc',1,'com::example::gruppo04::view::PlaylistViewController']]],
+  ['btnplaylists_10',['btnPlaylists',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html#aadc7d046bd4c2058ffda231c96b1360a',1,'com::example::gruppo04::view::MainViewController']]],
+  ['btnplaypause_11',['btnPlayPause',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#a0eed4b06b9e94bfd4ecbf41d7cfb6b2d',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnprevious_12',['btnPrevious',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#afb628a82303b4227d97e15a4b9b95758',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnpreviousplaylist_13',['btnPreviousPlaylist',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#aa82f085709722e62aefc1e973652885f',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnremovetrack_14',['btnRemoveTrack',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_detail_view_controller.html#a5f591554ee2be4d8baf9e65784776b49',1,'com::example::gruppo04::view::PlaylistDetailViewController']]],
+  ['btnselection_15',['btnSelection',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_selection_view_controller.html#a33e287a11fc9ef809c33e7efd54f2df8',1,'com::example::gruppo04::view::TrackSelectionViewController']]],
+  ['btnsequential_16',['btnSequential',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#aeaa962bbed99c54a37261541c20dd30e',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnshuffle_17',['btnShuffle',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#a89be81486766f5e7c17c5554250f769e',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnskip_18',['btnSkip',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#a39612de03958103ae49ecb2502b1f3c9',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnskipplaylist_19',['btnSkipPlaylist',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#a470a464705783c1b20c2b0f628f713f9',1,'com::example::gruppo04::view::PlaybackBarViewController']]],
+  ['btnstop_20',['btnStop',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#a40dda4e80191937532c1d993674caac8',1,'com::example::gruppo04::view::PlaybackBarViewController']]]
 ];

@@ -2,19 +2,13 @@
 \hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
 
 
-Suite di test unitari automatizzati focalizzati sulla classe {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}}.  
+Suite di test unitari automatizzati focalizzati sulla classe {\ttfamily \doxylink{}{Concrete\+Music\+Catalog}}.  
 
 
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test__coll__graph}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,36 +18,50 @@ void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog
 \begin{DoxyCompactList}\small\item\em Verifica il corretto inserimento e la successiva rimozione isolata di una traccia dal catalogo. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a45044bbad02b37dd77bf9015990633de}{test\+Add\+Duplicate\+Track\+Title\+Throws\+Exception}} ()
 \begin{DoxyCompactList}\small\item\em Verifica il caso limite in cui si tenti di inserire una traccia con un titolo identico (case-\/insensitive) a una già presente, accertandosi che venga sollevata l\textquotesingle{}eccezione corretta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a196143a54c1932dfad0cf374c9aaf2b4}{test\+Add\+Duplicate\+Title\+And\+Author\+Throws\+Exception}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che il sistema sollevi un\textquotesingle{}eccezione se si tenta di inserire una traccia con la stessa combinazione di Titolo e Autore (case-\/insensitive) di una già esistente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a0e449e0382db0cafe6b2c614956b95f9}{test\+Add\+Same\+Title\+Different\+Author\+Is\+Allowed}} ()
+\begin{DoxyCompactList}\small\item\em Verifica di controparte\+: due autori diversi possono avere canzoni con lo stesso titolo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa19453687052efb107e26ea511d8cc4e}{test\+Add\+Track\+With\+Duplicate\+File\+Path\+Throws\+Exception}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che il sistema sollevi un\textquotesingle{}eccezione se si tenta di inserire una traccia con un file\+Path identico a una già presente nel catalogo, in modo da evitare che lo stesso file MP3 venga associato a più brani. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a77f878bb048f0a194a2430978088fc3d}{test\+Add\+Track\+Invalid\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Verifica le condizioni di validazione per l\textquotesingle{}aggiunta delle tracce. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ac90bff6cc57f8f63683f9b7c62495d8b}{test\+Cascade\+Removal\+From\+Playlists}} ()
 \begin{DoxyCompactList}\small\item\em Verifica il vincolo architetturale critico del Task T02\+: la rimozione a cascata. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a92af06e533f2c6766646f7c2623b5696}{test\+Observer\+Notification\+On\+Add}} ()
-\begin{DoxyCompactList}\small\item\em Verifica che il meccanismo di notifica del pattern Observer si attivi correttamente e con i parametri attesi a seguito di un evento di inserimento traccia. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1acc4a490ef4710d6c72831d2c53f672}{test\+Create\+And\+Delete\+Playlist}} ()
 \begin{DoxyCompactList}\small\item\em Verifica la creazione e la rimozione di una playlist nel catalogo. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a8f26e9c516f68170bb4f55bd9e2463a6}{test\+Create\+Playlist\+Duplicate\+Name}} ()
 \begin{DoxyCompactList}\small\item\em Verifica il caso limite di creazione di due playlist con lo stesso nome. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a34f193074da988ad621782e7954eaab2}{test\+Rename\+Playlist}} ()
-\begin{DoxyCompactList}\small\item\em Verifica la funzionalità di rinomina di una playlist e i vincoli associati. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa4695983883625f4409f8466237f2c25}{test\+Create\+Playlist\+Invalid\+Name}} ()
 \begin{DoxyCompactList}\small\item\em Verifica le condizioni di validazione per la creazione di playlist. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5056011726eb556ee5b7713a6c8a29a0}{test\+Rename\+Playlist\+Invalid\+Input}} ()
-\begin{DoxyCompactList}\small\item\em Verifica che la rinomina fallisca se la playlist non appartiene al catalogo e che new\+Name nullo o vuoto generi Illegal\+Argument\+Exception. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a1687b7672f8fc68a829a94086fc4634a}{test\+Delete\+Playlist\+Not\+Present}} ()
 \begin{DoxyCompactList}\small\item\em Verifica che la cancellazione di una playlist non presente restituisca false. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a77f878bb048f0a194a2430978088fc3d}{test\+Add\+Track\+Invalid\+Input}} ()
-\begin{DoxyCompactList}\small\item\em Verifica le condizioni di validazione per l\textquotesingle{}aggiunta delle tracce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5056011726eb556ee5b7713a6c8a29a0}{test\+Rename\+Playlist\+Invalid\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che la rinomina fallisca se la playlist non appartiene al catalogo e che new\+Name nullo o vuoto generi Illegal\+Argument\+Exception. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a34f193074da988ad621782e7954eaab2}{test\+Rename\+Playlist}} ()
+\begin{DoxyCompactList}\small\item\em Verifica la funzionalità di rinomina di una playlist e i vincoli associati. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aef5833c7b2e172153289c043dae69629}{test\+Add\+Track\+To\+Playlist\+Validation\+And\+Duplicates}} ()
 \begin{DoxyCompactList}\small\item\em Verifica che l\textquotesingle{}aggiunta di una traccia ad una playlist rispetti le precondizioni e che l\textquotesingle{}inserimento duplicato nella playlist restituisca false. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ad546c0287f417786c9558bcb8f47e7f4}{test\+Remove\+Track\+From\+Playlist\+Not\+Present}} ()
 \begin{DoxyCompactList}\small\item\em Verifica che la rimozione da playlist ritorni false se la traccia non è presente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b}{test\+Update\+Track\+Invalid\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Verifica le condizioni di errore di update\+Track per input null o traccia assente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_abecc9c5372783b2622536fe8e7543d5e}{test\+Update\+Track\+Duplicate\+Title\+And\+Author\+Throws\+Exception}} ()
+\begin{DoxyCompactList}\small\item\em Verifica i controlli di integrità del catalogo in fase di aggiornamento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a32235feb24da901cd11a86519812dc65}{test\+Update\+Track\+Duplicate\+File\+Path\+Throws\+Exception}} ()
+\begin{DoxyCompactList}\small\item\em Verifica il vincolo di univocità del file in fase di aggiornamento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa6f9d2baf69e69822c47ba94c46b18d3}{test\+Update\+Track\+Legitimate\+Update\+Does\+Not\+Throw}} ()
+\begin{DoxyCompactList}\small\item\em Verifica il corretto aggiornamento di un campo legittimo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a92af06e533f2c6766646f7c2623b5696}{test\+Observer\+Notification\+On\+Add}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che il meccanismo di notifica del pattern Observer si attivi correttamente e con i parametri attesi a seguito di un evento di inserimento traccia. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a5f3cf4553b1ed7c88daa3120ebc75e7a}{test\+Observer\+Notifications\+On\+Playlist\+Lifecycle}} ()
 \begin{DoxyCompactList}\small\item\em Verifica la notifica degli observer per eventi di playlist (creazione, rinomina e cancellazione). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa43903ef0118537545114921308b0168}{test\+Observer\+Notifications\+On\+Track\+Lifecycle}} ()
 \begin{DoxyCompactList}\small\item\em Verifica la notifica degli observer per eventi legati alle tracce. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aee7cfed90ab5ac73a16c0c099a34834d}{test\+Observer\+Notifications\+On\+Playlist\+Track\+Changes}} ()
 \begin{DoxyCompactList}\small\item\em Verifica la notifica degli observer quando si aggiungono o rimuovono tracce in playlist. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b}{test\+Update\+Track\+Invalid\+Input}} ()
-\begin{DoxyCompactList}\small\item\em Verifica le condizioni di errore di update\+Track per input null o traccia assente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a6c1ce6d3de56cfc35f41ac2377e57ce8}{test\+Restore\+State\+And\+Notify\+Observers}} ()
+\begin{DoxyCompactList}\small\item\em Verifica che il metodo {\ttfamily restore\+State} ripristini correttamente lo stato del catalogo e notifichi gli observer del cambiamento avvenuto. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Attributi privati}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,12 +74,10 @@ void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog
 
 
 \doxysubsection{Descrizione dettagliata}
-Suite di test unitari automatizzati focalizzati sulla classe {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog}{Concrete\+Music\+Catalog}}. 
+Suite di test unitari automatizzati focalizzati sulla classe {\ttfamily \doxylink{}{Concrete\+Music\+Catalog}}. 
 
 Verifica i contratti di business, la consistenza dello stato durante le operazioni a cascata, i vincoli di unicità (casi limite) e il corretto funzionamento dell\textquotesingle{}infrastruttura Observer. 
 
-\label{doc-func-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_doc-func-members}
 \doxysubsection{Documentazione delle funzioni membro}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_af35eb2078202eb0642f605ab27674fda}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!setUp@{setUp}}
 \index{setUp@{setUp}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
@@ -93,6 +99,16 @@ void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+And\+R
 
 Verifica il corretto inserimento e la successiva rimozione isolata di una traccia dal catalogo. 
 
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a196143a54c1932dfad0cf374c9aaf2b4}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddDuplicateTitleAndAuthorThrowsException@{testAddDuplicateTitleAndAuthorThrowsException}}
+\index{testAddDuplicateTitleAndAuthorThrowsException@{testAddDuplicateTitleAndAuthorThrowsException}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testAddDuplicateTitleAndAuthorThrowsException()}{testAddDuplicateTitleAndAuthorThrowsException()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a196143a54c1932dfad0cf374c9aaf2b4} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Duplicate\+Title\+And\+Author\+Throws\+Exception (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che il sistema sollevi un\textquotesingle{}eccezione se si tenta di inserire una traccia con la stessa combinazione di Titolo e Autore (case-\/insensitive) di una già esistente. 
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a45044bbad02b37dd77bf9015990633de}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddDuplicateTrackTitleThrowsException@{testAddDuplicateTrackTitleThrowsException}}
 \index{testAddDuplicateTrackTitleThrowsException@{testAddDuplicateTrackTitleThrowsException}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
 \doxysubsubsection{\texorpdfstring{testAddDuplicateTrackTitleThrowsException()}{testAddDuplicateTrackTitleThrowsException()}}
@@ -102,6 +118,16 @@ void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Duplic
 
 
 Verifica il caso limite in cui si tenti di inserire una traccia con un titolo identico (case-\/insensitive) a una già presente, accertandosi che venga sollevata l\textquotesingle{}eccezione corretta. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a0e449e0382db0cafe6b2c614956b95f9}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddSameTitleDifferentAuthorIsAllowed@{testAddSameTitleDifferentAuthorIsAllowed}}
+\index{testAddSameTitleDifferentAuthorIsAllowed@{testAddSameTitleDifferentAuthorIsAllowed}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testAddSameTitleDifferentAuthorIsAllowed()}{testAddSameTitleDifferentAuthorIsAllowed()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a0e449e0382db0cafe6b2c614956b95f9} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Same\+Title\+Different\+Author\+Is\+Allowed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica di controparte\+: due autori diversi possono avere canzoni con lo stesso titolo. 
 
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a77f878bb048f0a194a2430978088fc3d}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddTrackInvalidInput@{testAddTrackInvalidInput}}
 \index{testAddTrackInvalidInput@{testAddTrackInvalidInput}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
@@ -113,7 +139,7 @@ void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Track\
 
 Verifica le condizioni di validazione per l\textquotesingle{}aggiunta delle tracce. 
 
-\doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track} null deve sollevare Illegal\+Argument\+Exception. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aef5833c7b2e172153289c043dae69629}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddTrackToPlaylistValidationAndDuplicates@{testAddTrackToPlaylistValidationAndDuplicates}}
+Track null deve sollevare Illegal\+Argument\+Exception. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aef5833c7b2e172153289c043dae69629}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddTrackToPlaylistValidationAndDuplicates@{testAddTrackToPlaylistValidationAndDuplicates}}
 \index{testAddTrackToPlaylistValidationAndDuplicates@{testAddTrackToPlaylistValidationAndDuplicates}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
 \doxysubsubsection{\texorpdfstring{testAddTrackToPlaylistValidationAndDuplicates()}{testAddTrackToPlaylistValidationAndDuplicates()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aef5833c7b2e172153289c043dae69629} 
@@ -122,6 +148,16 @@ void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Track\
 
 
 Verifica che l\textquotesingle{}aggiunta di una traccia ad una playlist rispetti le precondizioni e che l\textquotesingle{}inserimento duplicato nella playlist restituisca false. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa19453687052efb107e26ea511d8cc4e}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testAddTrackWithDuplicateFilePathThrowsException@{testAddTrackWithDuplicateFilePathThrowsException}}
+\index{testAddTrackWithDuplicateFilePathThrowsException@{testAddTrackWithDuplicateFilePathThrowsException}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testAddTrackWithDuplicateFilePathThrowsException()}{testAddTrackWithDuplicateFilePathThrowsException()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa19453687052efb107e26ea511d8cc4e} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Add\+Track\+With\+Duplicate\+File\+Path\+Throws\+Exception (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che il sistema sollevi un\textquotesingle{}eccezione se si tenta di inserire una traccia con un file\+Path identico a una già presente nel catalogo, in modo da evitare che lo stesso file MP3 venga associato a più brani. 
 
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_ac90bff6cc57f8f63683f9b7c62495d8b}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testCascadeRemovalFromPlaylists@{testCascadeRemovalFromPlaylists}}
 \index{testCascadeRemovalFromPlaylists@{testCascadeRemovalFromPlaylists}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
@@ -243,7 +279,37 @@ void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Rename\+Pla
 
 Verifica che la rinomina fallisca se la playlist non appartiene al catalogo e che new\+Name nullo o vuoto generi Illegal\+Argument\+Exception. 
 
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testUpdateTrackInvalidInput@{testUpdateTrackInvalidInput}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a6c1ce6d3de56cfc35f41ac2377e57ce8}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testRestoreStateAndNotifyObservers@{testRestoreStateAndNotifyObservers}}
+\index{testRestoreStateAndNotifyObservers@{testRestoreStateAndNotifyObservers}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testRestoreStateAndNotifyObservers()}{testRestoreStateAndNotifyObservers()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a6c1ce6d3de56cfc35f41ac2377e57ce8} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Restore\+State\+And\+Notify\+Observers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica che il metodo {\ttfamily restore\+State} ripristini correttamente lo stato del catalogo e notifichi gli observer del cambiamento avvenuto. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a32235feb24da901cd11a86519812dc65}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testUpdateTrackDuplicateFilePathThrowsException@{testUpdateTrackDuplicateFilePathThrowsException}}
+\index{testUpdateTrackDuplicateFilePathThrowsException@{testUpdateTrackDuplicateFilePathThrowsException}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testUpdateTrackDuplicateFilePathThrowsException()}{testUpdateTrackDuplicateFilePathThrowsException()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a32235feb24da901cd11a86519812dc65} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Update\+Track\+Duplicate\+File\+Path\+Throws\+Exception (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il vincolo di univocità del file in fase di aggiornamento. 
+
+Assicura che non sia possibile riassegnare un MP3 già in uso ad un\textquotesingle{}altra traccia. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_abecc9c5372783b2622536fe8e7543d5e}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testUpdateTrackDuplicateTitleAndAuthorThrowsException@{testUpdateTrackDuplicateTitleAndAuthorThrowsException}}
+\index{testUpdateTrackDuplicateTitleAndAuthorThrowsException@{testUpdateTrackDuplicateTitleAndAuthorThrowsException}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testUpdateTrackDuplicateTitleAndAuthorThrowsException()}{testUpdateTrackDuplicateTitleAndAuthorThrowsException()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_abecc9c5372783b2622536fe8e7543d5e} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Update\+Track\+Duplicate\+Title\+And\+Author\+Throws\+Exception (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica i controlli di integrità del catalogo in fase di aggiornamento. 
+
+Assicura che la modifica di una traccia in modo che collida con i metadati di un\textquotesingle{}altra venga respinta. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testUpdateTrackInvalidInput@{testUpdateTrackInvalidInput}}
 \index{testUpdateTrackInvalidInput@{testUpdateTrackInvalidInput}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
 \doxysubsubsection{\texorpdfstring{testUpdateTrackInvalidInput()}{testUpdateTrackInvalidInput()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_a284196884cb123876f040144d6655d1b} 
@@ -253,10 +319,18 @@ void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Update\+Tra
 
 Verifica le condizioni di errore di update\+Track per input null o traccia assente. 
 
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa6f9d2baf69e69822c47ba94c46b18d3}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!testUpdateTrackLegitimateUpdateDoesNotThrow@{testUpdateTrackLegitimateUpdateDoesNotThrow}}
+\index{testUpdateTrackLegitimateUpdateDoesNotThrow@{testUpdateTrackLegitimateUpdateDoesNotThrow}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}
+\doxysubsubsection{\texorpdfstring{testUpdateTrackLegitimateUpdateDoesNotThrow()}{testUpdateTrackLegitimateUpdateDoesNotThrow()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_aa6f9d2baf69e69822c47ba94c46b18d3} 
+void com.\+example.\+gruppo04.\+model.\+Music\+Catalog\+Test.\+test\+Update\+Track\+Legitimate\+Update\+Does\+Not\+Throw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
-\label{doc-variable-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_doc-variable-members}
+
+Verifica il corretto aggiornamento di un campo legittimo. 
+
+Assicura che una modifica non conflittuale (es. l\textquotesingle{}anno) passi i controlli senza identificare la traccia come un duplicato di sé stessa. 
+
 \doxysubsection{Documentazione dei membri dato}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test_adb50f17d9196a5ca0d088a1d6c4d9156}\index{com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}!catalog@{catalog}}
 \index{catalog@{catalog}!com.example.gruppo04.model.MusicCatalogTest@{com.example.gruppo04.model.MusicCatalogTest}}

@@ -8,13 +8,7 @@ Controller deputato alla gestione del ciclo di vita delle tracce musicali.
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+controller.\+Track\+Controller\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=238pt]{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller__coll__graph}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,17 +16,21 @@ Diagramma di collaborazione per com.\+example.\+gruppo04.\+controller.\+Track\+C
 \begin{DoxyCompactList}\small\item\em Costruttore del controller che inizializza la dipendenza del catalogo. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a969e1324973a2b3659dde798528b6901}{add\+Track}} (String title, String author, String genre, int year, int duration, String file\+Path)
 \begin{DoxyCompactList}\small\item\em Coordina la creazione e l\textquotesingle{}aggiunta di una nuova traccia musicale nel sistema. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a9f60aebd89040aa55a56dae67b250e5b}{update\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track\+To\+Update, String new\+Title, String new\+Author, String new\+Genre, int new\+Year, int new\+Duration)
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_afbe99bf50c546aac31d5203c57ccce05}{update\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track\+To\+Update, String new\+Title, String new\+Author, String new\+Genre, int new\+Year, int new\+Duration, String new\+File\+Path)
 \begin{DoxyCompactList}\small\item\em Esegue l\textquotesingle{}aggiornamento dei dati relativi a una traccia esistente e precedentemente selezionata. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a0d9e68d35d892131db5e06c6f3e73512}{remove\+Track}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} track\+To\+Remove)
 \begin{DoxyCompactList}\small\item\em Rimuove definitivamente una determinata traccia musicale dal sistema. \end{DoxyCompactList}\item 
 Collection$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a4b2ad7a142213f5fe31d7566a316e4be}{get\+All\+Tracks}} ()
-\begin{DoxyCompactList}\small\item\em Restituisce tutte le tracce presenti nel catalogo musicale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Restituisce tutte le tracce presenti nel catalogo musicale. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_aa7fd1111473e8faaba767323978a2af1}{get\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il command manager dedicato alla gestione delle tracce. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Attributi privati}
 \begin{DoxyCompactItemize}
 \item 
 final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a20598895ca11e9c8c29b8d077fe1cc7e}{catalog}}
-\begin{DoxyCompactList}\small\item\em Riferimento al catalogo musicale centrale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Riferimento al catalogo musicale centrale. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a3bb5b85989f7b0c87745dd5cef2f6ece}{manager\+Track}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
@@ -40,8 +38,6 @@ Controller deputato alla gestione del ciclo di vita delle tracce musicali.
 
 Questa classe funge da intermediario logico tra l\textquotesingle{}interfaccia grafica (View) e il dominio dei dati (Model). Il suo scopo è intercettare gli input grezzi inviati dai componenti della View, delegare la validazione dei vincoli di consistenza strutturale direttamente alle classi del modello e orchestrare le conseguenti operazioni di inserimento, modifica ed eliminazione sul modulo del catalogo centrale. 
 
-\label{doc-constructors}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_doc-constructors}
 \doxysubsection{Documentazione dei costruttori e dei distruttori}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_aeccf4b7c2042deed509a91cce9953773}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!TrackController@{TrackController}}
 \index{TrackController@{TrackController}!com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}}
@@ -67,8 +63,6 @@ Riceve un\textquotesingle{}istanza del catalogo musicale tramite Dependency Inje
 \end{DoxyExceptions}
 
 
-\label{doc-func-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_doc-func-members}
 \doxysubsection{Documentazione delle funzioni membro}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a969e1324973a2b3659dde798528b6901}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!addTrack@{addTrack}}
 \index{addTrack@{addTrack}!com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}}
@@ -80,7 +74,7 @@ void com.\+example.\+gruppo04.\+controller.\+Track\+Controller.\+add\+Track (\be
 
 Coordina la creazione e l\textquotesingle{}aggiunta di una nuova traccia musicale nel sistema. 
 
-Tenta di istanziare un oggetto concreto della classe \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl}{Track\+Impl} fornendo i dati grezzi inseriti dall\textquotesingle{}utente nei campi di testo dell\textquotesingle{}interfaccia. Se i valori violano le regole di dominio (es. stringhe vuote, anni fuori range o durate negative), l\textquotesingle{}eccezione lanciata dal costruttore di \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl}{Track\+Impl} si propaga verso l\textquotesingle{}alto, consentendo alla View di intercettarla. Se la traccia è valida, viene formalmente sottomessa al catalogo centrale.
+Tenta di istanziare un oggetto concreto della classe Track\+Impl fornendo i dati grezzi inseriti dall\textquotesingle{}utente nei campi di testo dell\textquotesingle{}interfaccia. Se i valori violano le regole di dominio (es. stringhe vuote, anni fuori range o durate negative), l\textquotesingle{}eccezione lanciata dal costruttore di Track\+Impl si propaga verso l\textquotesingle{}alto, consentendo alla View di intercettarla. Se la traccia è valida, viene formalmente sottomessa al catalogo centrale.
 
 
 \begin{DoxyParams}{Parametri}
@@ -117,6 +111,19 @@ Delega la richiesta direttamente al catalogo centrale, restituendo una vista in 
 \begin{DoxyReturn}{Restituisce}
 Una collezione non modificabile di tutte le tracce del catalogo. 
 \end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_aa7fd1111473e8faaba767323978a2af1}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!getManager@{getManager}}
+\index{getManager@{getManager}!com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}}
+\doxysubsubsection{\texorpdfstring{getManager()}{getManager()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_aa7fd1111473e8faaba767323978a2af1} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} com.\+example.\+gruppo04.\+controller.\+Track\+Controller.\+get\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il command manager dedicato alla gestione delle tracce. 
+
+\begin{DoxyReturn}{Restituisce}
+L\textquotesingle{}istanza di {\ttfamily \doxylink{}{Command\+Manager}} per le operazioni sulle tracce. 
+\end{DoxyReturn}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a0d9e68d35d892131db5e06c6f3e73512}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!removeTrack@{removeTrack}}
 \index{removeTrack@{removeTrack}!com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}}
 \doxysubsubsection{\texorpdfstring{removeTrack()}{removeTrack()}}
@@ -127,28 +134,28 @@ void com.\+example.\+gruppo04.\+controller.\+Track\+Controller.\+remove\+Track (
 
 Rimuove definitivamente una determinata traccia musicale dal sistema. 
 
-Riceve il riferimento all\textquotesingle{}oggetto \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track} che si intende eliminare, ne estrae l\textquotesingle{}identificativo univoco immutabile (UUID) e delega l\textquotesingle{}operazione di rimozione fisica dal catalogo e la conseguente cancellazione a cascata dalle playlist direttamente al \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}.
+Riceve il riferimento all\textquotesingle{}oggetto Track che si intende eliminare, ne estrae l\textquotesingle{}identificativo univoco immutabile (UUID) e delega l\textquotesingle{}operazione di rimozione fisica dal catalogo e la conseguente cancellazione a cascata dalle playlist direttamente al Music\+Catalog.
 
 
 \begin{DoxyParams}{Parametri}
 {\em track\+To\+Remove} & L\textquotesingle{}istanza della traccia musicale selezionata per l\textquotesingle{}eliminazione. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a9f60aebd89040aa55a56dae67b250e5b}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!updateTrack@{updateTrack}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_afbe99bf50c546aac31d5203c57ccce05}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!updateTrack@{updateTrack}}
 \index{updateTrack@{updateTrack}!com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}}
 \doxysubsubsection{\texorpdfstring{updateTrack()}{updateTrack()}}
-{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a9f60aebd89040aa55a56dae67b250e5b} 
-void com.\+example.\+gruppo04.\+controller.\+Track\+Controller.\+update\+Track (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track\+To\+Update}{, }\item[{String}]{new\+Title}{, }\item[{String}]{new\+Author}{, }\item[{String}]{new\+Genre}{, }\item[{int}]{new\+Year}{, }\item[{int}]{new\+Duration}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_afbe99bf50c546aac31d5203c57ccce05} 
+void com.\+example.\+gruppo04.\+controller.\+Track\+Controller.\+update\+Track (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track\+To\+Update}{, }\item[{String}]{new\+Title}{, }\item[{String}]{new\+Author}{, }\item[{String}]{new\+Genre}{, }\item[{int}]{new\+Year}{, }\item[{int}]{new\+Duration}{, }\item[{String}]{new\+File\+Path}{}\end{DoxyParamCaption})}
 
 
 
 Esegue l\textquotesingle{}aggiornamento dei dati relativi a una traccia esistente e precedentemente selezionata. 
 
-Il metodo opera direttamente sul riferimento dell\textquotesingle{}oggetto \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track} estratto dall\textquotesingle{}interfaccia a seguito dell\textquotesingle{}interazione dell\textquotesingle{}utente (clic sulla lista). Invoca in sequenza i metodi setter definiti dal contratto dell\textquotesingle{}interfaccia \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}; ciascuno di questi metodi applicherà immediatamente le proprie logiche di validazione. Successivamente, notifica esplicitamente al catalogo l\textquotesingle{}avvenuto mutamento dello stato dell\textquotesingle{}oggetto, consentendo l\textquotesingle{}attivazione dei meccanismi di notifica per gli osservatori (Observer) legati alla UI.
+Il metodo opera direttamente sul riferimento dell\textquotesingle{}oggetto Track estratto dall\textquotesingle{}interfaccia a seguito dell\textquotesingle{}interazione dell\textquotesingle{}utente (clic sulla lista). Invoca in sequenza i metodi setter definiti dal contratto dell\textquotesingle{}interfaccia Track; ciascuno di questi metodi applicherà immediatamente le proprie logiche di validazione. Successivamente, notifica esplicitamente al catalogo l\textquotesingle{}avvenuto mutamento dello stato dell\textquotesingle{}oggetto, consentendo l\textquotesingle{}attivazione dei meccanismi di notifica per gli osservatori (Observer) legati alla UI.
 
 
 \begin{DoxyParams}{Parametri}
-{\em track\+To\+Update} & L\textquotesingle{}istanza dell\textquotesingle{}oggetto \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track} selezionato dall\textquotesingle{}utente per la modifica. \\
+{\em track\+To\+Update} & L\textquotesingle{}istanza dell\textquotesingle{}oggetto Track selezionato dall\textquotesingle{}utente per la modifica. \\
 \hline
 {\em new\+Title} & Il nuovo valore testuale da assegnare al titolo della traccia. \\
 \hline
@@ -160,6 +167,8 @@ Il metodo opera direttamente sul riferimento dell\textquotesingle{}oggetto \doxy
 \hline
 {\em new\+Duration} & La nuova durata in secondi da assegnare alla traccia. \\
 \hline
+{\em new\+File\+Path} & Il nuovo filepath \\
+\hline
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Eccezioni}
@@ -168,8 +177,6 @@ Il metodo opera direttamente sul riferimento dell\textquotesingle{}oggetto \doxy
 \end{DoxyExceptions}
 
 
-\label{doc-variable-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_doc-variable-members}
 \doxysubsection{Documentazione dei membri dato}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a20598895ca11e9c8c29b8d077fe1cc7e}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!catalog@{catalog}}
 \index{catalog@{catalog}!com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}}
@@ -181,7 +188,13 @@ final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_mus
 
 Riferimento al catalogo musicale centrale. 
 
-Viene espresso mediante l\textquotesingle{}interfaccia astratta \doxylink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog} al fine di garantire un basso accoppiamento e favorire l\textquotesingle{}intercambiabilità delle implementazioni concrete in fase di testing o refactoring. 
+Viene espresso mediante l\textquotesingle{}interfaccia astratta Music\+Catalog al fine di garantire un basso accoppiamento e favorire l\textquotesingle{}intercambiabilità delle implementazioni concrete in fase di testing o refactoring. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a3bb5b85989f7b0c87745dd5cef2f6ece}\index{com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}!managerTrack@{managerTrack}}
+\index{managerTrack@{managerTrack}!com.example.gruppo04.controller.TrackController@{com.example.gruppo04.controller.TrackController}}
+\doxysubsubsection{\texorpdfstring{managerTrack}{managerTrack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller_a3bb5b85989f7b0c87745dd5cef2f6ece} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} com.\+example.\+gruppo04.\+controller.\+Track\+Controller.\+manager\+Track\hspace{0.3cm}{\ttfamily [private]}}
+
+
 
 La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
 \item 

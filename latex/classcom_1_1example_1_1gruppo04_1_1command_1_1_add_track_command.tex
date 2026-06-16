@@ -1,0 +1,110 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command}{}\label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command}\index{com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}}
+
+
+Comando per l\textquotesingle{}aggiunta di una traccia al catalogo.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_a3825d67062b3a7da5bbb3f86a93e73c7}{Add\+Track\+Command}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_aca43c9bd794b330db69122666111c504}{track}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_af74a90cec838dc0b05cec046e47fd3be}{catalog}})
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_a02647a64eca224f7dc3fb66312b9c062}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Aggiunge la traccia al catalogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_af0a739af84de0a5bde94340ef5f7ed85}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Annulla l\textquotesingle{}aggiunta rimuovendo la traccia dal catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{com.\+example.\+gruppo04.\+command.\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+default boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a3a5e91428749cb7e47964517d06774d9}{was\+Executed}} ()
+\begin{DoxyCompactList}\small\item\em Indica se l\textquotesingle{}ultima {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{execute()}} ha effettivamente prodotto una modifica al Model. \end{DoxyCompactList}\item 
+default void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a8b1d1fdea0b0005112d14083a0c5ac36}{notify\+Catalog\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Hook invocato dal {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} dopo un execute/undo efficace, utile per i comandi che modificano il modello senza passare direttamente da un metodo notificante del catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_aca43c9bd794b330db69122666111c504}{track}}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_af74a90cec838dc0b05cec046e47fd3be}{catalog}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Comando per l\textquotesingle{}aggiunta di una traccia al catalogo. 
+
+Supporta l\textquotesingle{}annullamento tramite rimozione della traccia aggiunta. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_a3825d67062b3a7da5bbb3f86a93e73c7}\index{com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}!AddTrackCommand@{AddTrackCommand}}
+\index{AddTrackCommand@{AddTrackCommand}!com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}}
+\doxysubsubsection{\texorpdfstring{AddTrackCommand()}{AddTrackCommand()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_a3825d67062b3a7da5bbb3f86a93e73c7} 
+com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command.\+Add\+Track\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{track}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em track} & la traccia da aggiungere al catalogo \\
+\hline
+{\em catalog} & il catalogo su cui operare \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_a02647a64eca224f7dc3fb66312b9c062}\index{com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}!execute@{execute}}
+\index{execute@{execute}!com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_a02647a64eca224f7dc3fb66312b9c062} 
+void com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command.\+execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge la traccia al catalogo. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_af0a739af84de0a5bde94340ef5f7ed85}\index{com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}!undo@{undo}}
+\index{undo@{undo}!com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_af0a739af84de0a5bde94340ef5f7ed85} 
+void com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command.\+undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Annulla l\textquotesingle{}aggiunta rimuovendo la traccia dal catalogo. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_ade8a11435dd621a02d5b365752c4f9dc}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_af74a90cec838dc0b05cec046e47fd3be}\index{com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_af74a90cec838dc0b05cec046e47fd3be} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_aca43c9bd794b330db69122666111c504}\index{com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}!track@{track}}
+\index{track@{track}!com.example.gruppo04.command.AddTrackCommand@{com.example.gruppo04.command.AddTrackCommand}}
+\doxysubsubsection{\texorpdfstring{track}{track}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_add_track_command_aca43c9bd794b330db69122666111c504} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+command.\+Add\+Track\+Command.\+track\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/command/\mbox{\hyperlink{_add_track_command_8java}{Add\+Track\+Command.\+java}}\end{DoxyCompactItemize}

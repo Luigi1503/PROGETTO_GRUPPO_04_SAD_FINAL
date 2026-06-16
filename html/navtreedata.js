@@ -34,8 +34,8 @@ var NAVTREE =
       [ "Gerarchia delle classi", "hierarchy.html", "hierarchy" ],
       [ "Membri dei composti", "functions.html", [
         [ "Tutto", "functions.html", "functions_dup" ],
-        [ "Funzioni", "functions_func.html", null ],
-        [ "Variabili", "functions_vars.html", null ]
+        [ "Funzioni", "functions_func.html", "functions_func" ],
+        [ "Variabili", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "File", "files.html", [
@@ -46,11 +46,14 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_catalog_event_8java.html",
-"classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html",
-"enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type.html#ac8ce8f164864e44533d7b73efad49c99"
+"_add_auto_generator_command_8java.html",
+"classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller.html#a05d2b2cfe7406902766c7cb247995398",
+"classcom_1_1example_1_1gruppo04_1_1model_1_1_track_impl.html#a025b78543e08efbf1581a80def806f82",
+"classcom_1_1example_1_1gruppo04_1_1model_1_1strategy_1_1_sequential_strategy.html",
+"classcom_1_1example_1_1gruppo04_1_1view_1_1_playback_bar_view_controller.html#a0eed4b06b9e94bfd4ecbf41d7cfb6b2d",
+"classcom_1_1example_1_1gruppo04_1_1view_1_1_track_form_view_controller.html#a741d68e309abb5c90360e73c53571646",
+"hierarchy.html"
 ];
 
 var SYNCONMSG = 'cliccare per disabilitare la sincronizzazione del pannello';
 var SYNCOFFMSG = 'cliccare per abilitare la sincronizzazione del pannello';
-var LISTOFALLMEMBERS = 'Elenco di tutti i membri';

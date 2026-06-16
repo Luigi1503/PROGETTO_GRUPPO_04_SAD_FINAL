@@ -1,0 +1,257 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+Audio\+Engine}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+
+
+Motore di riproduzione audio basato su JLayer (Advanced\+Player).  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+Audio\+Engine\+:
+% FIG 0
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a7a24abf0b9bb0d22122567ed0d9cf4d5}{play\+Track}} (String file\+Path, Runnable on\+Finished)
+\begin{DoxyCompactList}\small\item\em Avvia la riproduzione di un nuovo file audio, interrompendo quella in corso. \end{DoxyCompactList}\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab048a2f17f29f4479aae2ba1aeba923b}{pause}} ()
+\begin{DoxyCompactList}\small\item\em Metti in pausa la riproduzione corrente. \end{DoxyCompactList}\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab867e5032ad0f32bd43644f666e77f57}{resume}} ()
+\begin{DoxyCompactList}\small\item\em Riprende la riproduzione dalla posizione in cui era stata messa in pausa. \end{DoxyCompactList}\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a880d122ce3392998a8fa9c1d38510ca9}{seek}} (double target\+Seconds, double total\+Duration\+Seconds)
+\begin{DoxyCompactList}\small\item\em Riposiziona la riproduzione corrente al tempo indicato. \end{DoxyCompactList}\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a692c9bccb7ba6fde05fe1d9179208d5f}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Interrompe completamente la riproduzione corrente. \end{DoxyCompactList}\item 
+synchronized double \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ad3fa33df8a7e1e0fba628bb99644279e}{get\+Current\+Time\+In\+Seconds}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+synchronized void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a1bc55d15a7d6b65d912dfcc490fe630e}{start\+Playback}} ()
+\begin{DoxyCompactList}\small\item\em Avvia un nuovo thread di riproduzione a partire dalla posizione corrente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a5bd1e9bf25ac17e1929bbe22212cbadb}{close\+Quietly}} (File\+Input\+Stream stream)
+\begin{DoxyCompactList}\small\item\em Chiude uno stream di file ignorando eventuali eccezioni. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+Advanced\+Player \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a14b53bc60a253fd9d9fc5ee64fb5db5c}{player}}
+\item 
+Thread \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a895b5ef2fd579ae59fbbf897eff05c20}{playback\+Thread}}
+\item 
+File\+Input\+Stream \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a8cc21e1996cda50866ebf1fee13b98db}{fis}}
+\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a961572bf339dec1a53e62729c3b7e8dd}{current\+File\+Path}}
+\item 
+long \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a9545e915a563b344b498c7d6028355c2}{last\+Byte\+Position}} = 0
+\item 
+long \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a81b6a5b74167ddfca47adee6edf003f1}{total\+File\+Size}} = 0
+\item 
+volatile boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a923c05b39b5bef026cf971f43a1f8cdd}{is\+Playing}} = false
+\item 
+volatile boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a681f42e126fe3da47270cff0eab8056e}{is\+Paused}} = false
+\item 
+long \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab7bd9dbccb7f592f5cf30544b2e812ba}{start\+Time\+Millis}} = 0
+\item 
+long \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a40e1f396bd30ff02f3f3de266d291fa2}{time\+Accrued\+Before\+Pause}} = 0
+\item 
+Runnable \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a8b84918f3b8ca8f884cd90edfaf42764}{current\+On\+Finished}}
+\item 
+int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ad7c3d0c89b0476b75d4189f47eb19933}{playback\+Generation}} = 0
+\begin{DoxyCompactList}\small\item\em Identifica la riproduzione attualmente valida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Motore di riproduzione audio basato su JLayer (Advanced\+Player). 
+
+Gestisce la riproduzione fisica dei file MP3 in un thread dedicato, supportando play, pause, resume, seek e stop. Utilizza un contatore di generazione (playback\+Generation) per invalidare in modo sicuro thread e callback di riproduzioni superate, evitando riproduzioni "{}fantasma"{} o sovrapposte dovute alla natura asincrona di {\ttfamily player.\+play()}. 
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a5bd1e9bf25ac17e1929bbe22212cbadb}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!closeQuietly@{closeQuietly}}
+\index{closeQuietly@{closeQuietly}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{closeQuietly()}{closeQuietly()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a5bd1e9bf25ac17e1929bbe22212cbadb} 
+static void com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+close\+Quietly (\begin{DoxyParamCaption}\item[{File\+Input\+Stream}]{stream}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Chiude uno stream di file ignorando eventuali eccezioni. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em stream} & Lo stream da chiudere, può essere null. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ad3fa33df8a7e1e0fba628bb99644279e}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!getCurrentTimeInSeconds@{getCurrentTimeInSeconds}}
+\index{getCurrentTimeInSeconds@{getCurrentTimeInSeconds}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{getCurrentTimeInSeconds()}{getCurrentTimeInSeconds()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ad3fa33df8a7e1e0fba628bb99644279e} 
+synchronized double com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+get\+Current\+Time\+In\+Seconds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+Il tempo corrente della riproduzione in secondi reali, tenendo conto delle pause. 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab048a2f17f29f4479aae2ba1aeba923b}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!pause@{pause}}
+\index{pause@{pause}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab048a2f17f29f4479aae2ba1aeba923b} 
+synchronized void com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Metti in pausa la riproduzione corrente. 
+
+Invalida la generazione di riproduzione corrente (così il callback della riproduzione in corso non avanzerà al brano successivo), salva il tempo accumulato e la posizione in byte raggiunta, quindi chiude il player. Non ha effetto se non si sta riproducendo nulla o se la riproduzione è già in pausa. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a7a24abf0b9bb0d22122567ed0d9cf4d5}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!playTrack@{playTrack}}
+\index{playTrack@{playTrack}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{playTrack()}{playTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a7a24abf0b9bb0d22122567ed0d9cf4d5} 
+synchronized void com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+play\+Track (\begin{DoxyParamCaption}\item[{String}]{file\+Path}{, }\item[{Runnable}]{on\+Finished}{}\end{DoxyParamCaption})}
+
+
+
+Avvia la riproduzione di un nuovo file audio, interrompendo quella in corso. 
+
+Ferma eventuale riproduzione attiva, reimposta i parametri di posizione e dimensione del file, e avvia la nuova riproduzione dall\textquotesingle{}inizio.
+
+
+\begin{DoxyParams}{Parametri}
+{\em file\+Path} & Il percorso del file MP3 da riprodurre. \\
+\hline
+{\em on\+Finished} & Callback invocata al termine naturale della riproduzione. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab867e5032ad0f32bd43644f666e77f57}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!resume@{resume}}
+\index{resume@{resume}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab867e5032ad0f32bd43644f666e77f57} 
+synchronized void com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+resume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Riprende la riproduzione dalla posizione in cui era stata messa in pausa. 
+
+Non ha effetto se la riproduzione non è attualmente in pausa. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a880d122ce3392998a8fa9c1d38510ca9}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!seek@{seek}}
+\index{seek@{seek}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a880d122ce3392998a8fa9c1d38510ca9} 
+synchronized void com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+seek (\begin{DoxyParamCaption}\item[{double}]{target\+Seconds}{, }\item[{double}]{total\+Duration\+Seconds}{}\end{DoxyParamCaption})}
+
+
+
+Riposiziona la riproduzione corrente al tempo indicato. 
+
+La posizione in byte viene stimata in modo proporzionale rispetto alla durata totale della traccia (approccio coerente con il riposizionamento per byte già usato in pausa/resume). Su MP3 a bitrate costante la stima è praticamente esatta; su VBR è approssimata. Se la traccia è in pausa la nuova posizione viene applicata e usata al successivo {\ttfamily resume()}; se è in riproduzione, riparte immediatamente dal nuovo punto.
+
+
+\begin{DoxyParams}{Parametri}
+{\em target\+Seconds} & posizione desiderata in secondi dall\textquotesingle{}inizio \\
+\hline
+{\em total\+Duration\+Seconds} & durata totale della traccia in secondi \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a1bc55d15a7d6b65d912dfcc490fe630e}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!startPlayback@{startPlayback}}
+\index{startPlayback@{startPlayback}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{startPlayback()}{startPlayback()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a1bc55d15a7d6b65d912dfcc490fe630e} 
+synchronized void com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+start\+Playback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Avvia un nuovo thread di riproduzione a partire dalla posizione corrente. 
+
+Incrementa la generazione di riproduzione (rendendo questa l\textquotesingle{}unica riproduzione valida), apre lo stream sul file, si posiziona al byte indicato da last\+Byte\+Position (se necessario per resume/seek) e avvia l\textquotesingle{}Advanced\+Player. Il player viene pubblicato sui campi condivisi solo se la generazione è ancora valida al momento dell\textquotesingle{}apertura, per evitare di sottrarre la linea audio a una riproduzione successiva già avviata. Registra un Playback\+Listener che invoca la callback on\+Finished al termine naturale della riproduzione, ignorando eventi provenienti da generazioni superate. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a692c9bccb7ba6fde05fe1d9179208d5f}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!stop@{stop}}
+\index{stop@{stop}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a692c9bccb7ba6fde05fe1d9179208d5f} 
+synchronized void com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Interrompe completamente la riproduzione corrente. 
+
+Invalida la generazione di riproduzione corrente, azzera tempo e posizione accumulati, e chiude player e stream del file. Il vecchio thread di riproduzione, quando la sua play() termina (o scopre che la generazione è cambiata), si chiude autonomamente. 
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a961572bf339dec1a53e62729c3b7e8dd}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!currentFilePath@{currentFilePath}}
+\index{currentFilePath@{currentFilePath}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{currentFilePath}{currentFilePath}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a961572bf339dec1a53e62729c3b7e8dd} 
+String com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+current\+File\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a8b84918f3b8ca8f884cd90edfaf42764}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!currentOnFinished@{currentOnFinished}}
+\index{currentOnFinished@{currentOnFinished}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{currentOnFinished}{currentOnFinished}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a8b84918f3b8ca8f884cd90edfaf42764} 
+Runnable com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+current\+On\+Finished\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a8cc21e1996cda50866ebf1fee13b98db}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!fis@{fis}}
+\index{fis@{fis}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{fis}{fis}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a8cc21e1996cda50866ebf1fee13b98db} 
+File\+Input\+Stream com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+fis\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a681f42e126fe3da47270cff0eab8056e}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!isPaused@{isPaused}}
+\index{isPaused@{isPaused}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{isPaused}{isPaused}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a681f42e126fe3da47270cff0eab8056e} 
+volatile boolean com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+is\+Paused = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a923c05b39b5bef026cf971f43a1f8cdd}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{isPlaying}{isPlaying}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a923c05b39b5bef026cf971f43a1f8cdd} 
+volatile boolean com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+is\+Playing = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a9545e915a563b344b498c7d6028355c2}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!lastBytePosition@{lastBytePosition}}
+\index{lastBytePosition@{lastBytePosition}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{lastBytePosition}{lastBytePosition}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a9545e915a563b344b498c7d6028355c2} 
+long com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+last\+Byte\+Position = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ad7c3d0c89b0476b75d4189f47eb19933}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!playbackGeneration@{playbackGeneration}}
+\index{playbackGeneration@{playbackGeneration}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{playbackGeneration}{playbackGeneration}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ad7c3d0c89b0476b75d4189f47eb19933} 
+int com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+playback\+Generation = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identifica la riproduzione attualmente valida. 
+
+Ogni nuova riproduzione (o stop/pause) incrementa il contatore\+: i thread di riproduzione e i loro callback confrontano la generazione con cui sono stati avviati con questo valore e, se non corrispondono, si auto-\/annullano. Questo evita che uno skip rapido lasci attiva una riproduzione "{}fantasma"{} o muta a causa della natura asincrona di {\ttfamily player.\+play()}. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a895b5ef2fd579ae59fbbf897eff05c20}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!playbackThread@{playbackThread}}
+\index{playbackThread@{playbackThread}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{playbackThread}{playbackThread}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a895b5ef2fd579ae59fbbf897eff05c20} 
+Thread com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+playback\+Thread\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a14b53bc60a253fd9d9fc5ee64fb5db5c}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!player@{player}}
+\index{player@{player}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a14b53bc60a253fd9d9fc5ee64fb5db5c} 
+Advanced\+Player com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab7bd9dbccb7f592f5cf30544b2e812ba}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!startTimeMillis@{startTimeMillis}}
+\index{startTimeMillis@{startTimeMillis}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{startTimeMillis}{startTimeMillis}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_ab7bd9dbccb7f592f5cf30544b2e812ba} 
+long com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+start\+Time\+Millis = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a40e1f396bd30ff02f3f3de266d291fa2}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!timeAccruedBeforePause@{timeAccruedBeforePause}}
+\index{timeAccruedBeforePause@{timeAccruedBeforePause}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{timeAccruedBeforePause}{timeAccruedBeforePause}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a40e1f396bd30ff02f3f3de266d291fa2} 
+long com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+time\+Accrued\+Before\+Pause = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a81b6a5b74167ddfca47adee6edf003f1}\index{com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}!totalFileSize@{totalFileSize}}
+\index{totalFileSize@{totalFileSize}!com.example.gruppo04.model.AudioEngine@{com.example.gruppo04.model.AudioEngine}}
+\doxysubsubsection{\texorpdfstring{totalFileSize}{totalFileSize}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1_audio_engine_a81b6a5b74167ddfca47adee6edf003f1} 
+long com.\+example.\+gruppo04.\+model.\+Audio\+Engine.\+total\+File\+Size = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/\mbox{\hyperlink{_audio_engine_8java}{Audio\+Engine.\+java}}\end{DoxyCompactItemize}

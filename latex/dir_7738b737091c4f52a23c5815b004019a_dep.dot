@@ -1,0 +1,23 @@
+digraph "src/main/java/com/example/gruppo04"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_ada4f439cdb25ec987d0b7526884b52b {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="example", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_ada4f439cdb25ec987d0b7526884b52b.html",tooltip=""]
+  subgraph clusterdir_7738b737091c4f52a23c5815b004019a {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_7738b737091c4f52a23c5815b004019a.html",tooltip=""]
+    dir_7738b737091c4f52a23c5815b004019a [shape=plaintext, label="gruppo04"];
+  dir_f4e468c89e237069ccd2648e363c7c1c [label="command", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_f4e468c89e237069ccd2648e363c7c1c.html",tooltip=""];
+  dir_13ec926b4732726c3745a0e718241744 [label="controller", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_13ec926b4732726c3745a0e718241744.html",tooltip=""];
+  dir_30ab8c6328d2fc139748ce5ab9e7be4b [label="interfaces", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_30ab8c6328d2fc139748ce5ab9e7be4b.html",tooltip=""];
+  dir_7d64e996bfeb5ae5d3c92cdac0a3d73c [label="model", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_7d64e996bfeb5ae5d3c92cdac0a3d73c.html",tooltip=""];
+  dir_2e7bf45ae90b30298d409610ff21d2b8 [label="observer", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_2e7bf45ae90b30298d409610ff21d2b8.html",tooltip=""];
+  dir_afd96c210c22327db71b3c9633ecfd6b [label="persistence", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_afd96c210c22327db71b3c9633ecfd6b.html",tooltip=""];
+  dir_c11202605904439a260efe5dc9053348 [label="util", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_c11202605904439a260efe5dc9053348.html",tooltip=""];
+  dir_1888749c7a6786418d2ed000278f7104 [label="view", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_1888749c7a6786418d2ed000278f7104.html",tooltip=""];
+  }
+  }
+}

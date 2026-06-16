@@ -1,0 +1,132 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload}{}\label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+
+
+Payload trasportato dall\textquotesingle{}evento {\ttfamily \doxylink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac6cd79a1c46d3e971ca03e442020b0ef}{Catalog\+Event\+Type\#\+PLAYBACK\+\_\+\+STARTED}}.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload\+:
+% FIG 0
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_adbf885e1a2a78cd8e1896a8a8098fc92}{Playback\+Started\+Payload}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a20f97a44ba1f1944ed02d8662c98eb00}{current\+Track}}, boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a5ccdfc6cfcdafdf9a9bb81d9431eb5d3}{is\+Playlist}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_aac6a3fe9ef9fd97570ee28442314dab8}{current\+Source}})
+\begin{DoxyCompactList}\small\item\em Costruisce un payload per l\textquotesingle{}evento PLAYBACK\+\_\+\+STARTED. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_af8c414cddfb4df549a25e3963ad1bfe4}{get\+Current\+Track}} ()
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_aae3345ce5f55d41e0f41982d2cc85d27}{is\+Playlist}} ()
+\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_acc6a50ee9cd6c837c346fc45f138b2fe}{get\+Current\+Source}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a20f97a44ba1f1944ed02d8662c98eb00}{current\+Track}}
+\begin{DoxyCompactList}\small\item\em La traccia corrente all\textquotesingle{}avvio della riproduzione. \end{DoxyCompactList}\item 
+final boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a5ccdfc6cfcdafdf9a9bb81d9431eb5d3}{is\+Playlist}}
+\begin{DoxyCompactList}\small\item\em {\ttfamily true} se la sorgente è una playlist (il bottone Skip Playlist deve essere visibile), {\ttfamily false} se è una traccia singola del catalogo. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_aac6a3fe9ef9fd97570ee28442314dab8}{current\+Source}}
+\begin{DoxyCompactList}\small\item\em Il nome della playlist in riproduzione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Payload trasportato dall\textquotesingle{}evento {\ttfamily \doxylink{enumcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event_type_ac6cd79a1c46d3e971ca03e442020b0ef}{Catalog\+Event\+Type\#\+PLAYBACK\+\_\+\+STARTED}}. 
+
+Contiene le informazioni minime che la barra di riproduzione ({\ttfamily Playback\+Bar\+View\+Controller}) necessita per aggiornarsi senza dover interrogare direttamente il {\ttfamily Playback\+Controller}\+: 
+
+
+\begin{DoxyItemize}
+\item la traccia con cui inizia la riproduzione 
+\item un flag che indica se la sorgente è una playlist o una traccia singola del catalogo, usato per decidere se rendere visibile il bottone "{}\+Skip Playlist"{} 
+\end{DoxyItemize}
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_adbf885e1a2a78cd8e1896a8a8098fc92}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}!PlaybackStartedPayload@{PlaybackStartedPayload}}
+\index{PlaybackStartedPayload@{PlaybackStartedPayload}!com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+\doxysubsubsection{\texorpdfstring{PlaybackStartedPayload()}{PlaybackStartedPayload()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_adbf885e1a2a78cd8e1896a8a8098fc92} 
+com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload.\+Playback\+Started\+Payload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}}}]{current\+Track}{, }\item[{boolean}]{is\+Playlist}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{current\+Source}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce un payload per l\textquotesingle{}evento PLAYBACK\+\_\+\+STARTED. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em current\+Track} & la traccia corrente all\textquotesingle{}avvio; non deve essere {\ttfamily null} \\
+\hline
+{\em is\+Playlist} & {\ttfamily true} se si sta riproducendo una playlist \\
+\hline
+{\em current\+Source} & la sorgente corrente (playlist o traccia singola) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_acc6a50ee9cd6c837c346fc45f138b2fe}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}!getCurrentSource@{getCurrentSource}}
+\index{getCurrentSource@{getCurrentSource}!com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+\doxysubsubsection{\texorpdfstring{getCurrentSource()}{getCurrentSource()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_acc6a50ee9cd6c837c346fc45f138b2fe} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload.\+get\+Current\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+la source in riproduzione 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_af8c414cddfb4df549a25e3963ad1bfe4}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}!getCurrentTrack@{getCurrentTrack}}
+\index{getCurrentTrack@{getCurrentTrack}!com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+\doxysubsubsection{\texorpdfstring{getCurrentTrack()}{getCurrentTrack()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_af8c414cddfb4df549a25e3963ad1bfe4} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload.\+get\+Current\+Track (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+la traccia corrente all\textquotesingle{}avvio della riproduzione 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_aae3345ce5f55d41e0f41982d2cc85d27}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}!isPlaylist@{isPlaylist}}
+\index{isPlaylist@{isPlaylist}!com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+\doxysubsubsection{\texorpdfstring{isPlaylist()}{isPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_aae3345ce5f55d41e0f41982d2cc85d27} 
+boolean com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload.\+is\+Playlist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se la sorgente è una playlist, {\ttfamily false} se è una traccia del catalogo 
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_aac6a3fe9ef9fd97570ee28442314dab8}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}!currentSource@{currentSource}}
+\index{currentSource@{currentSource}!com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+\doxysubsubsection{\texorpdfstring{currentSource}{currentSource}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_aac6a3fe9ef9fd97570ee28442314dab8} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload.\+current\+Source\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Il nome della playlist in riproduzione. 
+
+{\ttfamily null} se la sorgente non è una playlist. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a20f97a44ba1f1944ed02d8662c98eb00}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}!currentTrack@{currentTrack}}
+\index{currentTrack@{currentTrack}!com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+\doxysubsubsection{\texorpdfstring{currentTrack}{currentTrack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a20f97a44ba1f1944ed02d8662c98eb00} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload.\+current\+Track\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La traccia corrente all\textquotesingle{}avvio della riproduzione. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a5ccdfc6cfcdafdf9a9bb81d9431eb5d3}\index{com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}!isPlaylist@{isPlaylist}}
+\index{isPlaylist@{isPlaylist}!com.example.gruppo04.observer.PlaybackStartedPayload@{com.example.gruppo04.observer.PlaybackStartedPayload}}
+\doxysubsubsection{\texorpdfstring{isPlaylist}{isPlaylist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1observer_1_1_playback_started_payload_a5ccdfc6cfcdafdf9a9bb81d9431eb5d3} 
+final boolean com.\+example.\+gruppo04.\+observer.\+Playback\+Started\+Payload.\+is\+Playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+{\ttfamily true} se la sorgente è una playlist (il bottone Skip Playlist deve essere visibile), {\ttfamily false} se è una traccia singola del catalogo. 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/observer/\mbox{\hyperlink{_playback_started_payload_8java}{Playback\+Started\+Payload.\+java}}\end{DoxyCompactItemize}

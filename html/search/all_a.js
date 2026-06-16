@@ -1,14 +1,23 @@
 var searchData=
 [
-  ['main_0',['main',['../classcom_1_1example_1_1gruppo04_1_1_launcher.html#ac265c4063bf009c93833bf665923573a',1,'com::example::gruppo04::Launcher']]],
-  ['mainapplication_1',['MainApplication',['../classcom_1_1example_1_1gruppo04_1_1_main_application.html',1,'com::example::gruppo04']]],
-  ['mainapplication_2ejava_2',['MainApplication.java',['../_main_application_8java.html',1,'']]],
-  ['mainviewcontroller_3',['MainViewController',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html',1,'com::example::gruppo04::view']]],
+  ['mainapplication_0',['MainApplication',['../classcom_1_1example_1_1gruppo04_1_1_main_application.html',1,'com::example::gruppo04']]],
+  ['mainapplication_2ejava_1',['MainApplication.java',['../_main_application_8java.html',1,'']]],
+  ['mainviewcontroller_2',['MainViewController',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_main_view_controller.html',1,'com::example::gruppo04::view']]],
+  ['mainviewcontroller_3',['mainViewController',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_home_view_controller.html#ac12faea66eb0c3627bc2a90c022bf022',1,'com::example::gruppo04::view::HomeViewController']]],
   ['mainviewcontroller_2ejava_4',['MainViewController.java',['../_main_view_controller_8java.html',1,'']]],
-  ['menuedit_5',['menuEdit',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#afeed724fe29b3e744f680d51f0a2c7bd',1,'com::example::gruppo04::view::TrackListViewController']]],
-  ['module_2dinfo_2ejava_6',['module-info.java',['../module-info_8java.html',1,'']]],
-  ['musiccatalog_7',['MusicCatalog',['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html',1,'com::example::gruppo04::interfaces']]],
-  ['musiccatalog_2ejava_8',['MusicCatalog.java',['../_music_catalog_8java.html',1,'']]],
-  ['musiccatalogtest_9',['MusicCatalogTest',['../classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html',1,'com::example::gruppo04::model']]],
-  ['musiccatalogtest_2ejava_10',['MusicCatalogTest.java',['../_music_catalog_test_8java.html',1,'']]]
+  ['managerplaylist_5',['managerPlaylist',['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html#a3740c6b2f8a5672839900bc4e279e6d2',1,'com::example::gruppo04::controller::PlaylistController']]],
+  ['managertrack_6',['managerTrack',['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_track_controller.html#a3bb5b85989f7b0c87745dd5cef2f6ece',1,'com::example::gruppo04::controller::TrackController']]],
+  ['managertrackplaylist_7',['managerTrackPlaylist',['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html#ac6c78be6a2365d8803efc1a58a962552',1,'com::example::gruppo04::controller::PlaylistController']]],
+  ['manualsectiontitle_8',['manualSectionTitle',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller.html#ade5d9c8f2670b58f8e2d7a905c1fafcd',1,'com::example::gruppo04::view::PlaylistViewController']]],
+  ['menuedit_9',['menuEdit',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#afeed724fe29b3e744f680d51f0a2c7bd',1,'com::example::gruppo04::view::TrackListViewController']]],
+  ['menuplay_10',['menuPlay',['../classcom_1_1example_1_1gruppo04_1_1view_1_1_track_list_view_controller.html#ab0e3416e34573fbf487e07b37439ce23',1,'com::example::gruppo04::view::TrackListViewController']]],
+  ['module_2dinfo_2ejava_11',['module-info.java',['../module-info_8java.html',1,'']]],
+  ['movetrack_12',['moveTrack',['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist.html#aae533569315db7f634ed805d625a3841',1,'com.example.gruppo04.interfaces.Playlist.moveTrack()'],['../classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl.html#a01007d5a7cbae498631e0b716a83d725',1,'com.example.gruppo04.model.PlaylistImpl.moveTrack()']]],
+  ['movetrackinplaylist_13',['moveTrackInPlaylist',['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html#a9d3c4dc95e5247bbc1a0f0f58b5bbc2b',1,'com.example.gruppo04.controller.PlaylistController.moveTrackInPlaylist()'],['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html#abb219a0323fa36bed4f4ab8816898538',1,'com.example.gruppo04.interfaces.MusicCatalog.moveTrackInPlaylist()'],['../classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog.html#a55d1d0ebad46c469b82917b9d2b622b4',1,'com.example.gruppo04.observer.ConcreteMusicCatalog.moveTrackInPlaylist()']]],
+  ['movetrackinplaylistcommand_14',['MoveTrackInPlaylistCommand',['../classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command.html',1,'com.example.gruppo04.command.MoveTrackInPlaylistCommand'],['../classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command.html#a108d5260798a6ff2276fa55ac536cd0b',1,'com.example.gruppo04.command.MoveTrackInPlaylistCommand.MoveTrackInPlaylistCommand()']]],
+  ['movetrackinplaylistcommand_2ejava_15',['MoveTrackInPlaylistCommand.java',['../_move_track_in_playlist_command_8java.html',1,'']]],
+  ['musiccatalog_16',['MusicCatalog',['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html',1,'com::example::gruppo04::interfaces']]],
+  ['musiccatalog_2ejava_17',['MusicCatalog.java',['../_music_catalog_8java.html',1,'']]],
+  ['musiccatalogtest_18',['MusicCatalogTest',['../classcom_1_1example_1_1gruppo04_1_1model_1_1_music_catalog_test.html',1,'com::example::gruppo04::model']]],
+  ['musiccatalogtest_2ejava_19',['MusicCatalogTest.java',['../_music_catalog_test_8java.html',1,'']]]
 ];

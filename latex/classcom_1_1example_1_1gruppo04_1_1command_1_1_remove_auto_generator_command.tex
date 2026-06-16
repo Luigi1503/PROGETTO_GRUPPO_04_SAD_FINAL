@@ -1,0 +1,161 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command}{}\label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+
+
+Comando per la rimozione di un generatore automatico di playlist.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a6ee35fd0c245b7b329ead698f9d8fbc1}{Remove\+Auto\+Generator\+Command}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a454de8e4ac35ab50e8f0ba5c9ca99f30}{service}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_aee752fd351333ac8af7590109b035cf8}{generator}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a443ef1d2dc4fe7edc2a858f9d5022ebf}{catalog}})
+\begin{DoxyCompactList}\small\item\em Costruisce il comando per la rimozione di un generatore automatico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a19fd1a592ccbbcfd97ef158db2b92070}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Esegue il comando rimuovendo il generatore identificato dal nome del criterio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a87241f2033aa0692856c6be90443c3e7}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Annulla l\textquotesingle{}esecuzione del comando ripristinando il generatore rimosso. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_afc46d1b9c547b4d735a910e4173ea363}{was\+Executed}} ()
+\begin{DoxyCompactList}\small\item\em Indica se il comando è stato eseguito con successo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a95c653cad0c1c1d3e64c69db88530837}{notify\+Catalog\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Notifica al catalogo che il contenuto delle playlist è cambiato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{com.\+example.\+gruppo04.\+command.\+Command}}}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a454de8e4ac35ab50e8f0ba5c9ca99f30}{service}}
+\item 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_aee752fd351333ac8af7590109b035cf8}{generator}}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a443ef1d2dc4fe7edc2a858f9d5022ebf}{catalog}}
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a6ee8c528787190b3edfb2f5ca0d3aa04}{executed}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Comando per la rimozione di un generatore automatico di playlist. 
+
+Implementa il pattern \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{Command} per rimuovere un {\ttfamily \doxylink{}{Auto\+Playlist\+Generator}} precedentemente registrato presso l\textquotesingle{}{\ttfamily \doxylink{}{Automatic\+Playlist\+Service}}, permettendo l\textquotesingle{}esecuzione e l\textquotesingle{}eventuale annullamento dell\textquotesingle{}operazione in modo reversibile. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a6ee35fd0c245b7b329ead698f9d8fbc1}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!RemoveAutoGeneratorCommand@{RemoveAutoGeneratorCommand}}
+\index{RemoveAutoGeneratorCommand@{RemoveAutoGeneratorCommand}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{RemoveAutoGeneratorCommand()}{RemoveAutoGeneratorCommand()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a6ee35fd0c245b7b329ead698f9d8fbc1} 
+com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+Remove\+Auto\+Generator\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}}}]{service}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}}}]{generator}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce il comando per la rimozione di un generatore automatico. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em service} & Il servizio responsabile della gestione dei generatori automatici. \\
+\hline
+{\em generator} & Il generatore di playlist automatiche da rimuovere. \\
+\hline
+{\em catalog} & Il catalogo musicale da aggiornare e notificare. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a19fd1a592ccbbcfd97ef158db2b92070}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!execute@{execute}}
+\index{execute@{execute}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a19fd1a592ccbbcfd97ef158db2b92070} 
+void com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Esegue il comando rimuovendo il generatore identificato dal nome del criterio. 
+
+Imposta il flag executed in base all\textquotesingle{}esito della rimozione; se la rimozione ha successo, forza l\textquotesingle{}aggiornamento delle playlist generate in base al catalogo corrente. 
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a95c653cad0c1c1d3e64c69db88530837}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!notifyCatalogChanged@{notifyCatalogChanged}}
+\index{notifyCatalogChanged@{notifyCatalogChanged}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{notifyCatalogChanged()}{notifyCatalogChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a95c653cad0c1c1d3e64c69db88530837} 
+void com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+notify\+Catalog\+Changed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Notifica al catalogo che il contenuto delle playlist è cambiato. 
+
+La notifica viene inviata solo se il comando è stato eseguito con successo. 
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a8b1d1fdea0b0005112d14083a0c5ac36}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a87241f2033aa0692856c6be90443c3e7}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!undo@{undo}}
+\index{undo@{undo}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a87241f2033aa0692856c6be90443c3e7} 
+void com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Annulla l\textquotesingle{}esecuzione del comando ripristinando il generatore rimosso. 
+
+Non ha effetto se il comando non è stato eseguito con successo. In caso contrario, riaggiunge il generatore al servizio e forza l\textquotesingle{}aggiornamento delle playlist generate. 
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_ade8a11435dd621a02d5b365752c4f9dc}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_afc46d1b9c547b4d735a910e4173ea363}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!wasExecuted@{wasExecuted}}
+\index{wasExecuted@{wasExecuted}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{wasExecuted()}{wasExecuted()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_afc46d1b9c547b4d735a910e4173ea363} 
+boolean com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+was\+Executed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indica se il comando è stato eseguito con successo. 
+
+\begin{DoxyReturn}{Restituisce}
+true se la rimozione del generatore è andata a buon fine, false altrimenti. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a3a5e91428749cb7e47964517d06774d9}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a443ef1d2dc4fe7edc2a858f9d5022ebf}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a443ef1d2dc4fe7edc2a858f9d5022ebf} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a6ee8c528787190b3edfb2f5ca0d3aa04}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!executed@{executed}}
+\index{executed@{executed}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{executed}{executed}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a6ee8c528787190b3edfb2f5ca0d3aa04} 
+boolean com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+executed\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_aee752fd351333ac8af7590109b035cf8}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!generator@{generator}}
+\index{generator@{generator}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{generator}{generator}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_aee752fd351333ac8af7590109b035cf8} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{Auto\+Playlist\+Generator}} com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+generator\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a454de8e4ac35ab50e8f0ba5c9ca99f30}\index{com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}!service@{service}}
+\index{service@{service}!com.example.gruppo04.command.RemoveAutoGeneratorCommand@{com.example.gruppo04.command.RemoveAutoGeneratorCommand}}
+\doxysubsubsection{\texorpdfstring{service}{service}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_remove_auto_generator_command_a454de8e4ac35ab50e8f0ba5c9ca99f30} 
+final \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} com.\+example.\+gruppo04.\+command.\+Remove\+Auto\+Generator\+Command.\+service\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/command/\mbox{\hyperlink{_remove_auto_generator_command_8java}{Remove\+Auto\+Generator\+Command.\+java}}\end{DoxyCompactItemize}

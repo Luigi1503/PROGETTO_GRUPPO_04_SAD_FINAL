@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['notifyobservers_0',['notifyObservers',['../classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog.html#af4ad45ebfeb8f9981cefc29f64e0b61e',1,'com::example::gruppo04::observer::ConcreteMusicCatalog']]]
+  ['movetrack_0',['moveTrack',['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist.html#aae533569315db7f634ed805d625a3841',1,'com.example.gruppo04.interfaces.Playlist.moveTrack()'],['../classcom_1_1example_1_1gruppo04_1_1model_1_1_playlist_impl.html#a01007d5a7cbae498631e0b716a83d725',1,'com.example.gruppo04.model.PlaylistImpl.moveTrack()']]],
+  ['movetrackinplaylist_1',['moveTrackInPlaylist',['../classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller.html#a9d3c4dc95e5247bbc1a0f0f58b5bbc2b',1,'com.example.gruppo04.controller.PlaylistController.moveTrackInPlaylist()'],['../interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog.html#abb219a0323fa36bed4f4ab8816898538',1,'com.example.gruppo04.interfaces.MusicCatalog.moveTrackInPlaylist()'],['../classcom_1_1example_1_1gruppo04_1_1observer_1_1_concrete_music_catalog.html#a55d1d0ebad46c469b82917b9d2b622b4',1,'com.example.gruppo04.observer.ConcreteMusicCatalog.moveTrackInPlaylist()']]],
+  ['movetrackinplaylistcommand_2',['MoveTrackInPlaylistCommand',['../classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command.html#a108d5260798a6ff2276fa55ac536cd0b',1,'com::example::gruppo04::command::MoveTrackInPlaylistCommand']]]
 ];

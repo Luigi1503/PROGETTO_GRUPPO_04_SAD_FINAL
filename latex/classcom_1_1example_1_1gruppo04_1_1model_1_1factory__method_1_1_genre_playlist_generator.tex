@@ -1,0 +1,121 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator}\index{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}}
+
+
+Concrete\+Creator del pattern Factory Method per il criterio genere.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a97e7ca46ba41cb90619db916f4272b93}{Genre\+Playlist\+Generator}} (String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_ab7a38218b7d350fc55b6c3152b22d296}{genre}})
+\begin{DoxyCompactList}\small\item\em Costruisce un generatore per il genere specificato. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a1766dd5f4a6b8d81acae2781128904e0}{create\+Playlist}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog)
+\begin{DoxyCompactList}\small\item\em Crea una playlist con tutte le tracce del genere specificato. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a7bd2d9fc7adf22e902677c9ca96bd33e}{get\+Criterion\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il nome del criterio di generazione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_ab7a38218b7d350fc55b6c3152b22d296}{genre}}
+\begin{DoxyCompactList}\small\item\em Il genere musicale usato come criterio di filtraggio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Altri membri ereditati}
+\doxysubsection*{Membri protetti ereditati da \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a9172e20c3cbcda52394194483d252ed8}{filter\+Tracks}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog, Predicate$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_track}{Track}} $>$ predicate)
+\begin{DoxyCompactList}\small\item\em Metodo di utilità comune a tutti i generatori. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Concrete\+Creator del pattern Factory Method per il criterio genere. 
+
+Genera una playlist contenente esclusivamente le tracce il cui genere corrisponde a quello specificato nel costruttore. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a97e7ca46ba41cb90619db916f4272b93}\index{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}!GenrePlaylistGenerator@{GenrePlaylistGenerator}}
+\index{GenrePlaylistGenerator@{GenrePlaylistGenerator}!com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{GenrePlaylistGenerator()}{GenrePlaylistGenerator()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a97e7ca46ba41cb90619db916f4272b93} 
+com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator.\+Genre\+Playlist\+Generator (\begin{DoxyParamCaption}\item[{String}]{genre}{}\end{DoxyParamCaption})}
+
+
+
+Costruisce un generatore per il genere specificato. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em genre} & il genere musicale da usare come criterio \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a1766dd5f4a6b8d81acae2781128904e0}\index{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}!createPlaylist@{createPlaylist}}
+\index{createPlaylist@{createPlaylist}!com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{createPlaylist()}{createPlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a1766dd5f4a6b8d81acae2781128904e0} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator.\+create\+Playlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Crea una playlist con tutte le tracce del genere specificato. 
+
+Itera su tutte le tracce del catalogo e aggiunge alla playlist quelle il cui genere corrisponde (confronto case-\/insensitive) al criterio.
+
+
+\begin{DoxyParams}{Parametri}
+{\em catalog} & il catalogo musicale da cui estrarre le tracce \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+la playlist generata contenente le tracce del genere specificato 
+\end{DoxyReturn}
+
+
+Reimplementa \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_ac3f89478f0c592b85024055d0b4dc56f}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a7bd2d9fc7adf22e902677c9ca96bd33e}\index{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}!getCriterionName@{getCriterionName}}
+\index{getCriterionName@{getCriterionName}!com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{getCriterionName()}{getCriterionName()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_a7bd2d9fc7adf22e902677c9ca96bd33e} 
+String com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator.\+get\+Criterion\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il nome del criterio di generazione. 
+
+\begin{DoxyReturn}{Restituisce}
+il nome del genere musicale 
+\end{DoxyReturn}
+
+
+Reimplementa \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_auto_playlist_generator_a8209fa3830dfd5108ca2693838f063ab}{com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Auto\+Playlist\+Generator}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_ab7a38218b7d350fc55b6c3152b22d296}\index{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}!genre@{genre}}
+\index{genre@{genre}!com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator@{com.example.gruppo04.model.factory\_method.GenrePlaylistGenerator}}
+\doxysubsubsection{\texorpdfstring{genre}{genre}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_genre_playlist_generator_ab7a38218b7d350fc55b6c3152b22d296} 
+final String com.\+example.\+gruppo04.\+model.\+factory\+\_\+method.\+Genre\+Playlist\+Generator.\+genre\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Il genere musicale usato come criterio di filtraggio. 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/factory\+\_\+method/\mbox{\hyperlink{_genre_playlist_generator_8java}{Genre\+Playlist\+Generator.\+java}}\end{DoxyCompactItemize}

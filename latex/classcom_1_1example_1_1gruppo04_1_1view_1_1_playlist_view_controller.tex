@@ -8,52 +8,65 @@ Controller di vista (layer View) del pannello di gestione delle playlist.
 
 
 Diagramma delle classi per com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=232pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller__inherit__graph}
-\end{center}
-\end{figure}
+% FIG 0
 
 
 Diagramma di collaborazione per com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller__coll__graph}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab19a2047ffe6943ba652771cf81611f5}{init}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a223cc042158a7f91a19fcc12666ceb89}{playlist\+Controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a15c43a16b239ec321e1e9cae00e26a08}{catalog}})
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0141cbaeaaa1d9fc0ad9b5ae125b8d37}{init}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a223cc042158a7f91a19fcc12666ceb89}{playlist\+Controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a15c43a16b239ec321e1e9cae00e26a08}{catalog}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab6d3e6b40fa08cb2a80bc71d15de1b56}{playback\+Controller}})
 \item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ac177dfdd4c0eff176bfaae08602d5cac}{init\+Automatic\+Only}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a223cc042158a7f91a19fcc12666ceb89}{playlist\+Controller}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a15c43a16b239ec321e1e9cae00e26a08}{catalog}}, \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab6d3e6b40fa08cb2a80bc71d15de1b56}{playback\+Controller}})
+\begin{DoxyCompactList}\small\item\em Inizializza la vista in modalità "{}solo playlist automatiche"{}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa93b614bb54494a6f920d25f2547fe09}{initialize}} ()
 \begin{DoxyCompactList}\small\item\em Inizializzazione post-\/\+FXML\+: invocata da Java\+FX dopo l\textquotesingle{}iniezione dei campi {\ttfamily @\+FXML}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a25e7c08a5c73e409dc1fa4efa55e2156}{on\+Catalog\+Changed}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_event}{Catalog\+Event}} event)
 \begin{DoxyCompactList}\small\item\em Callback dell\textquotesingle{}Observer\+: ridisegna la griglia quando cambiano le playlist (aggiunta, rinomina, eliminazione). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a62bbc407b7e9b5423737498501c682e4}{set\+On\+Playlist\+Selected}} (Consumer$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ handler)
-\begin{DoxyCompactList}\small\item\em Imposta cosa fare quando l\textquotesingle{}utente seleziona una playlist (lo collega Main\+View). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Registra il comportamento da eseguire quando l\textquotesingle{}utente seleziona una playlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1observer_1_1_catalog_observer}{com.\+example.\+gruppo04.\+observer.\+Catalog\+Observer}}}
 \doxysubsubsection*{Membri privati}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab8b2d8618cb181d5dbfb838cc9917702}{handle\+Undo}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce la richiesta di annullamento dell\textquotesingle{}ultima operazione eseguita sulle playlist tramite il {\ttfamily \doxylink{}{Command\+Manager}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0683cfe7f869db942eaaed6f30946167}{highlight\+Active\+Playlist}} ()
+\begin{DoxyCompactList}\small\item\em Evidenzia la card corrispondente alla playlist attualmente in riproduzione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ad975e61451a7445d2f4d662673ec04aa}{highlight\+Node}} (Node node, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}} source)
+\begin{DoxyCompactList}\small\item\em Applica o rimuove lo stile grafico che evidenzia la playlist attualmente in riproduzione. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a6a33eaf861293aae59a55a9527a35333}{render\+Playlists}} ()
 \begin{DoxyCompactList}\small\item\em Ridisegna l\textquotesingle{}intera griglia da zero\+: una card per ogni playlist del catalogo, con la card "{}+"{} sempre in coda (a destra). \end{DoxyCompactList}\item 
 Node \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a35fc5162048f09df390a7be687351b52}{build\+Add\+Card}} ()
 \begin{DoxyCompactList}\small\item\em Costruisce la card "{}+"{}\+: apre un dialog per il nome e delega la creazione al controller, segnalando un errore se il nome è duplicato o vuoto. \end{DoxyCompactList}\item 
+Node \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a9c241ca13cda5588b9036b3e596cdc95}{build\+Add\+Auto\+Card}} ()
+\begin{DoxyCompactList}\small\item\em Costruisce la card "{}+"{} per la creazione di una playlist automatica personalizzata. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0ef85c04d07021d45fcf63ed0a49ef06}{show\+Error}} (String messaggio)
 \begin{DoxyCompactList}\small\item\em Mostra un messaggio di errore bloccante all\textquotesingle{}utente. \end{DoxyCompactList}\item 
-Node \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_abb03f06ec6d6bc38d6d61ed74c256fa5}{build\+Playlist\+Card}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist)
-\begin{DoxyCompactList}\small\item\em Costruisce la card di una singola playlist\+: icona, nome e le azioni Rinomina/\+Elimina, ciascuna delegata al controller sulla playlist data. \end{DoxyCompactList}\item 
+Node \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a360542958675e5272c799edabbe0c8a5}{build\+Playlist\+Card}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} playlist, boolean editable)
+\begin{DoxyCompactList}\small\item\em Costruisce e restituisce la rappresentazione grafica di una playlist. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_af4298ba0cfab7423ad6b26b01f13cbf6}{style\+Dialog}} (Dialog$<$?$>$ dialog)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Applica lo stile CSS personalizzato a una finestra di dialogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ad0bc612f6bb78b9c96f3c9b255630151}{handle\+Play\+All}} ()
+\begin{DoxyCompactList}\small\item\em Avvia la riproduzione di tutte le playlist del catalogo partendo dalla prima, usando la strategia attualmente selezionata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ae4a3e1c9849cc41d5ed2c051c591ec9d}{show\+Auto\+Playlist\+Dialog}} ()
+\begin{DoxyCompactList}\small\item\em Mostra un dialog per la creazione di una playlist automatica personalizzata. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Attributi privati}
 \begin{DoxyCompactItemize}
 \item 
 Flow\+Pane \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ad06d6cb5395192486207c382765d0413}{playlist\+Grid}}
 \begin{DoxyCompactList}\small\item\em Contenitore delle card, iniettato dall\textquotesingle{}FXML. \end{DoxyCompactList}\item 
+Flow\+Pane \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a4ca6a68eb2929708861cecefe0910450}{automatic\+Playlist\+Grid}}
+\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ade5d9c8f2670b58f8e2d7a905c1fafcd}{manual\+Section\+Title}}
+\item 
+Label \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a832fd224a2333cac45f4eb04dd7a21e3}{automatic\+Section\+Title}}
+\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa4833b1fb99734092f9aa096c95530cc}{btn\+Play\+All}}
+\begin{DoxyCompactList}\small\item\em Bottone per la riproduzione di tutte le playlist. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0c9d4c8f6f0afcd32ec49fa8a64c995f}{undo\+Btn}}
+\begin{DoxyCompactList}\small\item\em Pulsante per fare undo dell\textquotesingle{}inserimento di inserimento di playlist. \end{DoxyCompactList}\item 
 final Image \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a1ae00d7a199600c6ee961d507c44f43d}{note\+Icon}}
 \begin{DoxyCompactList}\small\item\em Icona condivisa da tutte le card. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a223cc042158a7f91a19fcc12666ceb89}{playlist\+Controller}}
@@ -61,19 +74,38 @@ final Image \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlis
 \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a15c43a16b239ec321e1e9cae00e26a08}{catalog}}
 \item 
 Consumer$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab0c4f30a209710a342b4c1a6b93254bf}{on\+Playlist\+Selected}} = p -\/$>$ \{\}
-\end{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa003827da0590ff333bbedcce1db6d04}{automatic\+Playlist\+Service}}
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a2da50f696f15975854b9de9cf71e4e7d}{automatic\+Only}}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab6d3e6b40fa08cb2a80bc71d15de1b56}{playback\+Controller}}
+\begin{DoxyCompactList}\small\item\em Playback controller per la gestione della riproduzione delle playlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
 Controller di vista (layer View) del pannello di gestione delle playlist. 
 
-Disegna le playlist come una griglia di "{}card"{}, più una card "{}+"{} per la creazione, e delega ogni azione (crea / rinomina / elimina) al {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}. Non contiene logica di dominio né validazioni\+: quelle vivono nel catalogo.
+Disegna le playlist come una griglia di "{}card"{}, più una card "{}+"{} per la creazione, e delega ogni azione (crea / rinomina / elimina) al {\ttfamily \doxylink{}{Playlist\+Controller}}. Non contiene logica di dominio né validazioni\+: quelle vivono nel catalogo.
 
-È associato all\textquotesingle{}FXML in modo imperativo (loader.\+set\+Controller(...)), perciò le dipendenze arrivano dal costruttore e l\textquotesingle{}FXML non dichiara un fx\+:controller. L\textquotesingle{}aggiornamento della griglia avverrà tramite Observer, quando il catalogo notifica un cambiamento. 
+L\textquotesingle{}aggiornamento della griglia avverrà tramite Observer, quando il catalogo notifica un cambiamento. 
 
-\label{doc-func-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_doc-func-members}
 \doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a9c241ca13cda5588b9036b3e596cdc95}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!buildAddAutoCard@{buildAddAutoCard}}
+\index{buildAddAutoCard@{buildAddAutoCard}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{buildAddAutoCard()}{buildAddAutoCard()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a9c241ca13cda5588b9036b3e596cdc95} 
+Node com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+build\+Add\+Auto\+Card (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruisce la card "{}+"{} per la creazione di una playlist automatica personalizzata. 
+
+Crea un nodo grafico identico alla card di aggiunta delle playlist manuali ma con un\textquotesingle{}azione diversa al click\+: apre {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ae4a3e1c9849cc41d5ed2c051c591ec9d}{show\+Auto\+Playlist\+Dialog()}} per consentire all\textquotesingle{}utente di scegliere il criterio di generazione (genere, anno, tag) di una playlist.
+
+\begin{DoxyReturn}{Restituisce}
+il nodo della card di creazione playlist automatica 
+\end{DoxyReturn}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a35fc5162048f09df390a7be687351b52}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!buildAddCard@{buildAddCard}}
 \index{buildAddCard@{buildAddCard}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
 \doxysubsubsection{\texorpdfstring{buildAddCard()}{buildAddCard()}}
@@ -87,37 +119,118 @@ Costruisce la card "{}+"{}\+: apre un dialog per il nome e delega la creazione a
 \begin{DoxyReturn}{Restituisce}
 il nodo della card di creazione 
 \end{DoxyReturn}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_abb03f06ec6d6bc38d6d61ed74c256fa5}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!buildPlaylistCard@{buildPlaylistCard}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a360542958675e5272c799edabbe0c8a5}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!buildPlaylistCard@{buildPlaylistCard}}
 \index{buildPlaylistCard@{buildPlaylistCard}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
 \doxysubsubsection{\texorpdfstring{buildPlaylistCard()}{buildPlaylistCard()}}
-{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_abb03f06ec6d6bc38d6d61ed74c256fa5} 
-Node com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+build\+Playlist\+Card (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a360542958675e5272c799edabbe0c8a5} 
+Node com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+build\+Playlist\+Card (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{boolean}]{editable}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Costruisce la card di una singola playlist\+: icona, nome e le azioni Rinomina/\+Elimina, ciascuna delegata al controller sulla playlist data. 
+Costruisce e restituisce la rappresentazione grafica di una playlist. 
 
-Il click sulla card servirà a selezionarla per il pannello di dettaglio.
+La card mostra\+: 
+\begin{DoxyItemize}
+\item l\textquotesingle{}icona della playlist; 
+\item il nome della playlist; 
+\item un menu contestuale per rinomina ed eliminazione (se modificabile); 
+\item la selezione della playlist tramite click sinistro. 
+\end{DoxyItemize}
 
 
 \begin{DoxyParams}{Parametri}
-{\em playlist} & la playlist da rappresentare \\
+{\em playlist} & playlist da rappresentare \\
+\hline
+{\em editable} & {\ttfamily true} se la playlist è manuale e può essere rinominata o eliminata tramite menu contestuale; {\ttfamily false} se è una playlist automatica — in tal caso il menu contestuale offre solo la rimozione dal generatore \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-il nodo della card 
+nodo Java\+FX che rappresenta la card della playlist 
 \end{DoxyReturn}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab19a2047ffe6943ba652771cf81611f5}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!init@{init}}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ad0bc612f6bb78b9c96f3c9b255630151}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!handlePlayAll@{handlePlayAll}}
+\index{handlePlayAll@{handlePlayAll}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{handlePlayAll()}{handlePlayAll()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ad0bc612f6bb78b9c96f3c9b255630151} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+handle\+Play\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Avvia la riproduzione di tutte le playlist del catalogo partendo dalla prima, usando la strategia attualmente selezionata. 
+
+Passa {\ttfamily null} come traccia di partenza — la riproduzione inizia dalla prima traccia della prima playlist in coda. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab8b2d8618cb181d5dbfb838cc9917702}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!handleUndo@{handleUndo}}
+\index{handleUndo@{handleUndo}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{handleUndo()}{handleUndo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab8b2d8618cb181d5dbfb838cc9917702} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+handle\+Undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce la richiesta di annullamento dell\textquotesingle{}ultima operazione eseguita sulle playlist tramite il {\ttfamily \doxylink{}{Command\+Manager}}. 
+
+Se disponibile un comando annullabile, viene eseguito il metodo {\ttfamily undo()} del manager associato al controller delle playlist. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0683cfe7f869db942eaaed6f30946167}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!highlightActivePlaylist@{highlightActivePlaylist}}
+\index{highlightActivePlaylist@{highlightActivePlaylist}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{highlightActivePlaylist()}{highlightActivePlaylist()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0683cfe7f869db942eaaed6f30946167} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+highlight\+Active\+Playlist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Evidenzia la card corrispondente alla playlist attualmente in riproduzione. 
+
+Se la riproduzione è ferma oppure la sorgente attiva non è una playlist, tutte le evidenziazioni vengono rimosse. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ad975e61451a7445d2f4d662673ec04aa}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!highlightNode@{highlightNode}}
+\index{highlightNode@{highlightNode}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{highlightNode()}{highlightNode()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ad975e61451a7445d2f4d662673ec04aa} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+highlight\+Node (\begin{DoxyParamCaption}\item[{Node}]{node}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playable_source}{Playable\+Source}}}]{source}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Applica o rimuove lo stile grafico che evidenzia la playlist attualmente in riproduzione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em node} & nodo grafico associato a una playlist \\
+\hline
+{\em source} & sorgente di riproduzione attualmente attiva; può essere {\ttfamily null} se la riproduzione è ferma \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0141cbaeaaa1d9fc0ad9b5ae125b8d37}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!init@{init}}
 \index{init@{init}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
 \doxysubsubsection{\texorpdfstring{init()}{init()}}
-{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab19a2047ffe6943ba652771cf81611f5} 
-void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0141cbaeaaa1d9fc0ad9b5ae125b8d37} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}}}]{playback\+Controller}{}\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parametri}
 {\em playlist\+Controller} & orchestratore a cui delegare le azioni sulle playlist \\
 \hline
 {\em catalog} & sorgente dati di sola lettura usata per disegnare la griglia \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ac177dfdd4c0eff176bfaae08602d5cac}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!initAutomaticOnly@{initAutomaticOnly}}
+\index{initAutomaticOnly@{initAutomaticOnly}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{initAutomaticOnly()}{initAutomaticOnly()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ac177dfdd4c0eff176bfaae08602d5cac} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+init\+Automatic\+Only (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playlist_controller}{Playlist\+Controller}}}]{playlist\+Controller}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}}}]{playback\+Controller}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza la vista in modalità "{}solo playlist automatiche"{}. 
+
+Esegue l\textquotesingle{}inizializzazione standard tramite {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0141cbaeaaa1d9fc0ad9b5ae125b8d37}{init(\+Playlist\+Controller, Music\+Catalog, Playback\+Controller)}} e successivamente\+: 
+\begin{DoxyItemize}
+\item abilita la modalità {\ttfamily automatic\+Only}; 
+\item nasconde il pulsante di undo; 
+\item mostra esclusivamente le playlist generate automaticamente. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist\+Controller} & controller responsabile delle operazioni sulle playlist \\
+\hline
+{\em catalog} & catalogo musicale da osservare e visualizzare \\
+\hline
+{\em playback\+Controller} & controller responsabile della riproduzione \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa93b614bb54494a6f920d25f2547fe09}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!initialize@{initialize}}
@@ -130,7 +243,7 @@ void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+initialize (
 
 Inizializzazione post-\/\+FXML\+: invocata da Java\+FX dopo l\textquotesingle{}iniezione dei campi {\ttfamily @\+FXML}. 
 
-Qui (non nel costruttore, dove i campi sarebbero ancora null) si lavora sui nodi e ci si registrerà come observer del catalogo. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a25e7c08a5c73e409dc1fa4efa55e2156}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!onCatalogChanged@{onCatalogChanged}}
+Qui si lavora sui nodi e ci si registrerà come observer del catalogo. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a25e7c08a5c73e409dc1fa4efa55e2156}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!onCatalogChanged@{onCatalogChanged}}
 \index{onCatalogChanged@{onCatalogChanged}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
 \doxysubsubsection{\texorpdfstring{onCatalogChanged()}{onCatalogChanged()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a25e7c08a5c73e409dc1fa4efa55e2156} 
@@ -162,9 +275,31 @@ void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+set\+On\+Pla
 
 
 
-Imposta cosa fare quando l\textquotesingle{}utente seleziona una playlist (lo collega Main\+View). 
+Registra il comportamento da eseguire quando l\textquotesingle{}utente seleziona una playlist. 
 
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0ef85c04d07021d45fcf63ed0a49ef06}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!showError@{showError}}
+Il consumer ricevuto viene invocato ogni volta che l\textquotesingle{}utente effettua un click sinistro su una card playlist. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em handler} & funzione da eseguire alla selezione di una playlist \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ae4a3e1c9849cc41d5ed2c051c591ec9d}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!showAutoPlaylistDialog@{showAutoPlaylistDialog}}
+\index{showAutoPlaylistDialog@{showAutoPlaylistDialog}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{showAutoPlaylistDialog()}{showAutoPlaylistDialog()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ae4a3e1c9849cc41d5ed2c051c591ec9d} 
+void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+show\+Auto\+Playlist\+Dialog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mostra un dialog per la creazione di una playlist automatica personalizzata. 
+
+Permette all\textquotesingle{}utente di scegliere il criterio di generazione tra\+: 
+\begin{DoxyItemize}
+\item {\bfseries{Genere}} — filtra le tracce per genere musicale 
+\item {\bfseries{Anno}} — filtra le tracce per periodo di pubblicazione 
+\item {\bfseries{Tag}} — filtra le tracce per tag assegnato 
+\end{DoxyItemize}Al click su OK genera la playlist tramite il pattern Factory Method e aggiorna la griglia delle playlist automatiche. \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0ef85c04d07021d45fcf63ed0a49ef06}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!showError@{showError}}
 \index{showError@{showError}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
 \doxysubsubsection{\texorpdfstring{showError()}{showError()}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0ef85c04d07021d45fcf63ed0a49ef06} 
@@ -187,14 +322,63 @@ void com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+style\+Dialo
 
 
 
-\label{doc-variable-members}
-\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_doc-variable-members}
+Applica lo stile CSS personalizzato a una finestra di dialogo. 
+
+Il metodo aggiunge il foglio di stile dedicato alle playlist e rimuove eventuali elementi grafici predefiniti. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em dialog} & finestra di dialogo da personalizzare \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a2da50f696f15975854b9de9cf71e4e7d}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!automaticOnly@{automaticOnly}}
+\index{automaticOnly@{automaticOnly}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{automaticOnly}{automaticOnly}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a2da50f696f15975854b9de9cf71e4e7d} 
+boolean com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+automatic\+Only\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a4ca6a68eb2929708861cecefe0910450}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!automaticPlaylistGrid@{automaticPlaylistGrid}}
+\index{automaticPlaylistGrid@{automaticPlaylistGrid}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{automaticPlaylistGrid}{automaticPlaylistGrid}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a4ca6a68eb2929708861cecefe0910450} 
+Flow\+Pane com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+automatic\+Playlist\+Grid\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa003827da0590ff333bbedcce1db6d04}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!automaticPlaylistService@{automaticPlaylistService}}
+\index{automaticPlaylistService@{automaticPlaylistService}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{automaticPlaylistService}{automaticPlaylistService}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa003827da0590ff333bbedcce1db6d04} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1factory__method_1_1_automatic_playlist_service}{Automatic\+Playlist\+Service}} com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+automatic\+Playlist\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a832fd224a2333cac45f4eb04dd7a21e3}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!automaticSectionTitle@{automaticSectionTitle}}
+\index{automaticSectionTitle@{automaticSectionTitle}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{automaticSectionTitle}{automaticSectionTitle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a832fd224a2333cac45f4eb04dd7a21e3} 
+Label com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+automatic\+Section\+Title\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa4833b1fb99734092f9aa096c95530cc}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!btnPlayAll@{btnPlayAll}}
+\index{btnPlayAll@{btnPlayAll}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{btnPlayAll}{btnPlayAll}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_aa4833b1fb99734092f9aa096c95530cc} 
+Button com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+btn\+Play\+All\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone per la riproduzione di tutte le playlist. 
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a15c43a16b239ec321e1e9cae00e26a08}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!catalog@{catalog}}
 \index{catalog@{catalog}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
 \doxysubsubsection{\texorpdfstring{catalog}{catalog}}
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a15c43a16b239ec321e1e9cae00e26a08} 
 \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ade5d9c8f2670b58f8e2d7a905c1fafcd}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!manualSectionTitle@{manualSectionTitle}}
+\index{manualSectionTitle@{manualSectionTitle}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{manualSectionTitle}{manualSectionTitle}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ade5d9c8f2670b58f8e2d7a905c1fafcd} 
+Label com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+manual\+Section\+Title\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a1ae00d7a199600c6ee961d507c44f43d}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!noteIcon@{noteIcon}}
 \index{noteIcon@{noteIcon}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
@@ -218,6 +402,16 @@ Icona condivisa da tutte le card.
 {\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab0c4f30a209710a342b4c1a6b93254bf} 
 Consumer$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}$>$ com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+on\+Playlist\+Selected = p -\/$>$ \{\}\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab6d3e6b40fa08cb2a80bc71d15de1b56}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!playbackController@{playbackController}}
+\index{playbackController@{playbackController}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{playbackController}{playbackController}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_ab6d3e6b40fa08cb2a80bc71d15de1b56} 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1controller_1_1_playback_controller}{Playback\+Controller}} com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+playback\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Playback controller per la gestione della riproduzione delle playlist. 
+
 \Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a223cc042158a7f91a19fcc12666ceb89}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!playlistController@{playlistController}}
 \index{playlistController@{playlistController}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
 \doxysubsubsection{\texorpdfstring{playlistController}{playlistController}}
@@ -233,6 +427,16 @@ Flow\+Pane com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+playli
 
 
 Contenitore delle card, iniettato dall\textquotesingle{}FXML. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0c9d4c8f6f0afcd32ec49fa8a64c995f}\index{com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}!undoBtn@{undoBtn}}
+\index{undoBtn@{undoBtn}!com.example.gruppo04.view.PlaylistViewController@{com.example.gruppo04.view.PlaylistViewController}}
+\doxysubsubsection{\texorpdfstring{undoBtn}{undoBtn}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1view_1_1_playlist_view_controller_a0c9d4c8f6f0afcd32ec49fa8a64c995f} 
+Button com.\+example.\+gruppo04.\+view.\+Playlist\+View\+Controller.\+undo\+Btn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante per fare undo dell\textquotesingle{}inserimento di inserimento di playlist. 
 
 
 

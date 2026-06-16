@@ -1,0 +1,141 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+command.\+Command\+Manager}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{}\label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+
+
+Gestisce l\textquotesingle{}esecuzione dei comandi e lo storico per l\textquotesingle{}undo.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+command.\+Command\+Manager\+:
+% FIG 0
+\doxysubsubsection*{Composti}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}}
+\begin{DoxyCompactList}\small\item\em Listener neutro notificato quando cambia la disponibilità dell\textquotesingle{}operazione di undo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_abd133f235e3885c273b5bba88c66e29e}{execute\+Command}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{Command}} cmd)
+\begin{DoxyCompactList}\small\item\em Esegue il comando e, se ha avuto effetto, lo registra per l\textquotesingle{}undo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a845a17781a0efd13ea16a7fb5bc9b1dd}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Annulla l\textquotesingle{}ultimo comando registrato, se presente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab8400ee30b7676cf4e2551e45e997b33}{can\+Undo}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a808411c80cf739fa549aad5694318238}{add\+Can\+Undo\+Listener}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}} listener)
+\begin{DoxyCompactList}\small\item\em Registra un listener per i cambi di disponibilità dell\textquotesingle{}undo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab966c3f8e5bcde33417682f60bc6eb8f}{remove\+Can\+Undo\+Listener}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}} listener)
+\begin{DoxyCompactList}\small\item\em Rimuove un listener precedentemente registrato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a661747ed88740d89ff237dcd11cb9c5b}{fire\+Can\+Undo\+Changed}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final Stack$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{Command}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ad385d0210c8185ff84a4246b8b82100e}{stack}} = new Stack$<$$>$()
+\item 
+final List$<$ \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab9e8e067fbc7f64c7238ce20653579c3}{listeners}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Gestisce l\textquotesingle{}esecuzione dei comandi e lo storico per l\textquotesingle{}undo. 
+
+È una classe di dominio\+: {\bfseries{non dipende da Java\+FX}} né da alcun toolkit UI. Per segnalare alla View i cambi di disponibilità dell\textquotesingle{}undo espone un listener neutro ({\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}}), che la View adatta al proprio meccanismo (es. abilitare/disabilitare un bottone). Questo rispetta il layering (dominio → nessuna dipendenza verso la UI) e rende la classe testabile fuori dal thread Java\+FX. 
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a808411c80cf739fa549aad5694318238}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!addCanUndoListener@{addCanUndoListener}}
+\index{addCanUndoListener@{addCanUndoListener}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{addCanUndoListener()}{addCanUndoListener()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a808411c80cf739fa549aad5694318238} 
+void com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+add\+Can\+Undo\+Listener (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}}}]{listener}{}\end{DoxyParamCaption})}
+
+
+
+Registra un listener per i cambi di disponibilità dell\textquotesingle{}undo. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em listener} & l\textquotesingle{}ascoltatore da aggiungere; ignorato se {\ttfamily null} o già presente \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab8400ee30b7676cf4e2551e45e997b33}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!canUndo@{canUndo}}
+\index{canUndo@{canUndo}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{canUndo()}{canUndo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab8400ee30b7676cf4e2551e45e997b33} 
+boolean com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+can\+Undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se è presente almeno un comando annullabile 
+\end{DoxyReturn}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_abd133f235e3885c273b5bba88c66e29e}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!executeCommand@{executeCommand}}
+\index{executeCommand@{executeCommand}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{executeCommand()}{executeCommand()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_abd133f235e3885c273b5bba88c66e29e} 
+void com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+execute\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{Command}}}]{cmd}{}\end{DoxyParamCaption})}
+
+
+
+Esegue il comando e, se ha avuto effetto, lo registra per l\textquotesingle{}undo. 
+
+I comandi senza effetto (vedi {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a3a5e91428749cb7e47964517d06774d9}{Command\#was\+Executed()}}) non vengono impilati, così l\textquotesingle{}undo non si abilita per operazioni andate a vuoto.
+
+
+\begin{DoxyParams}{Parametri}
+{\em cmd} & il comando da eseguire \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a661747ed88740d89ff237dcd11cb9c5b}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!fireCanUndoChanged@{fireCanUndoChanged}}
+\index{fireCanUndoChanged@{fireCanUndoChanged}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{fireCanUndoChanged()}{fireCanUndoChanged()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a661747ed88740d89ff237dcd11cb9c5b} 
+void com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+fire\+Can\+Undo\+Changed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab966c3f8e5bcde33417682f60bc6eb8f}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!removeCanUndoListener@{removeCanUndoListener}}
+\index{removeCanUndoListener@{removeCanUndoListener}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{removeCanUndoListener()}{removeCanUndoListener()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab966c3f8e5bcde33417682f60bc6eb8f} 
+void com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+remove\+Can\+Undo\+Listener (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}}}]{listener}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove un listener precedentemente registrato. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em listener} & l\textquotesingle{}ascoltatore da rimuovere \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a845a17781a0efd13ea16a7fb5bc9b1dd}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!undo@{undo}}
+\index{undo@{undo}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_a845a17781a0efd13ea16a7fb5bc9b1dd} 
+void com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Annulla l\textquotesingle{}ultimo comando registrato, se presente. 
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab9e8e067fbc7f64c7238ce20653579c3}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!listeners@{listeners}}
+\index{listeners@{listeners}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{listeners}{listeners}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ab9e8e067fbc7f64c7238ce20653579c3} 
+final List$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener}{Can\+Undo\+Listener}}$>$ com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+listeners = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ad385d0210c8185ff84a4246b8b82100e}\index{com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}!stack@{stack}}
+\index{stack@{stack}!com.example.gruppo04.command.CommandManager@{com.example.gruppo04.command.CommandManager}}
+\doxysubsubsection{\texorpdfstring{stack}{stack}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_ad385d0210c8185ff84a4246b8b82100e} 
+final Stack$<$\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{Command}}$>$ com.\+example.\+gruppo04.\+command.\+Command\+Manager.\+stack = new Stack$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/command/\mbox{\hyperlink{_command_manager_8java}{Command\+Manager.\+java}}\end{DoxyCompactItemize}

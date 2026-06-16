@@ -1,0 +1,130 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command}{}\label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+
+
+Comando per lo spostamento di una traccia all\textquotesingle{}interno di una playlist.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a108d5260798a6ff2276fa55ac536cd0b}{Move\+Track\+In\+Playlist\+Command}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ae8927da202ae77840c5748c8f6c5d4c3}{playlist}}, int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a63cc58d06b339d173d43850df5add521}{from}}, int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac68f8233196a0e8f63413604d1c6834d}{to}}, \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac97fb4c613eb3890fabfe0b55b7644e0}{catalog}})
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ad5cc1872d4a40cc59fa7646c80520ee7}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Sposta la traccia dalla posizione {\ttfamily from} a {\ttfamily to}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a9d80cfb3535c58a85cb16709df864f22}{undo}} ()
+\begin{DoxyCompactList}\small\item\em Annulla lo spostamento riportando la traccia alla posizione originale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command}{com.\+example.\+gruppo04.\+command.\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+default boolean \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a3a5e91428749cb7e47964517d06774d9}{was\+Executed}} ()
+\begin{DoxyCompactList}\small\item\em Indica se l\textquotesingle{}ultima {\ttfamily \doxylink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{execute()}} ha effettivamente prodotto una modifica al Model. \end{DoxyCompactList}\item 
+default void \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a8b1d1fdea0b0005112d14083a0c5ac36}{notify\+Catalog\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Hook invocato dal {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1command_1_1_command_manager}{Command\+Manager}} dopo un execute/undo efficace, utile per i comandi che modificano il modello senza passare direttamente da un metodo notificante del catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ae8927da202ae77840c5748c8f6c5d4c3}{playlist}}
+\item 
+final int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a63cc58d06b339d173d43850df5add521}{from}}
+\item 
+final int \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac68f8233196a0e8f63413604d1c6834d}{to}}
+\item 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac97fb4c613eb3890fabfe0b55b7644e0}{catalog}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Comando per lo spostamento di una traccia all\textquotesingle{}interno di una playlist. 
+
+Supporta l\textquotesingle{}annullamento tramite lo spostamento inverso. 
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a108d5260798a6ff2276fa55ac536cd0b}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}!MoveTrackInPlaylistCommand@{MoveTrackInPlaylistCommand}}
+\index{MoveTrackInPlaylistCommand@{MoveTrackInPlaylistCommand}!com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{MoveTrackInPlaylistCommand()}{MoveTrackInPlaylistCommand()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a108d5260798a6ff2276fa55ac536cd0b} 
+com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command.\+Move\+Track\+In\+Playlist\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}}}]{playlist}{, }\item[{int}]{from}{, }\item[{int}]{to}{, }\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em playlist} & la playlist in cui spostare la traccia \\
+\hline
+{\em from} & indice originale della traccia \\
+\hline
+{\em to} & indice di destinazione della traccia \\
+\hline
+{\em catalog} & il catalogo su cui operare (per la notifica agli observer) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ad5cc1872d4a40cc59fa7646c80520ee7}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}!execute@{execute}}
+\index{execute@{execute}!com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ad5cc1872d4a40cc59fa7646c80520ee7} 
+void com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command.\+execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sposta la traccia dalla posizione {\ttfamily from} a {\ttfamily to}. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_a9193978546cf27272ac7390e517b3f0c}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a9d80cfb3535c58a85cb16709df864f22}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}!undo@{undo}}
+\index{undo@{undo}!com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a9d80cfb3535c58a85cb16709df864f22} 
+void com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command.\+undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Annulla lo spostamento riportando la traccia alla posizione originale. 
+
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_ade8a11435dd621a02d5b365752c4f9dc}{com.\+example.\+gruppo04.\+command.\+Command}}.
+
+
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac97fb4c613eb3890fabfe0b55b7644e0}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}!catalog@{catalog}}
+\index{catalog@{catalog}!com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{catalog}{catalog}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac97fb4c613eb3890fabfe0b55b7644e0} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command.\+catalog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a63cc58d06b339d173d43850df5add521}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}!from@{from}}
+\index{from@{from}!com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{from}{from}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_a63cc58d06b339d173d43850df5add521} 
+final int com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command.\+from\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ae8927da202ae77840c5748c8f6c5d4c3}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}!playlist@{playlist}}
+\index{playlist@{playlist}!com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{playlist}{playlist}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ae8927da202ae77840c5748c8f6c5d4c3} 
+final \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_playlist}{Playlist}} com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command.\+playlist\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac68f8233196a0e8f63413604d1c6834d}\index{com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}!to@{to}}
+\index{to@{to}!com.example.gruppo04.command.MoveTrackInPlaylistCommand@{com.example.gruppo04.command.MoveTrackInPlaylistCommand}}
+\doxysubsubsection{\texorpdfstring{to}{to}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1command_1_1_move_track_in_playlist_command_ac68f8233196a0e8f63413604d1c6834d} 
+final int com.\+example.\+gruppo04.\+command.\+Move\+Track\+In\+Playlist\+Command.\+to\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/command/\mbox{\hyperlink{_move_track_in_playlist_command_8java}{Move\+Track\+In\+Playlist\+Command.\+java}}\end{DoxyCompactItemize}

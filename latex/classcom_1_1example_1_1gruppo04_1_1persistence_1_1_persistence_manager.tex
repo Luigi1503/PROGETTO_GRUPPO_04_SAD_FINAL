@@ -1,0 +1,259 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{}\label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+
+
+Gestore della persistenza per il catalogo musicale.  
+
+
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager\+:
+% FIG 0
+\doxysubsubsection*{Composti}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Serializable\+Catalog\+Data}
+\begin{DoxyCompactList}\small\item\em Classe di utilità interna per serializzare i dati del catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a356c93bb5162925a608dab9d43712301}{set\+Default\+File\+Path}} (String file\+Path)
+\begin{DoxyCompactList}\small\item\em Imposta il percorso del file predefinito per le operazioni di persistenza. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a6096e6d37d34acbe8fc0ba3cf0ce3cd8}{get\+Default\+File\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il percorso del file predefinito attualmente configurato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a6608e90ccf477e28020e2886393d6ac4}{save}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Salva lo stato corrente del catalogo musicale sul file predefinito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a7ad1eb6629abdd68b7331449701768f4}{save}} (\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} catalog, String file\+Path)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Salva lo stato corrente del catalogo musicale sul file specificato dal percorso. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a9c1dc1c199eea04efc23411f4ba78949}{load}} ()  throws IOException, Class\+Not\+Found\+Exception 
+\begin{DoxyCompactList}\small\item\em Carica lo stato del catalogo musicale dal file predefinito. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a02fdbe4536dee99d1b24084df18d6206}{load}} (String file\+Path)  throws IOException, Class\+Not\+Found\+Exception 
+\begin{DoxyCompactList}\small\item\em Carica lo stato del catalogo musicale dal file specificato dal percorso. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri pubblici statici}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a79d8d355a07e7c6aef4a725165a0db17}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}unica istanza attiva di {\ttfamily Persistence\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_aa2fa71d887f6b03c3c7179ddfa84b1e1}{Persistence\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore privato per impedire l\textquotesingle{}istanziazione diretta dall\textquotesingle{}esterno, rispettando il contratto del pattern Singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a1703c71af78541a0feae2176c0c09e33}{default\+File\+Path}} = "{}catalog.\+ser"{}
+\begin{DoxyCompactList}\small\item\em Percorso di default utilizzato per il salvataggio e il caricamento del catalogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributi privati statici}
+\begin{DoxyCompactItemize}
+\item 
+static volatile \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}} \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a0048c7372bba0bdadfd9b82e22fe5d26}{instance}}
+\begin{DoxyCompactList}\small\item\em Istanza unica del gestore della persistenza (pattern Singleton). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Gestore della persistenza per il catalogo musicale. 
+
+
+\begin{DoxyItemize}
+\item Questa classe implementa il pattern Singleton ed è responsabile del salvataggio e caricamento dello stato del catalogo musicale (tracce e playlist) su memoria persistente tramite il meccanismo di serializzazione nativa Java. 
+\end{DoxyItemize}
+
+\doxysubsection{Documentazione dei costruttori e dei distruttori}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_aa2fa71d887f6b03c3c7179ddfa84b1e1}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!PersistenceManager@{PersistenceManager}}
+\index{PersistenceManager@{PersistenceManager}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{PersistenceManager()}{PersistenceManager()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_aa2fa71d887f6b03c3c7179ddfa84b1e1} 
+com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+Persistence\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruttore privato per impedire l\textquotesingle{}istanziazione diretta dall\textquotesingle{}esterno, rispettando il contratto del pattern Singleton. 
+
+
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a6096e6d37d34acbe8fc0ba3cf0ce3cd8}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!getDefaultFilePath@{getDefaultFilePath}}
+\index{getDefaultFilePath@{getDefaultFilePath}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{getDefaultFilePath()}{getDefaultFilePath()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a6096e6d37d34acbe8fc0ba3cf0ce3cd8} 
+String com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+get\+Default\+File\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il percorso del file predefinito attualmente configurato. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+La stringa del percorso del file di default. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a79d8d355a07e7c6aef4a725165a0db17}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a79d8d355a07e7c6aef4a725165a0db17} 
+static \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}} com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Restituisce l\textquotesingle{}unica istanza attiva di {\ttfamily Persistence\+Manager}. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+L\textquotesingle{}istanza singleton di {\ttfamily Persistence\+Manager}. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a9c1dc1c199eea04efc23411f4ba78949}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!load@{load}}
+\index{load@{load}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a9c1dc1c199eea04efc23411f4ba78949} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+load (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws IOException, Class\+Not\+Found\+Exception}
+
+
+
+Carica lo stato del catalogo musicale dal file predefinito. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Restituisce}
+Il catalogo musicale popolato con lo stato caricato. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em IOException} & Se si verifica un errore durante la lettura del file. \\
+\hline
+{\em Class\+Not\+Found\+Exception} & Se la classe del file serializzato non è trovata. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a02fdbe4536dee99d1b24084df18d6206}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!load@{load}}
+\index{load@{load}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a02fdbe4536dee99d1b24084df18d6206} 
+\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}} com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+load (\begin{DoxyParamCaption}\item[{String}]{file\+Path}{}\end{DoxyParamCaption}) throws IOException, Class\+Not\+Found\+Exception}
+
+
+
+Carica lo stato del catalogo musicale dal file specificato dal percorso. 
+
+
+\begin{DoxyItemize}
+\item Ripristina lo stato del catalogo caricando le tracce e le playlist persistite, aggiornando direttamente il Singleton del catalogo per preservare gli observer attivi.
+\item 
+\begin{DoxyParams}{Parametri}
+{\em file\+Path} & Il percorso del file da cui caricare lo stato; non deve essere nullo o vuoto. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Il catalogo musicale popolato con lo stato ripristinato. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em IOException} & Se si verifica un errore di I/O durante il caricamento o se il file non esiste. \\
+\hline
+{\em Class\+Not\+Found\+Exception} & Se la classe dell\textquotesingle{}oggetto letto non è definita nell\textquotesingle{}applicazione. \\
+\hline
+{\em Illegal\+Argument\+Exception} & Se file\+Path è nullo o vuoto. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a6608e90ccf477e28020e2886393d6ac4}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!save@{save}}
+\index{save@{save}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a6608e90ccf477e28020e2886393d6ac4} 
+void com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{}\end{DoxyParamCaption}) throws IOException}
+
+
+
+Salva lo stato corrente del catalogo musicale sul file predefinito. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em catalog} & Il catalogo musicale di cui salvare lo stato; non deve essere null. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em IOException} & Se si verifica un errore durante la scrittura sul file. \\
+\hline
+{\em Illegal\+Argument\+Exception} & Se il parametro catalog è null. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a7ad1eb6629abdd68b7331449701768f4}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!save@{save}}
+\index{save@{save}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a7ad1eb6629abdd68b7331449701768f4} 
+void com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1interfaces_1_1_music_catalog}{Music\+Catalog}}}]{catalog}{, }\item[{String}]{file\+Path}{}\end{DoxyParamCaption}) throws IOException}
+
+
+
+Salva lo stato corrente del catalogo musicale sul file specificato dal percorso. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em catalog} & Il catalogo musicale da persistere; non deve essere null. \\
+\hline
+{\em file\+Path} & Il percorso del file di destinazione; non deve essere nullo o vuoto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Eccezioni}
+{\em IOException} & Se si verifica un errore di I/O durante il salvataggio. \\
+\hline
+{\em Illegal\+Argument\+Exception} & Se catalog è nullo o se file\+Path è nullo/vuoto. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a356c93bb5162925a608dab9d43712301}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!setDefaultFilePath@{setDefaultFilePath}}
+\index{setDefaultFilePath@{setDefaultFilePath}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{setDefaultFilePath()}{setDefaultFilePath()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a356c93bb5162925a608dab9d43712301} 
+void com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+set\+Default\+File\+Path (\begin{DoxyParamCaption}\item[{String}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il percorso del file predefinito per le operazioni di persistenza. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parametri}
+{\em file\+Path} & Il nuovo percorso relativo o assoluto del file da usare come default. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+\doxysubsection{Documentazione dei membri dato}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a1703c71af78541a0feae2176c0c09e33}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!defaultFilePath@{defaultFilePath}}
+\index{defaultFilePath@{defaultFilePath}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{defaultFilePath}{defaultFilePath}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a1703c71af78541a0feae2176c0c09e33} 
+String com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+default\+File\+Path = "{}catalog.\+ser"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Percorso di default utilizzato per il salvataggio e il caricamento del catalogo. 
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a0048c7372bba0bdadfd9b82e22fe5d26}\index{com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}!instance@{instance}}
+\index{instance@{instance}!com.example.gruppo04.persistence.PersistenceManager@{com.example.gruppo04.persistence.PersistenceManager}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager_a0048c7372bba0bdadfd9b82e22fe5d26} 
+volatile \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1persistence_1_1_persistence_manager}{Persistence\+Manager}} com.\+example.\+gruppo04.\+persistence.\+Persistence\+Manager.\+instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Istanza unica del gestore della persistenza (pattern Singleton). 
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/persistence/\mbox{\hyperlink{_persistence_manager_8java}{Persistence\+Manager.\+java}}\end{DoxyCompactItemize}

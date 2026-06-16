@@ -1,0 +1,9 @@
+digraph "Grafico della gerarchia delle classi"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="com.example.gruppo04.command.\lCommandManager.CanUndoListener",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$interfacecom_1_1example_1_1gruppo04_1_1command_1_1_command_manager_1_1_can_undo_listener.html",tooltip="Listener neutro notificato quando cambia la disponibilità dell'operazione di undo."];
+}

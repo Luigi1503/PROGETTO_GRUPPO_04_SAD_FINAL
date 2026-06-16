@@ -1,0 +1,152 @@
+\doxysection{Riferimenti per la classe com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State}
+\hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state}{}\label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state}\index{com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}}
+
+
+Classe concreta del pattern State quando la canzone viene messa in pausa.  
+
+
+
+
+Diagramma delle classi per com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State
+% FIG 0
+
+
+Diagramma di collaborazione per com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State\+:
+% FIG 1
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a6c522e61523c4f355a294101fec10cb9}{play}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} context)
+\begin{DoxyCompactList}\small\item\em Riprende la riproduzione passando allo stato {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playing_state}{Playing\+State}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a7bfc988a76ed101f0d9477344870467e}{pause}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} context)
+\begin{DoxyCompactList}\small\item\em Metodo invocato quando si tenta di metter in pausa uno stato già in pausa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a40de7cdf1bef91ccf2162daf49aec310}{stop}} (\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} context)
+\begin{DoxyCompactList}\small\item\em Interrompe la riproduzione passando allo stato {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_stopped_state}{Stopped\+State}}. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_ad50019245d7c195bf5d7165cb9524212}{is\+Playing}} ()
+\begin{DoxyCompactList}\small\item\em Indica se la riproduzione è attualmente in corso. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a2c9fec150eee977706c8029d04c77f59}{is\+Stopped}} ()
+\begin{DoxyCompactList}\small\item\em Indica se la riproduzione è ferma (stopped). \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a38807aa05059823fb46e77db4df8bf30}{is\+Paused}} ()
+\begin{DoxyCompactList}\small\item\em Indica se la riproduzione è attualmente in pausa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state}{com.\+example.\+gruppo04.\+model.\+state.\+Player\+State}}}
+
+
+\doxysubsection{Descrizione dettagliata}
+Classe concreta del pattern State quando la canzone viene messa in pausa. 
+
+Rappresenta lo stato di riproduzione in pausa\+: la riproduzione è temporaneamente sospesa ma resta "{}attiva"{}, distinguendosi quindi dallo stato {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_stopped_state}{Stopped\+State}}. 
+
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a38807aa05059823fb46e77db4df8bf30}\index{com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}!isPaused@{isPaused}}
+\index{isPaused@{isPaused}!com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}}
+\doxysubsubsection{\texorpdfstring{isPaused()}{isPaused()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a38807aa05059823fb46e77db4df8bf30} 
+boolean com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State.\+is\+Paused (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indica se la riproduzione è attualmente in pausa. 
+
+\begin{DoxyReturn}{Restituisce}
+true, poiché questo è lo stato di pausa. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state_ad2f3d850dd3fa28227fe937dedfe655b}{com.\+example.\+gruppo04.\+model.\+state.\+Player\+State}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_ad50019245d7c195bf5d7165cb9524212}\index{com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_ad50019245d7c195bf5d7165cb9524212} 
+boolean com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State.\+is\+Playing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indica se la riproduzione è attualmente in corso. 
+
+\begin{DoxyReturn}{Restituisce}
+false, poiché in pausa la riproduzione non è in corso. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state_abef15f5c33f17b4266caf38706dcdad0}{com.\+example.\+gruppo04.\+model.\+state.\+Player\+State}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a2c9fec150eee977706c8029d04c77f59}\index{com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}!isStopped@{isStopped}}
+\index{isStopped@{isStopped}!com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}}
+\doxysubsubsection{\texorpdfstring{isStopped()}{isStopped()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a2c9fec150eee977706c8029d04c77f59} 
+boolean com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State.\+is\+Stopped (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Indica se la riproduzione è ferma (stopped). 
+
+In pausa la riproduzione è ancora "{}attiva"{}\+: non è uno stato fermo. È distinguibile dallo stato Stopped tramite \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a38807aa05059823fb46e77db4df8bf30}{is\+Paused()}. \begin{DoxyReturn}{Restituisce}
+false, poiché lo stato di pausa non equivale a stop. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state_aef7def18932abc4b4a510903f46f7b7c}{com.\+example.\+gruppo04.\+model.\+state.\+Player\+State}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a7bfc988a76ed101f0d9477344870467e}\index{com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}!pause@{pause}}
+\index{pause@{pause}!com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a7bfc988a76ed101f0d9477344870467e} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State.\+pause (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}}}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Metodo invocato quando si tenta di metter in pausa uno stato già in pausa. 
+
+Non esegue alcuna transizione poiché lo stato è già {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state}{Paused\+State}}. 
+\begin{DoxyParams}{Parametri}
+{\em context} & Il contesto {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} (non utilizzato). \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state_a29bcc6d25f655d1a98b84cd4fe6e4911}{com.\+example.\+gruppo04.\+model.\+state.\+Player\+State}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a6c522e61523c4f355a294101fec10cb9}\index{com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}!play@{play}}
+\index{play@{play}!com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a6c522e61523c4f355a294101fec10cb9} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State.\+play (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}}}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Riprende la riproduzione passando allo stato {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playing_state}{Playing\+State}}. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em context} & Il contesto {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} su cui applicare la transizione. \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state_a1eb31a5184f7cc595f49956e25ed40af}{com.\+example.\+gruppo04.\+model.\+state.\+Player\+State}}.
+
+\Hypertarget{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a40de7cdf1bef91ccf2162daf49aec310}\index{com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}!stop@{stop}}
+\index{stop@{stop}!com.example.gruppo04.model.state.PausedState@{com.example.gruppo04.model.state.PausedState}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_paused_state_a40de7cdf1bef91ccf2162daf49aec310} 
+void com.\+example.\+gruppo04.\+model.\+state.\+Paused\+State.\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}}}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Interrompe la riproduzione passando allo stato {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_stopped_state}{Stopped\+State}}. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em context} & Il contesto {\ttfamily \doxylink{classcom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_playback_state}{Playback\+State}} su cui applicare la transizione. \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{interfacecom_1_1example_1_1gruppo04_1_1model_1_1state_1_1_player_state_a745b9dcc28704fdf3be219e61903f5fd}{com.\+example.\+gruppo04.\+model.\+state.\+Player\+State}}.
+
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/example/gruppo04/model/state/\mbox{\hyperlink{_paused_state_8java}{Paused\+State.\+java}}\end{DoxyCompactItemize}
