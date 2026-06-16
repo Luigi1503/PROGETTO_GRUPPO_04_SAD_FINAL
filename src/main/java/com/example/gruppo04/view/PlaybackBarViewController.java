@@ -188,6 +188,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         progressBar.setValue(0);
         setSkipPlaylistVisible(false); // nascondi i bottoni di navigazione playlist
         setActiveMode(btnSequential);
+        progressBar.setDisable(true);
     }
 
     /**
@@ -199,10 +200,6 @@ public class PlaybackBarViewController implements CatalogObserver {
      */
     @Override
     public void onCatalogChanged(CatalogEvent event) {
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackBarViewController.onCatalogChanged] evento ricevuto: " + event.getType());
-        // ──────────────────────────────────────────────────────────────────────
-
         switch (event.getType()) {
             case TRACK_REMOVED, PLAYLIST_TRACK_REMOVED:
                 Track removedTrack = (Track) event.getTarget();
@@ -445,6 +442,8 @@ public class PlaybackBarViewController implements CatalogObserver {
         labelPlaylistName.setVisible(false);
         labelPlaylistName.setManaged(false);
 
+        progressBar.setDisable(true);
+
     }
 
     /**
@@ -501,11 +500,6 @@ public class PlaybackBarViewController implements CatalogObserver {
      * @param track la traccia con cui aggiornare la barra
      */
     public void startPlayback(Track track) {
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackBarViewController.startPlayback] chiamato con: "
-                + (track != null ? track.getTitle() : "null"));
-        // ──────────────────────────────────────────────────────────────────────
-
         updateTrackInfo(track);
         btnPlayPause.setText("⏸");
         btnPlayPause.setDisable(false);
@@ -513,6 +507,7 @@ public class PlaybackBarViewController implements CatalogObserver {
         btnSkip.setDisable(false);
         btnStop.setDisable(false);
         progressTimer.start();
+        progressBar.setDisable(false);
     }
 
     /**

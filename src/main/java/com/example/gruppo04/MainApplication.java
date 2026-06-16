@@ -31,10 +31,6 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        // ── Registra Observer per salvataggio automatico ──
-        AutoSaveObserver autoSave = new AutoSaveObserver(catalog);
-        catalog.registerObserver(autoSave);
-
         // ── Caricamento stato persistente ─────────
         PersistenceManager pm = PersistenceManager.getInstance();
         try {
@@ -44,6 +40,10 @@ public class MainApplication extends Application {
             // file non esiste — prima volta che si avvia l'app
             logger.log(Level.INFO, "Nessun salvataggio trovato, avvio con catalogo di esempio.");
         }
+
+        // ── Registra Observer per salvataggio automatico ──
+        AutoSaveObserver autoSave = new AutoSaveObserver(catalog);
+        catalog.registerObserver(autoSave);
 
 
         // ── Crea i controller ─────────────────────
