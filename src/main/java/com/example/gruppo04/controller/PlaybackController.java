@@ -116,6 +116,15 @@ public class PlaybackController implements CatalogObserver {
         // ──────────────────────────────────────────────────────────────────────
     }
 
+    /**
+     * @brief Incrementa i contatori di riproduzione della traccia e, se applicabile, della playlist.
+     *
+     * Incrementa il play count della traccia attualmente in riproduzione (se presente)
+     * e, qualora la sorgente di partenza sia una {@link Playlist}, incrementa anche
+     * il play count della playlist stessa.
+     *
+     * @param startFrom La sorgente di riproduzione da cui è partita la traccia.
+     */
     private void incrementPlayCounters(PlayableSource startFrom) {
         Track currentTrack = state.getCurrentTrack();
         if (currentTrack != null) {
@@ -126,13 +135,24 @@ public class PlaybackController implements CatalogObserver {
         }
     }
 
+    /**
+     * @brief Avvia la riproduzione audio fisica della traccia corrente.
+     *
+     * Recupera il percorso del file MP3 della traccia corrente e ne avvia la
+     * riproduzione tramite il motore audio. Se la traccia non ha un percorso
+     * file valido (null), la riproduzione fisica viene saltata ma lo stato
+     * logico (traccia/sorgente corrente) resta valido: non si delega a
+     * skipTrack(), poiché in Loop/Shuffle nextTrack non termina mai la
+     * sorgente, e un avanzamento automatico qui genererebbe ricorsione
+     * infinita (StackOverflow). Al termine naturale della riproduzione,
+     * viene invocato automaticamente skipTrack() per passare alla traccia successiva.
+     */
     private void avviaAudioFisico() {
         Track currentTrack = state.getCurrentTrack();
         System.out.println("[PlaybackController.avviaAudioFisico] richiesto avvio audio per: "
                 + (currentTrack != null ? currentTrack.getTitle() : "null"));
         if (currentTrack != null) {
             String pathFileMp3 = currentTrack.getFilePath();
-
             // === CONTROLLO DI SICUREZZA ===
             if (pathFileMp3 == null) {
                 // Nessun file audio associato: non si avvia l'audio fisico, ma la
@@ -144,13 +164,13 @@ public class PlaybackController implements CatalogObserver {
                         + currentTrack.getTitle() + "' non ha un percorso MP3 valido (è null)!");
                 return;
             }
-
             audioEngine.playTrack(pathFileMp3, () -> {
                 System.out.println("[PlaybackController] Canzone terminata naturalmente. Passo alla prossima!");
                 this.skipTrack();
             });
         }
     }
+
 
     /**
      * Mette in pausa la riproduzione corrente.
@@ -581,11 +601,17 @@ public class PlaybackController implements CatalogObserver {
     }
 
     /**
-     * @return la sorgente corrente 
+     * @brief Restituisce la sorgente attualmente in riproduzione.
+     * @return La sorgente corrente, o null se nessuna sorgente è attiva.
      */
     public PlayableSource getCurrentSource() {
         return state.getCurrentSource();
     }
+
+    /**
+     * @brief Restituisce il tempo di riproduzione corrente dell'audio in corso.
+     * @return Il tempo corrente espresso in secondi.
+     */
     public double getCurrentAudioTime() {
         return audioEngine.getCurrentTimeInSeconds();
     }
