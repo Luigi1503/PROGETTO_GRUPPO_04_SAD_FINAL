@@ -5,6 +5,7 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.controller.TrackController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.Playlist;
+import com.example.gruppo04.model.factory_method.AutomaticPlaylistService;
 import com.example.gruppo04.model.strategy.LoopStrategy;
 import com.example.gruppo04.model.strategy.PlaybackStrategy;
 import com.example.gruppo04.model.strategy.SequentialStrategy;
@@ -37,6 +38,9 @@ public class MainViewController implements CatalogObserver {
 
     /** Lista delle playlist nella sidebar sinistra. */
     @FXML private VBox sidebarPlaylistList;
+
+    /** Lista delle playlist automatiche nella sidebar sinistra. */
+    @FXML private VBox sidebarAutoPlaylistList;
 
     /** Pulsante di navigazione Home. */
     @FXML private Button btnHome;
@@ -115,6 +119,7 @@ public class MainViewController implements CatalogObserver {
         catalog.registerObserver(this);
         playbackBarController.init(playbackController, catalog);
         updateSidebarPlaylists();
+        updateSidebarAutomaticPlaylists();
         showHome();
     }
 
@@ -130,7 +135,12 @@ public class MainViewController implements CatalogObserver {
             case PLAYLIST_ADDED:
             case PLAYLIST_REMOVED:
             case PLAYLIST_RENAMED:
+            case PLAYLIST_CONTENT_CHANGED:
+            case TRACK_ADDED:
+            case TRACK_REMOVED:
+            case TRACK_UPDATED:
                 updateSidebarPlaylists();
+                updateSidebarAutomaticPlaylists();
                 break;
             case STRATEGY_CHANGED:
                 if (helpBox.isVisible()) {
@@ -158,6 +168,25 @@ public class MainViewController implements CatalogObserver {
                     "-fx-padding: 8 20 8 20;" +
                     "-fx-cursor: hand;");
             sidebarPlaylistList.getChildren().add(btn);
+        }
+    }
+
+    /**
+     * Aggiorna la lista delle playlist automatiche nella sidebar sinistra.
+     */
+    private void updateSidebarAutomaticPlaylists() {
+        sidebarAutoPlaylistList.getChildren().clear();
+        for (Playlist playlist : AutomaticPlaylistService.getInstance().refresh(catalog)) {
+            Button btn = new Button("♪  " + playlist.getName());
+            btn.setMaxWidth(Double.MAX_VALUE);
+            btn.setOnAction(e -> showPlaylistDetail(playlist));
+            btn.setStyle("-fx-background-color: transparent;" +
+                    "-fx-text-fill: #8AABAE;" +
+                    "-fx-font-size: 12px;" +
+                    "-fx-alignment: CENTER_LEFT;" +
+                    "-fx-padding: 8 20 8 20;" +
+                    "-fx-cursor: hand;");
+            sidebarAutoPlaylistList.getChildren().add(btn);
         }
     }
 

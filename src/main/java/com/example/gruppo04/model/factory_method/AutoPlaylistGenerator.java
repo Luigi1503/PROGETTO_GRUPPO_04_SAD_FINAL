@@ -17,8 +17,6 @@ import java.util.function.Predicate;
  */
 public abstract class AutoPlaylistGenerator implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     /**
      * @brief Metodo factory astratto.
      * @details Ogni sottoclasse implementa questo metodo per creare una playlist

@@ -197,6 +197,7 @@ public class PlaylistDetailViewController implements CatalogObserver {
 
         this.automaticPlaylist =
                 !catalog.getPlaylists().contains(playlist);
+        btnAddTrack.setDisable(automaticPlaylist);
 
         this.playbackHandler = new PlaylistPlaybackHandler(
                 playbackController,

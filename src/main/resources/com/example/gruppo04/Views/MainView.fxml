@@ -126,6 +126,20 @@
                     <padding><Insets right="0" left="0"/></padding>
                 </VBox>
             </ScrollPane>
+
+
+            <Label text="AUTOMATIC PLAYLISTS"
+                   style="-fx-text-fill: #5C7A7D; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 16 20 8 20;"/>
+
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                        style="-fx-background-color: #0D1519;
+                   -fx-background: #0D1519;
+                   -fx-border-color: transparent;
+                   -fx-padding: 0;">
+            <VBox fx:id="sidebarAutoPlaylistList" spacing="2">
+                <padding><Insets right="0" left="0"/></padding>
+            </VBox>
+        </ScrollPane>
         </VBox>
     </left>
 

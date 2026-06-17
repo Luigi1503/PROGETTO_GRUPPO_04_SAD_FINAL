@@ -335,7 +335,6 @@ public class PlaybackBarViewController implements CatalogObserver {
         btnSkip.setDisable(true);
         btnStop.setDisable(true);
         updatePlaylistName(null);
-        System.out.println("[PlaybackBarViewController.handleStop] Pulsante Stop premuto: UI resettata");
     }
 
     /**
@@ -351,9 +350,7 @@ public class PlaybackBarViewController implements CatalogObserver {
             playbackController.previousTrack();
         else // Oltre i 10s: riavvia la traccia corrente dall'inizio.
             playbackController.restartTrack();
-        btnPlayPause.setText("⏸");
-        progressTimer.stop();
-        progressTimer.start();
+        refreshPlaybackUI();
     }
 
     /**
@@ -363,9 +360,7 @@ public class PlaybackBarViewController implements CatalogObserver {
     @FXML
     void handleSkipTrack(ActionEvent event) {
         playbackController.skipTrack();
-        progressTimer.stop();
-        progressTimer.start();
-        btnPlayPause.setText("⏸");
+        refreshPlaybackUI();
     }
 
     /**
@@ -526,6 +521,21 @@ public class PlaybackBarViewController implements CatalogObserver {
             labelPlaylistName.setVisible(false);
             labelPlaylistName.setManaged(false);
         }
+    }
+
+    /**
+     * @brief Riavvia il timer di avanzamento e aggiorna il bottone play/pausa.
+     * @details Metodo di utilità invocato dopo un cambio traccia originato
+     * dall'utente (skip o previous), per garantire che la barra di
+     * avanzamento riparta sincronizzata con la nuova traccia e che il
+     * bottone mostri lo stato "in riproduzione".
+     */
+    private void refreshPlaybackUI() {
+        // Ferma e riavvia il timer per evitare letture di tempo non sincronizzate
+        // con la nuova traccia appena avviata.
+        progressTimer.stop();
+        progressTimer.start();
+        btnPlayPause.setText("⏸");
     }
 
 }

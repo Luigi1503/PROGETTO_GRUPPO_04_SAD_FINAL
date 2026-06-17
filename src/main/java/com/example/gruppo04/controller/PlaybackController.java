@@ -69,22 +69,6 @@ public class PlaybackController implements CatalogObserver {
      * @param startTrack la traccia da cui partire nella sorgente; se {@code null} parte dalla prima
      */
     public void play(List<PlayableSource> queue, PlayableSource startFrom, Track startTrack) {
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackController.play] === AVVIO RIPRODUZIONE ===");
-        System.out.println("[PlaybackController.play] Dimensione coda: " + queue.size());
-        for (int i = 0; i < queue.size(); i++) {
-            PlayableSource src = queue.get(i);
-            System.out.println("[PlaybackController.play]   [" + i + "] source: "
-                    + src.getDisplayName()
-                    + " | tracce: " + src.getTracks().size());
-        }
-        System.out.println("[PlaybackController.play] startFrom: " + startFrom.getDisplayName());
-        System.out.println("[PlaybackController.play] startTrack: "
-                + (startTrack != null ? startTrack.getTitle() : "null (prima della sorgente)"));
-        System.out.println("[PlaybackController.play] strategia attiva: "
-                + state.getStrategy().getClass().getSimpleName());
-        // ──────────────────────────────────────────────────────────────────────
-
         // Nuova coda → lo storico di riproduzione precedente non è più rilevante.
         playbackHistory.clear();
 
@@ -102,18 +86,6 @@ public class PlaybackController implements CatalogObserver {
         boolean isPlaylist = (startFrom instanceof Playlist);
 
         catalog.notifyPlaybackStarted(state.getCurrentTrack(), isPlaylist, startFrom);
-        System.out.println("[PlaybackController.play] notifyPlaybackStarted inviato | isPlaylist=" + isPlaylist);
-
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackController.play] Dopo state.play():");
-        System.out.println("[PlaybackController.play]   isPlaying=" + state.isPlaying()
-                + " | isStopped=" + state.isStopped());
-        System.out.println("[PlaybackController.play]   currentTrack="
-                + (state.getCurrentTrack() != null ? state.getCurrentTrack().getTitle() : "null"));
-        System.out.println("[PlaybackController.play]   currentSource="
-                + (state.getCurrentSource() != null
-                ? state.getCurrentSource().getDisplayName() : "null"));
-        // ──────────────────────────────────────────────────────────────────────
     }
 
     /**
@@ -149,8 +121,6 @@ public class PlaybackController implements CatalogObserver {
      */
     private void avviaAudioFisico() {
         Track currentTrack = state.getCurrentTrack();
-        System.out.println("[PlaybackController.avviaAudioFisico] richiesto avvio audio per: "
-                + (currentTrack != null ? currentTrack.getTitle() : "null"));
         if (currentTrack != null) {
             String pathFileMp3 = currentTrack.getFilePath();
             // === CONTROLLO DI SICUREZZA ===
@@ -160,14 +130,9 @@ public class PlaybackController implements CatalogObserver {
                 // NON si delega a skipTrack(): in Loop/Shuffle nextTrack non termina
                 // mai la sorgente, quindi un avanzamento automatico qui genererebbe
                 // ricorsione infinita (StackOverflow).
-                System.err.println("[PlaybackController] ATTENZIONE: La traccia '"
-                        + currentTrack.getTitle() + "' non ha un percorso MP3 valido (è null)!");
                 return;
             }
-            audioEngine.playTrack(pathFileMp3, () -> {
-                System.out.println("[PlaybackController] Canzone terminata naturalmente. Passo alla prossima!");
-                this.skipTrack();
-            });
+            audioEngine.playTrack(pathFileMp3, this::skipTrack);
         }
     }
 
@@ -207,29 +172,12 @@ public class PlaybackController implements CatalogObserver {
      * </p>
      */
     public void skipTrack() {
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackController.skipTrack] === SKIP TRACCIA ===");
-        System.out.println("[PlaybackController.skipTrack] currentSource: "
-                + (state.getCurrentSource() != null
-                ? state.getCurrentSource().getDisplayName() : "null"));
-        System.out.println("[PlaybackController.skipTrack] currentTrack: "
-                + (state.getCurrentTrack() != null
-                ? state.getCurrentTrack().getTitle() : "null"));
-        // ──────────────────────────────────────────────────────────────────────
-
         // Registra il brano corrente nello storico prima di avanzare, così che
         // il "torna indietro" possa riportare esattamente qui.
         recordHistory();
 
         List<Track> tracks = state.getCurrentSource().getTracks();
         int currentIndex = tracks.indexOf(state.getCurrentTrack());
-
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackController.skipTrack] indice traccia corrente: " + currentIndex
-                + " | totale tracce nella sorgente: " + tracks.size()
-                + " | strategia: " + state.getStrategy().getClass().getSimpleName());
-        // ──────────────────────────────────────────────────────────────────────
-
         // Delega alla strategia attiva la selezione della traccia successiva.
         // null significa che la sorgente è terminata secondo la strategia corrente
         // e si deve passare alla sorgente successiva.
@@ -239,12 +187,9 @@ public class PlaybackController implements CatalogObserver {
             incrementPlayCounters(next);
             state.play();
             avviaAudioFisico();
-            System.out.println("[PlaybackController.skipTrack] → traccia successiva (strategia): " + next.getTitle());
             catalog.notifyTrackChanged(state.getCurrentTrack());
-        } else {
-            System.out.println("[PlaybackController.skipTrack] → fine sorgente secondo la strategia, delego a skipSource()");
+        } else
             skipSource();
-        }
     }
 
 
@@ -260,22 +205,11 @@ public class PlaybackController implements CatalogObserver {
         // de-duplica e non la inserisce due volte.
         recordHistory();
 
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackController.skipSource] === SKIP SORGENTE ===");
         List<PlayableSource> queue = state.getQueue();
         int currentIndex = queue.indexOf(state.getCurrentSource());
-        System.out.println("[PlaybackController.skipSource] coda totale: " + queue.size()
-                + " | indice corrente: " + currentIndex);
-        System.out.println("[PlaybackController.skipSource] strategia: "
-                + state.getStrategy().getClass().getSimpleName());
-        // ──────────────────────────────────────────────────────────────────────
 
         PlayableSource nextSource = state.getStrategy().nextSource(queue, currentIndex);
 
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackController.skipSource] nextSource restituito dalla strategia: "
-                + (nextSource != null ? nextSource.getDisplayName() : "null → stop"));
-        // ──────────────────────────────────────────────────────────────────────
 
         if (nextSource != null) {
             // verifica che la sorgente successiva abbia tracce
@@ -289,16 +223,12 @@ public class PlaybackController implements CatalogObserver {
                 state.setCurrentSource(nextSource);
                 state.setCurrentTrack(nextSource.getTracks().get(0));
                 incrementPlayCounters(nextSource);
-            System.out.println("[PlaybackController.skipSource] → prima traccia della nuova sorgente: "
-                    + nextSource.getTracks().get(0).getTitle());
             state.play();
             avviaAudioFisico();
             catalog.notifyTrackChanged(state.getCurrentTrack());
             catalog.notifySourceChanged(nextSource);
-        } else {
+        } else
             stop();
-            System.out.println("[PlaybackController.skipSource] → riproduzione fermata (stop)");
-        }
     }
 
     /**
@@ -319,19 +249,16 @@ public class PlaybackController implements CatalogObserver {
     public void onCatalogChanged(CatalogEvent event) {
         if (event.getType() == CatalogEventType.TRACK_REMOVED) {
             Track removed = (Track) event.getTarget();
-            if (removed.equals(state.getCurrentTrack())) {
-                System.out.println("[PlaybackController] Traccia in riproduzione rimossa dal catalogo. Stop.");
+            if (removed.equals(state.getCurrentTrack()))
                 this.stop();
-            } else if (state.getQueue().contains(removed)) {
+            else if (state.getQueue().contains(removed))
                 state.removeFromQueue(removed);
-            }
         }
         else if (event.getType() == CatalogEventType.PLAYLIST_TRACK_REMOVED) {
             Track removed = (Track) event.getTarget();
-            if (removed.equals(state.getCurrentTrack())) {
-                System.out.println("[PlaybackController] Traccia in riproduzione rimossa dalla playlist. Stop.");
+            if (removed.equals(state.getCurrentTrack()))
                 this.stop();
-            } else {
+            else {
                 // La playlist modificata potrebbe essere più avanti nella coda:
                 // riallinea la coda al contenuto aggiornato del catalogo.
                 refreshQueueFromCatalog();
@@ -339,12 +266,10 @@ public class PlaybackController implements CatalogObserver {
         }
         else if (event.getType() == CatalogEventType.PLAYLIST_REMOVED) {
             PlayableSource removed = (PlayableSource) event.getTarget();
-            if (removed.equals(state.getCurrentSource())) {
-                System.out.println("[PlaybackController] La playlist in riproduzione è stata eliminata. Stop.");
+            if (removed.equals(state.getCurrentSource()))
                 this.stop();
-            } else {
+            else
                 refreshQueueFromCatalog();
-            }
         }
         else if (event.getType() == CatalogEventType.PLAYLIST_TRACK_ADDED
                 || event.getType() == CatalogEventType.PLAYLIST_CONTENT_CHANGED
@@ -554,10 +479,6 @@ public class PlaybackController implements CatalogObserver {
      *                    non deve essere {@code null}
      */
     public void changeStrategy(PlaybackStrategy newStrategy) {
-        // ── DEBUG ──────────────────────────────────────────────────────────────
-        System.out.println("[PlaybackController.changeStrategy] nuova strategia: "
-                + newStrategy.getClass().getSimpleName());
-        // ──────────────────────────────────────────────────────────────────────
         this.state.setStrategy(newStrategy);
         catalog.notifyStrategyChanged(newStrategy);
     }

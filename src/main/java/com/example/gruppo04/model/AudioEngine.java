@@ -56,10 +56,8 @@ public class AudioEngine {
      */
     public synchronized void playTrack(String filePath, Runnable onFinished) {
         if (filePath == null) {
-            System.err.println("[AudioEngine] Impossibile riprodurre: il filePath fornito è NULL.");
             return;
         }
-        System.out.println("[AudioEngine.playTrack] avvio riproduzione file: " + filePath);
         stop();
 
         this.currentFilePath = filePath;
@@ -143,11 +141,9 @@ public class AudioEngine {
                     }
                 });
 
-                System.out.println("[AudioEngine] player.play() avviato per: " + path);
                 localPlayer.play();
 
             } catch (Exception e) {
-                System.err.println("[AudioEngine] Errore riproduzione: " + e.getMessage());
                 synchronized (AudioEngine.this) {
                     if (gen == playbackGeneration) {
                         isPlaying = false;
