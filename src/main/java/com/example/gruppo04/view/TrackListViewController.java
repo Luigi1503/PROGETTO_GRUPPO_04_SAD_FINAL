@@ -12,7 +12,6 @@ import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.controller.TrackController;
 
 import com.example.gruppo04.util.TableColumnFactory;
-import com.example.gruppo04.util.TrackFormatter;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +20,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-//import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;

@@ -9,7 +9,6 @@ import com.example.gruppo04.controller.PlaylistController;
 import com.example.gruppo04.interfaces.MusicCatalog;
 import com.example.gruppo04.interfaces.PlayableSource;
 import com.example.gruppo04.interfaces.Playlist;
-import com.example.gruppo04.model.TagType;
 import com.example.gruppo04.model.factory_method.*;
 import com.example.gruppo04.observer.CatalogObserver;
 import com.example.gruppo04.observer.CatalogEvent;
@@ -18,18 +17,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-
-import javafx.geometry.Pos;
-import javafx.scene.input.MouseEvent;
-import javafx.event.Event;
-
 import javafx.scene.input.MouseButton;
 import javafx.util.StringConverter;
 
