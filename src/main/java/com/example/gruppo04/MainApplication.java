@@ -27,6 +27,10 @@ public class MainApplication extends Application {
     private static final Logger logger =
             Logger.getLogger(MainApplication.class.getName());
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
 
