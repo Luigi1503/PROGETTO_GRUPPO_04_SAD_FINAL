@@ -92,7 +92,6 @@ public class AudioEngine {
         // Snapshot dei parametri: i campi condivisi potrebbero cambiare se parte un nuovo brano.
         final String path = currentFilePath;
         final long seekPos = lastBytePosition;
-        final long fileSize = totalFileSize;
         final Runnable onFinished = currentOnFinished;
 
         Thread t = new Thread(() -> {
@@ -118,7 +117,6 @@ public class AudioEngine {
                     fis = localFis;
                 }
 
-                final FileInputStream fisRef = localFis;
                 localPlayer.setPlayBackListener(new PlaybackListener() {
                     @Override
                     public void playbackFinished(PlaybackEvent evt) {
